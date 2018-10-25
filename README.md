@@ -26,7 +26,7 @@ Obrigatórios:
 * Material Designer
 * O app deve funcionar a partir do android 4.4
 * Testes unitários, pode usar a ferramenta que você tem mais experiência, só nos explique o que ele tem de bom.
-* Arquitetura a ser utilizada: Android Clean Code (https://github.com/kmmraj/android-clean-code & https://medium.com/@kmmraj/android-clean-code-part-1-c66da6551d1)
+* Arquitetura a ser utilizada: Android Clean Code (https://github.com/kmmraj/android-clean-code && https://medium.com/@kmmraj/android-clean-code-part-1-c66da6551d1)
 * Uso do git.
 
 ### # Observações gerais
