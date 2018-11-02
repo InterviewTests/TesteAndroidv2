@@ -1,4 +1,4 @@
-package com.testeandroidv2.ygorcesar.testeandroidv2
+package com.ygorcesar.testeandroidv2
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

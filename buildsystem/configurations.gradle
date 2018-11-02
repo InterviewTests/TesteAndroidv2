@@ -1,0 +1,23 @@
+ext {
+
+    def versionMajor = 1
+    def versionMinor = 0
+    def versionPatch = 0
+    def appVersionCode = versionMajor * 1000 + versionMinor * 100 + versionPatch
+
+    android = [
+            applicationId    : "com.ygorcesar.testeandroidv2",
+            buildToolsVersion: "28.0.3",
+            minSdkVersion    : 19,
+            targetSdkVersion : 28,
+            compileSdkVersion: 28,
+            versionCode      : appVersionCode,
+            versionName      : "$versionMajor.$versionMinor.$versionPatch"
+    ]
+
+    endpoints = [
+            dev : "\"https://bank-app-test.herokuapp.com/api/\"",
+            prod: "\"https://bank-app-test.herokuapp.com/api/\"",
+    ]
+
+}

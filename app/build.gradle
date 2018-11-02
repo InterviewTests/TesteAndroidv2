@@ -1,33 +1,133 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
+
+    def androidConfig = rootProject.ext.android
+
+    compileSdkVersion androidConfig.compileSdkVersion
+    buildToolsVersion androidConfig.buildToolsVersion
+
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.testeandroidv2.ygorcesar.testeandroidv2"
-        minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+
+        applicationId androidConfig.applicationId
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionCode androidConfig.versionCode
+        versionName androidConfig.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
     }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        debug {
+            debuggable true
+
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-dev"
+
+            buildConfigField("String", "API_URL", endpoints.dev)
+
+            resValue "string", "app_name", "TesteAndroid-Dev"
         }
+
+        release {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "API_URL", endpoints.prod)
+
+            resValue "string", "app_name", "TesteAndroidV2"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        main.java.srcDirs += [file("$buildDir/generated/source/kapt/main")]
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    def commonDependencies = rootProject.ext.commonDependencies
+    def commonTestDependencies = rootProject.ext.commonTestDependencies
+    def developmentDependencies = rootProject.ext.developmentDependencies
+
+    // Architecture components
+    implementation commonDependencies.architectureComponentsExtensions
+
+    // Android
+    implementation commonDependencies.supportAppCompatV7
+    implementation commonDependencies.supportV4
+    implementation commonDependencies.supportCardView
+    implementation commonDependencies.supportDesign
+    implementation commonDependencies.supportRecyclerView
+    implementation commonDependencies.constraintLayout
+
+    // Dagger 2
+    implementation commonDependencies.dagger2
+    kapt commonDependencies.dagger2Compiler
+
+    // Kotlin
+    implementation commonDependencies.kotlinJdk
+
+    // Retrofit
+    implementation commonDependencies.retrofit2
+    implementation commonDependencies.retrofitRxAdapter
+    implementation commonDependencies.retrofitConverterMoshi
+
+    // OkHttp
+    implementation commonDependencies.okHttp
+    implementation commonDependencies.okHttpInterceptor
+
+    // RxJava 2
+    implementation commonDependencies.rxJava2
+
+    // Moshi
+    implementation commonDependencies.moshi
+    kapt commonDependencies.moshiCodegen
+
+    // Validations and Mask
+    implementation commonDependencies.canarinho
+
+    // Timber
+    implementation developmentDependencies.timber
+
+    // Unit Tests
+    testImplementation commonTestDependencies.junit
+    testImplementation commonTestDependencies.mockito
+    testImplementation commonTestDependencies.assertj
+
+    // Espresso Tests
+    androidTestImplementation commonTestDependencies.assertj
+    androidTestImplementation commonTestDependencies.androidRules
+    androidTestImplementation commonTestDependencies.androidRunner
+    androidTestImplementation commonTestDependencies.mockitoAndroid
+    androidTestImplementation commonTestDependencies.architectureComponentsTesting
+    androidTestImplementation commonTestDependencies.espressoCore
+    androidTestImplementation commonTestDependencies.espressoContrib
+    androidTestImplementation commonTestDependencies.espressoIntents
+
+    // Dagger Mock Tests
+    kaptAndroidTest commonDependencies.dagger2Compiler
 }

@@ -1,4 +1,4 @@
-package com.testeandroidv2.ygorcesar.testeandroidv2
+package com.ygorcesar.testeandroidv2
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

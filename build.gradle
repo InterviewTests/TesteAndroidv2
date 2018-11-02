@@ -25,3 +25,8 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
+// Moved to reuse the kotlin_version declaration above
+apply from: 'buildsystem/configurations.gradle'
+apply from: 'buildsystem/dependencies.gradle'

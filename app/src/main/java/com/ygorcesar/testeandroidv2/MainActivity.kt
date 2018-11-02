@@ -1,4 +1,4 @@
-package com.testeandroidv2.ygorcesar.testeandroidv2
+package com.ygorcesar.testeandroidv2
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
