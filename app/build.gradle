@@ -73,6 +73,9 @@ dependencies {
     def commonTestDependencies = rootProject.ext.commonTestDependencies
     def developmentDependencies = rootProject.ext.developmentDependencies
 
+    // Base Module
+    implementation commonDependencies.baseProject
+
     // Architecture components
     implementation commonDependencies.architectureComponentsExtensions
 

@@ -1,0 +1,82 @@
+apply plugin: 'com.android.feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    def androidConfig = rootProject.ext.android
+
+    compileSdkVersion androidConfig.compileSdkVersion
+    buildToolsVersion androidConfig.buildToolsVersion
+
+    baseFeature true
+
+    defaultConfig {
+        minSdkVersion androidConfig.minSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    def commonDependencies = rootProject.ext.commonDependencies
+    def commonTestDependencies = rootProject.ext.commonTestDependencies
+    def developmentDependencies = rootProject.ext.developmentDependencies
+
+    // Modules
+    application commonDependencies.applicationProject
+
+    // Architecture components
+    implementation commonDependencies.architectureComponentsExtensions
+
+    // Android
+    implementation commonDependencies.supportAppCompatV7
+    implementation commonDependencies.supportRecyclerView
+    implementation commonDependencies.constraintLayout
+
+    // Dagger 2
+    implementation commonDependencies.dagger2
+    kapt commonDependencies.dagger2Compiler
+
+    // Kotlin
+    implementation commonDependencies.kotlinJdk
+
+    // OkHttp
+    implementation commonDependencies.okHttp
+    implementation commonDependencies.okHttpInterceptor
+
+    // RxJava 2
+    implementation commonDependencies.rxJava2
+
+    // Moshi
+    implementation commonDependencies.moshi
+    kapt commonDependencies.moshiCodegen
+
+    // Validations and Mask
+    implementation commonDependencies.canarinho
+
+    // Timber
+    implementation developmentDependencies.timber
+
+    // Unit tests
+    testImplementation commonTestDependencies.junit
+    testImplementation commonTestDependencies.mockito
+    testImplementation commonTestDependencies.assertj
+}
