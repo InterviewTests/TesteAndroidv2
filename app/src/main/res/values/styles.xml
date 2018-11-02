@@ -1,11 +1,84 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
+        <item name="android:windowBackground">@color/windowBackground</item>
+    </style>
+
+    <style name="MaterialButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:minHeight">52dp</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextHeadline">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_size_headline</item>
+    </style>
+
+    <style name="TextHeadline.Light" parent="TextHeadline">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="TextHeader">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_size_header</item>
+    </style>
+
+    <style name="TextHeader.Secondary" parent="TextHeader">
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+
+    <style name="TextTitle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_size_title</item>
+    </style>
+
+    <style name="TextTitle.Secondary" parent="TextTitle">
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+
+    <style name="TextTitle.Secondary.Light" parent="TextTitle.Secondary">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="TextSubHeader">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_size_subheader</item>
+    </style>
+
+    <style name="TextSubHeader.Primary" parent="TextSubHeader">
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+    <style name="TextSubHeader.Secondary" parent="TextSubHeader">
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+
+    <style name="TextCaption">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_size_caption</item>
+    </style>
+
+    <style name="TextCaption.Primary" parent="TextCaption">
+        <item name="android:textColor">@color/textPrimary</item>
+    </style>
+
+
+    <style name="TextCaption.Light" parent="TextCaption">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="RoundedEditText">
+        <item name="android:background">@drawable/rounded_edit_text_bg</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textColorHint">@color/textPrimary</item>
     </style>
 
 </resources>

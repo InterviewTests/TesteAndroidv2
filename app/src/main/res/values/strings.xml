@@ -1,3 +1,9 @@
 <resources>
 
+    <string name="login_sign_in">Login</string>
+    <string name="login_hint_user">User</string>
+    <string name="login_hint_password">Password</string>
+    <string name="home_account_label">Conta</string>
+    <string name="home_balance_label">Saldo</string>
+    <string name="home_recent_label">Recentes</string>
 </resources>
