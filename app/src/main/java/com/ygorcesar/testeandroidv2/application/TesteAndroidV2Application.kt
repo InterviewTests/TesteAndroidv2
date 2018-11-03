@@ -6,6 +6,7 @@ import com.ygorcesar.testeandroidv2.BuildConfig
 import com.ygorcesar.testeandroidv2.application.di.ApplicationComponent
 import com.ygorcesar.testeandroidv2.application.di.DaggerApplicationComponent
 import com.ygorcesar.testeandroidv2.application.di.modules.ApplicationModule
+import com.ygorcesar.testeandroidv2.base.di.BaseComponent
 import timber.log.Timber
 
 open class TesteAndroidV2Application : Application() {
@@ -17,7 +18,7 @@ open class TesteAndroidV2Application : Application() {
 
         val appComponent = createApplicationComponent()
         ApplicationComponent.INSTANCE = appComponent
-
+        BaseComponent.INSTANCE = appComponent
     }
 
     open fun createApplicationComponent(): ApplicationComponent {

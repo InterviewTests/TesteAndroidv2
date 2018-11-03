@@ -4,6 +4,8 @@ import com.ygorcesar.testeandroidv2.application.di.modules.ApplicationModule
 import com.ygorcesar.testeandroidv2.application.di.modules.NetworkModule
 import com.ygorcesar.testeandroidv2.application.di.modules.ViewModelModule
 import com.ygorcesar.testeandroidv2.application.di.scopes.ApplicationScope
+import com.ygorcesar.testeandroidv2.base.di.BaseComponent
+import com.ygorcesar.testeandroidv2.base.di.BaseModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -17,11 +19,12 @@ fun app() = ApplicationComponent.INSTANCE
 @Component(
     modules = [
         ApplicationModule::class,
+        BaseModule::class,
         ViewModelModule::class,
         NetworkModule::class
     ]
 )
-interface ApplicationComponent {
+interface ApplicationComponent : BaseComponent {
 
     companion object {
         lateinit var INSTANCE: ApplicationComponent

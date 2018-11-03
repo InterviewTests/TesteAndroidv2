@@ -8,6 +8,8 @@ import com.ygorcesar.testeandroidv2.base.common.exception.ServerError
 import com.ygorcesar.testeandroidv2.base.common.exception.UnauthorizedError
 import com.ygorcesar.testeandroidv2.base.common.network.BaseResponse
 import com.ygorcesar.testeandroidv2.base.data.preferences.PreferencesHelper
+import com.ygorcesar.testeandroidv2.home.data.HomeService
+import com.ygorcesar.testeandroidv2.login.data.LoginService
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -22,9 +24,6 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
-
-private const val CONTENT_TYPE_PROPERTY = "content-type"
-private const val FORM_URL_ENCODED_VALUE = "application/x-www-form-urlencoded"
 
 @Module
 class NetworkModule {
@@ -62,6 +61,16 @@ class NetworkModule {
     fun provideLogger(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message -> Timber.d(message); })
     }
+
+    @Provides
+    @ApplicationScope
+    fun provideLoginService(retrofit: Retrofit): LoginService =
+        retrofit.create(LoginService::class.java)
+
+    @Provides
+    @ApplicationScope
+    fun provideHomeService(retrofit: Retrofit): HomeService =
+        retrofit.create(HomeService::class.java)
 
     @Provides
     @ApplicationScope
@@ -105,8 +114,7 @@ class NetworkModule {
 
             when (response.code()) {
                 in 200..206 -> {
-                    val body = response.body()?.string()
-                    catchServerValidations(body)
+                    Timber.i("Call is success!")
                 }
                 400 -> { // Validations from backend
                     val body = response.body()?.string()
