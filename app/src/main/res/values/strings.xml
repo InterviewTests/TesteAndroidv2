@@ -3,7 +3,15 @@
     <string name="login_sign_in">Login</string>
     <string name="login_hint_user">User</string>
     <string name="login_hint_password">Password</string>
+    <string name="login_validation_error_user_invalid">Insira um e-mail ou Cpf válido</string>
+    <string name="login_validation_error_password_number">A senha precisa ao menos de um número</string>
+    <string name="login_validation_error_password_capitalized_letter">A senha precisa o menos de uma letra maíscula</string>
+    <string name="login_validation_error_password_character_special">A senha precisa ao menos de um caractere especial</string>
+    <string name="login_validation_error_password_invalid">Insira uma senha válida</string>
+
     <string name="home_account_label">Conta</string>
     <string name="home_balance_label">Saldo</string>
     <string name="home_recent_label">Recentes</string>
+    <string name="home_user_account_and_agency">%1$s / %2$s</string>
+
 </resources>

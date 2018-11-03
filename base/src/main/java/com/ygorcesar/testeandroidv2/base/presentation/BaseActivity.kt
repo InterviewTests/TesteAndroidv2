@@ -7,6 +7,7 @@ import com.ygorcesar.testeandroidv2.base.common.exception.*
 import com.ygorcesar.testeandroidv2.base.common.network.ResponseError
 import com.ygorcesar.testeandroidv2.base.data.preferences.PreferencesHelper
 import com.ygorcesar.testeandroidv2.base.di.base
+import com.ygorcesar.testeandroidv2.base.extensions.toast
 import timber.log.Timber
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -82,7 +83,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     open fun showServerError(error: ResponseError, duration: Int = 3000) {
-
+        error.message?.let { toast(it) }
     }
 
     /**
@@ -95,6 +96,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     open fun onResponseError(error: ResponseError) {
+        Timber.e(error.toString())
         if (showAutomaticMessage) {
             showServerError(error)
         }

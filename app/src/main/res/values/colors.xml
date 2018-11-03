@@ -2,10 +2,12 @@
 <resources>
     <color name="colorPrimary">#3B49EE</color>
     <color name="colorPrimaryDark">#3B49EE</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#3B49EE</color>
 
     <color name="textPrimary">#A8B4C4</color>
     <color name="textSecondary">#485465</color>
 
     <color name="windowBackground">#FFFFFF</color>
+
+    <color name="transparentLightDark">#44000000</color>
 </resources>

@@ -10,7 +10,7 @@
         android:layout_width="92dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_medium"
-        android:src="@drawable/Logo"
+        android:src="@drawable/logo"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +25,7 @@
         android:layout_marginEnd="@dimen/margin"
         android:hint="@string/login_hint_user"
         android:imeOptions="actionNext"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@id/loginPasswordEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,5 +64,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
+
+    <FrameLayout
+        android:id="@+id/loginProgress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparentLightDark"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

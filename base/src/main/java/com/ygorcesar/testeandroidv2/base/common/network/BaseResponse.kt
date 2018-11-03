@@ -1,6 +1,13 @@
 package com.ygorcesar.testeandroidv2.base.common.network
 
-import com.squareup.moshi.JsonClass
+import com.ygorcesar.testeandroidv2.base.common.exception.ServerError
 
-@JsonClass(generateAdapter = true)
-data class BaseResponse<T>(val data: T, val error: ResponseError?)
+
+open class BaseResponse(open val data: Any?, open val error: ResponseError?) {
+
+    fun validateError() {
+        if (error != null && error?.code != null && error?.message != null) {
+            throw ServerError(error!!)
+        }
+    }
+}

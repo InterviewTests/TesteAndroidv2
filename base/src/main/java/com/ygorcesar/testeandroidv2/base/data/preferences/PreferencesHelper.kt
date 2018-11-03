@@ -8,10 +8,6 @@ import javax.inject.Singleton
 @Singleton
 open class PreferencesHelper @Inject constructor(private val sharedPref: SharedPreferences) {
 
-    var firstTime: Boolean
-        get() = sharedPref.getBoolean(PREF_KEY_FIRST_TIME, false)
-        set(firstTime) = sharedPref.edit().putBoolean(PREF_KEY_FIRST_TIME, firstTime).apply()
-
     fun clear() {
         sharedPref.edit().clear().apply()
     }
@@ -27,7 +23,6 @@ open class PreferencesHelper @Inject constructor(private val sharedPref: SharedP
         set(user) = sharedPref.edit().putString(PREF_KEY_USER_PROFILE, user).apply()
 
     companion object {
-        const val PREF_KEY_FIRST_TIME = "first_time"
         const val PREF_KEY_USER_PROFILE = "user_profile"
     }
 }
