@@ -1,11 +1,18 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-allopen'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+allOpen {
+    // allows mocking for classes w/o directly opening them for release builds
+    annotation "com.ygorcesar.testeandroidv2.testing.OpenForTesting"
+}
+
 android {
 
     def androidConfig = rootProject.ext.android
+    def endpoints = rootProject.ext.endpoints
 
     compileSdkVersion androidConfig.compileSdkVersion
     buildToolsVersion androidConfig.buildToolsVersion
@@ -18,7 +25,9 @@ android {
         targetSdkVersion androidConfig.targetSdkVersion
         versionCode androidConfig.versionCode
         versionName androidConfig.versionName
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArguments clearPackageData: 'true'
 
         vectorDrawables.useSupportLibrary = true
     }
@@ -34,6 +43,7 @@ android {
     buildTypes {
         debug {
             debuggable true
+            testCoverageEnabled true
 
             applicationIdSuffix ".debug"
             versionNameSuffix "-dev"
@@ -65,6 +75,10 @@ android {
         test.java.srcDirs += 'src/test/kotlin'
         androidTest.java.srcDirs += 'src/androidTest/kotlin'
     }
+
+    testOptions {
+        animationsDisabled = true
+    }
 }
 
 dependencies {
@@ -78,6 +92,8 @@ dependencies {
 
     // Architecture components
     implementation commonDependencies.architectureComponentsExtensions
+    implementation commonDependencies.roomRuntime
+    kapt commonDependencies.roomCompiler
 
     // Android
     implementation commonDependencies.supportAppCompatV7
@@ -110,9 +126,6 @@ dependencies {
     implementation commonDependencies.moshi
     kapt commonDependencies.moshiCodegen
 
-    // Validations and Mask
-    implementation commonDependencies.canarinho
-
     // Timber
     implementation developmentDependencies.timber
 
@@ -120,6 +133,7 @@ dependencies {
     testImplementation commonTestDependencies.junit
     testImplementation commonTestDependencies.mockito
     testImplementation commonTestDependencies.assertj
+    testImplementation commonTestDependencies.architectureComponentsTesting
 
     // Espresso Tests
     androidTestImplementation commonTestDependencies.assertj
@@ -130,6 +144,8 @@ dependencies {
     androidTestImplementation commonTestDependencies.espressoCore
     androidTestImplementation commonTestDependencies.espressoContrib
     androidTestImplementation commonTestDependencies.espressoIntents
+
+    androidTestUtil commonTestDependencies.androidOrchestrator
 
     // Dagger Mock Tests
     kaptAndroidTest commonDependencies.dagger2Compiler

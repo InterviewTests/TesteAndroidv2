@@ -43,12 +43,10 @@ ext {
 
     // Testing
     androidTest = '1.0.2'
-    assertJ = '3.10.0'
+    assertJ = '3.8.0'
     espresso = '3.0.2'
-    daggerMock = '0.8.4'
     junit = '4.12'
-    mockito = '2.21.0'
-    robolectric = '3.8'
+    mockito = '2.17.0'
 
     // Development
     timber = '4.7.1'
@@ -99,12 +97,9 @@ ext {
     commonTestDependencies = [
             androidRules                 : "com.android.support.test:rules:${androidTest}",
             androidRunner                : "com.android.support.test:runner:${androidTest}",
-
-            architectureComponentsTesting: "android.arch.core:core-testing:${architectureComponents}",
+            androidOrchestrator          : "com.android.support.test:orchestrator:${androidTest}",
 
             assertj                      : "org.assertj:assertj-core:${assertJ}",
-
-            daggerMock                   : "com.github.fabioCollini.daggermock:daggermock-kotlin:${daggerMock}",
 
             espressoCore                 : "com.android.support.test.espresso:espresso-core:${espresso}",
             espressoContrib              : "com.android.support.test.espresso:espresso-contrib:${espresso}",
@@ -112,12 +107,10 @@ ext {
 
             junit                        : "junit:junit:${junit}",
 
-            mockito                      : "org.mockito:mockito-core:${mockito}",
-            mockitoAndroid               : "org.mockito:mockito-android:${mockito}",
+            architectureComponentsTesting: "android.arch.core:core-testing:${architectureComponents}",
 
-            robolectric                  : "org.robolectric:robolectric:${robolectric}",
-            robolectricMultidex          : "org.robolectric:shadows-multidex:${robolectric}",
-            robolectricV4                : "org.robolectric:shadows-supportv4:${robolectric}"
+            mockito                      : "org.mockito:mockito-core:${mockito}",
+            mockitoAndroid               : "org.mockito:mockito-android:${mockito}"
     ]
 
     developmentDependencies = [
