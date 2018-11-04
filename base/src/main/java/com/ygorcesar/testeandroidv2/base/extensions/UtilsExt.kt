@@ -4,6 +4,8 @@ import com.squareup.moshi.Moshi
 import java.text.SimpleDateFormat
 import java.util.*
 
+fun String.Companion.empty() = ""
+
 fun localeBrazil() = Locale("pt", "BR")
 
 fun String.dateToFormatBr(): String {

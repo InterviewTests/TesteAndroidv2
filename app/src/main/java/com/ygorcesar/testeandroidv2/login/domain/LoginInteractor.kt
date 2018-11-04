@@ -2,20 +2,21 @@ package com.ygorcesar.testeandroidv2.login.domain
 
 import com.ygorcesar.testeandroidv2.base.common.validations.Validations
 import com.ygorcesar.testeandroidv2.login.data.LoginRepository
-import io.reactivex.Completable
+import com.ygorcesar.testeandroidv2.login.model.UserAccount
+import io.reactivex.Single
 import javax.inject.Inject
 
 class LoginInteractor @Inject constructor(private val loginRepository: LoginRepository) {
 
-    fun login(user: String, password: String): Completable {
+    fun login(user: String, password: String): Single<UserAccount> {
         return when {
-            user.isBlank() -> Completable.error(LoginBusiness.UserInvalid)
-            !Validations.isCpfValid(user) && !Validations.isEmailValid(user) -> Completable.error(
+            user.isBlank() -> Single.error(LoginBusiness.UserInvalid)
+            !Validations.isCpfValid(user) && !Validations.isEmailValid(user) -> Single.error(
                 LoginBusiness.UserInvalid
             )
-            password.isBlank() -> Completable.error(LoginBusiness.PasswordInvalid)
-            !Validations.hasSpecialCharacter(password) -> Completable.error(LoginBusiness.PasswordNeedSpecialCharacter)
-            !Validations.hasCapitalizedLetter(password) -> Completable.error(LoginBusiness.PasswordNeedCapitalizedLetter)
+            password.isBlank() -> Single.error(LoginBusiness.PasswordInvalid)
+            !Validations.hasSpecialCharacter(password) -> Single.error(LoginBusiness.PasswordNeedSpecialCharacter)
+            !Validations.hasCapitalizedLetter(password) -> Single.error(LoginBusiness.PasswordNeedCapitalizedLetter)
             else -> loginRepository.login(user, password)
         }
     }

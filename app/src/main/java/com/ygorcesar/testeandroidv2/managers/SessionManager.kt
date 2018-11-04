@@ -4,6 +4,7 @@ import com.ygorcesar.testeandroidv2.application.di.app
 import com.ygorcesar.testeandroidv2.base.extensions.fromJson
 import com.ygorcesar.testeandroidv2.base.extensions.toJson
 import com.ygorcesar.testeandroidv2.login.model.UserAccount
+import javax.inject.Inject
 
 object SessionManager {
 
@@ -26,5 +27,12 @@ object SessionManager {
 
     fun logout() {
         app().preferencesHelper.logout()
+    }
+
+    class SessionManagerInject @Inject constructor() {
+
+        fun setCurrentUserAccount(userAccount: UserAccount) {
+            SessionManager.setCurrentUserAccount(userAccount)
+        }
     }
 }

@@ -126,6 +126,9 @@ dependencies {
     implementation commonDependencies.moshi
     kapt commonDependencies.moshiCodegen
 
+    // Validations and Mask
+    implementation commonDependencies.canarinho
+
     // Timber
     implementation developmentDependencies.timber
 

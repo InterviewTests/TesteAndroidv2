@@ -2,11 +2,13 @@ package com.ygorcesar.testeandroidv2.base.presentation
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import br.com.desafioandroidenjoei.testing.OpenForTesting
 import com.ygorcesar.testeandroidv2.base.common.exception.AppException
 import com.ygorcesar.testeandroidv2.base.common.exception.UnknownException
 import io.reactivex.disposables.CompositeDisposable
 import timber.log.Timber
 
+@OpenForTesting
 abstract class BaseViewModel : ViewModel() {
 
     val appException = MutableLiveData<AppException>()

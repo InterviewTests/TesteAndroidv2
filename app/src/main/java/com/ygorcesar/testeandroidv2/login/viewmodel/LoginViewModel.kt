@@ -6,10 +6,12 @@ import com.ygorcesar.testeandroidv2.base.extensions.addToComposite
 import com.ygorcesar.testeandroidv2.base.extensions.observeOnComputation
 import com.ygorcesar.testeandroidv2.base.presentation.BaseViewModel
 import com.ygorcesar.testeandroidv2.login.domain.LoginInteractor
+import com.ygorcesar.testeandroidv2.managers.SessionManager
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(
-    private val loginInteractor: LoginInteractor
+    private val loginInteractor: LoginInteractor,
+    private val sessionManagerInject: SessionManager.SessionManagerInject
 ) : BaseViewModel() {
 
     val loginResponseState = MutableLiveData<ViewState>()
@@ -20,7 +22,8 @@ class LoginViewModel @Inject constructor(
         loginInteractor.login(user, password)
             .observeOnComputation()
             .doOnSubscribe { loginResponseState.postValue(ViewState.Loading) }
-            .subscribe({
+            .subscribe({ userAccount ->
+                sessionManagerInject.setCurrentUserAccount(userAccount)
                 loginResponseState.postValue(ViewState.Success)
             }, { error -> handleFailure(error) })
             .addToComposite(compositeDisposable)
