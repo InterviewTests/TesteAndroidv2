@@ -1,0 +1,69 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:colorButtonNormal">@color/colorNormalButton</item>
+        <item name="colorPrimary">@color/colorNormalButton</item>
+        <item name="colorPrimaryDark">@color/statusBarColor</item>
+        <item name="colorAccent">@color/colorNormalButton</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:colorBackground">@android:color/white</item>
+    </style>
+
+    <!--Login Screen theme-->
+    <style name="LoginScreenTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimaryDark">@color/colorNormalButton</item>
+        <item name="colorAccent">@color/colorNormalButton</item>
+        <item name="colorButtonNormal">@color/colorNormalButton</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <!--Home Screen theme-->
+    <style name="HomeScreenTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimaryDark">@color/colorNormalButton</item>
+        <item name="colorAccent">@color/colorNormalButton</item>
+        <item name="colorButtonNormal">@color/colorNormalButton</item>
+    </style>
+
+    <!--Base Button Style-->
+    <style name="BaseButtonStyle" parent="Base.Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_rounded_borders</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">HelveticaNeue</item>
+    </style>
+
+    <!--Progress Bar Bas Style-->
+    <style name="ProgressBarBaseStyle" parent="Base.Widget.AppCompat.ProgressBar">
+        <item name="colorAccent">@android:color/white</item>
+        <item name="android:progressBackgroundTint">@android:color/white</item>
+        <item name="android:progressTint">@android:color/white</item>
+        <item name="android:colorControlActivated">@android:color/white</item>
+    </style>
+
+    <!--Text View Titles Style-->
+    <style name="TextViewTitles" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/helveticaneue_light</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <!--TextView Subtitles1 Style-->
+    <style name="TextViewSubTitles1" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!--TextView Subtitles2 Style-->
+    <style name="TextViewSubTitles2" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/simple_font_color1</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <!--TextView Subtitles3 Style-->
+    <style name="TextViewSubTitles3" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/simple_font_color2</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+</resources>

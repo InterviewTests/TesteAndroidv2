@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SantanderTeste</string>
+    <string name="user_hint">User</string>
+    <string name="password_hint">Password</string>
+    <string name="btn_login_text">Login</string>
+    <string name="logo_description">logo</string>
+    <string name="error_message">User or Password are invalid</string>
+</resources>

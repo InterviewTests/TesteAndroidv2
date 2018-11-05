@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorNormalButton">#3B48EE</color>
+    <color name="colorPressedButton">#1724A2</color>
+    <color name="statusBarColor">#14248A</color>
+    <color name="editTextBorderColor">#DCE2EE</color>
+    <color name="simple_font_color1">#485465</color>
+    <color name="simple_font_color2">#A8B4C4</color>
+</resources>
