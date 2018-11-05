@@ -1,7 +1,10 @@
+# Run the Code
+Para executar o projeto basta puxar o repositório e executar normalmente, e para executar os testes unitários executar o comando `./gradlew test`
+
+
 # Show me the code
 
-Esse repositório contem todo o material necessário para realizar o teste: 
-- A especificação do layout está na pasta 'bank_app_layout' abrindo o index.html, utilizar os Styles do Android
+Esse repositório contem todo o material necessário para realizar o teste: - A especificação do layout está na pasta 'bank_app_layout' abrindo o index.html, utilizar os Styles do Android
 
 - Os dados da Api estão mockados, os exemplos e a especificação dos serviços (login e statements) se encontram no arquivo BankApp.postman_collection.json ( é necessário instalar o postman e importar a colection https://www.getpostman.com/apps)
 
