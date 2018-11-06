@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TesteAndroidv2</string>
+    <string name="bank_logo">Logo Banco</string>
+    <string name="user">Usuário</string>
+    <string name="password">Senha</string>
+    <string name="login">Login</string>
+    <string name="error_login">Erro ao fazer login. Tente novamente mais tarde.</string>
+</resources>
