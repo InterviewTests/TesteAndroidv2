@@ -5,4 +5,11 @@
     <string name="btn_login_text">Login</string>
     <string name="logo_description">logo</string>
     <string name="error_message">User or Password are invalid</string>
+    <string name="brl_currency">R$ </string>
+    <string name="country">BR</string>
+    <string name="pt">pt</string>
+    <string name="recentes">Recentes</string>
+    <string name="saldo">Saldo</string>
+    <string name="conta">Conta</string>
+    <string name="aes">AES</string>
 </resources>

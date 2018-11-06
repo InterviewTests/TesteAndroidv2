@@ -1,6 +1,7 @@
 package br.com.santanderteste.ui.adapter;
 
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import java.util.List;
 
 import br.com.santanderteste.R;
 import br.com.santanderteste.model.Statement;
+import br.com.santanderteste.utils.Const;
+import br.com.santanderteste.utils.Utils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -23,6 +26,7 @@ import butterknife.ButterKnife;
 public class StatementsAdapter extends RecyclerView.Adapter<StatementsAdapter.StatementViewHolder> {
 
     private List<Statement> statements = new ArrayList<>();
+    private Context context;
 
     public void setData(List<Statement> statements) {
         this.statements.clear();
@@ -33,7 +37,7 @@ public class StatementsAdapter extends RecyclerView.Adapter<StatementsAdapter.St
         this.statements.addAll(statements);
     }
 
-    public static class StatementViewHolder extends RecyclerView.ViewHolder {
+    public class StatementViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.date)
         TextView date;
@@ -47,6 +51,7 @@ public class StatementsAdapter extends RecyclerView.Adapter<StatementsAdapter.St
         public StatementViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
+            context = v.getContext();
         }
     }
 
@@ -64,8 +69,8 @@ public class StatementsAdapter extends RecyclerView.Adapter<StatementsAdapter.St
     @Override
     public void onBindViewHolder(@NonNull StatementViewHolder statementViewHolder, int i) {
 
-        statementViewHolder.date.setText(statements.get(i).getDate());
-        statementViewHolder.value.setText(statements.get(i).getValue());
+        statementViewHolder.date.setText(statements.get(i).getDate().replace(Const.DASH, Const.SLASH));
+        statementViewHolder.value.setText(Utils.numberFormat(statements.get(i).getValue(), true, context));
         statementViewHolder.title.setText(statements.get(i).getTitle());
 
     }

@@ -8,15 +8,16 @@ import android.app.Application;
  */
 public class App extends Application {
 
-    private App app;
+    private static App app;
 
     /**
      * App Singleton
+     *
      * @return instance of App
      */
-    public App getInstance() {
+    public static App getInstance() {
         if (app == null) {
-            this.app = new App();
+            app = new App();
             return app;
         } else {
             return app;

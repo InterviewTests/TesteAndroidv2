@@ -6,7 +6,7 @@
 
 
     <EditText
-        android:id="@+id/user"
+        android:id="@+id/username_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -35,7 +35,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user" />
+        app:layout_constraintTop_toBottomOf="@+id/username_login" />
 
     <Button
         android:id="@+id/login_button"
@@ -92,10 +92,11 @@
         android:text="@string/error_message"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/user"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/username_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/user" />
+        app:layout_constraintStart_toStartOf="@+id/username_login" />
 
 
 </android.support.constraint.ConstraintLayout>

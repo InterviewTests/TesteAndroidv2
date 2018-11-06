@@ -8,16 +8,16 @@
         android:id="@+id/loginFragment"
         android:name="br.com.santanderteste.ui.fragment.LoginFragment"
         android:label="LoginFragment">
-        <action
-            android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/StatementFragment" />
-        <argument
-            android:name="userid"
-            app:argType="string" />
+        <!--<action-->
+        <!--android:id="@+id/action_loginFragment_to_homeFragment"-->
+        <!--app:destination="@id/StatementFragment"-->
+        <!--app:popUpTo="@id/StatementFragment"-->
+        <!--app:popUpToInclusive="false" />-->
     </fragment>
 
     <fragment
         android:id="@+id/StatementFragment"
         android:name="br.com.santanderteste.ui.fragment.StatementsFragment"
         android:label="HomeFragment" />
+
 </navigation>

@@ -57,7 +57,7 @@
     <!--TextView Subtitles2 Style-->
     <style name="TextViewSubTitles2" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/simple_font_color1</item>
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
     <!--TextView Subtitles3 Style-->

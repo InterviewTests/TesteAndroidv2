@@ -1,18 +1,32 @@
 package br.com.santanderteste.model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.google.gson.annotations.SerializedName;
+
 /**
  * @author JhonnyBarbosa
  * @version 1.0
  */
-public class User {
+@Entity
+public class User implements Parcelable {
 
-    private String userId;
+    @PrimaryKey
+    @SerializedName("userId")
+    private int userId;
+    @SerializedName("name")
     private String name;
+    @SerializedName("bankAccount")
     private String bankAccount;
+    @SerializedName("agency")
     private String agency;
+    @SerializedName("balance")
     private double balance;
 
-    public User(String userId, String name, String bankAccount, String agency, double balance) {
+    public User(int userId, String name, String bankAccount, String agency, double balance) {
         this.userId = userId;
         this.name = name;
         this.bankAccount = bankAccount;
@@ -20,11 +34,19 @@ public class User {
         this.agency = agency;
     }
 
-    public String getUserId() {
+    public User(Parcel in) {
+        this.userId = in.readInt();
+        this.name = in.readString();
+        this.bankAccount = in.readString();
+        this.agency = in.readString();
+        this.balance = in.readDouble();
+    }
+
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -59,4 +81,28 @@ public class User {
     public void setAgency(String agency) {
         this.agency = agency;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(this.userId);
+        parcel.writeString(this.name);
+        parcel.writeString(this.bankAccount);
+        parcel.writeString(this.agency);
+        parcel.writeDouble(this.balance);
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 }

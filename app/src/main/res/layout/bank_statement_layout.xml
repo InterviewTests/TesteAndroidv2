@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -26,7 +25,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="35dp"
-            android:text="Jose da Silva Teste"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,12 +35,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="18dp"
-            android:text="Conta"
+            android:text="@string/conta"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_name" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/account"
             style="@style/TextViewTitles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,26 +57,27 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="18dp"
-            android:text="Saldo"
+            android:text="@string/saldo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/account" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/balance"
             style="@style/TextViewTitles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="8dp"
-            android:text="R$1.000,00"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/log_out_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="18dp"
+            android:onClick="logOut"
+            android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/user_name"
             app:srcCompat="@mipmap/logout" />
@@ -99,10 +98,22 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="18dp"
+        android:paddingBottom="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <ProgressBar
+        android:id="@+id/statements_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:progress="75"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/statement_recyclerview"
+        app:layout_constraintLeft_toLeftOf="@id/statement_recyclerview"
+        app:layout_constraintRight_toRightOf="@id/statement_recyclerview"
+        app:layout_constraintTop_toTopOf="@id/statement_recyclerview" />
 
     <TextView
         android:id="@+id/textView8"
@@ -110,7 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Recentes"
+        android:text="@string/recentes"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
