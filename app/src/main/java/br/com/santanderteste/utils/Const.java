@@ -18,6 +18,7 @@ public class Const {
     public static final String DATABASE_NAME = "SantanderTesteDB";
     public static final String PATTERN = "aaaa / aa.aaaaaa-a";
     public static String API_BASE_URL = "https://bank-app-test.herokuapp.com/";
+    public static final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$";
 
 }
 

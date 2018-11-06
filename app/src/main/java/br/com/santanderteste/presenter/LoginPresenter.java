@@ -17,10 +17,9 @@ import br.com.santanderteste.utils.Utils;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
+import io.reactivex.Scheduler;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
@@ -33,12 +32,26 @@ public class LoginPresenter {
 
     private ILoginView view;
     private IUserRepository userRepository;
-    private CompositeDisposable compositeDisposable;
+    private Scheduler processScheduler;
+    private Scheduler androidScheduler;
 
     public LoginPresenter(ILoginView view, IUserRepository userRepository) {
         this.view = view;
         this.userRepository = userRepository;
-        compositeDisposable = new CompositeDisposable();
+    }
+
+    /**
+     * For testing
+     *
+     * @param view
+     * @param userRepository
+     */
+    public LoginPresenter(ILoginView view, IUserRepository userRepository,
+                          Scheduler processScheduler, Scheduler androidScheduler) {
+        this.view = view;
+        this.userRepository = userRepository;
+        this.processScheduler = processScheduler;
+        this.androidScheduler = androidScheduler;
     }
 
     /**
@@ -47,8 +60,13 @@ public class LoginPresenter {
      */
     public void checkLoginData(String username, String password) {
 
-        if (!username.isEmpty() && (Cpf.isValid(username) || Utils.isValidEmail(username))) {
+        if (!username.isEmpty()
+                && !password.isEmpty()
+                && Utils.isValidPassword(password)
+                && (Cpf.isValid(username) || Utils.isValidEmail(username))) {
+
             requestUserData(username, password);
+
         } else {
             view.showErrorMessage(Const.ERROR_MESSAGE);
         }
@@ -62,8 +80,8 @@ public class LoginPresenter {
         Single<User> userObservable = userRepository.getUserFromDB();
 
         userObservable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(processScheduler)
+                .observeOn(androidScheduler)
                 .subscribe(new SingleObserver<User>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -107,12 +125,18 @@ public class LoginPresenter {
 
     }
 
+    /**
+     * Request user data from the api
+     *
+     * @param u
+     * @param p
+     */
     public void requestUserData(String u, String p) {
 
         Observable<LoginResponse> loginResponseObservable = userRepository.getUser(u, p);
         loginResponseObservable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(processScheduler)
+                .observeOn(androidScheduler)
                 .subscribe(new Observer<LoginResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {

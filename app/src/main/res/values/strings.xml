@@ -12,4 +12,6 @@
     <string name="saldo">Saldo</string>
     <string name="conta">Conta</string>
     <string name="aes">AES</string>
+    <string name="fake_cpf_test">51544156049</string>
+    <string name="pass_for_test">Test@1</string>
 </resources>

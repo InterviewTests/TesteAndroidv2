@@ -26,6 +26,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author JhonnyBarbosa
@@ -73,10 +75,7 @@ public class LoginFragment extends BaseFragment implements ILoginView {
                 .build();
 
         userRepository = new UserRepository(userDatabase);
-        loginPresenter = new LoginPresenter(this, userRepository);
-
-        userNameLogin.setText("51544156049");
-        password.setText("Test@1");
+        loginPresenter = new LoginPresenter(this, userRepository, Schedulers.io(), AndroidSchedulers.mainThread());
 
         loginPresenter.loadUserData();
 

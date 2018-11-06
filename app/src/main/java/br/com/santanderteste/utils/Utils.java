@@ -5,6 +5,8 @@ import android.util.Patterns;
 
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -31,6 +33,23 @@ public class Utils {
 
     public static boolean isValidEmail(String e) {
         return Patterns.EMAIL_ADDRESS.matcher(e).matches();
+    }
+
+    /**
+     * Checks whether a password contains at least one uppercase letter,
+     * one letter/number, and one special symbol
+     *
+     * @return
+     */
+    public static boolean isValidPassword(String p) {
+
+        Pattern pattern;
+        Matcher matcher;
+
+        pattern = Pattern.compile(Const.PASSWORD_PATTERN);
+        matcher = pattern.matcher(p);
+
+        return matcher.matches();
     }
 
     /**
