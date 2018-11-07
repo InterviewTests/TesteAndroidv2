@@ -1,0 +1,64 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="16dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginStart="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/title_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="?android:textColorSecondary"
+            tools:text="Pagamento"
+            style="@style/TextAppearance.MaterialComponents.Body2"/>
+
+        <TextView
+            android:id="@+id/date_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="12/12/2018"
+            style="@style/TextAppearance.MaterialComponents.Caption"/>
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/description_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="Conta de luz"
+            style="@style/TextAppearance.MaterialComponents.Body2"/>
+
+        <TextView
+            android:id="@+id/amount_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="R$1.000,00"
+            style="@style/TextAppearance.Subtitle1.Light"/>
+      </LinearLayout>
+    </LinearLayout>
+
+  </androidx.cardview.widget.CardView>
+
+</layout>
