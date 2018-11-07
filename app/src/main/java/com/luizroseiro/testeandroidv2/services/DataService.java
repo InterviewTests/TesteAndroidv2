@@ -7,6 +7,7 @@ import com.luizroseiro.testeandroidv2.interfaces.TAInterface;
 import com.luizroseiro.testeandroidv2.models.User;
 import com.luizroseiro.testeandroidv2.utils.Utils;
 import com.luizroseiro.testeandroidv2.views.activities.MainActivity;
+import com.luizroseiro.testeandroidv2.views.fragments.LoginFragment;
 import com.luizroseiro.testeandroidv2.views.fragments.MainFragment;
 
 import retrofit2.Call;
@@ -47,6 +48,14 @@ public class DataService {
                     AppPreferences.setLoggedIn(mainActivity, true);
                     AppPreferences.setUserId(mainActivity, response.body().getUserAccount()
                             .getUserId());
+                    AppPreferences.setUserName(mainActivity, response.body().getUserAccount()
+                            .getName());
+                    AppPreferences.setUserAgency(mainActivity, response.body().getUserAccount()
+                            .getAgency());
+                    AppPreferences.setUserBankAccount(mainActivity, response.body().getUserAccount()
+                            .getBankAccount());
+                    AppPreferences.setUserBalance(mainActivity, (float) response.body()
+                            .getUserAccount().getBalance());
 
                     Utils.replaceFragment(R.id.container_main, new MainFragment());
                 }
@@ -60,6 +69,11 @@ public class DataService {
                 Utils.createToast(mainActivity.getString(R.string.error_login));
             }
         });
+    }
+
+    public void logoutUser() {
+        AppPreferences.clearUser(mainActivity);
+        Utils.replaceFragment(R.id.container_main, new LoginFragment());
     }
 
 }

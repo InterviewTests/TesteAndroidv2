@@ -104,4 +104,6 @@ public class LoginFragment extends Fragment {
 
     }
 
+    // TODO: handle enter button
+
 }

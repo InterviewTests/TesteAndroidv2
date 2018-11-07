@@ -5,4 +5,10 @@
     <string name="password">Senha</string>
     <string name="login">Login</string>
     <string name="error_login">Erro ao fazer login. Tente novamente mais tarde.</string>
+    <string name="account">Conta</string>
+    <string name="logout_icon">Ícone de Logout</string>
+    <string name="balance">Saldo</string>
+    <string name="recent">Recentes</string>
+    <string name="account_data">%1$s / %2$s</string>
+    <string name="balance_data">R$%1$.2f</string>
 </resources>

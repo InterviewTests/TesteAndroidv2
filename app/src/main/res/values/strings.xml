@@ -5,4 +5,10 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="error_login">Error signing in. Try again later.</string>
+    <string name="account">Account</string>
+    <string name="logout_icon">Logout Icon</string>
+    <string name="balance">Balance</string>
+    <string name="recent">Recent</string>
+    <string name="account_data">%1$s / %2$s</string>
+    <string name="balance_data">R$%1$.2f</string>
 </resources>
