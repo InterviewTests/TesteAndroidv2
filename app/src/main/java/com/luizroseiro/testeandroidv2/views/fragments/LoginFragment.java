@@ -2,14 +2,18 @@ package com.luizroseiro.testeandroidv2.views.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.luizroseiro.testeandroidv2.R;
 import com.luizroseiro.testeandroidv2.utils.Utils;
@@ -17,13 +21,14 @@ import com.luizroseiro.testeandroidv2.views.activities.MainActivity;
 
 public class LoginFragment extends Fragment {
 
+    private ConstraintLayout clLoginContent;
+    private ConstraintLayout clSplash;
     private EditText etUser;
     private EditText etPassword;
+    private Button btnLogin;
 
     private boolean userVerification = false;
     private boolean passwordVerification = false;
-
-    private Button btnLogin;
 
     public LoginFragment() {}
 
@@ -32,6 +37,9 @@ public class LoginFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_login, container, false);
+
+        clLoginContent = view.findViewById(R.id.cl_login_content);
+        clSplash = view.findViewById(R.id.cl_splash);
 
         etUser = view.findViewById(R.id.et_user);
         etPassword = view.findViewById(R.id.et_password);
@@ -49,8 +57,7 @@ public class LoginFragment extends Fragment {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.dataService.loginUser(etUser.getText().toString(),
-                        etPassword.getText().toString());
+                loginAction();
             }
         });
 
@@ -102,8 +109,31 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        etPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE)
+                    loginAction();
+                return false;
+            }
+        });
+
     }
 
-    // TODO: handle enter button
+    private void loginAction() {
+        loadingFeedback();
+        MainActivity.dataService.loginUser(LoginFragment.this,
+                etUser.getText().toString(), etPassword.getText().toString());
+    }
+
+    private void loadingFeedback() {
+        clLoginContent.setClickable(false);
+        clSplash.setVisibility(View.VISIBLE);
+    }
+
+    public void dismissLoadingFeedback() {
+        clLoginContent.setClickable(true);
+        clSplash.setVisibility(View.GONE);
+    }
 
 }

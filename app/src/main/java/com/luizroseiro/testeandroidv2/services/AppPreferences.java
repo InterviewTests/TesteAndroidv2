@@ -17,9 +17,9 @@ public class AppPreferences {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    static void setLoggedIn(Context context, boolean loggedIn) {
+    static void setLoggedIn(Context context) {
         SharedPreferences.Editor editor = getPreferences(context).edit();
-        editor.putBoolean(PREF_LOGGED_IN, loggedIn);
+        editor.putBoolean(PREF_LOGGED_IN, true);
         editor.apply();
     }
 

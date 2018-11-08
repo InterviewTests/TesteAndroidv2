@@ -11,4 +11,6 @@
     <string name="recent">Recentes</string>
     <string name="account_data">%1$s / %2$s</string>
     <string name="balance_data">R$%1$.2f</string>
+    <string name="loading">Carregando…</string>
+    <string name="error_statements">Erro ao baixar transações. Tente novamente mais tarde.</string>
 </resources>
