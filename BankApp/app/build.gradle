@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId "br.com.santander.android.bank"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError true
+        warningsAsErrors true
+    }
+}
+
+ext {
+    // AndroidX versions
+    appCompat = '1.0.2'
+    constraintLayout = '1.1.3'
+
+    // Network & Async
+    retrofit = '2.4.0'
+    retrofitGson = '2.4.0'
+    rxAndroid = '1.2.1'
+    gson = '2.8.2'
+
+    // Test
+    jUnit = '4.12'
+    runner = '1.1.0'
+    espresso = '3.1.0'
+}
+
+version = ext
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$version.appCompat"
+    implementation "androidx.constraintlayout:constraintlayout:$version.constraintLayout"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$version.retrofit"
+
+    // Rx Android
+    implementation "io.reactivex:rxandroid:$version.rxAndroid"
+
+    // Gson Retrofit
+    implementation "com.squareup.retrofit2:converter-gson:$version.retrofitGson"
+
+    // Google Gson
+    implementation "com.google.code.gson:gson:$version.gson"
+
+    testImplementation "junit:junit:$version.jUnit"
+    androidTestImplementation "androidx.test:runner:$version.runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$version.espresso"
+}
