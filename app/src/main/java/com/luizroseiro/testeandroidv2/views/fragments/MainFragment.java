@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.luizroseiro.testeandroidv2.R;
@@ -28,6 +29,7 @@ public class MainFragment extends Fragment {
     private TextView tvUserName;
     private TextView tvAccount;
     private TextView tvBalance;
+    private ProgressBar pbRecent;
 
     public MainFragment() {}
 
@@ -49,13 +51,15 @@ public class MainFragment extends Fragment {
         tvAccount = view.findViewById(R.id.tv_account);
         tvBalance = view.findViewById(R.id.tv_balance);
 
+        pbRecent = view.findViewById(R.id.pb_recent);
+
         RecyclerView rvRecent = view.findViewById(R.id.rv_recent);
         rvRecent.setHasFixedSize(true);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(context,
                 LinearLayoutManager.VERTICAL, false);
 
-        recentAdapter = new RecentAdapter(statements);
+        recentAdapter = new RecentAdapter(statements, context);
 
         rvRecent.setLayoutManager(layoutManager);
         rvRecent.setAdapter(recentAdapter);
@@ -86,6 +90,7 @@ public class MainFragment extends Fragment {
 
     public void notifyAdapter() {
         recentAdapter.notifyDataSetChanged();
+        pbRecent.setVisibility(View.GONE);
     }
 
 }
