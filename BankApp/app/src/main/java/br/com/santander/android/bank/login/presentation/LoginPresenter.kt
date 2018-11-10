@@ -10,8 +10,7 @@ import retrofit2.HttpException
 import java.net.UnknownHostException
 
 internal class LoginPresenter(private val view: LoginContract.View,
-                              private val loginInteractor: LoginInteractor
-): LoginContract.Presenter {
+                              private val loginInteractor: LoginInteractor): LoginContract.Presenter {
 
     private val disposable = CompositeDisposable()
 

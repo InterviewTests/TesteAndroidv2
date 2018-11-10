@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Main colors-->
     <color name="colorPrimary">#3B48EE</color>
     <color name="colorPrimaryDark">#242da7</color>
     <color name="colorAccent">#FF5252</color>
+
+    <color name="lighter_gray">#e4e4e4</color>
+    <color name="overlay_gray">#e2000221</color>
 </resources>
