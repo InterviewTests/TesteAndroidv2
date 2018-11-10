@@ -16,7 +16,6 @@ public class LoginActivity extends AppCompatActivity {
     setContentView(R.layout.activity_login);
 
     loginButton = findViewById(R.id.login_button);
-
     loginButton.setOnClickListener(
         v -> Navigator.of(this).clearTask().fade().go(StatementsActivity.class));
   }
