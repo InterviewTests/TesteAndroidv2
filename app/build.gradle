@@ -33,7 +33,7 @@ android {
 }
 
 kapt {
-    generateStubs = false
+    generateStubs = true
 }
 
 dependencies {
