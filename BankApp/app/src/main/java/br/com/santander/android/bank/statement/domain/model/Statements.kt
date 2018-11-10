@@ -1,4 +1,4 @@
-package br.com.santander.android.bank.repository.model
+package br.com.santander.android.bank.statement.domain.model
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

@@ -1,9 +1,9 @@
-package br.com.santander.android.bank.repository.model
+package br.com.santander.android.bank.login.domain.model
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class Login(
+data class UserLogin(
     @SerializedName("user")
     val user: String,
 

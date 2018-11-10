@@ -1,4 +1,4 @@
-package br.com.santander.android.bank.repository.model
+package br.com.santander.android.bank.login.domain.model
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
@@ -17,5 +17,5 @@ data class Account(
     val agency: String,
 
     @SerializedName("balance")
-    val balance: Double
+    val balance: Float
 ): Serializable

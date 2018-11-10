@@ -39,12 +39,14 @@ ext {
     // Network & Async
     retrofit = '2.4.0'
     retrofitGson = '2.4.0'
+    retrofitAdapter = '2.4.0'
     okHttpInterceptor = '3.9.0'
-    rxAndroid = '1.2.1'
+    rxAndroid = '2.1.0'
     gson = '2.8.2'
 
     // Test
     jUnit = '4.12'
+    mockito = '2.23.0'
     runner = '1.1.0'
     espresso = '3.1.0'
 }
@@ -60,11 +62,14 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$version.retrofit"
 
+    // Retrofit Adapter
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$version.retrofitAdapter"
+
     // OkHttp Interceptor
     implementation "com.squareup.okhttp3:logging-interceptor:$version.okHttpInterceptor"
 
     // Rx Android
-    implementation "io.reactivex:rxandroid:$version.rxAndroid"
+    implementation "io.reactivex.rxjava2:rxandroid:$version.rxAndroid"
 
     // Gson Retrofit
     implementation "com.squareup.retrofit2:converter-gson:$version.retrofitGson"
@@ -73,6 +78,10 @@ dependencies {
     implementation "com.google.code.gson:gson:$version.gson"
 
     testImplementation "junit:junit:$version.jUnit"
+
+    //Mockito
+    testImplementation "org.mockito:mockito-inline:$version.mockito"
+
     androidTestImplementation "androidx.test:runner:$version.runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$version.espresso"
 }
