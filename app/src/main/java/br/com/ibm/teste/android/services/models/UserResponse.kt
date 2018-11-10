@@ -7,5 +7,5 @@ import com.google.gson.annotations.SerializedName
  * Date: 10/11/18
  * Time: 17:25
  */
-class UserResponse (@SerializedName("user") val user: UserAccount,
+open class UserResponse (@SerializedName("userAccount") var userAccount: UserAccount,
                     @SerializedName("error") val error: Error)

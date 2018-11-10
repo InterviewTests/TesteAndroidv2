@@ -19,15 +19,14 @@ class UserAccountService (private val userAccountListener: IUserAccountListener)
     private val userAccountApi = this.apiClient.getRetrofit().create(UserAccountAPI::class.java)
 
 
-    override fun login(user: String, password: String) {
-        val userRequest = UserRequest(user, password)
-
+    override fun login(userRequest: UserRequest) {
+        userAccountListener.showLoading()
         val callRequest = userAccountApi.login(userRequest)
 
         callRequest.enqueue(object : Callback<UserResponse> {
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                 userAccountListener.hideLoading()
-                if (response.isSuccessful && response.body() != null && response.body()?.error != null) {
+                if (response.isSuccessful && response.body() != null && (response.body()?.error != null)) {
                     userAccountListener.responseSuccess(response.body()!!)
                 } else {
                     response.body()?.error?.message?.let { userAccountListener.responseError(it) }

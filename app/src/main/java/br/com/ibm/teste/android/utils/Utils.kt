@@ -2,6 +2,8 @@ package br.com.ibm.teste.android.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
+import android.widget.Toast
+import br.com.ibm.teste.android.app.IbmTestApplication
 
 /**
  * Created by paulo.
@@ -20,6 +22,13 @@ class Utils {
                     mContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetworkInfo = connectivityManager.activeNetworkInfo
             return activeNetworkInfo?.isConnected ?: false
+        }
+
+        /**
+         * Show message on Activity
+         */
+        fun showMessage(message: String) {
+            Toast.makeText(IbmTestApplication.getInstance(), message, Toast.LENGTH_SHORT).show()
         }
     }
 }

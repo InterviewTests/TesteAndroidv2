@@ -5,5 +5,5 @@ package br.com.ibm.teste.android.services.models
  * Date: 10/11/18
  * Time: 17:18
  */
-class UserAccount (val userId: Int, val name: String,
-                   val bankAccount: String, val agency: String, val balance: Double)
+open class UserAccount (var userId: Int, var name: String,
+                   var bankAccount: String, var agency: String, var balance: Double)

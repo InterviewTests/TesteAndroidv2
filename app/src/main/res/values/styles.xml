@@ -17,4 +17,13 @@
         <item name="android:font" tools:targetApi="o">@font/montserrat_regular</item>
     </style>
 
+    <!-- Login theme with full screen -->
+    <style name="LoginTheme" parent="Theme.AppCompat.Light.NoActionBar" tools:targetApi="lollipop">
+        <item name="colorPrimary">@color/colorWhite</item>
+        <item name="colorPrimaryDark">@color/colorWhite</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/montserrat_regular</item>
+        <item name="android:font" tools:targetApi="o">@font/montserrat_regular</item>
+    </style>
+
 </resources>

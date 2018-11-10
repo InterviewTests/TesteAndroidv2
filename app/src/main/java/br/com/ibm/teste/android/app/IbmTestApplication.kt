@@ -3,6 +3,7 @@ package br.com.ibm.teste.android.app
 import android.app.Application
 import br.com.ibm.teste.android.services.config.APIClient
 import br.com.ibm.teste.android.services.config.ApiConfig
+import br.com.ibm.teste.android.services.sharedpreferences.UserAccountPreferences
 
 /**
  * Created by paulo.
@@ -22,6 +23,7 @@ class IbmTestApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        UserAccountPreferences.init(this)
         ibmTestApplication = this
         apiClient = APIClient(ApiConfig.BASE_URL)
     }
