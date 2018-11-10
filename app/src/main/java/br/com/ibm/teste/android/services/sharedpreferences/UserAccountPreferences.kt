@@ -14,6 +14,7 @@ object UserAccountPreferences {
     private const val MODE = Context.MODE_PRIVATE
     private lateinit var preferences: SharedPreferences
     private val USER_SAVED = Pair("user_saved", "")
+    private val USER_LOGGED = Pair("user_logged", "")
 
     fun init(context: Context) {
         preferences = context.getSharedPreferences(NAME, MODE)
@@ -32,9 +33,9 @@ object UserAccountPreferences {
         }
 
     var userLoginData: String
-        get() = preferences.getString(USER_SAVED.first, USER_SAVED.second)
+        get() = preferences.getString(USER_LOGGED.first, USER_LOGGED.second)
         set(value) = preferences.edit {
-            it.putString(USER_SAVED.first, value)
+            it.putString(USER_LOGGED.first, value)
         }
 
 }

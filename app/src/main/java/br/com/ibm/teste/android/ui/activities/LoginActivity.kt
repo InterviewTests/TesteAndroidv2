@@ -24,7 +24,6 @@ class LoginActivity : GenericActivity(), IUserAccountListener {
     @BindView(R.id.edt_user) lateinit var mUser: EditText
     @BindView(R.id.edt_password) lateinit var mPassword: EditText
     @BindView(R.id.btn_login) lateinit var mButtonLogin: Button
-    private val userAccountPreferences = UserAccountPreferences
     private lateinit var userRequest : UserRequest
 
     override fun setLayout() {
@@ -58,8 +57,8 @@ class LoginActivity : GenericActivity(), IUserAccountListener {
     }
 
     private fun saveUserResponse(userResponse: UserResponse) {
-        userAccountPreferences.userSaved = Converter.convertToJson(userResponse)
-        userAccountPreferences.userLoginData = Converter.convertUserRequestToJson(userRequest)
+        UserAccountPreferences.userSaved = Converter.convertToJson(userResponse)
+        UserAccountPreferences.userLoginData = Converter.convertUserRequestToJson(userRequest)
         openMainActivity()
     }
 
@@ -68,7 +67,7 @@ class LoginActivity : GenericActivity(), IUserAccountListener {
     }
 
     private fun getUserLogged() {
-        val userLogged = Converter.convertJsonToUserRequest(userAccountPreferences.userLoginData)
+        val userLogged = Converter.convertJsonToUserRequest(UserAccountPreferences.userLoginData)
         mUser.setText(userLogged?.user)
         mPassword.setText(userLogged?.password)
     }
