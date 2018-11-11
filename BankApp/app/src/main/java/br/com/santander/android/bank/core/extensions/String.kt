@@ -1,10 +1,16 @@
 package br.com.santander.android.bank.core.extensions
 
 import android.util.Patterns
-import java.util.InputMismatchException
+import java.util.*
 
 private const val CPF_REMAIN_LAST = 11
 private val weightCPF = intArrayOf(11, 10, 9, 8, 7, 6, 5, 4, 3, 2)
+
+fun String.formatAgency(): String {
+    return if (this.length == 9) {
+        "${this.substring(0,2)}.${this.substring(2,7)}-${this.substring(7,9)}"
+    } else { this }
+}
 
 fun String.isEmail(): Boolean {
     return Patterns.EMAIL_ADDRESS.matcher(this).matches()

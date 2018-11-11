@@ -12,4 +12,8 @@
     <string name="error_user_password">Usuário ou senha incorreto.</string>
     <string name="alert_offline">Você está offline. Verifique sua conexão e tente novamente.</string>
     <string name="error_invalid_user">Informe um e-mail ou cpf válido</string>
+    <string name="exit">Sair</string>
+    <string name="news">Recentes</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
 </resources>

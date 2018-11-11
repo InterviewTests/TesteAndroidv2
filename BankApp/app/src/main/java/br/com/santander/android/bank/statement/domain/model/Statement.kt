@@ -15,5 +15,5 @@ data class Statement(
     val date: Date,
 
     @SerializedName("value")
-    val value: Double
+    val value: Float
 ): Serializable

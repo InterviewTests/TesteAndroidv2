@@ -23,6 +23,7 @@
                 android:id="@+id/btn_exit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/exit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@drawable/ic_exit"/>
 
@@ -30,26 +31,86 @@
                 android:id="@+id/txt_name"
                 style="@style/BankTextView.Header"
                 android:layout_width="0dp"
-                android:layout_marginTop="@dimen/small_margin"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btn_exit"
                 tools:text="User Name Test"/>
 
             <TextView
-                android:id="@+id/txt_account"
-                style="@style/BankTextView"
+                android:id="@+id/txt_title_account"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:text="@string/account"
+                android:textColor="@android:color/white"
                 android:layout_marginTop="@dimen/default_margin"
+                app:layout_constraintTop_toBottomOf="@+id/txt_name"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/txt_account"
+                style="@style/BankTextView.Header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_name"
+                app:layout_constraintTop_toBottomOf="@id/txt_title_account"
                 tools:text="2050 / 01.111222-4"/>
+
+            <TextView
+                android:id="@+id/txt_title_balance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/balance"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="@dimen/default_margin"
+                app:layout_constraintTop_toBottomOf="@+id/txt_account"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/txt_balance"
+                style="@style/BankTextView.Header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_title_balance"
+                tools:text="R$ 1.987,05"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/txt_news"
+        style="@style/BankTextView.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/news"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginStart="@dimen/default_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statements_toolbar" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swip_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_news">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_statements"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_statement"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,11 +23,25 @@
     </style>
 
     <style name="BankTextView.Header" parent="BankTextView">
-        <item name="android:textSize">@dimen/header_title_size</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="BankTextView.Title" parent="BankTextView">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="BankTextViewValue" parent="@android:style/TextAppearance">
+        <item name="android:textSize">22sp</item>
     </style>
 
     <style name="BankTextView.Small" parent="BankTextView">
-        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="BankTextView.Small.Gray" parent="BankTextView">
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="BankToolbar" parent="AppTheme">
@@ -35,6 +49,4 @@
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
-    <dimen name="header_title_size">22sp</dimen>
-    <dimen name="small_text_size">12sp</dimen>
 </resources>
