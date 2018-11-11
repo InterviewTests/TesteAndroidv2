@@ -13,7 +13,7 @@ fun String.formatAgency(): String {
 }
 
 fun String.isEmail(): Boolean {
-    return Patterns.EMAIL_ADDRESS.matcher(this).matches()
+    return this.matches("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})${"+"}".toRegex())
 }
 
 fun String.isCpf(): Boolean {

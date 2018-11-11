@@ -31,6 +31,10 @@ android {
         abortOnError false
         warningsAsErrors true
     }
+
+    testOptions {
+        animationsDisabled = true
+    }
 }
 
 ext {
@@ -52,7 +56,9 @@ ext {
     jUnit = '4.12'
     mockito = '2.23.0'
     runner = '1.1.0'
+    rules = '1.1.0'
     espresso = '3.1.0'
+    extJunit = '1.0.0'
 }
 
 version = ext
@@ -91,5 +97,7 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:$version.mockito"
 
     androidTestImplementation "androidx.test:runner:$version.runner"
+    androidTestImplementation "androidx.test:rules:$version.rules"
+    androidTestImplementation "androidx.test.ext:junit:$version.extJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$version.espresso"
 }

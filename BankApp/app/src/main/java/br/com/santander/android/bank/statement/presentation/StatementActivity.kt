@@ -11,7 +11,6 @@ import br.com.santander.android.bank.core.extensions.toCurrency
 import br.com.santander.android.bank.login.domain.model.Account
 import br.com.santander.android.bank.login.presentation.LoginActivity
 import br.com.santander.android.bank.statement.di.StatementInjection
-import br.com.santander.android.bank.statement.domain.model.Statement
 import br.com.santander.android.bank.statement.domain.model.Statements
 import kotlinx.android.synthetic.main.activity_statements.*
 
