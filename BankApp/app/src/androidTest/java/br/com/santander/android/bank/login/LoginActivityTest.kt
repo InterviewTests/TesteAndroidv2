@@ -30,6 +30,30 @@ class LoginActivityTest {
     }
 
     @Test
+    fun withEmptyUser_shouldShowErrorMessage() {
+        onView(withId(R.id.edt_user))
+            .perform(typeText(""), closeSoftKeyboard())
+
+        onView(withId(R.id.btn_login))
+            .perform(click())
+
+        onView(withId(R.id.edt_user))
+            .check(matches(hasErrorText(rule.activity.getString(R.string.error_empty_user))))
+    }
+
+    @Test
+    fun withEmptyPassword_shouldShowErrorMessage() {
+        onView(withId(R.id.edt_user))
+            .perform(typeText("a@a.com"), closeSoftKeyboard())
+
+        onView(withId(R.id.btn_login))
+            .perform(click())
+
+        onView(withId(R.id.edt_password))
+            .check(matches(hasErrorText(rule.activity.getString(R.string.error_empty_password))))
+    }
+
+    @Test
     fun whenInputInvalidUserType_shouldShowErrorMessage() {
         onView(withId(R.id.edt_user))
             .perform(typeText("1qw2e34"), closeSoftKeyboard())
