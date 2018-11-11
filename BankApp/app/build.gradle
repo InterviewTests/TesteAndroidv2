@@ -14,13 +14,16 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField "String", "API_BASE_URL", "\"https://bank-app-test.herokuapp.com\""
-
         vectorDrawables.useSupportLibrary = true
+        buildConfigField "String", "API_BASE_URL", "\"https://bank-app-test.herokuapp.com\""
     }
 
     buildTypes {
+
+        debug {
+            testCoverageEnabled true
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -55,6 +58,7 @@ ext {
     // Test
     jUnit = '4.12'
     mockito = '2.23.0'
+    mockWebServer = '3.10.0'
     runner = '1.1.0'
     rules = '1.1.0'
     espresso = '3.1.0'
@@ -95,6 +99,7 @@ dependencies {
 
     //Mockito
     testImplementation "org.mockito:mockito-inline:$version.mockito"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$version.mockWebServer"
 
     androidTestImplementation "androidx.test:runner:$version.runner"
     androidTestImplementation "androidx.test:rules:$version.rules"
