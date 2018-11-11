@@ -1,24 +1,22 @@
 package com.renanferrari.testeandroidv2.application.di.modules;
 
-import android.app.Application;
 import android.content.Context;
+import com.renanferrari.testeandroidv2.application.App;
+import com.renanferrari.testeandroidv2.application.common.providers.SchedulerProvider;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
 
-@Module public class AppModule {
+@Module(includes = {
+    ActivityModule.class,
+    ViewModelModule.class
+}) public class AppModule {
 
-  private final Application application;
-
-  public AppModule(final Application application) {
-    this.application = application;
+  @Provides @Singleton Context provideApplicationContext(final App app) {
+    return app.getApplicationContext();
   }
 
-  @Provides @Singleton Application provideApplication() {
-    return application;
-  }
-
-  @Provides @Singleton Context provideApplicationContext() {
-    return application.getApplicationContext();
+  @Provides @Singleton SchedulerProvider provideSchedulerProvider() {
+    return SchedulerProvider.createDefault();
   }
 }

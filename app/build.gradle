@@ -8,6 +8,7 @@ android {
     targetSdkVersion 28
     versionCode 1
     versionName "1.0"
+    vectorDrawables.useSupportLibrary true
   }
   buildTypes {
     release {
@@ -25,30 +26,46 @@ android {
 }
 
 dependencies {
+  def lifecycle_version = "2.0.0"
+  def rxbinding_version = "3.0.0-alpha1"
+  def dagger_version = "2.19"
+
   implementation 'androidx.legacy:legacy-support-v4:1.0.0'
   implementation 'androidx.appcompat:appcompat:1.0.1'
   implementation 'androidx.recyclerview:recyclerview:1.0.0'
   implementation 'androidx.cardview:cardview:1.0.0'
   implementation 'androidx.annotation:annotation:1.0.0'
   implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+  implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+  implementation "android.arch.lifecycle:extensions:$lifecycle_version"
   implementation 'com.google.android.material:material:1.1.0-alpha01'
 
-  implementation 'com.xwray:groupie:2.0.3'
-  implementation 'com.xwray:groupie-databinding:2.0.3'
+  implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
+  implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
-  implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
-  implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+  implementation "com.jakewharton.rxbinding3:rxbinding:$rxbinding_version"
+  implementation "com.jakewharton.rxbinding3:rxbinding-core:$rxbinding_version"
+  implementation "com.jakewharton.rxbinding3:rxbinding-appcompat:$rxbinding_version"
+  implementation "com.jakewharton.rxbinding3:rxbinding-recyclerview:$rxbinding_version"
+  implementation "com.jakewharton.rxbinding3:rxbinding-material:$rxbinding_version"
 
-  implementation 'com.google.dagger:dagger:2.16'
-  annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
+  implementation "com.google.dagger:dagger-android:$dagger_version"
+  implementation "com.google.dagger:dagger-android-support:$dagger_version"
+  annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
+  annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+
+  implementation 'com.google.code.gson:gson:2.8.5'
 
   implementation 'com.squareup.retrofit2:retrofit:2.4.0'
   implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
   implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-  implementation 'com.google.code.gson:gson:2.8.5'
+
+  implementation 'com.xwray:groupie:2.0.3'
+  implementation 'com.xwray:groupie-databinding:2.0.3'
 
   testImplementation 'junit:junit:4.12'
   testImplementation 'androidx.test:core:1.0.0'
-  testImplementation 'org.mockito:mockito-core:2.17.0'
+  testImplementation 'org.mockito:mockito-core:2.19.0'
   testImplementation 'com.google.truth:truth:0.36'
+  testImplementation "android.arch.core:core-testing:$lifecycle_version"
 }

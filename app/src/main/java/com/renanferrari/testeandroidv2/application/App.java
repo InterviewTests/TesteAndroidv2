@@ -1,26 +1,19 @@
 package com.renanferrari.testeandroidv2.application;
 
-import android.app.Application;
 import android.os.StrictMode;
-import com.renanferrari.testeandroidv2.application.di.components.AppComponent;
+import com.renanferrari.testeandroidv2.application.di.components.DaggerAppComponent;
+import dagger.android.AndroidInjector;
+import dagger.android.DaggerApplication;
 
-public class App extends Application {
-
-  private static AppComponent appComponent;
+public class App extends DaggerApplication {
 
   @Override public void onCreate() {
     super.onCreate();
 
     StrictMode.enableDefaults();
-
-    appComponent = AppComponent.Initializer.init(this);
   }
 
-  public static synchronized AppComponent getAppComponent() {
-    if (appComponent == null) {
-      throw new IllegalStateException("AppComponent instance is null");
-    }
-
-    return appComponent;
+  @Override protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+    return DaggerAppComponent.builder().app(this).build();
   }
 }
