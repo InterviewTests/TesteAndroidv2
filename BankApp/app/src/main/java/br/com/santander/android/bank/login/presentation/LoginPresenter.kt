@@ -46,6 +46,7 @@ internal class LoginPresenter(private val view: LoginContract.View,
         when(error) {
             is LoginFailureUseCase.EmptyUser -> view.showEmptyUserError()
             is LoginFailureUseCase.EmptyPassword -> view.showEmptyPasswordError()
+            is LoginFailureUseCase.InvalidUserType -> view.showInvalidUserType()
             is LoginFailureUseCase.MalformattedPassword -> view.showInvalidPasswordError()
             is UnknownHostException -> view.showOfflineMessage()
             is HttpException -> view.showTryAgainMessage()

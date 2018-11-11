@@ -6,6 +6,7 @@ sealed class LoginFailureUseCase {
 
     object EmptyUser: FailureUseCase()
     object EmptyPassword: FailureUseCase()
+    object InvalidUserType: FailureUseCase()
     object MalformattedPassword: FailureUseCase()
 
 }

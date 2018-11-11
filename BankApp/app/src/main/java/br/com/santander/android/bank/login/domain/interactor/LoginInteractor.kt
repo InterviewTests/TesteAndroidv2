@@ -1,5 +1,7 @@
 package br.com.santander.android.bank.login.domain.interactor
 
+import br.com.santander.android.bank.core.extensions.isCpf
+import br.com.santander.android.bank.core.extensions.isEmail
 import br.com.santander.android.bank.login.domain.interactor.LoginFailureUseCase.*
 import br.com.santander.android.bank.login.domain.model.UserAccount
 import br.com.santander.android.bank.login.domain.model.UserLogin
@@ -11,6 +13,7 @@ internal class LoginInteractor(private val loginRepository: LoginRepository) {
     fun login(login: UserLogin): Observable<UserAccount> {
         return when {
             login.user.isEmpty() -> raise(EmptyUser)
+            !isValidUserType(login.user) -> raise(InvalidUserType)
             login.password.isEmpty() -> raise(EmptyPassword)
             !isPasswordContainsUpper(login.password) -> raise(MalformattedPassword)
             !isPasswordContainsDigits(login.password) -> raise(MalformattedPassword)
@@ -23,6 +26,10 @@ internal class LoginInteractor(private val loginRepository: LoginRepository) {
         .saveSession(userAccount)
 
     fun getSavedSession() = loginRepository.getSession()
+
+    private fun isValidUserType(user: String): Boolean {
+        return user.isEmail() || user.isCpf()
+    }
 
     private fun isPasswordContainsUpper(password: String): Boolean {
         return password.contains(UPPER_PATTERN.toRegex())

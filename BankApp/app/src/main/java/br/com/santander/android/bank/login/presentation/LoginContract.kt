@@ -12,6 +12,7 @@ interface LoginContract {
         fun hideLoading()
         fun showEmptyUserError()
         fun showEmptyPasswordError()
+        fun showInvalidUserType()
         fun showInvalidPasswordError()
         fun showOfflineMessage()
         fun showTryAgainMessage()

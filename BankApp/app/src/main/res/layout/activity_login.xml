@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="@dimen/large_margin"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@id/img_logo"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintEnd_toEndOf="@id/guide_end">
@@ -58,6 +58,19 @@
                 android:layout_height="wrap_content"
                 android:text="@string/change_user_login"/>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_alert_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/small_text_size"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="@dimen/small_margin"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintBottom_toTopOf="@id/edt_user"
+            tools:text="Usuário ou senha inválido."/>
 
         <EditText
             style="@style/BankEditText"
@@ -112,8 +125,7 @@
             android:id="@+id/group_new_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="edt_user,edt_password,btn_login"
-            tools:visibility="gone"/>
+            app:constraint_referenced_ids="edt_user,edt_password,btn_login" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

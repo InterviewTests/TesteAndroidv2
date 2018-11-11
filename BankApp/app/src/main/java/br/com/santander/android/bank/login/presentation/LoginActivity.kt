@@ -46,6 +46,7 @@ internal class LoginActivity : AppCompatActivity(), LoginContract.View {
         group_new_login.visibility = View.VISIBLE
         layout_active_login.visibility = View.GONE
         btn_login.setOnClickListener {
+            txt_alert_message.visibility = View.GONE
             presenter.requestLogin("${edt_user.text}",
                 "${edt_password.text}")
         }
@@ -63,19 +64,33 @@ internal class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     override fun showEmptyUserError() {
         edt_user.error = getString(R.string.error_empty_user)
+        edt_user.requestFocus()
+    }
+
+    override fun showInvalidUserType() {
+        edt_user.error = getString(R.string.error_invalid_user)
+        edt_user.requestFocus()
     }
 
     override fun showEmptyPasswordError() {
         edt_password.error = getString(R.string.error_empty_password)
+        edt_password.requestFocus()
     }
 
     override fun showInvalidPasswordError() {
         edt_password.error = getString(R.string.error_invalid_password)
+        edt_password.requestFocus()
     }
 
-    override fun showOfflineMessage() {}
+    override fun showOfflineMessage() {
+        txt_alert_message.text = getString(R.string.alert_offline)
+        txt_alert_message.visibility = View.VISIBLE
+    }
 
-    override fun showTryAgainMessage() {}
+    override fun showTryAgainMessage() {
+        txt_alert_message.text = getString(R.string.error_user_password)
+        txt_alert_message.visibility = View.VISIBLE
+    }
 
     override fun onDestroy() {
         presenter.onDestroy()
