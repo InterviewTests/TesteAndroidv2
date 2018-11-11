@@ -4,4 +4,9 @@
     <string name="password">Password</string>
     <string name="login">login</string>
     <string name="logo_description">Bank logo</string>
+    <string name="change_user_login">Logar com outro usuário</string>
+    <string name="login_last_session">Accesar como %s</string>
+    <string name="error_empty_user">Login está vazio</string>
+    <string name="error_empty_password">A senha não pode ser vazia</string>
+    <string name="error_invalid_password">A senha informada é inválida</string>
 </resources>

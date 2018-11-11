@@ -4,6 +4,7 @@ import android.app.Application
 import android.preference.PreferenceManager
 import br.com.santander.android.bank.core.di.Injection
 
+
 class BankApplication : Application() {
 
     override fun onCreate() {
@@ -17,5 +18,4 @@ class BankApplication : Application() {
             preferences = PreferenceManager.getDefaultSharedPreferences(this)
         )
     }
-
 }

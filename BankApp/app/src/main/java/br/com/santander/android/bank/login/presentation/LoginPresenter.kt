@@ -14,7 +14,10 @@ internal class LoginPresenter(private val view: LoginContract.View,
 
     private val disposable = CompositeDisposable()
 
+    override fun onCreate() { checkLoginType() }
+
     override fun requestLogin(login: String, password: String) {
+        view.showLoading()
         val userLogin = UserLogin(login, password)
         disposable.request(
             loginInteractor.login(userLogin),
@@ -29,6 +32,15 @@ internal class LoginPresenter(private val view: LoginContract.View,
 
     override fun getSavedSession() = loginInteractor
         .getSavedSession()
+
+    private fun checkLoginType() {
+        val account = getSavedSession()
+        if (account != null) {
+            view.showLastLogin(account)
+        } else {
+            view.showNewLogin()
+        }
+    }
 
     private fun showError(error: Throwable) {
         when(error) {

@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/product_sans_regular</item>
     </style>
 
     <style name="BankEditText">
@@ -17,4 +18,23 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="BankTextView" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="BankTextView.Header" parent="BankTextView">
+        <item name="android:textSize">@dimen/header_title_size</item>
+    </style>
+
+    <style name="BankTextView.Small" parent="BankTextView">
+        <item name="android:textSize">@dimen/small_text_size</item>
+    </style>
+
+    <style name="BankToolbar" parent="AppTheme">
+        <item name="android:color">@android:color/white</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <dimen name="header_title_size">22sp</dimen>
+    <dimen name="small_text_size">12sp</dimen>
 </resources>

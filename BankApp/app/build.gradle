@@ -16,6 +16,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "API_BASE_URL", "\"https://bank-app-test.herokuapp.com\""
+
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {

@@ -15,6 +15,8 @@ interface LoginContract {
         fun showInvalidPasswordError()
         fun showOfflineMessage()
         fun showTryAgainMessage()
+        fun showLastLogin(account: Account)
+        fun showNewLogin()
         fun onLoginSuccess(userAccount: UserAccount)
     }
 
