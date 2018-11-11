@@ -1,5 +1,7 @@
 package com.casasw.bankapp;
 
+import android.content.Context;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,15 +17,14 @@ public class LoginInteractorUnitTest {
     @Test
     public void fetchLoginData_with_validInput_shouldCall_Worker_getLoginData(){
         LoginInteractor loginInteractor = new LoginInteractor();
-        LoginRequest loginRequest =  new LoginRequest();
-        loginRequest.isLogOn = true;
+        //LoginRequest loginRequest =  new LoginRequest(getValidLogin(), this);
 
-        LoginPresenterInputSpy loginPresenterInputSpy = new LoginPresenterInputSpy();
-        loginInteractor.output = loginPresenterInputSpy;
+
+        loginInteractor.output = new LoginPresenterInputSpy();
         LoginWorkerInputSpy loginWorkerInputSpy = new LoginWorkerInputSpy();
         loginInteractor.setLoginWorkerInput(loginWorkerInputSpy);
 
-        loginInteractor.fetchLoginData(loginRequest);
+        //loginInteractor.fetchLoginData(loginRequest);
 
         Assert.assertTrue(loginWorkerInputSpy.isgetLoginDataMethodCalled);
     }
@@ -32,14 +33,18 @@ public class LoginInteractorUnitTest {
     public void fetchLoginMetaData_with_validInput_shouldCall_presentLoginData(){
 
         LoginInteractor loginInteractor = new LoginInteractor();
-        LoginRequest loginRequest = new LoginRequest();
-        loginRequest.isLogOn = true;
+        //LoginRequest loginRequest = new LoginRequest(getValidLogin());
+
         LoginPresenterInputSpy loginPresenterInputSpy = new LoginPresenterInputSpy();
         loginInteractor.output = loginPresenterInputSpy;
 
-        loginInteractor.fetchLoginData(loginRequest);
+        //loginInteractor.fetchLoginData(loginRequest);
 
         Assert.assertTrue(loginPresenterInputSpy.presentLoginDataIsCalled);
+    }
+
+    private LoginModel getValidLogin() {
+        return new LoginModel("test_user", "Test@1");
     }
 
     public static class LoginWorkerInputSpy implements LoginWorkerInput {
@@ -47,10 +52,24 @@ public class LoginInteractorUnitTest {
         boolean isgetLoginDataMethodCalled = false;
 
         @Override
-        public String getLoginData() {
+        public String getLoginData(LoginModel login, Context context) {
             isgetLoginDataMethodCalled = true;
-            return getLoginData();
+            return getValidLoginData();
         }
+        private String getValidLoginData() {
+            return "{\n" +
+                    "    \"userAccount\": {\n" +
+                    "        \"userId\": 1,\n" +
+                    "        \"name\": \"Jose da Silva Teste\",\n" +
+                    "        \"bankAccount\": \"2050\",\n" +
+                    "        \"agency\": \"012314564\",\n" +
+                    "        \"balance\": 3.3445\n" +
+                    "    },\n" +
+                    "    \"error\": {}\n" +
+                    "}";
+        }
+
+
     }
 
     public static class LoginPresenterInputSpy implements LoginPresenterInput {

@@ -43,7 +43,6 @@ public class LoginActivityUnitTest {
         loginActivity.fetchLoginData();
 
         Assert.assertNotNull(loginActivity);
-        Assert.assertTrue(loginActivityOutputSpy.loginRequestCopy.isLogOn);
 
     }
 

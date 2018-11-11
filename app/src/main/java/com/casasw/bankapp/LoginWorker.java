@@ -1,15 +1,18 @@
 package com.casasw.bankapp;
 
-interface LoginWorkerInput {
-    public String getLoginData();
+import android.content.Context;
+
+interface LoginWorkerInput  {
+    String getLoginData(LoginModel login, Context context);
 }
 
 public class LoginWorker implements LoginWorkerInput {
-
+    private static final String TAG = "LoginWorker";
     @Override
-    public String getLoginData() {
+    public String getLoginData(LoginModel login, Context context) {
 
-        String loginData = "dummydata";
-        return loginData;
+
+
+        return null;
     }
 }

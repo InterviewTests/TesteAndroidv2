@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">BankApp</string>
+    <string name="prompt_email">Email/CPF</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Login</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">Email/CPF inválido</string>
+    <string name="error_invalid_password">A senha é muito curta</string>
+    <string name="error_incorrect_password">A senha está incorreta</string>
+    <string name="error_field_required">Esse campo precisa ser preenchido</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="bank_text">Bank</string>
+    <string name="account_text">Conta</string>
+    <string name="balance_text">Saldo</string>
+    <string name="bank_logo">Bank Logo</string>
+    <string name="logout">Logout</string>
 </resources>

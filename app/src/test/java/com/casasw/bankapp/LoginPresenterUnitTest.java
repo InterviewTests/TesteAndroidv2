@@ -23,7 +23,7 @@ public class LoginPresenterUnitTest {
         //Given
         LoginPresenter loginPresenter = new LoginPresenter();
         LoginResponse loginResponse = new LoginResponse();
-        loginResponse.loginJSON = new LoginWorker().getLoginData();
+        //loginResponse.loginJSON = new LoginWorker().getLoginData();
 
         LoginActivityInputSpy loginActivityInputSpy = new LoginActivityInputSpy();
         loginPresenter.output = new WeakReference<LoginActivityInput>(loginActivityInputSpy);
@@ -39,7 +39,7 @@ public class LoginPresenterUnitTest {
     public void verify_LoginPresenter(){
         LoginPresenter loginPresenter = new LoginPresenter();
         LoginResponse loginResponse = new LoginResponse();
-        LoginModel  loginModel = new LoginModel();
+        //LoginModel  loginModel = new LoginModel();
         /*popular login*/
 
         LoginActivityInputSpy loginActivityInputSpy = new LoginActivityInputSpy();
@@ -50,13 +50,35 @@ public class LoginPresenterUnitTest {
 
     }
 
+    @Test
+    public void testpresentLoginData() {
+        LoginPresenter loginPresenter = new LoginPresenter();
+        LoginResponseSpy loginResponseSpy = new LoginResponseSpy();
+        loginPresenter.presentLoginData(loginResponseSpy);
+    }
     private class LoginActivityInputSpy implements LoginActivityInput {
-        public boolean isdisplayLoginMetaDataCalled = false;
-        public LoginViewModel loginViewModelCopy;
+        boolean isdisplayLoginMetaDataCalled = false;
+        LoginViewModel loginViewModelCopy;
         @Override
         public void displayLoginData(LoginViewModel loginViewModel) {
             isdisplayLoginMetaDataCalled = true;
             loginViewModelCopy = loginViewModel;
+        }
+    }
+
+    private class LoginResponseSpy extends LoginResponse {
+        @Override
+        public String getLoginJSON() {
+            return "{\n" +
+                    "    \"userAccount\": {\n" +
+                    "        \"userId\": 1,\n" +
+                    "        \"name\": \"Jose da Silva Teste\",\n" +
+                    "        \"bankAccount\": \"2050\",\n" +
+                    "        \"agency\": \"012314564\",\n" +
+                    "        \"balance\": 3.3445\n" +
+                    "    },\n" +
+                    "    \"error\": {}\n" +
+                    "}";
         }
     }
 }

@@ -1,7 +1,10 @@
 package com.casasw.bankapp;
 
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+
 interface LoginInteractorInput {
-    public void fetchLoginData(LoginRequest request);
+    void fetchLoginData(LoginRequest request);
 }
 
 
@@ -9,23 +12,34 @@ public class LoginInteractor implements LoginInteractorInput {
 
     public static String TAG = LoginInteractor.class.getSimpleName();
     public LoginPresenterInput output;
-    public LoginWorkerInput aLoginWorkerInput;
+    private LoginWorkerInput aLoginWorkerInput;
 
     public LoginWorkerInput getLoginWorkerInput() {
         if (aLoginWorkerInput == null) return new LoginWorker();
         return aLoginWorkerInput;
     }
 
-    public void setLoginWorkerInput(LoginWorkerInput aLoginWorkerInput) {
+     void setLoginWorkerInput(LoginWorkerInput aLoginWorkerInput) {
         this.aLoginWorkerInput = aLoginWorkerInput;
     }
 
     @Override
     public void fetchLoginData(LoginRequest request) {
-        aLoginWorkerInput = getLoginWorkerInput();
-        LoginResponse LoginResponse = new LoginResponse();
-        // Call the workers
+        Ion.with(request.getContext())
+                .load("https://bank-app-test.herokuapp.com/api/login")
+                .setBodyParameter("user", "test_user")
+                .setBodyParameter("password", "Test@1")
+                .asString()
+                .setCallback(new FutureCallback<String>() {
+                    @Override
+                    public void onCompleted(Exception e, String result) {
+                        LoginResponse loginResponse = new LoginResponse();
+                        loginResponse.setLoginJSON(result);
+                        output = new LoginPresenter();
+                        output.presentLoginData(loginResponse);
 
-        output.presentLoginData(LoginResponse);
+                    }
+                });
+
     }
 }

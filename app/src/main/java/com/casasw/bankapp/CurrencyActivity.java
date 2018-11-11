@@ -1,12 +1,13 @@
 package com.casasw.bankapp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 
 interface CurrencyActivityInput {
-    public void displayCurrencyData(CurrencyViewModel viewModel);
+    void displayCurrencyData(CurrencyViewModel viewModel);
 }
 
 
@@ -17,10 +18,15 @@ public class CurrencyActivity extends AppCompatActivity
     CurrencyInteractorInput output;
     CurrencyRouter router;
 
+    private TextView mUserName;
+    private TextView mAccount;
+    private TextView mBalance;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //do the setup
+        setContentView(R.layout.currency_activity);
+
 
         CurrencyConfigurator.INSTANCE.configure(this);
         CurrencyRequest aCurrencyRequest = new CurrencyRequest();
