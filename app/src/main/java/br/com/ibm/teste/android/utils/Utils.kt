@@ -49,5 +49,13 @@ class Utils {
         }
 
         fun formatNumber(any: Any?): String = numberFormat.format(any)
+
+        fun formatDate(date: String) : String {
+            val dateSeparator = date.split("-".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
+            val year = dateSeparator[0]
+            val month = dateSeparator[1]
+            val day = dateSeparator[2].substring(0, 2)
+            return day +pipe.trim()+ month +pipe.trim()+ year
+        }
     }
 }

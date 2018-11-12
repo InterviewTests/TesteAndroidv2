@@ -30,7 +30,7 @@ class StatementAdapter (private val data: List<Statement>,
 
         holder.mTitle.text = statement.title
         holder.mDescription.text = statement.desc
-        holder.mDate.text = statement.date
+        holder.mDate.text = Utils.formatDate(statement.date)
         holder.mValue.text = Utils.formatNumber(statement.value)
         if (holder.mValue.text.contains("-")) {
             holder.mValue.setTextColor(holder.itemView.resources.getColor(R.color.colorRed))
