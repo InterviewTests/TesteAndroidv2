@@ -1,3 +1,6 @@
+Para executar basta clonar e abrir o projeto no android studio.
+Empresa: IBM
+
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
