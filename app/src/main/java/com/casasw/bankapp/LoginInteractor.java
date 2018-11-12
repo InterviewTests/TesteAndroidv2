@@ -12,7 +12,7 @@ public class LoginInteractor implements LoginInteractorInput {
 
     public static String TAG = LoginInteractor.class.getSimpleName();
     public LoginPresenterInput output;
-    private LoginWorkerInput aLoginWorkerInput;
+    public LoginWorkerInput aLoginWorkerInput;
 
     public LoginWorkerInput getLoginWorkerInput() {
         if (aLoginWorkerInput == null) return new LoginWorker();
@@ -35,7 +35,6 @@ public class LoginInteractor implements LoginInteractorInput {
                     public void onCompleted(Exception e, String result) {
                         LoginResponse loginResponse = new LoginResponse();
                         loginResponse.setLoginJSON(result);
-                        output = new LoginPresenter();
                         output.presentLoginData(loginResponse);
 
                     }

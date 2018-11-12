@@ -3,7 +3,9 @@ package com.casasw.bankapp;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -42,9 +44,14 @@ public class LoginActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        String userName = sharedPref.getString(getString(R.string.user_key), "");
         //do the setup
         mBankLogo = findViewById(R.id.bank_logo);
         mUserView = findViewById(R.id.user);
+        if (!userName.equals("")) {
+            mUserView.setText(userName);
+        }
 
         LoginConfigurator.INSTANCE.configure(this);
         mPasswordView = findViewById(R.id.password);
@@ -57,6 +64,10 @@ public class LoginActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 showProgress(true);
+                SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+                sharedPreferences.edit().putString(
+                        getString(R.string.user_key),
+                        mUserView.getText().toString()).apply();
                 fetchLoginData();
             }
         });
@@ -72,7 +83,6 @@ public class LoginActivity extends AppCompatActivity
             String password = mPasswordView.getText().toString();
             if( validPassword(password)) {
                 LoginRequest loginRequest = new LoginRequest(new LoginModel(user, password), this);
-                output = new LoginInteractor();
                 output.fetchLoginData(loginRequest);
             } else {
                 Toast.makeText(this, "Senha inválida.", Toast.LENGTH_SHORT).show();
@@ -211,7 +221,6 @@ public class LoginActivity extends AppCompatActivity
     public void displayLoginData(LoginViewModel viewModel) {
         Log.e(TAG, "displayLoginData() called with: viewModel = [" + viewModel + "]");
         showProgress(false);
-        router = new LoginRouter();
         Intent intent = new Intent (getApplicationContext(),CurrencyActivity.class);
 
         router.passDataToNextScene(viewModel, intent);

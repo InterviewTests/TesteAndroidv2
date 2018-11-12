@@ -2,16 +2,19 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="bank_text_width">128dp</dimen>
-    <dimen name="bank_text_height">72dp</dimen>
+    <dimen name="bank_text_width">126dp</dimen>
+    <dimen name="bank_text_height">84dp</dimen>
     <dimen name="bank_text_margin_top">44dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="half_margin">8dp</dimen>
+    <dimen name="plus_margin">24dp</dimen>
     <dimen name="login_form_margin_top">112dp</dimen>
     <dimen name="email_sing_in_btn_height">62dp</dimen>
+    <dimen name="email_sing_in_btn_width">202dp</dimen>
     <dimen name="email_sign_in_btn_margin_top">156dp</dimen>
     <dimen name="email_sign_in_btn_horizontal_margin">64dp</dimen>
     <dimen name="quarter_margin">4dp</dimen>
+    <dimen name="standart_elevation">8dp</dimen>
 </resources>

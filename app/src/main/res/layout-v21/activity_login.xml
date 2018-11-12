@@ -93,6 +93,9 @@
                 android:layout_gravity="center"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold"
+                android:elevation="@dimen/standart_elevation"
+                android:translationZ="@dimen/standart_elevation"
+                android:stateListAnimator="@null"
                 />
 
         </LinearLayout>

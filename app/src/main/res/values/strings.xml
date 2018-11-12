@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">BankApp</string>
     <string name="prompt_email">Email/CPF</string>
     <string name="prompt_password">Senha</string>
@@ -16,4 +16,8 @@
     <string name="balance_text">Saldo</string>
     <string name="bank_logo">Bank Logo</string>
     <string name="logout">Logout</string>
+    <string name="format_agency_account"><xliff:g id="agency">%1$d</xliff:g> / <xliff:g id="account">%2$s</xliff:g></string>
+    <string name="format_balance">R$<xliff:g id="value">%1$s</xliff:g></string>
+    <string name="user_key">username</string>
+    <string name="recent_text">Recentes</string>
 </resources>
