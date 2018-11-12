@@ -1,5 +1,6 @@
 package com.renanferrari.testeandroidv2.domain.model.user;
 
+import com.renanferrari.testeandroidv2.common.Optional;
 import io.reactivex.Observable;
 
 public interface UserManager {
@@ -8,5 +9,5 @@ public interface UserManager {
 
   User getUser();
 
-  Observable<User> getUserObservable();
+  Observable<Optional<User>> getUserObservable();
 }

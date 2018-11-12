@@ -2,7 +2,9 @@ package com.renanferrari.testeandroidv2.application.ui.login;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.lifecycle.Observer;
+import com.renanferrari.testeandroidv2.application.common.providers.ResourceProvider;
 import com.renanferrari.testeandroidv2.application.common.providers.SchedulerProvider;
+import com.renanferrari.testeandroidv2.domain.interactors.GetUser;
 import com.renanferrari.testeandroidv2.domain.interactors.Login;
 import io.reactivex.Completable;
 import java.util.ArrayList;
@@ -24,6 +26,8 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class) public class LoginViewModelTest {
 
   @Mock private Login login;
+  @Mock private GetUser getUser;
+  @Mock private ResourceProvider resourceProvider;
   @Mock private Observer<LoginState> stateObserver;
 
   @Captor private ArgumentCaptor<LoginState> stateArgumentCaptor;
@@ -33,7 +37,8 @@ import static org.mockito.Mockito.when;
   private LoginViewModel loginViewModel;
 
   @Before public void setUp() {
-    loginViewModel = new LoginViewModel(login, SchedulerProvider.forTesting());
+    loginViewModel = new LoginViewModel(login, getUser, resourceProvider,
+        SchedulerProvider.forTesting());
   }
 
   @Test public void onLoginRequested() {
@@ -41,7 +46,7 @@ import static org.mockito.Mockito.when;
 
     final List<LoginState> allStates = new ArrayList<>();
 
-    loginViewModel.getObservableState()
+    loginViewModel.getObservableLoginState()
         .observeForever(loginState -> allStates.add(LoginState.copyOf(loginState)));
     //loginViewModel.getObservableState().observeForever(stateObserver);
     loginViewModel.onLoginRequested();

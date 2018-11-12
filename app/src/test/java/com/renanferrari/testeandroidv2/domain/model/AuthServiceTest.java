@@ -16,10 +16,10 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static com.google.common.truth.Truth.assertThat;
-import static com.renanferrari.testeandroidv2.domain.common.Constants.RUNTIME_EXCEPTION;
-import static com.renanferrari.testeandroidv2.domain.common.Constants.VALID_EMAIL;
-import static com.renanferrari.testeandroidv2.domain.common.Constants.VALID_PASSWORD;
-import static com.renanferrari.testeandroidv2.domain.common.Constants.VALID_USER;
+import static com.renanferrari.testeandroidv2.common.Constants.RUNTIME_EXCEPTION;
+import static com.renanferrari.testeandroidv2.common.Constants.VALID_EMAIL;
+import static com.renanferrari.testeandroidv2.common.Constants.VALID_PASSWORD;
+import static com.renanferrari.testeandroidv2.common.Constants.VALID_USER;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.never;

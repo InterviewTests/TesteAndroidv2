@@ -3,11 +3,14 @@
 
   <string name="label_user">Usuário</string>
   <string name="label_password">Senha</string>
-
-  <string name="action_login">Entrar</string>
-  <string name="action_logout">Sair</string>
   <string name="label_your_email_cpf">Seu e-mail ou CPF</string>
   <string name="label_account">Conta</string>
   <string name="label_balance">Saldo</string>
   <string name="label_recent">Recentes</string>
+
+  <string name="action_login">Entrar</string>
+  <string name="action_logout">Sair</string>
+
+  <string name="message_invalid_username">Usuário inválido!</string>
+  <string name="message_invalid_password">Senha inválida!</string>
 </resources>

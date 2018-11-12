@@ -2,26 +2,28 @@ package com.renanferrari.testeandroidv2.application.ui.statements;
 
 import androidx.annotation.NonNull;
 import com.renanferrari.testeandroidv2.R;
+import com.renanferrari.testeandroidv2.application.common.utils.DateFormatter;
+import com.renanferrari.testeandroidv2.application.common.utils.MoneyFormatter;
 import com.renanferrari.testeandroidv2.databinding.ItemStatementBinding;
+import com.renanferrari.testeandroidv2.domain.model.statements.Statement;
 import com.xwray.groupie.databinding.BindableItem;
-import java.util.Objects;
 
 public class StatementItem extends BindableItem<ItemStatementBinding> {
 
-  private final String title;
-  private final String description;
-  private final String date;
-  private final String amount;
+  private final Statement statement;
+  private final MoneyFormatter moneyFormatter;
+  private final DateFormatter dateFormatter;
 
-  private StatementItem() {
-    title = "Pagamento";
-    description = "Conta de luz";
-    date = "12/12/2018";
-    amount = "R$1.000,00";
+  private StatementItem(final Statement statement,
+      final MoneyFormatter moneyFormatter, final DateFormatter dateFormatter) {
+    this.statement = statement;
+    this.moneyFormatter = moneyFormatter;
+    this.dateFormatter = dateFormatter;
   }
 
-  public static StatementItem create() {
-    return new StatementItem();
+  public static StatementItem create(final Statement statement, final MoneyFormatter moneyFormatter,
+      final DateFormatter dateFormatter) {
+    return new StatementItem(statement, moneyFormatter, dateFormatter);
   }
 
   @Override public int getLayout() {
@@ -29,23 +31,9 @@ public class StatementItem extends BindableItem<ItemStatementBinding> {
   }
 
   @Override public void bind(@NonNull ItemStatementBinding binding, int position) {
-    binding.titleView.setText(title);
-    binding.descriptionView.setText(description);
-    binding.dateView.setText(date);
-    binding.amountView.setText(amount);
+    binding.titleView.setText(statement.getTitle());
+    binding.descriptionView.setText(statement.getDescription());
+    binding.dateView.setText(dateFormatter.format(statement.getDate()));
+    binding.amountView.setText(moneyFormatter.format(statement.getValue()));
   }
-
-  //@Override public boolean equals(final Object o) {
-  //  if (this == o) return true;
-  //  if (o == null || getClass() != o.getClass()) return false;
-  //  final StatementItem that = (StatementItem) o;
-  //  return Objects.equals(title, that.title) &&
-  //      Objects.equals(description, that.description) &&
-  //      Objects.equals(date, that.date) &&
-  //      Objects.equals(amount, that.amount);
-  //}
-  //
-  //@Override public int hashCode() {
-  //  return Objects.hash(title, description, date, amount);
-  //}
 }

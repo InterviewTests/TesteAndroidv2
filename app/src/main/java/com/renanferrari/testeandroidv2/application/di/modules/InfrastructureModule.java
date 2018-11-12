@@ -1,12 +1,14 @@
 package com.renanferrari.testeandroidv2.application.di.modules;
 
+import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.renanferrari.testeandroidv2.domain.model.auth.AuthApi;
+import com.renanferrari.testeandroidv2.domain.model.statements.StatementsRepository;
 import com.renanferrari.testeandroidv2.domain.model.user.UserManager;
 import com.renanferrari.testeandroidv2.infrastructure.BankApi;
 import com.renanferrari.testeandroidv2.infrastructure.BankService;
-import com.renanferrari.testeandroidv2.infrastructure.MemoryUserManager;
+import com.renanferrari.testeandroidv2.infrastructure.LocalUserManager;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
@@ -48,7 +50,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
     return bankService;
   }
 
-  @Provides @Singleton UserManager provideUserManager() {
-    return new MemoryUserManager();
+  @Provides @Singleton UserManager provideUserManager(final SharedPreferences sharedPreferences,
+      final Gson gson) {
+    return new LocalUserManager(sharedPreferences, gson);
+  }
+
+  @Provides @Singleton StatementsRepository provideStatementsRepository(
+      final BankService bankService) {
+    return bankService;
   }
 }

@@ -1,5 +1,6 @@
 package com.renanferrari.testeandroidv2.domain.model.user;
 
+import androidx.annotation.NonNull;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -95,5 +96,15 @@ public class User {
 
   @Override public int hashCode() {
     return Objects.hash(userId, name, bankAccount, agency, balance);
+  }
+
+  @Override @NonNull public String toString() {
+    return "User{" +
+        "userId=" + userId +
+        ", name='" + name + '\'' +
+        ", bankAccount='" + bankAccount + '\'' +
+        ", agency='" + agency + '\'' +
+        ", balance=" + balance +
+        '}';
   }
 }

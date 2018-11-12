@@ -1,4 +1,4 @@
-package com.renanferrari.testeandroidv2.domain.common;
+package com.renanferrari.testeandroidv2.common;
 
 import com.renanferrari.testeandroidv2.domain.model.user.User;
 import com.renanferrari.testeandroidv2.infrastructure.Error;

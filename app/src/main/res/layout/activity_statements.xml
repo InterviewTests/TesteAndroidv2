@@ -1,70 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".application.ui.statements.StatementsActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-  <com.google.android.material.appbar.AppBarLayout
-      android:id="@+id/appbar"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:title="Jose da Silva Teste"
-        app:titleTextAppearance="@style/TextAppearance.Headline5.Light"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/label_account"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"/>
-
-    <TextView
-        android:id="@+id/account_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:text="2050 / 01.111222-4"
-        android:textAppearance="@style/TextAppearance.Headline5.Light"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:text="@string/label_balance"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"/>
-
-    <TextView
-        android:id="@+id/balance_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:text="R$1.000,00"
-        android:textAppearance="@style/TextAppearance.Headline5.Light"/>
-
-  </com.google.android.material.appbar.AppBarLayout>
-
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/recycler_view"
+  <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-      tools:listitem="@layout/item_statement"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+      android:orientation="vertical"
+      tools:context=".application.ui.statements.StatementsActivity">
 
-</LinearLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+
+      <androidx.appcompat.widget.Toolbar
+          android:id="@+id/toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          app:titleTextAppearance="@style/TextAppearance.Headline5.Light"
+          tools:title="Jose da Silva Teste"/>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="16dp"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="8dp"
+          android:text="@string/label_account"
+          android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"/>
+
+      <TextView
+          android:id="@+id/account_text_view"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="16dp"
+          android:layout_marginEnd="16dp"
+          android:layout_marginStart="16dp"
+          android:textAppearance="@style/TextAppearance.Headline5.Light"
+          tools:text="2050 / 01.111222-4"/>
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="16dp"
+          android:layout_marginStart="16dp"
+          android:text="@string/label_balance"
+          android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"/>
+
+      <TextView
+          android:id="@+id/balance_text_view"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="16dp"
+          android:layout_marginEnd="16dp"
+          android:layout_marginStart="16dp"
+          android:textAppearance="@style/TextAppearance.Headline5.Light"
+          tools:text="R$1.000,00"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/item_statement"/>
+
+  </LinearLayout>
+</layout>

@@ -9,12 +9,12 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static com.renanferrari.testeandroidv2.domain.common.Constants.FAILED_LOGIN_RESPONSE;
-import static com.renanferrari.testeandroidv2.domain.common.Constants.INVALID_USER_OR_PASSWORD_ERROR;
-import static com.renanferrari.testeandroidv2.domain.common.Constants.SUCCESSFUL_LOGIN_RESPONSE;
-import static com.renanferrari.testeandroidv2.domain.common.Constants.VALID_EMAIL;
-import static com.renanferrari.testeandroidv2.domain.common.Constants.VALID_PASSWORD;
-import static com.renanferrari.testeandroidv2.domain.common.Constants.VALID_USER;
+import static com.renanferrari.testeandroidv2.common.Constants.FAILED_LOGIN_RESPONSE;
+import static com.renanferrari.testeandroidv2.common.Constants.INVALID_USER_OR_PASSWORD_ERROR;
+import static com.renanferrari.testeandroidv2.common.Constants.SUCCESSFUL_LOGIN_RESPONSE;
+import static com.renanferrari.testeandroidv2.common.Constants.VALID_EMAIL;
+import static com.renanferrari.testeandroidv2.common.Constants.VALID_PASSWORD;
+import static com.renanferrari.testeandroidv2.common.Constants.VALID_USER;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

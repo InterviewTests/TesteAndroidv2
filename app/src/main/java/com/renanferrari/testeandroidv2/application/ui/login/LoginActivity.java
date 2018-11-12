@@ -32,7 +32,7 @@ public class LoginActivity extends DaggerAppCompatActivity {
     binding.passwordEditText.addTextChangedListener(createListener(viewModel::onPasswordChanged));
     binding.loginButton.setOnClickListener(v -> viewModel.onLoginRequested());
 
-    viewModel.getObservableState().observe(this, state -> {
+    viewModel.getObservableLoginState().observe(this, state -> {
       if (state.isLoggedIn()) {
         Navigator.of(this).clearTask().fade().go(StatementsActivity.class);
         return;
@@ -52,6 +52,8 @@ public class LoginActivity extends DaggerAppCompatActivity {
       //binding.userTextInput.setError(state.getUsernameError());
       binding.passwordTextInput.setError(state.getPasswordError());
     });
+
+    viewModel.onUserRequested();
   }
 
   @Override protected void onDestroy() {
