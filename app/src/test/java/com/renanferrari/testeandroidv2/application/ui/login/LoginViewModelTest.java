@@ -6,8 +6,10 @@ import com.renanferrari.testeandroidv2.application.common.providers.ResourceProv
 import com.renanferrari.testeandroidv2.application.common.providers.SchedulerProvider;
 import com.renanferrari.testeandroidv2.domain.interactors.GetUser;
 import com.renanferrari.testeandroidv2.domain.interactors.Login;
+import com.renanferrari.testeandroidv2.domain.model.auth.InvalidPasswordException;
+import com.renanferrari.testeandroidv2.domain.model.auth.InvalidUsernameException;
 import io.reactivex.Completable;
-import java.util.ArrayList;
+import io.reactivex.Maybe;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Rule;
@@ -20,7 +22,13 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static com.google.common.truth.Truth.assertThat;
+import static com.renanferrari.testeandroidv2.common.Constants.VALID_EMAIL;
+import static com.renanferrari.testeandroidv2.common.Constants.VALID_PASSWORD;
+import static com.renanferrari.testeandroidv2.common.Constants.VALID_USER;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class) public class LoginViewModelTest {
@@ -28,6 +36,7 @@ import static org.mockito.Mockito.when;
   @Mock private Login login;
   @Mock private GetUser getUser;
   @Mock private ResourceProvider resourceProvider;
+
   @Mock private Observer<LoginState> stateObserver;
 
   @Captor private ArgumentCaptor<LoginState> stateArgumentCaptor;
@@ -41,29 +50,107 @@ import static org.mockito.Mockito.when;
         SchedulerProvider.forTesting());
   }
 
-  @Test public void onLoginRequested() {
+  @Test public void onUserRequested_withLoggedInUser_shouldUpdateState() {
+    when(getUser.execute()).thenReturn(Maybe.just(VALID_USER));
+
+    loginViewModel.getObservableLoginState().observeForever(stateObserver);
+    loginViewModel.onUserRequested();
+
+    final LoginState expectedInitialState = LoginState.createDefault();
+    final LoginState expectedFinalState = expectedInitialState.withLoggedIn(true);
+
+    verify(stateObserver, times(2)).onChanged(stateArgumentCaptor.capture());
+
+    final List<LoginState> allStates = stateArgumentCaptor.getAllValues();
+
+    assertThat(allStates.get(0)).named("initial state").isEqualTo(expectedInitialState);
+    assertThat(allStates.get(1)).named("final state").isEqualTo(expectedFinalState);
+  }
+
+  @Test public void onUserRequested_withNoUser_shouldNotUpdateState() {
+    when(getUser.execute()).thenReturn(Maybe.empty());
+
+    loginViewModel.getObservableLoginState().observeForever(stateObserver);
+    loginViewModel.onUserRequested();
+
+    verify(stateObserver, times(1)).onChanged(stateArgumentCaptor.capture());
+  }
+
+  @Test public void onUsernameChanged() {
+    loginViewModel.getObservableLoginState().observeForever(stateObserver);
+    loginViewModel.onUsernameChanged(VALID_EMAIL);
+
+    final LoginState expectedInitialState = LoginState.createDefault();
+    final LoginState expectedFinalState = expectedInitialState.withUsername(VALID_EMAIL);
+
+    verify(stateObserver, times(2)).onChanged(stateArgumentCaptor.capture());
+
+    final List<LoginState> allStates = stateArgumentCaptor.getAllValues();
+
+    assertThat(allStates.get(0)).named("initial state").isEqualTo(expectedInitialState);
+    assertThat(allStates.get(1)).named("final state").isEqualTo(expectedFinalState);
+  }
+
+  @Test public void onPasswordChanged() {
+    loginViewModel.getObservableLoginState().observeForever(stateObserver);
+    loginViewModel.onPasswordChanged(VALID_PASSWORD);
+
+    final LoginState expectedInitialState = LoginState.createDefault();
+    final LoginState expectedFinalState = expectedInitialState.withPassword(VALID_PASSWORD);
+
+    verify(stateObserver, times(2)).onChanged(stateArgumentCaptor.capture());
+
+    final List<LoginState> allStates = stateArgumentCaptor.getAllValues();
+
+    assertThat(allStates.get(0)).named("initial state").isEqualTo(expectedInitialState);
+    assertThat(allStates.get(1)).named("final state").isEqualTo(expectedFinalState);
+  }
+
+  @Test public void onLoginRequested_withSuccessfulLogin_shouldUpdateLoggedInState() {
     when(login.execute(anyString(), anyString())).thenReturn(Completable.complete());
 
-    final List<LoginState> allStates = new ArrayList<>();
-
-    loginViewModel.getObservableLoginState()
-        .observeForever(loginState -> allStates.add(LoginState.copyOf(loginState)));
-    //loginViewModel.getObservableState().observeForever(stateObserver);
+    loginViewModel.getObservableLoginState().observeForever(stateObserver);
     loginViewModel.onLoginRequested();
 
     final LoginState expectedInitialState = LoginState.createDefault();
+    final LoginState expectedLoadingState = expectedInitialState.withLoading(true);
+    final LoginState expectedFinalState =
+        expectedLoadingState.withLoading(false).withLoggedIn(true);
 
-    final LoginState expectedLoadingState = LoginState.createDefault();
-    expectedLoadingState.setLoading(true);
+    verify(stateObserver, times(3)).onChanged(stateArgumentCaptor.capture());
 
-    final LoginState expectedFinalState = LoginState.createDefault();
-    expectedFinalState.setLoading(false);
-    expectedFinalState.setLoggedIn(true);
+    final List<LoginState> allStates = stateArgumentCaptor.getAllValues();
 
-    //verify(stateObserver, times(3)).onChanged(stateArgumentCaptor.capture());
-    //final List<LoginState> allStates = stateArgumentCaptor.getAllValues();
     assertThat(allStates.get(0)).named("initial state").isEqualTo(expectedInitialState);
     assertThat(allStates.get(1)).named("loading state").isEqualTo(expectedLoadingState);
     assertThat(allStates.get(2)).named("final state").isEqualTo(expectedFinalState);
+  }
+
+  @Test public void onLoginRequested_withInvalidUsername_shouldUpdateErrorState() {
+    when(login.execute(anyString(), anyString())).thenReturn(
+        Completable.error(new InvalidUsernameException()));
+    when(resourceProvider.getString(anyInt())).thenReturn("Error");
+
+    loginViewModel.getObservableLoginState().observeForever(stateObserver);
+    loginViewModel.onLoginRequested();
+
+    verify(stateObserver, times(3)).onChanged(stateArgumentCaptor.capture());
+
+    assertThat(stateArgumentCaptor.getValue().getUsernameError()).isEqualTo("Error");
+    assertThat(stateArgumentCaptor.getValue().getPasswordError()).isNull();
+  }
+
+  @Test public void onLoginRequested_withInvalidPassword_shouldUpdateErrorState() {
+    when(login.execute(anyString(), anyString())).thenReturn(
+        Completable.error(new InvalidPasswordException()));
+    when(resourceProvider.getString(anyInt())).thenReturn("Error");
+
+    loginViewModel.getObservableLoginState().observeForever(stateObserver);
+    loginViewModel.onLoginRequested();
+
+    verify(stateObserver, times(3)).onChanged(stateArgumentCaptor.capture());
+
+    assertThat(stateArgumentCaptor.getValue().getUsernameError()).isNull();
+    assertThat(stateArgumentCaptor.getValue().getPasswordError()).isEqualTo("Error");
   }
 }

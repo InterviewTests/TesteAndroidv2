@@ -1,6 +1,7 @@
 package com.renanferrari.testeandroidv2.application.ui.statements;
 
 import android.os.Bundle;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
@@ -44,6 +45,8 @@ public class StatementsActivity extends DaggerAppCompatActivity {
     groupAdapter.add(statementsSection);
 
     binding.recyclerView.setAdapter(groupAdapter);
+    binding.swipeRefresh.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorPrimary));
+    binding.swipeRefresh.setOnRefreshListener(() -> viewModel.onStatementsRequested());
 
     viewModel.getObservableUserState().observe(this, userState -> {
       if (userState == null) {
@@ -52,18 +55,21 @@ public class StatementsActivity extends DaggerAppCompatActivity {
       }
 
       binding.toolbar.setTitle(userState.getName());
-      binding.accountTextView.setText(userState.getBankAccount());
+      binding.accountTextView.setText(userState.getAccount());
       binding.balanceTextView.setText(userState.getBalance());
     });
 
     viewModel.getObservableStatementsState().observe(this, statementsState -> {
-      if (statementsState.isLoading()) {
-        // TODO
-      }
+      binding.swipeRefresh.setRefreshing(statementsState.isLoading());
       statementsSection.update(statementsState.getStatementItems());
     });
 
     viewModel.onUserRequested();
     viewModel.onStatementsRequested();
+  }
+
+  @Override protected void onDestroy() {
+    binding.unbind();
+    super.onDestroy();
   }
 }

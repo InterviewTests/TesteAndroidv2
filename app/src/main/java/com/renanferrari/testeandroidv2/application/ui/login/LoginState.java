@@ -4,85 +4,146 @@ import androidx.annotation.NonNull;
 import java.util.Objects;
 
 public class LoginState {
-  private boolean isLoading;
-  private boolean isLoggedIn;
-  private String username;
-  private String password;
-  private String usernameError;
-  private String passwordError;
 
-  private LoginState(final boolean isLoading, final boolean isLoggedIn, final String username,
-      final String password, final String usernameError, final String passwordError) {
-    this.isLoading = isLoading;
-    this.isLoggedIn = isLoggedIn;
-    this.username = username;
-    this.password = password;
-    this.usernameError = usernameError;
-    this.passwordError = passwordError;
+  private final boolean isLoading;
+  private final boolean isLoggedIn;
+  private final String username;
+  private final String password;
+  private final String usernameError;
+  private final String passwordError;
+
+  private LoginState(final Builder builder) {
+    isLoading = builder.isLoading;
+    isLoggedIn = builder.isLoggedIn;
+    username = builder.username;
+    password = builder.password;
+    usernameError = builder.usernameError;
+    passwordError = builder.passwordError;
   }
 
   public static LoginState createDefault() {
-    return new LoginState(false, false, "", "", null, null);
-  }
-
-  public static LoginState copyOf(final LoginState loginState) {
-    return new LoginState(loginState.isLoading, loginState.isLoggedIn, loginState.username,
-        loginState.password, loginState.usernameError, loginState.passwordError);
+    return LoginState.builder()
+        .isLoading(false)
+        .isLoggedIn(false)
+        .username("")
+        .password("")
+        .usernameError(null)
+        .passwordError(null)
+        .build();
   }
 
   public boolean isLoading() {
     return isLoading;
   }
 
-  public void setLoading(final boolean loading) {
-    isLoading = loading;
+  public LoginState withLoading(final boolean loading) {
+    return toBuilder().isLoading(loading).build();
   }
 
   public boolean isLoggedIn() {
     return isLoggedIn;
   }
 
-  public void setLoggedIn(final boolean loggedIn) {
-    isLoggedIn = loggedIn;
+  public LoginState withLoggedIn(final boolean loggedIn) {
+    return toBuilder().isLoggedIn(loggedIn).build();
   }
 
   public String getUsername() {
     return username;
   }
 
-  public void setUsername(final String username) {
-    this.username = username;
+  public LoginState withUsername(final String username) {
+    return toBuilder().username(username).build();
   }
 
   public String getPassword() {
     return password;
   }
 
-  public void setPassword(final String password) {
-    this.password = password;
+  public LoginState withPassword(final String password) {
+    return toBuilder().password(password).build();
   }
 
   public String getUsernameError() {
     return usernameError;
   }
 
-  public void setUsernameError(final String usernameError) {
-    this.usernameError = usernameError;
-    this.passwordError = null;
+  public LoginState withUsernameError(final String usernameError) {
+    return toBuilder().usernameError(usernameError).passwordError(null).build();
   }
 
   public String getPasswordError() {
     return passwordError;
   }
 
-  public void setPasswordError(final String passwordError) {
-    this.usernameError = null;
-    this.passwordError = passwordError;
+  public LoginState withPasswordError(final String passwordError) {
+    return toBuilder().usernameError(null).passwordError(passwordError).build();
   }
 
-  public void clearErrors() {
-    usernameError = null;
-    passwordError = null;
+  public LoginState withoutErrors() {
+    return toBuilder().usernameError(null).passwordError(null).build();
+  }
+
+  public Builder toBuilder() {
+    return new Builder(this);
+  }
+
+  public static Builder builder() {
+    return new Builder();
+  }
+
+  public static final class Builder {
+    private boolean isLoading;
+    private boolean isLoggedIn;
+    private String username;
+    private String password;
+    private String usernameError;
+    private String passwordError;
+
+    private Builder() {}
+
+    private Builder(final LoginState loginState) {
+      this.isLoading = loginState.isLoading;
+      this.isLoggedIn = loginState.isLoggedIn;
+      this.username = loginState.username;
+      this.password = loginState.password;
+      this.usernameError = loginState.usernameError;
+      this.passwordError = loginState.passwordError;
+    }
+
+    public Builder isLoading(final boolean isLoading) {
+      this.isLoading = isLoading;
+      return this;
+    }
+
+    public Builder isLoggedIn(final boolean isLoggedIn) {
+      this.isLoggedIn = isLoggedIn;
+      return this;
+    }
+
+    public Builder username(final String username) {
+      this.username = username;
+      return this;
+    }
+
+    public Builder password(final String password) {
+      this.password = password;
+      return this;
+    }
+
+    public Builder usernameError(final String usernameError) {
+      this.usernameError = usernameError;
+      return this;
+    }
+
+    public Builder passwordError(final String passwordError) {
+      this.passwordError = passwordError;
+      return this;
+    }
+
+    public LoginState build() {
+      return new LoginState(this);
+    }
   }
 
   @Override public boolean equals(final Object o) {

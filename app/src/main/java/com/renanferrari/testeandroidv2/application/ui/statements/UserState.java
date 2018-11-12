@@ -1,13 +1,16 @@
 package com.renanferrari.testeandroidv2.application.ui.statements;
 
+import androidx.annotation.NonNull;
+import java.util.Objects;
+
 public class UserState {
   private final String name;
-  private final String bankAccount;
+  private final String account;
   private final String balance;
 
   private UserState(final Builder builder) {
     name = builder.name;
-    bankAccount = builder.bankAccount;
+    account = builder.account;
     balance = builder.balance;
   }
 
@@ -15,8 +18,8 @@ public class UserState {
     return name;
   }
 
-  public String getBankAccount() {
-    return bankAccount;
+  public String getAccount() {
+    return account;
   }
 
   public String getBalance() {
@@ -29,7 +32,7 @@ public class UserState {
 
   public static final class Builder {
     private String name;
-    private String bankAccount;
+    private String account;
     private String balance;
 
     private Builder() {}
@@ -39,8 +42,8 @@ public class UserState {
       return this;
     }
 
-    public Builder bankAccount(final String bankAccount) {
-      this.bankAccount = bankAccount;
+    public Builder account(final String account) {
+      this.account = account;
       return this;
     }
 
@@ -52,5 +55,26 @@ public class UserState {
     public UserState build() {
       return new UserState(this);
     }
+  }
+
+  @Override public boolean equals(final Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    final UserState userState = (UserState) o;
+    return Objects.equals(name, userState.name) &&
+        Objects.equals(account, userState.account) &&
+        Objects.equals(balance, userState.balance);
+  }
+
+  @Override public int hashCode() {
+    return Objects.hash(name, account, balance);
+  }
+
+  @Override @NonNull public String toString() {
+    return "UserState{" +
+        "name='" + name + '\'' +
+        ", account='" + account + '\'' +
+        ", balance='" + balance + '\'' +
+        '}';
   }
 }

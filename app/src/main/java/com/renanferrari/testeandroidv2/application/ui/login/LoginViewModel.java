@@ -43,56 +43,46 @@ public class LoginViewModel extends ViewModel {
   }
 
   public void onUserRequested() {
-    disposables.add(getUser.execute().subscribe(user -> {
-      final LoginState state = loginStateLiveData.getValue();
-      state.setLoggedIn(true);
-      loginStateLiveData.setValue(state);
-    }));
+    disposables.add(getUser.execute()
+        .subscribe(user -> loginStateLiveData.setValue(loginStateLiveData.getValue()
+            .withLoggedIn(true))));
   }
 
   public void onUsernameChanged(final String username) {
-    final LoginState state = loginStateLiveData.getValue();
-    state.setUsername(username);
-    state.clearErrors();
-    loginStateLiveData.setValue(state);
+    loginStateLiveData.setValue(loginStateLiveData.getValue()
+        .withUsername(username)
+        .withoutErrors());
   }
 
   public void onPasswordChanged(final String password) {
-    final LoginState state = loginStateLiveData.getValue();
-    state.setPassword(password);
-    state.clearErrors();
-    loginStateLiveData.setValue(state);
+    loginStateLiveData.setValue(loginStateLiveData.getValue()
+        .withPassword(password)
+        .withoutErrors());
   }
 
   public void onLoginRequested() {
     final LoginState state = loginStateLiveData.getValue();
     disposables.add(login.execute(state.getUsername(), state.getPassword())
         .compose(schedulerProvider.applySchedulers())
-        .doOnSubscribe(disposable -> {
-          final LoginState newState = loginStateLiveData.getValue();
-          newState.setLoading(true);
-          loginStateLiveData.setValue(newState);
-        })
+        .doOnSubscribe(
+            d -> loginStateLiveData.setValue(
+                loginStateLiveData.getValue().withLoading(true)))
         .subscribe(
-            () -> {
-              final LoginState newState = loginStateLiveData.getValue();
-              newState.setLoading(false);
-              newState.setLoggedIn(true);
-              loginStateLiveData.setValue(newState);
-            },
+            () -> loginStateLiveData.setValue(
+                loginStateLiveData.getValue().withLoading(false).withLoggedIn(true)),
             throwable -> {
-              final LoginState newState = loginStateLiveData.getValue();
-              newState.setLoading(false);
+              final LoginState.Builder stateBuilder = loginStateLiveData.getValue().toBuilder();
+              stateBuilder.isLoading(false);
               if (throwable instanceof InvalidUsernameException) {
-                newState.setUsernameError(
+                stateBuilder.usernameError(
                     resourceProvider.getString(R.string.message_invalid_username));
               } else if (throwable instanceof InvalidPasswordException) {
-                newState.setPasswordError(
+                stateBuilder.passwordError(
                     resourceProvider.getString(R.string.message_invalid_password));
               } else {
-                Log.d(TAG, "Erro desconhecido!");
+                Log.d(TAG, "Error logging in: " + throwable.getMessage());
               }
-              loginStateLiveData.setValue(newState);
+              loginStateLiveData.setValue(stateBuilder.build());
             }));
   }
 

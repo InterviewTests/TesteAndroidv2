@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.renanferrari.testeandroidv2.application.common.providers.SchedulerProvider;
+import com.renanferrari.testeandroidv2.application.common.utils.AccountFormatter;
 import com.renanferrari.testeandroidv2.application.common.utils.DateFormatter;
 import com.renanferrari.testeandroidv2.application.common.utils.MoneyFormatter;
 import com.renanferrari.testeandroidv2.application.ui.login.LoginViewModel;
@@ -13,11 +14,15 @@ import com.renanferrari.testeandroidv2.domain.interactors.GetUser;
 import com.renanferrari.testeandroidv2.domain.interactors.Logout;
 import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
+import java.util.regex.Pattern;
 import javax.inject.Inject;
 
 public class StatementsViewModel extends ViewModel {
 
   private static final String TAG = LoginViewModel.class.getSimpleName();
+
+  private static final Pattern ACCOUNT_FORMAT =
+      Pattern.compile("[0-9]{2}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{1}");
 
   private final GetStatements getStatements;
   private final GetUser getUser;
@@ -53,7 +58,7 @@ public class StatementsViewModel extends ViewModel {
     disposables.add(getUser.execute()
         .map(user -> UserState.builder()
             .name(user.getName())
-            .bankAccount(user.getBankAccount())
+            .account(AccountFormatter.format(user.getBankAccount(), user.getAgency()))
             .balance(moneyFormatter.format(user.getBalance()))
             .build())
         .compose(schedulerProvider.applySchedulers())
@@ -66,7 +71,7 @@ public class StatementsViewModel extends ViewModel {
     disposables.add(getStatements.execute()
         .flatMapObservable(Observable::fromIterable)
         .map(statement -> StatementItem.create(statement, moneyFormatter, dateFormatter))
-        .toList()
+        .toSortedList()
         .map(StatementsState::create)
         .compose(schedulerProvider.applySchedulers())
         .doOnSubscribe(d -> statementsStateLiveData.setValue(
