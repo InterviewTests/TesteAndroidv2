@@ -1,12 +1,17 @@
 <resources>
     <string name="app_name">ibm-teste-android</string>]
-    
-    <!-- Values for login -->
     <string name="hint_edt_user">User</string>
     <string name="hint_edt_password">Password</string>
     <string name="btn_login">Login</string>
-    
-    
+    <string name="text_account">Conta</string>
+    <string name="text_balance">Saldo</string>
+    <string name="message_logout_app">Você deseja realmente sair?</string>
+    <string name="text_button_yes">Sim</string>
+    <string name="text_button_no">Não</string>
+    <string name="text_title_dialog">Mensagem</string>
+    <string name="text_recent">Recentes</string>
+
+
     <!-- Messages for error -->
     <string name="message_error_no_internet">Check your Internet connectivity, try again!</string>
     <string name="message_error_field_user">Please, fill in the User</string>

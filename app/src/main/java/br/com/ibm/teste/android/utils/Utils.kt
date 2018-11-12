@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.widget.Toast
 import br.com.ibm.teste.android.app.IbmTestApplication
+import java.text.NumberFormat
 
 /**
  * Created by paulo.
@@ -12,7 +13,12 @@ import br.com.ibm.teste.android.app.IbmTestApplication
  */
 class Utils {
 
+
+
     companion object {
+
+        private const val pipe:  String = " / "
+        private var numberFormat = NumberFormat.getCurrencyInstance()
 
         /**
          * Check if there is internet on the phone
@@ -30,5 +36,18 @@ class Utils {
         fun showMessage(message: String) {
             Toast.makeText(IbmTestApplication.getInstance(), message, Toast.LENGTH_SHORT).show()
         }
+
+        fun formatBankAccount(bankAccount: String, agency: String) : String {
+            val formattedAccount : String
+
+            val firstValue = agency.substring(0, 2)
+            val secondValue = agency.substring(2, 8)
+            val lastValue = agency.substring(agency.length - 1)
+            formattedAccount = "$bankAccount$pipe$firstValue.$secondValue-$lastValue"
+
+            return formattedAccount
+        }
+
+        fun formatNumber(any: Any?): String = numberFormat.format(any)
     }
 }

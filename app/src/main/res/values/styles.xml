@@ -11,7 +11,7 @@
     <!-- Custom theme with full screen -->
     <style name="CustomTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/montserrat_regular</item>
         <item name="android:font" tools:targetApi="o">@font/montserrat_regular</item>

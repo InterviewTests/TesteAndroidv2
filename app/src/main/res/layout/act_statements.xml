@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.StatementsActivity">
+
+    <RelativeLayout
+        android:id="@+id/layout_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:padding="15dp"
+        tools:targetApi="lollipop">
+
+        <TextView
+            android:id="@+id/txt_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/ic_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_logout"/>
+
+        <TextView
+            android:id="@+id/text_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp"
+            android:text="@string/text_account"
+            android:layout_below="@+id/txt_user_name"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/text_number_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            android:text="Conta"
+            android:layout_below="@+id/text_account"/>
+
+        <TextView
+            android:id="@+id/text_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp"
+            android:text="@string/text_balance"
+            android:layout_below="@+id/text_number_account"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/text_value_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            android:layout_below="@+id/text_balance"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_statements"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout_information">
+
+        <TextView
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/text_title_recent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_recent"
+            android:textSize="16sp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginBottom="9dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@+id/text_title_recent"
+            android:id="@+id/list_statements"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyle"
+            android:layout_marginTop="32dp"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimary"
+            android:visibility="gone"
+            tools:targetApi="lollipop" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

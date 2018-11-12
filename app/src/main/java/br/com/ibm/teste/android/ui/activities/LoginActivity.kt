@@ -1,5 +1,6 @@
 package br.com.ibm.teste.android.ui.activities
 
+import android.content.Intent
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -63,7 +64,8 @@ class LoginActivity : GenericActivity(), IUserAccountListener {
     }
 
     private fun openMainActivity() {
-
+        startActivity(Intent(this, StatementsActivity::class.java))
+        finish()
     }
 
     private fun getUserLogged() {
@@ -108,7 +110,6 @@ class LoginActivity : GenericActivity(), IUserAccountListener {
     private fun login(userRequest: UserRequest) =
             UserAccountService(this)
                 .login(userRequest)
-
 
     /**
      * Show message without Internet

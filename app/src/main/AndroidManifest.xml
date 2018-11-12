@@ -31,6 +31,11 @@
         <activity
             android:name=".ui.activities.LoginActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/CustomTheme" />
+
+        <!-- Statements -->
+        <activity android:name=".ui.activities.StatementsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/CustomTheme"/>
 
     </application>
