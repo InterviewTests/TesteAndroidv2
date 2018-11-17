@@ -1,4 +1,4 @@
-package com.rafaelpereiraramos.testeandroidv2.core
+package com.rafaelpereiraramos.testeandroidv2.api
 
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded

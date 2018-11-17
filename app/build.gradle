@@ -48,4 +48,9 @@ dependencies {
     // Retrofit
     api 'com.squareup.retrofit2:retrofit:2.4.0'
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    // Room
+    api 'androidx.room:room-common:2.1.0-alpha02'
+    api 'androidx.room:room-runtime:2.1.0-alpha02'
+    kapt 'androidx.room:room-compiler:2.1.0-alpha02'
 }

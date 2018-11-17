@@ -1,5 +1,7 @@
 package com.rafaelpereiraramos.testeandroidv2.di
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import com.rafaelpereiraramos.testeandroidv2.App
 import dagger.Module
@@ -16,9 +18,13 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideApplication(@Named("appContext")app: App) = app
+    fun provideApplication(@Named("appContext")app: App): App = app
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(app: App) = PreferenceManager.getDefaultSharedPreferences(app)!!
+    fun provideContext(app: App): Context = app
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(app: App): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(app)!!
 }
