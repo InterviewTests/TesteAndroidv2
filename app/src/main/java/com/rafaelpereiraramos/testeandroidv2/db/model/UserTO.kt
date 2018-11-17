@@ -12,6 +12,8 @@ data class UserTO(
     @SerializedName("agency") val agency: String,
     @SerializedName("balance") val balance: Float,
     @SerializedName("bankAccount") val bankAccount: String,
+    @PrimaryKey @SerializedName("userId") val id: Int,
     @SerializedName("name") val name: String,
-    @PrimaryKey @SerializedName("userId") val id: Int
+    val password: String,
+    val userName: String
 )
