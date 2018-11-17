@@ -2,15 +2,24 @@ package com.rafaelpereiraramos.testeandroidv2.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import com.rafaelpereiraramos.testeandroidv2.R
+import com.rafaelpereiraramos.testeandroidv2.core.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.regex.Pattern
+import javax.inject.Inject
 
 class LoginActivity : AppCompatActivity() {
+
+    @Inject lateinit var viewModelFactory: ViewModelFactory
+
+    private lateinit var viewModel: LoginActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginActivityViewModel::class.java)
 
         setEvents()
     }
