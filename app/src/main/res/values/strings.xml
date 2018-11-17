@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TesteAndroidv2</string>
+    <string name="prompt_login_screen_header">Banco</string>
+    <string name="action_login">Login</string>
+    <string name="prompt_user_name">Usuário</string>
+    <string name="prompt_password">Senha</string>
+    <string name="error_empty_field">Este campo não pode ser nulo</string>
+    <string name="error_login_format">Digite o e-mail ou CPF do usuário</string>
+    <string name="error_email_format">Formato de e-mail errado</string>
+    <string name="error_cpf_format">Formato de CPF errado</string>
+
+</resources>
