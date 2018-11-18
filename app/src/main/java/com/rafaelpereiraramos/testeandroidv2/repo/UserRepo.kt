@@ -1,6 +1,9 @@
 package com.rafaelpereiraramos.testeandroidv2.repo
 
 import androidx.lifecycle.LiveData
+import com.rafaelpereiraramos.testeandroidv2.api.BankApi
+import com.rafaelpereiraramos.testeandroidv2.api.ResponseWrapper
+import com.rafaelpereiraramos.testeandroidv2.core.AppExecutors
 import com.rafaelpereiraramos.testeandroidv2.db.dao.UserDao
 import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
 import javax.inject.Inject
@@ -9,25 +12,20 @@ import javax.inject.Inject
  * Created by Rafael P. Ramos on 17/11/2018.
  */
 class UserRepo @Inject constructor(
-    private val userDao: UserDao
+    private val userDao: UserDao,
+    private val api: BankApi,
+    private val appExecutors: AppExecutors
 ) {
-    fun getUser(userName: String, password: String): LiveData<UserTO> {
-        return object : NetworkBoundResource<Void, UserTO>() {
-            override fun makeCall(request: Void) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
+    fun getUser(userName: String, password: String): LiveData<ResourceWrapper<UserTO?>> {
+        return object : NetworkBoundResource<UserTO, UserTO>(appExecutors){
 
-            override fun loadFromDb(): LiveData<UserTO> {
-                return userDao.getUser(userName, password)
-            }
+            override fun loadFromDb(): LiveData<UserTO?>  = userDao.getUser(userName, password)
 
-            override fun shouldFetch(result: UserTO?): Boolean {
-                return result == null
-            }
+            override fun shouldFetch(result: UserTO?): Boolean = result == null
 
-            override fun saveCallResult(callResult: UserTO?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
+            override fun makeCall(): LiveData<ResponseWrapper<UserTO>>  = api.login(userName, password)
+
+            override fun saveCallResult(callResult: UserTO) = userDao.insert(callResult)
 
         }.asLiveData()
     }
