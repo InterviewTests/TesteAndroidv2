@@ -2,6 +2,8 @@ package com.rafaelpereiraramos.testeandroidv2.db.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
 
@@ -12,8 +14,11 @@ import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
 interface UserDao {
 
     @Query("SELECT * FROM UserTO WHERE id = :id")
-    fun getUser(id: Int): LiveData<UserTO>
+    fun getUser(id: Int): LiveData<UserTO?>
 
     @Query("SELECT * FROM UserTO WHERE userName = :userName AND password = :password")
-    fun getUser(userName: String, password: String): LiveData<UserTO>
+    fun getUser(userName: String, password: String): LiveData<UserTO?>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(user: UserTO)
 }
