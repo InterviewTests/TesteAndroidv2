@@ -1,18 +1,15 @@
 package com.rafaelpereiraramos.testeandroidv2.repo
 
-import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.rafaelpereiraramos.testeandroidv2.api.ApiEmptyResponse
-import com.rafaelpereiraramos.testeandroidv2.api.ApiErrorResponse
-import com.rafaelpereiraramos.testeandroidv2.api.ApiSuccessResponse
-import com.rafaelpereiraramos.testeandroidv2.api.ResponseWrapper
+import com.rafaelpereiraramos.testeandroidv2.api.*
 import com.rafaelpereiraramos.testeandroidv2.core.AppExecutors
 
 /**
  * Created by Rafael P. Ramos on 17/11/2018.
  */
+/*
 abstract class NetworkBoundResource<ApiResponseType, ReturnType> (
     private val appExecutors: AppExecutors
 ) {
@@ -83,7 +80,11 @@ abstract class NetworkBoundResource<ApiResponseType, ReturnType> (
                     appExecutors.mainThread.execute {
                         // reload from disk whatever we had
                         result.addSource(loadFromDb()) { newData ->
-                            setValue(ResourceWrapper.success(newData))
+                            if (shouldFetch(newData)) {
+                                setValue(ResourceWrapper.error("response returned empty", newData))
+                            } else {
+                                setValue(ResourceWrapper.success(newData))
+                            }
                         }
                     }
                 }
@@ -99,9 +100,66 @@ abstract class NetworkBoundResource<ApiResponseType, ReturnType> (
     }
 
     @MainThread
-    private fun setValue(newValue: ResourceWrapper<ReturnType?>) {
+    private fun setValue(newValue: ResourceWrapper<ReturnType>) {
         if (result.value != newValue) {
             result.value = newValue
+        }
+    }
+}*/
+
+abstract class NetworkBoundResource<ApiResponseType, ReturnType>(
+    private val appExecutors: AppExecutors
+) {
+    private val _result = MediatorLiveData<ReturnType>()
+    val result: LiveData<ReturnType?>
+        get() = _result
+
+    init {
+        @Suppress("LeakingThis")
+        val dbSource: LiveData<ReturnType?> = loadFromDb()
+
+        _result.addSource(dbSource) { dbData ->
+            _result.removeSource(dbSource)
+
+            if (shouldFetch(dbData)) {
+                fetchFromNetwork()
+            } else {
+                _result.value = dbData
+            }
+        }
+    }
+
+    protected abstract fun loadFromDb(): LiveData<ReturnType?>
+
+    protected abstract fun shouldFetch(result: ReturnType?): Boolean
+
+    @WorkerThread protected abstract fun makeCall(): ApiResponseLiveData<ApiResponseType>
+
+    @WorkerThread protected abstract fun saveCallResult(callResult: ApiResponseType)
+
+    protected open fun onFetchFailed() {}
+
+    private fun fetchFromNetwork() {
+        val apiResponse = makeCall()
+
+        _result.addSource(apiResponse) { fetchedData ->
+            _result.removeSource(apiResponse)
+
+            if (!apiResponse.isSuccessful)
+                return@addSource
+
+            if (fetchedData == null)
+                return@addSource
+
+            appExecutors.diskIO.execute {
+                saveCallResult(fetchedData)
+
+                val newFetched = loadFromDb()
+
+                _result.addSource(newFetched) { newData ->
+                    _result.postValue(newData)
+                }
+            }
         }
     }
 }

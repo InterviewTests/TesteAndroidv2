@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.rafaelpereiraramos.testeandroidv2.App
 import com.rafaelpereiraramos.testeandroidv2.api.BankApi
+import com.rafaelpereiraramos.testeandroidv2.api.LiveDataCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -26,6 +27,7 @@ class NetworkModule {
             .baseUrl(App.BASE_URL)
             .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()
 
         return builder.create(BankApi::class.java)

@@ -16,5 +16,5 @@ interface BankApi {
     fun login(
         @Field("userName")userName: String,
         @Field("password")password: String
-    ): LiveData<ResponseWrapper<UserTO>>
+    ): ApiResponseLiveData<UserTO>
 }

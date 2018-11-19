@@ -13,6 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 /**
  * Created by Rafael P. Ramos on 18/11/2018.
  */
+/*
 class LiveDataCallAdapter<R>(
     private val responseType: Type
 ) : CallAdapter<R, LiveData<ResponseWrapper<R>>> {
@@ -39,6 +40,14 @@ class LiveDataCallAdapter<R>(
             }
         }
     }
+
+    override fun responseType(): Type = responseType
+}*/
+class LiveDataCallAdapter<R>(
+    private val responseType: Type
+) : CallAdapter<R, ApiResponseLiveData<R>> {
+
+    override fun adapt(call: Call<R>) = ApiResponseLiveData(call)
 
     override fun responseType(): Type = responseType
 }

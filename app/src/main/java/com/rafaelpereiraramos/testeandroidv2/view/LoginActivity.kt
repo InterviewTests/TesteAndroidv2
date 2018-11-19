@@ -2,10 +2,16 @@ package com.rafaelpereiraramos.testeandroidv2.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.rafaelpereiraramos.testeandroidv2.R
 import com.rafaelpereiraramos.testeandroidv2.core.ViewModelFactory
+import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
+import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper
+import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper.Status.*
+import com.rafaelpereiraramos.testeandroidv2.view.LoginActivityViewModel.Status.*
 import kotlinx.android.synthetic.main.activity_login.*
+import timber.log.Timber
 import java.util.regex.Pattern
 import javax.inject.Inject
 
@@ -22,12 +28,25 @@ class LoginActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginActivityViewModel::class.java)
 
         setEvents()
+        subscribe()
     }
 
     private fun setEvents() {
         action_login.setOnClickListener {
-            if (validate()) null
+            if (validate()) {
+                viewModel.login(input_user_name.text.toString(), input_password.text.toString())
+            }
         }
+    }
+
+    private fun subscribe() {
+        viewModel.status.observe(this, Observer { status ->
+
+            when(status!!) {
+                LOGGED -> openStatement(viewModel.user)
+                CREDENTIALS_NOT_FOUND -> TODO()
+            }
+        })
     }
 
     private fun validate(): Boolean {
@@ -59,5 +78,13 @@ class LoginActivity : AppCompatActivity() {
             """\d{3}\.\d{3}\.\d{3}-\d{2}""",
             cpf
         )
+    }
+
+    private fun openStatement(userTO: UserTO) {
+
+    }
+
+    companion object {
+        var isFetching = false
     }
 }
