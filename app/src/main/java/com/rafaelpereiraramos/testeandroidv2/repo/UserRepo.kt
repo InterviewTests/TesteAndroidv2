@@ -3,7 +3,6 @@ package com.rafaelpereiraramos.testeandroidv2.repo
 import androidx.lifecycle.LiveData
 import com.rafaelpereiraramos.testeandroidv2.api.ApiResponseLiveData
 import com.rafaelpereiraramos.testeandroidv2.api.BankApi
-import com.rafaelpereiraramos.testeandroidv2.api.ResponseWrapper
 import com.rafaelpereiraramos.testeandroidv2.core.AppExecutors
 import com.rafaelpereiraramos.testeandroidv2.db.dao.UserDao
 import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
@@ -17,7 +16,7 @@ class UserRepo @Inject constructor(
     private val api: BankApi,
     private val appExecutors: AppExecutors
 ) {
-    fun getUser(userName: String, password: String): LiveData<UserTO?> {
+    fun getUser(userName: String, password: String): LiveData<ResourceWrapper<UserTO>> {
         return object : NetworkBoundResource<UserTO, UserTO>(appExecutors){
 
             override fun loadFromDb(): LiveData<UserTO?>  = userDao.getUser(userName, password)

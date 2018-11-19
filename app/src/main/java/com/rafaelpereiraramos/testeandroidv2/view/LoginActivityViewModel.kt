@@ -3,6 +3,7 @@ package com.rafaelpereiraramos.testeandroidv2.view
 import androidx.lifecycle.*
 import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
 import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper
+import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper.Status.*
 import com.rafaelpereiraramos.testeandroidv2.repo.UserRepo
 import javax.inject.Inject
 
@@ -27,15 +28,17 @@ class LoginActivityViewModel @Inject constructor(
     fun login(userName: String, password: String) {
         val result = userRepo.getUser(userName, password)
 
-        _status.addSource(result) { user ->
-            if (user == null) {
-                _status.value = Status.CREDENTIALS_NOT_FOUND
+        _status.addSource(result) { resource ->
 
-                return@addSource
+            when(resource.status) {
+                SUCCESS -> {
+                    user = resource.data!!
+                    _status.value = Status.LOGGED
+                }
+                // TODO threat each different error
+                ERROR -> _status.value = Status.CREDENTIALS_NOT_FOUND
+                LOADING -> {} //ignore
             }
-
-            this.user = user
-            _status.value = Status.LOGGED
         }
     }
 }

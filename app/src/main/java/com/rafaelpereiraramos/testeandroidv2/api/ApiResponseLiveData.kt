@@ -1,6 +1,7 @@
 package com.rafaelpereiraramos.testeandroidv2.api
 
 import androidx.lifecycle.MutableLiveData
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +26,8 @@ class ApiResponseLiveData<T>(
     var isSuccessful: Boolean = code in 200..299
     private set
 
+    var errorBody: ResponseBody? = null
+
     override fun onActive() {
         if (started.compareAndSet(false, true)) {
 
@@ -33,10 +36,12 @@ class ApiResponseLiveData<T>(
                     code = response.code()
                     message = response.message()
                     isSuccessful = response.isSuccessful
+                    errorBody = response.errorBody()
                     postValue(response.body())
                 }
 
                 override fun onFailure(call: Call<T>, throwable: Throwable) {
+                    message = throwable.message ?: "unknown error"
                     postValue(null)
                     Timber.tag("API").e(throwable)
                 }

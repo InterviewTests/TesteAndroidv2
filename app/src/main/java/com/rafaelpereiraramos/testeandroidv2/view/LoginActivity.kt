@@ -7,11 +7,8 @@ import androidx.lifecycle.ViewModelProviders
 import com.rafaelpereiraramos.testeandroidv2.R
 import com.rafaelpereiraramos.testeandroidv2.core.ViewModelFactory
 import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
-import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper
-import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper.Status.*
 import com.rafaelpereiraramos.testeandroidv2.view.LoginActivityViewModel.Status.*
 import kotlinx.android.synthetic.main.activity_login.*
-import timber.log.Timber
 import java.util.regex.Pattern
 import javax.inject.Inject
 
