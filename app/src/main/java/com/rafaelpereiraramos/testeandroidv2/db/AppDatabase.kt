@@ -12,7 +12,7 @@ import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
  * Created by Rafael P. Ramos on 17/11/2018.
  */
 @Database(entities = [UserTO::class, StatementTO::class],
-    version = 1,
+    version = 2,
     exportSchema = false)
 @TypeConverters(value = [DateConverter::class])
 abstract class AppDatabase : RoomDatabase() {

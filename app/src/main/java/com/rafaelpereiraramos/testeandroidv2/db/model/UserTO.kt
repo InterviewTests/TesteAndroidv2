@@ -9,11 +9,11 @@ import com.google.gson.annotations.SerializedName
  */
 @Entity
 data class UserTO(
-    @SerializedName("agency") val agency: String,
-    @SerializedName("balance") val balance: Float,
-    @SerializedName("bankAccount") val bankAccount: String,
-    @PrimaryKey @SerializedName("userId") val id: Int,
-    @SerializedName("name") val name: String,
-    val password: String,
-    val userName: String
+    @SerializedName("agency") val agency: String? = "",
+    @SerializedName("balance") val balance: Float = 0.0f,
+    @SerializedName("bankAccount") val bankAccount: String? = "",
+    @PrimaryKey @SerializedName("userId") val id: Int = 0,
+    @SerializedName("name") val name: String? = "user",
+    val password: String? = "",
+    val userName: String? = ""
 )
