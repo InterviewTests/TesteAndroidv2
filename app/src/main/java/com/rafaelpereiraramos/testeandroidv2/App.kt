@@ -25,6 +25,6 @@ class App : Application(), HasActivityInjector {
 
     companion object {
         var BASE_URL = " https://bank-app-test.herokuapp.com/api/"
-        var DATE_FORMAT = "YYYY-MM-DD HH:mm:ss"
+        var DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS"
     }
 }
