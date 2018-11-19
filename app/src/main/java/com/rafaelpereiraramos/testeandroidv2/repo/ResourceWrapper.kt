@@ -12,7 +12,7 @@ data class ResourceWrapper<out T>(val status: Status, val data: T?, val message:
     }
 
     companion object {
-        fun <T> success(data: T?): ResourceWrapper<T> {
+        fun <T> success(data: T): ResourceWrapper<T> {
             return ResourceWrapper(Status.SUCCESS, data, null)
         }
 
