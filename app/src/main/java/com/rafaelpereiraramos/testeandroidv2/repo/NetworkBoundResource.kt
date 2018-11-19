@@ -27,7 +27,7 @@ abstract class NetworkBoundResource<ApiResponseType, ReturnType>(
             if (shouldFetch(dbData)) {
                 fetchFromNetwork(dbSource)
             } else {
-                _result.value = ResourceWrapper.success(dbData)
+                _result.value = ResourceWrapper.success(dbData!!)
             }
         }
     }
@@ -68,8 +68,13 @@ abstract class NetworkBoundResource<ApiResponseType, ReturnType>(
 
                 val newFetched = loadFromDb()
 
-                _result.addSource(newFetched) { newData ->
-                    _result.postValue(ResourceWrapper.success(newData))
+                appExecutors.mainThread.execute {
+                    _result.addSource(newFetched) { newData ->
+                        if (newData == null) {
+                            ResourceWrapper.error("")
+                        }
+                        _result.postValue(ResourceWrapper.success(newData!!))
+                    }
                 }
             }
         }
