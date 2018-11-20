@@ -66,14 +66,16 @@ abstract class NetworkBoundResource<ApiResponseType, ReturnType>(
             appExecutors.diskIO.execute {
                 saveCallResult(fetchedData)
 
-                val newFetched = loadFromDb()
-
                 appExecutors.mainThread.execute {
+                    val newFetched = loadFromDb()
+
                     _result.addSource(newFetched) { newData ->
-                        if (newData == null) {
-                            ResourceWrapper.error("")
+                        if (shouldFetch(newData)) {
+                            _result.postValue(ResourceWrapper.error("Value returned from network doesn't match the request of loading", newData))
+                            //return@addSource
+                        } else {
+                            _result.postValue(ResourceWrapper.success(newData!!))
                         }
-                        _result.postValue(ResourceWrapper.success(newData!!))
                     }
                 }
             }

@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
 
             when(status!!) {
                 LOGGED -> openStatement(viewModel.user)
-                CREDENTIALS_NOT_FOUND -> TODO()
+                CREDENTIALS_NOT_FOUND -> {}
             }
         })
     }
@@ -79,9 +79,5 @@ class LoginActivity : AppCompatActivity() {
 
     private fun openStatement(userTO: UserTO) {
 
-    }
-
-    companion object {
-        var isFetching = false
     }
 }
