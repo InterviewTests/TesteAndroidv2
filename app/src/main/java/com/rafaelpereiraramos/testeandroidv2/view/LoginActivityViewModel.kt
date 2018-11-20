@@ -2,7 +2,6 @@ package com.rafaelpereiraramos.testeandroidv2.view
 
 import androidx.lifecycle.*
 import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
-import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper
 import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper.Status.*
 import com.rafaelpereiraramos.testeandroidv2.repo.UserRepo
 import javax.inject.Inject
@@ -19,6 +18,8 @@ class LoginActivityViewModel @Inject constructor(
         CREDENTIALS_NOT_FOUND
     }
 
+    private var isLogin = false
+
     private val _status = MediatorLiveData<Status>()
     val status: LiveData<Status>
         get() = _status
@@ -26,6 +27,11 @@ class LoginActivityViewModel @Inject constructor(
     lateinit var user: UserTO
 
     fun login(userName: String, password: String) {
+        if (isLogin)
+            return
+
+        isLogin = true
+
         val result = userRepo.getUser(userName, password)
 
         _status.addSource(result) { resource ->
@@ -36,7 +42,11 @@ class LoginActivityViewModel @Inject constructor(
                     _status.value = Status.LOGGED
                 }
                 // TODO threat each different error
-                ERROR -> _status.value = Status.CREDENTIALS_NOT_FOUND
+                ERROR -> {
+                    _status.value = Status.CREDENTIALS_NOT_FOUND
+                    isLogin = false
+                }
+
                 LOADING -> {} //ignore
             }
         }
