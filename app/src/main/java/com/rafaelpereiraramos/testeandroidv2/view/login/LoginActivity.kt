@@ -1,4 +1,4 @@
-package com.rafaelpereiraramos.testeandroidv2.view
+package com.rafaelpereiraramos.testeandroidv2.view.login
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.rafaelpereiraramos.testeandroidv2.R
 import com.rafaelpereiraramos.testeandroidv2.core.ViewModelFactory
 import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
-import com.rafaelpereiraramos.testeandroidv2.view.LoginActivityViewModel.Status.*
+import com.rafaelpereiraramos.testeandroidv2.view.login.LoginActivityViewModel.Status.*
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.regex.Pattern
 import javax.inject.Inject

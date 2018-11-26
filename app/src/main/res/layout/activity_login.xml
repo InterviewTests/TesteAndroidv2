@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="36dp"
-        tools:context=".view.LoginActivity"
+        tools:context=".view.login.LoginActivity"
 >
 
     <androidx.cardview.widget.CardView

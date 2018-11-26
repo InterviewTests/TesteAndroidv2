@@ -1,4 +1,4 @@
-package com.rafaelpereiraramos.testeandroidv2.view
+package com.rafaelpereiraramos.testeandroidv2.view.login
 
 import androidx.lifecycle.*
 import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
@@ -39,11 +39,13 @@ class LoginActivityViewModel @Inject constructor(
             when(resource.status) {
                 SUCCESS -> {
                     user = resource.data!!
-                    _status.value = Status.LOGGED
+                    _status.value =
+                            Status.LOGGED
                 }
                 // TODO threat each different error
                 ERROR -> {
-                    _status.value = Status.CREDENTIALS_NOT_FOUND
+                    _status.value =
+                            Status.CREDENTIALS_NOT_FOUND
                     isLogin = false
                 }
 

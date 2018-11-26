@@ -1,6 +1,6 @@
 package com.rafaelpereiraramos.testeandroidv2.di
 
-import com.rafaelpereiraramos.testeandroidv2.view.LoginActivity
+import com.rafaelpereiraramos.testeandroidv2.view.login.LoginActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
