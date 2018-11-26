@@ -1,5 +1,6 @@
 package com.rafaelpereiraramos.testeandroidv2.view.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -8,6 +9,7 @@ import com.rafaelpereiraramos.testeandroidv2.R
 import com.rafaelpereiraramos.testeandroidv2.core.ViewModelFactory
 import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
 import com.rafaelpereiraramos.testeandroidv2.view.login.LoginActivityViewModel.Status.*
+import com.rafaelpereiraramos.testeandroidv2.view.statement.StatementsActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.regex.Pattern
 import javax.inject.Inject
@@ -89,6 +91,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun openStatement(userTO: UserTO) {
+        val intent = Intent(this, StatementsActivity::class.java)
 
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+        intent.putExtra(StatementsActivity.USER_KEY, userTO)
+
+        startActivity(intent)
     }
 }
