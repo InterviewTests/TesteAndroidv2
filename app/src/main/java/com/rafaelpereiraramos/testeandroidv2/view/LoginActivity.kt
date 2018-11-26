@@ -64,7 +64,11 @@ class LoginActivity : AppCompatActivity() {
 
         input = input_password.text.toString()
         containerPassword.error = if (input.isNullOrEmpty()) {
+            isValid = false
             getString(R.string.error_empty_field)
+        } else if (!isValidPassword(input)) {
+            isValid = false
+            getString(R.string.error_pass_format)
         } else null
 
         return isValid
@@ -74,6 +78,13 @@ class LoginActivity : AppCompatActivity() {
         return Pattern.matches(
             """\d{3}\.\d{3}\.\d{3}-\d{2}""",
             cpf
+        )
+    }
+
+    private fun isValidPassword(pass: String): Boolean {
+        return Pattern.matches(
+            """^.*(?=.*\d+)(?=.*[A-Z]+)(?=.*[\W]).*$""",
+            pass
         )
     }
 

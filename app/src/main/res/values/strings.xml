@@ -8,5 +8,6 @@
     <string name="error_login_format">Digite o e-mail ou CPF do usuário</string>
     <string name="error_email_format">Formato de e-mail errado</string>
     <string name="error_cpf_format">Formato de CPF errado</string>
+    <string name="error_pass_format">Padrão de senha não reconhecido</string>
 
 </resources>
