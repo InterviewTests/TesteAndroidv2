@@ -71,8 +71,9 @@ abstract class NetworkBoundResource<ApiResponseType, ReturnType>(
 
                     _result.addSource(newFetched) { newData ->
                         if (shouldFetch(newData)) {
-                            _result.postValue(ResourceWrapper.error("Value returned from network doesn't match the request of loading", newData))
-                            //return@addSource
+                            _result.postValue(ResourceWrapper.error(
+                                "Value returned from network doesn't match the request of loading", newData)
+                            )
                         } else {
                             _result.postValue(ResourceWrapper.success(newData!!))
                         }

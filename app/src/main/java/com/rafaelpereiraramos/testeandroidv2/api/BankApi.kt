@@ -13,10 +13,10 @@ import retrofit2.http.POST
 interface BankApi {
 
     @FormUrlEncoded
-    @Headers(value = ["Content-Type: application/x-www-form-urlencoded"])
+    //@Headers(value = ["Content-Type: application/x-www-form-urlencoded"])
     @POST("login/")
     fun login(
         @Field("user")user: String,
-        @Field("password", encoded = false)password: String
+        @Field("password")password: String
     ): ApiResponseLiveData<LoginResponse>
 }
