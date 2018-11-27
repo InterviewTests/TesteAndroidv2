@@ -2,6 +2,7 @@ package com.rafaelpereiraramos.testeandroidv2.di
 
 import android.content.Context
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.rafaelpereiraramos.testeandroidv2.db.AppDatabase
 import com.rafaelpereiraramos.testeandroidv2.db.dao.ParameterDao
 import com.rafaelpereiraramos.testeandroidv2.db.dao.StatementDao
@@ -20,7 +21,10 @@ class DiskIOModule {
     @Singleton
     fun provideDatabase(context: Context): AppDatabase =
             /*For demonstration only, migration schema should be included into the app*/
-        Room.databaseBuilder(context, AppDatabase::class.java, AppDatabase.DB_NAME).fallbackToDestructiveMigration().build()
+        Room.databaseBuilder(context, AppDatabase::class.java, AppDatabase.DB_NAME)
+            .fallbackToDestructiveMigration()
+            .setJournalMode(RoomDatabase.JournalMode.TRUNCATE)
+            .build()
 
     @Provides
     @Singleton
