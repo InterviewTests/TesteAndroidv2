@@ -10,8 +10,3 @@ data class LoginResponse(
     @SerializedName("userAccount") val userAccount: UserTO,
     @SerializedName("error") val error: Error
 )
-
-data class Error (
-    @SerializedName("code") val code: Int,
-    @SerializedName("message") val message: String
-)

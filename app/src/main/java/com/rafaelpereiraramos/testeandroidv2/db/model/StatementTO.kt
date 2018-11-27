@@ -15,6 +15,6 @@ data class StatementTO(
     @SerializedName("title") val title: String,
     @SerializedName("value") val value: Long
 ) {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     var id: Int? = null
 }

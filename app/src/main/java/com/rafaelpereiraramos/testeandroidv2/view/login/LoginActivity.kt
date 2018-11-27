@@ -30,6 +30,8 @@ class LoginActivity : AppCompatActivity() {
         subscribe()
 
         if (savedInstanceState == null)
+        /*The login screen still appearing when the application start, when can do a SplashScreen that do this work
+        * and choose what activity to open (Login or Statement)*/
             viewModel.start()
     }
 
