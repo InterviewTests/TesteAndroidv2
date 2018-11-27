@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.rafaelpereiraramos.testeandroidv2.R
 import com.rafaelpereiraramos.testeandroidv2.core.ViewModelFactory
 import com.rafaelpereiraramos.testeandroidv2.db.model.StatementTO
@@ -38,6 +39,8 @@ class StatementsActivity : AppCompatActivity() {
         prompt_name.text = userTO.name
         prompt_bankAccount.text = getString(R.string.prompt_user_bank_account, userTO.bankAccount, applyAgencyMask(userTO.agency))
         prompt_balance.text = applyMoneyMask(userTO.balance)
+
+        statement_list.layoutManager = LinearLayoutManager(this)
     }
 
     private fun subscribe() {
@@ -53,7 +56,7 @@ class StatementsActivity : AppCompatActivity() {
     }
 
     private fun bindStatements(statements: List<StatementTO>) {
-
+        statement_list.adapter = StatementListAdapter(statements)
     }
 
     companion object {
