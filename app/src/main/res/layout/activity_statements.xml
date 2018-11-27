@@ -10,23 +10,25 @@
     <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
                                                        android:layout_height="wrap_content"
                                                        android:id="@+id/statement_header"
+                                                       android:background="@color/red500"
+                                                       android:padding="20dp"
     >
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/prompt_user_name"
-                  app:layout_constraintTop_toTopOf="parent" android:textSize="@dimen/text_page_title"
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/prompt_name"
+                  app:layout_constraintTop_toTopOf="parent" android:textSize="@dimen/text_page_title" android:textColor="@color/white"
         />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/label_account"
-                  app:layout_constraintTop_toBottomOf="@id/prompt_user_name" android:layout_marginTop="5dp"
-                  android:textSize="@dimen/text_secondary_text"
+                  android:text="@string/prompt_account" app:layout_constraintTop_toBottomOf="@id/prompt_name" android:layout_marginTop="10dp"
+                  android:textSize="@dimen/text_secondary_text" android:textColor="@color/white"
         />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/prompt_bankAccount"
-                  app:layout_constraintTop_toBottomOf="@id/label_account" android:textSize="@dimen/text_input"
+                  app:layout_constraintTop_toBottomOf="@id/label_account" android:textSize="@dimen/text_input" android:textColor="@color/white"
         />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/label_balance"
-                  app:layout_constraintTop_toBottomOf="@id/prompt_bankAccount" android:layout_marginTop="5dp"
-                  android:textSize="@dimen/text_secondary_text"
+                  android:text="@string/prompt_balance" app:layout_constraintTop_toBottomOf="@id/prompt_bankAccount" android:layout_marginTop="5dp"
+                  android:textSize="@dimen/text_secondary_text" android:textColor="@color/white"
         />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/prompt_balance"
-                  app:layout_constraintTop_toBottomOf="@id/label_balance" android:textSize="@dimen/text_input"
+                  app:layout_constraintTop_toBottomOf="@id/label_balance" android:textSize="@dimen/text_input" android:textColor="@color/white"
         />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

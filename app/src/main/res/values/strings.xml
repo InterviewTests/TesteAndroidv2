@@ -9,5 +9,8 @@
     <string name="error_email_format">Formato de e-mail errado</string>
     <string name="error_cpf_format">Formato de CPF errado</string>
     <string name="error_pass_format">Padrão de senha não reconhecido</string>
-
+    
+    <string name="prompt_user_bank_account">%s / %s</string>
+    <string name="prompt_account">Conta</string>
+    <string name="prompt_balance">Saldo</string>
 </resources>
