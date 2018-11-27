@@ -1,6 +1,8 @@
 package com.rafaelpereiraramos.testeandroidv2.util
 
+import java.text.DateFormat
 import java.text.DecimalFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 /**
@@ -31,6 +33,12 @@ class StringUtil {
             val currencySymbol = Currency.getInstance(Locale.getDefault()).symbol
 
             return "$currencySymbol $strValue"
+        }
+
+        fun applyShortDateFormat(date: Date): String {
+            val formatter = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault()) as SimpleDateFormat
+
+            return formatter.format(date)
         }
     }
 }

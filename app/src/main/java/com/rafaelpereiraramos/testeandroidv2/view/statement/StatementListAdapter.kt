@@ -1,5 +1,6 @@
 package com.rafaelpereiraramos.testeandroidv2.view.statement
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.rafaelpereiraramos.testeandroidv2.R
 import com.rafaelpereiraramos.testeandroidv2.db.model.StatementTO
+import com.rafaelpereiraramos.testeandroidv2.util.StringUtil.Companion.applyMoneyMask
+import com.rafaelpereiraramos.testeandroidv2.util.StringUtil.Companion.applyShortDateFormat
 
 /**
  * Created by Rafael P. Ramos on 27/11/2018.
@@ -31,8 +34,13 @@ class StatementListAdapter(
         fun bind(statement: StatementTO) {
             promptTitle.text = statement.title
             promptDesc.text = statement.desc
-            promptDate.text = statement.date.toString() // Change value
-            promptValue.text = statement.value.toString()
+            promptDate.text = applyShortDateFormat(statement.date)
+            promptValue.text = applyMoneyMask(statement.value)
+
+            if (statement.value < 0)
+                promptValue.setTextColor(Color.rgb(124,10,2))
+            else
+                promptValue.setTextColor(Color.rgb(0, 168, 107))
         }
 
         companion object {

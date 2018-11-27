@@ -37,6 +37,8 @@
                                                app:layout_constraintTop_toBottomOf="@id/statement_header"
                                                app:layout_constraintBottom_toBottomOf="parent"
                                                android:id="@+id/statement_list"
+                                               android:paddingLeft="10dp"
+                                               android:paddingRight="10dp"
     >
 
     </androidx.recyclerview.widget.RecyclerView>

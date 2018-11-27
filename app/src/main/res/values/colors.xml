@@ -4,4 +4,6 @@
     <color name="red700">#d32f2f</color>
     <color name="orange200">#ffcc80</color>
     <color name="white">#fff</color>
+
+    <color name="red500alpha25">#40f44336</color>
 </resources>
