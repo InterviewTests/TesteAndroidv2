@@ -3,6 +3,7 @@ package com.rafaelpereiraramos.testeandroidv2.di
 import android.content.Context
 import androidx.room.Room
 import com.rafaelpereiraramos.testeandroidv2.db.AppDatabase
+import com.rafaelpereiraramos.testeandroidv2.db.dao.ParameterDao
 import com.rafaelpereiraramos.testeandroidv2.db.dao.StatementDao
 import com.rafaelpereiraramos.testeandroidv2.db.dao.UserDao
 import dagger.Module
@@ -28,4 +29,8 @@ class DiskIOModule {
     @Provides
     @Singleton
     fun provideStatementDao(db: AppDatabase): StatementDao = db.statementDao()
+
+    @Provides
+    @Singleton
+    fun provideParameterDao(db: AppDatabase): ParameterDao = db.parameterDao()
 }

@@ -28,6 +28,9 @@ class LoginActivity : AppCompatActivity() {
 
         setEvents()
         subscribe()
+
+        if (savedInstanceState == null)
+            viewModel.start()
     }
 
     private fun setEvents() {

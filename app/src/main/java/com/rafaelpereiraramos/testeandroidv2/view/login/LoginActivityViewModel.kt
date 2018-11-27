@@ -2,6 +2,8 @@ package com.rafaelpereiraramos.testeandroidv2.view.login
 
 import androidx.lifecycle.*
 import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
+import com.rafaelpereiraramos.testeandroidv2.repo.ParameterRepo
+import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper
 import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper.Status.*
 import com.rafaelpereiraramos.testeandroidv2.repo.UserRepo
 import javax.inject.Inject
@@ -10,6 +12,7 @@ import javax.inject.Inject
  * Created by Rafael P. Ramos on 17/11/2018.
  */
 class LoginActivityViewModel @Inject constructor(
+    private val parameterRepo: ParameterRepo,
     private val userRepo: UserRepo
 ) : ViewModel() {
 
@@ -26,6 +29,27 @@ class LoginActivityViewModel @Inject constructor(
 
     lateinit var user: UserTO
 
+    fun start() {
+        val loggedId = parameterRepo.getLoginParameter()
+        _status.addSource(loggedId) { parameter ->
+            _status.removeSource(loggedId)
+
+            if (parameter == null || parameter.value.isEmpty())
+                return@addSource
+
+            val userLiveData = userRepo.getUser(parameter.value.toInt())
+
+            _status.addSource(userLiveData) { user ->
+                _status.removeSource(userLiveData)
+
+                if (user != null) {
+                    this.user = user
+                    _status.value = Status.LOGGED
+                }
+            }
+        }
+    }
+
     fun login(userName: String, password: String) {
         if (isLogin)
             return
@@ -41,6 +65,7 @@ class LoginActivityViewModel @Inject constructor(
                     user = resource.data!!
                     _status.value =
                             Status.LOGGED
+                    parameterRepo.setLoggedParameter(user.id)
                 }
                 // TODO threat each different error
                 ERROR -> {

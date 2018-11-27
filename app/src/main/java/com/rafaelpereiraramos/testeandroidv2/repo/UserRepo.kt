@@ -17,6 +17,8 @@ class UserRepo @Inject constructor(
     private val api: BankApi,
     private val appExecutors: AppExecutors
 ) {
+    fun getUser(id: Int): LiveData<UserTO?> = userDao.getUser(id)
+
     fun getUser(userName: String, password: String): LiveData<ResourceWrapper<UserTO>> {
         return object : NetworkBoundResource<LoginResponse, UserTO>(appExecutors){
 
