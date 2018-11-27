@@ -31,6 +31,10 @@
                   app:layout_constraintTop_toBottomOf="@id/label_balance" android:textSize="@dimen/text_input" android:textColor="@color/white"
         />
 
+        <ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ic_exit_to_app"
+                     app:layout_constraintRight_toRightOf="parent" android:backgroundTint="@color/red500" android:id="@+id/action_exit"
+        />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView android:layout_width="match_parent" android:layout_height="0dp"

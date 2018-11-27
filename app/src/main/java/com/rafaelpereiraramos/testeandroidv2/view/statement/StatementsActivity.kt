@@ -1,5 +1,6 @@
 package com.rafaelpereiraramos.testeandroidv2.view.statement
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
@@ -12,6 +13,7 @@ import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
 import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper
 import com.rafaelpereiraramos.testeandroidv2.util.StringUtil.Companion.applyAgencyMask
 import com.rafaelpereiraramos.testeandroidv2.util.StringUtil.Companion.applyMoneyMask
+import com.rafaelpereiraramos.testeandroidv2.view.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_statements.*
 import javax.inject.Inject
 
@@ -31,6 +33,7 @@ class StatementsActivity : AppCompatActivity() {
 
         setView(user)
         subscribe()
+        setEvents()
 
         viewModel.loadStatements(user.id)
     }
@@ -53,6 +56,17 @@ class StatementsActivity : AppCompatActivity() {
                 ResourceWrapper.Status.LOADING -> TODO()
             }
         })
+    }
+    private fun setEvents() {
+        action_exit.setOnClickListener {
+            viewModel.exit()
+
+            val intent = Intent(this, LoginActivity::class.java)
+
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+            startActivity(intent)
+        }
     }
 
     private fun bindStatements(statements: List<StatementTO>) {
