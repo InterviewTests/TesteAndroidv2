@@ -4,7 +4,7 @@ import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.rafaelpereiraramos.testeandroidv2.App
-import com.rafaelpereiraramos.testeandroidv2.api.BankApi
+import com.rafaelpereiraramos.testeandroidv2.api.BankApiService
 import com.rafaelpereiraramos.testeandroidv2.api.LiveDataCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -12,6 +12,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import timber.log.Timber
 import javax.inject.Singleton
 
 /**
@@ -22,7 +23,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideGithubService(gson: Gson, httpClient: OkHttpClient): BankApi {
+    fun provideBankApiService(gson: Gson, httpClient: OkHttpClient): BankApiService {
         val builder = Retrofit.Builder()
             .baseUrl(App.BASE_URL)
             .client(httpClient)
@@ -30,7 +31,7 @@ class NetworkModule {
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()
 
-        return builder.create(BankApi::class.java)
+        return builder.create(BankApiService::class.java)
     }
 
     @Provides
@@ -45,7 +46,7 @@ class NetworkModule {
     @Singleton
     fun provideOkkHttpClient(): OkHttpClient {
         val logger = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
-            Log.d("API", it)
+            Timber.d(it)
         })
         logger.level = HttpLoggingInterceptor.Level.BASIC
 

@@ -2,7 +2,7 @@ package com.rafaelpereiraramos.testeandroidv2.repo
 
 import androidx.lifecycle.LiveData
 import com.rafaelpereiraramos.testeandroidv2.api.ApiResponseLiveData
-import com.rafaelpereiraramos.testeandroidv2.api.BankApi
+import com.rafaelpereiraramos.testeandroidv2.api.BankApiService
 import com.rafaelpereiraramos.testeandroidv2.api.LoginResponse
 import com.rafaelpereiraramos.testeandroidv2.core.AppExecutors
 import com.rafaelpereiraramos.testeandroidv2.db.dao.UserDao
@@ -14,7 +14,7 @@ import javax.inject.Inject
  */
 class UserRepo @Inject constructor(
     private val userDao: UserDao,
-    private val api: BankApi,
+    private val apiService: BankApiService,
     private val appExecutors: AppExecutors
 ) {
     fun getUser(id: Int): LiveData<UserTO?> = userDao.getUser(id)
@@ -26,7 +26,7 @@ class UserRepo @Inject constructor(
 
             override fun shouldFetch(result: UserTO?): Boolean = result == null
 
-            override fun makeCall(): ApiResponseLiveData<LoginResponse>  = api.login(userName, password)
+            override fun makeCall(): ApiResponseLiveData<LoginResponse>  = apiService.login(userName, password)
 
             override fun saveCallResult(callResult: LoginResponse) {
                 val user = callResult.userAccount

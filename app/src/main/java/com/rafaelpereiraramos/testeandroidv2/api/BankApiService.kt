@@ -7,7 +7,7 @@ import retrofit2.http.*
 /**
  * Created by Rafael P. Ramos on 17/11/2018.
  */
-interface BankApi {
+interface BankApiService {
 
     @FormUrlEncoded
     //@Headers(value = ["Content-Type: application/x-www-form-urlencoded"])
