@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Banco</string>
+    <string name="hint_user">Usuário</string>
+    <string name="hint_password">Senha</string>
+    <string name="btn_login_text">Login</string>
+    <string name="txt_account">Conta</string>
+    <string name="txt_balance">Saldo</string>
+    <string name="txt_recent">Recentes</string>
+    <string name="error_user_password">Usuário ou senha inválido.</string>
+    <string name="error_login">Erro ao tentar entrar no aplicativo.</string>
+    <string name="title_logout">Sair</string>
+    <string name="message_logout">Gostaria de sair?</string>
+    <string name="btn_yes">sim</string>
+    <string name="btn_no">não</string>
+    <string name="action_logout_title">Sair</string>
+    <string name="error_retrieve_statements">Erro ao tentar recuparar as transações.</string>
+</resources>

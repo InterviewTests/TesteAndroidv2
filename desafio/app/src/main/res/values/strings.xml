@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Bank</string>
+    <string name="hint_user">User</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login_text">Login</string>
+    <string name="txt_account">Account</string>
+    <string name="txt_balance">Balance</string>
+    <string name="txt_recent">Recent</string>
+    <string name="error_user_password">Invalid user or password.</string>
+    <string name="error_login">Error while trying to log on application.</string>
+    <string name="title_logout">Logout</string>
+    <string name="message_logout">Would you like to logout?</string>
+    <string name="btn_yes">yes</string>
+    <string name="btn_no">no</string>
+    <string name="action_logout_title">Logout</string>
+    <string name="error_retrieve_statements">Error while trying to retrieve statements.</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      tools:ignore="MissingDefaultResource">
+    <item
+            android:id="@+id/action_logout"
+            android:title="@string/action_logout_title"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/logout"
+            android:visible="true"/>
+</menu>
