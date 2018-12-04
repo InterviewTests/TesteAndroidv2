@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TesteSantander</string>
+    <string name="erro_campo_vazio">campos vazios</string>
+</resources>
