@@ -15,7 +15,7 @@ class HomePresenter : HomePresenterInput {
         var homeViewModel = HomeViewModel()
         homeViewModel.billsList = arrayListOf()
 
-        if (!response.billsList.isNullOrEmpty()) {
+        if (response.billsList != null) {
             for (b in response.billsList) {
                 homeViewModel.billsList.add(b)
             }

@@ -1,5 +1,6 @@
 package com.br.natanfelipe.bankapp.view.home
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import com.br.natanfelipe.bankapp.model.UserAccount
 import com.br.natanfelipe.bankapp.view.adapter.ItemBankAdapter
 import com.br.natanfelipe.bankapp.view.login.LoginActivity
 import com.br.natanfelipe.bankapp.interfaces.home.HomeInteractorInput
+import com.br.natanfelipe.bankapp.utils.EncripUtils
 
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.content_home.view.*
@@ -22,7 +24,7 @@ import java.util.*
 class HomeActivity : AppCompatActivity(), HomeActivityIntput {
 
 
-    var billsList = mutableListOf<Statement>()
+    private var billsList = mutableListOf<Statement>()
     lateinit var adapter: ItemBankAdapter
     lateinit var api : RestApi
     var output : HomeInteractorInput? = null
@@ -41,11 +43,16 @@ class HomeActivity : AppCompatActivity(), HomeActivityIntput {
 
         val intent = intent
         val currency = Currency.getInstance(Locale.getDefault())
-        if(intent.getSerializableExtra("userAccount") != null){
-            userAccount = intent.getSerializableExtra("userAccount") as UserAccount
-            tv_name.text = userAccount.name
-            tv_agency.text = userAccount.bankAccount+" / "+userAccount.agency.toString()
-            tv_balance.text = currency.symbol+""+userAccount.balance.toString()
+        val prefs = getSharedPreferences("userDataPrefs", Context.MODE_PRIVATE)
+
+        if(prefs.getString("name","") != null){
+            tv_name.text = EncripUtils.decrypt(prefs.getString("name",""),"")
+        }
+        if(prefs.getString("balance","") != null){
+            tv_balance.text =  currency.symbol+""+EncripUtils.decrypt(prefs.getString("balance",""),"")
+        }
+        if(prefs.getString("agency","") != null && prefs.getString("bankAccount","") != null){
+            tv_agency.text =EncripUtils.decrypt(prefs.getString("bankAccount",""),"")+" / "+EncripUtils.decrypt(prefs.getString("agency",""),"")
         }
 
         HomeConfigurator.INSTANCE.configure(this)
@@ -55,7 +62,6 @@ class HomeActivity : AppCompatActivity(), HomeActivityIntput {
         iv_desc.setOnClickListener{
             disconect()
         }
-
     }
 
     private fun disconect() {
@@ -74,7 +80,7 @@ class HomeActivity : AppCompatActivity(), HomeActivityIntput {
         content.textView.visibility = View.VISIBLE
     }
 
-    fun fetchMetaData(){
+    private fun fetchMetaData(){
         val homeRequest = HomeRequest()
         homeRequest.api = api
         output?.fetchHomeMetaData(homeRequest)

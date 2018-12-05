@@ -4,7 +4,6 @@ import com.br.natanfelipe.bankapp.RxImmediateSchedulerRule
 import com.br.natanfelipe.bankapp.api.RestApi
 import com.br.natanfelipe.bankapp.interactor.LoginInteractor
 import com.br.natanfelipe.bankapp.interfaces.home.LoginPresenterInput
-import com.br.natanfelipe.bankapp.interfaces.login.LoginInteractorInput
 import com.br.natanfelipe.bankapp.presenter.LoginPresenter
 import com.br.natanfelipe.bankapp.view.login.LoginRequest
 import com.br.natanfelipe.bankapp.view.login.LoginResponse
@@ -18,7 +17,6 @@ class LoginInteractorTest {
     lateinit var api: RestApi
     lateinit var loginPresenter: LoginPresenter
     lateinit var loginInteractor : LoginInteractor
-    var output : LoginInteractorInput? = null
 
     companion object {
         @ClassRule
