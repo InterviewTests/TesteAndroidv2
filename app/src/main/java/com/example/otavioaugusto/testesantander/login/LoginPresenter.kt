@@ -1,11 +1,19 @@
 package com.example.otavioaugusto.testesantander.login
 
-import android.provider.Settings.Global.getString
-import com.example.otavioaugusto.testesantander.R
+
+import com.example.otavioaugusto.testesantander.APIService
+import com.example.otavioaugusto.testesantander.model.User
+import com.example.otavioaugusto.testesantander.model.UserAccount
+import com.example.otavioaugusto.testesantander.model.UserResponse
+import com.example.otavioaugusto.testesantander.statements.StatementsActivity
+import com.example.otavioaugusto.testesantander.statements.StatementsPresenter
+import com.example.otavioaugusto.testesantander.utils.RetrofitService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.regex.Pattern
 
 class LoginPresenter(val view:LoginActivity) : LoginContrato.Presenter {
-
 
 
     override fun validarCPF(cpf: String): Boolean {
@@ -17,10 +25,9 @@ class LoginPresenter(val view:LoginActivity) : LoginContrato.Presenter {
 
     override fun validar(user: String, password: String): Boolean {
         var isValid = true
-
         if (user.isNullOrEmpty()) {
             isValid = false
-            view.mensagensErro("Campo Vazio")
+            view.mensagensErro("Campo vazio")
         } else
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(user).matches()) {
                 if (!validarCPF(user)) {
@@ -42,13 +49,51 @@ class LoginPresenter(val view:LoginActivity) : LoginContrato.Presenter {
         return isValid
     }
 
-
     override fun validarPassword(password: String): Boolean {
         return Pattern.matches(
             """((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#${'$'}%]).{6,20})"""",
             password
         )
     }
+
+    override fun login(user: String, password: String) {
+        var call = RetrofitService
+            .retrofit.create(APIService::class.java)
+            .login(user,password)
+
+        call.enqueue(object: Callback<UserResponse> {
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                view.mensagensErro(t.message!!)
+            }
+
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                if (response.isSuccessful) {
+
+                    val user3 = response.body()!!.userAccount
+
+                    view.user(user3)
+
+
+
+
+
+
+                }else{
+                view.mensagensErro("Código"+response.code().toString())
+            }
+            }
+
+        })
+
+    }
+
+
+
+
+
+
+
+
 
 }
 

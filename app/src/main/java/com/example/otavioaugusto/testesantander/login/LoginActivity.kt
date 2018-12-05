@@ -1,5 +1,6 @@
 package com.example.otavioaugusto.testesantander.login
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -7,9 +8,20 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import com.example.otavioaugusto.testesantander.R
+import com.example.otavioaugusto.testesantander.model.UserAccount
+import com.example.otavioaugusto.testesantander.statements.StatementsPresenter
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginContrato.View {
+
+
+   override fun user(user: UserAccount) {
+        Log.e("User","${user}")
+
+       StatementsPresenter.dadosParaIntent(user.userId,
+           user.name,user.bankAccount,user.agency,user.balance, this)
+
+    }
 
     lateinit var presenter:LoginContrato.Presenter
 
@@ -23,10 +35,9 @@ class LoginActivity : AppCompatActivity(), LoginContrato.View {
          var user = edtUser.text.toString()
          var password = edtPassword.text.toString()
 
-        if( presenter.validar(user,password)){
 
-            Log.e("Passar para tela","xxz")
-        }
+            presenter.login(user,password)
+
      }
 
 
