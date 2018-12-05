@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">BankApp</string>
+    <string name="lb_user">User</string>
+    <string name="lb_password">Password</string>
+    <string name="lb_login">Login</string>
+    <string name="lb_title">Title</string>
+    <string name="lb_description">Description</string>
+    <string name="lb_date">Date</string>
+    <string name="lb_value">Value</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="lb_carregando">Carregando...</string>
+    <string name="lb_saldo">Saldo</string>
+    <string name="lb_conta">Conta</string>
+    <string name="lb_recentes">Recentes</string>
+    <string name="pwd_error_msg">A senha tem pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico</string>
+    <string name="user_error_msg">O campo deve ser do tipo e-mail ou cpf</string>
+</resources>
