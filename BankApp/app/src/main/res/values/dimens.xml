@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="small_margin">8dp</dimen>
+    <dimen name="text_input_width">342dp</dimen>
+    <dimen name="text_input_layout_height">60dp</dimen>
+    <dimen name="text_input_edit_text_height">50dp</dimen>
 </resources>

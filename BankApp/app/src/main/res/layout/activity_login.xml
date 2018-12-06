@@ -3,68 +3,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".LoginActivity">
+        tools:context=".LoginActivity"
+        >
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/ivLogo"
             android:layout_width="125dp"
             android:layout_height="70dp"
             android:layout_marginEnd="@dimen/small_margin"
             android:layout_marginStart="@dimen/small_margin"
             android:layout_marginTop="56dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo" />
+            app:srcCompat="@drawable/logo"
+            />
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="342dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="@dimen/small_margin"
-            android:layout_marginStart="@dimen/small_margin"
-            android:layout_marginTop="132dp"
-            android:ems="10"
-            android:hint="User"
-            android:inputType="textEmailAddress"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilUser"
+            style="@style/text_input_style"
+            android:layout_height="@dimen/text_input_layout_height"
+            android:layout_marginTop="108dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/ivLogo"
+            >
 
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="342dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="@dimen/small_margin"
-            android:layout_marginStart="@dimen/small_margin"
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/tietUser"
+                android:layout_width="@dimen/text_input_width"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:hint="@string/text_field_user_hint"
+                android:inputType="textEmailAddress"
+                android:textColorLink="@color/colorAccent"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilPassword"
+            android:layout_height="@dimen/text_input_layout_height"
             android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/tilUser"
+            style="@style/text_input_style"
+            >
 
-        <Button
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/tietPassword"
+                android:layout_width="@dimen/text_input_width"
+                android:layout_height="@dimen/text_input_edit_text_height"
+                android:hint="@string/text_field_password_hint"
+                android:inputType="textPassword"
+                android:textColorLink="@color/colorAccent"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.button.MaterialButton
             android:id="@+id/btnLogin"
             android:layout_width="202dp"
             android:layout_height="62dp"
             android:layout_marginStart="@dimen/small_margin"
-            android:layout_marginTop="124dp"
-            android:background="@color/colorMain"
+            android:layout_marginTop="100dp"
             android:text="@string/label_button_login"
             android:textColor="@android:color/white"
+            android:background="@color/colorMain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
+            app:layout_constraintTop_toBottomOf="@+id/tilPassword"
+            />
 
     </android.support.constraint.ConstraintLayout>
 

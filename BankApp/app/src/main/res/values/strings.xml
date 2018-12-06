@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">BankApp</string>
     <string name="label_button_login">Login</string>
+    <string name="text_field_password_hint">Password</string>
+    <string name="text_field_user_hint">User</string>
 </resources>
