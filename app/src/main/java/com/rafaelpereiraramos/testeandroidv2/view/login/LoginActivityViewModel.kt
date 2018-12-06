@@ -2,18 +2,17 @@ package com.rafaelpereiraramos.testeandroidv2.view.login
 
 import androidx.lifecycle.*
 import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
-import com.rafaelpereiraramos.testeandroidv2.repo.ParameterRepo
-import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper
+import com.rafaelpereiraramos.testeandroidv2.repo.impl.ParameterRepoImpl
 import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper.Status.*
-import com.rafaelpereiraramos.testeandroidv2.repo.UserRepo
+import com.rafaelpereiraramos.testeandroidv2.repo.impl.UserRepoImpl
 import javax.inject.Inject
 
 /**
  * Created by Rafael P. Ramos on 17/11/2018.
  */
 class LoginActivityViewModel @Inject constructor(
-    private val parameterRepo: ParameterRepo,
-    private val userRepo: UserRepo
+    private val parameterRepo: ParameterRepoImpl,
+    private val userRepo: UserRepoImpl
 ) : ViewModel() {
 
     enum class Status {
