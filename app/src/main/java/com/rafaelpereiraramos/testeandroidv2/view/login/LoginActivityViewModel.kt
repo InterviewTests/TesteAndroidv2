@@ -2,17 +2,17 @@ package com.rafaelpereiraramos.testeandroidv2.view.login
 
 import androidx.lifecycle.*
 import com.rafaelpereiraramos.testeandroidv2.db.model.UserTO
-import com.rafaelpereiraramos.testeandroidv2.repo.impl.ParameterRepoImpl
+import com.rafaelpereiraramos.testeandroidv2.repo.ParameterRepo
 import com.rafaelpereiraramos.testeandroidv2.repo.ResourceWrapper.Status.*
-import com.rafaelpereiraramos.testeandroidv2.repo.impl.UserRepoImpl
+import com.rafaelpereiraramos.testeandroidv2.repo.UserRepo
 import javax.inject.Inject
 
 /**
  * Created by Rafael P. Ramos on 17/11/2018.
  */
 class LoginActivityViewModel @Inject constructor(
-    private val parameterRepo: ParameterRepoImpl,
-    private val userRepo: UserRepoImpl
+    private val parameterRepo: ParameterRepo,
+    private val userRepo: UserRepo
 ) : ViewModel() {
 
     enum class Status {
@@ -62,8 +62,7 @@ class LoginActivityViewModel @Inject constructor(
             when(resource.status) {
                 SUCCESS -> {
                     user = resource.data!!
-                    _status.value =
-                            Status.LOGGED
+                    _status.value = Status.LOGGED
                     parameterRepo.setLoggedParameter(user.id)
                 }
                 // TODO threat each different error
