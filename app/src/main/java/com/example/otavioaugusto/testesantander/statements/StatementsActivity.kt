@@ -1,5 +1,6 @@
 package com.example.otavioaugusto.testesantander.statements
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.otavioaugusto.testesantander.R
@@ -21,12 +22,16 @@ class StatementsActivity : AppCompatActivity() {
 
         var intent = intent
         val name = intent.getStringExtra("name")
-        val subtitulo = intent.getStringExtra("subtitulo")
-        val descricao = intent.getStringExtra("descricao")
-        val urlImg = intent.getStringExtra("img")
+        val bankAccount = intent.getStringExtra("bankAccount")
+        val agency = intent.getStringExtra("agency")
+        val balance = intent.getDoubleExtra("balance",0.0)
 
         txtNome.setText(name)
+        txtConta.setText(bankAccount+ "/" +agency)
+        txtSaldo.setText("R$ "+balance.toString())
 
 
     }
 }
+
+

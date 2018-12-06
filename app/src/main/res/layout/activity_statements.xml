@@ -5,12 +5,47 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".statements.StatementsActivity">
+        tools:context=".statements.StatementsActivity" tools:layout_editor_absoluteY="25dp">
+
+    <View
+            style="@style/viewStatements"
+            android:id="@+id/view"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-            android:text="TextView"
-            android:textSize="24sp"
-            android:layout_width="235dp"
-            android:layout_height="86dp" tools:layout_editor_absoluteY="124dp"
-            tools:layout_editor_absoluteX="86dp" android:id="@+id/txtNome"/>
+            style="@style/txtNome"
+            android:id="@+id/txtNome"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/view" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="18dp" app:layout_constraintBottom_toBottomOf="@+id/view"
+            android:layout_marginBottom="163dp"/>
+
+    <TextView
+            style="@style/contaTXT"
+            android:layout_marginTop="28dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtNome" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="18dp"/>
+    <TextView
+            style="@style/txtConta"
+            android:id="@+id/txtConta"
+            android:layout_marginTop="47dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtNome" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="18dp"/>
+
+    <TextView
+            style="@style/saldoTXT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints"
+            android:id="@+id/textView" android:layout_marginTop="97dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtNome" android:layout_marginStart="18dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+            style="@style/txtSaldo"
+            android:id="@+id/txtSaldo"
+            android:layout_marginTop="117dp"
+            app:layout_constraintTop_toBottomOf="@+id/txtNome" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="18dp"/>
 </android.support.constraint.ConstraintLayout>
