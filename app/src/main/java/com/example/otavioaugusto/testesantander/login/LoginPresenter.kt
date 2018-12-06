@@ -73,11 +73,6 @@ class LoginPresenter(val view:LoginActivity) : LoginContrato.Presenter {
 
                     view.user(user3)
 
-
-
-
-
-
                 }else{
                 view.mensagensErro("Código"+response.code().toString())
             }

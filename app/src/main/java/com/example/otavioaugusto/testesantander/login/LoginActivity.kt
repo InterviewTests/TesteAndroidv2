@@ -16,11 +16,8 @@ class LoginActivity : AppCompatActivity(), LoginContrato.View {
 
 
    override fun user(user: UserAccount) {
-        Log.e("User","${user}")
-
        StatementsPresenter.dadosParaIntent(user.userId,
            user.name,user.bankAccount,user.agency,user.balance, this)
-
     }
 
     lateinit var presenter:LoginContrato.Presenter
