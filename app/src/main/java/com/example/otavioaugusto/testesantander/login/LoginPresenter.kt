@@ -17,11 +17,12 @@ class LoginPresenter(val view:LoginActivity) : LoginContrato.Presenter {
 
 
     override fun validarCPF(cpf: String): Boolean {
-        return Pattern.matches(
-            """\d{3}\.\d{3}\.\d{3}-\d{2}""",
-            cpf
-        )
-    }
+            return Pattern.matches(
+                """\d{3}\.\d{3}\.\d{3}-\d{2}""",
+                cpf
+            )
+        }
+
 
     override fun validar(user: String, password: String): Boolean {
         var isValid = true
@@ -50,10 +51,7 @@ class LoginPresenter(val view:LoginActivity) : LoginContrato.Presenter {
     }
 
     override fun validarPassword(password: String): Boolean {
-        return Pattern.matches(
-            """((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#${'$'}%]).{6,20})"""",
-            password
-        )
+        return Pattern.matches("""((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#${'$'}%]).{6,20})"""", password)
     }
 
     override fun login(user: String, password: String) {

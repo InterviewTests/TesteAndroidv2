@@ -18,7 +18,6 @@ class StatementsActivity : AppCompatActivity(), StatementsContrato.View {
 
 
     lateinit var presenter: StatementsContrato.Presenter
-     //lateinit var recycler:RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +34,6 @@ class StatementsActivity : AppCompatActivity(), StatementsContrato.View {
         val balance = intent.getDoubleExtra("balance",0.0)
         val id = intent.getIntExtra("userId",1)
 
-
         txtNome.setText(name)
         txtConta.setText(bankAccount+ "/" +agency)
         txtSaldo.setText("R$ "+balance.toString())
@@ -46,7 +44,6 @@ class StatementsActivity : AppCompatActivity(), StatementsContrato.View {
 
 
     override fun listaStatements(lista: List<StatementListItem>) {
-
         val adapter = StatementsAdapter(lista,this)
         recyclerView.adapter = adapter
 
@@ -63,9 +60,6 @@ class StatementsActivity : AppCompatActivity(), StatementsContrato.View {
     fun initRecyler(){
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
-
-
-
 
     }
 

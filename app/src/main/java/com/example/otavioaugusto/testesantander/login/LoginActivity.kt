@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity(), LoginContrato.View {
          var user = edtUser.text.toString()
          var password = edtPassword.text.toString()
 
-
+            presenter.validar(user,password)
             presenter.login(user,password)
 
      }
