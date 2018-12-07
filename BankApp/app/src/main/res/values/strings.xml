@@ -3,4 +3,7 @@
     <string name="label_button_login">Login</string>
     <string name="text_field_password_hint">Password</string>
     <string name="text_field_user_hint">User</string>
+    <string name="label_logout">Logout</string>
+    <string name="label_balance_amount_title">Saldo</string>
+    <string name="label_account">Conta</string>
 </resources>

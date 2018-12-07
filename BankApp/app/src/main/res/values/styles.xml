@@ -13,4 +13,8 @@
         <item name="android:layout_marginEnd">@dimen/small_margin</item>
         <item name="android:layout_marginStart">@dimen/small_margin</item>
     </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>
