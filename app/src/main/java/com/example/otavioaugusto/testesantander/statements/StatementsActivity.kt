@@ -3,8 +3,11 @@ package com.example.otavioaugusto.testesantander.statements
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import com.example.otavioaugusto.testesantander.R
+import com.example.otavioaugusto.testesantander.adapters.StatementsAdapter
 import com.example.otavioaugusto.testesantander.login.LoginContrato
 import com.example.otavioaugusto.testesantander.model.StatementListItem
 import com.example.otavioaugusto.testesantander.model.Statements
@@ -15,6 +18,7 @@ class StatementsActivity : AppCompatActivity(), StatementsContrato.View {
 
 
     lateinit var presenter: StatementsContrato.Presenter
+     //lateinit var recycler:RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +26,7 @@ class StatementsActivity : AppCompatActivity(), StatementsContrato.View {
 
         presenter = StatementsPresenter(this)
 
+        initRecyler()
 
         var intent = intent
         val name = intent.getStringExtra("name")
@@ -42,7 +47,8 @@ class StatementsActivity : AppCompatActivity(), StatementsContrato.View {
 
     override fun listaStatements(lista: List<StatementListItem>) {
 
-        Log.e("Lista", "${lista}")
+        val adapter = StatementsAdapter(lista,this)
+        recyclerView.adapter = adapter
 
     }
 
@@ -52,6 +58,15 @@ class StatementsActivity : AppCompatActivity(), StatementsContrato.View {
 
     override fun mensagemOk(msg: String) {
         Log.e("OK", "${msg}")
+    }
+
+    fun initRecyler(){
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
+
+
+
+
     }
 
 }
