@@ -1,8 +1,9 @@
-package br.com.rphmelo.bankapp
+package br.com.rphmelo.bankapp.activity
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import br.com.rphmelo.bankapp.R
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {

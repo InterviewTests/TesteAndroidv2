@@ -1,4 +1,4 @@
-package br.com.rphmelo.bankapp
+package br.com.rphmelo.bankapp.activity
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -7,7 +7,8 @@ import android.support.v7.widget.StaggeredGridLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import br.com.rphmelo.bankapp.R
-import br.com.rphmelo.bankapp.R.id.rvList
+import br.com.rphmelo.bankapp.adapter.StatementListAdapter
+import br.com.rphmelo.bankapp.model.StatementModel
 import kotlinx.android.synthetic.main.activity_currency.*
 
 class CurrencyActivity : AppCompatActivity() {
