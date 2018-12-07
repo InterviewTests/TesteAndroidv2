@@ -73,13 +73,13 @@
             android:layout_height="62dp"
             android:layout_marginStart="@dimen/small_margin"
             android:layout_marginTop="100dp"
+            android:background="@color/colorMain"
+            android:onClick="loginIntoApp"
             android:text="@string/label_button_login"
             android:textColor="@android:color/white"
-            android:background="@color/colorMain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilPassword"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
 
     </android.support.constraint.ConstraintLayout>
 
