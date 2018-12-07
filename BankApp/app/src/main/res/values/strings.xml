@@ -6,4 +6,5 @@
     <string name="label_logout">Logout</string>
     <string name="label_balance_amount_title">Saldo</string>
     <string name="label_account">Conta</string>
+    <string name="currency_list_title">Recentes</string>
 </resources>

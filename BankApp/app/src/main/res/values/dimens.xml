@@ -4,4 +4,5 @@
     <dimen name="text_input_width">342dp</dimen>
     <dimen name="text_input_layout_height">60dp</dimen>
     <dimen name="text_input_edit_text_height">50dp</dimen>
+    <dimen name="margin_start_currency_layout">18dp</dimen>
 </resources>

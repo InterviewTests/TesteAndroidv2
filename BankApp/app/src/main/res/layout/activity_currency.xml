@@ -21,7 +21,7 @@
                 android:id="@+id/lblAccountTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/margin_start_currency_layout"
                 android:layout_marginTop="64dp"
                 android:text="@string/label_account"
                 android:textColor="@android:color/white"
@@ -33,7 +33,7 @@
                 android:id="@+id/lblAccountAgency"
                 android:layout_width="wrap_content"
                 android:layout_height="33dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/margin_start_currency_layout"
                 android:layout_marginTop="80dp"
                 android:text="2050 / 01.111.222-4"
                 android:textColor="@android:color/white"
@@ -45,7 +45,7 @@
                 android:id="@+id/lblBalanceAmountTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/margin_start_currency_layout"
                 android:layout_marginTop="24dp"
                 android:text="@string/label_balance_amount_title"
                 android:textColor="@android:color/white"
@@ -56,7 +56,7 @@
                 android:id="@+id/lblBalanceAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/margin_start_currency_layout"
                 android:text="R$1.000,00"
                 android:textColor="@android:color/white"
                 android:textSize="25sp"
@@ -78,4 +78,30 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context="br.com.rafael.main.ui.currency.CurrencyActivityInput">
+
+            <TextView
+                android:id="@+id/lblTituloRecentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/currency_list_title"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
 </android.support.constraint.ConstraintLayout>
