@@ -3,8 +3,12 @@ package br.com.rphmelo.bankapp
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.support.v7.widget.Toolbar
 import android.view.Menu
+import br.com.rphmelo.bankapp.R
+import br.com.rphmelo.bankapp.R.id.rvList
+import kotlinx.android.synthetic.main.activity_currency.*
 
 class CurrencyActivity : AppCompatActivity() {
     private lateinit var toolbar: Toolbar
@@ -14,6 +18,47 @@ class CurrencyActivity : AppCompatActivity() {
         setContentView(R.layout.activity_currency)
         toolbar = findViewById(R.id.toolbar)
         setupCurrencyToolbar()
+
+        val recyclerView = rvList
+        recyclerView.adapter = StatementListAdapter(getList(), this)
+        val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.layoutManager = layoutManager
+    }
+
+    private fun getList(): List<StatementModel>{
+        return listOf(
+                StatementModel("Pagamento",
+                        "Conta de luz",
+                         "2018-08-15",
+                        -50.7),
+                StatementModel("Pagamento",
+                        "Conta de luz",
+                        "2018-08-15",
+                        50.8),
+                StatementModel("Pagamento",
+                        "Conta de luz",
+                        "2018-08-15",
+                        -50.3),
+                StatementModel("Pagamento",
+                        "Conta de luz",
+                        "2018-08-15",
+                        50.3),
+                StatementModel("Pagamento",
+                        "Conta de luz",
+                        "2018-08-15",
+                        -50.3),
+                StatementModel("Pagamento",
+                        "Conta de luz",
+                        "2018-08-15",
+                        -5.2),
+                StatementModel("Pagamento",
+                        "Conta de luz",
+                        "2018-08-15",
+                        34.4),
+                StatementModel("Pagamento",
+                        "Conta de luz",
+                        "2018-08-15",
+                        50.0))
     }
 
     private fun setupCurrencyToolbar() {
