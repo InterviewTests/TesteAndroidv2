@@ -9,7 +9,8 @@ class LoginViewModel {
 }
 
 class LoginRequest {
-
+    String user;
+    String password;
 }
 
 class LoginResponse {
