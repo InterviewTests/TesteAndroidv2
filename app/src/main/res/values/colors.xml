@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#FF3B49EE</color>
+    <color name="colorPrimaryDark">#FF3B49EE</color>
+    <color name="colorAccent">#FF3B49EE</color>
+
+    <color name="colorMainBackground">#FFFEFEFE</color>
+    <color name="colorBackground">#FFFFFFFF</color>
+    <color name="colorBorder">#FFDCE2EE</color>
+    <color name="colorTextInput">#FFA8B4C4</color>
+    <color name="colorTextError">#FFFF0000</color>
+    <color name="colorButton">#FF3B48EE</color>
+
+    <color name="colorLabel">#485465</color>
+    <color name="colorRecycleItem">#FFA8B4C4</color>
+    <color name="colorRecycleItemDark">#FF485465</color>
+
 </resources>
