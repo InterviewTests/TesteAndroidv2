@@ -1,5 +1,7 @@
 package com.example.rossinyamaral.bank.loginScreen;
 
+import com.example.rossinyamaral.bank.model.UserAccountModel;
+
 public class LoginModel {
 }
 
@@ -14,5 +16,5 @@ class LoginRequest {
 }
 
 class LoginResponse {
-
+    UserAccountModel userAccountModel;
 }

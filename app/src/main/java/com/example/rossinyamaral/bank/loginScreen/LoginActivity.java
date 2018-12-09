@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.rossinyamaral.bank.BankApplication;
 import com.example.rossinyamaral.bank.R;
@@ -22,6 +23,8 @@ public class LoginActivity extends AppCompatActivity
     LoginInteractorInput output;
     LoginRouter router;
 
+    EditText userEditText;
+    EditText passwordEditText;
     Button loginButton;
 
     @Override
@@ -32,20 +35,22 @@ public class LoginActivity extends AppCompatActivity
             getSupportActionBar().hide();
         }
 
+        userEditText = findViewById(R.id.userEditText);
+        passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
 
         LoginConfigurator.INSTANCE.configure(this);
-        LoginRequest aLoginRequest = new LoginRequest();
-        //populate the request
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BankApplication.getInstance().bankApi.login("test_user", "Test@1", null);
+                LoginRequest aLoginRequest = new LoginRequest();
+                //populate the request
+                aLoginRequest.user = userEditText.getText().toString();
+                aLoginRequest.password = passwordEditText.getText().toString();
+                output.fetchLoginData(aLoginRequest);
             }
         });
 //        BankApplication.getInstance().bankApi.login("test_user", "Test@1", null);
-
-        output.fetchLoginData(aLoginRequest);
         // Do other work
     }
 

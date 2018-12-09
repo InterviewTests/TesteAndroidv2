@@ -2,6 +2,10 @@ package com.example.rossinyamaral.bank.loginScreen;
 
 import android.util.Log;
 
+import com.example.rossinyamaral.bank.BankApi;
+import com.example.rossinyamaral.bank.BankApplication;
+import com.example.rossinyamaral.bank.model.UserAccountModel;
+
 interface LoginInteractorInput {
     public void fetchLoginData(LoginRequest request);
 }
@@ -25,9 +29,21 @@ public class LoginInteractor implements LoginInteractorInput {
     @Override
     public void fetchLoginData(LoginRequest request) {
         aLoginWorkerInput = getLoginWorkerInput();
-        LoginResponse LoginResponse = new LoginResponse();
+        final LoginResponse LoginResponse = new LoginResponse();
         // Call the workers
+        BankApplication.getInstance().bankApi.login(request.user, request.password,
+                new BankApi.ApiCallback<UserAccountModel>() {
+                    @Override
+                    public void onSuccess(UserAccountModel object) {
+                        LoginResponse.userAccountModel = object;
+                        output.presentLoginData(LoginResponse);
+                    }
 
-        output.presentLoginData(LoginResponse);
+                    @Override
+                    public void onError(BankApi.ErrorResponse message) {
+
+                    }
+                });
+
     }
 }

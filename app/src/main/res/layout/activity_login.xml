@@ -15,7 +15,7 @@
 
 
     <EditText
-        android:id="@+id/inputUser"
+        android:id="@+id/userEditText"
         style="@style/EditTextStyle"
         android:layout_below="@+id/logo_image"
         android:hint="@string/user"
@@ -23,9 +23,9 @@
 
 
     <EditText
-        android:id="@+id/inputPassword"
+        android:id="@+id/passwordEditText"
         style="@style/EditTextStyle"
-        android:layout_below="@id/inputUser"
+        android:layout_below="@id/userEditText"
         android:hint="@string/password"
         android:inputType="textPassword" />
 

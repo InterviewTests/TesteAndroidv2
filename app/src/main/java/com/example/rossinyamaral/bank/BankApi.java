@@ -32,22 +32,22 @@ public class BankApi {
     private Context context;
     private Gson gson;
 
-    private Uri.Builder builder = Uri.parse(BuildConfig.SERVICE_BASE_URL).buildUpon();
+    private Uri uri = Uri.parse(BuildConfig.SERVICE_BASE_URL);
 
     public BankApi() {
         //this.context = context;
         gson = new Gson();
     }
 
-    private void doRequest(String url, final Map<String, String> map, final Response.Listener<JSONObject> listener, final Response.ErrorListener errorListener) {
+    private void doRequest(int requestMethod, String url, final Map<String, String> map, final Response.Listener<JSONObject> listener, final Response.ErrorListener errorListener) {
         Log.d(LOGTAG, url + " " + map.toString());
-        StringRequest request = new StringRequest(Request.Method.POST, url,
+        StringRequest request = new StringRequest(requestMethod, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
+                            Log.d(LOGTAG, response);
                             JSONObject jsonObject = new JSONObject(response);
-                            Log.d(LOGTAG, response.toString());
                             listener.onResponse(jsonObject);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -97,8 +97,7 @@ public class BankApi {
             Map<String, String> map = new HashMap<>();
             map.put(USER_PARAM, user);
             map.put(PASSWORD_PARAM, password);
-            //map.put("undefined", "");
-            Uri uri = builder.build();
+            Uri uri = this.uri.buildUpon().appendPath("login").build();
             Response.Listener<JSONObject> okListener = new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
@@ -135,7 +134,7 @@ public class BankApi {
                     }
                 }
             };
-            doRequest(uri.toString() + "login", map, okListener, errorListener);
+            doRequest(Request.Method.POST, uri.toString(), map, okListener, errorListener);
         } catch (Exception e) {
             e.printStackTrace();
         }
