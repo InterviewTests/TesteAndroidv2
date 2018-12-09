@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import br.com.rphmelo.bankapp.R
 import br.com.rphmelo.bankapp.activities.CurrencyActivity
 import br.com.rphmelo.bankapp.presentation.login.models.LoginView
@@ -35,12 +36,20 @@ class LoginActivity : AppCompatActivity(), LoginView {
         progress.visibility = View.GONE
     }
 
-    override fun setUserError() {
-        tietUser.error = getString(R.string.empty_input_message)
+    override fun setUserEmptyError() {
+        showErrorMessage(getString(R.string.empty_input_message))
     }
 
-    override fun setPasswordError() {
-        tietPassword.error = getString(R.string.empty_input_message)
+    override fun setPasswordEmptyError() {
+        showErrorMessage(getString(R.string.empty_input_message))
+    }
+
+    override fun setUserInvalidError() {
+        showErrorMessage(getString(R.string.invalid_user_message))
+    }
+
+    override fun setPasswordInvalidError() {
+        showErrorMessage(getString(R.string.invalid_password_message))
     }
 
     override fun navigateToCurrencyPage() {
@@ -49,5 +58,10 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     private fun validateCredentials(){
         presenter.validateCredentials(tietUser.text.toString(), tietPassword.text.toString())
+    }
+
+    private fun showErrorMessage(message: String) {
+        Toast.makeText(this,
+                message, Toast.LENGTH_LONG).show();
     }
 }

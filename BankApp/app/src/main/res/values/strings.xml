@@ -8,9 +8,9 @@
     <string name="label_account">Conta</string>
     <string name="currency_list_title">Recentes</string>
     <string name="label_payment">Pagamento</string>
-    <string name="empty_input_message">Este campo deve ser preenchido</string>
-    <string name="invalid_email_message">Email inválido</string>
-    <string name="invalid_password_mask">
-        A senha precisa ter no mínimo 1 caractere especial, 1 caractere alfanumérico e 1 letra maiúscula
+    <string name="empty_input_message">Todos os campos devem ser preenchidos</string>
+    <string name="invalid_user_message">Usuário inválido! Digite um Email ou CPF válido!</string>
+    <string name="invalid_password_message">
+        A senha precisa ter no mínimo um caractere especial, um caractere alfanumérico e uma letra maiúscula
     </string>
 </resources>

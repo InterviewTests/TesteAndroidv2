@@ -15,16 +15,30 @@ class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginIntera
         loginView = null
     }
 
-    override fun onUserError() {
+    override fun onUserEmptyError() {
         loginView?.apply {
-            setUserError()
+            setUserEmptyError()
             hideProgress()
         }
     }
 
-    override fun onPasswordError() {
+    override fun onPasswordEmptyError() {
         loginView?.apply {
-            setPasswordError()
+            setPasswordEmptyError()
+            hideProgress()
+        }
+    }
+
+    override fun onUserInvalidError() {
+        loginView?.apply {
+            setUserInvalidError()
+            hideProgress()
+        }
+    }
+
+    override fun onPasswordInvalidError() {
+        loginView?.apply {
+            setPasswordInvalidError()
             hideProgress()
         }
     }
