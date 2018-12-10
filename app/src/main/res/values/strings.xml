@@ -3,4 +3,7 @@
     <string name="user">User</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="conta">Conta</string>
+    <string name="saldo">Saldo</string>
+    <string name="logout">logout</string>
 </resources>

@@ -9,10 +9,11 @@ import android.widget.EditText;
 
 import com.example.rossinyamaral.bank.BankApplication;
 import com.example.rossinyamaral.bank.R;
+import com.example.rossinyamaral.bank.model.UserAccountModel;
 
 
 interface LoginActivityInput {
-    public void displayLoginData(LoginViewModel viewModel);
+    public void displayLoginData(UserAccountModel viewModel);
 }
 
 
@@ -26,6 +27,8 @@ public class LoginActivity extends AppCompatActivity
     EditText userEditText;
     EditText passwordEditText;
     Button loginButton;
+
+    public UserAccountModel userAccountModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +71,9 @@ public class LoginActivity extends AppCompatActivity
 
 
     @Override
-    public void displayLoginData(LoginViewModel viewModel) {
+    public void displayLoginData(UserAccountModel viewModel) {
         Log.e(TAG, "displayLoginData() called with: viewModel = [" + viewModel + "]");
         // Deal with the data
+        router.onLoginClick(viewModel);
     }
 }

@@ -9,15 +9,15 @@ import android.os.Parcelable;
 
 public class UserAccountModel implements Parcelable {
 
-    public int userId;
-    public String name;
-    public String bankAccount;
-    public String agency;
-    public double balance;
+    int userId;
+    String name;
+    String bankAccount;
+    String agency;
+    double balance;
 
     public UserAccountModel() {}
 
-    protected UserAccountModel(Parcel in) {
+    private UserAccountModel(Parcel in) {
         userId = in.readInt();
         name = in.readString();
         bankAccount = in.readString();
@@ -26,7 +26,7 @@ public class UserAccountModel implements Parcelable {
     }
 
 
-    public static final Creator<UserAccountModel> CREATOR = new Creator<UserAccountModel>() {
+    public static final Parcelable.Creator<UserAccountModel> CREATOR = new Parcelable.Creator<UserAccountModel>() {
         @Override
         public UserAccountModel createFromParcel(Parcel in) {
             return new UserAccountModel(in);
@@ -50,5 +50,45 @@ public class UserAccountModel implements Parcelable {
         dest.writeString(bankAccount);
         dest.writeString(agency);
         dest.writeDouble(balance);
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    public String getAgency() {
+        return agency;
+    }
+
+    public void setAgency(String agency) {
+        this.agency = agency;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }

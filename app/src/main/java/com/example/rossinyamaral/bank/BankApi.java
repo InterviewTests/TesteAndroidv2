@@ -10,13 +10,18 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.rossinyamaral.bank.model.StatementModel;
 import com.example.rossinyamaral.bank.model.UserAccountModel;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,7 +45,7 @@ public class BankApi {
     }
 
     private void doRequest(int requestMethod, String url, final Map<String, String> map, final Response.Listener<JSONObject> listener, final Response.ErrorListener errorListener) {
-        Log.d(LOGTAG, url + " " + map.toString());
+        Log.d(LOGTAG, url + " " + (map != null ? map.toString() : ""));
         StringRequest request = new StringRequest(requestMethod, url,
                 new Response.Listener<String>() {
                     @Override
@@ -103,8 +108,8 @@ public class BankApi {
                 public void onResponse(JSONObject response) {
                     try {
                         if (callback != null) {
-                            if (!response.isNull("error")) {
-                                JSONObject jsonError = response.getJSONObject("error");
+                            JSONObject jsonError = response.getJSONObject("error");
+                            if (jsonError.length() != 0) {
                                 ErrorResponse error = gson.fromJson(jsonError.toString(), ErrorResponse.class);
                                 callback.onError(error);
                                 return;
@@ -135,6 +140,57 @@ public class BankApi {
                 }
             };
             doRequest(Request.Method.POST, uri.toString(), map, okListener, errorListener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void getStatements(int userId, final ApiCallback<List<StatementModel>> callback) {
+
+        try {
+            Uri uri = this.uri.buildUpon()
+                    .appendPath("statements")
+                    .appendPath(String.valueOf(userId))
+                    .build();
+            Response.Listener<JSONObject> okListener = new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        if (callback != null) {
+                            JSONObject jsonError = response.getJSONObject("error");
+                            if (jsonError.length() != 0) {
+                                ErrorResponse error = gson.fromJson(jsonError.toString(), ErrorResponse.class);
+                                callback.onError(error);
+                                return;
+                            }
+
+                            JSONArray jsonArray = response.getJSONArray("statementList");
+                            Type listType = new TypeToken<List<StatementModel>>(){}.getType();
+                            List<StatementModel> statements = gson.fromJson(jsonArray.toString(), listType);
+
+                            callback.onSuccess(statements);
+                        }
+                    } catch (Exception e) {
+                        ErrorResponse errorResponse = new ErrorResponse();
+                        errorResponse.code = -1;
+                        errorResponse.message = "Ops! An errorResponse has occurred";
+                        callback.onError(errorResponse);
+                    }
+                }
+            };
+            Response.ErrorListener errorListener = new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    if (callback != null) {
+                        ErrorResponse errorResponse = new ErrorResponse();
+                        errorResponse.code = -1;
+                        errorResponse.message = error.getMessage();
+                        callback.onError(errorResponse);
+                    }
+                }
+            };
+            doRequest(Request.Method.GET, uri.toString(), null, okListener, errorListener);
         } catch (Exception e) {
             e.printStackTrace();
         }
