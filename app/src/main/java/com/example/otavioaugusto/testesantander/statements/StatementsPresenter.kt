@@ -2,11 +2,9 @@ package com.example.otavioaugusto.testesantander.statements
 
 import android.content.Context
 import android.content.Intent
-import com.example.otavioaugusto.testesantander.APIService
-import com.example.otavioaugusto.testesantander.login.LoginActivity
+import com.example.otavioaugusto.testesantander.utils.APIService
 import com.example.otavioaugusto.testesantander.model.StatementListItem
 import com.example.otavioaugusto.testesantander.model.Statements
-import com.example.otavioaugusto.testesantander.model.UserAccount
 import com.example.otavioaugusto.testesantander.utils.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback

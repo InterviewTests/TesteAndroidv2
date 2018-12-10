@@ -1,12 +1,8 @@
 package com.example.otavioaugusto.testesantander.login
 
 
-import com.example.otavioaugusto.testesantander.APIService
-import com.example.otavioaugusto.testesantander.model.User
-import com.example.otavioaugusto.testesantander.model.UserAccount
+import com.example.otavioaugusto.testesantander.utils.APIService
 import com.example.otavioaugusto.testesantander.model.UserResponse
-import com.example.otavioaugusto.testesantander.statements.StatementsActivity
-import com.example.otavioaugusto.testesantander.statements.StatementsPresenter
 import com.example.otavioaugusto.testesantander.utils.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
@@ -55,6 +51,7 @@ class LoginPresenter(val view:LoginActivity) : LoginContrato.Presenter {
     }
 
     override fun login(user: String, password: String) {
+        view.showProgressBar()
         var call = RetrofitService
             .retrofit.create(APIService::class.java)
             .login(user,password)
@@ -70,7 +67,7 @@ class LoginPresenter(val view:LoginActivity) : LoginContrato.Presenter {
                     val user3 = response.body()!!.userAccount
 
                     view.user(user3)
-
+                    view.hideProgressBar()
                 }else{
                 view.mensagensErro("Código"+response.code().toString())
             }

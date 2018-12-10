@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity(), LoginContrato.View {
 
 
-   override fun user(user: UserAccount) {
+    override fun user(user: UserAccount) {
        StatementsPresenter.dadosParaIntent(user.userId,
            user.name,user.bankAccount,user.agency,user.balance, this)
     }
@@ -47,10 +47,18 @@ class LoginActivity : AppCompatActivity(), LoginContrato.View {
     }
 
 
-
     override fun mensagemOk(msg: String) {
         Log.e("OK","${msg}")
     }
+
+    override fun showProgressBar() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    override fun hideProgressBar() {
+        progressBar.visibility = View.INVISIBLE
+    }
+
 
 
 

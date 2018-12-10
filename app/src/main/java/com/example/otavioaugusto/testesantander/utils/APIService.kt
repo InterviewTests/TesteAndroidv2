@@ -1,4 +1,4 @@
-package com.example.otavioaugusto.testesantander
+package com.example.otavioaugusto.testesantander.utils
 
 import com.example.otavioaugusto.testesantander.model.StatementListItem
 import com.example.otavioaugusto.testesantander.model.Statements
