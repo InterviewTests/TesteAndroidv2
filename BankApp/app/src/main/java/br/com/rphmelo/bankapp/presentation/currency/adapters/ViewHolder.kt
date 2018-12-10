@@ -1,8 +1,8 @@
-package br.com.rphmelo.bankapp.adapters
+package br.com.rphmelo.bankapp.presentation.currency.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import br.com.rphmelo.bankapp.models.StatementModel
+import br.com.rphmelo.bankapp.presentation.currency.models.StatementModel
 import kotlinx.android.synthetic.main.item_statement_list.view.*
 
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

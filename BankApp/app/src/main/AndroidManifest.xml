@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         s
-        <activity android:name=".activities.CurrencyActivity"></activity>
+        <activity android:name=".presentation.currency.CurrencyActivity"></activity>
     </application>
 
 </manifest>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.CurrencyActivity">
+    tools:context=".presentation.currency.CurrencyActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -107,6 +107,16 @@
                 android:layout_marginTop="52dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/currency_progress"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/rvList"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                style="@style/progress_style"
+                />
 
         </android.support.constraint.ConstraintLayout>
 

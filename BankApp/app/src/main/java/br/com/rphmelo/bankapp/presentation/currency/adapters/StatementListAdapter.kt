@@ -1,11 +1,11 @@
-package br.com.rphmelo.bankapp.adapters
+package br.com.rphmelo.bankapp.presentation.currency.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import br.com.rphmelo.bankapp.R
-import br.com.rphmelo.bankapp.models.StatementModel
+import br.com.rphmelo.bankapp.presentation.currency.models.StatementModel
 
 class StatementListAdapter(private val list: List<StatementModel>,
                            private val context: Context) : RecyclerView.Adapter<ViewHolder>(){

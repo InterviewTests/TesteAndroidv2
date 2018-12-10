@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import br.com.rphmelo.bankapp.R
-import br.com.rphmelo.bankapp.activities.CurrencyActivity
+import br.com.rphmelo.bankapp.presentation.currency.CurrencyActivity
 import br.com.rphmelo.bankapp.presentation.login.models.LoginView
 import kotlinx.android.synthetic.main.activity_login.*
 
