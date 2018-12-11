@@ -9,4 +9,5 @@ interface LoginView {
     fun setPasswordInvalidError()
     fun onLoginSuccess(loginResponse: LoginResponse)
     fun onLoginError()
+    fun onLoadLoginSession(login: LoginRequest?)
 }

@@ -30,12 +30,21 @@ class LoginInteractor(private val loginRepository: LoginRepository) {
                         response?.let { listener.onLoginSuccess(it) }
                     }
                     override fun onFailure(call: Call<LoginResponse?>?, t: Throwable?) {
-
+                        listener.onLoginError()
                     }
                 })
             }
         }
     }
+
+    fun loadLoginSession(listener: OnLoginFinishedListener) {
+        val loginSession = getLoginSession()
+        listener.loadLoginSession(loginSession)
+    }
+
+    fun setLoginSession(login: LoginRequest) = loginRepository.setLoginSession(login)
+
+    private fun getLoginSession(): LoginRequest? = loginRepository.getLoginSession()
 
     private fun validUser(user: String): Boolean {
         return user.isEmail() || user.isValidCPF()

@@ -1,11 +1,15 @@
 package br.com.rphmelo.bankapp.login.presentation
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import br.com.rphmelo.bankapp.R
+import br.com.rphmelo.bankapp.common.BankApp
+import br.com.rphmelo.bankapp.common.utils.Variables
 import br.com.rphmelo.bankapp.login.api.LoginService
 import br.com.rphmelo.bankapp.login.domain.models.LoginRequest
 import br.com.rphmelo.bankapp.login.domain.models.LoginResponse
@@ -17,14 +21,22 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginView {
 
-    private val loginRepository = LoginRepository(LoginService())
-    private val presenter = LoginPresenter(
-            this, LoginInteractor(loginRepository)
-    )
+    private lateinit var preferences: SharedPreferences
+    private lateinit var loginRepository: LoginRepository
+    private lateinit var presenter: LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        preferences = getSharedPreferences(Variables.PREFERENCES_NAME, Context.MODE_PRIVATE)
+
+        loginRepository = LoginRepository(LoginService(), preferences)
+        presenter = LoginPresenter(
+                this, LoginInteractor(loginRepository)
+        )
+
+        presenter.loadLoginSession()
 
         btnLogin.setOnClickListener {
             login()
@@ -63,6 +75,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
     override fun onLoginSuccess(loginResponse: LoginResponse) {
         val currencyIntent = Intent(this, CurrencyActivity::class.java)
         currencyIntent.putExtra("LOGIN_RESPONSE", loginResponse.toString())
+
         startActivity(currencyIntent)
         finish()
     }
@@ -71,12 +84,18 @@ class LoginActivity : AppCompatActivity(), LoginView {
         showErrorMessage(getString(R.string.login_error_message))
     }
 
+    override fun onLoadLoginSession(login: LoginRequest?) {
+        tietUser.setText(login?.user)
+        tietPassword.setText(login?.password)
+    }
     private fun login(){
-        presenter.login(LoginRequest(tietUser.text.toString(), tietPassword.text.toString()))
+        val loginRequest = LoginRequest(tietUser.text.toString(), tietPassword.text.toString())
+        presenter.setLoginSession(loginRequest)
+        presenter.login(loginRequest)
     }
 
     private fun showErrorMessage(message: String) {
         Toast.makeText(this,
-                message, Toast.LENGTH_LONG).show();
+                message, Toast.LENGTH_LONG).show()
     }
 }

@@ -7,4 +7,5 @@ interface OnLoginFinishedListener {
     fun onPasswordInvalidError()
     fun onLoginSuccess(loginResponse: LoginResponse)
     fun onLoginError()
+    fun loadLoginSession(login: LoginRequest?)
 }

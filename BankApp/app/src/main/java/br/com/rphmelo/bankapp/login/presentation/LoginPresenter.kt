@@ -1,10 +1,7 @@
 package br.com.rphmelo.bankapp.login.presentation
 
-import br.com.rphmelo.bankapp.login.domain.models.LoginRequest
-import br.com.rphmelo.bankapp.login.domain.models.LoginResponse
 import br.com.rphmelo.bankapp.login.domain.interactor.LoginInteractor
-import br.com.rphmelo.bankapp.login.domain.models.LoginView
-import br.com.rphmelo.bankapp.login.domain.models.OnLoginFinishedListener
+import br.com.rphmelo.bankapp.login.domain.models.*
 
 class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginInteractor) :
         OnLoginFinishedListener {
@@ -14,9 +11,16 @@ class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginIntera
         loginInteractor.login(loginRequest, this)
     }
 
+    fun loadLoginSession() {
+        loginView?.showProgress()
+        loginInteractor.loadLoginSession(this)
+    }
+
     fun onDestroy() {
         loginView = null
     }
+
+    fun setLoginSession(login: LoginRequest) = loginInteractor.setLoginSession(login)
 
     override fun onUserEmptyError() {
         loginView?.apply {
@@ -54,5 +58,10 @@ class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginIntera
     override fun onLoginError() {
         loginView?.hideProgress()
         loginView?.onLoginError()
+    }
+
+    override fun loadLoginSession(login: LoginRequest?) {
+        loginView?.onLoadLoginSession(login)
+        loginView?.hideProgress()
     }
 }
