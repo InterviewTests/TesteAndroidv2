@@ -53,7 +53,53 @@ public class LoginActivityUnitTest {
         Assert.assertEquals(LoginActivityOutputSpy.loginRequestCopy, request);
     }
 
+    @Test
+    public void checkUppercaseLetter() {
+        LoginActivity activity = Robolectric.setupActivity(LoginActivity.class);
+        boolean result;
+        result = activity.hasUppercaseLetter("Aaaa");
+        Assert.assertTrue(result);
+        result = activity.hasUppercaseLetter("aaa");
+        Assert.assertFalse(result);
+        result = activity.hasUppercaseLetter("asdf1234");
+        Assert.assertFalse(result);
+    }
 
+    @Test
+    public void checkAlphanumericCharacter() {
+        LoginActivity activity = Robolectric.setupActivity(LoginActivity.class);
+        boolean result;
+        result = activity.hasAlphanumericCharacter("Aaaa");
+        Assert.assertTrue(result);
+        result = activity.hasAlphanumericCharacter("ASD@#");
+        Assert.assertFalse(result);
+        result = activity.hasAlphanumericCharacter("###");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void checkSpecialCharacter() {
+        LoginActivity activity = Robolectric.setupActivity(LoginActivity.class);
+        boolean result;
+        result = activity.hasSpecialCharacter("Aa[aa");
+        Assert.assertTrue(result);
+        result = activity.hasSpecialCharacter("aaa");
+        Assert.assertFalse(result);
+        result = activity.hasSpecialCharacter("asdf1234");
+        Assert.assertFalse(result);
+    }
+
+    @Test
+    public void checkPassword() {
+        LoginActivity activity = Robolectric.setupActivity(LoginActivity.class);
+        boolean result;
+        result = activity.checkPassword("Aa[aa");
+        Assert.assertTrue(result);
+        result = activity.checkPassword("aaa");
+        Assert.assertFalse(result);
+        result = activity.checkPassword("asdf1234");
+        Assert.assertFalse(result);
+    }
 
     private class LoginActivityOutputSpy implements LoginInteractorInput {
 

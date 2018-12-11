@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 interface LoginPresenterInput {
     public void presentLoginData(LoginResponse response);
+    public void presentLoginError(String message);
 }
 
 
@@ -35,5 +36,8 @@ public class LoginPresenter implements LoginPresenterInput {
         }
     }
 
-
+    @Override
+    public void presentLoginError(String message) {
+        output.get().displayLoginError(message);
+    }
 }

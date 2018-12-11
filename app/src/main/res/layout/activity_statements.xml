@@ -1,76 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorButton"
-        android:orientation="vertical"
-        android:padding="18dp">
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@color/colorButton"
+            android:orientation="vertical"
+            android:padding="18dp"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nameEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/textBigSize"
+                    tools:text="Jose da Silva Teste" />
+
+                <ImageView
+                    android:id="@+id/logoutImageView"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="0"
+                    android:contentDescription="@string/logout"
+                    android:src="@drawable/logout_2" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/nameEditText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_marginTop="25dp"
+                android:text="@string/conta"
+                android:textColor="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/accountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/textBigSize"
-                tools:text="Jose da Silva Teste" />
+                tools:text="2050 / 01.111222-4" />
 
-            <ImageView
-                android:id="@+id/logoutImageView"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_weight="0"
-                android:contentDescription="@string/logout"
-                android:src="@drawable/logout_2" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/saldo"
+                android:textColor="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/balanceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/textBigSize"
+                tools:text="R$1.000,00" />
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="@string/conta"
-            android:textColor="@color/colorWhite" />
-
-        <TextView
-            android:id="@+id/accountTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/textBigSize"
-            tools:text="2050 / 01.111222-4" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/saldo"
-            android:textColor="@color/colorWhite" />
-
-        <TextView
-            android:id="@+id/balanceTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/textBigSize"
-            tools:text="R$1.000,00" />
-
-    </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

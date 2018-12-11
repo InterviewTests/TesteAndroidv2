@@ -96,7 +96,7 @@ public class BankApi {
     }
 
 
-    public void login(String user, String password, final ApiCallback<UserAccountModel> callback) {
+    public void login(final String user, final String password, final ApiCallback<UserAccountModel> callback) {
 
         try {
             Map<String, String> map = new HashMap<>();
@@ -117,6 +117,7 @@ public class BankApi {
 
                             JSONObject jsonObject = response.getJSONObject("userAccount");
                             UserAccountModel userAccountModel = gson.fromJson(jsonObject.toString(), UserAccountModel.class);
+                            BankApplication.getInstance().setLastLogin(user, password);
 
                             callback.onSuccess(userAccountModel);
                         }
@@ -203,8 +204,8 @@ public class BankApi {
     }
 
     public class ErrorResponse {
-        int code;
-        String message;
+        public int code;
+        public String message;
     }
 
 }

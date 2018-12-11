@@ -9,8 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="70dp"
         android:layout_marginTop="40dp"
+        android:layout_marginBottom="70dp"
         android:src="@drawable/logo" />
 
 
@@ -37,10 +37,13 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
-        android:background="@color/colorButton"
+        android:background="@drawable/button_bg"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
         android:text="@string/login"
-        android:textSize="18sp"
         android:textAllCaps="false"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="normal" />
 
 </RelativeLayout>

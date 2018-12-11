@@ -56,6 +56,11 @@ public class LoginInteractorUnitTest {
             presentLoginDataIsCalled = true;
             loginResponseCopy = response;
         }
+
+        @Override
+        public void presentLoginError(String message) {
+            //TODO
+        }
     }
 
     private class LoginInteractorInputSpy implements LoginInteractorInput {

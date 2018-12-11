@@ -18,4 +18,8 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="LoadingStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorButton</item>
+    </style>
+
 </resources>

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.rossinyamaral.bank.BankApplication;
 import com.example.rossinyamaral.bank.R;
 import com.example.rossinyamaral.bank.model.StatementModel;
 import com.example.rossinyamaral.bank.model.UserAccountModel;
@@ -57,6 +58,7 @@ public class StatementsActivity extends AppCompatActivity
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+        BankApplication.getInstance().setStatusBarColor(this, R.color.colorButton);
 
         StatementsConfigurator.INSTANCE.configure(this);
 
@@ -78,6 +80,13 @@ public class StatementsActivity extends AppCompatActivity
         accountTextView.setText(String.format("%s / %s", userAccountModel.getBankAccount(),
                 getFormattedAgency(userAccountModel.getAgency())));
         balanceTextView.setText(getFormattedMoney(userAccountModel.getBalance()));
+
+        logoutImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         StatementsRequest aStatementsRequest = new StatementsRequest();
         //populate the request

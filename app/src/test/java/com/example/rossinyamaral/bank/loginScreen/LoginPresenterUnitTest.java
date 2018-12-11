@@ -62,5 +62,10 @@ public class LoginPresenterUnitTest {
             isdisplayLoginMetaDataCalled = true;
             loginViewModelCopy = loginViewModel;
         }
+
+        @Override
+        public void displayLoginError(String message) {
+            //TODO
+        }
     }
 }

@@ -7,4 +7,5 @@
     <string name="saldo">Saldo</string>
     <string name="logout">logout</string>
     <string name="recentes">Recentes</string>
+    <string name="password_error_message">A senha deve ter pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.</string>
 </resources>

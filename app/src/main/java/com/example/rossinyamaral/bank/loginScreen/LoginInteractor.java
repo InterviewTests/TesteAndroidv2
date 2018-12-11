@@ -40,8 +40,8 @@ public class LoginInteractor implements LoginInteractorInput {
                     }
 
                     @Override
-                    public void onError(BankApi.ErrorResponse message) {
-
+                    public void onError(BankApi.ErrorResponse error) {
+                        output.presentLoginError(error.message);
                     }
                 });
 
