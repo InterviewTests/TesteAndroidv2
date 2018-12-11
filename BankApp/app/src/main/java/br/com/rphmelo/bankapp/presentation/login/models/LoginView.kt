@@ -1,5 +1,7 @@
 package br.com.rphmelo.bankapp.presentation.login.models
 
+import br.com.rphmelo.bankapp.models.LoginResponse
+
 interface LoginView {
     fun showProgress()
     fun hideProgress()
@@ -7,5 +9,6 @@ interface LoginView {
     fun setPasswordEmptyError()
     fun setUserInvalidError()
     fun setPasswordInvalidError()
-    fun navigateToCurrencyPage()
+    fun onLoginSuccess(loginResponse: LoginResponse)
+    fun onLoginError()
 }

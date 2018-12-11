@@ -6,20 +6,27 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import br.com.rphmelo.bankapp.R
+import br.com.rphmelo.bankapp.api.LoginService
+import br.com.rphmelo.bankapp.models.LoginRequest
+import br.com.rphmelo.bankapp.models.LoginResponse
 import br.com.rphmelo.bankapp.presentation.currency.CurrencyActivity
 import br.com.rphmelo.bankapp.presentation.login.models.LoginView
+import br.com.rphmelo.bankapp.repository.LoginRepository
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginView {
 
-    private val presenter = LoginPresenter(this, LoginInteractor())
+    private val loginRepository = LoginRepository(LoginService())
+    private val presenter = LoginPresenter(
+            this, LoginInteractor(loginRepository)
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         btnLogin.setOnClickListener {
-            validateCredentials()
+            login()
         }
     }
 
@@ -52,12 +59,19 @@ class LoginActivity : AppCompatActivity(), LoginView {
         showErrorMessage(getString(R.string.invalid_password_message))
     }
 
-    override fun navigateToCurrencyPage() {
-        startActivity(Intent(this, CurrencyActivity::class.java))
+    override fun onLoginSuccess(loginResponse: LoginResponse) {
+        val currencyIntent = Intent(this, CurrencyActivity::class.java)
+        currencyIntent.putExtra("LOGIN_RESPONSE", loginResponse.toString())
+        startActivity(currencyIntent)
+        finish()
     }
 
-    private fun validateCredentials(){
-        presenter.validateCredentials(tietUser.text.toString(), tietPassword.text.toString())
+    override fun onLoginError() {
+        showErrorMessage(getString(R.string.login_error_message))
+    }
+
+    private fun login(){
+        presenter.login(LoginRequest(tietUser.text.toString(), tietPassword.text.toString()))
     }
 
     private fun showErrorMessage(message: String) {

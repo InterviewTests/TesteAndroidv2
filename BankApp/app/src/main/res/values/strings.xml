@@ -13,4 +13,5 @@
     <string name="invalid_password_message">
         A senha precisa ter no mínimo um caractere especial, um caractere alfanumérico e uma letra maiúscula
     </string>
+    <string name="login_error_message">Não foi possível realizar o login, tente mais tarde!</string>
 </resources>

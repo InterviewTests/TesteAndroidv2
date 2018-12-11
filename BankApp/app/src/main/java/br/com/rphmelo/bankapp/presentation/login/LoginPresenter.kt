@@ -1,14 +1,16 @@
 package br.com.rphmelo.bankapp.presentation.login
 
+import br.com.rphmelo.bankapp.models.LoginRequest
+import br.com.rphmelo.bankapp.models.LoginResponse
 import br.com.rphmelo.bankapp.presentation.login.models.LoginView
 import br.com.rphmelo.bankapp.presentation.login.models.OnLoginFinishedListener
 
 class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginInteractor) :
         OnLoginFinishedListener {
 
-    fun validateCredentials(user: String, password: String) {
+    fun login(loginRequest: LoginRequest) {
         loginView?.showProgress()
-        loginInteractor.login(user, password, this)
+        loginInteractor.login(loginRequest, this)
     }
 
     fun onDestroy() {
@@ -43,7 +45,13 @@ class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginIntera
         }
     }
 
-    override fun onSuccess() {
-        loginView?.navigateToCurrencyPage()
+    override fun onLoginSuccess(loginResponse: LoginResponse) {
+        loginView?.hideProgress()
+        loginView?.onLoginSuccess(loginResponse)
+    }
+
+    override fun onLoginError() {
+        loginView?.hideProgress()
+        loginView?.onLoginError()
     }
 }
