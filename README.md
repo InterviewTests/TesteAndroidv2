@@ -1,3 +1,34 @@
+# Candidato
+Nome: Primozalho Dias Silva Filho
+Empresa: Accenture
+
+# ESCOLHAS NO DESENVOLVIMENTO
+- Linguagem: Kotlin
+- UI: Material Design
+- Compativel com Android 4.4
+
+- Bibliotecas:
+--- Rx Libraries: Reactive Programming 
+--- Retrofit2: to connect Web Resources
+
+- Testes unitários: 
+--- JUNIT
+--- Espresso
+
+- Arquitetura a ser utilizada: Android Clean Code 
+--- Mantive a estrutura gerada pelo gerador de codigo Android Clean Code
+--- Optei por efetuar a injeção de dependecia através de construtores
+
+
+# COMO EXECUTAR:
+- Clone o repositorio em um diretorio local:
+  exemplo: c:\Temp\git clone https://github.com/prprimo/TesteAndroidv2.git
+- Abra o projeto com o Android Studio 3.2
+- Efetue o sincronismo das bibliotecas do gradle
+- Execute o projeto: Run 'Bankapp in app' pressionando [Shift + F10]
+
+
+===============================================================================================
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
