@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity(), LoginContrato.View {
 
          var validar = presenter.validar(user,password)
 
-         if (validar){
+         if (validar ){
              presenter.login(user,password)
 
          }

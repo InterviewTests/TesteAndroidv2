@@ -42,18 +42,14 @@ class StatementsPresenter (val view:StatementsActivity): StatementsContrato.Pres
 
             override fun onResponse(call: Call<Statements>, response: Response<Statements>) {
 
-                val lista:List<Statements>
                 val listItem:List<StatementListItem>
 
                 if (response.isSuccessful){
                     listItem = response.body()!!.statementList!!
-
-
                     view.listaStatements(listItem)
-                    view.mensagemOk(listItem.toString())
                 }
 
-                view.mensagemOk(response.code().toString())
+                view.mensagensErro(response.code().toString())
 
             }
 

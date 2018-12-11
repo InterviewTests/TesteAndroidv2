@@ -29,7 +29,7 @@ class LoginPresenter(val view:LoginActivity) : LoginContrato.Presenter {
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(user).matches()) {
                 if (!validarCPF(user)) {
                     isValid = false
-                   view.mensagensErro("Digite o e-mail ou CPF do usuário")
+                   view.mensagensErro("Digite o e-mail ou CPF do usuário válido")
                 } else null
             } else null
 
@@ -37,7 +37,7 @@ class LoginPresenter(val view:LoginActivity) : LoginContrato.Presenter {
         if (password.isNullOrEmpty()) {
             isValid = false
             view.mensagensErro("Campo Vazio")
-        } else if (validarPassword(password)) {
+        } else if (!validarPassword(password)) {
             isValid = false
             view.mensagensErro("Padrão de senha não reconhecido")
         } else null
@@ -47,9 +47,6 @@ class LoginPresenter(val view:LoginActivity) : LoginContrato.Presenter {
     }
 
     override fun validarPassword(password: String): Boolean {
-//        return Pattern.matches("""((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#${'$'}%]).{6,20})"""", password)
-        //return Pattern.matches("""^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#${'$'}%^&+=])(?=\S+${'$'}).{6,}${'$'}""", password)
-
         return Pattern.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%]).{6,20})", password)
     }
 
