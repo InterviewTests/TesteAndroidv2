@@ -1,6 +1,6 @@
-# Candidato
-Nome: Primozalho Dias Silva Filho
-Empresa: Accenture
+# CANDIDATO
+- Nome: Primozalho Dias Silva Filho
+- Empresa: Accenture
 
 # ESCOLHAS NO DESENVOLVIMENTO
 - Linguagem: Kotlin
@@ -8,16 +8,16 @@ Empresa: Accenture
 - Compativel com Android 4.4
 
 - Bibliotecas:
---- Rx Libraries: Reactive Programming 
---- Retrofit2: to connect Web Resources
+* Rx Libraries: Reactive Programming 
+* Retrofit2: to connect Web Resources
 
-- Testes unitários: 
---- JUNIT
---- Espresso
+- Testes unitários e integrados: 
+* JUNIT
+* Espresso
 
 - Arquitetura a ser utilizada: Android Clean Code 
---- Mantive a estrutura gerada pelo gerador de codigo Android Clean Code
---- Optei por efetuar a injeção de dependecia através de construtores
+* Mantive a estrutura gerada pelo gerador de codigo Android Clean Code
+* Optei por efetuar a injeção de dependecia através de construtores
 
 
 # COMO EXECUTAR:
