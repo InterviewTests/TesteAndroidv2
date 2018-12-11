@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import br.com.rphmelo.bankapp.R
-import br.com.rphmelo.bankapp.common.BankApp
+import br.com.rphmelo.bankapp.common.utils.GsonHelper
 import br.com.rphmelo.bankapp.common.utils.Variables
 import br.com.rphmelo.bankapp.login.api.LoginService
 import br.com.rphmelo.bankapp.login.domain.models.LoginRequest
@@ -74,7 +74,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
     override fun onLoginSuccess(loginResponse: LoginResponse) {
         val currencyIntent = Intent(this, CurrencyActivity::class.java)
-        currencyIntent.putExtra("LOGIN_RESPONSE", loginResponse.toString())
+        currencyIntent.putExtra(Variables.LOGIN_RESPONSE_KEY, GsonHelper().toJson(loginResponse))
 
         startActivity(currencyIntent)
         finish()

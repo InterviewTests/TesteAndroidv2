@@ -4,6 +4,6 @@ interface OnCurrencyLoadDataListener {
     fun onSetupToolbar()
     fun onToolbarLoadDataSuccess()
     fun onToolbarLoadDataError()
-    fun onLoadStatementListSuccess()
+    fun onLoadStatementListSuccess(statementResponse: StatementResponse)
     fun onLoadStatementListError()
 }

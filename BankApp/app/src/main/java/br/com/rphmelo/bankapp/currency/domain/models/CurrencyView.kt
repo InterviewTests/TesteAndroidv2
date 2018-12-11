@@ -6,6 +6,6 @@ interface CurrencyView {
     fun setupToolbar()
     fun setToolbarData()
     fun setToolbarError()
-    fun setStatementListData()
+    fun setStatementListData(statementResponse: StatementResponse)
     fun setStatementListError()
 }

@@ -3,6 +3,7 @@ package br.com.rphmelo.bankapp.currency.presentation
 import br.com.rphmelo.bankapp.currency.domain.models.CurrencyView
 import br.com.rphmelo.bankapp.currency.domain.models.OnCurrencyLoadDataListener
 import br.com.rphmelo.bankapp.currency.domain.interactor.CurrencyInteractor
+import br.com.rphmelo.bankapp.currency.domain.models.StatementResponse
 
 
 class CurrencyPresenter(var currencyView: CurrencyView?, val currencyInteractor: CurrencyInteractor) :
@@ -12,12 +13,9 @@ class CurrencyPresenter(var currencyView: CurrencyView?, val currencyInteractor:
         currencyInteractor.setupToolbar(this)
     }
 
-    fun toolbarLoadData(statusCode: Int) {
-        currencyInteractor.loadToolbarData(statusCode, this)
-    }
-
-    fun statementLoadData(statusCode: Int) {
-        currencyInteractor.loadStatementData(statusCode, this)
+    fun loadStatementList(userId: Int) {
+        currencyView?.showProgress()
+        currencyInteractor.statements(userId, this)
     }
 
     override fun onSetupToolbar() {
@@ -38,9 +36,9 @@ class CurrencyPresenter(var currencyView: CurrencyView?, val currencyInteractor:
         }
     }
 
-    override fun onLoadStatementListSuccess() {
+    override fun onLoadStatementListSuccess(statementResponse: StatementResponse) {
         currencyView?.apply {
-            setStatementListData()
+            setStatementListData(statementResponse)
             hideProgress()
         }
     }
