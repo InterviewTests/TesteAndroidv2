@@ -6,7 +6,6 @@ interface LoginContrato {
 
     interface View{
         fun mensagensErro(msg:String)
-        fun mensagemOk(msg: String)
         fun user(user:UserAccount)
         fun showProgressBar();
         fun hideProgressBar();

@@ -38,10 +38,13 @@ class TesteLogin {
 
     @Test
     fun verifacar_password(){
-        val pass = "1"
+        /*campo password deve validar se a senha tem pelo menos uma letra maiuscula,
+        um caracter especial e um caracter alfanumérico.*/
+        
+        val pass = "Otavio1#"
         val presenter = LoginPresenter(login)
         val resultado :Boolean = presenter.validarPassword(pass)
-        Assert.assertFalse(resultado)
+        Assert.assertTrue(resultado)
 
     }
 }

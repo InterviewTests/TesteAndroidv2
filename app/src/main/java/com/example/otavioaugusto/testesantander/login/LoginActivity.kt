@@ -32,8 +32,12 @@ class LoginActivity : AppCompatActivity(), LoginContrato.View {
          var user = edtUser.text.toString()
          var password = edtPassword.text.toString()
 
-            presenter.validar(user,password)
-            presenter.login(user,password)
+         var validar = presenter.validar(user,password)
+
+         if (validar){
+             presenter.login(user,password)
+
+         }
 
      }
 
@@ -43,13 +47,10 @@ class LoginActivity : AppCompatActivity(), LoginContrato.View {
     }
 
     override fun mensagensErro(msg: String) {
-        Log.e("Erro","${msg}")
+        Toast.makeText(this,msg, Toast.LENGTH_SHORT).show()
     }
 
 
-    override fun mensagemOk(msg: String) {
-        Log.e("OK","${msg}")
-    }
 
     override fun showProgressBar() {
         progressBar.visibility = View.VISIBLE

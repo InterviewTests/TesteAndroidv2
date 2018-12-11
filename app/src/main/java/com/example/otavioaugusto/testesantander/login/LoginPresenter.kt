@@ -47,7 +47,10 @@ class LoginPresenter(val view:LoginActivity) : LoginContrato.Presenter {
     }
 
     override fun validarPassword(password: String): Boolean {
-        return Pattern.matches("""((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#${'$'}%]).{6,20})"""", password)
+//        return Pattern.matches("""((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#${'$'}%]).{6,20})"""", password)
+        //return Pattern.matches("""^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#${'$'}%^&+=])(?=\S+${'$'}).{6,}${'$'}""", password)
+
+        return Pattern.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%]).{6,20})", password)
     }
 
     override fun login(user: String, password: String) {
