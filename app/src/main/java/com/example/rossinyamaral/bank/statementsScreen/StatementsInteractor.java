@@ -31,23 +31,24 @@ public class StatementsInteractor implements StatementsInteractorInput {
     @Override
     public void fetchStatementsData(StatementsRequest request) {
         aStatementsWorkerInput = getStatementsWorkerInput();
+        if (request != null) {
+            BankApplication.getInstance().bankApi.getStatements(request.userId,
+                    new BankApi.ApiCallback<List<StatementModel>>() {
+                        @Override
+                        public void onSuccess(List<StatementModel> object) {
 
-        BankApplication.getInstance().bankApi.getStatements(request.userId,
-                new BankApi.ApiCallback<List<StatementModel>>() {
-                    @Override
-                    public void onSuccess(List<StatementModel> object) {
+                            StatementsResponse StatementsResponse = new StatementsResponse();
+                            StatementsResponse.statements = object;
+                            // Call the workers
 
-                        StatementsResponse StatementsResponse = new StatementsResponse();
-                        StatementsResponse.statements = object;
-                        // Call the workers
+                            output.presentStatementsData(StatementsResponse);
+                        }
 
-                        output.presentStatementsData(StatementsResponse);
-                    }
+                        @Override
+                        public void onError(BankApi.ErrorResponse message) {
 
-                    @Override
-                    public void onError(BankApi.ErrorResponse message) {
-
-                    }
-                });
+                        }
+                    });
+        }
     }
 }

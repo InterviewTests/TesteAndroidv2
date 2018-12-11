@@ -34,5 +34,4 @@ public class LoginRouterUnitTest {
         Assert.assertTrue(intent.hasExtra("userAccount"));
     }
 
-
 }

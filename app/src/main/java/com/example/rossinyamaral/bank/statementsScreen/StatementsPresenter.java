@@ -25,11 +25,10 @@ public class StatementsPresenter implements StatementsPresenterInput {
     public void presentStatementsData(StatementsResponse response) {
         // Log.e(TAG, "presentStatementsData() called with: response = [" + response + "]");
         //Do your decoration or filtering here
-        StatementsViewModel viewModel = new StatementsViewModel();
-        viewModel.statements = response.statements;
-        output.get().displayStatementsData(viewModel);
-
+        if (response != null) {
+            StatementsViewModel viewModel = new StatementsViewModel();
+            viewModel.statements = response.statements;
+            output.get().displayStatementsData(viewModel);
+        }
     }
-
-
 }
