@@ -11,7 +11,7 @@
     <string name="empty_input_message">Todos os campos devem ser preenchidos</string>
     <string name="invalid_user_message">Usuário inválido! Digite um Email ou CPF válido!</string>
     <string name="invalid_password_message">
-        A senha precisa ter no mínimo um caractere especial, um caractere alfanumérico e uma letra maiúscula
+        A senha precisa ter no mínimo um caracter especial, um caracter alfanumérico e uma letra maiúscula
     </string>
     <string name="login_error_message">Não foi possível realizar o login, tente mais tarde!</string>
 </resources>
