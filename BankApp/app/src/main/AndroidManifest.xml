@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.login.LoginActivity">
+        <activity android:name=".login.presentation.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.currency.CurrencyActivity"></activity>
+        <activity android:name=".currency.presentation.CurrencyActivity"></activity>
     </application>
 
 </manifest>
