@@ -9,7 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +18,10 @@ import com.example.rossinyamaral.bank.R;
 import com.example.rossinyamaral.bank.model.StatementModel;
 import com.example.rossinyamaral.bank.model.UserAccountModel;
 
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -41,18 +45,23 @@ public class StatementsActivity extends AppCompatActivity
     TextView nameTextView;
     TextView accountTextView;
     TextView balanceTextView;
+    ImageView logoutImageView;
 
     RecyclerView recyclerView;
+    private Locale LOCALE = new Locale("PT", "br");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //do the setup
         setContentView(R.layout.activity_statements);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         StatementsConfigurator.INSTANCE.configure(this);
 
-        userAccountModel = (UserAccountModel) getIntent().getParcelableExtra("userAccount");
+        userAccountModel = getIntent().getParcelableExtra("userAccount");
         if (userAccountModel == null) {
             Toast.makeText(this, "Ops! Ocorreu um erro...", Toast.LENGTH_LONG).show();
             finish();
@@ -63,12 +72,13 @@ public class StatementsActivity extends AppCompatActivity
         nameTextView = findViewById(R.id.nameEditText);
         accountTextView = findViewById(R.id.accountTextView);
         balanceTextView = findViewById(R.id.balanceTextView);
+        logoutImageView = findViewById(R.id.logoutImageView);
         recyclerView = findViewById(R.id.recyclerView);
 
         nameTextView.setText(userAccountModel.getName());
-        accountTextView.setText(String.format("%s / %s",
-                userAccountModel.getBankAccount(), userAccountModel.getAgency()));
-        balanceTextView.setText(getMoneyFormat(userAccountModel.getBalance()));
+        accountTextView.setText(String.format("%s / %s", userAccountModel.getBankAccount(),
+                getFormattedAgency(userAccountModel.getAgency())));
+        balanceTextView.setText(getFormattedMoney(userAccountModel.getBalance()));
 
         StatementsRequest aStatementsRequest = new StatementsRequest();
         //populate the request
@@ -92,10 +102,31 @@ public class StatementsActivity extends AppCompatActivity
         Log.d(TAG, "Configured RecyclerView");
     }
 
-    public String getMoneyFormat(double value) {
-        return String.format(new Locale("PT", "br"),"R$%.2f", value);
+    public String getFormattedAgency(String agency) {
+        if (agency != null && agency.length() == 9) {
+            StringBuilder builder = new StringBuilder(agency);
+            builder.insert(8, "-");
+            builder.insert(2, ".");
+            agency = builder.toString();
+        }
+        return agency;
     }
 
+    public String getFormattedMoney(double value) {
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance(LOCALE);
+        return numberFormat.format(value);
+    }
+
+    public String getFormatedDate(String dateString) {
+        try {
+            SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd", LOCALE);
+            SimpleDateFormat format2 = new SimpleDateFormat("dd/MM/yyyy", LOCALE);
+            Date date = format1.parse(dateString);
+            return format2.format(date);
+        } catch (Exception e) {
+            return "";
+        }
+    }
 
     private class StatementListAdapter extends RecyclerView.Adapter<StatementListAdapter.ViewHolder> {
 
@@ -110,27 +141,37 @@ public class StatementsActivity extends AppCompatActivity
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View layoutView = layoutInflater.inflate(R.layout.item_statement, parent, false);
+
+            int resource = viewType == 0 ? R.layout.item_recents : R.layout.item_statement;
+            View layoutView = layoutInflater.inflate(resource, parent, false);
             ViewHolder viewHolder = new ViewHolder(layoutView);
             return viewHolder;
         }
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-            viewHolder.titleTextView.setText(statements.get(position).title);
-            viewHolder.descTextView.setText(statements.get(position).desc);
-            viewHolder.dateTextView.setText(statements.get(position).date);
-            viewHolder.valueTextView.setText(getMoneyFormat(statements.get(position).value));
+            int pos = position - 1;
+            if (position > 0) {
+                viewHolder.titleTextView.setText(statements.get(pos).title);
+                viewHolder.descTextView.setText(statements.get(pos).desc);
+                viewHolder.dateTextView.setText(getFormatedDate(statements.get(pos).date));
+                viewHolder.valueTextView.setText(getFormattedMoney(statements.get(pos).value));
+            }
         }
 
         @Override
         public int getItemCount() {
-            return statements != null ? statements.size() : 0;
+            return statements != null ? statements.size() + 1 : 0;
         }
 
         @Override
         public long getItemId(int position) {
             return position;
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            return position == 0 ? 0 : 1;
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {

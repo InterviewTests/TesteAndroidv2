@@ -6,4 +6,5 @@
     <string name="conta">Conta</string>
     <string name="saldo">Saldo</string>
     <string name="logout">logout</string>
+    <string name="recentes">Recentes</string>
 </resources>

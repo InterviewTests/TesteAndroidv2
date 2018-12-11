@@ -27,6 +27,7 @@
                 tools:text="Jose da Silva Teste" />
 
             <ImageView
+                android:id="@+id/logoutImageView"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_weight="0"
@@ -38,6 +39,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
             android:text="@string/conta"
             android:textColor="@color/colorWhite" />
 
@@ -52,6 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="@string/saldo"
             android:textColor="@color/colorWhite" />
 
