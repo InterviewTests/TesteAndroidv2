@@ -23,12 +23,15 @@ class ServicesTest() {
         val objObservable = RemoteDataSource.getService().doLogin(user, password)
 
         objObservable
-            //.subscribeOn(Schedulers.io())
-            //.observeOn(AndroidSchedulers.mainThread())
+            //.subscribeOn(Schedulers.newThread())
+            .observeOn(Schedulers.newThread())
             .subscribe(testObserver)
 
-        testObserver.assertComplete()
+        testObserver.await()
+        testObserver.assertSubscribed()
         testObserver.assertNoErrors()
+        testObserver.assertComplete()
         testObserver.assertValueCount(1)
+
     }
 }

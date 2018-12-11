@@ -4,14 +4,14 @@
     <!-- LOGIN -->
     <string name="logo">Logo</string>
     <string name="user">Usuário</string>
-    <string name="user_helper">Informe o CPF ou E-Mail do usuário!</string>
+    <string name="user_helper">Informe seu CPF ou E-Mail!</string>
     <string name="password">Senha</string>
-    <string name="password_helper">Informe a senha!</string>
+    <string name="password_helper">Informe sua senha!</string>
     <string name="button_login">Login</string>
 
     <!-- Strings related to login -->
-    <string name="user_error">Usuário deve ser um email ou um CPF válido.</string>
-    <string name="password_error">Senha deve possuir ao menos um caracter minusculo, um caracter maiusculo, um caracter especial e um número.</string>
+    <string name="user_error">Informe um email ou um CPF válido.</string>
+    <string name="password_error">Senha deve possuir pelo menos um caracter minusculo, um caracter maiusculo, um caracter especial e um número.</string>
     <string name="error_invalid_login">Usuário ou Senha inválido!</string>
 
     <!-- MAIN -->
