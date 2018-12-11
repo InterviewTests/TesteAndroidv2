@@ -25,13 +25,14 @@ public class LoginPresenter implements LoginPresenterInput {
     public void presentLoginData(LoginResponse response) {
         // Log.e(TAG, "presentLoginData() called with: response = [" + response + "]");
         //Do your decoration or filtering here
-        LoginViewModel loginViewModel = new LoginViewModel();
-        loginViewModel.name = response.userAccountModel.getName();
-        loginViewModel.bankAccount = response.userAccountModel.getBankAccount();
-        loginViewModel.agency = response.userAccountModel.getAgency();
-        loginViewModel.balance = response.userAccountModel.getBalance();
-        output.get().displayLoginData(response.userAccountModel);
-
+        if (response != null) {
+            LoginViewModel loginViewModel = new LoginViewModel();
+            loginViewModel.name = response.userAccountModel.getName();
+            loginViewModel.bankAccount = response.userAccountModel.getBankAccount();
+            loginViewModel.agency = response.userAccountModel.getAgency();
+            loginViewModel.balance = response.userAccountModel.getBalance();
+            output.get().displayLoginData(response.userAccountModel);
+        }
     }
 
 

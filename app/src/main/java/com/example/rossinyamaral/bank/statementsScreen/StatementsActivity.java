@@ -40,7 +40,6 @@ public class StatementsActivity extends AppCompatActivity
 
 
     UserAccountModel userAccountModel;
-    ArrayList<StatementModel> statementsList;
 
     TextView nameTextView;
     TextView accountTextView;

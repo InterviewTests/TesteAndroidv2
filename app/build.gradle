@@ -26,6 +26,12 @@ android {
             buildConfigField "String", "SERVICE_BASE_URL", "\"https://bank-app-test.herokuapp.com/api/\""
         }
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

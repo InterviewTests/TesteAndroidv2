@@ -43,11 +43,11 @@ public class LoginRouter implements LoginRouterInput { //, AdapterView.OnItemCli
 
     @Override
     public void onLoginClick(UserAccountModel model) {
-//        Intent intent = navigateToSomeWhere();
-//        passDataToNextScene(intent, model);
-//        activity.get().startActivity(intent);
-        Log.d(TAG, model.getName());
-        activity.get().startActivity(new Intent(activity.get(), StatementsActivity.class).putExtra("userAccount", model));
+        if (model != null) {
+            Intent intent = navigateToSomeWhere();
+            passDataToNextScene(intent, model);
+            activity.get().startActivity(intent);
+        }
     }
 
 //    @Override
