@@ -1,6 +1,6 @@
 package br.com.rphmelo.bankapp.currency.domain.models
 
-data class StatementModel( val title: String, val description: String,
-                           val date: String,  val value: Double) {
+import java.util.*
 
-}
+data class StatementModel( val title: String, val desc: String,
+                           val date: Date,  val value: Double)

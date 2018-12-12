@@ -20,6 +20,6 @@ class StatementListAdapter(private val list: List<StatementModel>,
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
+        holder.bindView(list[position])
     }
 }

@@ -1,5 +1,7 @@
 package br.com.rphmelo.bankapp.common.extensions
 
+import java.text.SimpleDateFormat
+
 fun String.isEmail(): Boolean {
     val pattern = "^(\\w)+(\\.\\w+)*@(\\w)+((\\.\\w+)+)\$".toRegex()
 
@@ -10,6 +12,8 @@ fun String.isValidPassword(): Boolean {
     val pattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*\\W+).*\$".toRegex()
     return matches(pattern)
 }
+
+fun String.formatAgency() = "${this.substring(0,2)}.${this.substring(2,8)}-${this.substring(8,9)}"
 
 fun String.isValidCPF(): Boolean {
 

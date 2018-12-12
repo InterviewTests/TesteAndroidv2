@@ -3,6 +3,7 @@ package br.com.rphmelo.bankapp.currency.domain.interactor
 import br.com.rphmelo.bankapp.currency.domain.models.OnCurrencyLoadDataListener
 import br.com.rphmelo.bankapp.currency.domain.models.StatementResponse
 import br.com.rphmelo.bankapp.currency.repository.CurrencyRepository
+import br.com.rphmelo.bankapp.login.domain.models.UserAccount
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,6 +25,10 @@ class CurrencyInteractor(private val currencyRepository: CurrencyRepository) {
 
     fun setupToolbar(listener: OnCurrencyLoadDataListener) {
         listener.onSetupToolbar()
+    }
+
+    fun setToolbarData(userAccount: UserAccount, listener: OnCurrencyLoadDataListener){
+        listener.onSetToolbarData(userAccount)
     }
 
 }

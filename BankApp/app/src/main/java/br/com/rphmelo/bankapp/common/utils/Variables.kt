@@ -5,4 +5,5 @@ object Variables {
     val PREFERENCES_NAME = "BANK_APP"
     val LOGIN_SESSION_KEY = "LOGIN_SESSION"
     val LOGIN_RESPONSE_KEY = "LOGIN_RESPONSE"
+    val DATE_FORMAT = "dd/mm/yyyy"
 }

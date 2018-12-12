@@ -4,34 +4,18 @@ import br.com.rphmelo.bankapp.currency.domain.models.CurrencyView
 import br.com.rphmelo.bankapp.currency.domain.models.OnCurrencyLoadDataListener
 import br.com.rphmelo.bankapp.currency.domain.interactor.CurrencyInteractor
 import br.com.rphmelo.bankapp.currency.domain.models.StatementResponse
+import br.com.rphmelo.bankapp.login.domain.models.UserAccount
 
-
-class CurrencyPresenter(var currencyView: CurrencyView?, val currencyInteractor: CurrencyInteractor) :
+class CurrencyPresenter(private var currencyView: CurrencyView?, private val currencyInteractor: CurrencyInteractor) :
         OnCurrencyLoadDataListener {
-
-    fun setupToolbar() {
-        currencyInteractor.setupToolbar(this)
-    }
-
-    fun loadStatementList(userId: Int) {
-        currencyView?.showProgress()
-        currencyInteractor.statements(userId, this)
-    }
 
     override fun onSetupToolbar() {
         currencyView?.setupToolbar()
     }
 
-    override fun onToolbarLoadDataSuccess() {
+    override fun onSetToolbarData(userAccount: UserAccount) {
         currencyView?.apply {
-            setToolbarData()
-            hideProgress()
-        }
-    }
-
-    override fun onToolbarLoadDataError() {
-        currencyView?.apply {
-            setToolbarError()
+            setToolbarData(userAccount)
             hideProgress()
         }
     }
@@ -48,6 +32,20 @@ class CurrencyPresenter(var currencyView: CurrencyView?, val currencyInteractor:
             setStatementListError()
             hideProgress()
         }
+    }
+
+    fun setupToolbar() {
+        currencyInteractor.setupToolbar(this)
+    }
+
+    fun loadStatementList(userId: Int) {
+        currencyView?.showProgress()
+        currencyInteractor.statements(userId, this)
+    }
+
+    fun setToolbarData(userAccount: UserAccount) {
+        currencyView?.showProgress()
+        currencyInteractor.setToolbarData(userAccount, this)
     }
 
     fun onDestroy() {
