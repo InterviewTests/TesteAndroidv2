@@ -44,7 +44,7 @@ class LoginInteractor(private val loginRepository: LoginRepository) {
 
     fun setLoginSession(login: LoginRequest) = loginRepository.setLoginSession(login)
 
-    private fun getLoginSession(): LoginRequest? = loginRepository.getLoginSession()
+    fun getLoginSession(): LoginRequest? = loginRepository.getLoginSession()
 
     private fun validUser(user: String): Boolean {
         return user.isEmail() || user.isValidCPF()

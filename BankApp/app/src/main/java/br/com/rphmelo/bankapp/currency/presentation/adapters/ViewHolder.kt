@@ -13,6 +13,6 @@ class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         itemView.lblItemTitle?.text = itemList.title
         itemView.lblDescription?.text = itemList.desc
         itemView.lblDate?.text = itemList.date.format()
-        itemView.lblValue?.text = itemList.value.formatMoney(2)
+        itemView.lblValue?.text = itemList.value.formatMoney()
     }
 }

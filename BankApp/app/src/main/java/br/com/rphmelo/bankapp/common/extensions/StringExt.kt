@@ -1,7 +1,5 @@
 package br.com.rphmelo.bankapp.common.extensions
 
-import java.text.SimpleDateFormat
-
 fun String.isEmail(): Boolean {
     val pattern = "^(\\w)+(\\.\\w+)*@(\\w)+((\\.\\w+)+)\$".toRegex()
 

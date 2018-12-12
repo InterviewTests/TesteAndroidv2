@@ -24,7 +24,6 @@ import br.com.rphmelo.bankapp.currency.repository.CurrencyRepository
 import br.com.rphmelo.bankapp.login.domain.models.UserAccount
 import br.com.rphmelo.bankapp.login.presentation.LoginActivity
 import kotlinx.android.synthetic.main.activity_currency.*
-import kotlinx.android.synthetic.main.activity_currency.view.*
 
 class CurrencyActivity : AppCompatActivity(), CurrencyView {
 
@@ -55,7 +54,7 @@ class CurrencyActivity : AppCompatActivity(), CurrencyView {
     }
 
     override fun setToolbarData(account: UserAccount) {
-        lblBalanceAmount?.text = account?.balance.formatMoney(2)
+        lblBalanceAmount?.text = account?.balance.formatMoney()
         toolbar.title = account.name
         lblAccountAgency.text = "${account.bankAccount} / ${account.agency.formatAgency()}"
     }
@@ -72,6 +71,7 @@ class CurrencyActivity : AppCompatActivity(), CurrencyView {
         val recyclerView = rvList
         recyclerView.adapter = StatementListAdapter(statementResponse.statementList, this)
         val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+
         recyclerView.layoutManager = layoutManager
     }
 
