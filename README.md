@@ -8,8 +8,8 @@ Está anexado neste projeto o arquivo apk. A apk pode ser baixado clicando
 
 # ScreenShots
 <p align="center">
-  <img src="Screenshots/tela1.png" width="200" alt="accessibility text">
-  <img src="Screenshots/tela2.png" width="200" alt="accessibility text">
+  <img src="Screenshot/tela1.png" width="200" alt="accessibility text">
+  <img src="Screenshot/tela2.png" width="200" alt="accessibility text">
 </p>
 
 ## Projeto
@@ -28,7 +28,7 @@ Neste projeto utilizei a arquitetura MVP pela facilidade de manutenção e futur
 - [Hawk](https://github.com/orhanobut/hawk): A proposta da lib Hawk é fornecer uma maneira simples de persistir qualquer tipo de dado utilizando uma interface pública no modelo "chave-valor". Os dados são por padrão criptografados para atender a uma outra meta da API, segurança.
 - [Mockito-Kotlin](https://github.com/nhaarman/mockito-kotlin): Uma pequena biblioteca que fornece funções auxiliares para trabalhar com Mockito em Kotlin.
 
-##Testes
+## Testes
 
 - Foi feito pequenos testes usando o [Mockito-Kotlin](https://github.com/nhaarman/mockito-kotlin) e Junit 
 
