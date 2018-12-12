@@ -14,4 +14,5 @@
         A senha precisa ter no mínimo um caracter especial, um caracter alfanumérico e uma letra maiúscula
     </string>
     <string name="login_error_message">Não foi possível realizar o login, tente mais tarde!</string>
+    <string name="statement_list_error_message">Não foi possível carregar os lançamentos deste usuário!</string>
 </resources>

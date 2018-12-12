@@ -12,6 +12,7 @@ import android.view.View
 import br.com.rphmelo.bankapp.R
 import br.com.rphmelo.bankapp.common.extensions.formatAgency
 import br.com.rphmelo.bankapp.common.extensions.formatMoney
+import br.com.rphmelo.bankapp.common.utils.ErrorMessage
 import br.com.rphmelo.bankapp.common.utils.GsonHelper
 import br.com.rphmelo.bankapp.common.utils.Variables
 import br.com.rphmelo.bankapp.currency.api.CurrencyService
@@ -48,6 +49,11 @@ class CurrencyActivity : AppCompatActivity(), CurrencyView {
         startToolbarSetup()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
+
     override fun setToolbarData(account: UserAccount) {
         lblBalanceAmount?.text = account?.balance.formatMoney(2)
         toolbar.title = account.name
@@ -70,7 +76,7 @@ class CurrencyActivity : AppCompatActivity(), CurrencyView {
     }
 
     override fun setStatementListError() {
-
+        showErrorMessage(getString(R.string.statement_list_error_message))
     }
 
     override fun setupToolbar() {
@@ -96,5 +102,9 @@ class CurrencyActivity : AppCompatActivity(), CurrencyView {
         val loginResponse = intent.extras.getString(Variables.LOGIN_RESPONSE_KEY).toString()
         userAccount = GsonHelper().fromJsonLoginResponse(loginResponse).userAccount
         presenter.setToolbarData(userAccount)
+    }
+
+    private fun showErrorMessage(message: String) {
+        ErrorMessage().showErrorMessage(this, message)
     }
 }

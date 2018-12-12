@@ -1,6 +1,5 @@
 package br.com.rphmelo.bankapp.common.utils
 
-import br.com.rphmelo.bankapp.currency.domain.models.StatementModel
 import br.com.rphmelo.bankapp.login.domain.models.LoginRequest
 import br.com.rphmelo.bankapp.login.domain.models.LoginResponse
 import com.google.gson.Gson

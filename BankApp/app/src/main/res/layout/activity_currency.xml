@@ -78,16 +78,22 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/currencyNestedScroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.0">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currencyNestedScroll">
 
             <TextView
                 android:id="@+id/lblListTitle"
@@ -104,19 +110,20 @@
                 android:id="@+id/rvList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
                 android:layout_marginTop="52dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ProgressBar
                 android:id="@+id/currency_progress"
+                style="@style/progress_style"
                 android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@id/rvList"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent"
-                style="@style/progress_style"
-                />
+                app:layout_constraintTop_toBottomOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
 

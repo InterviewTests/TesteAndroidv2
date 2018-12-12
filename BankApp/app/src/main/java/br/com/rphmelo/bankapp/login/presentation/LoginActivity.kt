@@ -6,8 +6,8 @@ import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import br.com.rphmelo.bankapp.R
+import br.com.rphmelo.bankapp.common.utils.ErrorMessage
 import br.com.rphmelo.bankapp.common.utils.GsonHelper
 import br.com.rphmelo.bankapp.common.utils.Variables
 import br.com.rphmelo.bankapp.login.api.LoginService
@@ -95,7 +95,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
     }
 
     private fun showErrorMessage(message: String) {
-        Toast.makeText(this,
-                message, Toast.LENGTH_LONG).show()
+        ErrorMessage().showErrorMessage(this, message)
     }
 }
