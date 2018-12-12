@@ -1,8 +1,6 @@
 package br.com.rphmelo.bankapp.currency.presentation
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.StaggeredGridLayoutManager
@@ -30,7 +28,6 @@ class CurrencyActivity : AppCompatActivity(), CurrencyView {
     private lateinit var toolbar: Toolbar
     private lateinit var presenter: CurrencyPresenter
     private lateinit var repository: CurrencyRepository
-    private lateinit var preferences: SharedPreferences
     private lateinit var userAccount: UserAccount
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +35,7 @@ class CurrencyActivity : AppCompatActivity(), CurrencyView {
         setContentView(R.layout.activity_currency)
 
         toolbar = findViewById(R.id.toolbar)
-        preferences = getSharedPreferences(Variables.PREFERENCES_NAME, Context.MODE_PRIVATE)
-        repository = CurrencyRepository(CurrencyService(), preferences)
+        repository = CurrencyRepository(CurrencyService())
         presenter = CurrencyPresenter(this, CurrencyInteractor(repository))
 
         getToolbarData()
