@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TesteSantander</string>
     <string name="erro_campo_vazio">campos vazios</string>
+    <string name="erroInternet">Não está conectado, por favor conectar a internet</string>
 </resources>
