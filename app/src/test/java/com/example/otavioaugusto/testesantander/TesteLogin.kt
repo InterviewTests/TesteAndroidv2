@@ -15,26 +15,26 @@ class TesteLogin {
 
     val login = Mockito.mock(LoginActivity::class.java)
 
-//    @Test
-//    fun verificar_user_ou_pass_esta_vazio(){
-//        //Assegura que retorna false se estiver user ou pass vazios
-//        val user = ""
-//        val pass = ""
-//        val presenter = LoginPresenter(login)
-//        val r:Boolean = presenter.validar(user, pass)
-//        Assert.assertFalse(r)
-//
-//    }
-//
-//    @Test
-//    fun verificar_user_se_e_cpf(){
-//        //Assegura se o cpf esteja errado não deixa passar
-//        val user = "04953388"
-//        val presenter = LoginPresenter(login)
-//        val resultado :Boolean = presenter.validarCPF(user)
-//        Assert.assertFalse(resultado)
-//
-//    }
+    @Test
+    fun verificar_user_ou_pass_esta_vazio(){
+        //Assegura que retorna false se estiver user ou pass vazios
+        val user = ""
+        val pass = ""
+        val presenter = LoginPresenter(login)
+        val r:Boolean = presenter.validar(user, pass)
+        Assert.assertFalse(r)
+
+    }
+
+    @Test
+    fun verificar_user_se_e_cpf(){
+        //Assegura que se o cpf esteja errado não deixa passar
+        val user = "04953388"
+        val presenter = LoginPresenter(login)
+        val resultado :Boolean = presenter.validarCPF(user)
+        Assert.assertFalse(resultado)
+
+    }
 
     @Test
     fun verifacar_password(){

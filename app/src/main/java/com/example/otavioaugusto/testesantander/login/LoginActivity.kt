@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.otavioaugusto.testesantander.R
+import com.example.otavioaugusto.testesantander.model.User
 import com.example.otavioaugusto.testesantander.model.UserAccount
 import com.example.otavioaugusto.testesantander.statements.StatementsActivity
 import com.example.otavioaugusto.testesantander.statements.StatementsPresenter
@@ -34,6 +35,7 @@ class LoginActivity : AppCompatActivity(), LoginContrato.View {
         edtUser.text = Hawk.get("user")
         edtPassword.text = Hawk.get("password")
 
+
         presenter = LoginPresenter(this)
 
         btnLogin.setOnClickListener {
@@ -44,6 +46,8 @@ class LoginActivity : AppCompatActivity(), LoginContrato.View {
 
             if (validar ){
                 presenter.login(user,password)
+
+                val user = User(user,password)
 
                 Hawk.put("user", user)
                 Hawk.put("password", password)
