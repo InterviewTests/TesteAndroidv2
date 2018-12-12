@@ -9,15 +9,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.savioguedes.testeandroid.R;
+import com.example.savioguedes.testeandroid.model.Statement;
 
 import java.util.List;
 
 public class StateAdapter extends RecyclerView.Adapter<StateAdapter.ViewLayout>{
 
-    private List<String> items;
+    private List<Statement> items;
     private Context context;
 
-    public StateAdapter(List<String> items, Context context){
+    public StateAdapter(List<Statement> items, Context context){
 
         this.items = items;
         this.context = context;

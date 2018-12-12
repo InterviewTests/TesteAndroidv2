@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.savioguedes.testeandroid.adapter.StateAdapter;
+import com.example.savioguedes.testeandroid.model.Statement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class StateActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager LayoutManager;
 
 
-    private List<String> listItems;
+    private List<Statement> listItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +29,12 @@ public class StateActivity extends AppCompatActivity {
         listItems = new ArrayList<>();
 
         //config recyclerview
-        stateRecyclerView.setHasFixedSize(true);
-        LayoutManager = new LinearLayoutManager(this);
+        LayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         stateRecyclerView.setLayoutManager(LayoutManager);
 
-        listItems.add("");
-        listItems.add("");
-        listItems.add("");
-        listItems.add("");
-        listItems.add("");
-        listItems.add("");
+        listItems.add(new Statement());
+        listItems.add(new Statement());
+        listItems.add(new Statement());
 
         //set adapter
         adapter = new StateAdapter(listItems, this);
