@@ -29,7 +29,7 @@ class StatementsAdapter(val lista:List<StatementListItem>, val contexto:Context)
         holder.title.text = lista[position].title
         holder.desc.text = lista[position].desc
         holder.date.text = lista[position].date
-        holder.value.text = lista[position].value.toString()
+        holder.value.text = "R$ " + lista[position].value.toString()
 
     }
 

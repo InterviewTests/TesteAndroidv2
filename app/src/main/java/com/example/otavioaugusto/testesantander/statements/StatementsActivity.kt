@@ -31,12 +31,14 @@ class StatementsActivity : AppCompatActivity(), StatementsContrato.View {
         val name = intent.getStringExtra("name")
         val bankAccount = intent.getStringExtra("bankAccount")
         val agency = intent.getStringExtra("agency")
-        val balance = intent.getDoubleExtra("balance",0.0)
+        val balance = intent.getDoubleExtra("balance",0.00)
         val id = intent.getIntExtra("userId",1)
 
         txtNome.setText(name)
         txtConta.setText(bankAccount+ "/" +agency)
         txtSaldo.setText("R$ "+balance.toString())
+
+
 
         if (id!=null)
             presenter.obterListadaAPI(id.toString())
