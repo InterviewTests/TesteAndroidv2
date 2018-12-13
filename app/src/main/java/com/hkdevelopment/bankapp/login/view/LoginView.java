@@ -36,6 +36,7 @@ public class LoginView extends AppCompatActivity implements LoginViewInt{
                 user=edtUser.getText().toString();
                 password=edtPassword.getText().toString();
                 presenter.verifyData(user,password);
+                Log.d("teste,",user+"/"+password);
             }
         });
     }

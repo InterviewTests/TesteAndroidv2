@@ -3,17 +3,18 @@ package com.hkdevelopment.bankapp.login.utils;
 import java.util.regex.Pattern;
 
 public class VerifyData {
-    private final Pattern EMAIL_PATTERN= Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+    private final Pattern EMAIL_PATTERN = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
     private final Pattern PATTERN_GENERIC = Pattern.compile("[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}");
     private final Pattern PATTERN_NUMBERS = Pattern.compile("(?=^((?!((([0]{11})|([1]{11})|([2]{11})|([3]{11})|([4]{11})|([5]{11})|([6]{11})|([7]{11})|([8]{11})|([9]{11})))).)*$)([0-9]{11})");
 
-    public boolean isEmail(String email){
+    public boolean isEmail(String email) {
         return EMAIL_PATTERN.matcher(email).matches();
     }
 
     public boolean isCpf(String cpf) {
         cpf = cpf.replaceAll("-|\\.", "");
         if (cpf != null && PATTERN_GENERIC.matcher(cpf).matches()) {
+
             if (PATTERN_NUMBERS.matcher(cpf).matches()) {
                 int[] numbers = new int[11];
                 for (int i = 0; i < 11; i++) numbers[i] = Character.getNumericValue(cpf.charAt(i));
@@ -42,5 +43,30 @@ public class VerifyData {
         return false;
     }
 
-    public boolean isPass(String pass){return true;}
+
+    public boolean isPass(String value) {
+        int upperCase = 0;
+        int lowerCase = 0;
+        int numberCount = 0;
+        final String FINAL_CHAR_REGEX = "[!@#$%^&*()[\\\\]|;',./{}\\\\\\\\:\\\"<>?]";
+
+        for (int i = 0; i < value.length(); i++) {
+            if (Character.isUpperCase(value.charAt(i))) {
+                upperCase++;
+            }
+            if (Character.isLowerCase(value.charAt(i))) {
+                lowerCase++;
+            }
+            if (Character.isDigit(value.charAt(i))) {
+                numberCount++;
+            }
+        }
+        int specialCharCount = value.split(FINAL_CHAR_REGEX, -1).length - 1;
+        return upperCase >= 1 && numberCount >= 1 && specialCharCount >= 1;
+    }
 }
+
+
+
+
+

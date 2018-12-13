@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
@@ -9,9 +14,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f18332d-4e9e-451c-874b-0a97af8ea6b6" name="Default" comment="">
+    <list default="true" id="c4cbdf4f-099c-4e36-ab66-89dfd9ca0815" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/com/hkdevelopment/bankapp/LoginUnitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" afterDir="false" />
@@ -53,71 +60,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank_App.postman_collection.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/utils/VerifyData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/utils/VerifyData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/view/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/view/LoginView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app.sketch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/83F6DA3D-9F1B-4816-92B9-A74AAED40206/3817562E-CBB6-4CAD-BBCF-FD468BAA446F@0.5x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/83F6DA3D-9F1B-4816-92B9-A74AAED40206/3817562E-CBB6-4CAD-BBCF-FD468BAA446F@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/83F6DA3D-9F1B-4816-92B9-A74AAED40206/3817562E-CBB6-4CAD-BBCF-FD468BAA446F@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/83F6DA3D-9F1B-4816-92B9-A74AAED40206/3817562E-CBB6-4CAD-BBCF-FD468BAA446F@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/83F6DA3D-9F1B-4816-92B9-A74AAED40206/B27D4452-A3F9-4F53-991A-9E914520B88A@0.5x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/83F6DA3D-9F1B-4816-92B9-A74AAED40206/B27D4452-A3F9-4F53-991A-9E914520B88A@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/83F6DA3D-9F1B-4816-92B9-A74AAED40206/B27D4452-A3F9-4F53-991A-9E914520B88A@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/83F6DA3D-9F1B-4816-92B9-A74AAED40206/B27D4452-A3F9-4F53-991A-9E914520B88A@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/83F6DA3D-9F1B-4816-92B9-A74AAED40206/CA2B476F-0F1E-42F9-B119-2A2B3380A4D4@0.5x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/83F6DA3D-9F1B-4816-92B9-A74AAED40206/CA2B476F-0F1E-42F9-B119-2A2B3380A4D4@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/83F6DA3D-9F1B-4816-92B9-A74AAED40206/CA2B476F-0F1E-42F9-B119-2A2B3380A4D4@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/83F6DA3D-9F1B-4816-92B9-A74AAED40206/CA2B476F-0F1E-42F9-B119-2A2B3380A4D4@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/83F6DA3D-9F1B-4816-92B9-A74AAED40206/artboard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/39D04EF6-4A67-4ED6-A6AC-624922CFD8A1@0.5x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/39D04EF6-4A67-4ED6-A6AC-624922CFD8A1@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/39D04EF6-4A67-4ED6-A6AC-624922CFD8A1@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/39D04EF6-4A67-4ED6-A6AC-624922CFD8A1@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/4F2CC5EF-170E-45CA-94D1-9BCD2FA4A805@0.5x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/4F2CC5EF-170E-45CA-94D1-9BCD2FA4A805@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/4F2CC5EF-170E-45CA-94D1-9BCD2FA4A805@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/4F2CC5EF-170E-45CA-94D1-9BCD2FA4A805@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/68A7CB4F-8C7B-480B-B544-271AB428EE8A@0.5x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/68A7CB4F-8C7B-480B-B544-271AB428EE8A@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/68A7CB4F-8C7B-480B-B544-271AB428EE8A@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/68A7CB4F-8C7B-480B-B544-271AB428EE8A@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/artboard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/D66AAA24-D61F-44D2-8D53-8B219D009DBF/05376719-28C6-4537-A0B4-097E3C72AB41@0.5x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/D66AAA24-D61F-44D2-8D53-8B219D009DBF/05376719-28C6-4537-A0B4-097E3C72AB41@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/D66AAA24-D61F-44D2-8D53-8B219D009DBF/05376719-28C6-4537-A0B4-097E3C72AB41@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/D66AAA24-D61F-44D2-8D53-8B219D009DBF/05376719-28C6-4537-A0B4-097E3C72AB41@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/D66AAA24-D61F-44D2-8D53-8B219D009DBF/372B9348-D602-4A3B-8E91-A66250670461@0.5x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/D66AAA24-D61F-44D2-8D53-8B219D009DBF/372B9348-D602-4A3B-8E91-A66250670461@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/D66AAA24-D61F-44D2-8D53-8B219D009DBF/372B9348-D602-4A3B-8E91-A66250670461@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/D66AAA24-D61F-44D2-8D53-8B219D009DBF/372B9348-D602-4A3B-8E91-A66250670461@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/D66AAA24-D61F-44D2-8D53-8B219D009DBF/D78AA366-D361-4FA8-AACE-0B91A0581654@0.5x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/D66AAA24-D61F-44D2-8D53-8B219D009DBF/D78AA366-D361-4FA8-AACE-0B91A0581654@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/D66AAA24-D61F-44D2-8D53-8B219D009DBF/D78AA366-D361-4FA8-AACE-0B91A0581654@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/D66AAA24-D61F-44D2-8D53-8B219D009DBF/D78AA366-D361-4FA8-AACE-0B91A0581654@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/D66AAA24-D61F-44D2-8D53-8B219D009DBF/artboard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/E822A087-B20C-42DD-8665-FE03A4AA8211/CDEBC6CD-73C4-47CB-B879-8A426D8163E1@0.5x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/E822A087-B20C-42DD-8665-FE03A4AA8211/CDEBC6CD-73C4-47CB-B879-8A426D8163E1@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/E822A087-B20C-42DD-8665-FE03A4AA8211/CDEBC6CD-73C4-47CB-B879-8A426D8163E1@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/E822A087-B20C-42DD-8665-FE03A4AA8211/E3013759-B45A-4E98-8B34-278A50F98591@0.5x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/E822A087-B20C-42DD-8665-FE03A4AA8211/E3013759-B45A-4E98-8B34-278A50F98591@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/E822A087-B20C-42DD-8665-FE03A4AA8211/E3013759-B45A-4E98-8B34-278A50F98591@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/E822A087-B20C-42DD-8665-FE03A4AA8211/E3013759-B45A-4E98-8B34-278A50F98591@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/E822A087-B20C-42DD-8665-FE03A4AA8211/artboard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/assets/Logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/assets/logout 2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/data.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/links/page-1-currency.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/links/page-1-location.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/preview/page-1-currency.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bank_app_layout/preview/page-1-location.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/hkdevelopment/bankapp/ExampleUnitTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telas.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -140,34 +90,114 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="HomeView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/home/view/HomeView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginPresenter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/presenter/LoginPresenter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="54" column="63" selection-start-line="54" selection-start-column="63" selection-end-line="54" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="LoginView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/view/LoginView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="202">
+              <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginViewInt.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/view/LoginViewInt.java">
+      <file leaf-file-name="activity_login_view.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login_view.xml">
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="598">
+              <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_home_view.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home_view.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+            <state relative-caret-position="598">
+              <caret line="115" column="30" selection-start-line="115" selection-start-column="30" selection-end-line="115" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VerifyData.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state />
+          </provider>
+          <provider editor-type-id="android-manifest">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginUnitTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/test/java/com/hkdevelopment/bankapp/LoginUnitTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="54" column="1" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MaskFormater.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/utils/MaskFormater.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VerifyData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/utils/VerifyData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="44" column="37" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+            <state>
+              <caret column="46" selection-start-column="46" selection-end-column="46" />
+              <folding>
+                <element signature="e#602#603#0" expanded="true" />
+                <element signature="e#663#664#0" expanded="true" />
+                <element signature="method#isCpf#0;class#VerifyData#0" />
+                <element signature="method#isPass#1;class#VerifyData#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="C:\Users\humberto.kalex\Desktop\Pessoal\Projetos\Java\Android\BankApp\keyBank.jks" />
+    <option name="KEY_ALIAS" value="key0" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -188,14 +218,14 @@
         <entry>
           <key>
             <ExternalProjectPojo>
-              <option name="name" value="TesteAndroidv2" />
+              <option name="name" value="BankApp" />
               <option name="path" value="$PROJECT_DIR$" />
             </ExternalProjectPojo>
           </key>
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value="TesteAndroidv2" />
+                <option name="name" value="BankApp" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
@@ -213,7 +243,7 @@
           <value>
             <list>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of root project 'TesteAndroidv2'." />
+                <option name="description" value="Displays the sub-projects of root project 'BankApp'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="projects" />
               </ExternalTaskPojo>
@@ -293,7 +323,7 @@
                 <option name="name" value="compileDebugAndroidTestJavaWithJavac" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by root project 'TesteAndroidv2'. [incubating]" />
+                <option name="description" value="Displays the components produced by root project 'BankApp'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="components" />
               </ExternalTaskPojo>
@@ -567,12 +597,12 @@
                 <option name="name" value="generateDebugAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the dependent components of components in root project 'TesteAndroidv2'. [incubating]" />
+                <option name="description" value="Displays the dependent components of components in root project 'BankApp'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependentComponents" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in root project 'TesteAndroidv2'." />
+                <option name="description" value="Displays all buildscript dependencies declared in root project 'BankApp'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="buildEnvironment" />
               </ExternalTaskPojo>
@@ -692,7 +722,7 @@
                 <option name="name" value="bundleRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of root project 'TesteAndroidv2'. [incubating]" />
+                <option name="description" value="Displays the configuration model of root project 'BankApp'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="model" />
               </ExternalTaskPojo>
@@ -705,7 +735,7 @@
                 <option name="name" value="reportSourceSetTransformAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from root project 'TesteAndroidv2' (some of the displayed tasks may belong to subprojects)." />
+                <option name="description" value="Displays the tasks runnable from root project 'BankApp' (some of the displayed tasks may belong to subprojects)." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="tasks" />
               </ExternalTaskPojo>
@@ -723,7 +753,7 @@
                 <option name="name" value="bundleDebugAndroidTestResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in root project 'TesteAndroidv2'." />
+                <option name="description" value="Displays all dependencies declared in root project 'BankApp'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencies" />
               </ExternalTaskPojo>
@@ -823,7 +853,7 @@
                 <option name="name" value="packageAppClassesReleaseUnitTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in root project 'TesteAndroidv2'." />
+                <option name="description" value="Displays the insight into a specific dependency in root project 'BankApp'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencyInsight" />
               </ExternalTaskPojo>
@@ -1065,7 +1095,7 @@
                 <option name="name" value="packageDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of root project 'TesteAndroidv2'." />
+                <option name="description" value="Displays the properties of root project 'BankApp'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="properties" />
               </ExternalTaskPojo>
@@ -2265,7 +2295,7 @@
                   </entry>
                 </map>
               </option>
-              <option name="name" value="TesteAndroidv2" />
+              <option name="name" value="BankApp" />
               <option name="projectBuildClasspath">
                 <list>
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.6-all/bcst21l2brirad8k2ben1letg/gradle-4.6/src/announce" />
@@ -2431,8 +2461,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/view/LoginView.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/utils/VerifyData.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/test/java/com/hkdevelopment/bankapp/ExampleUnitTest.java" />
+        <option value="$PROJECT_DIR$/app/src/test/java/com/hkdevelopment/bankapp/LoginUnitTest.java" />
       </list>
     </option>
   </component>
@@ -2448,35 +2482,58 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
-              <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
             </path>
             <path>
-              <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
             </path>
             <path>
-              <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="bankapp" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
             <path>
-              <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="bankapp" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="bankapp" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="bankapp" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="login" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="bankapp" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+              <item name="presenter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="bankapp" type="cbb59c9e:AndroidPsiDirectoryNode" />
@@ -2484,12 +2541,39 @@
               <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="bankapp" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="login" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="bankapp" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="bankapp" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="BankApp" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
@@ -2498,6 +2582,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="ExportApk.ApkPath" value="C:\Users\humberto.kalex\Desktop\Pessoal\Projetos\Java\Android\BankApp\app" />
+    <property name="ExportApk.BuildType" value="release" />
+    <property name="ExportApk.Flavors" value="" />
+    <property name="ExportApk.SignV1" value="true" />
+    <property name="ExportApk.SignV2" value="true" />
+    <property name="android.project.structure.last.selected" value="app" />
+    <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="device.picker.selection" value="0047669713" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -2645,47 +2736,49 @@
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
     </configuration>
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2f18332d-4e9e-451c-874b-0a97af8ea6b6" name="Default" comment="" />
-      <created>1544716897482</created>
+      <changelist id="c4cbdf4f-099c-4e36-ab66-89dfd9ca0815" name="Default" comment="" />
+      <created>1544702278500</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1544716897482</updated>
+      <updated>1544702278500</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1040" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.5420712" weight="0.32690126" />
       <window_info anchor="bottom" id="Android Profiler" order="7" sideWeight="0.49676377" weight="0.3280363" />
+      <window_info id="Build Variants" order="4" sideWeight="0.23990498" side_tool="true" weight="0.24514563" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="8" sideWeight="0.36731392" side_tool="true" visible="true" weight="0.32423207" />
+      <window_info anchor="right" id="Flutter Outline" />
+      <window_info anchor="bottom" id="Logcat" order="9" sideWeight="0.6326861" weight="0.32423207" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="bottom" id="Build" order="16" sideWeight="0.5695793" weight="0.3265074" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3984109" />
+      <window_info anchor="right" id="Device File Explorer" order="11" side_tool="true" weight="0.32928804" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.5420712" weight="0.32690126" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="7" />
-      <window_info id="Build Variants" order="4" sideWeight="0.23990498" side_tool="true" weight="0.24514563" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.43042073" side_tool="true" weight="0.3291714" />
+      <window_info anchor="right" id="Preview" order="8" weight="0.34061489" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.48058254" weight="0.32576618" />
       <window_info anchor="bottom" id="Version Control" order="15" sideWeight="0.48139158" weight="0.9114643" />
       <window_info anchor="bottom" id="Terminal" order="14" sideWeight="0.74757284" weight="0.3280363" />
-      <window_info anchor="right" id="Flutter Outline" />
-      <window_info anchor="bottom" id="Logcat" order="9" sideWeight="0.63349515" weight="0.32423207" />
       <window_info id="Captures" order="2" weight="0.25" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.760095" visible="true" weight="0.26537216" />
-      <window_info anchor="bottom" id="Build" order="16" sideWeight="0.5695793" visible="true" weight="0.3265074" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.760095" visible="true" weight="0.26537216" />
       <window_info anchor="right" id="Gradle" order="5" weight="0.32928804" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3984109" />
       <window_info id="Favorites" order="6" sideWeight="0.51623374" side_tool="true" weight="0.21035598" />
-      <window_info anchor="right" id="Device File Explorer" order="11" side_tool="true" weight="0.32928804" />
       <window_info anchor="right" id="Flutter Inspector" />
       <window_info anchor="right" id="Android Model" order="7" side_tool="true" weight="0.32928804" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32897863" />
-      <window_info anchor="right" id="Preview" order="8" weight="0.34061489" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" id="StringPreview" order="10" />
@@ -2704,25 +2797,92 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/view/LoginView.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/utils/MaskFormater.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/view/LoginViewInt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        <state relative-caret-position="68">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/utils/VerifyData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="44" column="37" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+        <state>
+          <caret column="46" selection-start-column="46" selection-end-column="46" />
+          <folding>
+            <element signature="e#602#603#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
+            <element signature="method#isCpf#0;class#VerifyData#0" />
+            <element signature="method#isPass#1;class#VerifyData#0" />
+          </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/presenter/LoginPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="54" column="63" selection-start-line="54" selection-start-column="63" selection-end-line="54" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login_view.xml">
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="67" column="32" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/login/view/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/hkdevelopment/bankapp/home/view/HomeView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/java/com/hkdevelopment/bankapp/LoginUnitTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="54" column="1" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home_view.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="115" column="30" selection-start-line="115" selection-start-column="30" selection-end-line="115" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
       </provider>
     </entry>
   </component>
