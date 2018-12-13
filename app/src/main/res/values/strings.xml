@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">BankApp</string>
+
+    <string name="user_empty">Usuário não pode ser vazio!</string>
+    <string name="user_error">Usuário Inválido!</string>
+    <string name="pass_empty">Senha não pode ser vazia!</string>
+    <string name="pass_error">Senha Inválida!</string>
+    <string name="userPrefs"/>
+    <string name="user">user</string>
+    <string name="password">password</string>
+</resources>
