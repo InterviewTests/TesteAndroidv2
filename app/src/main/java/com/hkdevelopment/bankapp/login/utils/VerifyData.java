@@ -14,7 +14,6 @@ public class VerifyData {
     public boolean isCpf(String cpf) {
         cpf = cpf.replaceAll("-|\\.", "");
         if (cpf != null && PATTERN_GENERIC.matcher(cpf).matches()) {
-
             if (PATTERN_NUMBERS.matcher(cpf).matches()) {
                 int[] numbers = new int[11];
                 for (int i = 0; i < 11; i++) numbers[i] = Character.getNumericValue(cpf.charAt(i));
