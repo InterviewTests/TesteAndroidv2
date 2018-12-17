@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".Login.LoginActivity">
+    <FrameLayout
+        android:layout_marginLeft="16px"
+        android:layout_marginRight="16px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="125px"
+                android:layout_height="70px"
+                android:layout_marginTop="56px"
+                android:src="@drawable/logo" />
+
+            <EditText
+                android:id="@+id/user_acess"
+                android:layout_marginTop="105px"
+                android:background="@drawable/border_input"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="User" />
+            <EditText
+                android:id="@+id/user_pass"
+                android:layout_marginTop="21px"
+                android:background="@drawable/border_input"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password" />
+        </LinearLayout>
+        <FrameLayout
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="32px"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="202px"
+                android:layout_height="62px"
+                android:background="@drawable/radius_buttom"
+                android:textColor="@color/white"
+                android:text="Login"/>
+        </FrameLayout>
+    </FrameLayout>
+</LinearLayout>
