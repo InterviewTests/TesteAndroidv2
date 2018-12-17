@@ -7,12 +7,15 @@ public interface LoginContract {
     interface View{
 
         void initView();
-        void passUserinfo();
+        void passUserinfo(String name, String account, String balance);
+        void showProgressDialog();
+        void onErroRequest();
     }
 
     interface Presenter{
 
         void getLoginExecute(Login login);
-
+        void setPreferences(String value, String tag);
+        String getPreferences(String tag);
     }
 }
