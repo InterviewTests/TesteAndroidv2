@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.savioguedes.testeandroid.R;
@@ -23,6 +25,7 @@ public class StateActivity extends AppCompatActivity implements StateContract.Vi
     Bundle extras;
 
     private TextView username, account, sale;
+    private ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +56,13 @@ public class StateActivity extends AppCompatActivity implements StateContract.Vi
         username = findViewById(R.id.state_text_user);
         account = findViewById(R.id.state_text_account);
         sale = findViewById(R.id.state_text_sale);
+        spinner = findViewById(R.id.progressBarRecycler);
 
         username.setText(extras.getString("NOME"));
         account.setText(extras.getString("CONTA"));
         sale.setText(extras.getString("SALDO"));
+
+        showProgressDialog();
     }
 
     @Override
@@ -65,15 +71,19 @@ public class StateActivity extends AppCompatActivity implements StateContract.Vi
         //set adapter
         adapter = new StateAdapter(statementLists, this);
         stateRecyclerView.setAdapter(adapter);
+
+        spinner.setVisibility(View.GONE);
     }
 
     @Override
     public void showProgressDialog() {
 
+        spinner.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onErroRequest() {
 
+        spinner.setVisibility(View.GONE);
     }
 }

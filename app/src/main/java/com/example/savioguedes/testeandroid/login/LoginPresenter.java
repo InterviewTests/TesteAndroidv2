@@ -2,13 +2,18 @@ package com.example.savioguedes.testeandroid.login;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.savioguedes.testeandroid.model.Login;
 import com.example.savioguedes.testeandroid.model.ResponseLogin;
 import com.example.savioguedes.testeandroid.model.UserAccount;
 import com.example.savioguedes.testeandroid.service.Api;
 import com.example.savioguedes.testeandroid.service.Manager;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -73,6 +78,32 @@ public class LoginPresenter implements LoginContract.Presenter{
         SharedPreferences.Editor editor = context.getSharedPreferences("LOCAL_SAVE", Context.MODE_PRIVATE).edit();
         editor.putString(tag, value);
         editor.apply();
+    }
+
+    @Override
+    public boolean isValidFields(String user, String password) {
+
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
+        Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+        Matcher passwordMatcher = pattern.matcher(password);
+
+        if(TextUtils.isEmpty(user) || TextUtils.isEmpty(password)){
+
+            Toast.makeText(context, "Todos os campos são obrigatórios", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        else{
+
+            if(android.util.Patterns.EMAIL_ADDRESS.matcher(user).matches() && passwordMatcher.matches()){
+
+                return true;
+            }
+            else{
+
+                Toast.makeText(context, "Usuario ou senha inválidos", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
     }
 
     @Override

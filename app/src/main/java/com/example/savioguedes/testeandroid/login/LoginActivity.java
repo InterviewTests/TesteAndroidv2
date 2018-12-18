@@ -63,11 +63,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 userText = username.getText().toString();
                 passText = password.getText().toString();
 
-                login.setUser(userText);
-                login.setPassword(passText);
+                if(loginPresenter.isValidFields(userText, passText)) {
 
-                showProgressDialog();
-                loginPresenter.getLoginExecute(login);
+                    login.setUser(userText);
+                    login.setPassword(passText);
+
+                    showProgressDialog();
+                    loginPresenter.getLoginExecute(login);
+                }
             }
         });
     }
@@ -100,7 +103,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void onErroRequest() {
 
         progressDialog.dismiss();
-
         Toast.makeText(this, "Erro ao realizar login", Toast.LENGTH_LONG).show();
     }
 

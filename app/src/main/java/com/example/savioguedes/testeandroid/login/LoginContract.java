@@ -16,6 +16,7 @@ public interface LoginContract {
 
         void getLoginExecute(Login login);
         void setPreferences(String value, String tag);
+        boolean isValidFields(String user, String password);
         String getPreferences(String tag);
     }
 }
