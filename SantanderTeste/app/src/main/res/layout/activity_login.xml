@@ -38,6 +38,7 @@
                 android:background="@drawable/border_input"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:hint="Password" />
         </LinearLayout>
         <FrameLayout

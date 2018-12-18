@@ -3,10 +3,8 @@ package com.example.jcsantos.santanderteste.Statements;
 import android.content.Context;
 
 import com.example.jcsantos.santanderteste.Objects.Statement;
-import com.example.jcsantos.santanderteste.Objects.StatementContent;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,13 +17,11 @@ public class StatementModel {
     public ArrayList data;
     public StatementResponse rs;
     public static StatementActivity activity;
-    public StatementContent content;
     Context context;
 
     public StatementModel(StatementResponse rs, Context context) {
         this.statementList = new ArrayList<>();
         this.data = new ArrayList<>();
-        this.content = new StatementContent();
         this.context = context;
         this. activity = new StatementActivity();
         this. rs = rs;
