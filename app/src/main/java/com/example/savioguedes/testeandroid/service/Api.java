@@ -2,7 +2,10 @@ package com.example.savioguedes.testeandroid.service;
 
 import com.example.savioguedes.testeandroid.model.Login;
 import com.example.savioguedes.testeandroid.model.ResponseLogin;
-import com.example.savioguedes.testeandroid.model.Statement;
+import com.example.savioguedes.testeandroid.model.ResponseStates;
+import com.example.savioguedes.testeandroid.model.StatementList;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -16,5 +19,5 @@ public interface Api {
     Call<ResponseLogin> login(@Body Login user_login);
 
     @GET("statements/{id}")
-    Call<Statement> getStatements(@Path("id") String userId);
+    Call<ResponseStates> getStatements(@Path("id") String userId);
 }

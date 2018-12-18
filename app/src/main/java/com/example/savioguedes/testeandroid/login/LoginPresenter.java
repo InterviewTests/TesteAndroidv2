@@ -49,7 +49,7 @@ public class LoginPresenter implements LoginContract.Presenter{
                         UserAccount userAccount = response.body().getUserAccount();
                         setPreferences(login.getUser(), "CURRENT_USERNAME");
 
-                        view.passUserinfo(userAccount.getName(),
+                        view.passUserinfo(userAccount.getUserId(), userAccount.getName(),
                                 userAccount.getBankAccount()+" / "+userAccount.getAgency(),
                                 String.valueOf(userAccount.getBalance()));
 

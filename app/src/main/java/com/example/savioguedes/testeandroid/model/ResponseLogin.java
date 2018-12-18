@@ -2,7 +2,6 @@ package com.example.savioguedes.testeandroid.model;
 
 public class ResponseLogin {
 
-
     private UserAccount userAccount;
 
     public UserAccount getUserAccount() {

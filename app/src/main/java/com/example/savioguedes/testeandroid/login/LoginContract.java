@@ -7,7 +7,7 @@ public interface LoginContract {
     interface View{
 
         void initView();
-        void passUserinfo(String name, String account, String balance);
+        void passUserinfo(int id, String name, String account, String balance);
         void showProgressDialog();
         void onErroRequest();
     }

@@ -73,11 +73,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
-    public void passUserinfo(String name, String account, String balance) {
+    public void passUserinfo(int id, String name, String account, String balance) {
 
         progressDialog.dismiss();
 
         Intent intent = new Intent(LoginActivity.this, StateActivity.class);
+        intent.putExtra("ID", id);
         intent.putExtra("NOME", name);
         intent.putExtra("CONTA", account);
         intent.putExtra("SALDO", balance);

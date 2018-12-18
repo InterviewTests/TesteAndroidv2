@@ -1,9 +1,9 @@
 package com.example.savioguedes.testeandroid.model;
 
-public class Statement {
+public class StatementList {
 
     private String title, desc, date;
-    private int value;
+    private double value;
 
     public String getTitle() {
         return title;
@@ -29,7 +29,7 @@ public class Statement {
         this.date = date;
     }
 
-    public int getValue() {
+    public double getValue() {
         return value;
     }
 

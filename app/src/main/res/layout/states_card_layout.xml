@@ -15,7 +15,7 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/textview1"
+            android:id="@+id/state_card_pay_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pagamento"
@@ -24,13 +24,13 @@
             android:layout_alignParentLeft="true" />
 
         <TextView
-            android:id="@+id/state_card_pay"
+            android:id="@+id/state_card_pay_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/exemple_pay"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_below="@+id/textview1"
+            android:layout_below="@+id/state_card_pay_title"
             android:layout_marginTop="16dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
@@ -38,7 +38,7 @@
             android:maxEms="8"/>
 
         <TextView
-            android:id="@+id/textview2"
+            android:id="@+id/state_card_pay_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/data"
@@ -53,7 +53,7 @@
             android:text="@string/exemple_sale"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_below="@+id/textview2"
+            android:layout_below="@+id/state_card_pay_date"
             android:layout_marginTop="16dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
