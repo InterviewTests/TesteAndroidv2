@@ -2,6 +2,8 @@ package com.example.jcsantos.santanderteste.Login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.Serializable;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity implements LoginResponse {
     EditText name_user;
@@ -25,7 +28,6 @@ public class LoginActivity extends AppCompatActivity implements LoginResponse {
     User user_data;
     LoginModel model;
     CpfValidate cpfValidate;
-    Boolean a;
     boolean erroPass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,14 @@ public class LoginActivity extends AppCompatActivity implements LoginResponse {
         cpfValidate = new CpfValidate();
         model = new LoginModel(this, this);
 
+        checkLastUser();
+    }
+
+    void checkLastUser() {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+        if (preferences.getString(User.USER_ACCESS, null) != null){
+            name_user.setText(preferences.getString(User.USER_ACCESS, null));
+        }
         handleLogin();
     }
 
@@ -59,15 +69,24 @@ public class LoginActivity extends AppCompatActivity implements LoginResponse {
                 } else {
                     model.requestLogin(name_user.getText().toString(), pass_user.getText().toString());
                 }
-                // a = cpfValidate.isValid(name_user.getText().toString());
             }
 
         });
     }
 
+    private void saveUser(Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString(User.USER_ACCESS, name_user.getText().toString());
+        editor.apply();
+    }
+
+
     @Override
     public void loginSucess(User user) {
         if (user.getName() != null) {
+            saveUser(LoginActivity.this);
             Context cx = getApplicationContext();
             Intent intent = new Intent(cx, StatementActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

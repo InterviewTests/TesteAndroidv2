@@ -3,6 +3,9 @@ package com.example.jcsantos.santanderteste.Objects;
 import java.io.Serializable;
 
 public class User implements Serializable{
+    public static final String USER_ACCESS = "test.user_access";
+    public static final String USER_PASSWORD = "test.user_password";
+
     int userId;
     String name;
     String bankAccount;
