@@ -1,8 +1,8 @@
-package com.example.jcsantos.santanderteste.Utils;
+package com.example.jcsantos.santanderteste.Components.Utils;
 
 import java.util.regex.Pattern;
 
-public class CpfValidate {
+public class ItemsValidate {
     private static final int[] pesoCPF = {11, 10, 9, 8, 7, 6, 5, 4, 3, 2};
 
     public boolean isValid(String cpfEmail) {

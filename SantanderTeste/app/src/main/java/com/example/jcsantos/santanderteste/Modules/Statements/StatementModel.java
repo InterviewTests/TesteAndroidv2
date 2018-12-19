@@ -1,8 +1,8 @@
-package com.example.jcsantos.santanderteste.Statements;
+package com.example.jcsantos.santanderteste.Modules.Statements;
 
 import android.content.Context;
 
-import com.example.jcsantos.santanderteste.Objects.Statement;
+import com.example.jcsantos.santanderteste.Components.Objects.Statement;
 
 import java.util.ArrayList;
 
@@ -55,6 +55,7 @@ public class StatementModel {
 
             @Override
             public void onFailure(Call<StatementModel> call, Throwable t) {
+                // tratar erro...
                 System.out.println(":: erro request statement ::" + t.getMessage());
             }
         });

@@ -1,4 +1,4 @@
-package com.example.jcsantos.santanderteste.Statements;
+package com.example.jcsantos.santanderteste.Modules.Statements;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.jcsantos.santanderteste.Objects.Statement;
+import com.example.jcsantos.santanderteste.Components.Objects.Statement;
 import com.example.jcsantos.santanderteste.R;
 
 import java.util.List;

@@ -1,8 +1,8 @@
-package com.example.jcsantos.santanderteste.Login;
+package com.example.jcsantos.santanderteste.Modules.Login;
 
 import android.content.Context;
 
-import com.example.jcsantos.santanderteste.Objects.User;
+import com.example.jcsantos.santanderteste.Components.Objects.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,6 +43,7 @@ public class LoginModel {
             }
             @Override
             public void onFailure(Call<LoginModel> call, Throwable t) {
+                // tratar o erro...
                 System.out.println(":: erro login ::" + t.getMessage());
             }
         });

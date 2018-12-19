@@ -1,4 +1,4 @@
-package com.example.jcsantos.santanderteste.Objects;
+package com.example.jcsantos.santanderteste.Components.Objects;
 
 import java.io.Serializable;
 

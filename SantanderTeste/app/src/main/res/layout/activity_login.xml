@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".Login.LoginActivity">
+    tools:context=".Modules.Login.LoginActivity">
     <FrameLayout
         android:layout_marginLeft="16px"
         android:layout_marginRight="16px"

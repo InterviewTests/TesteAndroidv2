@@ -1,4 +1,4 @@
-package com.example.jcsantos.santanderteste.Login;
+package com.example.jcsantos.santanderteste.Modules.Login;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,18 +8,15 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.jcsantos.santanderteste.Objects.User;
+import com.example.jcsantos.santanderteste.Components.Objects.User;
 import com.example.jcsantos.santanderteste.R;
-import com.example.jcsantos.santanderteste.Statements.StatementActivity;
-import com.example.jcsantos.santanderteste.Utils.CpfValidate;
+import com.example.jcsantos.santanderteste.Modules.Statements.StatementActivity;
+import com.example.jcsantos.santanderteste.Components.Utils.ItemsValidate;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.io.Serializable;
-import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity implements LoginResponse {
     EditText name_user;
@@ -27,7 +24,7 @@ public class LoginActivity extends AppCompatActivity implements LoginResponse {
     Button btn_login;
     User user_data;
     LoginModel model;
-    CpfValidate cpfValidate;
+    ItemsValidate cpfValidate;
     boolean erroPass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +35,7 @@ public class LoginActivity extends AppCompatActivity implements LoginResponse {
         pass_user = findViewById(R.id.user_pass);
         btn_login = findViewById(R.id.btn_login);
         user_data = new User();
-        cpfValidate = new CpfValidate();
+        cpfValidate = new ItemsValidate();
         model = new LoginModel(this, this);
 
         checkLastUser();
@@ -82,10 +79,9 @@ public class LoginActivity extends AppCompatActivity implements LoginResponse {
         editor.apply();
     }
 
-
     @Override
     public void loginSucess(User user) {
-        if (user.getName() != null) {
+        if (user.getUserId() > -1) {
             saveUser(LoginActivity.this);
             Context cx = getApplicationContext();
             Intent intent = new Intent(cx, StatementActivity.class);

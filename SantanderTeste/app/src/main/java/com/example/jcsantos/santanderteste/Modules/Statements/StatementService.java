@@ -1,4 +1,4 @@
-package com.example.jcsantos.santanderteste.Statements;
+package com.example.jcsantos.santanderteste.Modules.Statements;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
