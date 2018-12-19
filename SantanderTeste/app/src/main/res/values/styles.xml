@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/black</item>
     </style>
 
+    <style name="AppTheme.mainColor">
+        <item name="colorAccent">@color/blue_main</item> <!-- Whatever color you want-->
+    </style>
+
 </resources>

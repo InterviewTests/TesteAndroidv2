@@ -64,6 +64,7 @@ public class LoginActivity extends AppCompatActivity implements LoginResponse {
                         .setMessage("A senha deve conter ao menos um número, uma letra maiúscula e um caractere especial.")
                         .setPositiveButton(android.R.string.ok, null).show();
                 } else {
+                    startActivityIndicator();
                     model.requestLogin(name_user.getText().toString(), pass_user.getText().toString());
                 }
             }
@@ -79,8 +80,16 @@ public class LoginActivity extends AppCompatActivity implements LoginResponse {
         editor.apply();
     }
 
+    void startActivityIndicator() {
+        findViewById(R.id.progress_login).setVisibility(View.VISIBLE);
+    }
+    void stopActivityIndicator() {
+        findViewById(R.id.progress_login).setVisibility(View.GONE);
+    }
+
     @Override
     public void loginSucess(User user) {
+        stopActivityIndicator();
         if (user.getUserId() > -1) {
             saveUser(LoginActivity.this);
             Context cx = getApplicationContext();

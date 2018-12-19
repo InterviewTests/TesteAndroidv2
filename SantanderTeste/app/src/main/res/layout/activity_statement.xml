@@ -13,42 +13,55 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-                android:paddingLeft="18px"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:orientation="vertical"
                 android:background="@color/blue_main"
                 android:layout_width="match_parent"
-                android:layout_height="232px">
-                <TextView
-                    android:textColor="@color/white"
-                    android:textSize="25px"
-                    android:layout_marginTop="40px"
-                    android:id="@+id/txt_user_name"
+                android:layout_height="232sp">
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="nome do user"/>
+                    android:layout_marginTop="20sp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:id="@+id/txt_user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="nome do user"/>
+                    <ImageView
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_width="27sp"
+                        android:layout_height="27sp"
+                        android:src="@drawable/logout" />
+
+                </RelativeLayout>
                 <TextView
                     android:textColor="@color/white"
-                    android:layout_marginTop="28px"
-                    android:textSize="12px"
+                    android:layout_marginTop="28dp"
+                    android:textSize="12sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Conta"/>
                 <TextView
                     android:textColor="@color/white"
-                    android:textSize="25px"
+                    android:textSize="25sp"
                     android:id="@+id/txt_account_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
                 <TextView
                     android:textColor="@color/white"
-                    android:textSize="12px"
-                    android:layout_marginTop="28px"
+                    android:textSize="12sp"
+                    android:layout_marginTop="28sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Saldo"/>
                 <TextView
                     android:textColor="@color/white"
-                    android:textSize="25px"
+                    android:textSize="25sp"
                     android:id="@+id/txt_money"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -57,13 +70,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Recentes"
-                android:textSize="17px"
-                android:layout_marginLeft="16px"
-                android:layout_marginTop="16px"
+                android:textSize="17sp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginTop="16sp"
                 android:textColor="@color/light_gray3"/>
             <LinearLayout
                 android:id="@+id/feed_filtrar"
-                android:padding="16px"
+                android:padding="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">

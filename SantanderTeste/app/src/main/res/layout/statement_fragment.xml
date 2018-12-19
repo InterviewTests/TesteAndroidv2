@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    android:layout_marginTop="16px"
+<FrameLayout android:layout_marginTop="16px"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@color/back_color"
-    android:layout_height="80px">
+    android:layout_marginBottom="12dp"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="80px">
+        android:layout_height="80dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,21 +20,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:padding="8px">
+                android:padding="8dp">
 
                 <TextView
                     android:id="@+id/txt_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/light_gray2"
-                    android:textSize="16px" />
+                    android:textSize="16sp" />
                 <TextView
                     android:layout_alignParentRight="true"
                     android:id="@+id/txt_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/light_gray2"
-                    android:textSize="16px" />
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 
@@ -48,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/light_gray3"
-                    android:textSize="16px" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_alignParentRight="true"
@@ -56,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/light_gray3"
-                    android:textSize="24px" />
+                    android:textSize="24sp" />
             </RelativeLayout>
 
         </LinearLayout>
