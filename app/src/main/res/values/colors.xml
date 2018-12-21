@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#d81b60</color>
+    <color name="colorFUndo">#ffffff</color>
+    <color name="colorFundoLista">#fefefe</color>
+    <color name="colorfundoazul">#3b48ee</color>
+    <color name="colorcurrency">#3b49ee</color>
+    <color name="colorPreto">#050404</color>
+    <color name="corTituloPagamento">#a8b4c4</color>
+    <color name="corfundolista">#e5e8eb</color>
+    <color name="corDescricao">#485465</color>
+    <color name="corValor">#485465</color>
+</resources>

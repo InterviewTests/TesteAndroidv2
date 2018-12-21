@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorFUndo"
+    tools:context=".LoginActivity"
+    tools:layout_editor_absoluteY="56dp"
+    android:windowSoftInputMode="stateHidden">
+
+
+    <ImageView
+        android:id="@+id/imagemLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="124dp"
+        android:contentDescription="@string/logo"
+        app:srcCompat="@drawable/logo" />
+
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="202dp"
+        android:layout_height="62dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="87dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginBottom="33dp"
+        android:background="@color/colorfundoazul"
+        android:fontFamily="@font/helveticaneulight"
+        android:text="@string/btnlogin"
+        android:textAlignment="center"
+        android:textSize="@dimen/sizeLogin" />
+
+    <EditText
+        android:id="@+id/editUserId"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="231dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="386dp"
+        android:cursorVisible="true"
+        android:ems="10"
+        android:enabled="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/DicaUser"
+        android:importantForAutofill="no"
+        android:inputType="text|textEmailAddress"
+        android:maxLength="20"
+        android:textColor="@color/colorPreto"
+        android:textColorHint="@color/colorPreto"
+        android:textSize="@dimen/sizeLogin"
+        android:visibility="visible"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/editSenha"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="302dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="300dp"
+        android:cursorVisible="true"
+        android:ems="10"
+        android:enabled="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/Dicasenha"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:maxLength="10"
+        android:textColor="@color/colorPreto"
+        android:textColorHint="@color/colorPreto"
+        android:textSize="@dimen/sizeLogin"
+        android:visibility="visible"
+        tools:targetApi="o" />
+
+
+</RelativeLayout>

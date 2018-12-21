@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorFUndo"
+    tools:context=".Currency"
+    tools:layout_editor_absoluteY="56dp">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="375dp"
+        android:layout_height="232dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="@color/colorfundoazul"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/txtAgenciaConta"
+            app:layout_constraintTop_toTopOf="@+id/txtAgenciaConta">
+
+            <TextView
+                android:id="@+id/txtNome"
+                android:layout_width="275dp"
+                android:layout_height="29dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="163dp"
+                android:fontFamily="@font/helveticaneulight"
+                android:textColor="@color/colorFUndo"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewConta"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/imagemLogout"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_gravity="center_horizontal|end"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="16dp"
+                android:clickable="true"
+                android:contentDescription="@string/logout"
+                android:focusable="true"
+                android:textAlignment="textEnd"
+                android:verticalScrollbarPosition="right"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logout" />
+
+            <TextView
+                android:id="@+id/textViewConta"
+                android:layout_width="48dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginBottom="122dp"
+                android:fontFamily="@font/helveticaneulight"
+                android:text="@string/LabelConta"
+                android:textColor="@color/colorFUndo"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/txtAgenciaConta"
+                android:layout_width="300dp"
+                android:layout_height="29dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="116dp"
+                android:layout_marginBottom="87dp"
+                android:fontFamily="@font/helveticaneulight"
+                android:textColor="@color/colorFUndo"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.19"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.502" />
+
+            <TextView
+                android:id="@+id/textViewSaldo"
+                android:layout_width="104dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginBottom="53dp"
+                android:fontFamily="@font/helveticaneulight"
+                android:text="@string/labelSaldo"
+                android:textColor="@color/colorFUndo"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewConta"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/txtSaldo"
+                android:layout_width="184dp"
+                android:layout_height="29dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginBottom="17dp"
+                android:fontFamily="@font/helveticaneulight"
+                android:textColor="@color/colorFUndo"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/txtViewRecentes"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="246dp"
+        android:layout_marginBottom="401dp"
+        android:background="@color/colorFundoLista"
+        android:fontFamily="@font/helveticaneulight"
+        android:gravity="start|end"
+        android:text="@string/Recente"
+        android:textColor="@color/colorPreto"
+        android:textSize="17sp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/card_recycler_view"
+        android:layout_width="369dp"
+        android:layout_height="308dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="274dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="6dp"
+        android:background="@color/colorFUndo"
+        android:paddingStart="25dp"
+        android:paddingEnd="6dp"
+        android:scrollbars="vertical"
+        android:visibility="visible">
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

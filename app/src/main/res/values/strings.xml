@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TestSantander</string>
+    <string name="logo">logo</string>
+    <string name="textoUsuario" />
+    <string name="editsenha">editsenha</string>
+    <string name="Dicasenha">Password</string>
+    <string name="btnlogin">Login</string>
+    <string name="DicaUser">User</string>
+    <string name="LabelConta">Conta</string>
+    <string name="labelSaldo">Saldo</string>
+    <string name="logout">logout</string>
+    <string name="Recente">Recentes</string>
+</resources>
