@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SantanderTesteAndroidv2</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_user">User</string>
+    <string name="text_login">Login</string>
+    <string name="msg_error_user">Digite um Email ou CPF válido!</string>
+    <string name="msg_error_pass">Digite pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.</string>
 </resources>
