@@ -5,4 +5,9 @@
     <string name="text_login">Login</string>
     <string name="msg_error_user">Digite um Email ou CPF válido!</string>
     <string name="msg_error_pass">Digite pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.</string>
+    <string name="user_name">Nome do Usuario</string>
+    <string name="label_account">Conta</string>
+    <string name="label_balance">Saldo</string>
+    <string name="symbol_br">R$</string>
+    <string name="statements">Recentes</string>
 </resources>
