@@ -10,5 +10,6 @@
 ##  Observações gerais
 
 -   Estou me candidatando para empresa TCS;
--   Não implementei no projeto os testes, estou com tempo bem apertado e todo comprometido com a minha empresa atual.
-- 
+-   Não implementei no projeto os testes, estou com tempo bem apertado e todo comprometido com a minha empresa atual (**Indra Company**).
+
+####  [Linkedin](https://www.linkedin.com/in/edrianosantos/)
