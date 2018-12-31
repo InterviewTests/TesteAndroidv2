@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="userAccount"
+            type="com.home.project.testeandroidv2.model.UserAccount" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite2"
+        android:orientation="vertical"
+        tools:context=".bankStatemenScreen.BankStatementActivity">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlue"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="24dp"
+                android:text="@{userAccount.name}"
+                android:textColor="@color/fontColor1"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/icLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="22dp"
+                android:layout_marginTop="24dp"
+                android:onClick="onClickLogout"
+                android:src="@drawable/ic_logout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvLblAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="80dp"
+                android:text="@string/label_account"
+                android:textColor="@color/fontColor1"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvUserBankAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{userAccount.bankAccount}"
+                android:textColor="@color/fontColor1"
+                android:textSize="25sp"
+                app:layout_constraintStart_toEndOf="@+id/lblSeparator"
+                app:layout_constraintTop_toBottomOf="@+id/tvLblAccount" />
+
+            <TextView
+                android:id="@+id/lblSeparator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text=" / "
+                android:textColor="@color/fontColor1"
+                android:textSize="25sp"
+                app:layout_constraintStart_toEndOf="@+id/tvUserAgency"
+                app:layout_constraintTop_toBottomOf="@+id/tvLblAccount" />
+
+            <TextView
+                android:id="@+id/tvUserAgency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="8dp"
+                android:text="@{userAccount.agency}"
+                android:textColor="@color/fontColor1"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLblAccount" />
+
+
+            <TextView
+                android:id="@+id/tvLblBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="140dp"
+                android:text="@string/label_balance"
+                android:textColor="@color/fontColor1"
+                android:textSize="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvLblSifrao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="18dp"
+                android:text="R$ "
+                android:textColor="@color/fontColor1"
+                android:textSize="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLblBalance" />
+
+            <TextView
+                android:id="@+id/tvUserBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@{userAccount.balance}"
+                android:textColor="@color/fontColor1"
+                android:textSize="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tvLblSifrao"
+                app:layout_constraintTop_toBottomOf="@+id/tvLblBalance" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/lblRecentes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="6dp"
+            android:text="@string/lbl_recentes"
+            android:textColor="@color/fontColor2"
+            android:textSize="17dp"
+            />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/proogressBar"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvStatementList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
+</layout>

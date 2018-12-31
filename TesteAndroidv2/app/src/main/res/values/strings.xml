@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TesteAndroidv2</string>
+
+    <!-- String activity_login -->
+    <string name="hint_user">User</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="tv_remove_account">Logar com outra conta</string>
+
+    <!-- String activity_statement_bank -->
+    <string name="label_account">Conta</string>
+    <string name="label_balance">Saldo</string>
+    <string name="lbl_recentes">Recentes</string>
+
+
+</resources>
