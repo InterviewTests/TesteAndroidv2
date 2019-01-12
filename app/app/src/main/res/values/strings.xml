@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">app</string>
+    <string name="app_name">Santander Test V2</string>
+
+    <string name="login">Login</string>
+    <string name="hint_user">User</string>
+    <string name="hint_password">Password</string>
 </resources>

@@ -3,4 +3,9 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="white">#fff</color>
+    <color name="loginBG">#FF3B48EE</color>
+    <color name="loginColor">#FFFFFF</color>
+    <color name="textcolorhint">#A8B4C4</color>
+    <color name="loading_black">#99000000</color>
 </resources>
