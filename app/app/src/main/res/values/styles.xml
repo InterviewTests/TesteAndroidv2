@@ -6,7 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="errorTextAppearance">@color/colorAccent</item>
     </style>
 
 
+    <color name="control_activated">@color/colorPrimary</color>
+    <color name="error">@color/colorAccent</color>
 </resources>

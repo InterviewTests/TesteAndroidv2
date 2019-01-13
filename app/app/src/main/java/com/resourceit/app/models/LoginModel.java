@@ -3,21 +3,21 @@ package com.resourceit.app.models;
 import java.util.List;
 
 public class LoginModel {
-    private List<LoginModel> userAccount;
+    private LoginModel userAccount;
     private double userId;
     private String name;
     private String bankAccount;
 
-    public List<LoginModel> getUserAccount() {
+    public double getUserId() {
+        return userId;
+    }
+
+    public LoginModel getUserAccount() {
         return userAccount;
     }
 
-    public void setUserAccount(List<LoginModel> userAccount) {
+    public void setUserAccount(LoginModel userAccount) {
         this.userAccount = userAccount;
-    }
-
-    public double getUserId() {
-        return userId;
     }
 
     public void setUserId(double userId) {
