@@ -4,18 +4,18 @@ import java.util.List;
 
 public class StatmentModel {
 
-    private List<StatmentModel > statmentModel;
+    private List<StatmentModel > statementList;
     private String title;
     private String desc;
     private String date;
     private double value;
 
-    public List<StatmentModel> getStatmentModel() {
-        return statmentModel;
+    public List<StatmentModel> getStatementList() {
+        return statementList;
     }
 
-    public void setStatmentModel(List<StatmentModel> statmentModel) {
-        this.statmentModel = statmentModel;
+    public void setStatementList(List<StatmentModel> statementList) {
+        this.statementList = statementList;
     }
 
     public String getTitle() {
