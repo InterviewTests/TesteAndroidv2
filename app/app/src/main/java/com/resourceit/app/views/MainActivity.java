@@ -4,13 +4,16 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.resourceit.app.R;
+import com.resourceit.app.dao.LoginDao;
 import com.resourceit.app.interfaces.APIService;
+import com.resourceit.app.tools.AppDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.room.Room;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Retrofit;
@@ -21,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     @BindView(R.id.loading) ConstraintLayout loading;
     public APIService API;
+    private AppDatabase db;
+    public LoginDao loginDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +37,12 @@ public class MainActivity extends AppCompatActivity {
                 .baseUrl("https://bank-app-test.herokuapp.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "santander").allowMainThreadQueries().build();
+        loginDao = db.loginDao();
         API = retrofit.create(APIService.class);
     }
+
 
     public void updateFragment(Fragment destFragment, Boolean back, String TAG) {
         fragmentManager = this.getSupportFragmentManager();

@@ -1,14 +1,31 @@
 package com.resourceit.app.models;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
-public class LoginModel {
-    private LoginModel userAccount;
-    private double userId;
-    private String name;
-    private String bankAccount;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
-    public double getUserId() {
+
+@Entity(tableName = "users")
+public class LoginModel {
+    @Ignore
+    private LoginModel userAccount;
+    @PrimaryKey(autoGenerate = true)
+    private int userId;
+    @ColumnInfo(name = "name")
+    private String name;
+    @ColumnInfo(name = "banc_account")
+    private String bankAccount;
+    @ColumnInfo(name = "agency")
+    private String agency;
+    @ColumnInfo(name = "balance")
+    private String balance;
+
+    public int getUserId() {
         return userId;
     }
 
@@ -20,7 +37,7 @@ public class LoginModel {
         this.userAccount = userAccount;
     }
 
-    public void setUserId(double userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -48,16 +65,13 @@ public class LoginModel {
         this.agency = agency;
     }
 
-    public double getBalance() {
+    public String getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(String balance) {
         this.balance = balance;
     }
-
-    private String agency;
-    private double balance;
 
 
 }

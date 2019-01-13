@@ -8,7 +8,7 @@ public class StatmentModel {
     private String title;
     private String desc;
     private String date;
-    private double value;
+    private String value;
 
     public List<StatmentModel> getStatementList() {
         return statementList;
@@ -42,11 +42,11 @@ public class StatmentModel {
         this.date = date;
     }
 
-    public double getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(String value) {
         this.value = value;
     }
 }

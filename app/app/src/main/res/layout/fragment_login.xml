@@ -35,7 +35,8 @@
             android:fontFamily="HelveticaNeue"
             android:inputType="textPersonName"
             android:textColor="@color/textcolorhint"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:text=""/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,7 +60,8 @@
             android:fontFamily="HelveticaNeue"
             android:inputType="textPassword"
             android:textColor="@color/textcolorhint"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:text=""/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -69,6 +69,8 @@ public class LoginFragment extends Fragment {
                     public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
                         LoginModel login = response.body();
                         Log.w("login:sucess:: ", gson.toJson(login.getUserAccount()));
+                        activity.loginDao.insertAll(login.getUserAccount());
+                        Log.w("login:sucess:db: ", gson.toJson(activity.loginDao.findById(1)));
                         activity.updateFragment(new StatementsFragment(), "STATMENTS");
                         activity.Loading(false);
                     }
