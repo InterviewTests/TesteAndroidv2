@@ -24,21 +24,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        Fragment fragment = new LoginFragment();
-        updateFragment(fragment);
-        updateFragment(fragment);
+        updateFragment(new StatementsFragment());
+    }
+
+    public void updateFragment(Fragment destFragment, Boolean back) {
+        fragmentManager = this.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragments, destFragment);
+        if(back)fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     public void updateFragment(Fragment destFragment) {
         fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragments, destFragment);
-        fragmentTransaction.addToBackStack(null);
-
         fragmentTransaction.commit();
     }
 
-    public void Loading(Boolean visibility){
-        loading.setVisibility(visibility?View.VISIBLE:View.GONE);
+    public void Loading(Boolean visibility) {
+        loading.setVisibility(visibility ? View.VISIBLE : View.GONE);
     }
 }

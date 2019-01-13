@@ -34,9 +34,10 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="$PROJECT_DIR$/../bank_app_layout/assets/Logo.png" />
-                                      <entry key="outputName" value="img_logo" />
+                                      <entry key="imageAsset" value="$PROJECT_DIR$/../bank_app_layout/assets/logout 2.png" />
+                                      <entry key="outputName" value="img_logout" />
                                       <entry key="theme" value="CUSTOM" />
+                                      <entry key="themeColor" value="ffffff" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -63,9 +64,11 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
+                                      <entry key="backgroundColor" value="3b49ee" />
+                                      <entry key="cropped" value="true" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="$PROJECT_DIR$/../bank_app_layout/assets/Logo.png" />
-                                      <entry key="outputName" value="img_logo" />
+                                      <entry key="imageAsset" value="$PROJECT_DIR$/../bank_app_layout/assets/logout 2.png" />
+                                      <entry key="outputName" value="img_logout" />
                                     </map>
                                   </option>
                                 </PersistentState>
