@@ -51,11 +51,11 @@ public class LoginFragment extends Fragment {
         if(!doLogin) {
             doLogin = true;
             if (!validateUser(user.getText().toString())) {
-                user_layout.setError("Not a valid CPF address!");
+                user_layout.setError("Não é um usuário válido!");
                 doLogin = false;
             }else user_layout.setErrorEnabled(false);
             if (!validatePassword(password.getText().toString())) {
-                password_layout.setError("Not a valid password!");
+                password_layout.setError("Não é uma senha válida!");
                 doLogin = false;
             }else password_layout.setErrorEnabled(false);
             if(doLogin){
