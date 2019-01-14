@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:fitsSystemWindows="true"
+        android:layout_height="match_parent"
+        tools:context=".ui.account.AccountActivity" android:background="@color/bg_page">
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:fitsSystemWindows="true"
+            android:background="@color/blue"
+            android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:padding="12dp" android:id="@+id/constraintLayout">
+        <TextView
+                android:text="Nome indisponível"
+                tools:text="Jose da Silva Teste"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvw_account_client_name" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="18dp" android:layout_marginTop="22dp"
+                app:layout_constraintTop_toTopOf="parent" android:textSize="25sp"
+                android:textColor="@android:color/white" android:includeFontPadding="false"/>
+        <TextView
+                android:text="Conta indisponível"
+                tools:text="2050 / 01.111234-4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvw_account_number_and_agency" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="18dp"
+                android:textSize="25sp"
+                android:textColor="@android:color/white" android:includeFontPadding="false"
+                android:layout_marginTop="6dp" app:layout_constraintTop_toBottomOf="@+id/textView2"/>
+        <TextView
+                android:text="Saldo indisponível"
+                tools:text="R$ 1.000,00"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:id="@+id/tvw_account_balance" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="18dp"
+                android:textSize="25sp"
+                android:textColor="@android:color/white" android:includeFontPadding="false"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView4"
+                android:layout_marginBottom="17dp" app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+                android:text="Conta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="18dp" android:layout_marginTop="28dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvw_account_client_name"
+                android:textColor="@android:color/white"/>
+        <TextView
+                android:text="Saldo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="18dp"
+                android:textColor="@android:color/white" android:layout_marginTop="21dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvw_account_number_and_agency"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/ic_logout"
+                android:id="@+id/imageView"
+                android:onClick="onExit"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="13dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toTopOf="parent"/>
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv_bills"
+            android:layout_width="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            android:layout_height="0dp" android:layout_marginTop="14dp"/>
+
+    <TextView
+            android:text="Recentes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6" android:layout_marginTop="14dp"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="18dp" android:textSize="18sp" android:textColor="@color/blueGrey"/>
+
+</android.support.constraint.ConstraintLayout>
