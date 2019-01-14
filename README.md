@@ -1,3 +1,13 @@
+
+#procedimentos para executar o projeto
+
+
+1. Clonar o repositório
+2. Abrir o projeto no Android Studio
+3. Aguarde Baixar as dependências necessárias
+4. Executar o projeto dentro de Emulador ou celalar Android
+
+
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
