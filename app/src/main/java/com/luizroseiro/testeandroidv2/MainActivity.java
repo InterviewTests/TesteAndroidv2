@@ -4,6 +4,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.luizroseiro.testeandroidv2.mainScreen.MainFragment;
+import com.luizroseiro.testeandroidv2.loginScreen.LoginFragment;
+import com.luizroseiro.testeandroidv2.utils.AppPreferences;
+import com.luizroseiro.testeandroidv2.utils.Utils;
+
 public class MainActivity extends AppCompatActivity {
 
     private static MainActivity mainActivity;
@@ -26,7 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
         super.onStart();
 
-
+        if (AppPreferences.isUserLoggedIn())
+            Utils.replaceFragment(new MainFragment());
+        else
+            Utils.replaceFragment(new LoginFragment());
 
     }
 }

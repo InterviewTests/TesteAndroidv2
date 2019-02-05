@@ -2,5 +2,5 @@
     <string name="app_name">TesteAndroidv2</string>
 
     <!-- LOGIN SCREEN -->
-    <string name="error_login">Error logging user</string>
+    <string name="error_login">Erro ao logar usuário</string>
 </resources>
