@@ -1,12 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".loginScreen.LoginFragment">
 
 
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="125dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="64dp"
+            android:contentDescription="@string/desc_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_logo"
+            tools:src="@tools:sample/backgrounds/scenic" />
 
+        <EditText
+            android:id="@+id/et_user"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="128dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/edit_texts"
+            android:ems="10"
+            android:hint="@string/user"
+            android:inputType="number|textEmailAddress"
+            android:paddingStart="16dp"
+            android:paddingEnd="0dp"
+            android:textColorHint="@color/colorEditTextFont"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/edit_texts"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingStart="16dp"
+            android:paddingEnd="0dp"
+            android:textColorHint="@color/colorEditTextFont"
+            app:layout_constraintEnd_toEndOf="@+id/et_user"
+            app:layout_constraintStart_toStartOf="@+id/et_user"
+            app:layout_constraintTop_toBottomOf="@+id/et_user" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="202dp"
+            android:layout_height="62dp"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/buttons"
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </layout>

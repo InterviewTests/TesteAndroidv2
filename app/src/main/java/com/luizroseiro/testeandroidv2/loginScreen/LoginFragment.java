@@ -25,7 +25,12 @@ public class LoginFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container,
                 false);
 
-        // TODO: prepare layout and listeners
+        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginUser();
+            }
+        });
 
         return binding.getRoot();
 
@@ -34,13 +39,13 @@ public class LoginFragment extends Fragment {
     private void loginUser() {
 
         LoginRequest loginRequest = new LoginRequest();
-//        loginRequest.setUser();  TODO: get user and password edit text
-//        boolean isValidPassword = loginRequest.setPassword();
-//
-//        if (!isValidPassword)
-//            showPasswordFeedback();
-//        else
-//            output.loginUser(loginRequest);
+        loginRequest.setUser(binding.etUser.getText().toString());
+        boolean isValidPassword = loginRequest.setPassword(binding.etPassword.getText().toString());
+
+        if (!isValidPassword)
+            showPasswordFeedback();
+        else
+            output.loginUser(loginRequest);
 
     }
 

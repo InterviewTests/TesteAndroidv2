@@ -17,8 +17,10 @@ public class LoginPresenter implements LoginPresenterInput {
     public void presentLoginMetaData(LoginResponse response) {
 
         UserModel userModel = new UserModel();
-
-        // TODO: update user model with data from LoginResponse
+        userModel.setName(response.getUserAccount().getName());
+        userModel.setAgency(response.getUserAccount().getAgency());
+        userModel.setBankAccount(response.getUserAccount().getBankAccount());
+        userModel.setBalance(response.getUserAccount().getBalance());
 
         output.get().displayHomeMetaData(userModel);
 

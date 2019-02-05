@@ -3,4 +3,8 @@
 
     <!-- LOGIN SCREEN -->
     <string name="error_login">Erro ao logar usuário</string>
+    <string name="user">Usuário</string>
+    <string name="password">Senha</string>
+    <string name="desc_logo">Logo App Banco</string>
+    <string name="login">Login</string>
 </resources>
