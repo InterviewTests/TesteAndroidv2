@@ -1,6 +1,7 @@
 package com.luizroseiro.testeandroidv2.utils;
 
 import com.luizroseiro.testeandroidv2.loginScreen.LoginResponse;
+import com.luizroseiro.testeandroidv2.mainScreen.StatementsResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,6 +25,11 @@ public class DataService {
 
     public static void loginUser(String user, String password, Callback<LoginResponse> callback) {
         Call<LoginResponse> call = apiClient.loginUser(user, password);
+        call.enqueue(callback);
+    }
+
+    public static void fetchStatements(int userId, Callback<StatementsResponse> callback) {
+        Call<StatementsResponse> call = apiClient.statements(userId);
         call.enqueue(callback);
     }
 

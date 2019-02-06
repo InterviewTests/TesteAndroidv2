@@ -33,6 +33,7 @@ public class LoginInteractor implements LoginInteractorInput {
                                    @NonNull Response<LoginResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     AppPreferences.setUserLoggedIn();
+                    AppPreferences.setUserId(response.body().getUserAccount().getUserId());
                     AppPreferences.setUserName(response.body().getUserAccount().getName());
                     AppPreferences.setUserAgency(response.body().getUserAccount().getAgency());
                     AppPreferences.setUserAccount(response.body().getUserAccount()

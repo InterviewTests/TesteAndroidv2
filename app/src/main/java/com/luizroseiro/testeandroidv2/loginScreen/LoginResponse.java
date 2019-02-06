@@ -14,7 +14,7 @@ public class LoginResponse {
     @Expose
     private Error error;
 
-    public UserAccount getUserAccount() {
+    UserAccount getUserAccount() {
         return userAccount;
     }
 
@@ -46,7 +46,7 @@ class UserAccount {
     @Expose
     private float balance;
 
-    public int getUserId() {
+    int getUserId() {
         return userId;
     }
 
@@ -54,19 +54,19 @@ class UserAccount {
         return name;
     }
 
-    public String getBankAccount() {
+    String getBankAccount() {
         return bankAccount;
     }
 
-    public String getFormattedAgency() {
+    String getFormattedAgency() {
         return Utils.formatAgency(this.bankAccount);
     }
 
-    public String getAgency() {
+    String getAgency() {
         return agency;
     }
 
-    public float getBalance() {
+    float getBalance() {
         return balance;
     }
 

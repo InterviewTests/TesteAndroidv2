@@ -16,4 +16,5 @@
     <string name="account_value">%1$s / %2$s</string>
     <string name="balance_value">R$%1$.2f</string>
     <string name="recent">Recentes</string>
+    <string name="error_statements">Erro ao baixar dados do usuário</string>
 </resources>

@@ -21,7 +21,6 @@
             app:srcCompat="@drawable/ic_logo"
             tools:src="@tools:sample/backgrounds/scenic" />
 
-        <!--TODO: remove hardcoded login and password-->
         <EditText
             android:id="@+id/et_user"
             android:layout_width="0dp"
@@ -35,7 +34,6 @@
             android:inputType="textEmailAddress"
             android:paddingStart="16dp"
             android:paddingEnd="0dp"
-            android:text="test_user"
             android:textColorHint="@color/colorEditTextFont"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +50,6 @@
             android:inputType="textPassword"
             android:paddingStart="16dp"
             android:paddingEnd="0dp"
-            android:text="1E#"
             android:textColorHint="@color/colorEditTextFont"
             app:layout_constraintEnd_toEndOf="@+id/et_user"
             app:layout_constraintStart_toStartOf="@+id/et_user"

@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,13 +25,15 @@ import java.util.List;
 
 import static com.luizroseiro.testeandroidv2.utils.Statics.BUNDLE_USER_MODEL;
 
-interface HomeFragmentInput {
-    void displayHomeMetaData(List<StatementModel> statements);
+interface MainFragmentInput {
+    void displayStatementsMetaData(List<StatementModel> statements);
 }
 
-public class MainFragment extends Fragment implements HomeFragmentInput {
+public class MainFragment extends Fragment implements MainFragmentInput {
 
+    private static MainFragment mainFragment;
     private FragmentMainBinding binding;
+    protected StatementsInteractorInput output;
 
     private List<StatementModel> statements;
     private StatementsAdapter statementsAdapter;
@@ -42,6 +45,7 @@ public class MainFragment extends Fragment implements HomeFragmentInput {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mainFragment = MainFragment.this;
 
         if (getArguments() != null)
             mUserModel = (UserModel) getArguments().getSerializable(BUNDLE_USER_MODEL);
@@ -54,6 +58,7 @@ public class MainFragment extends Fragment implements HomeFragmentInput {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container,
                 false);
 
+        output = new StatementsInteractor();
         statements = new ArrayList<>();
 
         binding.rvStatements.setHasFixedSize(true);
@@ -66,7 +71,7 @@ public class MainFragment extends Fragment implements HomeFragmentInput {
         setListeners();
 
         displayHomeUserMetaData(mUserModel);
-        fetchHomeMetaData();
+        fetchHomeMetaData(mUserModel.getUserId());
 
         return binding.getRoot();
 
@@ -80,6 +85,22 @@ public class MainFragment extends Fragment implements HomeFragmentInput {
                 Utils.replaceFragment(new LoginFragment(), null);
             }
         });
+
+        binding.rvStatements.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                if (manager != null && manager
+                        .findFirstCompletelyVisibleItemPosition() != 0) {
+                    binding.tvRecentsLabel.setVisibility(View.GONE);
+                }
+                else {
+                    binding.tvRecentsLabel.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
     private void displayHomeUserMetaData(UserModel userModel) {
@@ -90,12 +111,19 @@ public class MainFragment extends Fragment implements HomeFragmentInput {
                 userModel.getBalance()));
     }
 
-    private void fetchHomeMetaData() {
-        // TODO: fetch user statements
+    private void fetchHomeMetaData(int userId) {
+        StatementsRequest statementsRequest = new StatementsRequest();
+        statementsRequest.setId(userId);
+
+        output.fetchStatements(statementsRequest);
+    }
+
+    public static MainFragment getMainFragment() {
+        return mainFragment;
     }
 
     @Override
-    public void displayHomeMetaData(List<StatementModel> statementsList) {
+    public void displayStatementsMetaData(List<StatementModel> statementsList) {
         if (statementsList.size() > 0) {
             statements.clear();
             statements.addAll(statementsList);

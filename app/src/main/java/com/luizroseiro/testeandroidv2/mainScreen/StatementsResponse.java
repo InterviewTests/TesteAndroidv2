@@ -15,7 +15,7 @@ public class StatementsResponse {
     @Expose
     private Error error;
 
-    public List<Statement> getStatements() {
+    List<Statement> getStatements() {
         return statements;
     }
 
@@ -26,6 +26,38 @@ public class StatementsResponse {
 }
 
 class Statement {
+
+    @SerializedName("title")
+    @Expose
+    private String title;
+
+    @SerializedName("desc")
+    @Expose
+    private String desc;
+
+    @SerializedName("date")
+    @Expose
+    private String date;
+
+    @SerializedName("value")
+    @Expose
+    private float value;
+
+    String getTitle() {
+        return title;
+    }
+
+    String getDesc() {
+        return desc;
+    }
+
+    String getDate() {
+        return date;
+    }
+
+    float getValue() {
+        return value;
+    }
 
 }
 

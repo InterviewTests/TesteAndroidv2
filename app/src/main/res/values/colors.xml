@@ -9,4 +9,6 @@
     <color name="colorPasswordFeedbackLight">#E17474</color>
     <color name="colorFont">#5F6B7B</color>
     <color name="colorFontLight">#C0C9D4</color>
+    <color name="colorNegativeValue">#D32F2F</color>
+    <color name="colorPositiveValue">#0B6623</color>
 </resources>

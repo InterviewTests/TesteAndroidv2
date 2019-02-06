@@ -1,22 +1,26 @@
 package com.luizroseiro.testeandroidv2.mainScreen;
 
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.math.MathUtils;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.luizroseiro.testeandroidv2.MainActivity;
 import com.luizroseiro.testeandroidv2.R;
 import com.luizroseiro.testeandroidv2.models.StatementModel;
 
+import java.math.MathContext;
 import java.util.List;
 
 public class StatementsAdapter extends RecyclerView.Adapter<StatementsViewHolder> {
 
     private List<StatementModel> statements;
 
-    public StatementsAdapter(List<StatementModel> statements) {
+    StatementsAdapter(List<StatementModel> statements) {
         this.statements = statements;
     }
 
@@ -57,10 +61,18 @@ class StatementsViewHolder extends RecyclerView.ViewHolder {
     }
 
     void setStatement(StatementModel statement) {
+        if (statement.getValue() < 0)
+            tvValue.setTextColor(ContextCompat.getColor(MainActivity.getContext(),
+                    R.color.colorNegativeValue));
+        else
+            tvValue.setTextColor(ContextCompat.getColor(MainActivity.getContext(),
+                    R.color.colorPositiveValue));
+
         tvTitle.setText(statement.getTitle());
         tvDesc.setText(statement.getDesc());
         tvDate.setText(statement.getDate());
-        tvValue.setText(String.valueOf(statement.getValue()));
+        tvValue.setText(MainActivity.getContext().getString(R.string.balance_value,
+                Math.abs(statement.getValue())));
     }
 
 }

@@ -5,6 +5,11 @@
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
+  <component name="EntryPointsManager">
+    <writeAnnotations>
+      <writeAnnotation name="com.google.gson.annotations.SerializedName" />
+    </writeAnnotations>
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="org.jetbrains.annotations.Nullable" />
     <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />

@@ -41,6 +41,18 @@ public class Utils {
             return agency;
     }
 
+    public static String formatDate(String date) {
+        if (Pattern.matches("^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))$", date)) {
+            String year = date.substring(0, date.indexOf("-"));
+            String month = date.substring(date.indexOf("-") + 1, date.lastIndexOf("-"));
+            String day = date.substring(date.lastIndexOf("-") + 1);
+
+            return day.concat("/").concat(month).concat("/").concat(year);
+        }
+        else
+            return date;
+    }
+
     public static void enableButton(Button button) {
         button.setEnabled(true);
         button.setAlpha(1f);
