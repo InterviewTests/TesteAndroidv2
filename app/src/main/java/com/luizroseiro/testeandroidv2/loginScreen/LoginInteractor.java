@@ -20,8 +20,12 @@ public class LoginInteractor implements LoginInteractorInput {
 
     private LoginPresenterInput output;
 
+    LoginInteractor() {
+        this.output = new LoginPresenter();
+    }
+
     @Override
-    public void loginUser(LoginRequest request) {
+    public void loginUser(final LoginRequest request) {
         DataService.loginUser(request.getUser(), request.getPassword(),
                 new Callback<LoginResponse>() {
             @Override
@@ -29,6 +33,12 @@ public class LoginInteractor implements LoginInteractorInput {
                                    @NonNull Response<LoginResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     AppPreferences.setUserLoggedIn();
+                    AppPreferences.setUserName(response.body().getUserAccount().getName());
+                    AppPreferences.setUserAgency(response.body().getUserAccount().getAgency());
+                    AppPreferences.setUserAccount(response.body().getUserAccount()
+                            .getBankAccount());
+                    AppPreferences.setUserBalance(response.body().getUserAccount().getBalance());
+
                     output.presentLoginMetaData(response.body());
                 }
                 else

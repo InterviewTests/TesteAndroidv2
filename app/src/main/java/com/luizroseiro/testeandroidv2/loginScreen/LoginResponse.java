@@ -2,6 +2,7 @@ package com.luizroseiro.testeandroidv2.loginScreen;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.luizroseiro.testeandroidv2.utils.Utils;
 
 public class LoginResponse {
 
@@ -43,7 +44,7 @@ class UserAccount {
 
     @SerializedName("balance")
     @Expose
-    private double balance;
+    private float balance;
 
     public int getUserId() {
         return userId;
@@ -57,11 +58,15 @@ class UserAccount {
         return bankAccount;
     }
 
+    public String getFormattedBankAccount() {
+        return Utils.formatAccount(this.bankAccount);
+    }
+
     public String getAgency() {
         return agency;
     }
 
-    public double getBalance() {
+    public float getBalance() {
         return balance;
     }
 

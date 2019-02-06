@@ -7,4 +7,12 @@
     <string name="password">Password</string>
     <string name="desc_logo">Bank App Logo</string>
     <string name="login">Login</string>
+    <string name="password_feedback">Your password must contain at least one uppercase letter, one number and one special character</string>
+
+    <!-- MAIN SCREEN -->
+    <string name="desc_back">Back Icon</string>
+    <string name="balance">Balance</string>
+    <string name="account">Account</string>
+    <string name="account_value">%1$s / %2$s</string>
+    <string name="balance_value">R$%1$.2f</string>
 </resources>

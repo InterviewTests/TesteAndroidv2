@@ -7,4 +7,12 @@
     <string name="password">Senha</string>
     <string name="desc_logo">Logo App Banco</string>
     <string name="login">Login</string>
+    <string name="password_feedback">Sua senha deve conter pelo menos uma letra maiúscula, um número e um caracter especial</string>
+
+    <!-- MAIN SCREEN -->
+    <string name="desc_back">Ícone Voltar</string>
+    <string name="balance">Saldo</string>
+    <string name="account">Conta</string>
+    <string name="account_value">%1$s / %2$s</string>
+    <string name="balance_value">R$%1$.2f</string>
 </resources>

@@ -1,11 +1,24 @@
 package com.luizroseiro.testeandroidv2.models;
 
-public class UserModel {
+import com.luizroseiro.testeandroidv2.utils.Utils;
 
+import java.io.Serializable;
+
+public class UserModel implements Serializable {
+
+    private int userId;
     private String name;
     private String agency;
     private String bankAccount;
-    private double balance;
+    private float balance;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public String getName() {
         return name;
@@ -27,15 +40,19 @@ public class UserModel {
         return bankAccount;
     }
 
+    public String getFormattedBankAccount() {
+        return Utils.formatAccount(this.bankAccount);
+    }
+
     public void setBankAccount(String bankAccount) {
         this.bankAccount = bankAccount;
     }
 
-    public double getBalance() {
+    public float getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(float balance) {
         this.balance = balance;
     }
 

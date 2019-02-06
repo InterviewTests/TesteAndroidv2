@@ -21,6 +21,7 @@
             app:srcCompat="@drawable/ic_logo"
             tools:src="@tools:sample/backgrounds/scenic" />
 
+        <!--TODO: remove hardcoded login and password-->
         <EditText
             android:id="@+id/et_user"
             android:layout_width="0dp"
@@ -31,9 +32,10 @@
             android:background="@drawable/edit_texts"
             android:ems="10"
             android:hint="@string/user"
-            android:inputType="number|textEmailAddress"
+            android:inputType="textEmailAddress"
             android:paddingStart="16dp"
             android:paddingEnd="0dp"
+            android:text="test_user"
             android:textColorHint="@color/colorEditTextFont"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,17 +52,47 @@
             android:inputType="textPassword"
             android:paddingStart="16dp"
             android:paddingEnd="0dp"
+            android:text="1E#"
             android:textColorHint="@color/colorEditTextFont"
             app:layout_constraintEnd_toEndOf="@+id/et_user"
             app:layout_constraintStart_toStartOf="@+id/et_user"
             app:layout_constraintTop_toBottomOf="@+id/et_user" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_password_feedback"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/password_feedback"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/et_password"
+            app:layout_constraintStart_toStartOf="@+id/et_password"
+            app:layout_constraintTop_toBottomOf="@+id/et_password">
+
+            <TextView
+                android:id="@+id/tv_password_feedback"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/password_feedback"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
 
         <Button
             android:id="@+id/btn_login"
             android:layout_width="202dp"
             android:layout_height="62dp"
             android:layout_marginBottom="64dp"
+            android:alpha="0.5"
             android:background="@drawable/buttons"
+            android:clickable="false"
             android:text="@string/login"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
