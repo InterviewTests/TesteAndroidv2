@@ -86,5 +86,27 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_balance_label"
                 tools:text="R$1.000,00" />
         </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_recents_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/recent"
+            android:textColor="@color/colorFont"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_user_info" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_statements"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_user_info"
+            tools:listitem="@layout/item_statement" />
     </android.support.constraint.ConstraintLayout>
 </layout>

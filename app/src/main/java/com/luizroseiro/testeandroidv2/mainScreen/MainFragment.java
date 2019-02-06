@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.luizroseiro.testeandroidv2.models.UserModel;
 import com.luizroseiro.testeandroidv2.utils.AppPreferences;
 import com.luizroseiro.testeandroidv2.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.luizroseiro.testeandroidv2.utils.Statics.BUNDLE_USER_MODEL;
@@ -29,6 +31,9 @@ interface HomeFragmentInput {
 public class MainFragment extends Fragment implements HomeFragmentInput {
 
     private FragmentMainBinding binding;
+
+    private List<StatementModel> statements;
+    private StatementsAdapter statementsAdapter;
 
     private UserModel mUserModel;
 
@@ -48,6 +53,15 @@ public class MainFragment extends Fragment implements HomeFragmentInput {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container,
                 false);
+
+        statements = new ArrayList<>();
+
+        binding.rvStatements.setHasFixedSize(true);
+        binding.rvStatements.setLayoutManager(new LinearLayoutManager(MainActivity.getContext(),
+                LinearLayoutManager.VERTICAL, false));
+
+        statementsAdapter = new StatementsAdapter(statements);
+        binding.rvStatements.setAdapter(statementsAdapter);
 
         setListeners();
 
@@ -77,12 +91,16 @@ public class MainFragment extends Fragment implements HomeFragmentInput {
     }
 
     private void fetchHomeMetaData() {
-
+        // TODO: fetch user statements
     }
 
     @Override
-    public void displayHomeMetaData(List<StatementModel> statements) {
-
+    public void displayHomeMetaData(List<StatementModel> statementsList) {
+        if (statementsList.size() > 0) {
+            statements.clear();
+            statements.addAll(statementsList);
+            statementsAdapter.notifyDataSetChanged();
+        }
     }
 
 }

@@ -7,4 +7,6 @@
     <color name="colorEditTextFont">#92969E</color>
     <color name="colorPasswordFeedback">#D32F2F</color>
     <color name="colorPasswordFeedbackLight">#E17474</color>
+    <color name="colorFont">#5F6B7B</color>
+    <color name="colorFontLight">#C0C9D4</color>
 </resources>
