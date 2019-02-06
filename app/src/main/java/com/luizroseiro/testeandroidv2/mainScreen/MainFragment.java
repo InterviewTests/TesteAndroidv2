@@ -56,7 +56,7 @@ public class MainFragment extends Fragment implements HomeFragmentInput {
     private void displayHomeUserMetaData(UserModel userModel) {
         binding.tvUserName.setText(userModel.getName());
         binding.tvAccount.setText(MainActivity.getContext().getString(R.string.account_value,
-                userModel.getFormattedBankAccount(), userModel.getAgency()));
+                userModel.getBankAccount(), userModel.getFormattedAgency()));
         binding.tvBalance.setText(MainActivity.getContext().getString(R.string.balance_value,
                 userModel.getBalance()));
     }

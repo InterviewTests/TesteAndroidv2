@@ -58,8 +58,8 @@ class UserAccount {
         return bankAccount;
     }
 
-    public String getFormattedBankAccount() {
-        return Utils.formatAccount(this.bankAccount);
+    public String getFormattedAgency() {
+        return Utils.formatAgency(this.bankAccount);
     }
 
     public String getAgency() {

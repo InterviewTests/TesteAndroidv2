@@ -40,8 +40,8 @@ public class UserModel implements Serializable {
         return bankAccount;
     }
 
-    public String getFormattedBankAccount() {
-        return Utils.formatAccount(this.bankAccount);
+    public String getFormattedAgency() {
+        return Utils.formatAgency(this.agency);
     }
 
     public void setBankAccount(String bankAccount) {

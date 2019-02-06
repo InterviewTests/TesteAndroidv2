@@ -32,13 +32,13 @@ public class Utils {
         return Pattern.matches("^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[@$!#%*?&]).*$", password);
     }
 
-    public static String formatAccount(String account) {
-        if (account.length() == 9) {
-            return account.substring(0, 2).concat(".").concat(account.substring(2, 8)).concat("-")
-                    .concat(account.substring(8));
+    public static String formatAgency(String agency) {
+        if (agency.length() == 9) {
+            return agency.substring(0, 2).concat(".").concat(agency.substring(2, 8)).concat("-")
+                    .concat(agency.substring(8));
         }
         else
-            return account;
+            return agency;
     }
 
     public static void enableButton(Button button) {

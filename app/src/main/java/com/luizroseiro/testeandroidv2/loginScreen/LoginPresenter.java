@@ -21,7 +21,7 @@ public class LoginPresenter implements LoginPresenterInput {
         userModel.setUserId(response.getUserAccount().getUserId());
         userModel.setName(response.getUserAccount().getName());
         userModel.setAgency(response.getUserAccount().getAgency());
-        userModel.setBankAccount(response.getUserAccount().getFormattedBankAccount());
+        userModel.setBankAccount(response.getUserAccount().getFormattedAgency());
         userModel.setBalance(response.getUserAccount().getBalance());
 
         Bundle bundle = new Bundle();
