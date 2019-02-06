@@ -20,6 +20,12 @@ public class AppPreferences {
                 Context.MODE_PRIVATE);
     }
 
+    public static void clearUser() {
+        SharedPreferences.Editor editor = getPreferences().edit();
+        editor.clear();
+        editor.apply();
+    }
+
     public static void setUserLoggedIn() {
         SharedPreferences.Editor editor = getPreferences().edit();
         editor.putBoolean(PREF_LOGGED_IN, true);

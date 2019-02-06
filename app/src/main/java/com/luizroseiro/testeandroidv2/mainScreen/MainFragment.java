@@ -12,8 +12,11 @@ import android.view.ViewGroup;
 import com.luizroseiro.testeandroidv2.MainActivity;
 import com.luizroseiro.testeandroidv2.R;
 import com.luizroseiro.testeandroidv2.databinding.FragmentMainBinding;
+import com.luizroseiro.testeandroidv2.loginScreen.LoginFragment;
 import com.luizroseiro.testeandroidv2.models.StatementModel;
 import com.luizroseiro.testeandroidv2.models.UserModel;
+import com.luizroseiro.testeandroidv2.utils.AppPreferences;
+import com.luizroseiro.testeandroidv2.utils.Utils;
 
 import java.util.List;
 
@@ -46,11 +49,23 @@ public class MainFragment extends Fragment implements HomeFragmentInput {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container,
                 false);
 
+        setListeners();
+
         displayHomeUserMetaData(mUserModel);
         fetchHomeMetaData();
 
         return binding.getRoot();
 
+    }
+
+    private void setListeners() {
+        binding.ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppPreferences.clearUser();
+                Utils.replaceFragment(new LoginFragment(), null);
+            }
+        });
     }
 
     private void displayHomeUserMetaData(UserModel userModel) {
