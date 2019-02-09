@@ -28,7 +28,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="128dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/edit_texts"
+            android:background="@drawable/edit_text"
             android:ems="10"
             android:hint="@string/user"
             android:inputType="textEmailAddress"
@@ -44,7 +44,7 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/edit_texts"
+            android:background="@drawable/edit_text"
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword"
@@ -87,8 +87,7 @@
             android:layout_width="202dp"
             android:layout_height="62dp"
             android:layout_marginBottom="64dp"
-            android:alpha="0.5"
-            android:background="@drawable/buttons"
+            android:background="@drawable/button"
             android:clickable="false"
             android:text="@string/login"
             android:textAllCaps="false"
@@ -97,5 +96,40 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_loading"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/vw_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.75"
+                android:background="@android:color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/pb_loading"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
     </android.support.constraint.ConstraintLayout>
 </layout>

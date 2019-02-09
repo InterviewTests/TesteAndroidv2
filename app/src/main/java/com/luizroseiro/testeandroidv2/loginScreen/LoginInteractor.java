@@ -13,7 +13,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 interface LoginInteractorInput {
-    void loginUser(LoginRequest request);
+    void loginUser(LoginRequest request, LoginFragment loginFragment);
 }
 
 public class LoginInteractor implements LoginInteractorInput {
@@ -25,12 +25,13 @@ public class LoginInteractor implements LoginInteractorInput {
     }
 
     @Override
-    public void loginUser(final LoginRequest request) {
+    public void loginUser(final LoginRequest request, final LoginFragment loginFragment) {
         DataService.loginUser(request.getUser(), request.getPassword(),
                 new Callback<LoginResponse>() {
             @Override
             public void onResponse(@NonNull Call<LoginResponse> call,
                                    @NonNull Response<LoginResponse> response) {
+                loginFragment.setLoading(false);
                 if (response.isSuccessful() && response.body() != null) {
                     AppPreferences.setUserLoggedIn();
                     AppPreferences.setUserId(response.body().getUserAccount().getUserId());
@@ -48,6 +49,7 @@ public class LoginInteractor implements LoginInteractorInput {
 
             @Override
             public void onFailure(@NonNull Call<LoginResponse> call, @NonNull Throwable t) {
+                loginFragment.setLoading(false);
                 Utils.createToast(MainActivity.getContext().getString(R.string.error_login));
             }
         });

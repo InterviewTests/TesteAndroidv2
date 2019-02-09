@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -71,13 +72,20 @@ public class MainFragment extends Fragment implements MainFragmentInput {
         setListeners();
 
         displayHomeUserMetaData(mUserModel);
-        fetchHomeMetaData(mUserModel.getUserId());
+        fetchHomeMetaData();
 
         return binding.getRoot();
 
     }
 
     private void setListeners() {
+        binding.swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchHomeMetaData();
+            }
+        });
+
         binding.ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,11 +119,14 @@ public class MainFragment extends Fragment implements MainFragmentInput {
                 userModel.getBalance()));
     }
 
-    private void fetchHomeMetaData(int userId) {
+    private void fetchHomeMetaData() {
         StatementsRequest statementsRequest = new StatementsRequest();
-        statementsRequest.setId(userId);
+        statementsRequest.setId(mUserModel.getUserId());
 
-        output.fetchStatements(statementsRequest);
+        binding.swipeRefresh.setRefreshing(false);
+        binding.pbStatements.setVisibility(View.VISIBLE);
+        binding.rvStatements.setVisibility(View.GONE);
+        output.fetchStatements(statementsRequest, binding.pbStatements);
     }
 
     public static MainFragment getMainFragment() {
@@ -125,6 +136,7 @@ public class MainFragment extends Fragment implements MainFragmentInput {
     @Override
     public void displayStatementsMetaData(List<StatementModel> statementsList) {
         if (statementsList.size() > 0) {
+            binding.rvStatements.setVisibility(View.VISIBLE);
             statements.clear();
             statements.addAll(statementsList);
             statementsAdapter.notifyDataSetChanged();

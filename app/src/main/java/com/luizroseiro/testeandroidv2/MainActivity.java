@@ -51,4 +51,5 @@ public class MainActivity extends AppCompatActivity {
             Utils.replaceFragment(new LoginFragment(), null);
 
     }
+
 }

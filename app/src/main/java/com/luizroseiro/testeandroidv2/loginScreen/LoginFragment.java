@@ -123,8 +123,19 @@ public class LoginFragment extends Fragment {
 
         if (!isValidPassword)
             showPasswordFeedback();
+        else {
+            binding.clLoading.setVisibility(View.VISIBLE);
+            output.loginUser(loginRequest, LoginFragment.this);
+        }
+
+    }
+
+    public void setLoading(boolean loading) {
+
+        if (loading)
+            binding.clLoading.setVisibility(View.VISIBLE);
         else
-            output.loginUser(loginRequest);
+            binding.clLoading.setVisibility(View.GONE);
 
     }
 

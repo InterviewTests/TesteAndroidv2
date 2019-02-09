@@ -1,6 +1,8 @@
 package com.luizroseiro.testeandroidv2.mainScreen;
 
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.luizroseiro.testeandroidv2.MainActivity;
 import com.luizroseiro.testeandroidv2.R;
@@ -12,7 +14,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 interface StatementsInteractorInput {
-    void fetchStatements(StatementsRequest statementsRequest);
+    void fetchStatements(StatementsRequest statementsRequest, ProgressBar pbStatements);
 }
 
 public class StatementsInteractor implements StatementsInteractorInput {
@@ -24,11 +26,12 @@ public class StatementsInteractor implements StatementsInteractorInput {
     }
 
     @Override
-    public void fetchStatements(StatementsRequest statementsRequest) {
+    public void fetchStatements(StatementsRequest statementsRequest, final ProgressBar pbStatements) {
         DataService.fetchStatements(statementsRequest.getId(), new Callback<StatementsResponse>() {
             @Override
             public void onResponse(@NonNull Call<StatementsResponse> call,
                                    @NonNull Response<StatementsResponse> response) {
+                pbStatements.setVisibility(View.GONE);
                 if (response.isSuccessful() && response.body() != null) {
                     output.presentStatementsMetaData(response.body());
                 }
@@ -39,6 +42,7 @@ public class StatementsInteractor implements StatementsInteractorInput {
 
             @Override
             public void onFailure(@NonNull Call<StatementsResponse> call, @NonNull Throwable t) {
+                pbStatements.setVisibility(View.GONE);
                 Utils.createToast(MainActivity.getContext().getString(R.string.error_statements));
             }
         });
