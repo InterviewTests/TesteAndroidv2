@@ -4,7 +4,7 @@ App teste desenvolvido para o desafio android.
 
 ## Instalação
 
-\- Clone este repositório
+\- Clone este repositório (branch 'development')
 
 ```
 git clone https://github.com/lfwroseiro/TesteAndroidv2.git
