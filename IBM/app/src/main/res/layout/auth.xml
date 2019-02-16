@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="36dp"
+    android:paddingLeft="17dp"
+    android:paddingRight="17dp"
+    android:paddingBottom="42dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bank"
+        android:layout_gravity="center"
+        android:id="@+id/bank"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/user"
+            android:layout_marginBottom="21dp"
+            android:textSize="18sp"
+            android:textColor="@color/colorTextGray"
+            android:padding="10dp"
+            android:background="@drawable/edittext_background"
+            android:id="@+id/auth_et_user"
+            android:inputType="text"
+            android:imeOptions="actionNext"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="@string/password"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:background="@drawable/edittext_background"
+            android:textColor="@color/colorTextGray"
+            android:layout_marginBottom="55dp"
+            android:id="@+id/auth_et_password"
+            android:inputType="textPassword"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="62dp"
+        android:background="@drawable/button_background"
+        android:layout_gravity="center"
+        android:text="@string/btnlogin"
+        android:textColor="@android:color/white"
+        android:id="@+id/auth_btn_login"
+        android:textAllCaps="false"
+        android:textSize="16sp" />
+
+</LinearLayout>
