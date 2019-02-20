@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidTest</string>
+    <string name="login_alert_msg_invalid_input">Digite o usuário e senha</string>
 </resources>
