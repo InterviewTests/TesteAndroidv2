@@ -1,16 +1,15 @@
-package com.example.androidtest.login
+package com.example.androidtest.presentation.login
 
-import com.example.androidtest.api.SuccessResponse
+import com.example.androidtest.repository.SuccessResponse
 
 
 interface LoginInteractorContract {
     fun requestLogin(user: String, pass: String)
 }
 
-class LoginInteractor(
-    private val presenter: LoginPresenterContract,
-    private val repository: LoginRepository
-) : LoginInteractorContract {
+class LoginInteractor(private val presenter: LoginPresenterContract) : LoginInteractorContract {
+
+    private var repository: LoginRepository = LoginRepository()
 
     override fun requestLogin(user: String, pass: String) {
 

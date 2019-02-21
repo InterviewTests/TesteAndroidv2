@@ -1,14 +1,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools" package="com.example.androidtest">
 
-    <application android:allowBackup="true"
-                 android:label="@string/app_name"
-                 android:icon="@mipmap/ic_launcher"
-                 android:roundIcon="@mipmap/ic_launcher_round"
-                 android:supportsRtl="true"
-                 android:theme="@style/AppTheme">
+    <application
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.DarkTop"
+            android:icon="@mipmap/ic_launcher"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name=".login.LoginActivity"
+        <activity android:name="com.example.androidtest.presentation.login.LoginActivity"
+                  android:theme="@style/AppTheme.Light"
+                  android:screenOrientation="portrait"
+                  android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.example.androidtest.presentation.currency.CurrencyActivity"
+                  android:theme="@style/AppTheme.DarkTop"
                   android:screenOrientation="portrait"/>
 
     </application>

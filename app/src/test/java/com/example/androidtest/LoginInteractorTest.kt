@@ -1,10 +1,10 @@
 package com.example.androidtest
 
 import android.content.Context
-import com.example.androidtest.login.LoginActivityContract
-import com.example.androidtest.login.LoginInteractor
-import com.example.androidtest.login.LoginPresenter
-import com.example.androidtest.login.LoginRepository
+import com.example.androidtest.presentation.login.LoginActivityContract
+import com.example.androidtest.presentation.login.LoginInteractor
+import com.example.androidtest.presentation.login.LoginPresenter
+import com.example.androidtest.presentation.login.LoginRepository
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Before

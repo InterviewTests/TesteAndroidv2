@@ -1,6 +1,6 @@
-package com.example.androidtest.login
+package com.example.androidtest.presentation.login
 
-import com.example.androidtest.api.ApiResponse
+import com.example.androidtest.repository.ApiResponse
 import com.example.androidtest.repository.User
 
 open class LoginRepository {

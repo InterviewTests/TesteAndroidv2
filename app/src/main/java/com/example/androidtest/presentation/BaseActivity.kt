@@ -1,4 +1,4 @@
-package com.example.androidtest
+package com.example.androidtest.presentation
 
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
@@ -10,7 +10,6 @@ interface BaseActivityContract {
 }
 
 abstract class BaseActivity : AppCompatActivity(), BaseActivityContract {
-
     override fun getContext() = this
     override fun getStringRes(stringId: Int) = getString(stringId) ?: ""
 }

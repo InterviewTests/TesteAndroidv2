@@ -11,7 +11,7 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
-            app:srcCompat="@drawable/Logo"
+            app:srcCompat="@drawable/logo"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -40,6 +40,7 @@
             android:hint="@string/login_hint_password"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
+            android:inputType="textPassword"
             app:layout_constraintTop_toBottomOf="@+id/edt_user"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
