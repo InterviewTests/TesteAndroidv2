@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <!--<color name="colorPrimaryDark">#00574B</color>-->
+    <color name="colorPrimaryDark">@color/bankAzul</color>
+    <color name="colorAccent">#03DAC6</color>
+    <color name="bankAzul">#3b48ee</color>
+    <color name="bankBranco">#ffffff</color>
+    <color name="bgcolor">#FEFEFE</color>
+    <color name="bankTheater">#CC000000</color>
+
+</resources>
