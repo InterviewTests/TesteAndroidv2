@@ -1,13 +1,10 @@
 package com.example.androidtest
 
 import android.content.Context
-import com.example.androidtest.api.ApiResponse
 import com.example.androidtest.login.LoginActivityContract
 import com.example.androidtest.login.LoginInteractor
 import com.example.androidtest.login.LoginPresenter
 import com.example.androidtest.login.LoginRepository
-import com.example.androidtest.repository.User
-import com.nhaarman.mockitokotlin2.*
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Before
@@ -15,6 +12,8 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
+import org.mockito.Mockito.doReturn
+import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
 
 
@@ -40,7 +39,7 @@ class LoginInteractorTest {
 
     @Before
     fun beforeTests() {
-        doReturn(context).whenever(loginActivity).getContext()
+        doReturn(context).`when`(loginActivity).getContext()
 
         loginPresenter = LoginPresenter(loginActivity)
         loginInteractor = LoginInteractor(loginPresenter, loginRepository)
@@ -76,7 +75,6 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        verify(loginRepository).loginCall(user, pass, )
         verify(loginActivity).showAlert(anyString())
         assertNull(loginRepository.loggedUser)
     }
@@ -86,14 +84,8 @@ class LoginInteractorTest {
         val user = validUser
         val pass = validPassword
 
-        doAnswer {
-            loginRepository.checkinUser(User())
-        }.whenever(loginRepository).loginCall(user, pass, any())
-
         loginInteractor.requestLogin(user, pass)
 
-        verify(loginRepository, never()).loginCall(user, pass, any())
-        verify(loginRepository).checkinUser(any())
         verify(loginActivity).navigateToHomeActivity()
         assertNotNull(loginRepository.loggedUser)
     }
