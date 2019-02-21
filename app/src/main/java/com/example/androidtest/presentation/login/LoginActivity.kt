@@ -2,6 +2,7 @@ package com.example.androidtest.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.androidtest.R
 import com.example.androidtest.presentation.BaseActivity
@@ -11,9 +12,12 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 
 interface LoginActivityContract : BaseActivityContract {
-    fun disableLoading()
+    fun hideLoading()
     fun showAlert(msg: String)
     fun navigateToHomeActivity()
+    fun showLoading()
+    fun disableLoginButton()
+    fun enableLoginButton()
 }
 
 class LoginActivity : BaseActivity(), LoginActivityContract {
@@ -38,8 +42,20 @@ class LoginActivity : BaseActivity(), LoginActivityContract {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 
-    override fun disableLoading() {
+    override fun showLoading() {
+        loading.visibility = View.VISIBLE
+    }
 
+    override fun hideLoading() {
+        loading.visibility = View.INVISIBLE
+    }
+
+    override fun disableLoginButton() {
+        btn_login.isEnabled = false
+    }
+
+    override fun enableLoginButton() {
+        btn_login.isEnabled = true
     }
 
     override fun navigateToHomeActivity() {

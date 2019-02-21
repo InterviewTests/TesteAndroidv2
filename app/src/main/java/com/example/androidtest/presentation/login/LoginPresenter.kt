@@ -7,24 +7,28 @@ interface LoginPresenterContract {
     fun loginSuccessfull()
     fun loginFailed(msg: String)
     fun invalidInputForm()
+    fun requestInProgress()
 }
 
-class LoginPresenter(
-    private val activity: LoginActivityContract
-) : LoginPresenterContract {
+class LoginPresenter(private val activity: LoginActivityContract) : LoginPresenterContract {
+    override fun requestInProgress() {
+        activity.showLoading()
+        activity.disableLoginButton()
+    }
 
     override fun loginSuccessfull() {
-        activity.disableLoading()
+        activity.hideLoading()
         activity.navigateToHomeActivity()
     }
 
     override fun loginFailed(msg: String) {
-        activity.disableLoading()
+        activity.hideLoading()
         activity.showAlert(msg)
+        activity.enableLoginButton()
     }
 
     override fun invalidInputForm() {
-        activity.disableLoading()
+        activity.hideLoading()
         activity.showAlert(activity.getStringRes(R.string.login_alert_msg_invalid_input))
     }
 

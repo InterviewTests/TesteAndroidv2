@@ -18,6 +18,7 @@ class LoginInteractor(private val presenter: LoginPresenterContract) : LoginInte
             return
         }
 
+        presenter.requestInProgress()
         repository.loginCall(user, pass) {
             when (it) {
                 is SuccessResponse -> {
@@ -25,7 +26,7 @@ class LoginInteractor(private val presenter: LoginPresenterContract) : LoginInte
                 }
 
                 else -> {
-                    presenter.loginFailed(it.message)
+                    presenter.loginFailed(it.msg)
                 }
             }
         }
