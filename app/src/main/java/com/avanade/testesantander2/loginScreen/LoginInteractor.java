@@ -56,7 +56,7 @@ public class LoginInteractor implements LoginInteractorInput {
     @Override
     public void checkUsuarioSalvo(Context context) {
         Hawk.init(context).build();
-        if (Hawk.contains(USUARIO) && Hawk.contains(SENHA))
+        if (Hawk.contains(USUARIO) && Hawk.contains(SENHA) /* TODO Biometria do Usuário */)
             output.setUsuario(Hawk.get(USUARIO), Hawk.get(SENHA));
         else
             output.setUsuario("", "");

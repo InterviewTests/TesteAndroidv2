@@ -61,10 +61,14 @@ public class HomeInteractor implements HomeInteractorInput {
                         homeViewModel.currencyAccount = homeResponse.apiCallCurrencyResponse.getStatementList();
 
                         showDados();
+                        // TODO - persistência
+
+                    } else {
+                        // TODO - Tratar API devolvendo com sucesso, código de ERROS
                     }
 
                 } else {
-                    Log.d(TAG, "Resnponse Error: " + response.errorBody().toString());
+                    Log.d(TAG, "Response Error: " + response.errorBody().toString());
 
                     erro = homeResponse.apiCallCurrencyResponse.getError();
                     output.apresentarErro(erro.toString());

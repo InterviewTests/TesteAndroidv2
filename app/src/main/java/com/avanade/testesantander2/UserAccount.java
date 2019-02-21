@@ -17,6 +17,8 @@ public class UserAccount implements Serializable {
     @Expose
     private double balance;
 
+    //TODO - campo para TOKEN da WebAPI
+
     public UserAccount() {
     }
 

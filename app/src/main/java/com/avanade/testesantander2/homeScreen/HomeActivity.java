@@ -39,13 +39,15 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityInput
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_perfil);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
 
+        // TODO - Collapse Toolbar
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_perfil);
+//
 //        Toolbar toolbar = findViewById(R.id.my_toolbar);
 //        this.setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(userAccount.getName());
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+//        getSupportActionBar().setTitle(userAccount.getName());
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         HomeConfigurator.INSTANCE.configure(this);
 
