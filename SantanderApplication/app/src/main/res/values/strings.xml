@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SantanderApplication</string>
+    <!--
+    Mensagens do aplicativo
+    -->
+    <string name="erro_login">Erro ao entrar no Aplicativo. Tente novamente.</string>
+    <string name="erro_lista">Erro ao carregar dados Recentes</string>
+    <string name="YES">SIM</string>
+    <string name="NO">NÃO</string>
+    <string name="pergunta">Deseja realmente sair do aplicativo?</string>
+</resources>

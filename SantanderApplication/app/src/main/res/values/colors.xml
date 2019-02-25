@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="fundo_tela">#3b49ee</color>
+    <color name="texto_branco">#ffffff</color>
+    <color name="outros_textos">#485465</color>
+    <color name="texto_label_itens">#A8B4C4</color>
+</resources>

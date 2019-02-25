@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@mipmap/bg">
+
+    <TextView
+        android:id="@+id/tvTipoEntrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/texto_label_itens"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tvDataEntrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/texto_label_itens"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tvEntrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_below="@id/tvTipoEntrada"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tvValorEntrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tvDataEntrada"
+        android:text="TextView"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
+</RelativeLayout>
