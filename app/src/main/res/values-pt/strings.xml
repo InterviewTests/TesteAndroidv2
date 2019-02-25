@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="var_password">Senha</string>
+    <string name="var_login">Entrar</string>
+    <string name="var_msg_erro_user">Erro: Email ou CPF inválido!</string>
+    <string name="var_erro_senha">Erro: A senha deve ter pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico. Ex. Test1@</string>
+    <string name="var_senha_vazia">Erro: Senha é obrigatória!</string>
+    <string name="var_user_vazio">Erro: Email ou CPF é obrigatorio!</string>
+    <string name="var_erro_conectar">Erro ao conctar!</string>
+    <string name="var_erro_conectar_tente_mais_tarde">Ocorreu um erro ao conectar! Tente novamente mais tarde...</string>
+
+</resources>

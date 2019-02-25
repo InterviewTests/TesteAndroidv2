@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Teste_IBM_Santander</string>
+    <string name="var_password">Password</string>
+    <string name="var_login">Login</string>
+    <string name="var_msg_erro_user">Error: invalid email or CPF!</string>
+    <string name="var_erro_senha">The password must have at least one capital letter, a special character and an alphanumeric character. Eg. Test1@</string>
+    <string name="var_senha_vazia">Error: Password is required!!</string>
+    <string name="var_user_vazio">Error: Email or CPF is required!!</string>
+    <string name="var_erro_conectar">Error connecting!</string>
+    <string name="var_erro_conectar_tente_mais_tarde">There was an error connecting! Try again later...</string>
 </resources>
