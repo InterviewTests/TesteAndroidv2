@@ -8,5 +8,12 @@
     <string name="var_user_vazio">Erro: Email ou CPF é obrigatorio!</string>
     <string name="var_erro_conectar">Erro ao conctar!</string>
     <string name="var_erro_conectar_tente_mais_tarde">Ocorreu um erro ao conectar! Tente novamente mais tarde...</string>
+    <string name="var_account">Account</string>
+    <string name="var_balance">Balance</string>
+    <string name="var_description">description</string>
+    <string name="var_title_getout">Você voltará para tela de Login</string>
+    <string name="var_msg_getout">Deseja Realmente Sair?</string>
+    <string name="var_yes">Yes</string>
+    <string name="var_no">No</string>
 
 </resources>

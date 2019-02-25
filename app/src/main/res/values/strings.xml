@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Teste_IBM_Santander</string>
+    <string name="app_name">Bank</string>
     <string name="var_password">Password</string>
     <string name="var_login">Login</string>
     <string name="var_msg_erro_user">Error: invalid email or CPF!</string>
@@ -8,4 +8,11 @@
     <string name="var_user_vazio">Error: Email or CPF is required!!</string>
     <string name="var_erro_conectar">Error connecting!</string>
     <string name="var_erro_conectar_tente_mais_tarde">There was an error connecting! Try again later...</string>
+    <string name="var_account">Account</string>
+    <string name="var_balance">Balance</string>
+    <string name="var_description">description</string>
+    <string name="var_title_getout">Você voltará para tela de Login</string>
+    <string name="var_msg_getout">Deseja Realmente Sair?</string>
+    <string name="var_yes">Yes</string>
+    <string name="var_no">No</string>
 </resources>
