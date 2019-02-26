@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">SantanderV2Kotlin</string>
+    <string name="userAcces">User</string>
+    <string name="passwordAcess">Password</string>
+    <string name="Barra">/</string>
+    <string name="SaldoTitle">Saldo</string>
+    <string name="nomeCliente">José da Silva Teste</string>
+    <string name="contaTitle">Conta</string>
+    <string name="agenciaNumero">2050</string>
+    <string name="recentesTitle">Recentes</string>
+    <string name="botaoLogout">botao</string>
+    <string name="saldoNumero">R$ 1.000,00</string>
+    <string name="logo">Logo</string>
+    <string name="loginTitle">Login</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+</resources>
