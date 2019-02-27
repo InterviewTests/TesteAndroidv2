@@ -1,6 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="40dp"
+            android:paddingBottom="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0">
+
+        <TextView
+                android:id="@+id/txv_name"
+                style="@style/AppTheme.TextAppearance.Title.White"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintEnd_toStartOf="@+id/img_logout"
+                tools:text="Jose da Silva Teste"
+                android:layout_marginEnd="16dp"/>
+
+        <ImageView
+                android:id="@+id/img_logout"
+                style="@style/AppTheme.TextAppearance.Label.White"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                app:srcCompat="@drawable/ic_action_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txv_name"
+                app:layout_constraintBottom_toBottomOf="@+id/txv_name"/>
+
+        <TextView
+                android:id="@+id/lbl_account"
+                style="@style/AppTheme.TextAppearance.Label.White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/currency_account_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/txv_name"
+                app:layout_constraintStart_toStartOf="@+id/txv_name"/>
+
+        <TextView
+                android:id="@+id/txv_account"
+                style="@style/AppTheme.TextAppearance.Title.White"
+                android:layout_width="208dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_account"
+                app:layout_constraintStart_toStartOf="@+id/txv_name"
+                tools:text="2050 / 01.111222-4"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"/>
+
+        <TextView
+                android:id="@+id/lbl_balance"
+                style="@style/AppTheme.TextAppearance.Label.White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="@string/currency_account_lbl"
+                app:layout_constraintTop_toBottomOf="@+id/txv_account"
+                app:layout_constraintStart_toStartOf="@+id/txv_name"/>
+
+        <TextView
+                android:id="@+id/txv_balance"
+                style="@style/AppTheme.TextAppearance.Title.White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_balance"
+                app:layout_constraintStart_toStartOf="@+id/txv_name"
+                tools:text="R$1.000,00"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcv_payments"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>

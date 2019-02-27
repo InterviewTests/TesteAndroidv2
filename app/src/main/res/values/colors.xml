@@ -7,5 +7,6 @@
 
     <color name="whiteBg">#FFFFFF</color>
     <color name="blueLogo">#3B49ED</color>
+    <color name="blueGrayText">#485465</color>
 
 </resources>
