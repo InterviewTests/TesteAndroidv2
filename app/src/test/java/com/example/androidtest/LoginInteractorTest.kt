@@ -29,15 +29,15 @@ class LoginInteractorTest {
     private lateinit var loginInteractor: LoginInteractor
     private lateinit var loginPresenter: LoginPresenter
 
-    private val validUser = "genivaldo"
-    private val validPassword = "securePassword#7291"
-    private val invalidUser = "admin"
+    private val validUser = "test_user"
+    private val validPassword = "Test@1"
+    private val invalidUser = "genivaldo"
     private val invalidPassword = "1234"
 
 
     @Before
     fun beforeTests() {
-        doReturn(context).`when`(loginActivity).getContext()
+//        doReturn(context).`when`(loginActivity).getContext()
         UserRepository.logoff()
         loginPresenter = LoginPresenter(loginActivity)
         loginInteractor = LoginInteractor(loginPresenter)
@@ -51,7 +51,6 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        verify(loginActivity).showAlert(anyString())
         assertNull(UserRepository.loggedUser)
     }
 
@@ -62,7 +61,6 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        verify(loginActivity).showAlert(anyString())
         assertNull(UserRepository.loggedUser)
     }
 
@@ -73,7 +71,6 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        verify(loginActivity).showAlert(anyString())
         assertNull(UserRepository.loggedUser)
     }
 
@@ -84,7 +81,6 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        verify(loginActivity).navigateToHomeActivity()
         assertNotNull(UserRepository.loggedUser)
     }
 
