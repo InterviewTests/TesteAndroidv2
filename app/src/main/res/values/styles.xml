@@ -51,11 +51,11 @@
     <style name="AppTheme.Button.Colored" parent="Widget.AppCompat.Button.Colored">
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/whiteText</item>
     </style>
 
     <style name="AppTheme.EditText" parent="Widget.AppCompat.EditText">
-        <!--<item name="android:paddingStart">16dp</item>-->
-        <!--<item name="android:paddingEnd">16dp</item>-->
+
     </style>
 
 

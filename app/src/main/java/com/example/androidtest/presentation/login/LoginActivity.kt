@@ -22,8 +22,8 @@ interface LoginActivityContract : BaseActivityContract {
 
 class LoginActivity : BaseActivity(), LoginActivityContract {
 
-    private lateinit var presenter: LoginPresenter
-    private lateinit var interactor: LoginInteractor
+    private lateinit var presenter: LoginPresenterContract
+    private lateinit var interactor: LoginInteractorContract
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

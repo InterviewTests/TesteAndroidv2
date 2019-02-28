@@ -4,7 +4,7 @@ import android.content.Context
 import com.example.androidtest.presentation.login.LoginActivityContract
 import com.example.androidtest.presentation.login.LoginInteractor
 import com.example.androidtest.presentation.login.LoginPresenter
-import com.example.androidtest.presentation.login.LoginRepository
+import com.example.androidtest.repository.UserRepository
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Before
@@ -26,7 +26,7 @@ class LoginInteractorTest {
     @Mock
     private lateinit var loginActivity: LoginActivityContract
     @Mock
-    private lateinit var loginRepository: LoginRepository
+    private lateinit var loginRepository: UserRepository
 
     private lateinit var loginInteractor: LoginInteractor
     private lateinit var loginPresenter: LoginPresenter
@@ -42,7 +42,7 @@ class LoginInteractorTest {
         doReturn(context).`when`(loginActivity).getContext()
 
         loginPresenter = LoginPresenter(loginActivity)
-        loginInteractor = LoginInteractor(loginPresenter, loginRepository)
+        loginInteractor = LoginInteractor(loginPresenter)
     }
 
 
