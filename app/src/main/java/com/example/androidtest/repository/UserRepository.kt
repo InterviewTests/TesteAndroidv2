@@ -7,15 +7,15 @@ object UserRepository {
     var loggedUser: User? = null
 
     fun loginCall(user: String, pass: String, callback: (apiResponse: ApiResponse) -> Unit) {
-        Handler().postDelayed({
+//        Handler().postDelayed({
             if (user == "test_user" && pass == "Test@1"){
                 checkinUser(User("Jose da Silva Teste"))
                 callback(SuccessResponse())
             } else callback(FailureResponse("Login inválido. Verifique os dados digitados."))
-        }, 1800)
+//        }, 1800)
     }
 
-    fun checkinUser(user: User) {
+    private fun checkinUser(user: User) {
         loggedUser = user
     }
 

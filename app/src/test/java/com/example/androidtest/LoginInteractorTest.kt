@@ -25,8 +25,6 @@ class LoginInteractorTest {
     private lateinit var context: Context
     @Mock
     private lateinit var loginActivity: LoginActivityContract
-    @Mock
-    private lateinit var loginRepository: UserRepository
 
     private lateinit var loginInteractor: LoginInteractor
     private lateinit var loginPresenter: LoginPresenter
@@ -40,7 +38,7 @@ class LoginInteractorTest {
     @Before
     fun beforeTests() {
         doReturn(context).`when`(loginActivity).getContext()
-
+        UserRepository.logoff()
         loginPresenter = LoginPresenter(loginActivity)
         loginInteractor = LoginInteractor(loginPresenter)
     }
@@ -54,7 +52,7 @@ class LoginInteractorTest {
         loginInteractor.requestLogin(user, pass)
 
         verify(loginActivity).showAlert(anyString())
-        assertNull(loginRepository.loggedUser)
+        assertNull(UserRepository.loggedUser)
     }
 
     @Test
@@ -65,7 +63,7 @@ class LoginInteractorTest {
         loginInteractor.requestLogin(user, pass)
 
         verify(loginActivity).showAlert(anyString())
-        assertNull(loginRepository.loggedUser)
+        assertNull(UserRepository.loggedUser)
     }
 
     @Test
@@ -76,7 +74,7 @@ class LoginInteractorTest {
         loginInteractor.requestLogin(user, pass)
 
         verify(loginActivity).showAlert(anyString())
-        assertNull(loginRepository.loggedUser)
+        assertNull(UserRepository.loggedUser)
     }
 
     @Test
@@ -87,7 +85,7 @@ class LoginInteractorTest {
         loginInteractor.requestLogin(user, pass)
 
         verify(loginActivity).navigateToHomeActivity()
-        assertNotNull(loginRepository.loggedUser)
+        assertNotNull(UserRepository.loggedUser)
     }
 
 }
