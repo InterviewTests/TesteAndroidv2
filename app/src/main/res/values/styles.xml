@@ -14,6 +14,8 @@
         <item name="editTextStyle">@style/AppTheme.EditText</item>
         <item name="android:buttonStyle">@style/AppTheme.Button.Colored</item>
 
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+
     </style>
 
     <style name="AppTheme.Light" parent="Base.AppTheme">
