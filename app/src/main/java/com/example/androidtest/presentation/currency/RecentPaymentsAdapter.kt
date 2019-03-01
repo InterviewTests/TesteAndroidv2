@@ -18,7 +18,9 @@ class RecentPaymentsAdapter(
 
 
     override fun getItemCount() = payments.size
-    override fun getItemViewType(position: Int) = R.layout.item_currency
+    override fun getItemViewType(position: Int) =
+        if (position == 0) R.layout.item_currency_payments_title
+        else R.layout.item_currency
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecentPaymentVH {
         val view = LayoutInflater.from(parent.context).inflate(viewType, parent, false)
@@ -27,6 +29,7 @@ class RecentPaymentsAdapter(
 
 
     override fun onBindViewHolder(viewHolder: RecentPaymentVH, position: Int) {
+        if (position == 0) return
         val payment = payments[position]
         viewHolder.itemView.apply {
             txv_payment.text = payment.desc
