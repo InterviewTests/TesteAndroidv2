@@ -6,4 +6,6 @@
     <string name="login_hint_user">User</string>
     <string name="currency_account_lbl">Conta</string>
     <string name="currency_balance_lbl">Saldo</string>
+    <string name="currency_recent_lbl">Recentes</string>
+    <string name="payment_item_lbl">Pagamento</string>
 </resources>

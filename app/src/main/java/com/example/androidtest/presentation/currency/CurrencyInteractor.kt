@@ -20,7 +20,7 @@ class CurrencyInteractor(private val presenter: CurrencyPresenterContract) : Cur
     }
 
     override fun loadPayments() {
-        presenter.fillPaymentList(
+        presenter.fillRecentPayments(
             payments = CurrencyRepository.getPayments()
         )
     }

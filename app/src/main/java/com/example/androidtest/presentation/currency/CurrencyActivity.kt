@@ -2,6 +2,8 @@ package com.example.androidtest.presentation.currency
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.widget.Toast
 import com.example.androidtest.R
 import com.example.androidtest.presentation.BaseActivity
 import com.example.androidtest.presentation.BaseActivityContract
@@ -14,7 +16,7 @@ interface CurrencyActivityContract : BaseActivityContract {
     fun fillTitle(name: String)
     fun fillAccount(account: String)
     fun fillBalance(balance: String)
-    fun fillPayments(payments: List<Payment>)
+    fun updateRecentPayments(payments: List<Payment>)
     fun navigateToLoginActivity()
 }
 
@@ -29,6 +31,8 @@ class CurrencyActivity : BaseActivity(), CurrencyActivityContract {
 
         presenter = CurrencyPresenter(this)
         interactor = CurrencyInteractor(presenter)
+
+        rcv_payments.layoutManager = LinearLayoutManager(this)
 
         img_logout.setOnClickListener {
             interactor.requestLogoff()
@@ -51,8 +55,10 @@ class CurrencyActivity : BaseActivity(), CurrencyActivityContract {
         txv_balance.text = balance
     }
 
-    override fun fillPayments(payments: List<Payment>) {
-
+    override fun updateRecentPayments(payments: List<Payment>) {
+        rcv_payments.adapter = RecentPaymentsAdapter(payments) {
+            Toast.makeText(this, "Clicou em ($it)!", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun navigateToLoginActivity() {

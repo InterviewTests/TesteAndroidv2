@@ -5,7 +5,7 @@ import com.example.androidtest.repository.Payment
 
 interface CurrencyPresenterContract {
     fun fillHeader(name: String, account: String, balance: String)
-    fun fillPaymentList(payments: List<Payment>)
+    fun fillRecentPayments(payments: List<Payment>)
     fun logoffSuccessful()
 }
 
@@ -17,8 +17,8 @@ class CurrencyPresenter(private val activity: CurrencyActivityContract) : Curren
         activity.fillBalance(balance)
     }
 
-    override fun fillPaymentList(payments: List<Payment>) {
-        activity.fillPayments(payments)
+    override fun fillRecentPayments(payments: List<Payment>) {
+        activity.updateRecentPayments(payments)
     }
 
     override fun logoffSuccessful() {
