@@ -1,7 +1,8 @@
 package com.example.androidtest.presentation.currency
 
-import com.example.androidtest.repository.CurrencyRepository
+import com.example.androidtest.repository.AccountRepository
 import com.example.androidtest.repository.UserRepository
+import com.example.androidtest.util.toCurrency
 
 interface CurrencyInteractorContract {
     fun loadUserInfo()
@@ -12,16 +13,19 @@ interface CurrencyInteractorContract {
 class CurrencyInteractor(private val presenter: CurrencyPresenterContract) : CurrencyInteractorContract {
 
     override fun loadUserInfo() {
-        presenter.fillHeader(
-            name = UserRepository.getUserName(),
-            account = CurrencyRepository.getAccount(),
-            balance = CurrencyRepository.getBalance()
-        )
+        AccountRepository.loggedAccount?.let {
+            presenter.fillHeader(
+                name = it.name,
+                bankAccount = it.bankAccount,
+                balance = it.balance.toCurrency()
+            )
+        }
+
     }
 
     override fun loadPayments() {
         presenter.fillRecentPayments(
-            payments = CurrencyRepository.getPayments()
+            statements = AccountRepository.getPayments()
         )
     }
 

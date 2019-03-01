@@ -10,10 +10,7 @@ import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
-import org.mockito.Mockito.doReturn
-import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
 
 
@@ -51,7 +48,7 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        assertNull(UserRepository.loggedUser)
+        assertNull(UserRepository.logged)
     }
 
     @Test
@@ -61,7 +58,7 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        assertNull(UserRepository.loggedUser)
+        assertNull(UserRepository.logged)
     }
 
     @Test
@@ -71,7 +68,7 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        assertNull(UserRepository.loggedUser)
+        assertNull(UserRepository.logged)
     }
 
     @Test
@@ -81,7 +78,7 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        assertNotNull(UserRepository.loggedUser)
+        assertNotNull(UserRepository.logged)
     }
 
 }

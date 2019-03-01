@@ -1,27 +1,50 @@
 package com.example.androidtest.repository
 
-import android.os.Handler
+import android.annotation.SuppressLint
+import com.example.androidtest.api.ServiceManager
+import com.example.androidtest.api.ServiceResponseException
+import com.example.androidtest.api.serviceCall
+import java.text.ParseException
 
 object UserRepository {
 
-    var loggedUser: User? = null
 
+    @SuppressLint("CheckResult")
     fun loginCall(user: String, pass: String, callback: (apiResponse: ApiResponse) -> Unit) {
-//        Handler().postDelayed({
-            if (user == "test_user" && pass == "Test@1"){
-                checkinUser(User("Jose da Silva Teste"))
-                callback(SuccessResponse())
-            } else callback(FailureResponse("Login inválido. Verifique os dados digitados."))
-//        }, 1800)
-    }
 
-    private fun checkinUser(user: User) {
-        loggedUser = user
+        ServiceManager.getApi().postLogin(user, pass).serviceCall(
+            {
+                checkinAccount(Account(it.userAccount!!))
+                callback(SuccessResponse())
+            },
+            {
+                when (it) {
+                    is ServiceResponseException,
+                    is NullPointerException,
+                    is ParseException -> callback(FailureResponse("Erro ao processar a resposta do Servidor."))
+
+                    else -> callback(FailureResponse("Não foi possível realizar o Login."))
+                }
+            }
+        )
     }
 
     fun logoff() {
-        loggedUser = null
+        checkoutAccount()
+        // TODO: When logged out, navigate to LoginActivity
+//        goToLoginActivity()
     }
 
-    fun getUserName() = loggedUser?.name ?: ""
+    // TODO: Store app Credentials
+    private fun checkinAccount(account: Account) {
+        AccountRepository.loggedAccount = account
+    }
+
+    // TODO: Wipe app Credentials
+    private fun checkoutAccount() {
+        AccountRepository.loggedAccount = null
+    }
 }
+
+
+

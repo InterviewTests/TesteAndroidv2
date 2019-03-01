@@ -8,7 +8,7 @@ import com.example.androidtest.R
 import com.example.androidtest.presentation.BaseActivity
 import com.example.androidtest.presentation.BaseActivityContract
 import com.example.androidtest.presentation.login.LoginActivity
-import com.example.androidtest.repository.Payment
+import com.example.androidtest.repository.Statement
 import kotlinx.android.synthetic.main.activity_currency.*
 
 
@@ -16,7 +16,7 @@ interface CurrencyActivityContract : BaseActivityContract {
     fun fillTitle(name: String)
     fun fillAccount(account: String)
     fun fillBalance(balance: String)
-    fun updateRecentPayments(payments: List<Payment>)
+    fun updateRecentPayments(statements: List<Statement>)
     fun navigateToLoginActivity()
 }
 
@@ -55,8 +55,8 @@ class CurrencyActivity : BaseActivity(), CurrencyActivityContract {
         txv_balance.text = balance
     }
 
-    override fun updateRecentPayments(payments: List<Payment>) {
-        rcv_payments.adapter = RecentPaymentsAdapter(payments) {
+    override fun updateRecentPayments(statements: List<Statement>) {
+        rcv_payments.adapter = RecentPaymentsAdapter(statements) {
             Toast.makeText(this, "Clicou em ($it)!", Toast.LENGTH_SHORT).show()
         }
     }

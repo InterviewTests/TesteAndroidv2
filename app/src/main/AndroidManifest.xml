@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.example.androidtest">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.androidtest">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
             android:label="@string/app_name"
@@ -9,19 +12,22 @@
             android:supportsRtl="true"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name="com.example.androidtest.presentation.login.LoginActivity"
-                  android:theme="@style/AppTheme.Light"
-                  android:screenOrientation="portrait"
-                  android:noHistory="true">
+
+        <activity
+                android:name="com.example.androidtest.presentation.login.LoginActivity"
+                android:theme="@style/AppTheme.Light"
+                android:screenOrientation="portrait"
+                android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.androidtest.presentation.currency.CurrencyActivity"
-                  android:theme="@style/AppTheme.DarkTop"
-                  android:screenOrientation="portrait"/>
+        <activity
+                android:name="com.example.androidtest.presentation.currency.CurrencyActivity"
+                android:theme="@style/AppTheme.DarkTop"
+                android:screenOrientation="portrait"/>
 
     </application>
 </manifest>
