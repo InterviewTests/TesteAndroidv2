@@ -11,7 +11,7 @@
 
         <item name="android:windowBackground">@color/whiteBg</item>
 
-        <item name="android:editTextStyle">@style/AppTheme.EditText</item>
+        <item name="editTextStyle">@style/AppTheme.EditText</item>
         <item name="android:buttonStyle">@style/AppTheme.Button.Colored</item>
 
     </style>
@@ -55,7 +55,9 @@
     </style>
 
     <style name="AppTheme.EditText" parent="Widget.AppCompat.EditText">
-
+        <item name="android:background">@drawable/edittext_bg</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
 
