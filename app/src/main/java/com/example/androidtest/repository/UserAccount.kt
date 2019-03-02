@@ -3,13 +3,14 @@ package com.example.androidtest.repository
 import com.google.gson.annotations.SerializedName
 
 
-data class Account(
+data class UserAccount(
     var userId: Int,
     var name: String,
     var bankAccount: String,
     var agency: String,
     var balance: Double
 ) {
+
     constructor(raw: AccountRaw) : this(
         userId = raw.userId!!,
         name = raw.name!!,

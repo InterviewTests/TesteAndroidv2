@@ -1,23 +1,25 @@
 package com.example.androidtest.presentation.currency
 
 import com.example.androidtest.repository.Statement
+import com.example.androidtest.repository.UserAccount
+import com.example.androidtest.util.toCurrency
 
 
 interface CurrencyPresenterContract {
-    fun fillHeader(name: String, bankAccount: String, balance: String)
-    fun fillRecentPayments(statements: List<Statement>)
+    fun fillHeader(userData: UserAccount)
+    fun fillRecentPayments(statements: List<Statement>?)
     fun logoffSuccessful()
 }
 
 class CurrencyPresenter(private val activity: CurrencyActivityContract) : CurrencyPresenterContract {
 
-    override fun fillHeader(name: String, bankAccount: String, balance: String) {
-        activity.fillTitle(name)
-        activity.fillAccount(bankAccount)
-        activity.fillBalance(balance)
+    override fun fillHeader(userData: UserAccount) {
+        activity.fillTitle(userData.name)
+        activity.fillBankInfo("${userData.agency} / ${userData.bankAccount}")
+        activity.fillBalance(userData.balance.toCurrency())
     }
 
-    override fun fillRecentPayments(statements: List<Statement>) {
+    override fun fillRecentPayments(statements: List<Statement>?) {
         activity.updateRecentPayments(statements)
     }
 

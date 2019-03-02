@@ -1,36 +1,42 @@
 package com.example.androidtest.presentation.currency
 
-import com.example.androidtest.repository.AccountRepository
-import com.example.androidtest.repository.UserRepository
-import com.example.androidtest.util.toCurrency
+import com.example.androidtest.repository.ApiResponse
+import com.example.androidtest.repository.Repository
+import com.example.androidtest.repository.Statement
+import com.example.androidtest.repository.SuccessResponse
 
 interface CurrencyInteractorContract {
     fun loadUserInfo()
-    fun loadPayments()
+    fun requestRecentStatements()
     fun requestLogoff()
 }
 
 class CurrencyInteractor(private val presenter: CurrencyPresenterContract) : CurrencyInteractorContract {
 
     override fun loadUserInfo() {
-        AccountRepository.loggedAccount?.let {
-            presenter.fillHeader(
-                name = it.name,
-                bankAccount = it.bankAccount,
-                balance = it.balance.toCurrency()
-            )
+        Repository.getLoggedAccount()?.let {
+            presenter.fillHeader(it)
         }
 
     }
 
-    override fun loadPayments() {
-        presenter.fillRecentPayments(
-            statements = AccountRepository.getPayments()
-        )
+    override fun requestRecentStatements() {
+
+        Repository.getRecentStatements { apiResponse: ApiResponse, statements: List<Statement>? ->
+            when (apiResponse) {
+                is SuccessResponse -> {
+                    presenter.fillRecentPayments(statements)
+                }
+                else -> {
+                }
+            }
+        }
+
+
     }
 
     override fun requestLogoff() {
-        UserRepository.logoff()
+        Repository.logoff()
         presenter.logoffSuccessful()
     }
 }

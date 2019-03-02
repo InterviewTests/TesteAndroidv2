@@ -1,20 +1,19 @@
 package com.example.androidtest.repository
 
-import android.annotation.SuppressLint
 import com.example.androidtest.api.ServiceManager
 import com.example.androidtest.api.ServiceResponseException
 import com.example.androidtest.api.serviceCall
 import java.text.ParseException
+import java.util.*
 
-object UserRepository {
+object Repository {
 
 
-    @SuppressLint("CheckResult")
     fun loginCall(user: String, pass: String, callback: (apiResponse: ApiResponse) -> Unit) {
 
         ServiceManager.getApi().postLogin(user, pass).serviceCall(
             {
-                checkinAccount(Account(it.userAccount!!))
+                checkinAccount(user, pass, UserAccount(it.userAccount))
                 callback(SuccessResponse())
             },
             {
@@ -29,6 +28,23 @@ object UserRepository {
         )
     }
 
+
+    fun getRecentStatements(callback: (ApiResponse, ArrayList<Statement>) -> Unit) {
+        val userAccount = getLoggedAccount()!!
+
+        ServiceManager.getApi().getStatements(userAccount.userId).serviceCall(
+            {
+
+            }, {
+
+            }
+        )
+    }
+
+    fun getLoggedAccount(): UserAccount? {
+
+    }
+
     fun logoff() {
         checkoutAccount()
         // TODO: When logged out, navigate to LoginActivity
@@ -36,13 +52,13 @@ object UserRepository {
     }
 
     // TODO: Store app Credentials
-    private fun checkinAccount(account: Account) {
-        AccountRepository.loggedAccount = account
+    private fun checkinAccount(user: String, pass: String, userAccount: UserAccount) {
+
     }
 
     // TODO: Wipe app Credentials
     private fun checkoutAccount() {
-        AccountRepository.loggedAccount = null
+
     }
 }
 

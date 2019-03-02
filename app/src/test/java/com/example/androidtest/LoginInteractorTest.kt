@@ -4,7 +4,7 @@ import android.content.Context
 import com.example.androidtest.presentation.login.LoginActivityContract
 import com.example.androidtest.presentation.login.LoginInteractor
 import com.example.androidtest.presentation.login.LoginPresenter
-import com.example.androidtest.repository.UserRepository
+import com.example.androidtest.repository.Repository
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Before
@@ -35,7 +35,7 @@ class LoginInteractorTest {
     @Before
     fun beforeTests() {
 //        doReturn(context).`when`(loginActivity).getContext()
-        UserRepository.logoff()
+        Repository.logoff()
         loginPresenter = LoginPresenter(loginActivity)
         loginInteractor = LoginInteractor(loginPresenter)
     }
@@ -48,7 +48,7 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        assertNull(UserRepository.logged)
+        assertNull(Repository.logged)
     }
 
     @Test
@@ -58,7 +58,7 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        assertNull(UserRepository.logged)
+        assertNull(Repository.logged)
     }
 
     @Test
@@ -68,7 +68,7 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        assertNull(UserRepository.logged)
+        assertNull(Repository.logged)
     }
 
     @Test
@@ -78,7 +78,7 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        assertNotNull(UserRepository.logged)
+        assertNotNull(Repository.logged)
     }
 
 }

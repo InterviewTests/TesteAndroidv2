@@ -12,12 +12,12 @@ import kotlinx.android.synthetic.main.item_currency.view.*
 import java.util.*
 
 class RecentPaymentsAdapter(
-    private val statements: List<Statement> = ArrayList(),
+    private val statements: List<Statement>? = ArrayList(),
     private val onClickListener: (Int) -> Unit
 ) : RecyclerView.Adapter<RecentPaymentVH>() {
 
 
-    override fun getItemCount() = statements.size
+    override fun getItemCount() = statements?.size ?: 0
     override fun getItemViewType(position: Int) =
         if (position == 0) R.layout.item_currency_payments_title
         else R.layout.item_currency
@@ -29,7 +29,8 @@ class RecentPaymentsAdapter(
 
 
     override fun onBindViewHolder(viewHolder: RecentPaymentVH, position: Int) {
-        if (position == 0) return
+        if (position == 0 || statements == null) return
+
         val payment = statements[position]
         viewHolder.itemView.apply {
             txv_payment.text = payment.desc

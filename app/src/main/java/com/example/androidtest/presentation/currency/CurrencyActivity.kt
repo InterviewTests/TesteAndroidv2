@@ -14,9 +14,9 @@ import kotlinx.android.synthetic.main.activity_currency.*
 
 interface CurrencyActivityContract : BaseActivityContract {
     fun fillTitle(name: String)
-    fun fillAccount(account: String)
+    fun fillBankInfo(account: String)
     fun fillBalance(balance: String)
-    fun updateRecentPayments(statements: List<Statement>)
+    fun updateRecentPayments(statements: List<Statement>?)
     fun navigateToLoginActivity()
 }
 
@@ -39,7 +39,7 @@ class CurrencyActivity : BaseActivity(), CurrencyActivityContract {
         }
 
         interactor.loadUserInfo()
-        interactor.loadPayments()
+        interactor.requestRecentStatements()
     }
 
 
@@ -47,7 +47,7 @@ class CurrencyActivity : BaseActivity(), CurrencyActivityContract {
         txv_name.text = name
     }
 
-    override fun fillAccount(account: String) {
+    override fun fillBankInfo(account: String) {
         txv_account.text = account
     }
 
@@ -55,7 +55,7 @@ class CurrencyActivity : BaseActivity(), CurrencyActivityContract {
         txv_balance.text = balance
     }
 
-    override fun updateRecentPayments(statements: List<Statement>) {
+    override fun updateRecentPayments(statements: List<Statement>?) {
         rcv_payments.adapter = RecentPaymentsAdapter(statements) {
             Toast.makeText(this, "Clicou em ($it)!", Toast.LENGTH_SHORT).show()
         }
