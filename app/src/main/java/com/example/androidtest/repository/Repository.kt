@@ -1,19 +1,23 @@
 package com.example.androidtest.repository
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import com.example.androidtest.api.ServiceManager
 import com.example.androidtest.api.ServiceResponseException
 import com.example.androidtest.api.serviceCall
 import java.text.ParseException
 import java.util.*
 
+
 object Repository {
 
 
-    fun loginCall(user: String, pass: String, callback: (apiResponse: ApiResponse) -> Unit) {
+    fun loginCall(context: Context, user: String, pass: String, callback: (apiResponse: ApiResponse) -> Unit) {
 
         ServiceManager.getApi().postLogin(user, pass).serviceCall(
             {
-                checkinAccount(user, pass, UserAccount(it.userAccount))
+                checkinAccount(context, user, pass, UserAccount(it.userAccount))
                 callback(SuccessResponse())
             },
             {
@@ -29,8 +33,8 @@ object Repository {
     }
 
 
-    fun getRecentStatements(callback: (ApiResponse, ArrayList<Statement>) -> Unit) {
-        val userAccount = getLoggedAccount()!!
+    fun getRecentStatements(context: Context, callback: (ApiResponse, ArrayList<Statement>) -> Unit) {
+        val userAccount = getLoggedAccount(context)!!
 
         ServiceManager.getApi().getStatements(userAccount.userId).serviceCall(
             {
@@ -41,24 +45,45 @@ object Repository {
         )
     }
 
-    fun getLoggedAccount(): UserAccount? {
-
+    fun getLoggedAccount(context: Context): UserAccount? {
+        val sp = context.getSharedPreferences("Login", MODE_PRIVATE)
+        return UserAccount(
+            userId = sp.getInt("userId", -1),
+            name = sp.getString("name", null) ?: "",
+            bankAccount = sp.getString("bankAccount", null) ?: "",
+            agency = sp.getString("agency", null) ?: "",
+            balance = sp.getFloat("balance", 0f).toDouble()
+        )
     }
 
-    fun logoff() {
-        checkoutAccount()
-        // TODO: When logged out, navigate to LoginActivity
-//        goToLoginActivity()
+    fun logoff(context: Context) {
+        checkoutAccount(context)
+//        goToLoginActivity(context)
     }
 
-    // TODO: Store app Credentials
-    private fun checkinAccount(user: String, pass: String, userAccount: UserAccount) {
-
+    @SuppressLint("ApplySharedPref")
+    private fun checkinAccount(context: Context, user: String, pass: String, userAccount: UserAccount) {
+        context.getSharedPreferences("Login", MODE_PRIVATE).edit()
+            .putString("user", user)
+            .putString("pass", pass)
+            .putInt("userId", userAccount.userId)
+            .putString("name", userAccount.name)
+            .putString("bankAccount", userAccount.bankAccount)
+            .putString("agency", userAccount.agency)
+            .putFloat("balance", userAccount.balance.toFloat())
+            .commit()
     }
 
-    // TODO: Wipe app Credentials
-    private fun checkoutAccount() {
-
+    private fun checkoutAccount(context: Context) {
+        context.getSharedPreferences("Login", MODE_PRIVATE).edit()
+            .remove("user")
+            .remove("pass")
+            .remove("userId")
+            .remove("name")
+            .remove("bankAccount")
+            .remove("agency")
+            .remove("balance")
+            .apply()
     }
 }
 

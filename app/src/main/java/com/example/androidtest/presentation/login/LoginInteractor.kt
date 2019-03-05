@@ -1,5 +1,6 @@
 package com.example.androidtest.presentation.login
 
+import android.content.Context
 import com.example.androidtest.repository.Repository
 import com.example.androidtest.repository.SuccessResponse
 
@@ -8,7 +9,10 @@ interface LoginInteractorContract {
     fun requestLogin(user: String, pass: String)
 }
 
-class LoginInteractor(private val presenter: LoginPresenterContract) : LoginInteractorContract {
+class LoginInteractor(
+    private val context: Context,
+    private val presenter: LoginPresenterContract
+) : LoginInteractorContract {
 
     override fun requestLogin(user: String, pass: String) {
 
@@ -18,7 +22,7 @@ class LoginInteractor(private val presenter: LoginPresenterContract) : LoginInte
         }
 
         presenter.requestInProgress()
-        Repository.loginCall(user, pass) {
+        Repository.loginCall(context, user, pass) {
             when (it) {
                 is SuccessResponse -> {
                     presenter.loginSuccessfull()

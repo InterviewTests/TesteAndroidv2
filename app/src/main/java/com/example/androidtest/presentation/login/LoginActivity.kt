@@ -30,7 +30,7 @@ class LoginActivity : BaseActivity(), LoginActivityContract {
         setContentView(R.layout.activity_login)
 
         presenter = LoginPresenter(this)
-        interactor = LoginInteractor(presenter)
+        interactor = LoginInteractor(this, presenter)
 
         btn_login.setOnClickListener {
             interactor.requestLogin(edt_user.text.toString(), edt_pass.text.toString())

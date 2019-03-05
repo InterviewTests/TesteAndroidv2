@@ -1,5 +1,6 @@
 package com.example.androidtest.presentation.currency
 
+import android.content.Context
 import com.example.androidtest.repository.ApiResponse
 import com.example.androidtest.repository.Repository
 import com.example.androidtest.repository.Statement
@@ -11,18 +12,19 @@ interface CurrencyInteractorContract {
     fun requestLogoff()
 }
 
-class CurrencyInteractor(private val presenter: CurrencyPresenterContract) : CurrencyInteractorContract {
+class CurrencyInteractor(
+    private val context: Context,
+    private val presenter: CurrencyPresenterContract
+) : CurrencyInteractorContract {
 
     override fun loadUserInfo() {
-        Repository.getLoggedAccount()?.let {
+        Repository.getLoggedAccount(context)?.let {
             presenter.fillHeader(it)
         }
-
     }
 
     override fun requestRecentStatements() {
-
-        Repository.getRecentStatements { apiResponse: ApiResponse, statements: List<Statement>? ->
+        Repository.getRecentStatements(context) { apiResponse: ApiResponse, statements: List<Statement>? ->
             when (apiResponse) {
                 is SuccessResponse -> {
                     presenter.fillRecentPayments(statements)
@@ -31,12 +33,10 @@ class CurrencyInteractor(private val presenter: CurrencyPresenterContract) : Cur
                 }
             }
         }
-
-
     }
 
     override fun requestLogoff() {
-        Repository.logoff()
+        Repository.logoff(context)
         presenter.logoffSuccessful()
     }
 }

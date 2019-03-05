@@ -30,7 +30,7 @@ class CurrencyActivity : BaseActivity(), CurrencyActivityContract {
         setContentView(R.layout.activity_currency)
 
         presenter = CurrencyPresenter(this)
-        interactor = CurrencyInteractor(presenter)
+        interactor = CurrencyInteractor(this, presenter)
 
         rcv_payments.layoutManager = LinearLayoutManager(this)
 
