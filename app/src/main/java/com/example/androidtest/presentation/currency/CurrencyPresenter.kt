@@ -9,9 +9,15 @@ interface CurrencyPresenterContract {
     fun fillHeader(userData: UserAccount)
     fun fillRecentPayments(statements: List<Statement>?)
     fun logoffSuccessful()
+    fun requestingRecentStatements()
 }
 
 class CurrencyPresenter(private val activity: CurrencyActivityContract) : CurrencyPresenterContract {
+
+    override fun requestingRecentStatements() {
+        activity.showStatmentsLoading()
+        activity.hideStatementList()
+    }
 
     override fun fillHeader(userData: UserAccount) {
         activity.fillTitle(userData.name)
@@ -20,6 +26,8 @@ class CurrencyPresenter(private val activity: CurrencyActivityContract) : Curren
     }
 
     override fun fillRecentPayments(statements: List<Statement>?) {
+        activity.hideStatementsLoading()
+        activity.showStatmentsList()
         activity.updateRecentPayments(statements)
     }
 

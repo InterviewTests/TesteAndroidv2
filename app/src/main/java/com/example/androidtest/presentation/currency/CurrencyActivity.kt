@@ -3,6 +3,7 @@ package com.example.androidtest.presentation.currency
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import android.widget.Toast
 import com.example.androidtest.R
 import com.example.androidtest.presentation.BaseActivity
@@ -18,6 +19,10 @@ interface CurrencyActivityContract : BaseActivityContract {
     fun fillBalance(balance: String)
     fun updateRecentPayments(statements: List<Statement>?)
     fun navigateToLoginActivity()
+    fun showStatmentsLoading()
+    fun hideStatementsLoading()
+    fun showStatmentsList()
+    fun hideStatementList()
 }
 
 class CurrencyActivity : BaseActivity(), CurrencyActivityContract {
@@ -67,5 +72,20 @@ class CurrencyActivity : BaseActivity(), CurrencyActivityContract {
         finish()
     }
 
+    override fun showStatmentsLoading() {
+        loading.visibility = View.VISIBLE
+    }
+
+    override fun hideStatementsLoading() {
+        loading.visibility = View.GONE
+    }
+
+    override fun showStatmentsList() {
+        rcv_payments.visibility = View.VISIBLE
+    }
+
+    override fun hideStatementList() {
+        rcv_payments.visibility = View.GONE
+    }
 
 }

@@ -18,6 +18,7 @@ class CurrencyInteractor(
 ) : CurrencyInteractorContract {
 
     override fun loadUserInfo() {
+        presenter.requestingRecentStatements()
         Repository.getLoggedAccount(context)?.let {
             presenter.fillHeader(it)
         }
