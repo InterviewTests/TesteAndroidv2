@@ -16,7 +16,7 @@ object Repository {
 
         ServiceManager.getApi().postLogin(user, pass).serviceCall(
             {
-                checkinAccount(context, user, pass, UserAccount(it.userAccount))
+                checkinAccount(context, UserAccount(it.userAccount, LoginData(user, pass)))
                 callback(SuccessResponse())
             },
             {
@@ -58,7 +58,11 @@ object Repository {
             name = sp.getString("name", null) ?: "",
             bankAccount = sp.getString("bankAccount", null) ?: "",
             agency = sp.getString("agency", null) ?: "",
-            balance = sp.getFloat("balance", 0f).toDouble()
+            balance = sp.getFloat("balance", 0f).toDouble(),
+            credentials = LoginData(
+                user = sp.getString("user", null) ?: "",
+                pass = sp.getString("pass", null) ?: ""
+            )
         )
     }
 
@@ -68,10 +72,10 @@ object Repository {
     }
 
     @SuppressLint("ApplySharedPref")
-    private fun checkinAccount(context: Context, user: String, pass: String, userAccount: UserAccount) {
+    private fun checkinAccount(context: Context, userAccount: UserAccount) {
         context.getSharedPreferences("Login", MODE_PRIVATE).edit()
-            .putString("user", user)
-            .putString("pass", pass)
+            .putString("user", userAccount.credentials?.user)
+            .putString("pass", userAccount.credentials?.pass)
             .putInt("userId", userAccount.userId)
             .putString("name", userAccount.name)
             .putString("bankAccount", userAccount.bankAccount)

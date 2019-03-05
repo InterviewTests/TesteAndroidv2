@@ -18,6 +18,7 @@ interface LoginActivityContract : BaseActivityContract {
     fun showLoading()
     fun disableLoginButton()
     fun enableLoginButton()
+    fun showLoggedUser(user: String)
 }
 
 class LoginActivity : BaseActivity(), LoginActivityContract {
@@ -35,8 +36,13 @@ class LoginActivity : BaseActivity(), LoginActivityContract {
         btn_login.setOnClickListener {
             interactor.requestLogin(edt_user.text.toString(), edt_pass.text.toString())
         }
+
+        interactor.showLoggedUser()
     }
 
+    override fun showLoggedUser(user: String) {
+        edt_user.setText(user)
+    }
 
     override fun showAlert(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()

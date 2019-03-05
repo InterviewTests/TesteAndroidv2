@@ -7,6 +7,7 @@ import com.example.androidtest.repository.SuccessResponse
 
 interface LoginInteractorContract {
     fun requestLogin(user: String, pass: String)
+    fun showLoggedUser()
 }
 
 class LoginInteractor(
@@ -34,6 +35,12 @@ class LoginInteractor(
             }
         }
 
+    }
+
+    override fun showLoggedUser() {
+        Repository.getLoggedAccount(context)?.let {
+            presenter.showLoggedUserData(it)
+        }
     }
 
 }

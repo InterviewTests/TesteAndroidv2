@@ -8,17 +8,24 @@ data class UserAccount(
     var name: String,
     var bankAccount: String,
     var agency: String,
-    var balance: Double
+    var balance: Double,
+    var credentials: LoginData? = null
 ) {
 
-    constructor(raw: AccountRaw) : this(
+    constructor(raw: AccountRaw, credentials: LoginData? = null) : this(
         userId = raw.userId!!,
         name = raw.name!!,
         bankAccount = raw.bankAccount!!,
         agency = raw.agency!!,
-        balance = raw.balance!!
+        balance = raw.balance!!,
+        credentials = credentials
     )
 }
+
+data class LoginData(
+    val user: String,
+    val pass: String
+)
 
 data class AccountRaw(
     @SerializedName("agency") val agency: String?,
