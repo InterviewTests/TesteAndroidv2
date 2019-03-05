@@ -20,13 +20,17 @@ interface Api {
     @GET("statements/{user_id}")
     fun getStatements(
         @Path("user_id") userId: Int
-    ): Observable<ArrayList<StatementRaw>>
+    ): Observable<GetStatementsResponse>
 }
 
 data class ApiError(@SerializedName("message") val message: String?)
 
 data class PostLoginResponse(
     @SerializedName("userAccount") val userAccount: AccountRaw,
+    @SerializedName("error") val error: ApiError
+)
+data class GetStatementsResponse(
+    @SerializedName("statementList") val statementList: ArrayList<StatementRaw>,
     @SerializedName("error") val error: ApiError
 )
 

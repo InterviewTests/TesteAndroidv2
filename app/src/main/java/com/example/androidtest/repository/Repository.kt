@@ -7,7 +7,6 @@ import com.example.androidtest.api.ServiceManager
 import com.example.androidtest.api.ServiceResponseException
 import com.example.androidtest.api.serviceCall
 import java.text.ParseException
-import java.util.*
 
 
 object Repository {
@@ -25,7 +24,6 @@ object Repository {
                     is ServiceResponseException,
                     is NullPointerException,
                     is ParseException -> callback(FailureResponse("Erro ao processar a resposta do Servidor."))
-
                     else -> callback(FailureResponse("Não foi possível realizar o Login."))
                 }
             }
@@ -33,14 +31,22 @@ object Repository {
     }
 
 
-    fun getRecentStatements(context: Context, callback: (ApiResponse, ArrayList<Statement>) -> Unit) {
+    fun getRecentStatements(context: Context, callback: (ApiResponse, ArrayList<Statement>?) -> Unit) {
         val userAccount = getLoggedAccount(context)!!
 
         ServiceManager.getApi().getStatements(userAccount.userId).serviceCall(
-            {
-
+            { response ->
+                val result = ArrayList<Statement>().apply {
+                    response.statementList.forEach { add(Statement(it)) }
+                }
+                callback(SuccessResponse(), result)
             }, {
-
+                when (it) {
+                    is ServiceResponseException,
+                    is NullPointerException,
+                    is ParseException -> callback(FailureResponse("Erro ao processar a resposta do Servidor."), null)
+                    else -> callback(FailureResponse("Não foi possível realizar o Login."), null)
+                }
             }
         )
     }

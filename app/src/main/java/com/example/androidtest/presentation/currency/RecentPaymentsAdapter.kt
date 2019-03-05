@@ -9,15 +9,20 @@ import com.example.androidtest.repository.Statement
 import com.example.androidtest.util.toCurrency
 import com.example.androidtest.util.toSimpleString
 import kotlinx.android.synthetic.main.item_currency.view.*
-import java.util.*
 
 class RecentPaymentsAdapter(
-    private val statements: List<Statement>? = ArrayList(),
+    statements: List<Statement>?,
     private val onClickListener: (Int) -> Unit
 ) : RecyclerView.Adapter<RecentPaymentVH>() {
 
+    private val statements = ArrayList<Statement?>()
 
-    override fun getItemCount() = statements?.size ?: 0
+    init {
+        this.statements.add(null)
+        statements?.let { this.statements.addAll(statements) }
+    }
+
+    override fun getItemCount() = statements.size
     override fun getItemViewType(position: Int) =
         if (position == 0) R.layout.item_currency_payments_title
         else R.layout.item_currency
@@ -27,16 +32,17 @@ class RecentPaymentsAdapter(
         return RecentPaymentVH(view)
     }
 
-
     override fun onBindViewHolder(viewHolder: RecentPaymentVH, position: Int) {
-        if (position == 0 || statements == null) return
+        if (position == 0) return
 
         val payment = statements[position]
-        viewHolder.itemView.apply {
-            txv_payment.text = payment.desc
-            txv_value.text = payment.value.toCurrency()
-            txv_date.text = payment.calendar.time.toSimpleString()
-            setOnClickListener { onClickListener(position) }
+        payment?.let {
+            viewHolder.itemView.apply {
+                txv_payment.text = payment.desc
+                txv_value.text = payment.value.toCurrency()
+                txv_date.text = payment.calendar.time.toSimpleString()
+                setOnClickListener { onClickListener(position) }
+            }
         }
     }
 

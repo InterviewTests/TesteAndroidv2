@@ -1,7 +1,7 @@
 package com.example.androidtest.repository
 
 import com.google.gson.annotations.SerializedName
-import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 class Statement(
@@ -15,7 +15,7 @@ class Statement(
         desc = raw.desc!!,
         value = raw.value!!,
         calendar = Calendar.getInstance(Locale.getDefault()).apply {
-            time = DateFormat.getDateInstance().parse(raw.date)
+            time = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(raw.date)
         }
     )
 }
