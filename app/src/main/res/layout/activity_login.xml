@@ -58,6 +58,7 @@
         android:text="@string/login_button"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:onClick="goToCurrency"/>
 
 </LinearLayout>

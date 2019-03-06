@@ -5,4 +5,9 @@
     <string name="user_field">User</string>
     <string name="pass_field">Password</string>
     <string name="login_button">Login</string>
+
+    <!-- Currency -->
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="recent">Recentes</string>
 </resources>
