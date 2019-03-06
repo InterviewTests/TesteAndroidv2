@@ -3,14 +3,13 @@ package com.example.androidtest
 import android.content.Context
 import com.example.androidtest.presentation.login.LoginActivityContract
 import com.example.androidtest.presentation.login.LoginInteractor
-import com.example.androidtest.presentation.login.LoginPresenter
-import com.example.androidtest.repository.Repository
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
+import com.example.androidtest.presentation.login.LoginPresenterContract
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
+import org.mockito.Mockito.doReturn
+import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
 
 
@@ -22,22 +21,19 @@ class LoginInteractorTest {
     private lateinit var context: Context
     @Mock
     private lateinit var loginActivity: LoginActivityContract
+    @Mock
+    private lateinit var loginPresenter: LoginPresenterContract
 
     private lateinit var loginInteractor: LoginInteractor
-    private lateinit var loginPresenter: LoginPresenter
 
     private val validUser = "test_user"
     private val validPassword = "Test@1"
-    private val invalidUser = "genivaldo"
-    private val invalidPassword = "1234"
 
 
     @Before
     fun beforeTests() {
-//        doReturn(context).`when`(loginActivity).getContext()
-        Repository.logoff()
-        loginPresenter = LoginPresenter(loginActivity)
-        loginInteractor = LoginInteractor(loginPresenter)
+        doReturn(context).`when`(loginActivity).getContext()
+        loginInteractor = LoginInteractor(context, loginPresenter)
     }
 
 
@@ -48,7 +44,7 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        assertNull(Repository.logged)
+        verify(loginPresenter).invalidInputForm()
     }
 
     @Test
@@ -58,27 +54,8 @@ class LoginInteractorTest {
 
         loginInteractor.requestLogin(user, pass)
 
-        assertNull(Repository.logged)
+        verify(loginPresenter).invalidInputForm()
     }
 
-    @Test
-    fun login_withWrongData() {
-        val user = invalidUser
-        val pass = invalidPassword
-
-        loginInteractor.requestLogin(user, pass)
-
-        assertNull(Repository.logged)
-    }
-
-    @Test
-    fun login_withValidData() {
-        val user = validUser
-        val pass = validPassword
-
-        loginInteractor.requestLogin(user, pass)
-
-        assertNotNull(Repository.logged)
-    }
 
 }
