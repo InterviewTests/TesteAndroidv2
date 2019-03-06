@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TesteAndroidv2</string>
+
+    <!-- Login -->
+    <string name="user_field">User</string>
+    <string name="pass_field">Password</string>
+    <string name="login_button">Login</string>
 </resources>
