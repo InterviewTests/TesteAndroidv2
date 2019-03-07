@@ -2,11 +2,13 @@ package br.com.kakobotasso.testeandroidv2.currency;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 public class CurrencyItem {
     private String title;
     @SerializedName("desc")
     private String description;
-    private String date;
+    private Date date;
     private double value;
 
     public String getTitle() {
@@ -25,11 +27,11 @@ public class CurrencyItem {
         this.description = description;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

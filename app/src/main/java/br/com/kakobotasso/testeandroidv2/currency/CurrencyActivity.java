@@ -2,6 +2,8 @@ package br.com.kakobotasso.testeandroidv2.currency;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
@@ -34,8 +36,8 @@ public class CurrencyActivity extends AppCompatActivity implements CurrencyActiv
     TextView tvBalance;
     @BindView(R.id.pb_currency)
     ProgressBar progressBar;
-    @BindView(R.id.scrollView)
-    ScrollView scrollView;
+    @BindView(R.id.rv_itens)
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +77,16 @@ public class CurrencyActivity extends AppCompatActivity implements CurrencyActiv
     @Override
     public void showCurrencyInfo(CurrencyResponse response) {
         progressBar.setVisibility(View.GONE);
-        scrollView.setVisibility(View.VISIBLE);
+
+        CurrencyAdapter adapter = new CurrencyAdapter(response.getItems(), this);
+        recyclerView.setAdapter(adapter);
+
+        RecyclerView.LayoutManager layout = new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL,
+                false);
+
+        recyclerView.setLayoutManager(layout);
+
+        recyclerView.setVisibility(View.VISIBLE);
     }
 }
