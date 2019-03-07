@@ -1,5 +1,7 @@
 package br.com.kakobotasso.testeandroidv2.login;
 
+import java.util.regex.Pattern;
+
 interface LoginInteractorInput {
     void fetchLoginData(LoginRequest request);
 }
@@ -25,7 +27,27 @@ public class LoginInteractor implements LoginInteractorInput {
     public void fetchLoginData(LoginRequest request) {
         loginWorkerInput = getLoginWorkerInput();
         LoginResponse loginResponse = new LoginResponse();
-        // here call login worker and populate loginResponse
-        output.presentLoginData(loginResponse);
+
+        if (requestIsValid(request)) {
+            // here call login worker and populate loginResponse
+            output.presentLoginData(loginResponse);
+        } else {
+            output.presentInvalidRequestData();
+        }
+
     }
+
+    private boolean requestIsValid(LoginRequest request) {
+        if (request.getUser().isEmpty()) {
+            return false;
+        }
+
+        if (request.getPassword().isEmpty()) {
+            return false;
+        }
+
+        final Pattern passwordPattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$");
+        return passwordPattern.matcher(request.getPassword()).matches();
+    }
+
 }
