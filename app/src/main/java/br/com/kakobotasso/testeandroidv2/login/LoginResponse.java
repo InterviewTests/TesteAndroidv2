@@ -48,8 +48,16 @@ public class LoginResponse {
         this.balance = balance;
     }
 
+    public Errors getErrors() {
+        return errors;
+    }
+
+    public void setErrors(Errors errors) {
+        this.errors = errors;
+    }
+
     public boolean hasErrors() {
-        if(errors == null) {
+        if (errors == null) {
             return false;
         }
 
@@ -57,14 +65,18 @@ public class LoginResponse {
     }
 
     public String getErrorMessage() {
-        if(hasErrors()) {
+        if (hasErrors()) {
             return errors.msg;
         }
 
         return "";
     }
 
-    private class Errors {
+    public class Errors {
         private String msg;
+
+        public void setMsg(String msg) {
+            this.msg = msg;
+        }
     }
 }
