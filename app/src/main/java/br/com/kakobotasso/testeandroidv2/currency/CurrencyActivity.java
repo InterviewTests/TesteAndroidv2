@@ -24,7 +24,7 @@ public class CurrencyActivity extends AppCompatActivity implements CurrencyActiv
 
     CurrencyInteractorInput output;
     CurrencyRouter router;
-    String userId = "0";
+    int userId = 0;
 
     @BindView(R.id.tv_name)
     TextView tvName;
@@ -68,7 +68,7 @@ public class CurrencyActivity extends AppCompatActivity implements CurrencyActiv
             String moneyString = formatter.format(extras.getDouble(ScreenKeys.BALANCE));
             tvBalance.setText(moneyString);
 
-            userId = extras.getString(ScreenKeys.USER_ID);
+            userId = extras.getInt(ScreenKeys.USER_ID);
         }
     }
 
