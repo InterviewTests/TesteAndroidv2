@@ -21,5 +21,6 @@ public class LoginRouter implements LoginRouterInput {
         intent.putExtras(bundle);
 
         activity.get().startActivity(intent);
+        activity.get().finish();
     }
 }

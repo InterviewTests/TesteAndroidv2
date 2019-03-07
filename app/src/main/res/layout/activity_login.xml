@@ -30,7 +30,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/user_field"
-                android:inputType="text" />
+                android:inputType="text"
+                android:imeOptions="actionNext"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -43,7 +44,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/pass_field"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -54,13 +56,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="60dp"
         android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/colorPrimary"
         android:text="@string/login_button"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
+
+    <ProgressBar
+        android:id="@+id/pb_login"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone" />
 
 </LinearLayout>
