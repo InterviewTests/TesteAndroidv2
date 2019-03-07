@@ -31,7 +31,7 @@ public class LoginInteractor implements LoginInteractorInput {
 
 
     @Override
-    public void fetchLoginData(LoginRequest request) {
+    public void fetchLoginData(final LoginRequest request) {
         loginWorkerInput = getLoginWorkerInput();
         final LoginResponse loginResponse = new LoginResponse();
 
@@ -43,7 +43,7 @@ public class LoginInteractor implements LoginInteractorInput {
                         if (response.body() != null) {
                             LoginModel body = response.body();
                             populateLoginResponse(loginResponse, body);
-                            persistOnPreferences(loginResponse);
+                            persistOnPreferences(loginResponse, request);
                             output.presentLoginData(loginResponse);
                         }
                     }
@@ -80,7 +80,7 @@ public class LoginInteractor implements LoginInteractorInput {
         }
     }
 
-    private void persistOnPreferences(LoginResponse response) {
+    private void persistOnPreferences(LoginResponse response, LoginRequest request) {
         SharedPreferences sharedPreferences = output.getSharedPreferences();
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -89,6 +89,9 @@ public class LoginInteractor implements LoginInteractorInput {
         editor.putString(SharedPrefs.BANK_ACCOUNT, response.getBankAccount());
         editor.putInt(SharedPrefs.USER_ID, response.getUserId());
         editor.putLong(SharedPrefs.BALANCE, Double.doubleToRawLongBits(response.getBalance()));
+
+        editor.putString(SharedPrefs.USER, request.getUser());
+        editor.putString(SharedPrefs.PASSWORD, request.getPassword());
 
         editor.commit();
     }

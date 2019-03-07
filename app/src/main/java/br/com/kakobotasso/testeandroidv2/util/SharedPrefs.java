@@ -12,6 +12,9 @@ public class SharedPrefs {
     public static final String BANK_ACCOUNT = "bank_account";
     public static final String BALANCE = "balance";
 
+    public static final String USER = "user";
+    public static final String PASSWORD = "password";
+
     public static SharedPreferences getSharedPrefs(Context context) {
         return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
     }

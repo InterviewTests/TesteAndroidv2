@@ -62,6 +62,11 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
     }
 
     private void checkAlreadyLogged() {
+        if(sharedPrefs.contains(SharedPrefs.USER)) {
+            etUser.setText(sharedPrefs.getString(SharedPrefs.USER, ""));
+            etPassword.setText(sharedPrefs.getString(SharedPrefs.PASSWORD, ""));
+        }
+
         if(SharedPrefs.isLogged(sharedPrefs)) {
             router.loadCurrencyScreen();
         }

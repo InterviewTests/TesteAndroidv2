@@ -57,7 +57,13 @@ public class CurrencyInteractor implements CurrencyInteractorInput {
     public void destroyPreferences() {
         SharedPreferences sharedPrefs = SharedPrefs.getSharedPrefs(output.getContext());
         SharedPreferences.Editor editor = sharedPrefs.edit();
-        editor.clear();
+
+        editor.remove(SharedPrefs.NAME);
+        editor.remove(SharedPrefs.AGENCY);
+        editor.remove(SharedPrefs.BANK_ACCOUNT);
+        editor.remove(SharedPrefs.USER_ID);
+        editor.remove(SharedPrefs.BALANCE);
+
         editor.commit();
     }
 
