@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_margin="20dp"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".login.LoginActivity">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -26,6 +26,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/et_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/user_field"
@@ -38,6 +39,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/pass_field"
@@ -48,6 +50,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/bt_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -58,7 +61,6 @@
         android:text="@string/login_button"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:onClick="goToCurrency"/>
+        android:textSize="16sp"/>
 
 </LinearLayout>
