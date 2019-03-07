@@ -85,7 +85,7 @@ public class LoginInteractor implements LoginInteractorInput {
             return false;
         }
 
-        final Pattern passwordPattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$");
+        final Pattern passwordPattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&*!?_-])(?=.*\\d).+$");
         return passwordPattern.matcher(request.getPassword()).matches();
     }
 
