@@ -1,11 +1,16 @@
 package br.com.kakobotasso.testeandroidv2.currency;
 
+import android.content.SharedPreferences;
+
+import br.com.kakobotasso.testeandroidv2.util.SharedPrefs;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 interface CurrencyInteractorInput {
     void fetchCurrencyData(int userId);
+
+    void destroyPreferences();
 }
 
 public class CurrencyInteractor implements CurrencyInteractorInput {
@@ -46,6 +51,14 @@ public class CurrencyInteractor implements CurrencyInteractorInput {
 
             }
         });
+    }
+
+    @Override
+    public void destroyPreferences() {
+        SharedPreferences sharedPrefs = SharedPrefs.getSharedPrefs(output.getContext());
+        SharedPreferences.Editor editor = sharedPrefs.edit();
+        editor.clear();
+        editor.commit();
     }
 
     private void populateCurrencyResponse(CurrencyResponse currencyResponse, CurrencyModel body) {

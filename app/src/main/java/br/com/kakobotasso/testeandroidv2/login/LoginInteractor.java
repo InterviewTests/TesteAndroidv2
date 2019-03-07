@@ -1,7 +1,10 @@
 package br.com.kakobotasso.testeandroidv2.login;
 
+import android.content.SharedPreferences;
+
 import java.util.regex.Pattern;
 
+import br.com.kakobotasso.testeandroidv2.util.SharedPrefs;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,6 +43,7 @@ public class LoginInteractor implements LoginInteractorInput {
                         if (response.body() != null) {
                             LoginModel body = response.body();
                             populateLoginResponse(loginResponse, body);
+                            persistOnPreferences(loginResponse);
                             output.presentLoginData(loginResponse);
                         }
                     }
@@ -74,6 +78,19 @@ public class LoginInteractor implements LoginInteractorInput {
             loginResponse.setBankAccount(userAccount.getBankAccount());
             loginResponse.setUserId(userAccount.getUserId());
         }
+    }
+
+    private void persistOnPreferences(LoginResponse response) {
+        SharedPreferences sharedPreferences = output.getSharedPreferences();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString(SharedPrefs.NAME, response.getName());
+        editor.putString(SharedPrefs.AGENCY, response.getAgency());
+        editor.putString(SharedPrefs.BANK_ACCOUNT, response.getBankAccount());
+        editor.putInt(SharedPrefs.USER_ID, response.getUserId());
+        editor.putLong(SharedPrefs.BALANCE, Double.doubleToRawLongBits(response.getBalance()));
+
+        editor.commit();
     }
 
     private boolean requestIsValid(LoginRequest request) {

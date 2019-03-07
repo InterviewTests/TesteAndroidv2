@@ -1,5 +1,7 @@
 package br.com.kakobotasso.testeandroidv2.login;
 
+import android.content.SharedPreferences;
+
 import java.lang.ref.WeakReference;
 
 import br.com.kakobotasso.testeandroidv2.R;
@@ -8,6 +10,8 @@ interface LoginPresenterInput {
     void presentLoginData(LoginResponse response);
 
     void presentInvalidRequestData();
+
+    SharedPreferences getSharedPreferences();
 }
 
 public class LoginPresenter implements LoginPresenterInput {
@@ -27,5 +31,11 @@ public class LoginPresenter implements LoginPresenterInput {
         LoginActivity activity = (LoginActivity) output.get();
         String msg = activity.getResources().getString(R.string.invalid_data);
         output.get().displayLoginError(msg);
+    }
+
+    @Override
+    public SharedPreferences getSharedPreferences() {
+        LoginActivity activity = (LoginActivity) output.get();
+        return activity.sharedPrefs;
     }
 }

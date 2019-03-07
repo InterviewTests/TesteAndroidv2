@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -53,6 +52,8 @@ public class CurrencyActivity extends AppCompatActivity implements CurrencyActiv
 
     @OnClick(R.id.ib_logout)
     public void logout() {
+        output.destroyPreferences();
+        router.goToLoginScreen();
     }
 
     private void loadIntentInfo() {

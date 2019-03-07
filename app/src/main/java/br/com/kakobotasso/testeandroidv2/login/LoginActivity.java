@@ -1,6 +1,7 @@
 package br.com.kakobotasso.testeandroidv2.login;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import br.com.kakobotasso.testeandroidv2.R;
 import br.com.kakobotasso.testeandroidv2.util.ScreenKeys;
+import br.com.kakobotasso.testeandroidv2.util.SharedPrefs;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -29,6 +31,8 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
     LoginInteractorInput output;
     LoginRouter router;
 
+    SharedPreferences sharedPrefs;
+
     @BindView(R.id.et_user)
     EditText etUser;
     @BindView(R.id.et_password)
@@ -43,16 +47,24 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        sharedPrefs = SharedPrefs.getSharedPrefs(this);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         LoginConfigurator.INSTANCE.configure(this);
+        checkAlreadyLogged();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         hideProgressBar();
+    }
+
+    private void checkAlreadyLogged() {
+        if(SharedPrefs.isLogged(sharedPrefs)) {
+            router.loadCurrencyScreen();
+        }
     }
 
     @OnClick(R.id.bt_login)
