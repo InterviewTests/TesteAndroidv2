@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CurrencyActivity">
+    tools:context=".currency.CurrencyActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,14 +20,15 @@
             android:layout_marginBottom="28dp">
 
             <TextView
+                android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:text="Jose da Silva Teste"
                 android:textColor="@android:color/white"
                 android:textSize="25sp" />
 
             <ImageButton
+                android:id="@+id/ib_logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -35,7 +36,6 @@
                 android:src="@drawable/logout" />
 
         </RelativeLayout>
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,10 +45,10 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/tv_bank_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="2050 / 01.111222-4"
             android:textColor="@android:color/white"
             android:textSize="25sp" />
 
@@ -60,9 +60,9 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/tv_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="R$1.000,00"
             android:textColor="@android:color/white"
             android:textSize="25sp" />
 
@@ -83,10 +83,18 @@
             android:textSize="17sp" />
 
 
+        <ProgressBar
+            android:id="@+id/pb_currency"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"/>
+
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="5dp"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"

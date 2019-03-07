@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import java.lang.ref.WeakReference;
 
-import br.com.kakobotasso.testeandroidv2.CurrencyActivity;
+import br.com.kakobotasso.testeandroidv2.currency.CurrencyActivity;
 
 interface LoginRouterInput {
     void passDataToCurrencyScreen(Bundle bundle);
