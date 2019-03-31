@@ -1,12 +1,14 @@
 package br.com.rms.bankapp
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import br.com.rms.bankapp.base.view.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun getLayoutRes(): Int = R.layout.activity_main
+
+    override fun onInitViews() {
+
     }
+
+
 }
