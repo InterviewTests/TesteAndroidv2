@@ -48,7 +48,7 @@ ext {
             cardView:                   "com.android.support:cardview-v7:$appCompat_version",
             recyclerView:               "com.android.support:recyclerview-v7:$appCompat_version",
             design:                     "com.android.support:design:$appCompat_version",
-            constraintLayout:           "com.android.support.constraint:constraint-layout:$constraintLayout_version",
+            constraintLayout:           "androidx.constraintlayout:constraintlayout:$constraintLayout_version",
             androidAnnotations:         "com.android.support:support-annotations:$appCompat_version",
             archComponents:             "android.arch.lifecycle:extensions:$archComponents_version",
             archComponentsCompiler:     "android.arch.lifecycle:compiler:$archComponents_version",

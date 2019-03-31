@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">BankApp</string>
+    <string name="user_label">User</string>
+    <string name="password_label">Password</string>
+    <string name="login_label">Login</string>
 </resources>

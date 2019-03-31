@@ -41,7 +41,6 @@ dependencies {
     def developmentDependencies = rootProject.ext.development
 
     //Compile time dependencies
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt applicationDependencies.archComponentsCompiler
     kapt applicationDependencies.daggerProcessor
     kapt applicationDependencies.daggerCompiler
@@ -90,4 +89,5 @@ dependencies {
     debugImplementation developmentDependencies.leakCanary
     releaseImplementation developmentDependencies.leakCanaryNoop
     testImplementation developmentDependencies.leakCanaryNoop
+    implementation 'com.google.android.material:material:1.0.0'
 }
