@@ -1,8 +1,8 @@
-package br.com.rms.bankapp.data.model
+package br.com.rms.bankapp.data.remote.model
 
 import br.com.rms.bankapp.data.local.database.entity.Account
 
-data class UserBody(
+data class UserResponse(
     val userAccount: Account?,
     val error: Error?
 )

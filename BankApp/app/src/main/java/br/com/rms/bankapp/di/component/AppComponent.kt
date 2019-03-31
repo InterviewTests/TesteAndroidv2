@@ -3,6 +3,7 @@ package br.com.rms.bankapp.di.component
 import android.app.Application
 import br.com.rms.MyApplication
 import br.com.rms.bankapp.di.module.ActivityModule
+import br.com.rms.bankapp.di.module.ApiModule
 import br.com.rms.bankapp.di.module.DataBaseModule
 import br.com.rms.bankapp.di.module.FragmentModule
 import dagger.BindsInstance
@@ -14,6 +15,7 @@ import javax.inject.Singleton
 
 @Component(
     modules = [
+        ApiModule::class,
         DataBaseModule::class,
         ActivityModule::class,
         FragmentModule::class,

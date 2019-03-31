@@ -20,6 +20,7 @@ ext {
     javaxAnnotations_version = '1.0'
     javaxInject_version = '1'
     retrofit_version = '2.5.0'
+    retrofit_adapter_version = '2.4.0'
     timber_version = '4.7.1'
     rxandroid_version = '2.1.1'
     rxjava_version = '2.2.8'
@@ -59,6 +60,7 @@ ext {
             javaxAnnotation:            "javax.annotation:jsr250-api:$javaxAnnotations_version",
             javaxInject:                "javax.inject:javax.inject:$javaxInject_version",
             retrofit:                   "com.squareup.retrofit2:converter-gson:$retrofit_version",
+            retrofitRxAdapter:          "com.squareup.retrofit2:adapter-rxjava2:$retrofit_adapter_version",
             koin:                       "org.koin:koin-android:$koin_version",
             timber:                     "com.jakewharton.timber:timber:$timber_version",
             rxandroid:                  "io.reactivex.rxjava2:rxandroid:$rxandroid_version",
