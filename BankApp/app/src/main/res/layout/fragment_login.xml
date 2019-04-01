@@ -15,7 +15,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/glTop"/>
+            app:layout_constraintTop_toTopOf="@+id/glUserDataTop"/>
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tflUser"
@@ -27,7 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/glTextField"
+            app:layout_constraintBottom_toTopOf="@+id/glUserDataBotton"
             android:layout_marginBottom="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -47,7 +47,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintTop_toTopOf="@+id/glTextField"
+            app:layout_constraintTop_toTopOf="@+id/glUserDataBotton"
             android:layout_marginTop="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:text="@string/login_label"
             android:textSize="18sp"
-            android:background="@drawable/button_background_ripple"
+            android:background="@drawable/button_background_ripple_blue"
             app:layout_constraintBottom_toTopOf="@+id/glBotton"
             app:layout_constraintStart_toStartOf="@+id/tflPassowrd"
             app:layout_constraintEnd_toEndOf="@+id/tflPassowrd"
@@ -73,14 +73,14 @@
     <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/glTextField"
+            android:id="@+id/glUserDataBotton"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.40"/>
 
     <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/glTop"
+            android:id="@+id/glUserDataTop"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.05"/>
 

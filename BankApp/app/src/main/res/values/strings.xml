@@ -3,4 +3,6 @@
     <string name="user_label">User</string>
     <string name="password_label">Password</string>
     <string name="login_label">Login</string>
+    <string name="statement_label">Pagamento</string>
+    <string name="recent_label">Recentes</string>
 </resources>

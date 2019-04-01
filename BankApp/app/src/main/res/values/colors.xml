@@ -3,4 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#3B48EE</color>
+
+    <color name="text">#485465</color>
+    <color name="textAlpha">#A8B4C4</color>
+    <color name="statementCardColor">#FFFFFF</color>
 </resources>
