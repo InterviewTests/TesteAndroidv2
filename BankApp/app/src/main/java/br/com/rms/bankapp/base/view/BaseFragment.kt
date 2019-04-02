@@ -58,6 +58,10 @@ abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter<V>>:
         showToast(textRes, Toast.LENGTH_SHORT)
     }
 
+    fun showToastLong(textRes: Int){
+        showToast(textRes, Toast.LENGTH_LONG)
+    }
+
     fun showToast(textRes: Int, lenght: Int){
         Toast.makeText(context,textRes,lenght).show()
     }
@@ -80,6 +84,7 @@ abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter<V>>:
             return@forEach
         }
     }
+
 
 
 

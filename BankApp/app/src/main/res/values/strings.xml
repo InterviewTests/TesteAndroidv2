@@ -12,4 +12,6 @@
     <string name="user_password_invalid">Senha invalida</string>
     <string name="user_email_invalid">Email Invalido</string>
     <string name="user_documento_invalid">Numero do documento Invalido</string>
+    <string name="error_message_validation_login_data">Falha na validação do dados de login</string>
+    <string name="error_message_request_login">Ocorreu um erro durante o login.</string>
 </resources>

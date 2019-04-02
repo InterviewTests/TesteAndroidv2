@@ -1,21 +1,17 @@
 package br.com.rms.bankapp.ui.login
 
-import androidx.fragment.app.Fragment
+import android.app.Activity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import br.com.rms.bankapp.R
 import br.com.rms.bankapp.base.view.BaseFragment
-import br.com.rms.bankapp.utils.validations.ValidationException
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_login.*
-import javax.inject.Inject
 
 /**
  * A placeholder fragment containing a simple view.
  */
-class LoginFragment : BaseFragment<LoginContract.View,LoginContract.Presenter>(), LoginContract.View{
+class LoginFragment : BaseFragment<LoginContract.View, LoginContract.Presenter>(), LoginContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +40,22 @@ class LoginFragment : BaseFragment<LoginContract.View,LoginContract.Presenter>()
         return tfiPassword.text.toString()
     }
 
+    override fun showLoader() {
+        flLoader.visibility = View.VISIBLE
+    }
 
+    override fun hideLoader() {
+        flLoader.visibility = View.GONE
+    }
 
+    override fun showErrorMessage(error_message: Int) {
+        showToastLong(error_message)
+    }
 
+    override fun loginSuccess() {
+        activity?.apply {
+            setResult(Activity.RESULT_OK)
+            finish()
+        }
+    }
 }

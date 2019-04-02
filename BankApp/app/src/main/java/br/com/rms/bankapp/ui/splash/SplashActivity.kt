@@ -8,6 +8,9 @@ import br.com.rms.bankapp.base.view.BaseActivity
 import br.com.rms.bankapp.ui.login.LoginActivity
 import dagger.android.AndroidInjector
 
+const val REQUEST_CODE_LOGIN = 1000
+const val REQUEST_CODE_HOME = 1001
+
 class SplashActivity : BaseActivity() {
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = dispatchingAndroidInjector
@@ -16,17 +19,41 @@ class SplashActivity : BaseActivity() {
 
     override fun onInitViews() {
         val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
+        startActivityForResult(intent, REQUEST_CODE_LOGIN)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(resultCode == Activity.RESULT_CANCELED){
-            finish()
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+        when (requestCode) {
+            REQUEST_CODE_LOGIN -> processLoginResult(resultCode)
+            REQUEST_CODE_HOME -> processHomeResult(resultCode)
         }
     }
+
+    private fun finishThis() {
+            finish()
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+    }
+
+    private fun processLoginResult(resultCode: Int) {
+        when(resultCode){
+            Activity.RESULT_OK -> startHomeActivity()
+            Activity.RESULT_CANCELED -> finishThis()
+        }
+    }
+
+    private fun processHomeResult(resultCode: Int) {
+        when(resultCode){
+            Activity.RESULT_CANCELED -> finishThis()
+        }
+    }
+
+
+    private fun startHomeActivity() {
+
+    }
+
 
 
 }

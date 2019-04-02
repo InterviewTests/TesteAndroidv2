@@ -8,6 +8,10 @@ interface LoginContract : BaseContract.View{
         fun getUser(): String
         fun getPassword(): String
         fun onValidationException(e: ValidationException)
+        fun showLoader()
+        fun hideLoader()
+        fun showErrorMessage(error_message_request_login: Int)
+        fun loginSuccess()
 
     }
 
