@@ -7,4 +7,6 @@
     <color name="text">#485465</color>
     <color name="textAlpha">#A8B4C4</color>
     <color name="statementCardColor">#FFFFFF</color>
+
+    <color name="grey_alpha_1">#33000000</color>
 </resources>

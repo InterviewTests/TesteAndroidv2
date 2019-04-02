@@ -4,7 +4,7 @@ interface BaseView<V: BaseContract.View, P: BaseContract.Presenter<V>> {
 
     fun getViewInstance(): V
 
-    fun newPresenterInstance():P
+    //fun newPresenterInstance():P
 
     fun getLayoutId(): Int
 

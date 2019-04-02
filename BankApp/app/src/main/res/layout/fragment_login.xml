@@ -7,6 +7,8 @@
         android:layout_height="match_parent">
 
 
+
+
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +36,9 @@
                 android:id="@+id/tfiUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/user_label"/>
+                android:hint="@string/user_label"
+                android:inputType="text"
+                android:singleLine="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -54,21 +58,27 @@
                 android:id="@+id/tfiPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/password_label"/>
+                android:hint="@string/password_label"
+                android:singleLine="true"
+                android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+
+
     <com.google.android.material.button.MaterialButton
-            android:id="@+id/material_button"
+            android:id="@+id/btLogin"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:text="@string/login_label"
             android:textSize="18sp"
             android:background="@drawable/button_background_ripple_blue"
             app:layout_constraintBottom_toTopOf="@+id/glBotton"
             app:layout_constraintStart_toStartOf="@+id/tflPassowrd"
             app:layout_constraintEnd_toEndOf="@+id/tflPassowrd"
-            app:layout_constraintDimensionRatio="w,4:1"/>
+            app:layout_constraintDimensionRatio="w,4:1"
+            android:textAllCaps="false"
+            app:layout_constraintHorizontal_bias="0.618"/>
 
     <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
@@ -90,4 +100,21 @@
             android:id="@+id/glBotton"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.95"/>
+
+    <FrameLayout
+            android:id="@+id/flLoader"
+            android:clickable="false"
+            android:background="@color/grey_alpha_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+        <ProgressBar
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/progressBarStyle"
+                android:id="@+id/progressBar"/>
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

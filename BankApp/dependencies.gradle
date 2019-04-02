@@ -27,6 +27,8 @@ ext {
     rxandroid_version = '2.1.1'
     rxjava_version = '2.2.8'
     room_version = '2.0.0-beta01'
+    stetho_version = '1.5.1'
+
 
 
     //Unit Testing
@@ -67,8 +69,9 @@ ext {
             timber:                     "com.jakewharton.timber:timber:$timber_version",
             rxandroid:                  "io.reactivex.rxjava2:rxandroid:$rxandroid_version",
             rxjava:                     "io.reactivex.rxjava2:rxjava:$rxjava_version",
-            room: "androidx.room:room-runtime:$room_version",
-            roomCompiler: "androidx.room:room-compiler:$room_version"
+            room:                       "androidx.room:room-runtime:$room_version",
+            roomCompiler:               "androidx.room:room-compiler:$room_version",
+            stetho:                     "com.facebook.stetho:stetho:$stetho_version",
 
     ]
 

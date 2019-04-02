@@ -11,16 +11,16 @@ import javax.inject.Inject
 
 abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        setContentView(getLayoutRes())
-        onInitViews()
-        AndroidInjection.inject(this)
-    }
-
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        AndroidInjection.inject(this)
+        setContentView(getLayoutRes())
+        onInitViews()
+
+    }
 
     abstract fun getLayoutRes(): Int
 
