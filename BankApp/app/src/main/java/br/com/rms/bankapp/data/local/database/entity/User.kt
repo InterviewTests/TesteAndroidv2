@@ -6,6 +6,8 @@ import androidx.room.ForeignKey.CASCADE
 import androidx.room.Index
 import androidx.room.PrimaryKey
 
+const val USER_ID = 0
+
 @Entity()
 data class User(
     @PrimaryKey val id: Int?,

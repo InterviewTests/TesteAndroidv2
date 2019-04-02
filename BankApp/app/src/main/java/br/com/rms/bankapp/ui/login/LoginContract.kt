@@ -12,11 +12,13 @@ interface LoginContract : BaseContract.View{
         fun hideLoader()
         fun showErrorMessage(error_message_request_login: Int)
         fun loginSuccess()
+        fun setUser(user: String?)
 
     }
 
     interface Presenter : BaseContract.Presenter<View>{
         fun login()
+        fun loadUserData()
 
     }
 }

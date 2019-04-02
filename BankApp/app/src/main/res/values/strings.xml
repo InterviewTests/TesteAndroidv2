@@ -14,4 +14,5 @@
     <string name="user_documento_invalid">Numero do documento Invalido</string>
     <string name="error_message_validation_login_data">Falha na validação do dados de login</string>
     <string name="error_message_request_login">Ocorreu um erro durante o login.</string>
+    <string name="error_message_load_user_data">Não foi possivel recuperar os dados salvos</string>
 </resources>

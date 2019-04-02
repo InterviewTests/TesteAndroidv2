@@ -39,8 +39,14 @@ class UserRepository @Inject constructor(
         }
     }
 
-    fun getUserData() : Completable  {
+    fun getRemoteUserData() : Completable  {
         return apiService.login("test_user", "Test@1").flatMapCompletable { userResponse -> saveUserData(userResponse) }
+    }
+
+    fun getLocalUserData() : Single<User>{
+        return Single.fromCallable {
+            userDao.selectUser()
+        }
     }
 
     fun addUser(user: User) : Completable = Completable.fromCallable{
