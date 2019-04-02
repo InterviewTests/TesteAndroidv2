@@ -2,16 +2,11 @@ package br.com.rms.bankapp.di.component
 
 import android.app.Application
 import br.com.rms.MyApplication
-import br.com.rms.bankapp.di.module.ActivityModule
-import br.com.rms.bankapp.di.module.ApiModule
-import br.com.rms.bankapp.di.module.DataBaseModule
-import br.com.rms.bankapp.di.module.FragmentModule
+import br.com.rms.bankapp.di.module.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
-
-
 
 @Component(
     modules = [
@@ -19,7 +14,8 @@ import javax.inject.Singleton
         DataBaseModule::class,
         ActivityModule::class,
         FragmentModule::class,
-        AndroidSupportInjectionModule::class]
+        AndroidSupportInjectionModule::class,
+        PresenterModule::class]
 )
 @Singleton
 interface AppComponent {
@@ -31,7 +27,6 @@ interface AppComponent {
 
         fun build(): AppComponent
     }
-
 
     fun inject(myApplication: MyApplication)
 }

@@ -5,4 +5,11 @@
     <string name="login_label">Login</string>
     <string name="statement_label">Pagamento</string>
     <string name="recent_label">Recentes</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="user_name_empty">Campo user vazio</string>
+    <string name="user_name_invalid">Nome de usuário invalido</string>
+    <string name="user_password_invalid">Senha invalida</string>
+    <string name="user_email_invalid">Email Invalido</string>
+    <string name="user_documento_invalid">Numero do documento Invalido</string>
 </resources>

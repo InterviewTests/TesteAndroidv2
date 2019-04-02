@@ -3,7 +3,7 @@ package br.com.rms.bankapp.base.mvp
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-class BasePresenter<V: BaseContract.View> : BaseContract.Presenter<V> {
+abstract class BasePresenter<V: BaseContract.View> : BaseContract.Presenter<V> {
 
     protected var view: V? = null
     private lateinit var compositeDisposable: CompositeDisposable
