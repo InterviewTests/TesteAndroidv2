@@ -71,6 +71,7 @@ dependencies {
     implementation applicationDependencies.rxandroid
     implementation applicationDependencies.rxjava
     implementation applicationDependencies.room
+    implementation applicationDependencies.stetho
 
     //Unit/Integration tests dependencies
     testImplementation unitTestDependencies.kotlin

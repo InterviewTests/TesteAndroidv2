@@ -7,9 +7,10 @@ import retrofit2.http.*
 
 interface BankAppApiService {
 
+    @FormUrlEncoded
     @POST(ENDPOINT_LOGIN)
-    fun login(@Query(KEY_USER) user: String,
-              @Query(KEY_PASSWORD) password: String) : Single<UserResponse>
+    fun login(@Field(KEY_USER) user: String,
+              @Field(KEY_PASSWORD) password: String) : Single<UserResponse>
 
     @GET(ENDPOINT_STATEMENTS)
     fun getStatement(@Path(KEY_PAGE) page: Int) : Single<List<Statement>>

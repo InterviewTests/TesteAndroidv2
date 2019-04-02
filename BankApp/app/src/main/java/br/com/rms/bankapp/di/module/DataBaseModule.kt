@@ -18,8 +18,7 @@ class DataBaseModule{
     @Singleton
     internal fun provideDatabase(application: Application): AppDatabase{
         return Room.databaseBuilder(
-            application, AppDatabase::class.java, DATABASE_NAME)
-            .allowMainThreadQueries().build()
+            application, AppDatabase::class.java, DATABASE_NAME).build()
     }
 
     @Provides

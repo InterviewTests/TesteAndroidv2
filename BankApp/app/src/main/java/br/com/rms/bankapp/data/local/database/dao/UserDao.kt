@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import br.com.rms.bankapp.data.local.database.entity.User
+import io.reactivex.Single
 
 @Dao
 interface UserDao {

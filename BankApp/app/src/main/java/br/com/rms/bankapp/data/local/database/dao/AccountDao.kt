@@ -12,4 +12,6 @@ interface AccountDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAccount(account: Account)
+
+
 }

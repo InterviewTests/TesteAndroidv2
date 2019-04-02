@@ -6,19 +6,10 @@ import androidx.room.ForeignKey.CASCADE
 import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(
-    indices = [Index("id"), Index("accountId")],
-    foreignKeys = [ForeignKey(
-        entity = Account::class,
-        parentColumns = ["userId"],
-        childColumns = ["accountId"],
-        onDelete = CASCADE,
-        onUpdate = CASCADE
-    )]
-)
+@Entity()
 data class User(
-    @PrimaryKey val id: Int,
-    val user: String,
-    val password: String,
-    val accountId: Int
+    @PrimaryKey val id: Int?,
+    val user: String?,
+    val password: String?,
+    var accountId: Int?
 )
