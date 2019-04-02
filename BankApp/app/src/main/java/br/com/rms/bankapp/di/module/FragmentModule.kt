@@ -1,5 +1,6 @@
 package br.com.rms.bankapp.di.module
 
+import br.com.rms.bankapp.ui.home.HomeFragment
 import br.com.rms.bankapp.ui.login.LoginFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -8,6 +9,9 @@ import dagger.android.ContributesAndroidInjector
 abstract class FragmentModule {
 
     @ContributesAndroidInjector
-    abstract fun contributeMovieListFragment(): LoginFragment
+    abstract fun contributeLoginFragment(): LoginFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeHomeFragment(): HomeFragment
 
 }
