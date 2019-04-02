@@ -9,6 +9,10 @@ android {
     compileSdkVersion config["compile_sdk"]
     buildToolsVersion '28.0.3'
 
+    androidExtensions {
+        experimental = true
+    }
+
     compileSdkVersion 28
     defaultConfig {
         applicationId config["application_id"]

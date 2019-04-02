@@ -116,6 +116,7 @@
             android:textSize="18sp"/>
 
     <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvStatement"
             android:layout_width="0dp"
             android:layout_height="0dp"
             tools:listitem="@layout/item_statement"
