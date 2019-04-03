@@ -49,6 +49,14 @@ class UserRepository @Inject constructor(
         }
     }
 
+    fun getLocalUserAccount() : Single<Account>{
+        return Single.fromCallable {
+            val user = userDao.selectUser()
+            accountDao.selectAccount(user.accountId)
+        }
+    }
+
+
     fun addUser(user: User) : Completable = Completable.fromCallable{
         userDao.insertUser(user)}
 

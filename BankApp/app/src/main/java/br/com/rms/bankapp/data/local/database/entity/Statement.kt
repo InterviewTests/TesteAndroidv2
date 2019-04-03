@@ -10,5 +10,5 @@ data class Statement(
     val title: String?,
     val desc: String?,
     val date: String?,
-    val value: Int?
+    val value: Double?
 )

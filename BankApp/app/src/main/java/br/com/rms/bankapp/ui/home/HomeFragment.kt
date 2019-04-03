@@ -1,6 +1,7 @@
 package br.com.rms.bankapp.ui.home
 
-import android.widget.LinearLayout
+import android.app.Activity
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rms.bankapp.R
@@ -23,27 +24,50 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(), 
         rvStatement.adapter = statementAdapter
         rvStatement.itemAnimator = null
 
-        rvStatement.addOnScrollListener(object : EndlessRecyclerViewScrollListener(layoutManager){
+        initExitButton()
+
+        rvStatement.addOnScrollListener(object : EndlessRecyclerViewScrollListener(layoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
                 presenter.loadMoreStatemens()
             }
-
         })
     }
 
     override fun onMoreStatementsReady(statements: List<Statement>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        statementAdapter.addStatements(statements)
     }
 
-    override fun onLoadStatementFailed() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showErrorMessage(errorMessage: Int) {
+        showToastLong(errorMessage)
     }
 
     override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        pbLoad.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        pbLoad.visibility = View.GONE
+    }
+
+    override fun updateUserName(name: String) {
+        tvUserName.text = name
+    }
+
+    override fun updateUserAccount(agency: String, account: String) {
+        tvUserAccount.text = getString(R.string.user_account_format,agency,account)
+    }
+
+    override fun updateUserBalance(balance: String) {
+        tvUserBalance.text = balance
+
+    }
+    private fun initExitButton() {
+        ivExit.setOnClickListener {
+            activity?.apply {
+                setResult(Activity.RESULT_CANCELED)
+                finish()
+            }
+
+        }
     }
 }

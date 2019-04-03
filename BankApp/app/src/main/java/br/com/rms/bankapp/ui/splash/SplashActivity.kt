@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.fragment.app.Fragment
 import br.com.rms.bankapp.R
 import br.com.rms.bankapp.base.view.BaseActivity
+import br.com.rms.bankapp.ui.home.HomeActivity
 import br.com.rms.bankapp.ui.login.LoginActivity
 import dagger.android.AndroidInjector
 
@@ -18,9 +19,10 @@ class SplashActivity : BaseActivity() {
     override fun getLayoutRes(): Int = R.layout.activity_splash
 
     override fun onInitViews() {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivityForResult(intent, REQUEST_CODE_LOGIN)
+        startLoginActivity()
     }
+
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -45,13 +47,18 @@ class SplashActivity : BaseActivity() {
 
     private fun processHomeResult(resultCode: Int) {
         when(resultCode){
-            Activity.RESULT_CANCELED -> finishThis()
+            Activity.RESULT_CANCELED -> startLoginActivity()
         }
     }
 
-
     private fun startHomeActivity() {
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivityForResult(intent, REQUEST_CODE_HOME)
+    }
 
+    private fun startLoginActivity() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivityForResult(intent, REQUEST_CODE_LOGIN)
     }
 
 
