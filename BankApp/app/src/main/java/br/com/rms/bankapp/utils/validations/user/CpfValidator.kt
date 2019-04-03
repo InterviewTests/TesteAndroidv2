@@ -5,7 +5,7 @@ import android.text.TextUtils
 class CpfValidator {
 
     fun isCPF(document: String?): Boolean {
-        if (TextUtils.isEmpty(document)) return false
+        //if (TextUtils.isEmpty(document)) return false
 
         val numbers = arrayListOf<Int>()
 
