@@ -40,7 +40,9 @@ class UserRepository @Inject constructor(
     }
 
     fun getRemoteUserData() : Completable  {
-        return apiService.login("test_user", "Test@1").flatMapCompletable { userResponse -> saveUserData(userResponse) }
+        val userName = user.user
+        val password = user.password
+        return apiService.login(userName!!, password!!).flatMapCompletable { userResponse -> saveUserData(userResponse) }
     }
 
     fun getLocalUserData() : Single<User>{

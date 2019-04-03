@@ -38,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/user_label"
                 android:inputType="text"
-                android:singleLine="true"/>
+                android:singleLine="true"
+                android:imeOptions="actionDone|actionSend"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

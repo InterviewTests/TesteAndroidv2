@@ -11,16 +11,11 @@ import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : BaseFragment<LoginContract.View, LoginContract.Presenter>(), LoginContract.View {
 
-
-
     override fun getViewInstance(): LoginContract.View = this
 
     override fun getLayoutId(): Int = R.layout.fragment_login
 
     override fun initViews() {
-
-        tfiUser.setText("roger@email.com")
-        tfiPassword.setText("Teste@1")
 
         presenter.loadUserData()
 

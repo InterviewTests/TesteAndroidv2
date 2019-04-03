@@ -31,7 +31,7 @@ class LoginPresenter(
                 }
 
                 override fun onError(e: Throwable) {
-                    view?.showErrorMessage(R.string.error_message_load_user_data)
+                    e.printStackTrace()
                 }
             })
     }
@@ -53,9 +53,11 @@ class LoginPresenter(
                 }
 
                 override fun onError(e: Throwable) {
-                    view?.showErrorMessage(R.string.error_message_validation_login_data)
+
                     if(e is ValidationException){
                         view?.onValidationException(e)
+                    }else {
+                        view?.showErrorMessage(R.string.error_message_validation_login_data)
                     }
                     view?.hideLoader()
 
