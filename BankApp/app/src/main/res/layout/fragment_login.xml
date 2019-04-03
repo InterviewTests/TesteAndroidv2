@@ -7,17 +7,16 @@
         android:layout_height="match_parent">
 
 
-
-
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_bank_logo"
-            android:id="@+id/imageView"
+            android:id="@+id/ivBankLogo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/glUserDataTop"/>
+            app:layout_constraintTop_toTopOf="@+id/glUserDataTop"
+            android:alpha="0"/>
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tflUser"
@@ -30,7 +29,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toTopOf="@+id/glUserDataBotton"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="8dp"
+            android:alpha="0">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tfiUser"
@@ -53,7 +53,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintTop_toTopOf="@+id/glUserDataBotton"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:alpha="0">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tfiPassword"
@@ -63,7 +64,6 @@
                 android:singleLine="true"
                 android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
-
 
 
     <com.google.android.material.button.MaterialButton
@@ -79,7 +79,8 @@
             app:layout_constraintEnd_toEndOf="@+id/tflPassowrd"
             app:layout_constraintDimensionRatio="w,4:1"
             android:textAllCaps="false"
-            app:layout_constraintHorizontal_bias="0.618"/>
+            app:layout_constraintHorizontal_bias="0.618"
+            android:alpha="0"/>
 
     <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"

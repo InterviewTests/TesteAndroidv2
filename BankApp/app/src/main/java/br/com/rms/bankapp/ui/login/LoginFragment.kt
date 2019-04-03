@@ -5,23 +5,54 @@ import android.os.Bundle
 import android.view.View
 import br.com.rms.bankapp.R
 import br.com.rms.bankapp.base.view.BaseFragment
+import br.com.rms.bankapp.utils.extensions.fadeIn
 import dagger.android.support.AndroidSupportInjection
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_login.*
+import java.util.concurrent.TimeUnit
 
 
 class LoginFragment : BaseFragment<LoginContract.View, LoginContract.Presenter>(), LoginContract.View {
+
+    private  val compositeDisposable = CompositeDisposable()
 
     override fun getViewInstance(): LoginContract.View = this
 
     override fun getLayoutId(): Int = R.layout.fragment_login
 
     override fun initViews() {
-
-        presenter.loadUserData()
-
+        startScreenAnimation()
         btLogin.setOnClickListener {
             presenter.login()
         }
+    }
+
+    fun startScreenAnimation() {
+        val time = 50L
+        val disposable = Observable.interval(300,time, TimeUnit.MILLISECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .take(8)
+            .map {
+                when (it) {
+                    3L -> ivBankLogo.fadeIn(500)
+                    4L ->tflUser.fadeIn(500)
+                    5L -> tflPassowrd.fadeIn(500)
+                    6L ->btLogin.fadeIn(500)
+                    7L -> presenter.loadUserData()
+                    else ->{}
+                }
+            }.subscribe()
+
+        compositeDisposable.add(disposable)
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        compositeDisposable.clear()
     }
 
     override fun setUser(user: String?) {
@@ -52,6 +83,7 @@ class LoginFragment : BaseFragment<LoginContract.View, LoginContract.Presenter>(
         activity?.apply {
             setResult(Activity.RESULT_OK)
             finish()
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
     }
 }

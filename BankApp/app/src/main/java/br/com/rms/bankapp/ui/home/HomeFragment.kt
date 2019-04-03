@@ -66,6 +66,7 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(), 
             activity?.apply {
                 setResult(Activity.RESULT_CANCELED)
                 finish()
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             }
 
         }

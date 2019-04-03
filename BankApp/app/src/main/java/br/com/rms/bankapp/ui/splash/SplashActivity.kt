@@ -54,11 +54,13 @@ class SplashActivity : BaseActivity() {
     private fun startHomeActivity() {
         val intent = Intent(this, HomeActivity::class.java)
         startActivityForResult(intent, REQUEST_CODE_HOME)
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
     private fun startLoginActivity() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivityForResult(intent, REQUEST_CODE_LOGIN)
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
 
