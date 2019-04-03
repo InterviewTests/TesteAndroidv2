@@ -8,15 +8,10 @@ import br.com.rms.bankapp.base.view.BaseFragment
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_login.*
 
-/**
- * A placeholder fragment containing a simple view.
- */
+
 class LoginFragment : BaseFragment<LoginContract.View, LoginContract.Presenter>(), LoginContract.View {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        AndroidSupportInjection.inject(this)
-    }
+
 
     override fun getViewInstance(): LoginContract.View = this
 
@@ -24,8 +19,8 @@ class LoginFragment : BaseFragment<LoginContract.View, LoginContract.Presenter>(
 
     override fun initViews() {
 
-        /*tfiUser.setText("roger@email.com")
-        tfiPassword.setText("Teste@1")*/
+        tfiUser.setText("roger@email.com")
+        tfiPassword.setText("Teste@1")
 
         presenter.loadUserData()
 

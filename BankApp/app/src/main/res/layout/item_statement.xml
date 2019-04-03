@@ -4,7 +4,12 @@
                                                    xmlns:tools="http://schemas.android.com/tools"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="wrap_content"
-                                                   android:id="@+id/constraintLayout">
+                                                   android:id="@+id/constraintLayout"
+                                                   android:paddingStart="16dp"
+                                                   android:paddingEnd="16dp"
+                                                   android:paddingBottom="3dp"
+                                                   android:paddingTop="3dp"
+                                                   android:background="@android:color/transparent">
 
     <androidx.cardview.widget.CardView
             android:layout_width="0dp"
@@ -17,16 +22,15 @@
             app:cardBackgroundColor="@color/statementCardColor"
             app:cardCornerRadius="6dp"
             android:id="@+id/cardView"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true"
-            android:layout_marginBottom="8dp"
-            app:cardElevation="3dp">
+            app:cardElevation="3dp"
+            app:contentPadding="3dp"
+            app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent">
 
             <TextView
                     android:layout_width="wrap_content"
@@ -40,7 +44,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toTopOf="@+id/tvStatementDesc"
                     app:layout_constraintVertical_chainStyle="packed"
-                    android:textColor="@color/textAlpha"/>
+                    android:textColor="@color/textAlpha"
+                    android:fontFamily="sans-serif"/>
 
             <TextView
                     android:layout_width="wrap_content"
@@ -52,7 +57,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:textColor="@color/text"
                     app:layout_constraintStart_toStartOf="@+id/tvPaymentTitle"
-                    />
+                    android:fontFamily="sans-serif"/>
 
             <TextView
                     android:layout_width="wrap_content"
@@ -64,7 +69,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="24dp"
                     android:textColor="@color/textAlpha"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif"/>
 
             <TextView
                     android:layout_width="wrap_content"
@@ -75,7 +81,8 @@
                     app:layout_constraintBottom_toBottomOf="@+id/tvStatementDesc"
                     android:textColor="@color/text"
                     app:layout_constraintEnd_toEndOf="@+id/tvStatementDate"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

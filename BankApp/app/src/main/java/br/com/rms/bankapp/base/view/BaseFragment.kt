@@ -20,6 +20,7 @@ import br.com.rms.bankapp.utils.validations.EditTextValidationException
 import br.com.rms.bankapp.utils.validations.MultipleValidationExceptions
 import br.com.rms.bankapp.utils.validations.ValidationException
 import dagger.android.AndroidInjection
+import dagger.android.support.AndroidSupportInjection
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -30,6 +31,11 @@ abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter<V>>:
 
     @Inject
     lateinit var presenter: P
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        AndroidSupportInjection.inject(this)
+    }
 
     fun getWindowSize(): Point{
         val display = activity?.windowManager?.defaultDisplay

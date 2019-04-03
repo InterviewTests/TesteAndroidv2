@@ -15,4 +15,9 @@
     <string name="error_message_validation_login_data">Falha na validação do dados de login</string>
     <string name="error_message_request_login">Ocorreu um erro durante o login.</string>
     <string name="error_message_load_user_data">Não foi possivel recuperar os dados salvos</string>
+    <string name="account_label">Conta</string>
+    <string name="balance_label">Saldo</string>
+    <string name="user_account_format">%s / %s</string>
+    <string name="error_message_load_statement">Ocorreu um erro no carregamento das contas</string>
+    <string name="error_message_load_user_account_data">Ocorreu um erro no carregamento das informações da conta</string>
 </resources>
