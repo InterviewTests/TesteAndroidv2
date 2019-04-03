@@ -17,9 +17,6 @@ class LoginFragment : BaseFragment<LoginContract.View, LoginContract.Presenter>(
 
     override fun initViews() {
 
-        tfiUser.setText("roger@email.com")
-        tfiPassword.setText("Teste@1")
-
         presenter.loadUserData()
 
         btLogin.setOnClickListener {
