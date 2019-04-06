@@ -2,7 +2,7 @@
 
 Nome: GUILHERME MORAES GREGORES
 
-EMPRESA:RESOURCE
+Empresa:RESOURCE
 
 Executar Projeto pasta "APP"
 
