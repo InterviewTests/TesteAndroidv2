@@ -11,8 +11,6 @@ class LoginActivity : BaseActivity() {
 
     override fun getLayoutRes(): Int = R.layout.activity_login
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> = dispatchingAndroidInjector
-
     override fun onInitViews() {
 
     }

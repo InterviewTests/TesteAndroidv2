@@ -9,8 +9,6 @@ class HomeActivity : BaseActivity() {
 
     override fun getLayoutRes(): Int = R.layout.activity_home
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> = dispatchingAndroidInjector
-
     override fun onInitViews() {
     }
 }
