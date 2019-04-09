@@ -18,4 +18,9 @@ class TesteCpfValidator{
         assertTrue { cpfValidator.isCPF("40182994000") }
     }
 
+    @Test
+    fun cpfIsEmpty(){
+        assertTrue { cpfValidator.isCPF("") }
+    }
+
 }
