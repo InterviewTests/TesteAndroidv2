@@ -6,6 +6,7 @@ import androidx.test.runner.AndroidJUnit4
 import br.com.rms.bankapp.data.local.database.AppDatabase
 import br.com.rms.bankapp.data.local.database.dao.AccountDao
 import br.com.rms.bankapp.data.local.database.entity.Account
+import junit.framework.Assert.assertEquals
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -17,7 +18,8 @@ class TestAccountDao {
     private lateinit var appDatabase: AppDatabase
     private lateinit var accountDao: AccountDao
 
-    val account = Account(0,"Teste do Teste","000111444","741", 1986.0)
+    val account1 = Account(0, "User A", "000111444", "741", 1986.0)
+    val account2 = Account(0, "User B", "000111333", "742", 1987.0)
 
     @Before
     fun initDb() {
@@ -34,16 +36,19 @@ class TestAccountDao {
     }
 
     @Test
-    fun testInsertUser() {
-        accountDao.insertAccount(account)
-        val byName = accountDao.selectAccount(accountId = account.userId)
-        if(byName.name.equals(account.name)){
-            assert(true)
-        }else {
-            error(false)
-        }
+    fun testInsertAndRetrievedAccountMatch() {
+        accountDao.insertAccount(account1)
+        val accounDb = accountDao.selectAccount(0)
+            assertEquals(account1, accounDb)
     }
 
+    @Test
+    fun testConflictingInsertsReplaceAccount(){
+        accountDao.insertAccount(account1)
+        accountDao.insertAccount(account2)
+        val accounDb = accountDao.selectAccount(0)
+        assertEquals(account2, accounDb)
+    }
 
 
 }

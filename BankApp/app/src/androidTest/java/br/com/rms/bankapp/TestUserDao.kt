@@ -6,6 +6,7 @@ import androidx.test.runner.AndroidJUnit4
 import br.com.rms.bankapp.data.local.database.AppDatabase
 import br.com.rms.bankapp.data.local.database.dao.UserDao
 import br.com.rms.bankapp.data.local.database.entity.User
+import junit.framework.Assert.assertEquals
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -35,26 +36,18 @@ class TestUserDao {
     }
 
     @Test
-    fun testInsertUser() {
+    fun testInsertAndRetrievedUserMatch(){
         userDao.insertUser(userEmail)
-        val byName = userDao.selectUser()
-        if(byName.user.equals(userEmail.user)){
-            assert(true)
-        }else {
-            error(false)
-        }
+        val dbUser = userDao.selectUser()
+        assertEquals(userEmail,dbUser)
     }
 
     @Test
-    fun testLoadLastUser() {
+    fun testConflictingInsertsReplaceUser(){
         userDao.insertUser(userEmail)
         userDao.insertUser(userCpf)
-        val byName = userDao.selectUser()
-        if (byName.user.equals(userCpf.user)){
-            assert(true)
-        } else {
-            error(false)
-        }
+        val expectedUser = userDao.selectUser()
+        assertEquals(userCpf, expectedUser)
     }
 
 
