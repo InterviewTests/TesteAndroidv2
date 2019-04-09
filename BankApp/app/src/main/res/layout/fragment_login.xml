@@ -8,9 +8,9 @@
 
 
     <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_bank_logo"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            tools:src="@drawable/ic_bank_logo"
             android:id="@+id/ivBankLogo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

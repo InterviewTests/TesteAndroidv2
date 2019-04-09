@@ -6,6 +6,7 @@ import android.view.View
 import br.com.rms.bankapp.R
 import br.com.rms.bankapp.base.view.BaseFragment
 import br.com.rms.bankapp.utils.extensions.fadeIn
+import br.com.rms.bankapp.utils.extensions.loadDrawable
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -28,6 +29,8 @@ class LoginFragment : BaseFragment<LoginContract.View, LoginContract.Presenter>(
         btLogin.setOnClickListener {
             presenter.login()
         }
+
+        ivBankLogo.loadDrawable(R.drawable.ic_bank_logo)
     }
 
     fun startScreenAnimation() {

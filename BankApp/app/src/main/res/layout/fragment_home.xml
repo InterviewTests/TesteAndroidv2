@@ -42,7 +42,7 @@
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_exit"
+            tools:src="@drawable/ic_exit"
             android:id="@+id/ivExit"
             app:layout_constraintTop_toTopOf="@+id/tvUserName"
             app:layout_constraintBottom_toBottomOf="@+id/tvUserName"
