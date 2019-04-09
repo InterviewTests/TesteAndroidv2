@@ -11,7 +11,7 @@ const val USER_ID = 0
 @Entity()
 data class User(
     @PrimaryKey val id: Int?,
-    val user: String?,
+    var user: String?,
     val password: String?,
     var accountId: Int?
 )

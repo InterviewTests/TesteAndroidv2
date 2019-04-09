@@ -3,7 +3,7 @@ package br.com.rms.bankapp
 import br.com.rms.bankapp.utils.validations.user.UserValidations
 import org.junit.Test
 
-class UserValidationsTest {
+class TestUserValidations {
 
     val userValidations = UserValidations()
 

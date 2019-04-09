@@ -9,12 +9,12 @@ import br.com.rms.bankapp.data.local.database.entity.User
 import io.reactivex.Single
 
 @Dao
-interface UserDao {
+abstract class UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(user: User)
+    abstract fun insertUser(user: User)
 
     @Query("SELECT * FROM user WHERE id =$USER_ID")
-    fun selectUser() : User
+    abstract fun selectUser() : User
 
 }

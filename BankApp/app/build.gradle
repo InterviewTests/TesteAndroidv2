@@ -84,16 +84,18 @@ dependencies {
     testImplementation unitTestDependencies.kluent
 
     //Acceptance tests dependencies
+    androidTestImplementation acceptanceTestDependencies.testjunit
     androidTestImplementation acceptanceTestDependencies.testRunner
     androidTestImplementation acceptanceTestDependencies.testRules
     androidTestImplementation acceptanceTestDependencies.espressoCore
     androidTestImplementation acceptanceTestDependencies.espressoIntents
+    androidTestImplementation acceptanceTestDependencies.espressoIdlingConcurrent
+    implementation acceptanceTestDependencies.espressoIdlingResorse
+    androidTestImplementation acceptanceTestDependencies.espressoContrib
     androidTestImplementation acceptanceTestDependencies.androidAnnotations
 
     //Development dependencies
     debugImplementation developmentDependencies.leakCanary
     releaseImplementation developmentDependencies.leakCanaryNoop
     testImplementation developmentDependencies.leakCanaryNoop
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }

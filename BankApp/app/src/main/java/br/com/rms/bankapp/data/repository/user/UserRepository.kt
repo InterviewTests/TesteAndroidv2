@@ -8,7 +8,6 @@ import br.com.rms.bankapp.data.remote.api.BankAppApiService
 import br.com.rms.bankapp.data.remote.model.UserResponse
 import br.com.rms.bankapp.utils.validations.user.UserValidations
 import io.reactivex.Completable
-import io.reactivex.CompletableSource
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -21,10 +20,10 @@ class UserRepository @Inject constructor(
     private val validation: UserValidations
 ) {
 
-    lateinit var user : User
+    lateinit var user: User
     lateinit var userResponse: UserResponse
     fun validateUserData(userLogin: String?, password: String?): Completable {
-        user = User(0, userLogin!!, password!!,0)
+        user = User(0, userLogin!!, password!!, 0)
         return validation(userLogin, password)
     }
 
@@ -33,25 +32,27 @@ class UserRepository @Inject constructor(
         return addUser(user).andThen(it.userAccount?.let { it1 -> addAccount(it1) })
 
     }
+
     fun validation(user: String?, password: String?): Completable {
         return Completable.fromCallable {
             validation.validateLoginData(user.toString(), password.toString())
         }
     }
 
-    fun getRemoteUserData() : Completable  {
+    fun getRemoteUserData(): Completable {
         val userName = user.user
         val password = user.password
-        return apiService.login(userName!!, password!!).flatMapCompletable { userResponse -> saveUserData(userResponse) }
+        return apiService.login(userName!!, password!!)
+            .flatMapCompletable { userResponse -> saveUserData(userResponse) }
     }
 
-    fun getLocalUserData() : Single<User>{
+    fun getLocalUserData(): Single<User> {
         return Single.fromCallable {
             userDao.selectUser()
         }
     }
 
-    fun getLocalUserAccount() : Single<Account>{
+    fun getLocalUserAccount(): Single<Account> {
         return Single.fromCallable {
             val user = userDao.selectUser()
             accountDao.selectAccount(user.accountId)
@@ -59,10 +60,11 @@ class UserRepository @Inject constructor(
     }
 
 
-    fun addUser(user: User) : Completable = Completable.fromCallable{
-        userDao.insertUser(user)}
+    fun addUser(user: User): Completable = Completable.fromCallable {
+        userDao.insertUser(user)
+    }
 
-    fun addAccount(account : Account) : Completable = Completable.fromCallable {
+    fun addAccount(account: Account): Completable = Completable.fromCallable {
         accountDao.insertAccount(account)
     }
 

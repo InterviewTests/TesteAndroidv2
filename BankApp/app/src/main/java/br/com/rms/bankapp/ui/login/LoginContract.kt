@@ -4,6 +4,7 @@ import br.com.rms.bankapp.base.mvp.BaseContract
 import br.com.rms.bankapp.utils.validations.ValidationException
 
 interface LoginContract : BaseContract.View{
+
     interface View : BaseContract.View{
         fun getUser(): String
         fun getPassword(): String

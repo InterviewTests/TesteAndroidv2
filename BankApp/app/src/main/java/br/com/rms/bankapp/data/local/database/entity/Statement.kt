@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(indices = [Index("id")])
 data class Statement(
-    @PrimaryKey(autoGenerate = true) val id: Int?,
+    @PrimaryKey(autoGenerate = true) var id: Int?,
     val title: String?,
     val desc: String?,
     val date: String?,
