@@ -3,11 +3,16 @@ package br.com.rms.bankapp.data.local.database.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import br.com.rms.bankapp.data.local.database.entity.Account
 import br.com.rms.bankapp.data.local.database.entity.Statement
 
 @Dao
-interface StatementDao {
+abstract class StatementDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(statement: Statement)
+     abstract fun insert(statement: List<Statement>)
+
+    @Query("SELECT * FROM statement")
+    abstract fun selectAllStatement(): List<Statement>
 }

@@ -9,13 +9,13 @@ import br.com.rms.bankapp.data.local.database.entity.Account
 
 
 @Dao
-interface AccountDao {
+abstract class AccountDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAccount(account: Account)
+    abstract fun insertAccount(account: Account)
 
     @Query("SELECT * FROM account WHERE userId = :accountId")
-    fun selectAccount(accountId: Int?): Account
+    abstract fun selectAccount(accountId: Int?): Account
 
 
 }

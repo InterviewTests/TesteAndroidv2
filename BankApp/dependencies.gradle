@@ -40,6 +40,7 @@ ext {
     //Acceptance Testing
     runner_version = '1.1.0-alpha4'
     espresso_version = '3.1.0-alpha4'
+    junit_ext_version = '1.1.0'
 
     //Development
     leakCanaryVersion = '1.6.3'
@@ -85,11 +86,16 @@ ext {
     ]
 
     acceptanceTesting = [
+            testjunit: "androidx.test.ext:junit:$junit_ext_version",
             testRunner: "androidx.test:runner:$runner_version",
             testRules: "androidx.test:rules:$runner_version",
             espressoCore: "androidx.test.espresso:espresso-core:$espresso_version",
+            espressoIdlingConcurrent: "androidx.test.espresso.idling:idling-concurrent:$espresso_version",
+            espressoIdlingResorse: "androidx.test.espresso:espresso-idling-resource:$espresso_version",
             espressoIntents: "androidx.test.espresso:espresso-intents:$espresso_version",
+            espressoContrib: "androidx.test.espresso:espresso-contrib:$espresso_version",
             androidAnnotations: "androidx.annotation:annotation:$appCompat_version",
+
     ]
 
     development = [
