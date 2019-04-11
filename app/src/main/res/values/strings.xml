@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">santander</string>
+    <string name="location_user">User</string>
+    <string name="location_pass">Password</string>
+    <string name="location_login">Login</string>
+
+</resources>
