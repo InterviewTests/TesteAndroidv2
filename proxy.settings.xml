@@ -1,0 +1,5 @@
+<application>
+  <component name="HttpConfigurable">
+    <option name="PROXY_PORT" value="8080" />
+  </component>
+</application>
