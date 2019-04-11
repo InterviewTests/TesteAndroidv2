@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_location_logo"
+        android:layout_width="225dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="24dp"
+        android:src="@mipmap/ic_logo_banco"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_location_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="54dp"
+        android:background="@drawable/edit_background"
+        android:hint="@string/location_user"
+        android:padding="8dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_location_logo" />
+
+    <EditText
+        android:id="@+id/et_location_senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_background"
+        android:hint="@string/location_pass"
+        android:padding="8dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/et_location_login"
+        app:layout_constraintStart_toStartOf="@+id/et_location_login"
+        app:layout_constraintTop_toBottomOf="@+id/et_location_login" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/botao_background"
+        android:text="@string/location_login"
+        android:textAllCaps="false"
+        android:textColor="@color/white_fff"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_location_senha"
+        app:layout_constraintVertical_bias="1" />
+</android.support.constraint.ConstraintLayout>

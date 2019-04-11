@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">santander</string>
+    <string name="location_user">User</string>
+    <string name="location_pass">Password</string>
+    <string name="location_login">Login</string>
+    <string name="currency_conta">Conta</string>
+    <string name="currency_saldo">Saldo</string>
+    <string name="currency_recentes">Recentes</string>
+
+</resources>
