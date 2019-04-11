@@ -1,4 +1,4 @@
-package com.example.santander;
+package com.example.santander.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class LoginActivity extends AppCompatActivity {
+import com.example.santander.R;
 
-    private Button btLogin;
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void initVar() {
-        btLogin = findViewById(R.id.bt_login_enter);
+        Button btLogin = findViewById(R.id.bt_login_enter);
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
