@@ -1,7 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/abl_login_app_bar_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/azul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_conta_nome_usuario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/branco"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@id/ib_login_botao_sair"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Alan Pedro Macedo Lopes" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_conta_titulo_conta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/conta_texto_conta"
+                android:textColor="@color/branco"
+                app:layout_constraintStart_toStartOf="@id/tv_conta_nome_usuario"
+                app:layout_constraintTop_toBottomOf="@id/tv_conta_nome_usuario" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_conta_numero_conta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/branco"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="@id/tv_conta_nome_usuario"
+                app:layout_constraintTop_toBottomOf="@id/tv_conta_titulo_conta"
+                tools:text="8326 / 01.223344-5" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_conta_titulo_saldo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/conta_texto_saldo"
+                android:textColor="@color/branco"
+                app:layout_constraintStart_toStartOf="@id/tv_conta_nome_usuario"
+                app:layout_constraintTop_toBottomOf="@id/tv_conta_numero_conta" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_conta_valor_saldo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/branco"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_conta_nome_usuario"
+                app:layout_constraintTop_toBottomOf="@id/tv_conta_titulo_saldo"
+                tools:text="R$ 1.500,00" />
+
+            <ImageButton
+                android:id="@+id/ib_login_botao_sair"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:background="@color/azul"
+                android:contentDescription="@null"
+                android:src="@drawable/logout"
+                app:layout_constraintBottom_toBottomOf="@id/tv_conta_nome_usuario"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_conta_nome_usuario"
+                app:layout_constraintTop_toTopOf="@id/tv_conta_nome_usuario" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_conta_titulo_recentes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/conta_texto_recente"
+        android:textColor="@color/cinza_escuro"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/abl_login_app_bar_layout" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_atividades_recentes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_conta_titulo_recentes"
+        tools:listitem="@layout/item_atividades" />
 </android.support.constraint.ConstraintLayout>

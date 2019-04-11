@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="6dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_item_atividades_titulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cinza_claro"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_item_atividades_data"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Pagamento" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_item_atividades_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cinza_claro"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_item_atividades_titulo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_item_atividades_titulo"
+            tools:text="01/03/2019" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_item_atividades_descricao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/cinza_escuro"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_item_atividades_data"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_atividades_titulo"
+            tools:text="Conta de Luz" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_item_atividades_valor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/cinza_escuro"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_item_atividades_descricao"
+            tools:text="R$ 126,90" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

@@ -27,7 +27,7 @@
         android:background="@drawable/rounded_corners"
         android:hint="@string/login_hint_usuario"
         android:importantForAutofill="no"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +52,7 @@
         tools:targetApi="o" />
 
     <Button
+        android:id="@+id/bt_login_enter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="86dp"
@@ -59,6 +60,7 @@
         android:layout_marginBottom="32dp"
         android:background="@color/azul"
         android:text="@string/login_botao_login"
+        android:fontFamily="sans-serif"
         android:textAllCaps="false"
         android:textColor="@color/branco"
         app:layout_constraintBottom_toBottomOf="parent"

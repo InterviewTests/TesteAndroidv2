@@ -9,5 +9,5 @@
         android:topRightRadius="4dp" />
     <stroke
         android:width="1dip"
-        android:color="@color/cinza" />
+        android:color="@color/cinza_claro" />
 </shape>

@@ -6,4 +6,9 @@
     <string name="login_hint_senha">Password</string>
     <string name="login_botao_login">Login</string>
 
+    --- CONTA ---
+    <string name="conta_texto_conta">Conta</string>
+    <string name="conta_texto_saldo">Saldo</string>
+    <string name="conta_texto_recente">Recentes</string>
+
 </resources>
