@@ -3,4 +3,12 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    --- CORES SANTANDER ---
+
+    <color name="branco">#FFFFFF</color>
+    <color name="preto">#000000</color>
+    <color name="cinza">#A8B4C4</color>
+    <color name="azul">#3B49EE</color>
+
 </resources>

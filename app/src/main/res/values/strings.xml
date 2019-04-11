@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Santander</string>
+
+    --- LOGIN ---
+    <string name="login_hint_usuario">User</string>
+    <string name="login_hint_senha">Password</string>
+    <string name="login_botao_login">Login</string>
+
 </resources>
