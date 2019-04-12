@@ -1,4 +1,7 @@
-package com.android.bankapp.login;
+package com.android.bankapp.login.interactor;
+
+import com.android.bankapp.login.presenter.LoginPresenter;
+import com.android.bankapp.login.model.LoginRequest;
 
 public class LoginInteractor implements LoginInteractorInput {
 

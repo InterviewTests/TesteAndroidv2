@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".statements.view.StatementsActivity">
+
+    <LinearLayout
+        android:id="@+id/content_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/space_default"
+        android:paddingRight="@dimen/space_default"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_view_user_name"
+            style="@style/UserHeader.Content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_default"
+            tools:text="User name" />
+
+        <TextView
+            style="@style/UserHeader.Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_default"
+            android:text="@string/account" />
+
+        <TextView
+            android:id="@+id/text_view_user_account"
+            style="@style/UserHeader.Content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_minimum"
+            tools:text="0000/0000000" />
+
+        <TextView
+            style="@style/UserHeader.Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_default"
+            android:text="@string/balance" />
+
+        <TextView
+            android:id="@+id/txt_view_user_balance"
+            style="@style/UserHeader.Content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_minimum"
+            android:layout_marginBottom="@dimen/space_default"
+            tools:text="R$1.000" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_view_recently_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_default"
+        android:layout_marginBottom="@dimen/space_default"
+        android:fontFamily="sans-serif-light"
+        android:paddingLeft="@dimen/space_default"
+        android:text="@string/recently"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/space_default" />
+
+    <TextView
+        android:id="@+id/text_view_error_state"
+        android:layout_width="match_parent"
+        android:text="@string/request_error"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_default"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/text_view_no_content"
+        android:layout_width="match_parent"
+        android:text="@string/statement_no_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_default"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/button_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/space_default"
+        android:onClick="retry"
+        android:padding="@dimen/space_default"
+        android:text="@string/button_retry"
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/space_default"
+        android:paddingBottom="@dimen/space_default"
+        android:visibility="gone" />
+
+</LinearLayout>

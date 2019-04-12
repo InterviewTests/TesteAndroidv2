@@ -1,10 +1,14 @@
-package com.android.bankapp.login;
+package com.android.bankapp.login.presenter;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.android.bankapp.login.view.LoginActivity;
+import com.android.bankapp.login.model.LoginRequest;
+import com.android.bankapp.login.model.LoginResponse;
 import com.android.bankapp.service.BankService;
 import com.android.bankapp.service.ServiceGenerator;
+import com.android.bankapp.util.UserStateUtil;
 
 import java.lang.ref.WeakReference;
 import java.util.regex.Matcher;
@@ -50,6 +54,7 @@ public class LoginPresenter implements LoginPresenterInput {
 
                 if (loginResponse != null) {
                     if (loginResponse.getUserAccount().getName() != null) {
+                        UserStateUtil.setUserAccount(loginResponse.getUserAccount());
                         output.get().loginSuccess();
                     } else if (loginResponse.getError().getMessage() != null) {
                         output.get().loginError(loginResponse.getError().getCode());
