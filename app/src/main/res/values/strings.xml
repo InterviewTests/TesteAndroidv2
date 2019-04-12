@@ -6,11 +6,15 @@
     <string name="login_hint_senha">Password</string>
     <string name="login_botao_login">Login</string>
 
-    --- CONTA ---
+    --- ACCOUNT ---
     <string name="account_label_account">Conta</string>
     <string name="account_label_statement">Recentes</string>
     <string name="account_label_balance">Saldo</string>
     <string name="account_text_agency_bank_account_formatted">1%s / 2%s</string>
     <string name="account_text_balance">R$ %d</string>
+
+    --- WARNING ---
+    <string name="warning_valid_username">Conta</string>
+    <string name="warning_valid_password">Formato de senha não válido</string>
 
 </resources>
