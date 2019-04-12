@@ -8,6 +8,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface API {
 
@@ -18,7 +19,7 @@ public interface API {
     Call<loginVO> getLogin(@Field("user") String username,
                            @Field("password") String password);
 
-    @GET("statement/1")
-    Call<statementListVO> getStatementList(@Field("userId") Integer userId);
+    @GET("statements/{userId}")
+    Call<statementListVO> getStatementList(@Path("userId") Integer userId);
 
 }

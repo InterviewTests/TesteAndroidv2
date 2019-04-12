@@ -32,12 +32,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        initVar();
+        initVariables();
     }
 
-    public void initVar() {
-        etUsername = findViewById(R.id.et_login_usuario);
-        etPassword = findViewById(R.id.et_login_senha);
+    public void initVariables() {
+        etUsername = findViewById(R.id.et_login_user);
+        etPassword = findViewById(R.id.et_login_password);
         Button btLogin = findViewById(R.id.bt_login_enter);
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                 loginVO = response.body();
                 if (loginVO != null) {
                     userAccountVO = loginVO.getUserAccount();
-                    Intent intent = new Intent(LoginActivity.this, ContaActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, AccountActivity.class);
                     intent.putExtra(EXTRA_USER_ACCOUNT, userAccountVO);
                     startActivity(intent);
                 }

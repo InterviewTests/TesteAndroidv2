@@ -7,8 +7,10 @@
     <string name="login_botao_login">Login</string>
 
     --- CONTA ---
-    <string name="conta_texto_conta">Conta</string>
-    <string name="conta_texto_saldo">Saldo</string>
-    <string name="conta_texto_recente">Recentes</string>
+    <string name="account_label_account">Conta</string>
+    <string name="account_label_statement">Recentes</string>
+    <string name="account_label_balance">Saldo</string>
+    <string name="account_text_agency_bank_account_formatted">1%s / 2%s</string>
+    <string name="account_text_balance">R$ %d</string>
 
 </resources>

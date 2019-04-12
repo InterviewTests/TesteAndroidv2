@@ -5,37 +5,37 @@ import com.squareup.moshi.Json;
 public class statementVO {
 
     @Json(name = "title")
-    private String titulo;
+    private String title;
 
     @Json(name = "desc")
-    private String descricao;
+    private String desc;
 
     @Json(name = "date")
-    private String data;
+    private String date;
 
     @Json(name = "value")
-    private Integer valor;
+    private Double value;
 
-    public statementVO(String titulo, String descricao, String data, Integer valor) {
-        this.titulo = titulo;
-        this.descricao = descricao;
-        this.data = data;
-        this.valor = valor;
+    public statementVO(String title, String desc, String date, Double value) {
+        this.title = title;
+        this.desc = desc;
+        this.date = date;
+        this.value = value;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return title;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDesc() {
+        return desc;
     }
 
-    public String getData() {
-        return data;
+    public String getDate() {
+        return date;
     }
 
-    public Integer getValor() {
-        return valor;
+    public Double getValue() {
+        return value;
     }
 }

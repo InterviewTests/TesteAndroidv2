@@ -10,42 +10,42 @@ public class userAccountVO implements Serializable {
     private Integer userId;
 
     @Json(name = "name")
-    private String nome;
+    private String name;
 
     @Json(name = "bankAccount")
-    private String contaBancaria;
+    private String bandAccount;
 
     @Json(name = "agency")
-    private String agencia;
+    private String agency;
 
     @Json(name = "balance")
-    private Float balanco;
+    private Double balance;
 
-    public userAccountVO(Integer userId, String nome, String contaBancaria, String agencia, Float balanco) {
+    public userAccountVO(Integer userId, String name, String bankAccount, String agency, Double balance) {
         this.userId = userId;
-        this.nome = nome;
-        this.contaBancaria = contaBancaria;
-        this.agencia = agencia;
-        this.balanco = balanco;
+        this.name = name;
+        this.bandAccount = bankAccount;
+        this.agency = agency;
+        this.balance = balance;
     }
 
     public Integer getUserId() {
         return userId;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public String getContaBancaria() {
-        return contaBancaria;
+    public String getBankAccount() {
+        return bandAccount;
     }
 
-    public String getAgencia() {
-        return agencia;
+    public String getAgency() {
+        return agency;
     }
 
-    public Float getBalanco() {
-        return balanco;
+    public Double getBalance() {
+        return balance;
     }
 }
