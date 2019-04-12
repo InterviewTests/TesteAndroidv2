@@ -1,5 +1,7 @@
 package com.android.bankapp.login.view;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -58,27 +60,37 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
         showContentState();
         switch (code) {
             case FIELDS_REQUIRED:
-                Toast.makeText(this, getString(R.string.login_fields_required), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.login_fields_required), Toast.LENGTH_LONG).show();
                 break;
             case REQUEST_ERROR:
-                Toast.makeText(this, getString(R.string.request_error), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.request_error), Toast.LENGTH_LONG).show();
                 break;
             case PASSWORD_INVALID:
-                Toast.makeText(this, getString(R.string.password_invalid), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.password_invalid), Toast.LENGTH_LONG).show();
                 break;
             case LOGIN_UNAUTHORIZED:
-                Toast.makeText(this, getString(R.string.login_unauthorize), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.login_unauthorize), Toast.LENGTH_LONG).show();
                 break;
             default:
-                Toast.makeText(this, getString(R.string.request_error), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.request_error), Toast.LENGTH_LONG).show();
                 Log.e(TAG, "Unexpected code " + code);
                 break;
         }
     }
 
     public void doLogin(View view) {
-        showProgressState();
-        output.doLogin(editTextUser.getText().toString(), editTextPassword.getText().toString());
+        if (isNetworkConnection()) {
+            showProgressState();
+            output.doLogin(editTextUser.getText().toString(), editTextPassword.getText().toString());
+        } else {
+            Toast.makeText(this, getString(R.string.no_internet_connection), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean isNetworkConnection() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
+
     }
 
     private void showContentState() {

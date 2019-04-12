@@ -1,6 +1,8 @@
 package com.android.bankapp.statements.view;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -81,7 +83,12 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        output.loadData();
+        if(isNetworkConnection()){
+            output.loadData();
+        }else{
+            textViewError.setText(getString(R.string.no_internet_connection));
+            showErrorState();
+        }
     }
 
 
@@ -135,7 +142,13 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
 
     public void retry(View view) {
         showLoadingState();
-        output.loadData();
+        if(isNetworkConnection()){
+            textViewError.setText(getString(R.string.request_error));
+            output.loadData();
+        }else{
+            textViewError.setText(getString(R.string.no_internet_connection));
+            showErrorState();
+        }
     }
 
     @Override
@@ -174,4 +187,12 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
         recyclerView.setVisibility(View.VISIBLE);
         textViewNoContent.setVisibility(View.GONE);
     }
+
+    private boolean isNetworkConnection() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
+
+    }
+
+
 }
