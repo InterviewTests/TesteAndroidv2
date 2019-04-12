@@ -42,14 +42,18 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
 
     @Override
     public void loginError(int code) {
+        showContentState();
         switch (code) {
+            case FIELDS_REQUIRED:
+                Toast.makeText(this, getString(R.string.login_fields_required), Toast.LENGTH_SHORT).show();
+                break;
             case REQUEST_ERROR:
                 Toast.makeText(this, getString(R.string.request_error), Toast.LENGTH_SHORT).show();
                 break;
             case PASSWORD_INVALID:
                 Toast.makeText(this, getString(R.string.password_invalid), Toast.LENGTH_SHORT).show();
                 break;
-            case LOGIN_UNAUTHORIZE:
+            case LOGIN_UNAUTHORIZED:
                 Toast.makeText(this, getString(R.string.login_unauthorize), Toast.LENGTH_SHORT).show();
                 break;
             default:

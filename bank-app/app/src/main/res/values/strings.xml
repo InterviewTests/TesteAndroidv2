@@ -6,4 +6,5 @@
     <string name="password_invalid">Senha inválida   Sua senha precisa conter pelo menos: 1 letra maiscula, 1 caracter especial e 1 número</string>
     <string name="request_error">Tivemos um problema interno, tente novamente!</string>
     <string name="login_unauthorize">Usuário ou senha incorretos.</string>
+    <string name="login_fields_required">Por favor, preencha todos os campos!</string>
 </resources>

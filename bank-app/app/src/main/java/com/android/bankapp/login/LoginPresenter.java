@@ -19,7 +19,8 @@ public class LoginPresenter implements LoginPresenterInput {
     private static final String TAG = "LoginPresenter";
     public static final int PASSWORD_INVALID = 401;
     public static final int REQUEST_ERROR = 400;
-    public static final int LOGIN_UNAUTHORIZE = 53;
+    public static final int LOGIN_UNAUTHORIZED = 53;
+    public static final int FIELDS_REQUIRED = 50;
     public WeakReference<LoginActivity> output;
     private BankService service;
 
@@ -29,6 +30,11 @@ public class LoginPresenter implements LoginPresenterInput {
 
     @Override
     public void doLogin(final LoginRequest request) {
+
+        if (isFieldEmpty(request)) {
+            output.get().loginError(FIELDS_REQUIRED);
+            return;
+        }
 
         if (!isPasswordValid(request.getPassword())) {
             output.get().loginError(PASSWORD_INVALID);
@@ -60,6 +66,10 @@ public class LoginPresenter implements LoginPresenterInput {
                 Log.e(TAG, t.getMessage());
             }
         });
+    }
+
+    private boolean isFieldEmpty(LoginRequest request) {
+        return request.getPassword() == null && request.getUser() == null;
     }
 
     private boolean isPasswordValid(String password) {
