@@ -1,6 +1,7 @@
 package com.android.bankapp.login.presenter;
 
 import android.support.annotation.NonNull;
+import android.util.Base64;
 import android.util.Log;
 
 import com.android.bankapp.login.view.LoginActivity;
@@ -9,7 +10,11 @@ import com.android.bankapp.login.model.LoginResponse;
 import com.android.bankapp.service.BankService;
 import com.android.bankapp.service.ServiceGenerator;
 import com.android.bankapp.util.UserStateUtil;
+import com.pixplicity.easyprefs.library.Prefs;
 
+import org.androidannotations.annotations.sharedpreferences.Pref;
+
+import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,6 +30,8 @@ public class LoginPresenter implements LoginPresenterInput {
     public static final int REQUEST_ERROR = 400;
     public static final int LOGIN_UNAUTHORIZED = 53;
     public static final int FIELDS_REQUIRED = 50;
+    public static final String USER_KEY = "user";
+    public static final String PASSWORD_KEY = "password";
     public WeakReference<LoginActivity> output;
     private BankService service;
 
@@ -54,6 +61,7 @@ public class LoginPresenter implements LoginPresenterInput {
 
                 if (loginResponse != null) {
                     if (loginResponse.getUserAccount().getName() != null) {
+                        saveUser(request);
                         UserStateUtil.setUserAccount(loginResponse.getUserAccount());
                         output.get().loginSuccess();
                     } else if (loginResponse.getError().getMessage() != null) {
@@ -71,6 +79,23 @@ public class LoginPresenter implements LoginPresenterInput {
                 Log.e(TAG, t.getMessage());
             }
         });
+    }
+
+    private void saveUser(LoginRequest request) {
+        try {
+            byte[] data = request.getUser().getBytes("UTF-8");
+            String user = Base64.encodeToString(data, Base64.DEFAULT);
+
+            data = request.getPassword().getBytes("UTF-8");
+            String password = Base64.encodeToString(data, Base64.DEFAULT);
+
+            Prefs.putString(USER_KEY, user);
+            Prefs.putString(PASSWORD_KEY, password);
+
+        } catch (UnsupportedEncodingException e) {
+            Log.e(TAG, e.getMessage());
+        }
+
     }
 
     private boolean isFieldEmpty(LoginRequest request) {
