@@ -1,7 +1,8 @@
 package com.android.bankapp.login;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
+
+import com.android.bankapp.statements.StatementsActivity_;
 
 import java.lang.ref.WeakReference;
 
@@ -9,7 +10,7 @@ public class LoginRouter implements LoginRouterInput {
     public WeakReference<LoginActivity> activity;
 
     @Override
-    public Intent goToNextScreen() {
-        return null;
+    public void goToNextScreen(Context context) {
+        StatementsActivity_.intent(context).start();
     }
 }

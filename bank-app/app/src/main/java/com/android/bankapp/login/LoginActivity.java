@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
 
     @Override
     public void loginSuccess() {
-
+        router.goToNextScreen(this);
     }
 
     @Override
