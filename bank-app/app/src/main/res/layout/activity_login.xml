@@ -4,17 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="@dimen/space_default"
+    android:paddingRight="@dimen/space_default"
     tools:context=".login.LoginActivity">
+
+    <ImageView
+        android:id="@+id/image_bank_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/bank_logo_content_description"
+        android:paddingTop="@dimen/space_default"
+        android:src="@drawable/ic_bank"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/layout_login_fields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHorizontal_weight="6"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/edit_text_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gray_line_box"
+            android:hint="@string/login_user_field_hint"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="@dimen/space_default" />
+
+        <EditText
+            android:id="@+id/edit_text_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_medium"
+            android:background="@drawable/gray_line_box"
+            android:hint="@string/login_user_field_password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:padding="@dimen/space_default" />
+
+    </LinearLayout>
 
     <Space
         android:id="@+id/space_left"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/layout_login_fields"
+        app:layout_constraintEnd_toStartOf="@id/button_login"
         app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Space
         android:id="@+id/space_right"
@@ -23,54 +69,35 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintStart_toEndOf="@id/layout_login_fields"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/button_login" />
 
-    <LinearLayout
-        android:id="@+id/layout_login_fields"
+    <Button
+        android:id="@+id/button_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/space_xxxLarge"
+        android:elevation="2dp"
+        android:fontFamily="sans-serif"
+        android:onClick="doLogin"
+        android:padding="@dimen/space_default"
+        android:text="@string/button_login"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/space_right"
         app:layout_constraintHorizontal_weight="6"
-        app:layout_constraintStart_toEndOf="@id/space_left"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/edit_text_user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="@string/login_user_field_hint"
-            android:inputType="text"
-            android:maxLines="1" />
-
-        <EditText
-            android:id="@+id/edit_text_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="@string/login_user_field_password"
-            android:inputType="textPassword"
-            android:maxLines="1" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="doLogin"
-            android:text="@string/button_login" />
-    </LinearLayout>
+        app:layout_constraintStart_toEndOf="@id/space_left" />
 
     <ProgressBar
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
