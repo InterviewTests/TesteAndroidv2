@@ -9,4 +9,18 @@
         <item name="colorButtonNormal">@color/colorPrimary</item>
     </style>
 
+    <style name="UserHeader">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="UserHeader.Content">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="UserHeader.Label">
+        <item name="android:textSize">16sp</item>
+
+    </style>
+
 </resources>
