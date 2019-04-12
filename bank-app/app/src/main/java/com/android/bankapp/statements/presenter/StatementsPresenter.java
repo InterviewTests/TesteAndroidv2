@@ -13,7 +13,7 @@ import retrofit2.Response;
 
 public class StatementsPresenter implements StatementPresenterInput {
 
-    WeakReference<StatementsActivity> output;
+    public WeakReference<StatementsActivity> output;
     private BankService service;
 
     public StatementsPresenter() {
@@ -28,6 +28,7 @@ public class StatementsPresenter implements StatementPresenterInput {
         call.enqueue(new Callback<StatementResponse>() {
             @Override
             public void onResponse(Call<StatementResponse> call, Response<StatementResponse> response) {
+                output.get().dataLoaded(response.body().getStatementList());
             }
 
             @Override

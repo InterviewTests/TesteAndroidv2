@@ -3,7 +3,7 @@ package com.android.bankapp.login.router;
 import android.content.Context;
 
 import com.android.bankapp.login.view.LoginActivity;
-import com.android.bankapp.statements.StatementsActivity_;
+import com.android.bankapp.statements.view.StatementsActivity_;
 
 import java.lang.ref.WeakReference;
 

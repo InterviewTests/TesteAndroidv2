@@ -38,8 +38,8 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
     @ViewById(R.id.layout_login_fields)
     LinearLayout loginContent;
 
-    LoginInteractorInput output;
-    LoginRouterInput router;
+    public LoginInteractorInput output;
+    public LoginRouterInput router;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
