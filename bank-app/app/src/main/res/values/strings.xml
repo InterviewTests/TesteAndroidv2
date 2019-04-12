@@ -14,4 +14,5 @@
     <string name="payment">Pagamento</string>
     <string name="button_retry">Tentar novamente</string>
     <string name="statement_no_content">Não há nenhuma transação para ser exibida.</string>
+    <string name="no_internet_connection">Sem conectividade com a internet, verifique sua conexão</string>
 </resources>
