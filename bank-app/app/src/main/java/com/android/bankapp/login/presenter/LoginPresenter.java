@@ -1,8 +1,11 @@
-package com.android.bankapp.login;
+package com.android.bankapp.login.presenter;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.android.bankapp.login.view.LoginActivity;
+import com.android.bankapp.login.model.LoginRequest;
+import com.android.bankapp.login.model.LoginResponse;
 import com.android.bankapp.service.BankService;
 import com.android.bankapp.service.ServiceGenerator;
 

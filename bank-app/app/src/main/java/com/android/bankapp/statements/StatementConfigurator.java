@@ -1,5 +1,9 @@
 package com.android.bankapp.statements;
 
+import com.android.bankapp.statements.interactor.StatementInteractor;
+import com.android.bankapp.statements.presenter.StatementsPresenter;
+import com.android.bankapp.statements.view.StatementsActivity;
+
 import java.lang.ref.WeakReference;
 
 public enum StatementConfigurator {

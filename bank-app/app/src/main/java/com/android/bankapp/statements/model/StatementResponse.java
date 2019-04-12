@@ -1,4 +1,4 @@
-package com.android.bankapp.statements;
+package com.android.bankapp.statements.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

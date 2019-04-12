@@ -1,4 +1,4 @@
-package com.android.bankapp.login;
+package com.android.bankapp.login.view;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,14 +10,17 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.bankapp.R;
+import com.android.bankapp.login.LoginConfigurator;
+import com.android.bankapp.login.interactor.LoginInteractorInput;
+import com.android.bankapp.login.router.LoginRouterInput;
 
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import static com.android.bankapp.login.LoginPresenter.FIELDS_REQUIRED;
-import static com.android.bankapp.login.LoginPresenter.LOGIN_UNAUTHORIZED;
-import static com.android.bankapp.login.LoginPresenter.PASSWORD_INVALID;
-import static com.android.bankapp.login.LoginPresenter.REQUEST_ERROR;
+import static com.android.bankapp.login.presenter.LoginPresenter.FIELDS_REQUIRED;
+import static com.android.bankapp.login.presenter.LoginPresenter.LOGIN_UNAUTHORIZED;
+import static com.android.bankapp.login.presenter.LoginPresenter.PASSWORD_INVALID;
+import static com.android.bankapp.login.presenter.LoginPresenter.REQUEST_ERROR;
 
 @EActivity(R.layout.activity_login)
 public class LoginActivity extends AppCompatActivity implements LoginActivityInput {
@@ -78,12 +81,12 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
         output.doLogin(editTextUser.getText().toString(), editTextPassword.getText().toString());
     }
 
-    private void showContentState(){
+    private void showContentState() {
         loginContent.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
     }
 
-    private void showProgressState(){
+    private void showProgressState() {
         loginContent.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
     }

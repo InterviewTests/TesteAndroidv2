@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/space_default"
     android:paddingRight="@dimen/space_default"
-    tools:context=".login.LoginActivity">
+    tools:context=".login.view.LoginActivity">
 
     <ImageView
         android:id="@+id/image_bank_logo"

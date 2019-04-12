@@ -1,4 +1,4 @@
-package com.android.bankapp.statements;
+package com.android.bankapp.statements.view;
 
 public interface StatementActivityInput {
 

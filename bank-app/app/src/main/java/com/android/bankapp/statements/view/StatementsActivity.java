@@ -1,4 +1,4 @@
-package com.android.bankapp.statements;
+package com.android.bankapp.statements.view;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.android.bankapp.R;
+import com.android.bankapp.statements.StatementConfigurator;
+import com.android.bankapp.statements.interactor.StatementInteractor;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;

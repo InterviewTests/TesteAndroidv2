@@ -1,4 +1,4 @@
-package com.android.bankapp.login;
+package com.android.bankapp.login.model;
 
 public class LoginRequest {
 

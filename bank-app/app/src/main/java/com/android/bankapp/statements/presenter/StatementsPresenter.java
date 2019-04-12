@@ -1,7 +1,9 @@
-package com.android.bankapp.statements;
+package com.android.bankapp.statements.presenter;
 
 import com.android.bankapp.service.BankService;
 import com.android.bankapp.service.ServiceGenerator;
+import com.android.bankapp.statements.model.StatementResponse;
+import com.android.bankapp.statements.view.StatementsActivity;
 
 import java.lang.ref.WeakReference;
 
@@ -9,7 +11,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-class StatementsPresenter implements StatementPresenterInput {
+public class StatementsPresenter implements StatementPresenterInput {
 
     WeakReference<StatementsActivity> output;
     private BankService service;

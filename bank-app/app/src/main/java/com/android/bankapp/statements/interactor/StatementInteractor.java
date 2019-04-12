@@ -1,4 +1,6 @@
-package com.android.bankapp.statements;
+package com.android.bankapp.statements.interactor;
+
+import com.android.bankapp.statements.presenter.StatementsPresenter;
 
 public class StatementInteractor implements StatementInteractorInput {
 

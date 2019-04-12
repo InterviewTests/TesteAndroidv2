@@ -1,6 +1,9 @@
 package com.android.bankapp.login;
 
-import android.app.Activity;
+import com.android.bankapp.login.interactor.LoginInteractor;
+import com.android.bankapp.login.presenter.LoginPresenter;
+import com.android.bankapp.login.view.LoginActivity;
+import com.android.bankapp.login.router.LoginRouter;
 
 import java.lang.ref.WeakReference;
 
@@ -9,7 +12,7 @@ public enum LoginConfigurator {
     INSTANCE;
 
     public void configure(LoginActivity activity){
-        LoginRouter  router = new LoginRouter();
+        LoginRouter router = new LoginRouter();
         router.activity = new WeakReference<>(activity);
 
         LoginPresenter presenter = new LoginPresenter();

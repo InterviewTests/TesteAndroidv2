@@ -1,4 +1,4 @@
-package com.android.bankapp.login;
+package com.android.bankapp.login.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

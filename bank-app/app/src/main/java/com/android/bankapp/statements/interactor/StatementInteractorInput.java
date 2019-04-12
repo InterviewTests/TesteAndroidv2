@@ -1,4 +1,4 @@
-package com.android.bankapp.statements;
+package com.android.bankapp.statements.interactor;
 
 public interface StatementInteractorInput {
 

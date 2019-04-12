@@ -1,8 +1,8 @@
 package com.android.bankapp.service;
 
-import com.android.bankapp.login.LoginRequest;
-import com.android.bankapp.login.LoginResponse;
-import com.android.bankapp.statements.StatementResponse;
+import com.android.bankapp.login.model.LoginRequest;
+import com.android.bankapp.login.model.LoginResponse;
+import com.android.bankapp.statements.model.StatementResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
