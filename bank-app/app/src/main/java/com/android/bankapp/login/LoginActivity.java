@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.bankapp.R;
@@ -12,7 +14,8 @@ import com.android.bankapp.R;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import static com.android.bankapp.login.LoginPresenter.LOGIN_UNAUTHORIZE;
+import static com.android.bankapp.login.LoginPresenter.FIELDS_REQUIRED;
+import static com.android.bankapp.login.LoginPresenter.LOGIN_UNAUTHORIZED;
 import static com.android.bankapp.login.LoginPresenter.PASSWORD_INVALID;
 import static com.android.bankapp.login.LoginPresenter.REQUEST_ERROR;
 
@@ -25,6 +28,12 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
 
     @ViewById(R.id.edit_text_user)
     EditText editTextUser;
+
+    @ViewById(R.id.progress)
+    ProgressBar progressBar;
+
+    @ViewById(R.id.layout_login_fields)
+    LinearLayout loginContent;
 
     LoginInteractorInput output;
     LoginRouterInput router;
@@ -64,6 +73,17 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
     }
 
     public void doLogin(View view) {
+        showProgressState();
         output.doLogin(editTextUser.getText().toString(), editTextPassword.getText().toString());
+    }
+
+    private void showContentState(){
+        loginContent.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
+    }
+
+    private void showProgressState(){
+        loginContent.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
     }
 }
