@@ -8,4 +8,8 @@
     <string name="login_unauthorize">Usuário ou senha incorretos.</string>
     <string name="login_fields_required">Por favor, preencha todos os campos!</string>
     <string name="bank_logo_content_description">Image app logo</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="recently">Recentes</string>
+    <string name="payment">Pagamento</string>
 </resources>

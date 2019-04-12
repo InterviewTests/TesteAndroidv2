@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.bankapp.R;
@@ -42,15 +41,21 @@ public class StatementRecyclerAdapter extends RecyclerView.Adapter<StatementRecy
     }
 
     public class BasicViewHolder extends RecyclerView.ViewHolder {
-        private TextView title;
+        private TextView textViewStatementTitle, textViewStatementDate, textViewStatementDescription, textViewStatementValue;
 
         public BasicViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.test);
+            this.textViewStatementTitle = itemView.findViewById(R.id.txt_view_statement_title);
+            this.textViewStatementDate = itemView.findViewById(R.id.txt_view_statement_date);
+            this.textViewStatementValue = itemView.findViewById(R.id.txt_view_statement_value);
+            this.textViewStatementDescription = itemView.findViewById(R.id.txt_view_statement_description);
         }
 
         public void onBind(Statement model) {
-            title.setText(model.getTitle());
+            textViewStatementTitle.setText(model.getTitle());
+            textViewStatementDate.setText(model.getDate());
+            textViewStatementDescription.setText(model.getDesc());
+            textViewStatementValue.setText(String.valueOf(model.getValue()));
         }
     }
 }

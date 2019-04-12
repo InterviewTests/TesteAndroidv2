@@ -3,4 +3,5 @@
     <dimen name="space_default">16dp</dimen>
     <dimen name="space_xxxLarge">30dp</dimen>
     <dimen name="space_medium">12dp</dimen>
+    <dimen name="space_minimum">8dp</dimen>
 </resources>
