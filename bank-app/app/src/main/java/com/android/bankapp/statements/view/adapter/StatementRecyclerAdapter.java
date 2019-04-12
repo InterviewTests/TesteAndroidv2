@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.android.bankapp.R;
 import com.android.bankapp.statements.model.Statement;
+import com.android.bankapp.statements.view.StatementsActivity;
 
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class StatementRecyclerAdapter extends RecyclerView.Adapter<StatementRecy
             textViewStatementTitle.setText(model.getTitle());
             textViewStatementDate.setText(model.getDate());
             textViewStatementDescription.setText(model.getDesc());
-            textViewStatementValue.setText(String.valueOf(model.getValue()));
+            textViewStatementValue.setText(StatementsActivity.formatCurrencyValue(model.getValue()));
         }
     }
 }

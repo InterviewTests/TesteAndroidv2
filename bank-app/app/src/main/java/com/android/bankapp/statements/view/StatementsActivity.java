@@ -20,8 +20,8 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 @SuppressLint("Registered")
 @EActivity(R.layout.activity_steatements)
@@ -53,11 +53,11 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
         UserAccount user = UserStateUtil.getUserAccount();
 
         String account = formatUserAccount(user.getAgency(), user.getBankAccount());
-        String balance = formatBalance(user.getBalance());
+        String balance = formatCurrencyValue(user.getBalance());
 
         textViewUserName.setText(user.getName());
         textViewUserAccount.setText(account);
-        textViewUserBalance.setText("R$ " + String.valueOf(user.getBalance()));
+        textViewUserBalance.setText(balance);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         adapter = new StatementRecyclerAdapter();
@@ -68,12 +68,28 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
         output.loadData();
     }
 
-    private String formatBalance(Double value) {
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        String balance = formatter.format(value);
 
-        return "R" + balance;
+    public static String formatCurrencyValue(Double value) {
+        if (value != null) {
+            String aux = String.format(Locale.US, "%.2f", value);
 
+            aux = aux.replace(".", ",");
+            StringBuilder stringBuilder = new StringBuilder(aux);
+            if (aux.length() <= 9 && aux.length() > 6)
+                stringBuilder.insert(aux.length() - 6, ".");
+            else if (aux.length() <= 12 && aux.length() > 9) {
+                stringBuilder.insert(aux.length() - 6, ".");
+                stringBuilder.insert(aux.length() - 9, ".");
+            } else if (aux.length() <= 15 && aux.length() > 12) {
+                stringBuilder.insert(aux.length() - 6, ".");
+                stringBuilder.insert(aux.length() - 9, ".");
+                stringBuilder.insert(aux.length() - 12, ".");
+
+            }
+
+            return "R$"+stringBuilder.toString();
+        } else
+            return "0,00";
     }
 
     private String formatUserAccount(String agency, String bankAccount) {
