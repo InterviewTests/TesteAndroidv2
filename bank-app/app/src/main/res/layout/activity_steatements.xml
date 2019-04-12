@@ -4,11 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".statements.view.StatementsActivity">
+
+    <LinearLayout
+        android:id="@+id/content_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/space_default"
+        android:paddingRight="@dimen/space_default"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_view_user_name"
+            style="@style/UserHeader.Content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_default"
+            tools:text="User name" />
+
+        <TextView
+            style="@style/UserHeader.Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_default"
+            android:text="@string/account" />
+
+        <TextView
+            android:id="@+id/text_view_user_account"
+            style="@style/UserHeader.Content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_minimum"
+            tools:text="0000/0000000" />
+
+        <TextView
+            style="@style/UserHeader.Label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_default"
+            android:text="@string/balance" />
+
+        <TextView
+            android:id="@+id/txt_view_user_balance"
+            style="@style/UserHeader.Content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_minimum"
+            android:layout_marginBottom="@dimen/space_default"
+            tools:text="R$1.000" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_view_recently_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_default"
+        android:textColor="@android:color/black"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginBottom="@dimen/space_default"
+        android:paddingLeft="@dimen/space_default"
+        android:text="@string/recently"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/content_header" />
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_default"
+        android:paddingLeft="@dimen/space_default"
+        android:paddingRight="@dimen/space_default"
+        app:layout_constraintTop_toBottomOf="@id/txt_view_recently_label" />
 
 </android.support.constraint.ConstraintLayout>
