@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:orientation="vertical"
     tools:context=".statements.view.StatementsActivity">
 
     <LinearLayout
@@ -63,20 +63,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_default"
-        android:textColor="@android:color/black"
-        android:fontFamily="sans-serif-light"
         android:layout_marginBottom="@dimen/space_default"
+        android:fontFamily="sans-serif-light"
         android:paddingLeft="@dimen/space_default"
         android:text="@string/recently"
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/content_header" />
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="@dimen/space_default"
-        app:layout_constraintTop_toBottomOf="@id/txt_view_recently_label" />
+        android:paddingBottom="@dimen/space_default" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
