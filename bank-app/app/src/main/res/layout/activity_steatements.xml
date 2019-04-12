@@ -77,8 +77,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_default"
-        android:paddingLeft="@dimen/space_default"
-        android:paddingRight="@dimen/space_default"
         app:layout_constraintTop_toBottomOf="@id/txt_view_recently_label" />
 
 </android.support.constraint.ConstraintLayout>
