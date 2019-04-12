@@ -103,7 +103,12 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
 
             }
 
-            return "R$"+stringBuilder.toString();
+            String valueFormatted = stringBuilder.toString();
+
+            if (valueFormatted.charAt(0) == '-' && valueFormatted.charAt(1) == '.')
+                valueFormatted = valueFormatted.replace(".","");
+
+            return "R$" + valueFormatted;
         } else
             return "0,00";
     }
@@ -121,14 +126,14 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
     public void dataLoaded(List<Statement> statementList) {
         adapter.addAll(statementList);
 
-        if(adapter.getItemCount()<=0){
+        if (adapter.getItemCount() <= 0) {
             showNoContentState();
-        }else{
+        } else {
             showContentState();
         }
     }
 
-    public void retry(View view){
+    public void retry(View view) {
         showLoadingState();
         output.loadData();
     }
@@ -146,7 +151,7 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
         textViewNoContent.setVisibility(View.VISIBLE);
     }
 
-    private void showLoadingState(){
+    private void showLoadingState() {
         buttonRetry.setVisibility(View.GONE);
         textViewError.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
@@ -154,7 +159,7 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
         textViewNoContent.setVisibility(View.VISIBLE);
     }
 
-    private void showErrorState(){
+    private void showErrorState() {
         buttonRetry.setVisibility(View.VISIBLE);
         textViewError.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
@@ -167,6 +172,6 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
         textViewError.setVisibility(View.GONE);
         progressBar.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
-        textViewNoContent.setVisibility(View.VISIBLE);
+        textViewNoContent.setVisibility(View.GONE);
     }
 }
