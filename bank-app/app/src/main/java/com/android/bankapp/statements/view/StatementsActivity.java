@@ -6,6 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.bankapp.R;
@@ -38,6 +41,19 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
 
     @ViewById(R.id.txt_view_user_balance)
     TextView textViewUserBalance;
+
+    @ViewById(R.id.progress)
+    ProgressBar progressBar;
+
+    @ViewById(R.id.text_view_error_state)
+    TextView textViewError;
+
+    @ViewById(R.id.text_view_no_content)
+    TextView textViewNoContent;
+
+    @ViewById(R.id.button_retry)
+    Button buttonRetry;
+
 
     public StatementInteractor output;
     private StatementRecyclerAdapter adapter;
@@ -104,10 +120,53 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
     @Override
     public void dataLoaded(List<Statement> statementList) {
         adapter.addAll(statementList);
+
+        if(adapter.getItemCount()<=0){
+            showNoContentState();
+        }else{
+            showContentState();
+        }
+    }
+
+    public void retry(View view){
+        showLoadingState();
+        output.loadData();
     }
 
     @Override
     public void errorLoadData() {
+        showErrorState();
+    }
 
+    private void showNoContentState() {
+        buttonRetry.setVisibility(View.GONE);
+        textViewError.setVisibility(View.GONE);
+        progressBar.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.GONE);
+        textViewNoContent.setVisibility(View.VISIBLE);
+    }
+
+    private void showLoadingState(){
+        buttonRetry.setVisibility(View.GONE);
+        textViewError.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
+        textViewNoContent.setVisibility(View.VISIBLE);
+    }
+
+    private void showErrorState(){
+        buttonRetry.setVisibility(View.VISIBLE);
+        textViewError.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.GONE);
+        textViewNoContent.setVisibility(View.VISIBLE);
+    }
+
+    private void showContentState() {
+        buttonRetry.setVisibility(View.GONE);
+        textViewError.setVisibility(View.GONE);
+        progressBar.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
+        textViewNoContent.setVisibility(View.VISIBLE);
     }
 }

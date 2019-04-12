@@ -70,12 +70,50 @@
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/space_default" />
+
+    <TextView
+        android:id="@+id/text_view_error_state"
+        android:layout_width="match_parent"
+        android:text="@string/request_error"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_default"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/text_view_no_content"
+        android:layout_width="match_parent"
+        android:text="@string/statement_no_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_default"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/button_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/space_default"
+        android:onClick="retry"
+        android:padding="@dimen/space_default"
+        android:text="@string/button_retry"
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/space_default"
-        android:paddingBottom="@dimen/space_default" />
+        android:paddingBottom="@dimen/space_default"
+        android:visibility="gone" />
 
 </LinearLayout>
