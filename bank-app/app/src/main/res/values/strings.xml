@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">Bank App</string>
-    <string name="button_login">Entrar</string>
-    <string name="login_user_field_hint">Email ou CPF</string>
-    <string name="login_user_field_password">Senha</string>
+    <string name="button_login">Login</string>
+    <string name="login_user_field_hint">User</string>
+    <string name="login_user_field_password">Password</string>
     <string name="password_invalid">Senha inválida   Sua senha precisa conter pelo menos: 1 letra maiscula, 1 caracter especial e 1 número</string>
     <string name="request_error">Tivemos um problema interno, tente novamente!</string>
     <string name="login_unauthorize">Usuário ou senha incorretos.</string>
     <string name="login_fields_required">Por favor, preencha todos os campos!</string>
+    <string name="bank_logo_content_description">Image app logo</string>
 </resources>
