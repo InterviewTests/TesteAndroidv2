@@ -4,6 +4,7 @@ import com.android.bankapp.service.BankService;
 import com.android.bankapp.service.ServiceGenerator;
 import com.android.bankapp.statements.model.StatementResponse;
 import com.android.bankapp.statements.view.StatementsActivity;
+import com.android.bankapp.util.UserStateUtil;
 
 import java.lang.ref.WeakReference;
 
@@ -23,7 +24,9 @@ public class StatementsPresenter implements StatementPresenterInput {
     @Override
     public void loadData() {
 
-        Call<StatementResponse> call = service.loadStatement(1);
+        int id = UserStateUtil.getUserAccount().getUserId();
+
+        Call<StatementResponse> call = service.loadStatement(id);
 
         call.enqueue(new Callback<StatementResponse>() {
             @Override
