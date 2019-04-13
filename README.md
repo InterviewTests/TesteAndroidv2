@@ -4,6 +4,8 @@
 
 Apenas instale o app e utilize o usuário de teste.
 
+## Introdução
+
 Esse repositório contem todo o material necessário para realizar o teste: 
 - A especificação do layout está na pasta 'bank_app_layout' abrindo o index.html, utilizar os Styles do Android
 
