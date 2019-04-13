@@ -18,6 +18,7 @@ import com.android.bankapp.login.model.UserAccount;
 import com.android.bankapp.statements.StatementConfigurator;
 import com.android.bankapp.statements.interactor.StatementInteractor;
 import com.android.bankapp.statements.model.Statement;
+import com.android.bankapp.statements.router.StatementRouter;
 import com.android.bankapp.statements.view.adapter.StatementRecyclerAdapter;
 import com.android.bankapp.util.UserStateUtil;
 
@@ -59,6 +60,7 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
 
     public StatementInteractor output;
     private StatementRecyclerAdapter adapter;
+    public StatementRouter router;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,9 +85,9 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        if(isNetworkConnection()){
+        if (isNetworkConnection()) {
             output.loadData();
-        }else{
+        } else {
             textViewError.setText(getString(R.string.no_internet_connection));
             showErrorState();
         }
@@ -113,7 +115,7 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
             String valueFormatted = stringBuilder.toString();
 
             if (valueFormatted.charAt(0) == '-' && valueFormatted.charAt(1) == '.')
-                valueFormatted = valueFormatted.replace(".","");
+                valueFormatted = valueFormatted.replace(".", "");
 
             return "R$" + valueFormatted;
         } else
@@ -142,10 +144,10 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
 
     public void retry(View view) {
         showLoadingState();
-        if(isNetworkConnection()){
+        if (isNetworkConnection()) {
             textViewError.setText(getString(R.string.request_error));
             output.loadData();
-        }else{
+        } else {
             textViewError.setText(getString(R.string.no_internet_connection));
             showErrorState();
         }
@@ -195,4 +197,7 @@ public class StatementsActivity extends AppCompatActivity implements StatementAc
     }
 
 
+    public void logOut(View view) {
+        router.goToLogin(this);
+    }
 }
