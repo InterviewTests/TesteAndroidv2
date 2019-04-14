@@ -10,34 +10,30 @@ import android.widget.TextView;
 import com.santander.vicolmoraes.santander.Model.TransacaoVO;
 import com.santander.vicolmoraes.santander.R;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class TransacoesAdapter extends RecyclerView.Adapter<TransacoesAdapter.TransacoesViewHolder> {
 
-
     private ArrayList<TransacaoVO> listaTransacoes;
 
     public TransacoesAdapter(ArrayList<TransacaoVO> lista) {
-
         listaTransacoes = lista;
         notifyDataSetChanged();
     }
 
     @Override
     public TransacoesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_transacao, parent, false);
         return new TransacoesViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TransacoesViewHolder holder, int position) {
-
         holder.tipo.setText(listaTransacoes.get(position).getTitulo());
         holder.descricao.setText(listaTransacoes.get(position).getDescricao());
         holder.data.setText(android.text.format.DateFormat.format("dd/MM/yyyy", listaTransacoes.get(position).getData()).toString());
-        holder.valor.setText(String.valueOf(listaTransacoes.get(position).getValue()));
-
+        holder.valor.setText(NumberFormat.getCurrencyInstance().format(listaTransacoes.get(position).getValue()));
     }
 
     @Override
