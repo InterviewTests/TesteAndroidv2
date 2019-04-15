@@ -44,14 +44,15 @@ public class LocationActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String senha = etSenha.getText().toString();
-                Regex regex = new Regex("^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*\\W+).{1,}$");
-                if (!regex.matches(senha)) {
-                    Toast toast = Toast.makeText(getBaseContext(), getString(R.string.location_erro_senha), Toast.LENGTH_SHORT);
-                    toast.show();
-                } else {
 
-                    Call<DataUsuarioVO> call = new RetrofitConfig().getUsuario().buscarUsuario(etLogin.getText().toString(), etSenha.getText().toString());
+                String senha = etSenha.getText().toString();
+                String login = etLogin.getText().toString();
+                if (!validarSenha(senha)) {
+                    Toast.makeText(getBaseContext(), getString(R.string.location_erro_senha), Toast.LENGTH_SHORT).show();
+                } else if (validarLogin(login)) {
+                    Toast.makeText(getBaseContext(), getString(R.string.location_erro_login), Toast.LENGTH_SHORT).show();
+                } else {
+                    Call<DataUsuarioVO> call = new RetrofitConfig().getUsuario().buscarUsuario(login, senha);
                     call.enqueue(new Callback<DataUsuarioVO>() {
                         @Override
                         public void onResponse(@NonNull Call<DataUsuarioVO> call, @NonNull Response<DataUsuarioVO> response) {
@@ -71,5 +72,14 @@ public class LocationActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public boolean validarLogin(String login) {
+        return login.isEmpty();
+    }
+
+    public boolean validarSenha(String senha) {
+        Regex regex = new Regex("^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*\\W+).{1,}$");
+        return regex.matches(senha);
     }
 }

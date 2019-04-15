@@ -10,5 +10,6 @@
     <string name="location_erro">Erro no login</string>
     <string name="currency_erro">Erro ao obter transações</string>
     <string name="location_erro_senha">Senha deve ter 1 letra maiúscula, 1 caracter especial e 1 caracter alfanumérico</string>
+    <string name="location_erro_login">O login está vazio</string>
 
 </resources>

@@ -11,3 +11,5 @@ public interface TransacaoService {
     @GET("statements/{idUser}")
     Call<DataTransacaoVO> buscarTransacoes(@Path("idUser") String usuario);
 }
+
+

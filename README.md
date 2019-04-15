@@ -2,7 +2,7 @@
 
 O projeto foi todo feito em Java, e com a arquitetura MVVM.
 Para o consumo das APIs foi usado "Retrofit", para transformação do Json em objeto foi usado "converter-jackson".
-Para os testes unitários foi usado "Robolectric".
+Para os testes unitários foi usado "Mockito".
 minSdkVersion 19.
 targetSdkVersion 28.
 
