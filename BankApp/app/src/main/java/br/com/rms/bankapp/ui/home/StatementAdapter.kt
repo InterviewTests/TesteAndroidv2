@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rms.bankapp.data.local.database.entity.Statement
+import br.com.rms.bankapp.utils.UtilsDate
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_statement.*
 import java.text.NumberFormat
@@ -28,17 +29,9 @@ class StatementAdapter : RecyclerView.Adapter<StatementAdapter.ViewHolder>() {
         val statement = statements[position]
 
         holder.tvPaymentTitle.text = statement.title
-        formatStatementDate(holder, statement)
+        holder.tvStatementDate.text = statement.date?.let { UtilsDate.formatSimpleDate(it) }
         formatStatementValue(holder, statement)
         holder.tvStatementDesc.text = statement.desc
-    }
-
-    @SuppressLint("SimpleDateFormat")
-    private fun formatStatementDate(holder: ViewHolder, statement: Statement) {
-        val parser = SimpleDateFormat("yyyy-MM-dd")
-        val formatter = SimpleDateFormat("dd/MM/yyyy")
-        val output = formatter.format(parser.parse(statement.date))
-        holder.tvStatementDate.text = output
     }
 
     private fun formatStatementValue(holder: ViewHolder, statement: Statement) {
