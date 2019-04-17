@@ -74,6 +74,7 @@ dependencies {
     implementation applicationDependencies.rxjava
     implementation applicationDependencies.room
     implementation applicationDependencies.stetho
+    implementation applicationDependencies.stethoOkhttp3
 
     //Unit/Integration tests dependencies
     testImplementation unitTestDependencies.kotlin

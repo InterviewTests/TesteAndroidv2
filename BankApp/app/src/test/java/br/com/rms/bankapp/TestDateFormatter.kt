@@ -2,6 +2,7 @@ package br.com.rms.bankapp
 
 import br.com.rms.bankapp.utils.extensions.formatYmdDateToDmyDateFormat
 import org.junit.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class TestDateFormatter {
@@ -13,10 +14,10 @@ class TestDateFormatter {
         val serverDate = "2019-12-01"
 
         // when
-        val result = expectedDate == serverDate.formatYmdDateToDmyDateFormat()
+        val result = serverDate.formatYmdDateToDmyDateFormat()
 
         // Then
-        assertTrue { result }
+        assertEquals(expectedDate, result)
     }
 
     @Test

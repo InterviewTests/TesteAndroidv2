@@ -31,6 +31,7 @@ ext {
 
 
 
+
     //Unit Testing
     robolectric_version = '3.8'
     junit_version = '4.12'
@@ -73,6 +74,7 @@ ext {
             room:                       "androidx.room:room-runtime:$room_version",
             roomCompiler:               "androidx.room:room-compiler:$room_version",
             stetho:                     "com.facebook.stetho:stetho:$stetho_version",
+            stethoOkhttp3:               "com.facebook.stetho:stetho-okhttp3:$stetho_version",
 
     ]
 
