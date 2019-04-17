@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rms.bankapp.data.local.database.entity.Statement
-import br.com.rms.bankapp.utils.UtilsDate
 import br.com.rms.bankapp.utils.UtilsMoneyFormatting
+import br.com.rms.bankapp.utils.extensions.formatYmdDateToDmyDateFormat
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_statement.*
 
@@ -27,7 +27,7 @@ class StatementAdapter : RecyclerView.Adapter<StatementAdapter.ViewHolder>() {
         val statement = statements[position]
 
         holder.tvPaymentTitle.text = statement.title
-        holder.tvStatementDate.text = statement.date?.let { UtilsDate.formatSimpleDate(it) }
+        holder.tvStatementDate.text = statement.date.formatYmdDateToDmyDateFormat()
         holder.tvStatementValue.text = statement.value?.let { UtilsMoneyFormatting.simpleMoneyFormmat(it) }
         holder.tvStatementDesc.text = statement.desc
     }

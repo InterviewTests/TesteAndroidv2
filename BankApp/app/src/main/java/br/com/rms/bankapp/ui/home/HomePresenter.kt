@@ -9,13 +9,12 @@ import br.com.rms.bankapp.data.local.database.entity.Statement
 import br.com.rms.bankapp.data.remote.model.StatementResponse
 import br.com.rms.bankapp.data.repository.StatementRepository
 import br.com.rms.bankapp.data.repository.user.UserRepository
-import br.com.rms.bankapp.utils.Mask
+import br.com.rms.bankapp.utils.UtilsMask
 import br.com.rms.bankapp.utils.UtilsMoneyFormatting
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import java.text.NumberFormat
 
 class HomePresenter(
     private val userRepository: UserRepository,
@@ -39,7 +38,7 @@ class HomePresenter(
                     val statementList = statementResponse.statementList
                     if (!statementList.isNullOrEmpty()) {
                         view?.onMoreStatementsReady(statementList)
-                        updatePageData(statementList)
+                        updatePageData()
                     }
                     view?.hideLoading()
                 }
@@ -55,7 +54,6 @@ class HomePresenter(
                 }
 
             })
-
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
@@ -68,7 +66,7 @@ class HomePresenter(
                     val statementList = statementResponse.statementList
                     if (!statementList.isNullOrEmpty()) {
                         view?.onMoreStatementsReady(statementList)
-                        updatePageData(statementList)
+                        updatePageData()
                     }
                     view?.hideLoading()
                 }
@@ -82,11 +80,10 @@ class HomePresenter(
                     view?.showErrorMessage(R.string.error_message_load_statement)
 
                 }
-
             })
     }
 
-    private fun updatePageData(statements: List<Statement?>) {
+    private fun updatePageData() {
         loading = false
         nextPage++
     }
@@ -117,9 +114,7 @@ class HomePresenter(
                     view?.showErrorMessage(R.string.error_message_load_user_account_data)
                     view?.hideLoading()
                 }
-
             })
-
     }
 
     fun updateUserName(name: String) {
@@ -127,7 +122,7 @@ class HomePresenter(
     }
 
     fun updateUserAccount(agency: String, account: String) {
-        val agencyFormat = Mask().addMask(agency, "##.######-#")
+        val agencyFormat = UtilsMask.addAgencyMask(agency)
         view?.updateUserAccount(account, agencyFormat)
     }
 
