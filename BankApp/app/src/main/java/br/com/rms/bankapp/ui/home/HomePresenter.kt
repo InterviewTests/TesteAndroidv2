@@ -5,11 +5,9 @@ import androidx.lifecycle.OnLifecycleEvent
 import br.com.rms.bankapp.R
 import br.com.rms.bankapp.base.mvp.BasePresenter
 import br.com.rms.bankapp.data.local.database.entity.Account
-import br.com.rms.bankapp.data.local.database.entity.Statement
 import br.com.rms.bankapp.data.remote.model.StatementResponse
 import br.com.rms.bankapp.data.repository.StatementRepository
 import br.com.rms.bankapp.data.repository.user.UserRepository
-import br.com.rms.bankapp.utils.UtilsMask
 import br.com.rms.bankapp.utils.UtilsMoneyFormatting
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -122,8 +120,7 @@ class HomePresenter(
     }
 
     fun updateUserAccount(agency: String, account: String) {
-        val agencyFormat = UtilsMask.addAgencyMask(agency)
-        view?.updateUserAccount(account, agencyFormat)
+        view?.updateUserAccount(account, agency)
     }
 
     fun updateUserBalance(balance: Double) {

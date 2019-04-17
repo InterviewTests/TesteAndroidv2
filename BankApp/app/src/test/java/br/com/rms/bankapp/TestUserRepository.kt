@@ -16,12 +16,6 @@ class TestUserRepository {
     val userEmail = User(0, "teste@email.com", "@Teste1", 1000)
     val userCpf = User(0, "40182994007", "@Teste1", 1000)
 
-    /*var userRepository = UserRepository(
-        userDao =,
-        accountDao =,
-        apiService =,
-        validation =,
-    )*/
 
     @Mock
     lateinit var mockUserDao: UserDao
