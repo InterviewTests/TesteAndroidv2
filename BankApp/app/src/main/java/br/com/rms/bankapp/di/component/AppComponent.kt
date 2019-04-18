@@ -7,19 +7,17 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
-
+@Singleton
 @Component(
     modules = [
-        ApiModule::class,
-        DataBaseModule::class,
-        ActivityModule::class,
-        FragmentModule::class,
         AndroidSupportInjectionModule::class,
-        PresenterModule::class]
+        AppModule::class,
+        ApiModule::class,
+        ActivityModule::class,
+        DataBaseModule::class
+        ]
 )
-@Singleton
 interface AppComponent {
-
     @Component.Builder
     interface Builder {
         @BindsInstance

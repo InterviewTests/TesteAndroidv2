@@ -45,6 +45,7 @@ abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter<V>>:
     }
 
     override fun onAttach(context: Context?) {
+        AndroidSupportInjection.inject(this)
         super.onAttach(context)
     }
 
@@ -56,7 +57,7 @@ abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter<V>>:
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //presenter = newPresenterInstance()
-        presenter.attach(getViewInstance())
+        //presenter.attach(getViewInstance())
         initViews()
     }
 

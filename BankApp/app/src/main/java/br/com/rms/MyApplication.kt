@@ -22,14 +22,15 @@ class MyApplication : Application(), HasActivityInjector{
     override fun onCreate() {
         super.onCreate()
 
-        if(BuildConfig.DEBUG){
-            Stetho.initializeWithDefaults(this)
-        }
-
         DaggerAppComponent.builder()
             .application(this)
             .build()
             .inject(this)
+
+        if(BuildConfig.DEBUG){
+            Stetho.initializeWithDefaults(this)
+        }
+
 
     }
 

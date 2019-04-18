@@ -13,11 +13,13 @@ import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class HomePresenter(
+class HomePresenter @Inject constructor(
+    private val homeView : HomeContract.View,
     private val userRepository: UserRepository,
     private val statementRepository: StatementRepository
-) : BasePresenter<HomeContract.View>(), HomeContract.Presenter {
+) : BasePresenter<HomeContract.View>(homeView), HomeContract.Presenter {
 
     private var nextPage: Int = 0
     private var maxPage = Int.MAX_VALUE
@@ -35,19 +37,19 @@ class HomePresenter(
                 override fun onSuccess(statementResponse: StatementResponse) {
                     val statementList = statementResponse.statementList
                     if (!statementList.isNullOrEmpty()) {
-                        view?.onMoreStatementsReady(statementList)
+                        homeView.onMoreStatementsReady(statementList)
                         updatePageData()
                     }
-                    view?.hideLoading()
+                    homeView.hideLoading()
                 }
 
                 override fun onSubscribe(d: Disposable) {
-                    view?.showLoading()
+                    homeView.showLoading()
                 }
 
                 override fun onError(e: Throwable) {
-                    view?.showErrorMessage(R.string.error_message_load_statement)
-                    view?.hideLoading()
+                    homeView.showErrorMessage(R.string.error_message_load_statement)
+                    homeView.hideLoading()
 
                 }
 
@@ -63,19 +65,19 @@ class HomePresenter(
                 override fun onSuccess(statementResponse: StatementResponse) {
                     val statementList = statementResponse.statementList
                     if (!statementList.isNullOrEmpty()) {
-                        view?.onMoreStatementsReady(statementList)
+                        homeView.onMoreStatementsReady(statementList)
                         updatePageData()
                     }
-                    view?.hideLoading()
+                    homeView.hideLoading()
                 }
 
                 override fun onSubscribe(d: Disposable) {
-                    view?.showLoading()
+                    homeView.showLoading()
                 }
 
                 override fun onError(e: Throwable) {
-                    view?.hideLoading()
-                    view?.showErrorMessage(R.string.error_message_load_statement)
+                    homeView.hideLoading()
+                    homeView.showErrorMessage(R.string.error_message_load_statement)
 
                 }
             })
@@ -101,30 +103,30 @@ class HomePresenter(
                         }
                     }
                     t.balance?.let { updateUserBalance(it) }
-                    view?.hideLoading()
+                    homeView.hideLoading()
                 }
 
                 override fun onSubscribe(d: Disposable) {
-                    view?.showLoading()
+                    homeView.showLoading()
                 }
 
                 override fun onError(e: Throwable) {
-                    view?.showErrorMessage(R.string.error_message_load_user_account_data)
-                    view?.hideLoading()
+                    homeView.showErrorMessage(R.string.error_message_load_user_account_data)
+                    homeView.hideLoading()
                 }
             })
     }
 
     fun updateUserName(name: String) {
-        view?.updateUserName(name)
+        homeView.updateUserName(name)
     }
 
     fun updateUserAccount(agency: String, account: String) {
-        view?.updateUserAccount(account, agency)
+        homeView.updateUserAccount(account, agency)
     }
 
     fun updateUserBalance(balance: Double) {
-        view?.updateUserBalance(UtilsMoneyFormatting.simpleMoneyFormmat(balance))
+        homeView.updateUserBalance(UtilsMoneyFormatting.simpleMoneyFormmat(balance))
 
     }
 }

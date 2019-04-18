@@ -19,8 +19,8 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         AndroidInjection.inject(this)
+        super.onCreate(savedInstanceState)
         setContentView(getLayoutRes())
         onInitViews()
 

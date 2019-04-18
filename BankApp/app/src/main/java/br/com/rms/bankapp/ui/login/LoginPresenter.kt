@@ -11,11 +11,13 @@ import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 
-class LoginPresenter(
+class LoginPresenter @Inject constructor(
+    private val loginView: LoginContract.View,
     private val userRepository: UserRepository
-) : BasePresenter<LoginContract.View>(), LoginContract.Presenter {
+) : BasePresenter<LoginContract.View>(loginView), LoginContract.Presenter {
 
     override fun loadUserData() {
         userRepository.getLocalUserData()
@@ -23,7 +25,7 @@ class LoginPresenter(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<User>{
                 override fun onSuccess(t: User) {
-                    view?.setUser(t.user)
+                    loginView.setUser(t.user)
                 }
 
                 override fun onSubscribe(d: Disposable) {
@@ -37,8 +39,8 @@ class LoginPresenter(
     }
 
     override fun login() {
-        val user = view?.getUser()
-        val password = view?.getPassword()
+        val user = loginView.getUser()
+        val password = loginView.getPassword()
 
         userRepository.validateUserData(user, password)
             .subscribeOn(Schedulers.io())
@@ -49,17 +51,17 @@ class LoginPresenter(
                 }
 
                 override fun onSubscribe(d: Disposable) {
-                    view?.showLoader()
+                    loginView.showLoader()
                 }
 
                 override fun onError(e: Throwable) {
 
                     if(e is ValidationException){
-                        view?.onValidationException(e)
+                        loginView.onValidationException(e)
                     }else {
-                        view?.showErrorMessage(R.string.error_message_validation_login_data)
+                        loginView.showErrorMessage(R.string.error_message_validation_login_data)
                     }
-                    view?.hideLoader()
+                    loginView.hideLoader()
 
                 }
             })
@@ -71,8 +73,8 @@ class LoginPresenter(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : CompletableObserver{
                 override fun onComplete() {
-                    view?.hideLoader()
-                    view?.loginSuccess()
+                    loginView.hideLoader()
+                    loginView.loginSuccess()
                 }
 
                 override fun onSubscribe(d: Disposable) {
@@ -80,8 +82,8 @@ class LoginPresenter(
                 }
 
                 override fun onError(e: Throwable) {
-                    view?.showErrorMessage(R.string.error_message_request_login)
-                    view?.hideLoader()
+                    loginView.showErrorMessage(R.string.error_message_request_login)
+                    loginView.hideLoader()
                 }
 
             })
