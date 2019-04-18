@@ -3,6 +3,8 @@ package br.com.rms.bankapp.di.module
 import android.app.Application
 import br.com.rms.bankapp.data.remote.api.BankAppApiService
 import br.com.rms.bankapp.data.remote.api.BASE_URL
+import com.facebook.stetho.Stetho
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -38,6 +40,7 @@ class ApiModule {
     internal fun provideOkhttpClient(cache: Cache): OkHttpClient {
         return OkHttpClient.Builder()
             .cache(cache)
+            .addNetworkInterceptor(StethoInterceptor())
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .build()

@@ -1,22 +1,21 @@
 package br.com.rms.bankapp.ui.home
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rms.bankapp.data.local.database.entity.Statement
+import br.com.rms.bankapp.utils.UtilsMoneyFormatting
+import br.com.rms.bankapp.utils.extensions.formatYmdDateToDmyDateFormat
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_statement.*
-import java.text.NumberFormat
-import java.text.SimpleDateFormat
 
 
 class StatementAdapter : RecyclerView.Adapter<StatementAdapter.ViewHolder>() {
 
     private val statements = mutableListOf<Statement>()
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatementAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val containerView = layoutInflater.inflate(br.com.rms.bankapp.R.layout.item_statement, parent, false)
         return ViewHolder(containerView)
@@ -24,28 +23,14 @@ class StatementAdapter : RecyclerView.Adapter<StatementAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = statements.size
 
-    override fun onBindViewHolder(holder: StatementAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val statement = statements[position]
 
         holder.tvPaymentTitle.text = statement.title
-        formatStatementDate(holder, statement)
-        formatStatementValue(holder, statement)
+        holder.tvStatementDate.text = statement.date.formatYmdDateToDmyDateFormat()
+        holder.tvStatementValue.text = statement.value?.let { UtilsMoneyFormatting.simpleMoneyFormmat(it) }
         holder.tvStatementDesc.text = statement.desc
     }
-
-    @SuppressLint("SimpleDateFormat")
-    private fun formatStatementDate(holder: ViewHolder, statement: Statement) {
-        val parser = SimpleDateFormat("yyyy-MM-dd")
-        val formatter = SimpleDateFormat("dd/MM/yyyy")
-        val output = formatter.format(parser.parse(statement.date))
-        holder.tvStatementDate.text = output
-    }
-
-    private fun formatStatementValue(holder: ViewHolder, statement: Statement) {
-        val numberFormat = NumberFormat.getCurrencyInstance()
-        holder.tvStatementValue.text = numberFormat.format(statement.value)
-    }
-
 
     fun addStatements(newStatements: List<Statement>) {
         val oldStatementList = mutableListOf<Statement>()

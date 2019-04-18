@@ -5,16 +5,14 @@ import androidx.lifecycle.OnLifecycleEvent
 import br.com.rms.bankapp.R
 import br.com.rms.bankapp.base.mvp.BasePresenter
 import br.com.rms.bankapp.data.local.database.entity.Account
-import br.com.rms.bankapp.data.local.database.entity.Statement
 import br.com.rms.bankapp.data.remote.model.StatementResponse
 import br.com.rms.bankapp.data.repository.StatementRepository
 import br.com.rms.bankapp.data.repository.user.UserRepository
-import br.com.rms.bankapp.utils.Mask
+import br.com.rms.bankapp.utils.UtilsMoneyFormatting
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import java.text.NumberFormat
 
 class HomePresenter(
     private val userRepository: UserRepository,
@@ -38,7 +36,7 @@ class HomePresenter(
                     val statementList = statementResponse.statementList
                     if (!statementList.isNullOrEmpty()) {
                         view?.onMoreStatementsReady(statementList)
-                        updatePageData(statementList)
+                        updatePageData()
                     }
                     view?.hideLoading()
                 }
@@ -54,11 +52,10 @@ class HomePresenter(
                 }
 
             })
-
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-        fun loadStatements() {
+    fun loadStatements() {
         statementRepository.loadRemoteStatement(1)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -67,7 +64,7 @@ class HomePresenter(
                     val statementList = statementResponse.statementList
                     if (!statementList.isNullOrEmpty()) {
                         view?.onMoreStatementsReady(statementList)
-                        updatePageData(statementList)
+                        updatePageData()
                     }
                     view?.hideLoading()
                 }
@@ -81,11 +78,10 @@ class HomePresenter(
                     view?.showErrorMessage(R.string.error_message_load_statement)
 
                 }
-
             })
     }
 
-    private fun updatePageData(statements: List<Statement?>) {
+    private fun updatePageData() {
         loading = false
         nextPage++
     }
@@ -97,11 +93,15 @@ class HomePresenter(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<Account> {
                 override fun onSuccess(t: Account) {
-                    updateUserName(t.name!!)
-                    updateUserAccount(t.agency!!, t.bankAccount!!)
-                    updateUserBalance(t.balance)
-                    view?.hideLoading()
+                    t.name?.let { updateUserName(it) }
 
+                    t.agency?.let { agency ->
+                        t.bankAccount?.let { account ->
+                            updateUserAccount(agency, account)
+                        }
+                    }
+                    t.balance?.let { updateUserBalance(it) }
+                    view?.hideLoading()
                 }
 
                 override fun onSubscribe(d: Disposable) {
@@ -111,12 +111,8 @@ class HomePresenter(
                 override fun onError(e: Throwable) {
                     view?.showErrorMessage(R.string.error_message_load_user_account_data)
                     view?.hideLoading()
-
-
                 }
-
             })
-
     }
 
     fun updateUserName(name: String) {
@@ -124,12 +120,11 @@ class HomePresenter(
     }
 
     fun updateUserAccount(agency: String, account: String) {
-        var agencyFormat = Mask().addMask(agency, "##.######-#")
-        view?.updateUserAccount(account, agencyFormat)
+        view?.updateUserAccount(account, agency)
     }
 
-    fun updateUserBalance(balance: Double?) {
-        val nf = NumberFormat.getCurrencyInstance()
-        view?.updateUserBalance(nf.format(balance))
+    fun updateUserBalance(balance: Double) {
+        view?.updateUserBalance(UtilsMoneyFormatting.simpleMoneyFormmat(balance))
+
     }
 }

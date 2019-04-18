@@ -8,6 +8,7 @@ import br.com.rms.bankapp.R
 import br.com.rms.bankapp.base.view.BaseFragment
 import br.com.rms.bankapp.data.local.database.entity.Statement
 import br.com.rms.bankapp.utils.EndlessRecyclerViewScrollListener
+import br.com.rms.bankapp.utils.extensions.formatAccountMask
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(), HomeContract.View {
@@ -54,7 +55,7 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(), 
     }
 
     override fun updateUserAccount(agency: String, account: String) {
-        tvUserAccount.text = getString(R.string.user_account_format,agency,account)
+        tvUserAccount.text = getString(R.string.user_account_format,agency,account.formatAccountMask())
     }
 
     override fun updateUserBalance(balance: String) {
