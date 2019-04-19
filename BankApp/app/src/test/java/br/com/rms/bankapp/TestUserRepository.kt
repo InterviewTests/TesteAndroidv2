@@ -44,7 +44,7 @@ class TestUserRepository {
 
     @Test
     fun userIsValid() {
-        val testObserver = userRepository.validation(
+        val testObserver = userRepository.validateLoginInformation(
             user = "",
             password = ""
         ).test()

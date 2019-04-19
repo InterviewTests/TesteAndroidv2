@@ -29,7 +29,7 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(), 
 
         rvStatement.addOnScrollListener(object : EndlessRecyclerViewScrollListener(layoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
-                presenter.loadMoreStatemens()
+                presenter.loadMoreStatements()
             }
         })
     }

@@ -26,7 +26,7 @@ class HomePresenter @Inject constructor(
     private var loading = false
 
 
-    override fun loadMoreStatemens() {
+    override fun loadMoreStatements() {
         if (nextPage < maxPage && !loading) {
             loading = true
         }

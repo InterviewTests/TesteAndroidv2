@@ -3,30 +3,26 @@ package br.com.rms.bankapp.base.view
 import android.content.Context
 import android.graphics.Point
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import br.com.rms.bankapp.R
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ProcessLifecycleOwner
 import br.com.rms.bankapp.base.mvp.BaseContract
 import br.com.rms.bankapp.base.mvp.BaseView
 import br.com.rms.bankapp.utils.validations.CheckBoxValidationException
 import br.com.rms.bankapp.utils.validations.EditTextValidationException
 import br.com.rms.bankapp.utils.validations.MultipleValidationExceptions
 import br.com.rms.bankapp.utils.validations.ValidationException
-import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter<V>>: Fragment(), BaseView<V,P> {
+abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter>: Fragment(), BaseView<V,P> {
 
-    val TAG = this.javaClass.simpleName
+    val TAG: String = this.javaClass.simpleName
     private lateinit var root: View
 
     @Inject
@@ -35,6 +31,7 @@ abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter<V>>:
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidSupportInjection.inject(this)
+        ProcessLifecycleOwner.get().lifecycle.addObserver(presenter)
     }
 
     fun getWindowSize(): Point{
@@ -49,6 +46,10 @@ abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter<V>>:
         super.onAttach(context)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         root = inflater.inflate(getLayoutId(), container, false)
         return root
@@ -56,8 +57,6 @@ abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter<V>>:
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //presenter = newPresenterInstance()
-        //presenter.attach(getViewInstance())
         initViews()
     }
 
@@ -69,11 +68,11 @@ abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter<V>>:
         showToast(textRes, Toast.LENGTH_LONG)
     }
 
-    fun showToast(textRes: Int, lenght: Int){
+    private fun showToast(textRes: Int, lenght: Int){
         Toast.makeText(context,textRes,lenght).show()
     }
 
-    fun onValidationException(throwable: ValidationException) {
+    fun validateError(throwable: ValidationException) {
         var validationExceptions = listOf(throwable)
         if (throwable is MultipleValidationExceptions) {
             validationExceptions = throwable.validationExceptions

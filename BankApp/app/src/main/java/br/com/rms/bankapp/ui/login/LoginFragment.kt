@@ -1,13 +1,11 @@
 package br.com.rms.bankapp.ui.login
 
 import android.app.Activity
-import android.os.Bundle
 import android.view.View
 import br.com.rms.bankapp.R
 import br.com.rms.bankapp.base.view.BaseFragment
 import br.com.rms.bankapp.utils.extensions.fadeIn
 import br.com.rms.bankapp.utils.extensions.loadDrawable
-import dagger.android.support.AndroidSupportInjection
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -25,27 +23,35 @@ class LoginFragment : BaseFragment<LoginContract.View, LoginContract.Presenter>(
     override fun getLayoutId(): Int = R.layout.fragment_login
 
     override fun initViews() {
+        tfiUser.setText("email@email.com")
+        tfiPassword.setText("@Teste1")
+
         startScreenAnimation()
         btLogin.setOnClickListener {
-            presenter.login()
+            login()
         }
 
         ivBankLogo.loadDrawable(R.drawable.ic_bank_logo)
     }
 
-    fun startScreenAnimation() {
+    private fun login() {
+        val userLogin = tfiUser.text.toString()
+        val userPassword = tfiPassword.text.toString()
+        presenter.login(userLogin,userPassword)
+    }
+
+    private fun startScreenAnimation() {
         val time = 50L
         val disposable = Observable.interval(300,time, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .take(8)
+            .take(7)
             .map {
                 when (it) {
                     3L -> ivBankLogo.fadeIn(500)
                     4L ->tflUser.fadeIn(500)
                     5L -> tflPassowrd.fadeIn(500)
                     6L ->btLogin.fadeIn(500)
-                    7L -> presenter.loadUserData()
                     else ->{}
                 }
             }.subscribe()
@@ -62,13 +68,7 @@ class LoginFragment : BaseFragment<LoginContract.View, LoginContract.Presenter>(
         tfiUser.setText(user)
     }
 
-    override fun getUser(): String {
-        return tfiUser.text.toString()
-    }
 
-    override fun getPassword(): String {
-        return tfiPassword.text.toString()
-    }
 
     override fun showLoader() {
         flLoader.visibility = View.VISIBLE

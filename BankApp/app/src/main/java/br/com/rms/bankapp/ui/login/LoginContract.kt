@@ -1,14 +1,15 @@
 package br.com.rms.bankapp.ui.login
 
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import br.com.rms.bankapp.base.mvp.BaseContract
 import br.com.rms.bankapp.utils.validations.ValidationException
 
 interface LoginContract : BaseContract.View{
 
-    interface View : BaseContract.View{
-        fun getUser(): String
-        fun getPassword(): String
-        fun onValidationException(e: ValidationException)
+    interface View : BaseContract.View, LifecycleOwner {
+        override fun getLifecycle(): Lifecycle
+        fun validateError(e: ValidationException)
         fun showLoader()
         fun hideLoader()
         fun showErrorMessage(error_message_request_login: Int)
@@ -17,9 +18,7 @@ interface LoginContract : BaseContract.View{
 
     }
 
-    interface Presenter : BaseContract.Presenter<View>{
-        fun login()
-        fun loadUserData()
-
+    interface Presenter : BaseContract.Presenter{
+        fun login(userLogin: String, userPassword: String)
     }
 }
