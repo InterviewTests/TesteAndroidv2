@@ -1,8 +1,10 @@
 package br.com.rms.bankapp.data.repository.user
 
+import androidx.lifecycle.LiveData
 import br.com.rms.bankapp.data.local.database.dao.AccountDao
 import br.com.rms.bankapp.data.local.database.dao.UserDao
 import br.com.rms.bankapp.data.local.database.entity.Account
+import br.com.rms.bankapp.data.local.database.entity.USER_ID
 import br.com.rms.bankapp.data.local.database.entity.User
 import br.com.rms.bankapp.data.remote.api.BankAppApiService
 import br.com.rms.bankapp.data.remote.model.UserResponse
@@ -18,53 +20,57 @@ class UserRepository @Inject constructor(
     private val accountDao: AccountDao,
     private val apiService: BankAppApiService,
     private val validation: UserValidations
-) {
+) : UserRepositoryContract {
 
-    lateinit var user: User
-    lateinit var userResponse: UserResponse
-    fun validateUserData(userLogin: String?, password: String?): Completable {
-        user = User(0, userLogin!!, password!!, 0)
-        return validation(userLogin, password)
-    }
-
-    private fun saveUserData(it: UserResponse): Completable {
-        user.accountId = it.userAccount?.userId
-        return addUser(user).andThen(it.userAccount?.let { it1 -> addAccount(it1) })
-
-    }
-
-    fun validation(user: String?, password: String?): Completable {
-        return Completable.fromCallable {
-            validation.validateLoginData(user.toString(), password.toString())
-        }
-    }
-
-    fun getRemoteUserData(): Completable {
-        val userName = user.user
-        val password = user.password
-        return apiService.login(userName!!, password!!)
-            .flatMapCompletable { userResponse -> saveUserData(userResponse) }
-    }
-
-    fun getLocalUserData(): Single<User> {
-        return Single.fromCallable {
-            userDao.selectUser()
-        }
-    }
-
-    fun getLocalUserAccount(): Single<Account> {
+    override fun getLocalUserAccount(): Single<Account> {
         return Single.fromCallable {
             val user = userDao.selectUser()
             accountDao.selectAccount(user.accountId)
         }
     }
 
+    override fun loadUserName(): LiveData<String> {
+        return userDao.selectUserName()
+    }
 
-    fun addUser(user: User): Completable = Completable.fromCallable {
+    override fun login(userLogin: String, password: String): Completable {
+        return validateLoginInformation(userLogin, password)
+            .andThen(getRemoteUserData(userLogin, password))
+    }
+
+    private fun validateLoginInformation(user: String?, password: String?): Completable {
+        return Completable.fromCallable {
+            validation.validateLoginData(user.toString(), password.toString())
+        }
+    }
+
+    private fun getRemoteUserData(userLogin: String, password: String): Completable {
+        return apiService.login(userLogin, password)
+            .flatMapCompletable { userResponse -> saveUserData(userLogin, password, userResponse) }
+    }
+
+    private fun saveUserData(userLogin: String, password: String, userResponse: UserResponse): Completable {
+        val account = userResponse.userAccount
+        val user = getUser(userLogin, password, account)
+        return insertUserInDatabase(user).ambWith(account?.let { insertAccountInDatabase(it) })
+
+    }
+
+    private fun getUser(userLogin: String, password: String, account: Account?): User {
+        val accountId = account?.userId
+        return User(
+            id = USER_ID,
+            userLogin = userLogin,
+            password = password,
+            accountId = accountId
+        )
+    }
+
+    private fun insertUserInDatabase(user: User): Completable = Completable.fromCallable {
         userDao.insertUser(user)
     }
 
-    fun addAccount(account: Account): Completable = Completable.fromCallable {
+    private fun insertAccountInDatabase(account: Account): Completable = Completable.fromCallable {
         accountDao.insertAccount(account)
     }
 

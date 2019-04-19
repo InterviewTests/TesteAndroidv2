@@ -14,8 +14,8 @@ interface HomeContract : BaseContract.View {
         fun updateUserBalance(balance: String)
     }
 
-    interface Presenter : BaseContract.Presenter<View>{
-        fun loadMoreStatemens()
+    interface Presenter : BaseContract.Presenter{
+        fun loadMoreStatements()
         fun loadUserAccount()
     }
 }

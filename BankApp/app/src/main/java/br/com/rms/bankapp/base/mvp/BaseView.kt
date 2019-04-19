@@ -1,6 +1,6 @@
 package br.com.rms.bankapp.base.mvp
 
-interface BaseView<V: BaseContract.View, P: BaseContract.Presenter<V>> {
+interface BaseView<V: BaseContract.View, P: BaseContract.Presenter> {
 
     fun getViewInstance(): V
 

@@ -7,7 +7,7 @@ import br.com.rms.bankapp.base.mvp.BasePresenter
 import br.com.rms.bankapp.data.local.database.entity.Account
 import br.com.rms.bankapp.data.remote.model.StatementResponse
 import br.com.rms.bankapp.data.repository.StatementRepository
-import br.com.rms.bankapp.data.repository.user.UserRepository
+import br.com.rms.bankapp.data.repository.user.UserRepositoryContract
 import br.com.rms.bankapp.utils.UtilsMoneyFormatting
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,8 +16,8 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class HomePresenter @Inject constructor(
-    private val homeView : HomeContract.View,
-    private val userRepository: UserRepository,
+    private val homeView: HomeContract.View,
+    private val userRepository: UserRepositoryContract,
     private val statementRepository: StatementRepository
 ) : BasePresenter<HomeContract.View>(homeView), HomeContract.Presenter {
 
@@ -26,7 +26,7 @@ class HomePresenter @Inject constructor(
     private var loading = false
 
 
-    override fun loadMoreStatemens() {
+    override fun loadMoreStatements() {
         if (nextPage < maxPage && !loading) {
             loading = true
         }

@@ -1,5 +1,6 @@
 package br.com.rms.bankapp.data.local.database.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -16,5 +17,8 @@ abstract class UserDao {
 
     @Query("SELECT * FROM user WHERE id =$USER_ID")
     abstract fun selectUser() : User
+
+    @Query("SELECT userLogin FROM user WHERE id=$USER_ID")
+    abstract fun selectUserName(): LiveData<String>
 
 }
