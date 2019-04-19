@@ -20,20 +20,20 @@ class UserRepository @Inject constructor(
     private val accountDao: AccountDao,
     private val apiService: BankAppApiService,
     private val validation: UserValidations
-) {
+) : UserRepositoryContract {
 
-    fun getLocalUserAccount(): Single<Account> {
+    override fun getLocalUserAccount(): Single<Account> {
         return Single.fromCallable {
             val user = userDao.selectUser()
             accountDao.selectAccount(user.accountId)
         }
     }
 
-    fun loadUserName(): LiveData<String> {
+    override fun loadUserName(): LiveData<String> {
         return userDao.selectUserName()
     }
 
-    fun login(userLogin: String, password: String): Completable {
+    override fun login(userLogin: String, password: String): Completable {
         return validateLoginInformation(userLogin, password)
             .andThen(getRemoteUserData(userLogin, password))
     }

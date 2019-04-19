@@ -7,6 +7,7 @@ import androidx.lifecycle.OnLifecycleEvent
 import br.com.rms.bankapp.R
 import br.com.rms.bankapp.base.mvp.BasePresenter
 import br.com.rms.bankapp.data.repository.user.UserRepository
+import br.com.rms.bankapp.data.repository.user.UserRepositoryContract
 import br.com.rms.bankapp.utils.validations.ValidationException
 import io.reactivex.CompletableObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,7 +18,7 @@ import javax.inject.Inject
 
 class LoginPresenter @Inject constructor(
     private val loginView: LoginContract.View,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepositoryContract
 ) : BasePresenter<LoginContract.View>(loginView), LoginContract.Presenter {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
