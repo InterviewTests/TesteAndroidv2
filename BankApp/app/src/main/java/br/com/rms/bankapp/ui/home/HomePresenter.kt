@@ -1,14 +1,14 @@
 package br.com.rms.bankapp.ui.home
 
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.OnLifecycleEvent
 import br.com.rms.bankapp.R
 import br.com.rms.bankapp.base.mvp.BasePresenter
 import br.com.rms.bankapp.data.local.database.entity.Account
 import br.com.rms.bankapp.data.remote.model.StatementResponse
-import br.com.rms.bankapp.data.repository.StatementRepository
+import br.com.rms.bankapp.data.repository.statement.StatementRepositoryContract
 import br.com.rms.bankapp.data.repository.user.UserRepositoryContract
-import br.com.rms.bankapp.utils.UtilsMoneyFormatting
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -18,7 +18,7 @@ import javax.inject.Inject
 class HomePresenter @Inject constructor(
     private val homeView: HomeContract.View,
     private val userRepository: UserRepositoryContract,
-    private val statementRepository: StatementRepository
+    private val statementRepository: StatementRepositoryContract
 ) : BasePresenter<HomeContract.View>(homeView), HomeContract.Presenter {
 
     private var nextPage: Int = 0
@@ -56,7 +56,7 @@ class HomePresenter @Inject constructor(
             })
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun loadStatements() {
         statementRepository.loadRemoteStatement(1)
             .subscribeOn(Schedulers.io())
@@ -90,43 +90,15 @@ class HomePresenter @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     override fun loadUserAccount() {
-        userRepository.getLocalUserAccount()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : SingleObserver<Account> {
-                override fun onSuccess(t: Account) {
-                    t.name?.let { updateUserName(it) }
+        userRepository.getLocalUserAccountId().observe(homeView, Observer<Int> { accountId ->
+            accountId?.let {
+                userRepository.getLocalUserAccount(it)
+                    .observe(homeView, Observer<Account> { account ->
+                        homeView.accountIsReady(account)
+                    })
+            }
 
-                    t.agency?.let { agency ->
-                        t.bankAccount?.let { account ->
-                            updateUserAccount(agency, account)
-                        }
-                    }
-                    t.balance?.let { updateUserBalance(it) }
-                    homeView.hideLoading()
-                }
-
-                override fun onSubscribe(d: Disposable) {
-                    homeView.showLoading()
-                }
-
-                override fun onError(e: Throwable) {
-                    homeView.showErrorMessage(R.string.error_message_load_user_account_data)
-                    homeView.hideLoading()
-                }
-            })
+        })
     }
 
-    fun updateUserName(name: String) {
-        homeView.updateUserName(name)
-    }
-
-    fun updateUserAccount(agency: String, account: String) {
-        homeView.updateUserAccount(account, agency)
-    }
-
-    fun updateUserBalance(balance: Double) {
-        homeView.updateUserBalance(UtilsMoneyFormatting.simpleMoneyFormmat(balance))
-
-    }
 }

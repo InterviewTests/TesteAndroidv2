@@ -12,7 +12,7 @@ interface LoginContract : BaseContract.View{
         fun validateError(e: ValidationException)
         fun showLoader()
         fun hideLoader()
-        fun showErrorMessage(error_message_request_login: Int)
+        fun showErrorMessage(message: String)
         fun loginSuccess()
         fun setUser(user: String?)
 

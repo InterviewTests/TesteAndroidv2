@@ -8,6 +8,7 @@ import io.reactivex.Single
 interface UserRepositoryContract {
     fun loadUserName(): LiveData<String>
     fun login(userLogin: String, userPassword: String): Completable
-    fun getLocalUserAccount(): Single<Account>
+    fun getLocalUserAccount(accountId: Int): LiveData<Account>
+    fun getLocalUserAccountId(): LiveData<Int>
 
 }

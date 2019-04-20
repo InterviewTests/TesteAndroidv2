@@ -23,8 +23,8 @@ class LoginFragment : BaseFragment<LoginContract.View, LoginContract.Presenter>(
     override fun getLayoutId(): Int = R.layout.fragment_login
 
     override fun initViews() {
-        tfiUser.setText("email@email.com")
-        tfiPassword.setText("@Teste1")
+        tfiUser.setText("test@test.com")
+        tfiPassword.setText("Test@1")
 
         startScreenAnimation()
         btLogin.setOnClickListener {
@@ -78,8 +78,8 @@ class LoginFragment : BaseFragment<LoginContract.View, LoginContract.Presenter>(
         flLoader.visibility = View.GONE
     }
 
-    override fun showErrorMessage(error_message: Int) {
-        showToastLong(error_message)
+    override fun showErrorMessage(message: String) {
+        showToastLong(message)
     }
 
     override fun loginSuccess() {

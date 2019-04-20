@@ -1,6 +1,7 @@
 package br.com.rms.bankapp.data.local.database.dao
 
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -15,7 +16,7 @@ abstract class AccountDao {
     abstract fun insertAccount(account: Account)
 
     @Query("SELECT * FROM account WHERE userId = :accountId")
-    abstract fun selectAccount(accountId: Int?): Account
+    abstract fun selectAccount(accountId: Int?): LiveData<Account>
 
 
 }

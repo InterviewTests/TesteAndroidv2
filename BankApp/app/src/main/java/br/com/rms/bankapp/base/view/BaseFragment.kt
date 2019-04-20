@@ -31,7 +31,7 @@ abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter>: Fr
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidSupportInjection.inject(this)
-        ProcessLifecycleOwner.get().lifecycle.addObserver(presenter)
+
     }
 
     fun getWindowSize(): Point{
@@ -57,6 +57,7 @@ abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter>: Fr
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        ProcessLifecycleOwner.get().lifecycle.addObserver(presenter)
         initViews()
     }
 
@@ -68,9 +69,18 @@ abstract class BaseFragment<V: BaseContract.View, P: BaseContract.Presenter>: Fr
         showToast(textRes, Toast.LENGTH_LONG)
     }
 
+    fun showToastLong(text: String){
+        showToast(text, Toast.LENGTH_LONG)
+    }
+
     private fun showToast(textRes: Int, lenght: Int){
         Toast.makeText(context,textRes,lenght).show()
     }
+
+    private fun showToast(text: String, lenght: Int){
+        Toast.makeText(context,text,lenght).show()
+    }
+
 
     fun validateError(throwable: ValidationException) {
         var validationExceptions = listOf(throwable)

@@ -21,4 +21,7 @@ abstract class UserDao {
     @Query("SELECT userLogin FROM user WHERE id=$USER_ID")
     abstract fun selectUserName(): LiveData<String>
 
+    @Query("SELECT accountId FROM user WHERE id=$USER_ID")
+    abstract fun selectUserAccountId(): LiveData<Int>
+
 }

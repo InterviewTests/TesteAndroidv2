@@ -51,7 +51,10 @@ class LoginPresenter @Inject constructor(
                     if (e is ValidationException) {
                         loginView.validateError(e)
                     } else {
-                        loginView.showErrorMessage(R.string.error_message_validation_login_data)
+                        e.message?.let {message ->
+                            loginView.showErrorMessage(message)
+                        }
+
                     }
                     loginView.hideLoader()
 

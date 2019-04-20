@@ -1,7 +1,7 @@
 package br.com.rms.bankapp.utils.extensions
 
 
-fun String.formatAccountMask(): String {
+fun String.formatAgencyMask(): String {
     return addMask(this, "##.######-#")
 }
 

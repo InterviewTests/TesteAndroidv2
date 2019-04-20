@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rms.bankapp.R
 import br.com.rms.bankapp.base.view.BaseFragment
+import br.com.rms.bankapp.data.local.database.entity.Account
 import br.com.rms.bankapp.data.local.database.entity.Statement
 import br.com.rms.bankapp.utils.EndlessRecyclerViewScrollListener
-import br.com.rms.bankapp.utils.extensions.formatAccountMask
+import br.com.rms.bankapp.utils.UtilsMoneyFormatting
+import br.com.rms.bankapp.utils.extensions.formatAgencyMask
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(), HomeContract.View {
@@ -34,6 +36,16 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(), 
         })
     }
 
+    override fun accountIsReady(userAccountInfo: Account) {
+        tvUserName.text = userAccountInfo.name
+        tvUserAccount.text = getString(
+            R.string.user_account_format,
+            userAccountInfo.agency?.formatAgencyMask(),
+            userAccountInfo.bankAccount
+        )
+        tvUserBalance.text = userAccountInfo.balance?.let { it1 -> UtilsMoneyFormatting.simpleMoneyFormmat(it1) }
+    }
+
     override fun onMoreStatementsReady(statements: List<Statement>) {
         statementAdapter.addStatements(statements)
     }
@@ -50,18 +62,6 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(), 
         pbLoad.visibility = View.GONE
     }
 
-    override fun updateUserName(name: String) {
-        tvUserName.text = name
-    }
-
-    override fun updateUserAccount(agency: String, account: String) {
-        tvUserAccount.text = getString(R.string.user_account_format,agency,account.formatAccountMask())
-    }
-
-    override fun updateUserBalance(balance: String) {
-        tvUserBalance.text = balance
-
-    }
     private fun initExitButton() {
         ivExit.setOnClickListener {
             activity?.apply {

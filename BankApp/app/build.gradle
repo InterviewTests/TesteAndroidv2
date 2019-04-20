@@ -62,6 +62,7 @@ dependencies {
     implementation applicationDependencies.cardView
     implementation applicationDependencies.recyclerView
     implementation applicationDependencies.design
+    implementation applicationDependencies.paging
     implementation applicationDependencies.androidAnnotations
     implementation applicationDependencies.glide
     implementation applicationDependencies.dagger
