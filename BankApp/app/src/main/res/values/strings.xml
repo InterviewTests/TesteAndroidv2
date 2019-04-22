@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Bank App</string>
+    <string name="msg_valid_password">Senha incorreta. A senha precisa conter pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.</string>
+    <string name="msg_valid_email">E-Mail incorreto.</string>
+    <string name="msg_valid_cpf">Digite um CPF valido.</string>
+    <string name="msg_campos_obrigatorios">O campo usuário e senha são obrigatórios.</string>
+</resources>
