@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:card_view="http://schemas.android.com/tools">
+
+    <android.support.v7.widget.CardView android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/cardLayout"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        card_view:cardCornerRadius="4dp"
+                                        card_view:cardElevation="3dp">
+
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                                                     android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/recentLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:text="@string/bankStatement_recent"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/textsize_16sp"
+                    android:accessibilityHeading="true"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                    android:id="@+id/dateLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:text="12/12/2018"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/textsize_12sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                    android:id="@+id/typeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:text="@string/bankStatement_electricity_bill"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textsize_16sp"
+                    app:layout_constraintTop_toBottomOf="@+id/recentLabel"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                    android:id="@+id/valueTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16dp"
+                    android:text="R$1.000,00"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/textsize_12sp"
+                    app:layout_constraintTop_toBottomOf="@+id/dateLabel"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+    <View
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_16dp"
+            app:layout_constraintTop_toBottomOf="@+id/cardLayout"
+            app:layout_constraintStart_toStartOf="parent"/>
+</android.support.constraint.ConstraintLayout>

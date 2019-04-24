@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Teste Android Santander</string>
+    <string name="login_bank">Bank</string>
+    <string name="login_user">User</string>
+    <string name="login_password">Password</string>
+    <string name="login_text">Password</string>
+    <string name="bankStatement_account">Conta</string>
+    <string name="bankStatement_balance">Saldo</string>
+    <string name="bankStatement_recent">Recentes</string>
+    <string name="bankStatement_electricity_bill">Conta de Luz</string>
+
+    <string name="msg_user_empty">Favor preencher o nome de usuário.</string>
+    <string name="msg_password_empty">Favor preencher a senha.</string>
+    <string name="msg_invalid_user">Usuário inválido.</string>
+    <string name="msg_invalid_password">A senha deve conter pelo menos uma letra maiúscula, um caracter especial e um caracter alfa numérico</string>
+</resources>
