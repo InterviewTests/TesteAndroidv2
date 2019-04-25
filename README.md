@@ -15,3 +15,6 @@ targetSdkVersion 28.
 * Escolha um emulador
 * Pronto
 
+![alt text](https://raw.githubusercontent.com/vicolmoraes/TesteAndroidv2/bank_app_layout/preview/page-1-currency.png)
+
+![alt text](https://raw.githubusercontent.com/vicolmoraes/TesteAndroidv2/bank_app_layout/preview/page-1-location.png)
