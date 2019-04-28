@@ -6,8 +6,8 @@ import br.com.alex.bankappchallenge.model.FormatedUserAccount
 sealed class StatementStates {
     object Loading : StatementStates()
     data class Error(val errorMessage: String) : StatementStates()
-    data class StatementList(val statementList: List<FormatedStatement>) : StatementStates()
-    data class UserAccount(val userAccount: FormatedUserAccount) : StatementStates()
+    data class StatementListState(val statementList: List<FormatedStatement>) : StatementStates()
+    data class UserAccountState(val userAccount: FormatedUserAccount) : StatementStates()
 }
 
 data class StatementState(

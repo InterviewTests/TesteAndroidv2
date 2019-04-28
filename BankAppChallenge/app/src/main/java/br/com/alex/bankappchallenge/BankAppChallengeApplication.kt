@@ -8,6 +8,7 @@ import br.com.alex.bankappchallenge.di.androidModule
 import br.com.alex.bankappchallenge.di.interactorModule
 import br.com.alex.bankappchallenge.di.reducerModule
 import br.com.alex.bankappchallenge.di.PROPERTY_BASE_URL
+import br.com.alex.bankappchallenge.di.mapperModule
 import com.orhanobut.hawk.Hawk
 import org.koin.core.context.startKoin
 
@@ -27,7 +28,8 @@ class BankAppChallengeApplication : Application() {
                 androidModule,
                 interactorModule,
                 reducerModule,
-                repositoryModule
+                repositoryModule,
+                mapperModule
             ))
 
             properties(mapOf(

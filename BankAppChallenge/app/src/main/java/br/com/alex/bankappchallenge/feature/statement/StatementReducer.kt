@@ -17,12 +17,12 @@ class StatementReducer : StatementReducerContract {
                     isLoading = false,
                     statementList = listOf()
                 )
-                is StatementStates.StatementList -> it.copy(
+                is StatementStates.StatementListState -> it.copy(
                     isLoading = false,
                     isLoadError = false,
                     statementList = nextState.statementList
                 )
-                is StatementStates.UserAccount -> it.copy(
+                is StatementStates.UserAccountState -> it.copy(
                     userAccount = nextState.userAccount
                 )
             }
