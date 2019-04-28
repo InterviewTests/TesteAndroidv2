@@ -5,15 +5,10 @@ import br.com.alex.bankappchallenge.config.BuildConfigName
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.core.qualifier.StringQualifier
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.io.IOException
-import java.net.SocketTimeoutException
-import java.net.UnknownHostException
-import java.util.concurrent.TimeUnit
 
 const val PROPERTY_BASE_URL = "baseUrl"
 
