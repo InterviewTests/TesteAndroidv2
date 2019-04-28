@@ -2,6 +2,7 @@ package br.com.alex.bankappchallenge.di
 
 import br.com.alex.bankappchallenge.BuildConfig
 import br.com.alex.bankappchallenge.config.BuildConfigName
+import br.com.alex.bankappchallenge.network.BankAPI
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -38,5 +39,10 @@ val networkModule = module {
             .baseUrl(baseUrl)
             .client(get())
             .build()
+    }
+
+    single {
+        val retrofit: Retrofit = get()
+        retrofit.create(BankAPI::class.java)
     }
 }
