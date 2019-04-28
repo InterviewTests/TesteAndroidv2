@@ -1,0 +1,15 @@
+ext {
+
+    def rx_java = '2.2.8'
+    def rx_android = '2.1.1'
+    def hawk = '2.0.1'
+
+    rxDependencies = [
+            rxJava: "io.reactivex.rxjava2:rxjava:$rx_java",
+            rxAndroid: "io.reactivex.rxjava2:rxandroid:$rx_android"
+    ]
+
+    persistenceDependencies = [
+            hawk: "com.orhanobut:hawk:$hawk"
+    ]
+}

@@ -1,0 +1,15 @@
+ext {
+
+    def junit = '4.12'
+    def runner = '1.1.1'
+    def espresso_core = '3.1.1'
+
+    localTestDependencies = [
+            junit: "junit:junit:$junit"
+    ]
+
+    instrumentedTestDependencies = [
+            runner      : "androidx.test:runner:$runner",
+            espressoCore: "androidx.test.espresso:espresso-core:$espresso_core"
+    ]
+}

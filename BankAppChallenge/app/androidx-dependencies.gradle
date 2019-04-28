@@ -1,0 +1,14 @@
+ext {
+
+    def appcompact = '1.0.2'
+    def constraint = '1.1.3'
+    def ktx = '1.0.1'
+    def lifecycle_version = '2.0.0'
+
+    androidXDependencies = [
+            appcompact      : "androidx.appcompat:appcompat:$appcompact",
+            ktx             : "androidx.core:core-ktx:$ktx",
+            constraintLayout: "androidx.constraintlayout:constraintlayout:$constraint",
+            lifecycle       : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    ]
+}

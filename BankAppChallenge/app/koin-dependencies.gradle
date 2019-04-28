@@ -1,0 +1,10 @@
+ext {
+
+    def koin = '2.0.0-rc-1'
+
+    koinDependencies = [
+            koin            : "org.koin:koin-android:$koin",
+            koinScope       : "org.koin:koin-androidx-scope:$koin",
+            koinViewModel   : "org.koin:koin-androidx-viewmodel:$koin"
+    ]
+}
