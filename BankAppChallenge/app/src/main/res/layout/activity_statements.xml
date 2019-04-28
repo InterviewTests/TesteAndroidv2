@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/toolbar_height"
+            android:background="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/textViewClientName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_25"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    tools:text="Jose da Silva Teste"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/imageViewLogout"/>
+
+            <ImageView
+                    android:id="@+id/imageViewLogout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_logout"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textViewClientName"
+                    app:layout_constraintBottom_toBottomOf="@id/textViewClientName"/>
+
+            <TextView
+                    android:id="@+id/textViewBankAccountLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:text="@string/bank_account"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:maxLines="1"
+                    app:layout_constraintTop_toBottomOf="@id/textViewClientName"
+                    app:layout_constraintStart_toStartOf="@id/textViewClientName"/>
+
+            <TextView
+                    android:id="@+id/textViewBankAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_25"
+                    android:maxLines="1"
+                    tools:text="2050 / 01.111222-4"
+                    app:layout_constraintTop_toBottomOf="@id/textViewBankAccountLabel"
+                    app:layout_constraintStart_toStartOf="@id/textViewClientName"/>
+
+            <TextView
+                    android:id="@+id/textViewBalanceLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:text="@string/balance"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:maxLines="1"
+                    app:layout_constraintTop_toBottomOf="@id/textViewBankAccount"
+                    app:layout_constraintStart_toStartOf="@id/textViewClientName"/>
+
+            <TextView
+                    android:id="@+id/textViewBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_25"
+                    android:maxLines="1"
+                    tools:text="R$1.000,00"
+                    app:layout_constraintTop_toBottomOf="@id/textViewBalanceLabel"
+                    app:layout_constraintStart_toStartOf="@id/textViewClientName"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+            android:id="@+id/textViewRecents"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/recent"
+            android:textColor="@color/descriptionColor"
+            android:textSize="@dimen/text_title_size"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginStart="@dimen/medium_margin"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewStatements"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/textViewRecents"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:listitem="@layout/item_statement"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

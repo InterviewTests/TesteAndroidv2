@@ -11,13 +11,14 @@
             android:theme="@style/AppTheme"
             android:name=".BankAppChallengeApplication"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".feature.LoginActivity">
+        <activity android:name=".feature.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".feature.statement.StatementActivity"/>
     </application>
 
 </manifest>

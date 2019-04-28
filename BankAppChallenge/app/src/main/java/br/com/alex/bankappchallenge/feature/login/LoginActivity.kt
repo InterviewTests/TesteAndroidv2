@@ -1,4 +1,4 @@
-package br.com.alex.bankappchallenge.feature
+package br.com.alex.bankappchallenge.feature.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

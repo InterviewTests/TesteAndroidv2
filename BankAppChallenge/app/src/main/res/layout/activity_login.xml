@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:paddingStart="@dimen/medium_margin"
         android:paddingEnd="@dimen/medium_margin"
-        tools:context=".feature.LoginActivity">
+        tools:context=".feature.login.LoginActivity">
 
     <ImageView
             android:id="@+id/imageViewLogo"

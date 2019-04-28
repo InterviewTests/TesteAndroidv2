@@ -4,11 +4,15 @@ ext {
     def constraint = '1.1.3'
     def ktx = '1.0.1'
     def lifecycle_version = '2.0.0'
+    def card_view = '1.0.0'
+    def recycler_view = '1.0.0'
 
     androidXDependencies = [
             appcompact      : "androidx.appcompat:appcompat:$appcompact",
             ktx             : "androidx.core:core-ktx:$ktx",
             constraintLayout: "androidx.constraintlayout:constraintlayout:$constraint",
-            lifecycle       : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+            lifecycle       : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
+            cardView        : "androidx.cardview:cardview:$card_view",
+            recyclerView    : "androidx.recyclerview:recyclerview:$recycler_view"
     ]
 }
