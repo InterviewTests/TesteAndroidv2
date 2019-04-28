@@ -1,0 +1,8 @@
+def buildProperties = new Properties()
+file("appconfig.properties").withInputStream {
+    buildProperties.load(it)
+}
+
+ext.getBaseApi = { ->
+    return buildProperties.getProperty("base.api")
+}
