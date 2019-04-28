@@ -8,6 +8,6 @@ import retrofit2.http.POST
 
 interface BankAPI {
 
-    @POST
+    @POST("login")
     fun login(@Body loginRequest: LoginRequest): Single<LoginResponse>
 }

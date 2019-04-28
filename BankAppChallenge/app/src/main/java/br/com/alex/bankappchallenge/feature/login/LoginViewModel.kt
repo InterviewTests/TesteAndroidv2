@@ -1,8 +1,6 @@
 package br.com.alex.bankappchallenge.feature.login
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import br.com.alex.bankappchallenge.interactor.LoginInteractorContract
 import br.com.alex.bankappchallenge.interactor.LoginInteractorOutput
 import br.com.alex.bankappchallenge.model.Login
@@ -14,7 +12,7 @@ import io.reactivex.subjects.PublishSubject
 class LoginViewModel(
     private val loginInteractorContract: LoginInteractorContract,
     private val loginReducerContract: LoginReducerContract
-) : ViewModel(), LoginInteractorOutput {
+) : ViewModel(), LoginInteractorOutput, LifecycleObserver {
     private val disposables = CompositeDisposable()
     private val intentions = PublishSubject.create<LoginIntentions>()
 
@@ -28,6 +26,7 @@ class LoginViewModel(
 
     init {
         _state.postValue(LoginState())
+        loginInteractorContract.loginInteractorOutputImpl(this)
 
         disposables.add(
             Observable
@@ -90,11 +89,21 @@ class LoginViewModel(
             }
     }
 
-    override fun emptyFields() {
+    override fun emptyUser() {
         loginReducerContract
             .reducer(
                 _state.value,
-                LoginStates.EmptyFields
+                LoginStates.EmptyUser
+            ).run {
+                _state.postValue(this)
+            }
+    }
+
+    override fun emptyPassword() {
+        loginReducerContract
+            .reducer(
+                _state.value,
+                LoginStates.EmptyPassword
             ).run {
                 _state.postValue(this)
             }
@@ -108,6 +117,11 @@ class LoginViewModel(
             ).run {
                 _state.postValue(this)
             }
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    fun checkHasUser() {
+        execute(LoginIntentions.HasUser)
     }
 
     override fun onCleared() {

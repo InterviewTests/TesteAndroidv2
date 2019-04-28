@@ -40,6 +40,7 @@
             android:hint="@string/password"
             android:background="@drawable/shape"
             android:maxLines="1"
+            android:inputType="textPassword"
             android:paddingStart="@dimen/small_margin"
             app:layout_constraintTop_toBottomOf="@id/editTextUser"
             app:layout_constraintEnd_toEndOf="@id/editTextUser"

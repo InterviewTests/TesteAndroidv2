@@ -11,23 +11,51 @@ class LoginReducer : LoginReducerContract {
                 is LoginStates.Loading -> it.copy(
                     isLoading = true,
                     isLoadError = false,
-                    errorMessage = ""
+                    errorMessage = "",
+                    isUserEmpty = false,
+                    isPasswordEmpty = false,
+                    isPasswordInvalid = false
                 )
                 is LoginStates.Error -> it.copy(
                     isLoading = false,
                     isLoadError = true,
-                    errorMessage = loginStates.errorMessage
+                    errorMessage = loginStates.errorMessage,
+                    isUserEmpty = false,
+                    isPasswordEmpty = false,
+                    isPasswordInvalid = false
                 )
-                is LoginStates.PasswordInvalid, LoginStates.EmptyFields -> it.copy(
+                is LoginStates.PasswordInvalid -> it.copy(
                     isLoading = false,
-                    isLoadError = true,
-                    errorMessage = ""
+                    isLoadError = false,
+                    errorMessage = "",
+                    isUserEmpty = false,
+                    isPasswordEmpty = false,
+                    isPasswordInvalid = true
+                )
+                is LoginStates.EmptyUser -> it.copy(
+                    isLoading = false,
+                    isLoadError = false,
+                    errorMessage = "",
+                    isUserEmpty = true,
+                    isPasswordEmpty = false,
+                    isPasswordInvalid = false
+                )
+                is LoginStates.EmptyPassword -> it.copy(
+                    isLoading = false,
+                    isLoadError = false,
+                    errorMessage = "",
+                    isUserEmpty = false,
+                    isPasswordEmpty = true,
+                    isPasswordInvalid = false
                 )
                 is LoginStates.HasUser -> it.copy(
                     isLoading = false,
                     isLoadError = false,
                     errorMessage = "",
-                    userLogin = loginStates.userLogin
+                    userLogin = loginStates.userLogin,
+                    isUserEmpty = false,
+                    isPasswordEmpty = false,
+                    isPasswordInvalid = false
                 )
             }
         } ?: LoginState()

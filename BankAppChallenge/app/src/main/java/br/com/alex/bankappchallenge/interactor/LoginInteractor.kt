@@ -24,11 +24,11 @@ class LoginInteractor(
                     .subscribeOn(Schedulers.io())
                     .doOnSubscribe { loginInteractorOutput.logginIn() }.toObservable()
                     .map {
-                        if (it.error != null) {
+                        if (it.error.code != 0L) {
                             loginInteractorOutput.loginError(it.error.message)
                         } else {
-                            it.userAccount?.let { user ->
-                                loginRepositoryContract.saveUserLogin(user.name)
+                            it.userAccount.let { user ->
+                                loginRepositoryContract.saveUserLogin(login.user)
                                 loginRepositoryContract.saveUserAccount(user)
                                 loginInteractorOutput.loginSuccess()
                             }
@@ -41,7 +41,8 @@ class LoginInteractor(
                 loginInteractorOutput.passwordInvalid()
             }
         } else {
-            loginInteractorOutput.emptyFields()
+            if (login.user.isEmpty()) loginInteractorOutput.emptyUser()
+            else loginInteractorOutput.emptyPassword()
         }
     }
 
@@ -68,6 +69,7 @@ interface LoginInteractorOutput {
     fun loginError(errorMessage: String)
     fun passwordInvalid()
     fun logginIn()
-    fun emptyFields()
+    fun emptyUser()
+    fun emptyPassword()
     fun hasUser(user: String)
 }
