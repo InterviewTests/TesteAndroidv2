@@ -6,4 +6,6 @@
     <string name="bank_account">Conta</string>
     <string name="balance">Saldo</string>
     <string name="recent">Recentes</string>
+    <string name="passwordInvalid">Senha deve conter pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.</string>
+    <string name="emptyFields">Campo User e Password são obrigatorios.</string>
 </resources>

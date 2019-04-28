@@ -1,8 +1,8 @@
 package br.com.alex.bankappchallenge.network.model
 
 data class LoginResponse(
-    val userAccount: UserAccount,
-    val error: Error
+    val userAccount: UserAccount?,
+    val error: Error?
 )
 
 data class LoginRequest(

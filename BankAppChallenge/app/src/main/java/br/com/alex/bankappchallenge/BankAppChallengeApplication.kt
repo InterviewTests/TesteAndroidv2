@@ -1,8 +1,7 @@
 package br.com.alex.bankappchallenge
 
 import android.app.Application
-import br.com.alex.bankappchallenge.di.PROPERTY_BASE_URL
-import br.com.alex.bankappchallenge.di.networkModule
+import br.com.alex.bankappchallenge.di.*
 import com.orhanobut.hawk.Hawk
 import org.koin.core.context.startKoin
 
@@ -17,7 +16,12 @@ class BankAppChallengeApplication : Application() {
     private fun setupKoin() {
         startKoin {
             modules(listOf(
-                networkModule
+                networkModule,
+                viewModelModule,
+                androidModule,
+                interactorModule,
+                reducerModule,
+                repositoryModule
             ))
 
             properties(mapOf(
