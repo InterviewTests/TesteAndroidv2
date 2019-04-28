@@ -112,7 +112,7 @@ class LoginViewModel(
     override fun hasUser(user: String) {
         loginReducerContract
             .reducer(
-                _state.value,
+                LoginState(),
                 LoginStates.HasUser(user)
             ).run {
                 _state.postValue(this)
