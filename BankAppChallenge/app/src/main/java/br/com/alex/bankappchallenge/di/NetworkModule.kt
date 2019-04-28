@@ -1,0 +1,47 @@
+package br.com.alex.bankappchallenge.di
+
+import br.com.alex.bankappchallenge.BuildConfig
+import br.com.alex.bankappchallenge.config.BuildConfigName
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.qualifier.StringQualifier
+import org.koin.dsl.module
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
+import java.io.IOException
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
+import java.util.concurrent.TimeUnit
+
+const val PROPERTY_BASE_URL = "baseUrl"
+
+val networkModule = module {
+
+    single {
+        HttpLoggingInterceptor().apply {
+            val debugVariants = arrayOf(BuildConfigName.DEBUG)
+            level =
+                if (debugVariants.contains(BuildConfig.BUILD_TYPE)) HttpLoggingInterceptor.Level.BODY
+                else HttpLoggingInterceptor.Level.NONE
+        } as Interceptor
+    }
+
+    single {
+        OkHttpClient
+            .Builder()
+            .addInterceptor(get())
+            .build()
+    }
+
+    single {
+        val baseUrl = getProperty<String>(PROPERTY_BASE_URL)
+        Retrofit.Builder()
+            .addConverterFactory(MoshiConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .baseUrl(baseUrl)
+            .client(get())
+            .build()
+    }
+}

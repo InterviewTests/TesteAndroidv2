@@ -11,7 +11,7 @@
             android:theme="@style/AppTheme"
             android:name=".BankAppChallengeApplication"
             tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".feature.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -1,7 +1,8 @@
-package br.com.alex.bankappchallenge
+package br.com.alex.bankappchallenge.feature
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.com.alex.bankappchallenge.R
 
 class LoginActivity : AppCompatActivity() {
 
