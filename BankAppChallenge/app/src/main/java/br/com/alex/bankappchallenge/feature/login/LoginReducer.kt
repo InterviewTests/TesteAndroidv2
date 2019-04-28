@@ -3,11 +3,11 @@ package br.com.alex.bankappchallenge.feature.login
 class LoginReducer : LoginReducerContract {
 
     override fun reducer(
-        loginState: LoginState?,
-        loginStates: LoginStates
+        currentState: LoginState?,
+        nextState: LoginStates
     ) =
-        loginState?.let {
-            when (loginStates) {
+        currentState?.let {
+            when (nextState) {
                 is LoginStates.Loading -> it.copy(
                     isLoading = true,
                     isLoadError = false,
@@ -19,7 +19,7 @@ class LoginReducer : LoginReducerContract {
                 is LoginStates.Error -> it.copy(
                     isLoading = false,
                     isLoadError = true,
-                    errorMessage = loginStates.errorMessage,
+                    errorMessage = nextState.errorMessage,
                     isUserEmpty = false,
                     isPasswordEmpty = false,
                     isPasswordInvalid = false
@@ -52,7 +52,7 @@ class LoginReducer : LoginReducerContract {
                     isLoading = false,
                     isLoadError = false,
                     errorMessage = "",
-                    userLogin = loginStates.userLogin,
+                    userLogin = nextState.userLogin,
                     isUserEmpty = false,
                     isPasswordEmpty = false,
                     isPasswordInvalid = false
@@ -63,7 +63,7 @@ class LoginReducer : LoginReducerContract {
 
 interface LoginReducerContract {
     fun reducer(
-        loginState: LoginState?,
-        loginStates: LoginStates
+        currentState: LoginState?,
+        nextState: LoginStates
     ): LoginState
 }

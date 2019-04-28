@@ -1,7 +1,13 @@
 package br.com.alex.bankappchallenge
 
 import android.app.Application
-import br.com.alex.bankappchallenge.di.*
+import br.com.alex.bankappchallenge.di.repositoryModule
+import br.com.alex.bankappchallenge.di.networkModule
+import br.com.alex.bankappchallenge.di.viewModelModule
+import br.com.alex.bankappchallenge.di.androidModule
+import br.com.alex.bankappchallenge.di.interactorModule
+import br.com.alex.bankappchallenge.di.reducerModule
+import br.com.alex.bankappchallenge.di.PROPERTY_BASE_URL
 import com.orhanobut.hawk.Hawk
 import org.koin.core.context.startKoin
 

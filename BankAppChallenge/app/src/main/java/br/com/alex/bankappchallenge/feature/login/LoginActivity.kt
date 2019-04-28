@@ -72,6 +72,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showLoading() {
-        Log.i("LoginActivity","showLoading()")
+        Log.i("LoginActivity", "showLoading()")
     }
 }

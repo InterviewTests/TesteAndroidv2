@@ -1,6 +1,11 @@
 package br.com.alex.bankappchallenge.feature.login
 
-import androidx.lifecycle.*
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.ViewModel
 import br.com.alex.bankappchallenge.interactor.LoginInteractorContract
 import br.com.alex.bankappchallenge.interactor.LoginInteractorOutput
 import br.com.alex.bankappchallenge.model.Login
