@@ -1,7 +1,6 @@
 package br.com.alex.bankappchallenge.feature.statement
 
 import br.com.alex.bankappchallenge.model.FormatedStatement
-import br.com.alex.bankappchallenge.model.FormatedUserAccount
 
 sealed class StatementStates {
     object LoadingStatement : StatementStates()

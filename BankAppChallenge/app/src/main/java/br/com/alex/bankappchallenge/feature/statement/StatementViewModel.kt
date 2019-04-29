@@ -1,6 +1,11 @@
 package br.com.alex.bankappchallenge.feature.statement
 
-import androidx.lifecycle.*
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.OnLifecycleEvent
 import br.com.alex.bankappchallenge.interactor.StatementInteractorContract
 import br.com.alex.bankappchallenge.interactor.StatementInteractorOutput
 import br.com.alex.bankappchallenge.model.FormatedStatement

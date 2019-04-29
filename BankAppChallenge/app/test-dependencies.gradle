@@ -3,9 +3,17 @@ ext {
     def junit = '4.12'
     def runner = '1.1.1'
     def espresso_core = '3.1.1'
+    def mockito = '2.27.0'
+    def koinTest = '2.0.0-rc-2'
+    def core_testing = '2.0.1'
+    def mockwebserver = '3.12.0'
 
     localTestDependencies = [
-            junit: "junit:junit:$junit"
+            junit           : "junit:junit:$junit",
+            mockito         : "org.mockito:mockito-core:$mockito",
+            koinTest        : "org.koin:koin-test:$koinTest",
+            coreTest        : "androidx.arch.core:core-testing:$core_testing",
+            mockWebServer   : "com.squareup.okhttp3:mockwebserver:$mockwebserver"
     ]
 
     instrumentedTestDependencies = [

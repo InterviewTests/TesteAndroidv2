@@ -1,6 +1,6 @@
 ext {
 
-    def koin = '2.0.0-rc-1'
+    def koin = '2.0.0-rc-2'
 
     koinDependencies = [
             koin            : "org.koin:koin-android:$koin",
