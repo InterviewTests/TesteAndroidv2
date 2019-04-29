@@ -2,6 +2,7 @@
 <resources>
     <dimen name="small_margin">13dp</dimen>
     <dimen name="medium_margin">16dp</dimen>
+    <dimen name="little_margin">8dp</dimen>
     <dimen name="larger_margin">36dp</dimen>
     <dimen name="large_margin">21dp</dimen>
 

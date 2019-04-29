@@ -2,7 +2,7 @@ package br.com.alex.bankappchallenge.extensions
 
 import java.text.DecimalFormat
 import java.text.NumberFormat
-import java.util.*
+import java.util.Locale
 
 val ptBRLocale = Locale("pt", "BR")
 

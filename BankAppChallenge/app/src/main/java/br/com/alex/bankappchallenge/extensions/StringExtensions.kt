@@ -1,7 +1,7 @@
 package br.com.alex.bankappchallenge.extensions
 
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 
 const val FORMAT_DATE = "dd/MM/yyyy"
 const val FORMAT_SERVER_DATE = "yyyy-MM-dd"

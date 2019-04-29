@@ -7,7 +7,7 @@ import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.Path
 
 interface BankAPI {
 
@@ -15,5 +15,5 @@ interface BankAPI {
     fun login(@Body loginRequest: LoginRequest): Single<LoginResponse>
 
     @GET("statements/{id}")
-    fun fetchStatements(@Query("id") userId: Long): Single<StatementResponse>
+    fun fetchStatements(@Path("id") userId: Long): Single<StatementResponse>
 }

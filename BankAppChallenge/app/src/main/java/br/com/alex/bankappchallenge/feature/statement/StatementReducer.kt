@@ -8,21 +8,28 @@ class StatementReducer : StatementReducerContract {
     ) =
         currentState?.let {
             when (nextState) {
-                is StatementStates.Loading -> it.copy(
-                    isLoading = true,
-                    isLoadError = false
+                is StatementStates.LoadingStatement -> it.copy(
+                    isLoadingStatement = true,
+                    isLoadError = false,
+                    errorMessage = ""
+                )
+                is StatementStates.LoadingUserAccount -> it.copy(
+                    isLoadingUserAccount = true
                 )
                 is StatementStates.Error -> it.copy(
                     isLoadError = true,
-                    isLoading = false,
-                    statementList = listOf()
+                    isLoadingStatement = false,
+                    statementList = listOf(),
+                    errorMessage = nextState.errorMessage
                 )
                 is StatementStates.StatementListState -> it.copy(
-                    isLoading = false,
+                    isLoadingStatement = false,
                     isLoadError = false,
-                    statementList = nextState.statementList
+                    statementList = nextState.statementList,
+                    errorMessage = ""
                 )
                 is StatementStates.UserAccountState -> it.copy(
+                    isLoadingUserAccount = false,
                     userAccount = nextState.userAccount
                 )
             }

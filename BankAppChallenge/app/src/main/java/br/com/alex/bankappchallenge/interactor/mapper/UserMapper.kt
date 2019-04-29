@@ -11,7 +11,7 @@ interface UserMapperContract {
 
 class UserMapper(
     private val bankAccountFormatterContract: BankAccountFormatterContract
-) : UserMapperContract{
+) : UserMapperContract {
     override fun mapper(userAccount: UserAccount) =
         userAccount.let {
             FormatedUserAccount(

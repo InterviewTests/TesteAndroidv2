@@ -8,5 +8,5 @@ import org.koin.dsl.module
 
 val interactorModule = module {
     single<LoginInteractorContract> { LoginInteractor(get(), get()) }
-    single<StatementInteractorContract> { StatementInteractor(get(), get()) }
+    single<StatementInteractorContract> { StatementInteractor(get(), get(), get(), get()) }
 }

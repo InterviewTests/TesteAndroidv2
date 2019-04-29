@@ -17,7 +17,8 @@
             android:src="@drawable/ic_logo"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/editTextUser"/>
 
     <EditText
             android:id="@+id/editTextUser"
