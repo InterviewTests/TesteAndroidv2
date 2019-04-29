@@ -1,7 +1,6 @@
 package br.com.alex.bankappchallenge.feature.login
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import androidx.annotation.StringRes

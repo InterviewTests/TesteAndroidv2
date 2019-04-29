@@ -17,7 +17,7 @@ class LoginInteractor(
     private lateinit var loginInteractorOutput: LoginInteractorOutput
 
     override fun login(login: Login) {
-        if(validateLogin(login)) {
+        if (validateLogin(login)) {
             val subscribe = loginRepositoryContract
                 .login(LoginRequest(login.user, login.password))
                 .subscribeOn(Schedulers.io())
@@ -67,7 +67,6 @@ class LoginInteractor(
             } else {
                 loginInteractorOutput.userInvalid()
             }
-
         } else {
             if (login.user.isEmpty()) loginInteractorOutput.emptyUser()
             else loginInteractorOutput.emptyPassword()
