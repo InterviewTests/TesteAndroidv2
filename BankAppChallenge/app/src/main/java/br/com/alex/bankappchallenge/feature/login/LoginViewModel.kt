@@ -18,6 +18,7 @@ class LoginViewModel(
     private val loginInteractorContract: LoginInteractorContract,
     private val loginReducerContract: LoginReducerContract
 ) : ViewModel(), LoginInteractorOutput, LifecycleObserver {
+
     private val disposables = CompositeDisposable()
     private val intentions = PublishSubject.create<LoginIntentions>()
 
@@ -119,6 +120,16 @@ class LoginViewModel(
             .reducer(
                 LoginState(),
                 LoginStates.HasUser(user)
+            ).run {
+                _state.postValue(this)
+            }
+    }
+
+    override fun userInvalid() {
+        loginReducerContract
+            .reducer(
+                _state.value,
+                LoginStates.UserInvalid
             ).run {
                 _state.postValue(this)
             }

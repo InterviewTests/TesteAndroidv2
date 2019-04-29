@@ -4,6 +4,7 @@ sealed class LoginStates {
     object Loading : LoginStates()
     data class Error(val errorMessage: String) : LoginStates()
     object PasswordInvalid : LoginStates()
+    object UserInvalid : LoginStates()
     object EmptyUser : LoginStates()
     object EmptyPassword : LoginStates()
     data class HasUser(val userLogin: String) : LoginStates()
@@ -15,6 +16,7 @@ data class LoginState(
     val errorMessage: String = "",
     val userLogin: String = "",
     val isPasswordInvalid: Boolean = false,
+    val isUserInvalid: Boolean = false,
     val isUserEmpty: Boolean = false,
     val isPasswordEmpty: Boolean = false
 )

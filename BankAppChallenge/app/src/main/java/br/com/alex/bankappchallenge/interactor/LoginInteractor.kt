@@ -1,5 +1,6 @@
 package br.com.alex.bankappchallenge.interactor
 
+import br.com.alex.bankappchallenge.extensions.isEmailOrCPF
 import br.com.alex.bankappchallenge.model.Login
 import br.com.alex.bankappchallenge.network.model.LoginRequest
 import br.com.alex.bankappchallenge.repository.LoginRepositoryContract
@@ -16,33 +17,25 @@ class LoginInteractor(
     private lateinit var loginInteractorOutput: LoginInteractorOutput
 
     override fun login(login: Login) {
-        if (login.password.isNotEmpty() && login.user.isNotEmpty()) {
-            if (passwordValidatorContract.validatePassword(login.password)) {
-
-                val subscribe = loginRepositoryContract
-                    .login(LoginRequest(login.user, login.password))
-                    .subscribeOn(Schedulers.io())
-                    .doOnSubscribe { loginInteractorOutput.logginIn() }.toObservable()
-                    .map {
-                        if (it.error.code != 0L) {
-                            loginInteractorOutput.loginError(it.error.message)
-                        } else {
-                            it.userAccount.let { user ->
-                                loginRepositoryContract.saveUserLogin(login.user)
-                                loginRepositoryContract.saveUserAccount(user)
-                                loginInteractorOutput.loginSuccess()
-                            }
+        if(validateLogin(login)) {
+            val subscribe = loginRepositoryContract
+                .login(LoginRequest(login.user, login.password))
+                .subscribeOn(Schedulers.io())
+                .doOnSubscribe { loginInteractorOutput.logginIn() }.toObservable()
+                .map {
+                    if (it.error.code != 0L) {
+                        loginInteractorOutput.loginError(it.error.message)
+                    } else {
+                        it.userAccount.let { user ->
+                            loginRepositoryContract.saveUserLogin(login.user)
+                            loginRepositoryContract.saveUserAccount(user)
+                            loginInteractorOutput.loginSuccess()
                         }
                     }
-                    .subscribe()
+                }
+                .subscribe()
 
-                disposables.add(subscribe)
-            } else {
-                loginInteractorOutput.passwordInvalid()
-            }
-        } else {
-            if (login.user.isEmpty()) loginInteractorOutput.emptyUser()
-            else loginInteractorOutput.emptyPassword()
+            disposables.add(subscribe)
         }
     }
 
@@ -62,12 +55,31 @@ class LoginInteractor(
     override fun clear() {
         disposables.clear()
     }
+
+    private fun validateLogin(login: Login): Boolean {
+        if (login.password.isNotEmpty() && login.user.isNotEmpty()) {
+            if (passwordValidatorContract.validatePassword(login.password)) {
+                if (login.user.isEmailOrCPF()) {
+                    return true
+                } else {
+                    loginInteractorOutput.userInvalid()
+                }
+            } else {
+                loginInteractorOutput.passwordInvalid()
+            }
+        } else {
+            if (login.user.isEmpty()) loginInteractorOutput.emptyUser()
+            else loginInteractorOutput.emptyPassword()
+        }
+        return false
+    }
 }
 
 interface LoginInteractorOutput {
     fun loginSuccess()
     fun loginError(errorMessage: String)
     fun passwordInvalid()
+    fun userInvalid()
     fun logginIn()
     fun emptyUser()
     fun emptyPassword()

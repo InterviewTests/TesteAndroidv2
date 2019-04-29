@@ -7,6 +7,7 @@
     <string name="balance">Saldo</string>
     <string name="recent">Recentes</string>
     <string name="passwordInvalid">Senha deve conter pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.</string>
+    <string name="userInvalid">Campo User deve ser email ou cpf</string>
     <string name="emptyUser">Campo User obrigatorio.</string>
     <string name="emptyPassowrd">Campo Password obrigatorio.</string>
 </resources>

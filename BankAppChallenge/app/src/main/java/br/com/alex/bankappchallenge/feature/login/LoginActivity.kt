@@ -44,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
                     isUserEmpty -> showError(R.string.emptyUser, editTextUser)
                     isPasswordEmpty -> showError(R.string.emptyPassowrd, editTextPassword)
                     isPasswordInvalid -> showError(R.string.passwordInvalid, editTextPassword)
+                    isUserInvalid -> showError(R.string.userInvalid, editTextUser)
                     userLogin.isNotEmpty() -> showUser(userLogin)
                 }
             }

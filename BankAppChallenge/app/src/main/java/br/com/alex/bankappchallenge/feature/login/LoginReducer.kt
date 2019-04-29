@@ -14,7 +14,8 @@ class LoginReducer : LoginReducerContract {
                     errorMessage = "",
                     isUserEmpty = false,
                     isPasswordEmpty = false,
-                    isPasswordInvalid = false
+                    isPasswordInvalid = false,
+                    isUserInvalid = false
                 )
                 is LoginStates.Error -> it.copy(
                     isLoading = false,
@@ -22,7 +23,8 @@ class LoginReducer : LoginReducerContract {
                     errorMessage = nextState.errorMessage,
                     isUserEmpty = false,
                     isPasswordEmpty = false,
-                    isPasswordInvalid = false
+                    isPasswordInvalid = false,
+                    isUserInvalid = false
                 )
                 is LoginStates.PasswordInvalid -> it.copy(
                     isLoading = false,
@@ -30,7 +32,8 @@ class LoginReducer : LoginReducerContract {
                     errorMessage = "",
                     isUserEmpty = false,
                     isPasswordEmpty = false,
-                    isPasswordInvalid = true
+                    isPasswordInvalid = true,
+                    isUserInvalid = false
                 )
                 is LoginStates.EmptyUser -> it.copy(
                     isLoading = false,
@@ -38,7 +41,8 @@ class LoginReducer : LoginReducerContract {
                     errorMessage = "",
                     isUserEmpty = true,
                     isPasswordEmpty = false,
-                    isPasswordInvalid = false
+                    isPasswordInvalid = false,
+                    isUserInvalid = false
                 )
                 is LoginStates.EmptyPassword -> it.copy(
                     isLoading = false,
@@ -46,7 +50,8 @@ class LoginReducer : LoginReducerContract {
                     errorMessage = "",
                     isUserEmpty = false,
                     isPasswordEmpty = true,
-                    isPasswordInvalid = false
+                    isPasswordInvalid = false,
+                    isUserInvalid = false
                 )
                 is LoginStates.HasUser -> it.copy(
                     isLoading = false,
@@ -55,7 +60,18 @@ class LoginReducer : LoginReducerContract {
                     userLogin = nextState.userLogin,
                     isUserEmpty = false,
                     isPasswordEmpty = false,
-                    isPasswordInvalid = false
+                    isPasswordInvalid = false,
+                    isUserInvalid = false
+
+                )
+                is LoginStates.UserInvalid -> it.copy(
+                    isLoading = false,
+                    isLoadError = false,
+                    errorMessage = "",
+                    isUserEmpty = false,
+                    isPasswordEmpty = false,
+                    isPasswordInvalid = false,
+                    isUserInvalid = true
                 )
             }
         } ?: LoginState()
