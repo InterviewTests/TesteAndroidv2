@@ -1,7 +1,6 @@
 package br.com.alex.bankappchallenge.rules
 
 import android.app.Activity
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ActivityScenario
 import br.com.alex.bankappchallenge.di.PROPERTY_BASE_URL
 import br.com.alex.bankappchallenge.di.androidModule
@@ -23,7 +22,8 @@ import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 
 class InstrumentedTestRule<T : Activity>(
-    private val activity: Class<T>
+    private val activity: Class<T>,
+    private val beforeStatement: () -> Unit = {}
 ) : TestRule, KoinTest {
 
     val serverRule = MockWebServer()
@@ -40,7 +40,6 @@ class InstrumentedTestRule<T : Activity>(
         override fun before() {
             super.before()
             Hawk.deleteAll()
-            serverRule.start()
             startKoin {
                 modules(
                     networkModule,
@@ -56,7 +55,7 @@ class InstrumentedTestRule<T : Activity>(
                     PROPERTY_BASE_URL to serverRule.url("/").toString()
                 ))
             }
-
+            beforeStatement()
             activityScenario = ActivityScenario.launch(activity)
         }
 

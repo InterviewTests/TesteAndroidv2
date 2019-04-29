@@ -42,6 +42,8 @@ android {
 }
 
 dependencies {
+    def koinTest = '2.0.0-rc-2'
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
@@ -54,4 +56,5 @@ dependencies {
     testImplementation localTestDependencies.values()
 
     androidTestImplementation instrumentedTestDependencies.values()
+    androidTestImplementation ("org.koin:koin-test:$koinTest") { exclude group: 'org.mockito' }
 }

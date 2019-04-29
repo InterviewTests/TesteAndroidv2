@@ -58,15 +58,16 @@ class LoginInteractor(
 
     private fun validateLogin(login: Login): Boolean {
         if (login.password.isNotEmpty() && login.user.isNotEmpty()) {
-            if (passwordValidatorContract.validatePassword(login.password)) {
-                if (login.user.isEmailOrCPF()) {
+            if (login.user.isEmailOrCPF()) {
+                if (passwordValidatorContract.validatePassword(login.password)) {
                     return true
                 } else {
-                    loginInteractorOutput.userInvalid()
+                    loginInteractorOutput.passwordInvalid()
                 }
             } else {
-                loginInteractorOutput.passwordInvalid()
+                loginInteractorOutput.userInvalid()
             }
+
         } else {
             if (login.user.isEmpty()) loginInteractorOutput.emptyUser()
             else loginInteractorOutput.emptyPassword()
