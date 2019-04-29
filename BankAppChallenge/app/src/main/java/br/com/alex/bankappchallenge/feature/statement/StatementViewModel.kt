@@ -88,7 +88,7 @@ class StatementViewModel(
     override fun loadingStatements() {
         statementReducerContract
             .reducer(
-                _stateStatement.value,
+                StatementState(),
                 StatementStates.LoadingStatement
             ).run {
                 _stateStatement.postValue(this)

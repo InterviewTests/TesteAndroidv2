@@ -2,6 +2,7 @@ package br.com.alex.bankappchallenge.feature.login
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -65,14 +66,17 @@ class LoginActivity : AppCompatActivity() {
     private fun showError(errorMessage: String) {
         editTextPassword.error = errorMessage
         editTextPassword.requestFocus()
+        progress.visibility = View.GONE
     }
 
     private fun showError(@StringRes messageResource: Int, editText: EditText) {
         editText.error = getString(messageResource)
         editText.requestFocus()
+        progress.visibility = View.GONE
     }
 
     private fun showLoading() {
-        Log.i("LoginActivity", "showLoading()")
+        progress.visibility = View.VISIBLE
+        progress.isIndeterminate = true
     }
 }

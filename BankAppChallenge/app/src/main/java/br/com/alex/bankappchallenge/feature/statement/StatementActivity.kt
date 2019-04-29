@@ -2,6 +2,7 @@ package br.com.alex.bankappchallenge.feature.statement
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.alex.bankappchallenge.R
@@ -69,23 +70,27 @@ class StatementActivity : AppCompatActivity() {
 
     private fun fillStatementList(formatedStatementList: List<FormatedStatement>) {
         statementAdapter.statementList = formatedStatementList
+        progressStatement.visibility = View.GONE
     }
 
     private fun fillUserAccountData(formatedUserAccount: FormatedUserAccount) {
         textViewClientName.text = formatedUserAccount.name
         textViewBankAccount.text = formatedUserAccount.bankAndAgency
         textViewBalance.text = formatedUserAccount.balance
+        progressUserAccount.visibility = View.GONE
     }
 
     private fun showLoadingUserAccount() {
-        Log.i("StatementActivity", "showLoadingUserAccount()")
+        progressUserAccount.visibility = View.VISIBLE
+        progressUserAccount.isIndeterminate = true
     }
 
     private fun showLoadingStatement() {
-        Log.i("StatementActivity", "showLoadingStatement()")
+        progressStatement.visibility = View.VISIBLE
+        progressStatement.isIndeterminate = true
     }
 
     private fun showError(errorMessage: String) {
-        Log.i("StatementActivity", "showError($errorMessage)")
+        progressStatement.visibility = View.GONE
     }
 }
