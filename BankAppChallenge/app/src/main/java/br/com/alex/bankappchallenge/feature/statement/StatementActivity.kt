@@ -41,14 +41,21 @@ class StatementActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        statementViewModel.states.observeNonNull(this) {
+        statementViewModel.statesStatement.observeNonNull(this) {
             with(it) {
                 when {
                     isLoadError -> showError(errorMessage)
                     isLoadingStatement -> showLoadingStatement()
+                    statementList.isNotEmpty() -> fillStatementList(statementList)
+                }
+            }
+        }
+
+        statementViewModel.stateUserAccount.observeNonNull(this) {
+            with(it) {
+                when {
                     isLoadingUserAccount -> showLoadingUserAccount()
                     userAccount != null -> fillUserAccountData(userAccount)
-                    statementList.isNotEmpty() -> fillStatementList(statementList)
                 }
             }
         }

@@ -13,9 +13,6 @@ class StatementReducer : StatementReducerContract {
                     isLoadError = false,
                     errorMessage = ""
                 )
-                is StatementStates.LoadingUserAccount -> it.copy(
-                    isLoadingUserAccount = true
-                )
                 is StatementStates.Error -> it.copy(
                     isLoadError = true,
                     isLoadingStatement = false,
@@ -27,10 +24,6 @@ class StatementReducer : StatementReducerContract {
                     isLoadError = false,
                     statementList = nextState.statementList,
                     errorMessage = ""
-                )
-                is StatementStates.UserAccountState -> it.copy(
-                    isLoadingUserAccount = false,
-                    userAccount = nextState.userAccount
                 )
             }
         } ?: StatementState()
