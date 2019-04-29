@@ -9,9 +9,9 @@ import br.com.alex.bankappchallenge.di.repositoryModule
 import br.com.alex.bankappchallenge.di.viewModelModule
 import br.com.alex.bankappchallenge.feature.login.LoginIntentions
 import br.com.alex.bankappchallenge.feature.login.LoginNavigation
+import br.com.alex.bankappchallenge.feature.login.LoginState
 import br.com.alex.bankappchallenge.feature.login.LoginViewModel
 import br.com.alex.bankappchallenge.repository.LoginRepositoryContract
-import br.com.alex.bankappchallenge.util.LOGIN_SUCCESS
 import br.com.alex.bankappchallenge.util.LocalTestRule
 import br.com.alex.bankappchallenge.util.RxLocalRule
 import okhttp3.mockwebserver.MockResponse
@@ -47,7 +47,7 @@ class LoginViewModelTest : KoinTest {
     @Before
     fun setupRepositoryHawkDependecy() {
         declareMock<LoginRepositoryContract> {
-            given(this.getUserLogin()).willReturn("")
+            given(this.getUserLogin()).willReturn("user@gmail.com")
         }
     }
 
@@ -64,11 +64,162 @@ class LoginViewModelTest : KoinTest {
             }
         }
 
-        loginViewModel.execute(LoginIntentions.Login("user", "T@1"))
+        loginViewModel.execute(LoginIntentions.Login("user@gmail.com", "T@1"))
         assertEquals(expectedNavigation, actualNavigation)
+    }
+
+    @Test
+    fun shouldEmmitErrorState_whenLoginFailure() {
+        setupLoginFailure()
+
+        val expectedState = LoginState(
+            isLoading = false,
+            isLoadError = true,
+            isPasswordInvalid = false,
+            isUserInvalid = false,
+            isUserEmpty = false,
+            isPasswordEmpty = false,
+            errorMessage = "Usuário ou senha incorreta"
+        )
+
+        var actualState = LoginState()
+
+        loginViewModel.states.observeForever { state ->
+            state.let {
+                actualState = it
+            }
+        }
+
+        loginViewModel.execute(LoginIntentions.Login("user", "T@1"))
+        assertEquals(expectedState, actualState)
+    }
+
+    @Test
+    fun shouldEmmitPassordInvalidState_whenPasswordNotContainsCapitalLetterNumberAndEspecialCharacters() {
+        val expectedState = LoginState(
+            isLoading = false,
+            isLoadError = false,
+            errorMessage = "",
+            isUserEmpty = false,
+            isPasswordEmpty = false,
+            isPasswordInvalid = true,
+            isUserInvalid = false
+        )
+
+        var actualState = LoginState()
+
+        loginViewModel.states.observeForever { state ->
+            state.let {
+                actualState = it
+            }
+        }
+
+        loginViewModel.execute(LoginIntentions.Login("user@gmail.com", "r4ad"))
+        assertEquals(expectedState, actualState)
+    }
+
+    @Test
+    fun shouldEmmitUserInvalidState_whenUserIsNotEmailOrCPF() {
+        val expectedState = LoginState(
+            isLoading = false,
+            isLoadError = false,
+            errorMessage = "",
+            isUserEmpty = false,
+            isPasswordEmpty = false,
+            isPasswordInvalid = false,
+            isUserInvalid = true
+        )
+
+        var actualState = LoginState()
+
+        loginViewModel.states.observeForever { state ->
+            state.let {
+                actualState = it
+            }
+        }
+
+        loginViewModel.execute(LoginIntentions.Login("user", "T@1"))
+        assertEquals(expectedState, actualState)
+    }
+
+    @Test
+    fun shouldEmmitEmptyUserState_whenUserFieldIsEmpty() {
+        val expectedState = LoginState(
+            isLoading = false,
+            isLoadError = false,
+            errorMessage = "",
+            isUserEmpty = true,
+            isPasswordEmpty = false,
+            isPasswordInvalid = false,
+            isUserInvalid = false
+        )
+
+        var actualState = LoginState()
+
+        loginViewModel.states.observeForever { state ->
+            state.let {
+                actualState = it
+            }
+        }
+
+        loginViewModel.execute(LoginIntentions.Login("", "T@1"))
+        assertEquals(expectedState, actualState)
+    }
+
+    @Test
+    fun shouldEmmitEmptyPasswordState_whenPasswordFieldIsEmpty() {
+        val expectedState = LoginState(
+            isLoading = false,
+            isLoadError = false,
+            errorMessage = "",
+            isUserEmpty = false,
+            isPasswordEmpty = true,
+            isPasswordInvalid = false,
+            isUserInvalid = false
+        )
+
+        var actualState = LoginState()
+
+        loginViewModel.states.observeForever { state ->
+            state.let {
+                actualState = it
+            }
+        }
+
+        loginViewModel.execute(LoginIntentions.Login("user@gmail.com", ""))
+        assertEquals(expectedState, actualState)
+    }
+
+    @Test
+    fun shouldEmmitHasUserState_whenHasSomeUserSave() {
+        val expectedState = LoginState(
+            isLoading = false,
+            isLoadError = false,
+            errorMessage = "",
+            userLogin = "user@gmail.com",
+            isUserEmpty = false,
+            isPasswordEmpty = false,
+            isPasswordInvalid = false,
+            isUserInvalid = false
+        )
+
+        var actualState = LoginState()
+
+        loginViewModel.states.observeForever { state ->
+            state.let {
+                actualState = it
+            }
+        }
+
+        loginViewModel.execute(LoginIntentions.Login("user@gmail.com", "T@1"))
+        assertEquals(expectedState, actualState)
     }
 
     private fun setupLoginSuccess() {
         localTestRule.serverRule.enqueue(MockResponse().setBody(LOGIN_SUCCESS))
+    }
+
+    private fun setupLoginFailure() {
+        localTestRule.serverRule.enqueue(MockResponse().setBody(LOGIN_FAILURE))
     }
 }
