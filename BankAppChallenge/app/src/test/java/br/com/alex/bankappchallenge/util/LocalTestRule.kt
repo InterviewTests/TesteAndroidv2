@@ -1,8 +1,7 @@
 package br.com.alex.bankappchallenge.util
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import br.com.alex.bankappchallenge.BuildConfig
-import br.com.alex.bankappchallenge.di.*
+import br.com.alex.bankappchallenge.di.PROPERTY_BASE_URL
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.rules.ExternalResource
 import org.junit.rules.RuleChain
@@ -31,17 +30,19 @@ class LocalTestRule(
     inner class StartKoinRule : ExternalResource() {
         override fun before() {
             super.before()
+            serverRule.start()
             startKoin {
                 modules(koinModules)
 
                 properties(mapOf(
-                    PROPERTY_BASE_URL to BuildConfig.API_BASE
+                    PROPERTY_BASE_URL to serverRule.url("/").toString()
                 ))
             }
         }
 
         override fun after() {
             super.after()
+            serverRule.shutdown()
             stopKoin()
         }
     }
