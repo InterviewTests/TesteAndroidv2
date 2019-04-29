@@ -7,6 +7,9 @@ ext {
     def koinTest = '2.0.0-rc-2'
     def core_testing = '2.0.1'
     def mockwebserver = '3.12.0'
+    def rules = '1.1.1'
+    def espresso_intent = '3.1.1'
+    def espresso_contrib = '3.1.1'
 
     localTestDependencies = [
             junit           : "junit:junit:$junit",
@@ -17,7 +20,12 @@ ext {
     ]
 
     instrumentedTestDependencies = [
-            runner      : "androidx.test:runner:$runner",
-            espressoCore: "androidx.test.espresso:espresso-core:$espresso_core"
+            runner          : "androidx.test:runner:$runner",
+            espressoCore    : "androidx.test.espresso:espresso-core:$espresso_core",
+            rules           : "androidx.test:rules:$rules",
+            koin            : "org.koin:koin-test:$koinTest",
+            mockWebServer   : "com.squareup.okhttp3:mockwebserver:$mockwebserver",
+            intents: "androidx.test.espresso:espresso-intents:$espresso_intent",
+            contrib: "androidx.test.espresso:espresso-contrib:$espresso_contrib"
     ]
 }

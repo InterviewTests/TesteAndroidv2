@@ -1,4 +1,4 @@
-package br.com.alex.bankappchallenge.util
+package br.com.alex.bankappchallenge.rules
 
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers

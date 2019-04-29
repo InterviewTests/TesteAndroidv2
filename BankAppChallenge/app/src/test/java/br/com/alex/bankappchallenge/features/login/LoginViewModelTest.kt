@@ -12,8 +12,8 @@ import br.com.alex.bankappchallenge.feature.login.LoginNavigation
 import br.com.alex.bankappchallenge.feature.login.LoginState
 import br.com.alex.bankappchallenge.feature.login.LoginViewModel
 import br.com.alex.bankappchallenge.repository.LoginRepositoryContract
-import br.com.alex.bankappchallenge.util.LocalTestRule
-import br.com.alex.bankappchallenge.util.RxLocalRule
+import br.com.alex.bankappchallenge.rules.LocalTestRule
+import br.com.alex.bankappchallenge.rules.RxLocalRule
 import okhttp3.mockwebserver.MockResponse
 import org.junit.Assert.assertEquals
 import org.junit.Before
