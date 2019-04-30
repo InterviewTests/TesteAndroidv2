@@ -1,4 +1,4 @@
-package br.com.alex.bankappchallenge.feature
+package br.com.alex.bankappchallenge.feature.login
 
 import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView

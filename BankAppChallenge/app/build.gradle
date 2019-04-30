@@ -52,6 +52,7 @@ dependencies {
     implementation koinDependencies.values()
     implementation rxDependencies.values()
     implementation persistenceDependencies.values()
+    implementation commonDependencies.values()
 
     testImplementation localTestDependencies.values()
 

@@ -3,6 +3,7 @@ ext {
     def rx_java = '2.2.8'
     def rx_android = '2.1.1'
     def hawk = '2.0.1'
+    def canarinho = '2.0.0'
 
     rxDependencies = [
             rxJava: "io.reactivex.rxjava2:rxjava:$rx_java",
@@ -11,5 +12,9 @@ ext {
 
     persistenceDependencies = [
             hawk: "com.orhanobut:hawk:$hawk"
+    ]
+
+    commonDependencies = [
+            canarinho: "br.com.concrete:canarinho:$canarinho"
     ]
 }

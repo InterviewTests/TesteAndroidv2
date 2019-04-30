@@ -1,6 +1,5 @@
-package br.com.alex.bankappchallenge.feature
+package br.com.alex.bankappchallenge.feature.login
 
-import br.com.alex.bankappchallenge.feature.login.LoginActivity
 import br.com.alex.bankappchallenge.rules.InstrumentedTestRule
 import org.junit.Rule
 import org.junit.Test
