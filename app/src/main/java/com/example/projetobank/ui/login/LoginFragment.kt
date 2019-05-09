@@ -1,4 +1,4 @@
-package com.example.projetobank.ui.usuario
+package com.example.projetobank.ui.login
 
 import android.content.Context
 import android.net.Uri
