@@ -113,7 +113,7 @@ public class DetailsActivity extends AppCompatActivity {
         userId = preferences.getInt(getString(R.string.userId), 0);
         tvUser.setText(preferences.getString(getString(R.string.name), ""));
         tvAccount.setText(preferences.getString(getString(R.string.bankAccount), "") + " / " + Utils.formatAccount(preferences.getString(getString(R.string.agency), "")));
-        tvBalance.setText(Utils.formatReal(String.valueOf(preferences.getFloat(getString(R.string.balance), 0.0f))));
+        tvBalance.setText(Utils.formatRealHeader(String.valueOf(preferences.getFloat(getString(R.string.balance), 0.0f))));
 
     }
 

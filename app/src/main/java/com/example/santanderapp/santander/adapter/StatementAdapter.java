@@ -9,21 +9,15 @@ import android.widget.TextView;
 import com.example.santanderapp.santander.R;
 import com.example.santanderapp.santander.model.StatementList;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import static com.example.santanderapp.santander.util.Utils.convertData;
+import static com.example.santanderapp.santander.util.Utils.formatReal;
 
 public class StatementAdapter extends RecyclerView.Adapter<StatementAdapter.MeuViewHolder> {
 
     private List<StatementList> ListStatement;
-    private SimpleDateFormat formatIso;
-    private SimpleDateFormat formatBra;
-    private Date date;
 
     public StatementAdapter(List<StatementList> statement) {
         this.ListStatement = statement;
@@ -47,14 +41,13 @@ public class StatementAdapter extends RecyclerView.Adapter<StatementAdapter.MeuV
             e.printStackTrace();
         }
         holder.descriptionAccount.setText(String.valueOf(item.desc));
-        holder.valueAccount.setText(String.valueOf(item.value));
+        holder.valueAccount.setText(formatReal(String.valueOf(item.value)));
     }
 
     @Override
     public int getItemCount() {
         return ListStatement.size();
     }
-
 
 
     public class MeuViewHolder extends RecyclerView.ViewHolder {

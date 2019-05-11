@@ -113,7 +113,7 @@ public class Utils {
         return false;
     }
 
-    public static String formatReal(String value) {
+    public static String formatRealHeader(String value) {
 
         String comPonto = value.replaceAll("[^0-9]", "");
         StringBuilder stringBuilder = new StringBuilder(comPonto);
@@ -121,6 +121,21 @@ public class Utils {
         comPonto = stringBuilder.toString();
         BigDecimal valor = new BigDecimal(comPonto);
         NumberFormat nf = NumberFormat.getCurrencyInstance();
+        return nf.format(valor);
+    }
+
+    public static String formatReal(String value) {
+
+        Integer pos = value.length()-(value.indexOf(".")+1);
+        String comPonto = value.replaceAll("[^0-9]", "");
+        StringBuilder stringBuilder = new StringBuilder(comPonto);
+        stringBuilder.insert(comPonto.length() - pos, '.');
+        comPonto = stringBuilder.toString();
+        BigDecimal valor = new BigDecimal(comPonto);
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        if(value.contains("-")){
+            valor = valor.negate();
+        }
         return nf.format(valor);
     }
 
