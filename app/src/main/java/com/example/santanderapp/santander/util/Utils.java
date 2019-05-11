@@ -3,6 +3,8 @@ package com.example.santanderapp.santander.util;
 import android.content.Context;
 import android.net.ConnectivityManager;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -105,5 +107,25 @@ public class Utils {
         }
 
         return false;
+    }
+
+    public static String formatReal(String value) {
+
+        String comPonto = value.replaceAll("[^0-9]", "");
+        StringBuilder stringBuilder = new StringBuilder(comPonto);
+        stringBuilder.insert(comPonto.length() - 2, '.');
+        comPonto = stringBuilder.toString();
+        BigDecimal valor = new BigDecimal(comPonto);
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        return nf.format(valor);
+    }
+
+    public static String formatAccount(String value) {
+
+        String temp = value.replaceAll("[^0-9]", "");
+        StringBuilder stringBuilder = new StringBuilder(temp);
+        stringBuilder.insert(temp.length() - 1, '-');
+        stringBuilder.insert(2, '.');
+        return stringBuilder.toString();
     }
 }

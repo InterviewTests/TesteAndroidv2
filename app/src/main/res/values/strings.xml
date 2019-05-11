@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Santander</string>
     <string name="nameBank_cd">Logo do banco</string>
+    <string name="buttonExit_cd">Logo do banco</string>
     <string name="login">Login</string>
     <string name="userAccount">userAccount</string>
     <string name="agency">agency</string>
@@ -14,4 +15,12 @@
     <string name="error">Erro :</string>
     <string name="errorLoginUser">Login não é um CPF ou E-mail!</string>
     <string name="errorLoginPassword">Senha não obedece requisitos mínimos!</string>
+    <string name="nameUser">Nome do usuário</string>
+    <string name="accountUser">9999 / 99.999999-9</string>
+    <string name="account">Conta</string>
+    <string name="balanceLabel">Saldo</string>
+    <string name="balanceUser">9.999,00</string>
+    <string name="reais">R$</string>
+
+
 </resources>

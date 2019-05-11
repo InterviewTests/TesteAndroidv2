@@ -26,9 +26,12 @@
     <dimen name="text_size_21_sp">21sp</dimen>
     <dimen name="text_size_22_sp">22sp</dimen>
     <dimen name="text_size_24_sp">24sp</dimen>
+    <dimen name="text_size_25_sp">25sp</dimen>
+    <dimen name="text_size_27_sp">27sp</dimen>
 
     <dimen name="default_size_1_dp">1dp</dimen>
     <dimen name="default_size_6_dp">6dp</dimen>
+    <dimen name="default_size_27_dp">27dp</dimen>
 
 
 </resources>

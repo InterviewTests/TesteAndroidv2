@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
 
         btnLogin.setOnClickListener(listenerLogin);
 
-
     }
 
     //Pegando o último usuário salvo, caso não tiver deixa em branco
