@@ -4,6 +4,7 @@
     <string name="login">Login</string>
     <string name="userAccount">userAccount</string>
     <string name="agency">agency</string>
+    <string name="user">user</string>
     <string name="userId">userId</string>
     <string name="name">name</string>
     <string name="bankAccount">bankAccount</string>

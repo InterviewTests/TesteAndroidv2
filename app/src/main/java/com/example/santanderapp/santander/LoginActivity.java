@@ -1,12 +1,9 @@
 package com.example.santanderapp.santander;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -37,9 +34,18 @@ public class LoginActivity extends AppCompatActivity {
 
         configureUI();
 
+        verifyHasSavedLogin();
+
         btnLogin.setOnClickListener(listenerLogin);
 
 
+    }
+
+    //Pegando o último usuário salvo, caso não tiver deixa em branco
+    private void verifyHasSavedLogin() {
+        SharedPreferences preferences = getSharedPreferences(getString(R.string.userAccount), MODE_PRIVATE);
+
+        edtUser.setText(preferences.getString(getString(R.string.user), ""));
     }
 
     private void configureUI() {
@@ -48,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
     }
 
+    //Valida se no campo user é um CPF ou e-mail válido e o campo password constam as regras mínimas
     private boolean validatesData() {
         if ((!Utils.isEmailValid(edtUser.getText().toString())) && (!Utils.isCpfValid(edtUser.getText().toString()))) {
             Toast.makeText(LoginActivity.this, getString(R.string.errorLoginUser), Toast.LENGTH_SHORT).show();
@@ -62,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
+    //Evento de onclick do botão Login
     private View.OnClickListener listenerLogin = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -96,6 +104,8 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString(getString(R.string.bankAccount), dateClient.userAccount.bankAccount);
                             editor.putString(getString(R.string.agency), dateClient.userAccount.agency);
                             editor.putFloat(getString(R.string.balance), dateClient.userAccount.balance);
+
+                            editor.putString(getString(R.string.user), edtUser.getText().toString());
 
                             editor.apply();
                             Intent intent = new Intent(LoginActivity.this, DetailsActivity.class);
