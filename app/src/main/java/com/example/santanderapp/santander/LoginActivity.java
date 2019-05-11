@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -17,6 +16,7 @@ import android.widget.Toast;
 import com.example.santanderapp.santander.interfaceService.LoginService;
 import com.example.santanderapp.santander.model.RequestLogin;
 import com.example.santanderapp.santander.model.ResponseLogin;
+import com.example.santanderapp.santander.util.Utils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,31 +52,43 @@ public class LoginActivity extends AppCompatActivity {
 
                 requestLogin.user = edtUser.getText().toString();
                 requestLogin.password = edtPassword.getText().toString();
+                if (validatesData()) {
+                    Call<ResponseLogin> requestCatalog = service.login(requestLogin);
 
-                Call<ResponseLogin> requestCatalog = service.login(requestLogin);
+                    requestCatalog.enqueue(new Callback<ResponseLogin>() {
+                        @Override
+                        public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                            if (!response.isSuccess()) {
+                                Toast.makeText(LoginActivity.this, getString(R.string.error) + response.code(), Toast.LENGTH_SHORT).show();
 
-                requestCatalog.enqueue(new Callback<ResponseLogin>() {
-                    @Override
-                    public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-                        if (!response.isSuccess()) {
-                            Toast.makeText(LoginActivity.this, "Erro: " + response.code(), Toast.LENGTH_SHORT).show();
+                            } else {
+                                ResponseLogin dateClient = response.body();
 
-                        } else {
-                            ResponseLogin dateClient = response.body();
+                                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.userAccount), Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                            Intent intent = new Intent(LoginActivity.this, DetailsActivity.class);
-                            startActivity(intent);
+                                editor.putInt(getString(R.string.userId), dateClient.userAccount.userId);
+                                editor.putString(getString(R.string.name), dateClient.userAccount.name);
+                                editor.putString(getString(R.string.bankAccount), dateClient.userAccount.bankAccount);
+                                editor.putString(getString(R.string.agency), dateClient.userAccount.agency);
+                                editor.putFloat(getString(R.string.balance), dateClient.userAccount.balance);
+
+                                editor.apply();
+                                Intent intent = new Intent(LoginActivity.this, DetailsActivity.class);
+                                startActivity(intent);
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                        Toast.makeText(LoginActivity.this, "Falhou: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                            if (!Utils.isConected(LoginActivity.this)) {
+                                Toast.makeText(LoginActivity.this, getString(R.string.notConnectInternet), Toast.LENGTH_SHORT).show();
+                            } else
+                                Toast.makeText(LoginActivity.this, getString(R.string.fail) + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
-                //new RealizaLoginTask(MainActivity.this, usuario).execute();
-
+                }
             }
         });
 
@@ -89,5 +101,18 @@ public class LoginActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edtPassword);
     }
 
+    private boolean validatesData() {
+        if ((!Utils.isEmailValid(edtUser.getText().toString())) && (!Utils.isCpfValid(edtUser.getText().toString()))) {
+            Toast.makeText(LoginActivity.this, getString(R.string.errorLoginUser), Toast.LENGTH_SHORT).show();
+            edtUser.requestFocus();
+            return true;
+        }
+        if (!Utils.isPasswordValid(edtPassword.getText().toString())) {
+            Toast.makeText(LoginActivity.this, getString(R.string.errorLoginPassword), Toast.LENGTH_SHORT).show();
+            edtPassword.requestFocus();
+            return true;
+        }
+        return true;
+    }
 
 }

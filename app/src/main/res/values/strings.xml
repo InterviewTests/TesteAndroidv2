@@ -2,4 +2,15 @@
     <string name="app_name">Santander</string>
     <string name="nameBank_cd">Logo do banco</string>
     <string name="login">Login</string>
+    <string name="userAccount">userAccount</string>
+    <string name="agency">agency</string>
+    <string name="userId">userId</string>
+    <string name="name">name</string>
+    <string name="bankAccount">bankAccount</string>
+    <string name="balance">balance</string>
+    <string name="notConnectInternet">Sem conexão com a internet!</string>
+    <string name="fail">Falhou :</string>
+    <string name="error">Erro :</string>
+    <string name="errorLoginUser">Login não é um CPF ou E-mail!</string>
+    <string name="errorLoginPassword">Senha não obedece requisitos mínimos!</string>
 </resources>
