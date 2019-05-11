@@ -32,6 +32,7 @@
     <dimen name="default_size_1_dp">1dp</dimen>
     <dimen name="default_size_6_dp">6dp</dimen>
     <dimen name="default_size_27_dp">27dp</dimen>
+    <dimen name="default_size_80_dp">80dp</dimen>
 
 
 </resources>

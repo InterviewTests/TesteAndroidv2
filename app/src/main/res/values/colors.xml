@@ -7,4 +7,6 @@
     <color name="colorDetailsTop">#3B49EE </color>
     <color name="colorWhite">#FFFFFF </color>
     <color name="colorBorder">#DCE2EE </color>
+    <color name="colorTypeAccount">#A8B4C4 </color>
+    <color name="colorDescAccount">#485465 </color>
 </resources>
