@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Santander</string>
+    <string name="nameBank_cd">Logo do banco</string>
+    <string name="login">Login</string>
+</resources>
