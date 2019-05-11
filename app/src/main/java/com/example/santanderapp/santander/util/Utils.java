@@ -5,6 +5,9 @@ import android.net.ConnectivityManager;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,7 +34,7 @@ public class Utils {
     }
 
     public static boolean isCpfValid(String cpf) {
-        cpf = cpf.replace(".","").replace("-","").trim();
+        cpf = cpf.replace(".", "").replace("-", "").trim();
         if (cpf == null || cpf.length() != 11)
             return false;
 
@@ -43,6 +46,7 @@ public class Utils {
 
         return calcDigVerif(cpf.substring(0, 9)).equals(cpf.substring(9, 11));
     }
+
     private static String calcDigVerif(String num) {
         Integer primDig, segDig;
         int soma = 0, peso = 10;
@@ -127,5 +131,14 @@ public class Utils {
         stringBuilder.insert(temp.length() - 1, '-');
         stringBuilder.insert(2, '.');
         return stringBuilder.toString();
+    }
+
+    public static String convertData(String date) throws ParseException {
+        String dataBR = date;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date data = format.parse(dataBR);
+        format.applyPattern("dd/MM/yyyy");
+        String dateFormated = format.format(data);
+        return dateFormated;
     }
 }

@@ -116,9 +116,4 @@
         android:paddingRight="@dimen/default_margin_16_dp"
         app:layout_constraintTop_toBottomOf="@+id/tvRecent" />
 
-    <include
-        android:id="@+id/teste"
-        layout="@layout/card_view_item"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
 </android.support.constraint.ConstraintLayout>

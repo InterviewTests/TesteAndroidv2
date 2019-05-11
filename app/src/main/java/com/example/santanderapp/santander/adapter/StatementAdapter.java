@@ -7,14 +7,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.santanderapp.santander.R;
-import com.example.santanderapp.santander.model.ResponseStatement;
 import com.example.santanderapp.santander.model.StatementList;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
+import static com.example.santanderapp.santander.util.Utils.convertData;
 
 public class StatementAdapter extends RecyclerView.Adapter<StatementAdapter.MeuViewHolder> {
 
     private List<StatementList> ListStatement;
+    private SimpleDateFormat formatIso;
+    private SimpleDateFormat formatBra;
+    private Date date;
 
     public StatementAdapter(List<StatementList> statement) {
         this.ListStatement = statement;
@@ -32,8 +41,12 @@ public class StatementAdapter extends RecyclerView.Adapter<StatementAdapter.MeuV
     public void onBindViewHolder(MeuViewHolder holder, int position) {
         StatementList item = ListStatement.get(position);
         holder.typeAccount.setText(String.valueOf(item.title));
-        holder.dateAccount.setText(String.valueOf(item.date));
-        holder.descriptionAccount.setText(String.valueOf(item.date));
+        try {
+            holder.dateAccount.setText(convertData(String.valueOf(item.date)));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        holder.descriptionAccount.setText(String.valueOf(item.desc));
         holder.valueAccount.setText(String.valueOf(item.value));
     }
 
@@ -41,6 +54,8 @@ public class StatementAdapter extends RecyclerView.Adapter<StatementAdapter.MeuV
     public int getItemCount() {
         return ListStatement.size();
     }
+
+
 
     public class MeuViewHolder extends RecyclerView.ViewHolder {
         public TextView typeAccount, dateAccount, descriptionAccount, valueAccount;

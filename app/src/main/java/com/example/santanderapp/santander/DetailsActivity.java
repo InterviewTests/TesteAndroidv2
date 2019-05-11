@@ -37,10 +37,8 @@ public class DetailsActivity extends AppCompatActivity {
     private TextView tvAccount;
     private TextView tvBalance;
 
-    private RecyclerView.LayoutManager layoutProdutos;
+    private RecyclerView.LayoutManager layoutRV;
     private StatementAdapter statementAdapter;
-    private List<Statement> lstProdutos = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,11 +76,11 @@ public class DetailsActivity extends AppCompatActivity {
                 } else {
                     if (response.body() != null) {
                         ResponseStatement responseStatement = response.body();
-                        layoutProdutos = new LinearLayoutManager(DetailsActivity.this);
 
+                        layoutRV = new LinearLayoutManager(DetailsActivity.this);
                         statementAdapter = new StatementAdapter(responseStatement.statementList);
                         listExpenses.setAdapter(statementAdapter);
-                        listExpenses.setLayoutManager(layoutProdutos);
+                        listExpenses.setLayoutManager(layoutRV);
                         statementAdapter.notifyDataSetChanged();
                     }
                 }

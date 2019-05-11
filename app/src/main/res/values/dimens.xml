@@ -19,6 +19,7 @@
     <dimen name="default_margin_30_dp">30dp</dimen>
     <dimen name="default_margin_80_dp">80dp</dimen>
 
+    <dimen name="text_size_0_sp">0sp</dimen>
     <dimen name="text_size_12_sp">12sp</dimen>
     <dimen name="text_size_14_sp">14sp</dimen>
     <dimen name="text_size_15_sp">15sp</dimen>
