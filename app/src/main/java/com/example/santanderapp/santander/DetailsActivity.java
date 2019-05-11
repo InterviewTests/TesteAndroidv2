@@ -3,16 +3,22 @@ package com.example.santanderapp.santander;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.santanderapp.santander.adapter.StatementAdapter;
 import com.example.santanderapp.santander.interfaceService.StatementsService;
 import com.example.santanderapp.santander.model.RequestStatement;
 import com.example.santanderapp.santander.model.ResponseStatement;
 import com.example.santanderapp.santander.util.Utils;
+
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,6 +36,11 @@ public class DetailsActivity extends AppCompatActivity {
     private TextView tvUser;
     private TextView tvAccount;
     private TextView tvBalance;
+
+    private RecyclerView.LayoutManager layoutProdutos;
+    private StatementAdapter statementAdapter;
+    private List<Statement> lstProdutos = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +76,15 @@ public class DetailsActivity extends AppCompatActivity {
                     Toast.makeText(DetailsActivity.this, getString(R.string.error) + response.code(), Toast.LENGTH_SHORT).show();
 
                 } else {
-                    ResponseStatement responseStatement = response.body();
+                    if (response.body() != null) {
+                        ResponseStatement responseStatement = response.body();
+                        layoutProdutos = new LinearLayoutManager(DetailsActivity.this);
+
+                        statementAdapter = new StatementAdapter(responseStatement.statementList);
+                        listExpenses.setAdapter(statementAdapter);
+                        listExpenses.setLayoutManager(layoutProdutos);
+                        statementAdapter.notifyDataSetChanged();
+                    }
                 }
             }
 
