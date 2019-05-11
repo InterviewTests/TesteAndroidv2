@@ -58,12 +58,12 @@ public class LoginActivity extends AppCompatActivity {
         if ((!Utils.isEmailValid(edtUser.getText().toString())) && (!Utils.isCpfValid(edtUser.getText().toString()))) {
             Toast.makeText(LoginActivity.this, getString(R.string.errorLoginUser), Toast.LENGTH_SHORT).show();
             edtUser.requestFocus();
-            return true;
+            return false;
         }
         if (!Utils.isPasswordValid(edtPassword.getText().toString())) {
             Toast.makeText(LoginActivity.this, getString(R.string.errorLoginPassword), Toast.LENGTH_SHORT).show();
             edtPassword.requestFocus();
-            return true;
+            return false;
         }
         return true;
     }
