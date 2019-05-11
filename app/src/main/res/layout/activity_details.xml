@@ -17,9 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorDetailsTop"
-            android:paddingLeft="@dimen/default_margin_12_dp"
-            android:paddingRight="@dimen/default_margin_12_dp"
-            android:paddingBottom="@dimen/default_margin_12_dp">
+            android:paddingLeft="@dimen/default_margin_16_dp"
+            android:paddingRight="@dimen/default_margin_16_dp"
+            android:paddingBottom="@dimen/default_margin_16_dp">
 
             <TextView
                 android:id="@+id/tvUser"
@@ -96,10 +96,29 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvRecent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/recent"
+        android:textSize="@dimen/text_size_17_sp"
+        android:textColor="@color/colorDescAccount"
+        android:paddingLeft="@dimen/default_margin_24_dp"
+        android:paddingBottom="@dimen/default_margin_16_dp"
+        android:paddingTop="@dimen/default_margin_16_dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listExpenses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/default_margin_30_dp"
+        android:paddingRight="@dimen/default_margin_16_dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecent" />
+
     <include
         android:id="@+id/teste"
         layout="@layout/card_view_item"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </android.support.constraint.ConstraintLayout>
