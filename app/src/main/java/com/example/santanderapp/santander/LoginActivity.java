@@ -37,60 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
         configureUI();
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @TargetApi(Build.VERSION_CODES.M)
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void onClick(View v) {
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl(LoginService.BASE_URL)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-                LoginService service = retrofit.create(LoginService.class);
-
-                RequestLogin requestLogin = new RequestLogin();
-
-                requestLogin.user = edtUser.getText().toString();
-                requestLogin.password = edtPassword.getText().toString();
-                if (validatesData()) {
-                    Call<ResponseLogin> requestCatalog = service.login(requestLogin);
-
-                    requestCatalog.enqueue(new Callback<ResponseLogin>() {
-                        @Override
-                        public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-                            if (!response.isSuccess()) {
-                                Toast.makeText(LoginActivity.this, getString(R.string.error) + response.code(), Toast.LENGTH_SHORT).show();
-
-                            } else {
-                                ResponseLogin dateClient = response.body();
-
-                                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.userAccount), Context.MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-
-                                editor.putInt(getString(R.string.userId), dateClient.userAccount.userId);
-                                editor.putString(getString(R.string.name), dateClient.userAccount.name);
-                                editor.putString(getString(R.string.bankAccount), dateClient.userAccount.bankAccount);
-                                editor.putString(getString(R.string.agency), dateClient.userAccount.agency);
-                                editor.putFloat(getString(R.string.balance), dateClient.userAccount.balance);
-
-                                editor.apply();
-                                Intent intent = new Intent(LoginActivity.this, DetailsActivity.class);
-                                startActivity(intent);
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                            if (!Utils.isConected(LoginActivity.this)) {
-                                Toast.makeText(LoginActivity.this, getString(R.string.notConnectInternet), Toast.LENGTH_SHORT).show();
-                            } else
-                                Toast.makeText(LoginActivity.this, getString(R.string.fail) + t.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                }
-            }
-        });
+        btnLogin.setOnClickListener(listenerLogin);
 
 
     }
@@ -115,4 +62,60 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
+    private View.OnClickListener listenerLogin = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(LoginService.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            LoginService service = retrofit.create(LoginService.class);
+
+            RequestLogin requestLogin = new RequestLogin();
+
+            requestLogin.user = edtUser.getText().toString();
+            requestLogin.password = edtPassword.getText().toString();
+            if (validatesData()) {
+                Call<ResponseLogin> requestCatalog = service.login(requestLogin);
+
+                requestCatalog.enqueue(new Callback<ResponseLogin>() {
+                    @Override
+                    public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                        if (!response.isSuccess()) {
+                            Toast.makeText(LoginActivity.this, getString(R.string.error) + response.code(), Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            ResponseLogin dateClient = response.body();
+
+                            SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.userAccount), Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                            editor.putInt(getString(R.string.userId), dateClient.userAccount.userId);
+                            editor.putString(getString(R.string.name), dateClient.userAccount.name);
+                            editor.putString(getString(R.string.bankAccount), dateClient.userAccount.bankAccount);
+                            editor.putString(getString(R.string.agency), dateClient.userAccount.agency);
+                            editor.putFloat(getString(R.string.balance), dateClient.userAccount.balance);
+
+                            editor.apply();
+                            Intent intent = new Intent(LoginActivity.this, DetailsActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                        if (!Utils.isConected(LoginActivity.this)) {
+                            Toast.makeText(LoginActivity.this, getString(R.string.notConnectInternet), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(LoginActivity.this, getString(R.string.fail) + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        }
+    };
+
 }
+
+
