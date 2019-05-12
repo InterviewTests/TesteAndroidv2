@@ -1,4 +1,4 @@
-package com.example.santanderapp.santander;
+package com.example.santanderapp.santander.homeScreen;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -11,9 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.santanderapp.santander.interfaceService.LoginService;
-import com.example.santanderapp.santander.model.RequestLogin;
-import com.example.santanderapp.santander.model.ResponseLogin;
+import com.example.santanderapp.santander.R;
+import com.example.santanderapp.santander.detailScreen.DetailsActivity;
+import com.example.santanderapp.santander.homeScreen.interfaceService.LoginService;
+import com.example.santanderapp.santander.homeScreen.model.RequestLogin;
+import com.example.santanderapp.santander.homeScreen.model.ResponseLogin;
 import com.example.santanderapp.santander.util.Utils;
 
 import retrofit2.Call;

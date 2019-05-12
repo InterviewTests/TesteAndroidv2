@@ -1,5 +1,7 @@
 package com.example.santanderapp.santander;
 
+import com.example.santanderapp.santander.homeScreen.LoginActivity;
+
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;

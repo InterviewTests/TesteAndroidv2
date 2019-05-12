@@ -1,4 +1,4 @@
-package com.example.santanderapp.santander.model;
+package com.example.santanderapp.santander.detailScreen.model;
 
 import java.util.List;
 

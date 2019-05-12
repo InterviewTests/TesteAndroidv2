@@ -1,7 +1,7 @@
-package com.example.santanderapp.santander.interfaceService;
+package com.example.santanderapp.santander.detailScreen.interfaceService;
 
 
-import com.example.santanderapp.santander.model.ResponseStatement;
+import com.example.santanderapp.santander.detailScreen.model.ResponseStatement;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

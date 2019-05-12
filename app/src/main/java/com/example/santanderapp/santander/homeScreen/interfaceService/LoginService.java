@@ -1,8 +1,8 @@
-package com.example.santanderapp.santander.interfaceService;
+package com.example.santanderapp.santander.homeScreen.interfaceService;
 
 
-import com.example.santanderapp.santander.model.RequestLogin;
-import com.example.santanderapp.santander.model.ResponseLogin;
+import com.example.santanderapp.santander.homeScreen.model.RequestLogin;
+import com.example.santanderapp.santander.homeScreen.model.ResponseLogin;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

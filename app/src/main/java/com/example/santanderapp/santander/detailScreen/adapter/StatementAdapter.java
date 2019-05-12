@@ -1,4 +1,4 @@
-package com.example.santanderapp.santander.adapter;
+package com.example.santanderapp.santander.detailScreen.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.santanderapp.santander.R;
-import com.example.santanderapp.santander.model.StatementList;
+import com.example.santanderapp.santander.detailScreen.model.StatementList;
 
 import java.text.ParseException;
 import java.util.List;

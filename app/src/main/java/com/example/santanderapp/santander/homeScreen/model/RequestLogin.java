@@ -1,4 +1,4 @@
-package com.example.santanderapp.santander.model;
+package com.example.santanderapp.santander.homeScreen.model;
 
 public class RequestLogin {
     public String user;

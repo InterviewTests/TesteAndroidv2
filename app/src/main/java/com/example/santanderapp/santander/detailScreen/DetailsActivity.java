@@ -1,4 +1,4 @@
-package com.example.santanderapp.santander;
+package com.example.santanderapp.santander.detailScreen;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
@@ -11,15 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.santanderapp.santander.adapter.StatementAdapter;
-import com.example.santanderapp.santander.interfaceService.StatementsService;
-import com.example.santanderapp.santander.model.RequestStatement;
-import com.example.santanderapp.santander.model.ResponseStatement;
+import com.example.santanderapp.santander.R;
+import com.example.santanderapp.santander.detailScreen.adapter.StatementAdapter;
+import com.example.santanderapp.santander.detailScreen.interfaceService.StatementsService;
+import com.example.santanderapp.santander.detailScreen.model.RequestStatement;
+import com.example.santanderapp.santander.detailScreen.model.ResponseStatement;
 import com.example.santanderapp.santander.util.Utils;
-
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

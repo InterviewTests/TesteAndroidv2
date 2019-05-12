@@ -1,6 +1,6 @@
-package com.example.santanderapp.santander.model;
+package com.example.santanderapp.santander.homeScreen.model;
 
-public class userAccount {
+public class UserAccount {
     public Integer userId;
     public String name;
     public String bankAccount;
