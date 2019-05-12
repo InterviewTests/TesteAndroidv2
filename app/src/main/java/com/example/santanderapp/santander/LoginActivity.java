@@ -56,15 +56,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     //Valida se no campo user é um CPF ou e-mail válido e o campo password constam as regras mínimas
-    private boolean validatesData() {
-        if ((!Utils.isEmailValid(edtUser.getText().toString())) && (!Utils.isCpfValid(edtUser.getText().toString()))) {
-            Toast.makeText(LoginActivity.this, getString(R.string.errorLoginUser), Toast.LENGTH_SHORT).show();
-            edtUser.requestFocus();
+    public static boolean validatesData(String edtUser, String edtPassword) {
+        if ((!Utils.isEmailValid(edtUser)) && (!Utils.isCpfValid(edtUser))) {
             return false;
         }
-        if (!Utils.isPasswordValid(edtPassword.getText().toString())) {
-            Toast.makeText(LoginActivity.this, getString(R.string.errorLoginPassword), Toast.LENGTH_SHORT).show();
-            edtPassword.requestFocus();
+        if (!Utils.isPasswordValid(edtPassword)) {
             return false;
         }
         return true;
@@ -91,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
 
             requestLogin.user = edtUser.getText().toString();
             requestLogin.password = edtPassword.getText().toString();
-            if (validatesData()) {
+            if (validatesData(edtUser.getText().toString(),  edtPassword.getText().toString())) {
                 Call<ResponseLogin> requestCatalog = service.login(requestLogin);
 
                 requestCatalog.enqueue(new Callback<ResponseLogin>() {
@@ -130,6 +126,10 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
 
+            }
+            else {
+                progress.dismiss();
+                Toast.makeText(LoginActivity.this, getString(R.string.errorLogin), Toast.LENGTH_SHORT).show();
             }
         }
     };

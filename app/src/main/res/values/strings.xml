@@ -15,6 +15,7 @@
     <string name="error">Erro :</string>
     <string name="errorLoginUser">Login não é um CPF ou E-mail!</string>
     <string name="errorLoginPassword">Senha não obedece requisitos mínimos!</string>
+    <string name="errorLogin">Dados não encontrados ou permitidos!</string>
     <string name="nameUser">Nome do usuário</string>
     <string name="accountUser">9999 / 99.999999-9</string>
     <string name="account">Conta</string>
