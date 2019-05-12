@@ -1,5 +1,6 @@
 package com.example.santanderapp.santander;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private EditText edtUser;
     private EditText edtPassword;
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,12 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
+            progress = new ProgressDialog(LoginActivity.this);
+            progress.setTitle(getString(R.string.loading));
+            progress.setMessage(getString(R.string.whaitLoading));
+            progress.setCancelable(false);
+            progress.show();
+
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(LoginService.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
@@ -89,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                 requestCatalog.enqueue(new Callback<ResponseLogin>() {
                     @Override
                     public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                        progress.dismiss();
                         if (!response.isSuccess()) {
                             Toast.makeText(LoginActivity.this, getString(R.string.error) + response.code(), Toast.LENGTH_SHORT).show();
 

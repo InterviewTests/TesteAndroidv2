@@ -1,5 +1,6 @@
 package com.example.santanderapp.santander;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -40,6 +41,8 @@ public class DetailsActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutRV;
     private StatementAdapter statementAdapter;
 
+    private ProgressDialog progress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +58,12 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     private void callAPI() {
+
+        progress = new ProgressDialog(DetailsActivity.this);
+        progress.setTitle(getString(R.string.loading));
+        progress.setMessage(getString(R.string.whaitDetails));
+        progress.setCancelable(false);
+        progress.show();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(StatementsService.BASE_URL)
@@ -74,6 +83,7 @@ public class DetailsActivity extends AppCompatActivity {
                     Toast.makeText(DetailsActivity.this, getString(R.string.error) + response.code(), Toast.LENGTH_SHORT).show();
 
                 } else {
+                    progress.dismiss();
                     if (response.body() != null) {
                         ResponseStatement responseStatement = response.body();
 

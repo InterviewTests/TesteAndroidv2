@@ -22,5 +22,12 @@
     <string name="balanceUser">9.999,00</string>
     <string name="reais">R$</string>
     <string name="recent">Recentes</string>
+    <string name="toolsValue">R$1.000,00</string>
+    <string name="toolsDesc">Conta de luz</string>
+    <string name="toolsDate">00/00/0000</string>
+    <string name="toolsType">Pagamento</string>
+    <string name="loading">Carregando...</string>
+    <string name="whaitLoading">Aguarde enquanto logamos!</string>
+    <string name="whaitDetails">Aguarde enquanto carregamos!</string>
 
 </resources>
