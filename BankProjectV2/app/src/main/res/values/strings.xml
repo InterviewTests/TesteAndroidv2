@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SatanderTest</string>
+
+    <string name="conn_error">Error ao se comunicar com o servidor!</string>
+</resources>
