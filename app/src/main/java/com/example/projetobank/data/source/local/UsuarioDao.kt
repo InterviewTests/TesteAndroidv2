@@ -8,12 +8,12 @@ import com.example.projetobank.data.model.Usuario
 @Dao
 interface UsuarioDao {
 
-    @Query("SELECT * FROM  login")
-    fun recuperarLogin(): List<Usuario>
+    @Query("SELECT * FROM  usuario")
+    fun pegarUsuario(): List<Usuario>
 
     @Insert
-    fun adicionarLogin(login: Usuario)
+    fun adicionarLogin(login: Usuario?)
 
-    @Query("DELETE FROM login")
-    fun deletarLogin()
+    @Query("DELETE FROM usuario")
+    fun deletarUsuario()
 }

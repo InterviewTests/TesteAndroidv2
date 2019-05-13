@@ -8,14 +8,21 @@ import com.google.gson.annotations.SerializedName
 class Usuario
     (
     @PrimaryKey()
-    @SerializedName("usuario")
-    val usuario: String,
-    @SerializedName("senha")
-    val senha: Double
+    @SerializedName("user")
+    val user: String,
+    @SerializedName("password")
+    val password: String
 ) {
 
     override fun toString(): String {
-        return "usuario: $usuario, senha: $senha"
+        return "user: $user, senha: $password"
+    }
+
+    fun converteParaHashMap(): LinkedHashMap<String, String> {
+        return linkedMapOf<String, String>(
+            Pair("user", user),
+            Pair("senha", password)
+        )
     }
 
 }

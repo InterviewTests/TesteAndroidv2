@@ -2,7 +2,7 @@ package com.example.projetobank.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class DadosBancario(
+data class userAccount(
     @SerializedName("agency")
     val agency: String,
     @SerializedName("balance")

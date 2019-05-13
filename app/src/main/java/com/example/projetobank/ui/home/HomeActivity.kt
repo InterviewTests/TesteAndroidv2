@@ -2,6 +2,7 @@ package com.example.projetobank.ui.home
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.projetobank.R
 
 class HomeActivity : AppCompatActivity() {
 
