@@ -3,4 +3,7 @@
     <string name="user">User</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="login_error_message">Dados de login inválidos!</string>
+    <string name="error_title">Atenção</string>
+    <string name="ok">Ok</string>
 </resources>
