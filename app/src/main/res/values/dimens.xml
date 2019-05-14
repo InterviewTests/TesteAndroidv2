@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="m2dp">2dp</dimen>
+    <dimen name="m4dp">4dp</dimen>
+    <dimen name="m8dp">8dp</dimen>
+    <dimen name="m16dp">16dp</dimen>
+    <dimen name="m32dp">32dp</dimen>
+    <dimen name="m64dp">64dp</dimen>
+    <dimen name="m128dp">128dp</dimen>
+    <dimen name="t2dp">2dp</dimen>
+    <dimen name="t4dp">4dp</dimen>
+    <dimen name="t8dp">8dp</dimen>
+    <dimen name="t16dp">16dp</dimen>
+    <dimen name="t32dp">32dp</dimen>
+    <dimen name="t64dp">64dp</dimen>
+    <dimen name="t128dp">128dp</dimen>
+</resources>
