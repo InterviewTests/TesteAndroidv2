@@ -3,8 +3,10 @@ package com.example.projetobank.ui.login
 import android.util.Log
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.model.Usuario
+import com.example.projetobank.data.model.UsuarioResposta
 import com.example.projetobank.data.source.CallbackResponse
 import com.example.projetobank.data.source.UsuarioRepositorio
+import com.example.projetobank.util.ehValido
 
 class LoginPresenter
     (
@@ -32,10 +34,10 @@ class LoginPresenter
     private fun pegaUsuario(usuario: Usuario?) {
         fragment.configuraUrlRetrofit()
         usuario?.let {
-            repositorio.pegaUsuario(usuario, object : CallbackResponse<userAccount> {
-                override fun sucesso(response: userAccount) {
-                    Log.e("sucessooo ", response.name)
-                  //  fragment.vaiParaHome(response.userAccount[0])
+            repositorio.pegaUsuario(usuario, object : CallbackResponse<UsuarioResposta> {
+                override fun sucesso(response: UsuarioResposta) {
+                  //  Log.e("sucessooo ", response.name)
+                    fragment.vaiParaHome(response.userAccount)
                 }
 
                 override fun erro() {
@@ -50,9 +52,8 @@ class LoginPresenter
 
     private fun valida(login: Usuario): Boolean {
         Log.e("usuariooooo ", login!!.user)
-//        return login.ehValido { autenticacaoCampo ->
-//                fragment.informaErroDeValidacao(autenticacaoCampo)
-//        }
-        return true
+        return login.ehValido { autenticacaoCampo ->
+                fragment.informaErroDeValidacao(autenticacaoCampo)
+        }
     }
 }

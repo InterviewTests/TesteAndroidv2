@@ -3,6 +3,7 @@ package com.example.projetobank.data.source.local
 import android.support.annotation.VisibleForTesting
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.model.Usuario
+import com.example.projetobank.data.model.UsuarioResposta
 import com.example.projetobank.data.source.CallbackResponse
 import com.example.projetobank.data.source.UsuarioDataSource
 import com.example.projetobank.util.AppExecutors
@@ -14,7 +15,7 @@ class UsuarioLocalDataSource(
 ) : UsuarioDataSource {
 
 
-    override fun pegaUsuario(concentrador: Usuario?, callbackResponse: CallbackResponse<userAccount>) {
+    override fun pegaUsuario(concentrador: Usuario?, callbackResponse: CallbackResponse<UsuarioResposta>) {
         appExecutors.diskIO.execute {
             val usuarios = usuarioDao.pegarUsuario()
            // val usuarioResposta = UsuarioResposta(usuario = usuarios)

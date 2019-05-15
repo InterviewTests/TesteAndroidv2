@@ -1,5 +1,6 @@
 package com.example.projetobank.ui.home
 
+import com.example.projetobank.data.model.UsuarioResposta
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.source.CallbackResponse
 import com.example.projetobank.data.source.DadosBancarioDataSource
@@ -23,8 +24,8 @@ class HomePresenter
     }
 
     private fun listarDadosBancarioDoUsuario() {
-        repositorioUsuario.pegaUsuario(null, object : CallbackResponse<userAccount> {
-            override fun sucesso(response: userAccount) {
+        repositorioUsuario.pegaUsuario(null, object : CallbackResponse<UsuarioResposta> {
+            override fun sucesso(response: UsuarioResposta) {
                 //val usuario = response.usuario[0]
 
             }

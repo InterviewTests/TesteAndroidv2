@@ -19,7 +19,7 @@ class UsuarioRemoteDataSource
 
     override fun pegaUsuario(
         concentrador: Usuario?,
-        callbackResponse: CallbackResponse<userAccount>)
+        callbackResponse: CallbackResponse<UsuarioResposta>)
     {
         appExecutors.networkIO.execute {
             concentrador?.let { concentrador ->
@@ -30,10 +30,11 @@ class UsuarioRemoteDataSource
                             call: Call<UsuarioResposta>, response: Response<UsuarioResposta>?
                         ) {
                             response?.let {
+                                it.body()?.let { usuarioResposta ->
                                     appExecutors.mainThread.execute {
-                                        Log.e("sucessoResposta " , it.body()?.userAccount!!.name)
-                                       // callbackResponse.sucesso(user)
-
+                                        Log.e("sucesso ", "nome  : " +usuarioResposta.userAccount.name)
+                                        callbackResponse.sucesso(usuarioResposta)
+                                    }
                                 }
                                 if (it.body() == null) {
                                     callbackResponse.erro()

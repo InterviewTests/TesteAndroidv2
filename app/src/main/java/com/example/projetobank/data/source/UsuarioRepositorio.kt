@@ -3,6 +3,7 @@ package com.example.projetobank.data.source
 import android.util.Log
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.model.Usuario
+import com.example.projetobank.data.model.UsuarioResposta
 import com.example.projetobank.data.source.remote.UsuarioRemoteDataSource
 
 class UsuarioRepositorio
@@ -11,11 +12,11 @@ class UsuarioRepositorio
 )
     : UsuarioDataSource {
 
-    override fun pegaUsuario(concentrador: Usuario?, callbackResponse: CallbackResponse<userAccount>) {
+    override fun pegaUsuario(concentrador: Usuario?, callbackResponse: CallbackResponse<UsuarioResposta>) {
         concentrador?.let {
-            remoteDataSource.pegaUsuario(concentrador, object : CallbackResponse<userAccount> {
-                override fun sucesso(response: userAccount) {
-//                    Log.e("sucessoResposta ",response.userAccount[0].name)
+            remoteDataSource.pegaUsuario(concentrador, object : CallbackResponse<UsuarioResposta> {
+                override fun sucesso(response: UsuarioResposta) {
+                    Log.e("sucessoRepositorio : ", "nome  : " +response.userAccount.name)
 //                    salvaDadosDeAutenticacao(
 //                           null,
 //                            response.userAccount.get(0),
