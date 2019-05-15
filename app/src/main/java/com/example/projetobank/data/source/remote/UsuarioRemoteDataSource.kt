@@ -31,7 +31,7 @@ class UsuarioRemoteDataSource
                         ) {
                             response?.let {
                                     appExecutors.mainThread.execute {
-                                        Log.e("sucessoResposta " ,it.body()?.toString())
+                                        Log.e("sucessoResposta " , it.body()?.userAccount!!.name)
                                        // callbackResponse.sucesso(user)
 
                                 }
