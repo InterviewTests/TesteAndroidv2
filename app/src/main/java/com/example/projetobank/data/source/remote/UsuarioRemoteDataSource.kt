@@ -3,6 +3,7 @@ package com.example.projetobank.data.source.remote
 import android.util.Log
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.model.Usuario
+import com.example.projetobank.data.model.UsuarioResposta
 import com.example.projetobank.data.source.CallbackResponse
 import com.example.projetobank.data.source.RetrofitInicializador
 import com.example.projetobank.data.source.UsuarioDataSource
@@ -24,15 +25,15 @@ class UsuarioRemoteDataSource
             concentrador?.let { concentrador ->
                 RetrofitInicializador()
                     .usuarioService().requestDadosBancario(concentrador)
-                    .enqueue(object : Callback<userAccount> {
+                    .enqueue(object : Callback<UsuarioResposta> {
                         override fun onResponse(
-                            call: Call<userAccount>, response: Response<userAccount>?
+                            call: Call<UsuarioResposta>, response: Response<UsuarioResposta>?
                         ) {
-                            response?.let { it.body()?.let { user ->
+                            response?.let {
                                     appExecutors.mainThread.execute {
                                         Log.e("sucessoResposta " ,it.body()?.toString())
-                                        callbackResponse.sucesso(user)
-                                    }
+                                       // callbackResponse.sucesso(user)
+
                                 }
                                 if (it.body() == null) {
                                     callbackResponse.erro()
@@ -40,7 +41,7 @@ class UsuarioRemoteDataSource
                             }
                         }
 
-                        override fun onFailure(call: Call<userAccount?>?, t: Throwable?) {
+                        override fun onFailure(call: Call<UsuarioResposta?>?, t: Throwable?) {
                             appExecutors.mainThread.execute {
                                 Log.e("ERROResposta ", "yeey")
                                 callbackResponse.erro()
