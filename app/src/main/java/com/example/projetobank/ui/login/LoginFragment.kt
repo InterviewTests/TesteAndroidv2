@@ -1,14 +1,21 @@
 package com.example.projetobank.ui.login
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.projetobank.R
 import com.example.projetobank.data.model.Usuario
+import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.source.RetrofitInicializador
+import com.example.projetobank.ui.home.HomeActivity
+import com.example.projetobank.ui.widget.AlertDialogFragment
+import com.example.projetobank.util.TAG_DIALOG
+import com.example.projetobank.util.pegaFragmentTranscation
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
 
@@ -41,31 +48,64 @@ class LoginFragment : Fragment(), LoginContrato.View {
         presenter.autentica(pegarLogin())
     }
 
-    private  fun pegarLogin (): Usuario? {
+    private fun pegarLogin(): Usuario? {
         with(root) {
             val usuario = til_usuario_autenticacao.editText?.text.toString()
             val senha = til_senha_autenticacao.editText?.text.toString()
             return Usuario(usuario, senha)
         }
     }
-    override fun vaiParaHome() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    override fun informaErroDeValidacao(loginCampo: LoginCampo ?) {
+        with(root) {
+            when (loginCampo) {
+                LoginCampo.USUARIO ->
+                    til_usuario_autenticacao.error = resources.getString(R.string.login_msg_erro_usuario)
+                LoginCampo.SENHA ->
+                    til_senha_autenticacao.error = resources.getString(R.string.login_msg_erro_senha)
+            }
+        }
+    }
+
+
+    override fun vaiParaHome(dados : userAccount) {
+        activity?.let {
+            val homeIntent = Intent(context, HomeActivity::class.java)
+            homeIntent.putExtra("dadosBancario", dados)
+            startActivity(homeIntent)
+            it.finish()
+        }
     }
 
     override fun exibe(mensagem: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        activity?.let {
+            val alertDialogFragment = AlertDialogFragment()
+            alertDialogFragment.setMensagem(mensagem)
+            alertDialogFragment.setBotaoNeutro(resources.getString(R.string.ok)) {
+                alertDialogFragment.dismiss()
+            }
+            alertDialogFragment.show(pegaFragmentTranscation(), TAG_DIALOG)
+        }
     }
 
     override fun exibeProgressBar() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        with(root){
+            logino_layout_botao_avancar.isClickable = false
+            btn_login.visibility = View.GONE
+            login_progress_bar.visibility = View.VISIBLE
+        }
     }
 
     override fun escondeProgressBar() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        with(root){
+            logino_layout_botao_avancar.isClickable = true
+            btn_login.visibility = View.VISIBLE
+            login_progress_bar.visibility = View.GONE
+        }
     }
 
     override fun configuraUrlRetrofit() {
-        RetrofitInicializador.url ="https://bank-app-test.herokuapp.com/api/"
+        RetrofitInicializador.url = "https://bank-app-test.herokuapp.com/api/"
     }
 
 

@@ -54,16 +54,31 @@
                 android:inputType="text"/>
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.v7.widget.AppCompatButton
-            android:layout_width="200dp"
-            android:layout_height="70dp"
+    <LinearLayout
+            android:id="@+id/logino_layout_botao_avancar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="Login"
-            android:layout_margin="48dp"
-            android:textColor="@android:color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="#3484F5"
-            android:id="@+id/btn_login"/>
+            app:layout_constraintStart_toStartOf="parent">
+
+        <android.support.v7.widget.AppCompatButton
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:text="Login"
+                android:layout_margin="48dp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#3484F5"
+                android:id="@+id/btn_login"/>
+        <ProgressBar
+                android:id="@+id/login_progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

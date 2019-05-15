@@ -19,7 +19,7 @@ class UsuarioRepositorio
                     Log.e("sucessooo ",  response.userAccount[0].toString())
                         salvaDadosDeAutenticacao(
                            null,
-                            response.userAccount[0],
+                            response.userAccount.get(0),
                             {callbackResponse.sucesso(response)},
                             {callbackResponse.erro()}
                         )
