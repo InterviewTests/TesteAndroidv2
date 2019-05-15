@@ -3,7 +3,6 @@ package com.example.projetobank.data.source.remote
 import android.util.Log
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.model.Usuario
-import com.example.projetobank.data.model.UsuarioResposta
 import com.example.projetobank.data.source.CallbackResponse
 import com.example.projetobank.data.source.RetrofitInicializador
 import com.example.projetobank.data.source.UsuarioDataSource
@@ -19,21 +18,20 @@ class UsuarioRemoteDataSource
 
     override fun pegaUsuario(
         concentrador: Usuario?,
-        callbackResponse: CallbackResponse<UsuarioResposta>)
+        callbackResponse: CallbackResponse<userAccount>)
     {
         appExecutors.networkIO.execute {
             concentrador?.let { concentrador ->
                 RetrofitInicializador()
                     .usuarioService().requestDadosBancario(concentrador)
-                    .enqueue(object : Callback<UsuarioResposta> {
+                    .enqueue(object : Callback<userAccount> {
                         override fun onResponse(
-                            call: Call<UsuarioResposta?>?, response: Response<UsuarioResposta?>?
+                            call: Call<userAccount>, response: Response<userAccount>?
                         ) {
-                            response?.let {
-                                it.body()?.let { usuarioResposta ->
+                            response?.let { it.body()?.let { user ->
                                     appExecutors.mainThread.execute {
-                                        Log.e("sucessoResposta ",usuarioResposta.userAccount.get(0).name + "yeey")
-                                        callbackResponse.sucesso(usuarioResposta)
+                                        Log.e("sucessoResposta " ,it.body()?.toString())
+                                        callbackResponse.sucesso(user)
                                     }
                                 }
                                 if (it.body() == null) {
@@ -42,8 +40,9 @@ class UsuarioRemoteDataSource
                             }
                         }
 
-                        override fun onFailure(call: Call<UsuarioResposta?>?, t: Throwable?) {
+                        override fun onFailure(call: Call<userAccount?>?, t: Throwable?) {
                             appExecutors.mainThread.execute {
+                                Log.e("ERROResposta ", "yeey")
                                 callbackResponse.erro()
                             }
                         }

@@ -3,7 +3,6 @@ package com.example.projetobank.data.source
 import android.util.Log
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.model.Usuario
-import com.example.projetobank.data.model.UsuarioResposta
 import com.example.projetobank.data.source.remote.UsuarioRemoteDataSource
 
 class UsuarioRepositorio
@@ -12,17 +11,17 @@ class UsuarioRepositorio
 )
     : UsuarioDataSource {
 
-    override fun pegaUsuario(concentrador: Usuario?, callbackResponse: CallbackResponse<UsuarioResposta>) {
+    override fun pegaUsuario(concentrador: Usuario?, callbackResponse: CallbackResponse<userAccount>) {
         concentrador?.let {
-            remoteDataSource.pegaUsuario(concentrador, object : CallbackResponse<UsuarioResposta> {
-                override fun sucesso(response: UsuarioResposta) {
-                    Log.e("sucessooo ",  response.userAccount[0].toString())
-                        salvaDadosDeAutenticacao(
-                           null,
-                            response.userAccount.get(0),
-                            {callbackResponse.sucesso(response)},
-                            {callbackResponse.erro()}
-                        )
+            remoteDataSource.pegaUsuario(concentrador, object : CallbackResponse<userAccount> {
+                override fun sucesso(response: userAccount) {
+//                    Log.e("sucessoResposta ",response.userAccount[0].name)
+//                    salvaDadosDeAutenticacao(
+//                           null,
+//                            response.userAccount.get(0),
+//                            {callbackResponse.sucesso(response)},
+//                            {callbackResponse.erro()}
+//                        )
 
                 }
 
@@ -32,7 +31,7 @@ class UsuarioRepositorio
             })
             return
         }
-        localDataSource.pegaUsuario(null, callbackResponse)
+        //localDataSource.pegaUsuario(null, callbackResponse)
     }
 
     override fun deletaUsuario(acao: () -> Unit) {

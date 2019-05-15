@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.projetobank.R
 import com.example.projetobank.data.model.Usuario
 import com.example.projetobank.data.model.userAccount
@@ -48,7 +47,7 @@ class LoginFragment : Fragment(), LoginContrato.View {
         presenter.autentica(pegarLogin())
     }
 
-    private fun pegarLogin(): Usuario? {
+    private fun pegarLogin(): Usuario {
         with(root) {
             val usuario = til_usuario_autenticacao.editText?.text.toString()
             val senha = til_senha_autenticacao.editText?.text.toString()
@@ -56,7 +55,7 @@ class LoginFragment : Fragment(), LoginContrato.View {
         }
     }
 
-    override fun informaErroDeValidacao(loginCampo: LoginCampo ?) {
+    override fun informaErroDeValidacao(loginCampo: LoginCampo) {
         with(root) {
             when (loginCampo) {
                 LoginCampo.USUARIO ->

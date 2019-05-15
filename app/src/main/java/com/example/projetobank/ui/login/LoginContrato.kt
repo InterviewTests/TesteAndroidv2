@@ -9,13 +9,13 @@ interface LoginContrato {
 
     interface View: BaseView<Presenter> {
         fun vaiParaHome(dados : userAccount)
-        fun informaErroDeValidacao(loginCampo: LoginCampo ?)
+        fun informaErroDeValidacao(loginCampo: LoginCampo)
         fun exibe(mensagem: String)
         fun exibeProgressBar()
         fun escondeProgressBar()
     }
 
     interface Presenter: BasePresenter {
-        fun autentica(login: Usuario ?)
+        fun autentica(login: Usuario)
     }
 }

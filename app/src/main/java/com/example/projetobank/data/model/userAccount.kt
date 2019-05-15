@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-data class userAccount (
+data class userAccount(
     @SerializedName("agency")
     val agency: String,
     @SerializedName("balance")
@@ -15,7 +15,7 @@ data class userAccount (
     val name: String,
     @SerializedName("userId")
     val userId: Int
-):  Parcelable {
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readDouble(),
