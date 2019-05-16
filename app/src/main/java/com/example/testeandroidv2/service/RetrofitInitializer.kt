@@ -10,7 +10,11 @@ class RetrofitInitializer {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    fun createLoginService() = retrofit.create(LoginService::class.java)!!
+    private val services = retrofit.create(Services::class.java)
+
+    fun loginService() = services!!
+
+    fun statementService() = services!!
 
     companion object {
         private const val endpoint = "https://bank-app-test.herokuapp.com/api/"

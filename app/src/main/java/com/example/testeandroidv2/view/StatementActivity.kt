@@ -3,7 +3,12 @@ package com.example.testeandroidv2.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testeandroidv2.R
+import com.example.testeandroidv2.model.statement.StatementResponse
+import com.example.testeandroidv2.service.RetrofitInitializer
 import kotlinx.android.synthetic.main.activity_statement.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.NumberFormat
 
 class StatementActivity : AppCompatActivity() {
@@ -55,6 +60,8 @@ class StatementActivity : AppCompatActivity() {
         statement_account_field.text = mAccount
 
         statement_balance_field.text = NumberFormat.getCurrencyInstance().format(mBalance)
+
+        requestStatement()
     }
 
     private fun formatAccount(): String {
@@ -62,5 +69,20 @@ class StatementActivity : AppCompatActivity() {
         val middleAgencyNumbers = mAgency.removeRange(0, firstAgencyNumbers.length)
         val finalAgencyNumbers = mAgency[mAgency.length - 1]
         return "$mBankAccount / $firstAgencyNumbers.$middleAgencyNumbers-$finalAgencyNumbers"
+    }
+
+    private fun requestStatement() {
+        val statementService = RetrofitInitializer().statementService()
+        val callStatement = statementService.getStatement(intent.getStringExtra(getString(R.string.userId)))
+
+        callStatement?.enqueue(object : retrofit2.Callback<StatementResponse> {
+            override fun onFailure(call: Call<StatementResponse>?, t: Throwable?) {
+
+            }
+
+            override fun onResponse(call: Call<StatementResponse>?, response: Response<StatementResponse>?) {
+
+            }
+        })
     }
 }
