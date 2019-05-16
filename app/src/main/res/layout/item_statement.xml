@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Conta de Luz"
+            android:text=""
             android:id="@+id/descId"
             android:layout_gravity="left"
             android:textSize="18dp"
@@ -38,7 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12/12/2018"
+            android:text=""
             android:id="@+id/dateId"
             android:layout_gravity="left"
             android:textSize="14dp"/>
@@ -56,7 +56,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1.000,00"
+                android:text=""
                 android:id="@+id/valueId"
                 android:textSize="14dp"/>
         </LinearLayout>
