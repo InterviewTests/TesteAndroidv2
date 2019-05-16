@@ -6,7 +6,16 @@
     <string name="login_data_error_message">Dados de login inválidos!</string>
     <string name="login_error_message">Erro ao fazer login!</string>
     <string name="error_title">Atenção</string>
-    <string name="ok">Ok</string>
-    <string name="progress_header_text_hint">Aguarde um instante...</string>
-    <string name="progress_footer_text_hint">Estamos fazendo login...</string>
+    <string name="ok">OK</string>
+    <string name="progress_header_text_hint">Aguarde um instante…</string>
+    <string name="progress_footer_text_hint">Estamos fazendo login…</string>
+
+    <string name="userId">userId</string>
+    <string name="name">name</string>
+    <string name="bankAccount">bankAccount</string>
+    <string name="agency">agency</string>
+    <string name="balance">balance</string>
+    <string name="user_name_hint">Jose da Silva Teste</string>
+    <string name="account">Conta</string>
+    <string name="account_balance">Saldo</string>
 </resources>
