@@ -7,22 +7,22 @@ import com.example.projetobank.data.model.UsuarioResposta
 import com.example.projetobank.data.source.remote.UsuarioRemoteDataSource
 
 class UsuarioRepositorio
-    (  private val localDataSource: UsuarioDataSource,
-       private val remoteDataSource: UsuarioRemoteDataSource
-)
-    : UsuarioDataSource {
+    (
+    private val localDataSource: UsuarioDataSource,
+    private val remoteDataSource: UsuarioRemoteDataSource
+) : UsuarioDataSource {
 
     override fun pegaUsuario(concentrador: Usuario?, callbackResponse: CallbackResponse<UsuarioResposta>) {
         concentrador?.let {
             remoteDataSource.pegaUsuario(concentrador, object : CallbackResponse<UsuarioResposta> {
                 override fun sucesso(response: UsuarioResposta) {
-                    Log.e("sucessoRepositorio : ", "nome  : " +response.userAccount.name)
-//                    salvaDadosDeAutenticacao(
-//                           null,
-//                            response.userAccount.get(0),
-//                            {callbackResponse.sucesso(response)},
-//                            {callbackResponse.erro()}
-//                        )
+                    Log.e("sucessoRepositorio : ", "nome  : " + response.userAccount.name)
+                    salvaDadosDeAutenticacao(
+                        null,
+                        response.userAccount,
+                        { callbackResponse.sucesso(response) },
+                        { callbackResponse.erro() }
+                    )
 
                 }
 
@@ -47,7 +47,7 @@ class UsuarioRepositorio
     ) {
         Log.e("sucessooo ", userAccount.name)
 
-        localDataSource.salvaDadosDeAutenticacao(usuario,userAccount,sucesso,erro)
+        localDataSource.salvaDadosDeAutenticacao(usuario, userAccount, sucesso, erro)
     }
 
     companion object {

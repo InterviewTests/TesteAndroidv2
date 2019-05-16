@@ -1,32 +1,37 @@
 package com.example.projetobank.ui.home
 
+import com.example.projetobank.data.model.DadosBancarioResposta
 import com.example.projetobank.data.model.UsuarioResposta
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.source.CallbackResponse
 import com.example.projetobank.data.source.DadosBancarioDataSource
+import com.example.projetobank.data.source.DadosBancarioRepositorio
 import com.example.projetobank.data.source.UsuarioDataSource
 
 class HomePresenter
     (
-    val repositorio: DadosBancarioDataSource,
-    val repositorioUsuario: UsuarioDataSource,
+    val repositorio: DadosBancarioRepositorio,
     val fragment: HomeContrato.View
 )
 
     : HomeContrato.Presenter {
+
+    init {
+        fragment.presenter = this
+    }
 
     override fun logout() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun start() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        listarStatement()
     }
 
-    private fun listarDadosBancarioDoUsuario() {
-        repositorioUsuario.pegaUsuario(null, object : CallbackResponse<UsuarioResposta> {
-            override fun sucesso(response: UsuarioResposta) {
-                //val usuario = response.usuario[0]
+    private fun listarStatement() {
+        repositorio.pegaDadosBancario(1, object : CallbackResponse<DadosBancarioResposta> {
+            override fun sucesso(response: DadosBancarioResposta) {
+                fragment.listarStatement(response.statement)
 
             }
 

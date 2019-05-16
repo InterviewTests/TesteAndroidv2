@@ -7,5 +7,5 @@ import retrofit2.http.GET
 
 interface DadosBancarioService {
     @GET("statements")
-    fun requestDadosBancario(@Body filtro: Concentrador): Call<Statement>
+    fun requestDadosBancario(@Body filtro: Int): Call<DadosBancarioResposta>
 }

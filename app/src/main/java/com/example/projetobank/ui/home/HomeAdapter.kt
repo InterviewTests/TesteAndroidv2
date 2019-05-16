@@ -28,6 +28,8 @@ class HomeAdapter(
     override fun onBindViewHolder(holder: ViewHolder, posicao: Int) {
         val statement = statments[posicao]
         with(holder) {
+            if (posicao > 0)
+                recente.visibility = View.GONE
             data.text = statement.date
             descricao.text = statement.desc
             titulo.text = statement.title
@@ -40,6 +42,7 @@ class HomeAdapter(
         val descricao = itemView.tvDescricao
         val titulo = itemView.tvTitulo
         val valor = itemView.tvValue
+        val recente = itemView.tvRecente
     }
 
 }

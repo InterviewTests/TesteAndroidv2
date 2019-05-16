@@ -5,8 +5,7 @@ import com.example.projetobank.data.model.DadosBancarioResposta
 import com.example.projetobank.data.model.Statement
 
 interface DadosBancarioDataSource {
-    fun pegaDadosBancario(concentrador: Concentrador?, callbackResponse: CallbackResponse<DadosBancarioResposta>)
-
+    fun pegaDadosBancario(idUsuario: Int, callbackResponse: CallbackResponse<DadosBancarioResposta>)
     fun salvaDadosStatement(
         statement: Statement
     )

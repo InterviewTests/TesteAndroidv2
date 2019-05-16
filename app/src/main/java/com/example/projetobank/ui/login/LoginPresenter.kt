@@ -22,7 +22,7 @@ class LoginPresenter
 
     override fun autentica(login: Usuario) {
         if (valida(login)) {
-            //fragment.exibeProgressBar()
+            fragment.exibeProgressBar()
             try {
                 pegaUsuario(login)
             } catch (e: Exception) {
@@ -36,12 +36,13 @@ class LoginPresenter
         usuario?.let {
             repositorio.pegaUsuario(usuario, object : CallbackResponse<UsuarioResposta> {
                 override fun sucesso(response: UsuarioResposta) {
-                  //  Log.e("sucessooo ", response.name)
+                    fragment.exibe("deeeu certo!")
+                   fragment.escondeProgressBar()
                     fragment.vaiParaHome(response.userAccount)
                 }
 
                 override fun erro() {
-                    Log.e("erooo  ", "errooooo")
+                    fragment.exibe("Erro de conexão!")
                 }
             })
         }

@@ -13,14 +13,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class UsuarioRemoteDataSource
-    ( val appExecutors: AppExecutors)
-    : UsuarioDataSource {
-
+    (val appExecutors: AppExecutors) : UsuarioDataSource {
 
     override fun pegaUsuario(
         concentrador: Usuario?,
-        callbackResponse: CallbackResponse<UsuarioResposta>)
-    {
+        callbackResponse: CallbackResponse<UsuarioResposta>
+    ) {
         appExecutors.networkIO.execute {
             concentrador?.let { concentrador ->
                 RetrofitInicializador()
@@ -32,7 +30,7 @@ class UsuarioRemoteDataSource
                             response?.let {
                                 it.body()?.let { usuarioResposta ->
                                     appExecutors.mainThread.execute {
-                                        Log.e("sucesso ", "nome  : " +usuarioResposta.userAccount.name)
+                                        Log.e("sucesso ", "nome  : " + usuarioResposta.userAccount.name)
                                         callbackResponse.sucesso(usuarioResposta)
                                     }
                                 }
@@ -50,7 +48,8 @@ class UsuarioRemoteDataSource
                         }
                     })
             }
-        }    }
+        }
+    }
 
     override fun deletaUsuario(acao: () -> Unit) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -64,7 +63,6 @@ class UsuarioRemoteDataSource
     ) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
 
     companion object {
         private lateinit var INSTANCE: UsuarioRemoteDataSource
