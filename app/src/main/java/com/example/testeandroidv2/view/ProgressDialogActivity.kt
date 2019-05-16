@@ -1,7 +1,8 @@
-package com.example.testeandroidv2
+package com.example.testeandroidv2.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.testeandroidv2.R
 
 class ProgressDialogActivity : AppCompatActivity() {
 

@@ -1,12 +1,13 @@
-package com.example.testeandroidv2.login
+package com.example.testeandroidv2.view
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.testeandroidv2.ProgressDialogActivity
+import com.example.testeandroidv2.model.login.LoginBody
+import com.example.testeandroidv2.model.login.LoginResponse
 import com.example.testeandroidv2.R
-import com.example.testeandroidv2.RetrofitInitializer
-import com.example.testeandroidv2.Utils
+import com.example.testeandroidv2.service.RetrofitInitializer
+import com.example.testeandroidv2.util.Utils
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
@@ -47,7 +48,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun requestLogin() {
-        val callLogin = RetrofitInitializer().requestLogin().login(LoginBody(mUser, mPassword))
+        val callLogin = RetrofitInitializer().requestLogin().login(
+            LoginBody(
+                mUser,
+                mPassword
+            )
+        )
 
         startActivity(Intent(this@LoginActivity, ProgressDialogActivity::class.java))
 

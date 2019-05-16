@@ -1,4 +1,4 @@
-package com.example.testeandroidv2.login
+package com.example.testeandroidv2.model.login
 
 data class UserAccount(
     val userId: Int? = null,

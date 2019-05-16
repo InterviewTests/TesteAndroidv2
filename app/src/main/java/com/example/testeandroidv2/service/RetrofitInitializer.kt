@@ -1,6 +1,5 @@
-package com.example.testeandroidv2
+package com.example.testeandroidv2.service
 
-import com.example.testeandroidv2.login.LoginService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

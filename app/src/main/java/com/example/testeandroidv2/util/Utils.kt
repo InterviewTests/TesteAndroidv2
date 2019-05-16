@@ -1,4 +1,4 @@
-package com.example.testeandroidv2
+package com.example.testeandroidv2.util
 
 import br.com.concrete.canarinho.validator.Validador
 
