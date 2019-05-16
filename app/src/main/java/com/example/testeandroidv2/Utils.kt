@@ -17,9 +17,19 @@ class Utils {
             }
         }
 
-        val validPassword = password.matches(Regex("[a-zA-Z]+")) &&
-                password.matches(Regex("[0-9]+")) &&
-                password.matches(Regex("['\"!@#\$%&*()]+"))
+        var hasNumber = false
+        var hasUpperCaseLetter = false
+        var hasSymbol = false
+
+        for (char in password) {
+            when (char) {
+                in '0'..'9' -> hasNumber = true
+                in 'A'..'Z' -> hasUpperCaseLetter = true
+                else -> hasSymbol = true
+            }
+        }
+
+        val validPassword = hasNumber && hasUpperCaseLetter && hasSymbol
 
         return validUser && validPassword
     }

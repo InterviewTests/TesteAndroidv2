@@ -3,6 +3,8 @@
           xmlns:dist="http://schemas.android.com/apk/distribution"
           package="com.example.testeandroidv2">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <dist:module dist:instant="true"/>
 
     <application
@@ -12,6 +14,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".ProgressDialogActivity"
+                  android:theme="@style/DefaultDialog"/>
         <activity android:name=".login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

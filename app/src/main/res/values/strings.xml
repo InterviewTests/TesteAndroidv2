@@ -3,7 +3,10 @@
     <string name="user">User</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="login_error_message">Dados de login inválidos!</string>
+    <string name="login_data_error_message">Dados de login inválidos!</string>
+    <string name="login_error_message">Erro ao fazer login!</string>
     <string name="error_title">Atenção</string>
     <string name="ok">Ok</string>
+    <string name="progress_header_text_hint">Aguarde um instante...</string>
+    <string name="progress_footer_text_hint">Estamos fazendo login...</string>
 </resources>
