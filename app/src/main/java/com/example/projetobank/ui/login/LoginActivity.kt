@@ -3,7 +3,6 @@ package com.example.projetobank.ui.login
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.projetobank.R
-import com.example.projetobank.data.source.UsuarioDataSource
 import com.example.projetobank.data.source.UsuarioRepositorio
 import com.example.projetobank.data.source.local.AppDataBase
 import com.example.projetobank.data.source.local.UsuarioLocalDataSource

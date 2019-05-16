@@ -1,7 +1,9 @@
 package com.example.projetobank.ui.home
 
+import android.util.Log
 import com.example.projetobank.data.model.DadosBancarioResposta
 import com.example.projetobank.data.model.UsuarioResposta
+import com.example.projetobank.data.model.statementList
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.source.CallbackResponse
 import com.example.projetobank.data.source.DadosBancarioDataSource
@@ -29,14 +31,12 @@ class HomePresenter
     }
 
     private fun listarStatement() {
-        repositorio.pegaDadosBancario(1, object : CallbackResponse<DadosBancarioResposta> {
-            override fun sucesso(response: DadosBancarioResposta) {
-                fragment.listarStatement(response.statement)
-
+        repositorio.pegaDadosBancario(1, object : CallbackResponse<statementList> {
+            override fun sucesso(response: statementList) {
+                fragment.listarStatement(response.statementList)
             }
-
             override fun erro() {
-
+               Log.e("erroRequisicao ", "errooo")
             }
         })
     }

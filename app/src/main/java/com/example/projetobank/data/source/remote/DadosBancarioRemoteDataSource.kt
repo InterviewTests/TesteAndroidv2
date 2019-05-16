@@ -3,6 +3,7 @@ package com.example.projetobank.data.source.remote
 import android.util.Log
 import com.example.projetobank.data.model.DadosBancarioResposta
 import com.example.projetobank.data.model.Statement
+import com.example.projetobank.data.model.statementList
 import com.example.projetobank.data.source.CallbackResponse
 import com.example.projetobank.data.source.DadosBancarioDataSource
 import com.example.projetobank.data.source.RetrofitInicializador
@@ -18,22 +19,22 @@ class DadosBancarioRemoteDataSource
     : DadosBancarioDataSource{
 
     override fun pegaDadosBancario(
-        concentrador: Int,
-        callbackResponse: CallbackResponse<DadosBancarioResposta>
+            concentrador: Int,
+        callbackResponse: CallbackResponse<statementList>
     ) {
 
         appExecutors.networkIO.execute {
-            concentrador?.let { concentrador ->
+            concentrador.let { concentrador ->
                 RetrofitInicializador()
                     .dadosBancarioService().requestDadosBancario(1)
-                    .enqueue(object : Callback<DadosBancarioResposta> {
+                    .enqueue(object : Callback<statementList> {
                         override fun onResponse(
-                            call: Call<DadosBancarioResposta>, response: Response<DadosBancarioResposta>?
+                            call: Call<statementList>, response: Response<statementList>?
                         ) {
                             response?.let {
                                 it.body()?.let { dadosBancario ->
                                     appExecutors.mainThread.execute {
-                                        Log.e("sucesso ", "objeto  : " + dadosBancario.statement[0])
+                                        Log.e("sucesso ", "objeto  : " + dadosBancario.statementList[0])
                                         callbackResponse.sucesso(dadosBancario)
                                     }
                                 }
@@ -43,7 +44,7 @@ class DadosBancarioRemoteDataSource
                             }
                         }
 
-                        override fun onFailure(call: Call<DadosBancarioResposta?>?, t: Throwable?) {
+                        override fun onFailure(call: Call<statementList?>?, t: Throwable?) {
                             appExecutors.mainThread.execute {
                                 Log.e("ERROResposta ", "erro")
                                 callbackResponse.erro()

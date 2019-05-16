@@ -27,6 +27,7 @@ class LoginPresenter
                 pegaUsuario(login)
             } catch (e: Exception) {
                 fragment.exibe("Erro de conexão!")
+                Log.e("erroAutentica ", e.message)
             }
         }
     }
@@ -42,7 +43,7 @@ class LoginPresenter
                 }
 
                 override fun erro() {
-                    fragment.exibe("Erro de conexão!")
+                    Log.e("erroPegarUsuario ","erro")
                 }
             })
         }
@@ -52,7 +53,6 @@ class LoginPresenter
     }
 
     private fun valida(login: Usuario): Boolean {
-        Log.e("usuariooooo ", login!!.user)
         return login.ehValido { autenticacaoCampo ->
                 fragment.informaErroDeValidacao(autenticacaoCampo)
         }

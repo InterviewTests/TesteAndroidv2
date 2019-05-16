@@ -11,21 +11,20 @@ class UsuarioRepositorio
     private val localDataSource: UsuarioDataSource,
     private val remoteDataSource: UsuarioRemoteDataSource
 ) : UsuarioDataSource {
-
+    private lateinit var user : Usuario
     override fun pegaUsuario(concentrador: Usuario?, callbackResponse: CallbackResponse<UsuarioResposta>) {
         concentrador?.let {
             remoteDataSource.pegaUsuario(concentrador, object : CallbackResponse<UsuarioResposta> {
                 override fun sucesso(response: UsuarioResposta) {
+                    user = concentrador
                     Log.e("sucessoRepositorio : ", "nome  : " + response.userAccount.name)
                     salvaDadosDeAutenticacao(
-                        null,
+                            user,
                         response.userAccount,
                         { callbackResponse.sucesso(response) },
                         { callbackResponse.erro() }
                     )
-
                 }
-
                 override fun erro() {
                     callbackResponse.erro()
                 }

@@ -9,6 +9,9 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
+//    androidExtensions {
+//        experimental = true
+//    }
     defaultConfig {
         applicationId "com.example.projetobank"
         minSdkVersion 19

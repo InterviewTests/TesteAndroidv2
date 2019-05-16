@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +13,6 @@ import com.example.projetobank.data.model.Usuario
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.source.RetrofitInicializador
 import com.example.projetobank.ui.home.HomeActivity
-import com.example.projetobank.ui.widget.AlertDialogFragment
-import com.example.projetobank.util.TAG_DIALOG
-import com.example.projetobank.util.pegaFragmentTranscation
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
 
@@ -70,21 +68,27 @@ class LoginFragment : Fragment(), LoginContrato.View {
     override fun vaiParaHome(dados : userAccount) {
         activity?.let {
             val homeIntent = Intent(context, HomeActivity::class.java)
-            homeIntent.putExtra("dadosBancario", dados)
+            Log.e("dadosBancario", dados.name)
+
+            homeIntent.putExtra("name",dados.name)
+            homeIntent.putExtra("userId",dados.userId)
+            homeIntent.putExtra("bankAccount",dados.bankAccount)
+            homeIntent.putExtra("balance",dados.balance)
+            homeIntent.putExtra("agency",dados.agency)
             startActivity(homeIntent)
             it.finish()
         }
     }
 
     override fun exibe(mensagem: String) {
-        activity?.let {
-            val alertDialogFragment = AlertDialogFragment()
-            alertDialogFragment.setMensagem(mensagem)
-            alertDialogFragment.setBotaoNeutro(resources.getString(R.string.ok)) {
-                alertDialogFragment.dismiss()
-            }
-            alertDialogFragment.show(pegaFragmentTranscation(), TAG_DIALOG)
-        }
+//        activity?.let {
+//            val alertDialogFragment = AlertDialogFragment()
+//            alertDialogFragment.setMensagem(mensagem)
+//            alertDialogFragment.setBotaoNeutro(resources.getString(R.string.ok)) {
+//                alertDialogFragment.dismiss()
+//            }
+//            alertDialogFragment.show(pegaFragmentTranscation(), TAG_DIALOG)
+//        }
     }
 
     override fun exibeProgressBar() {

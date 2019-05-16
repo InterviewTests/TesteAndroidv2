@@ -8,11 +8,12 @@ import com.example.projetobank.data.model.Usuario
 
 
 @Database(
-    entities = [
+        entities = [
         Usuario::class],
-    version = 1
+        version = 1,
+        exportSchema = false
 )
-abstract class AppDataBase: RoomDatabase() {
+abstract class AppDataBase : RoomDatabase() {
 
     abstract fun usuarioDao(): UsuarioDao
 
@@ -26,10 +27,10 @@ abstract class AppDataBase: RoomDatabase() {
             synchronized(lock) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(
-                        context.applicationContext,
-                        AppDataBase::class.java,
-                        "bank")
-                        .build()
+                            context.applicationContext,
+                            AppDataBase::class.java,
+                            "bank")
+                            .build()
                 }
                 return INSTANCE!!
             }

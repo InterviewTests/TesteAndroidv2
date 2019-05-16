@@ -6,23 +6,22 @@ import com.google.gson.annotations.SerializedName
 
 data class userAccount(
     @SerializedName("agency")
-    val agency: String,
+    val agency: String?,
     @SerializedName("balance")
     val balance: Double,
     @SerializedName("bankAccount")
-    val bankAccount: String,
+    val bankAccount: String?,
     @SerializedName("name")
-    val name: String,
+    val name: String?,
     @SerializedName("userId")
     val userId: Int
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
-        parcel.readDouble(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readInt()
-    ) {
+            parcel.readString(),
+            parcel.readDouble(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readInt()) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -46,5 +45,4 @@ data class userAccount(
             return arrayOfNulls(size)
         }
     }
-
 }
