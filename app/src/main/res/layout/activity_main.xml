@@ -17,6 +17,7 @@
         tools:title="João da Silva Sauro" />
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/transaction_header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
@@ -66,5 +67,15 @@
             app:layout_constraintTop_toBottomOf="@id/lbl_balance"
             tools:text="R$ 3.000,00" />
     </android.support.constraint.ConstraintLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/transaction_header"
+        tools:listitem="@layout/item_transaction" />
 
 </android.support.constraint.ConstraintLayout>
