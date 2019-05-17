@@ -1,4 +1,4 @@
-package com.testeandroidv2.view.activity;
+package com.testeandroidv2.view.ui.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

@@ -2,8 +2,8 @@ package com.testeandroidv2.controller;
 
 import com.orhanobut.hawk.Hawk;
 import com.testeandroidv2.App;
-import com.testeandroidv2.contract.presenter.LoggedInPresenter;
-import com.testeandroidv2.contract.view.LoggedView;
+import com.testeandroidv2.contract.presenter.HomePresenter;
+import com.testeandroidv2.contract.view.HomeView;
 import com.testeandroidv2.repository.LoginService;
 import com.testeandroidv2.repository.RetrofitInstance;
 import com.testeandroidv2.repository.response.Error;
@@ -14,22 +14,22 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoggedController implements LoggedInPresenter {
+public class HomeController implements HomePresenter {
 
-    private LoggedView loggedView;
+    private HomeView homeView;
 
-    public LoggedController(LoggedView loggedView){
-        this.loggedView = loggedView;
+    public HomeController(HomeView homeView){
+        this.homeView = homeView;
     }
 
     @Override
     public void loadHeader() {
 
-        loggedView.showProgress();
+        homeView.showProgress();
 
         UserAccount userAccount = App.userAccount;
 
-        loggedView.setHeader(userAccount);
+        homeView.setHeader(userAccount);
     }
 
     @Override
@@ -52,15 +52,15 @@ public class LoggedController implements LoggedInPresenter {
                     if(error.getCode() == null) {
 
                         StatementResponse statementResponse = response.body();
-                        loggedView.setStatementList(statementResponse.getStatementList());
-                        loggedView.dismissProgress();
+                        homeView.setStatementList(statementResponse.getStatementList());
+                        homeView.dismissProgress();
 
                     } else {
 
                         App.error = response.body().getError();
 
-                        loggedView.dismissProgress();
-                        loggedView.showErrorActivity();
+                        homeView.dismissProgress();
+                        homeView.showErrorActivity();
                     }
 
                 } else {
@@ -68,8 +68,8 @@ public class LoggedController implements LoggedInPresenter {
                     StatementResponse statementResponse = response.body();
                     App.error = statementResponse.getError();
 
-                    loggedView.dismissProgress();
-                    loggedView.showErrorActivity();
+                    homeView.dismissProgress();
+                    homeView.showErrorActivity();
                 }
             }
 
@@ -78,7 +78,7 @@ public class LoggedController implements LoggedInPresenter {
                 Error error = new Error();
                 error.setCode("Error");
                 error.setMessage(t.getMessage());
-                loggedView.showErrorActivity();
+                homeView.showErrorActivity();
             }
         });
     }

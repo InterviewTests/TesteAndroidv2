@@ -1,4 +1,4 @@
-package com.testeandroidv2.view.fragment;
+package com.testeandroidv2.view.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,20 +13,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.testeandroidv2.R;
-import com.testeandroidv2.contract.view.LoggedView;
-import com.testeandroidv2.controller.LoggedController;
+import com.testeandroidv2.contract.view.HomeView;
+import com.testeandroidv2.controller.HomeController;
 import com.testeandroidv2.repository.response.Statement;
 import com.testeandroidv2.repository.response.UserAccount;
 import com.testeandroidv2.utility.ProgressDialog;
 import com.testeandroidv2.view.StatementAdapter;
-import com.testeandroidv2.view.activity.ErrorActivity;
+import com.testeandroidv2.view.ui.activity.ErrorActivity;
 
 import java.util.List;
 
 
-public class LoggedFragment extends Fragment implements LoggedView {
+public class HomeFragment extends Fragment implements HomeView {
 
-    public static final String TAG = LoggedFragment.class.getSimpleName();
+    public static final String TAG = HomeFragment.class.getSimpleName();
 
     private ProgressDialog progressDialog;
     private View header;
@@ -35,12 +35,12 @@ public class LoggedFragment extends Fragment implements LoggedView {
     private TextView txtViewUserBalance;
     private ImageView buttonLogout;
     private RecyclerView statementRecycler;
-    private LoggedController loggedController;
+    private HomeController homeController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-        View vw = inflater.inflate(R.layout.logged_in_fragment, container, false);
+        View vw = inflater.inflate(R.layout.home_fragment, container, false);
 
         header = vw.findViewById(R.id.header);
         txtViewUser = header.findViewById(R.id.txtViewUser);
@@ -50,8 +50,8 @@ public class LoggedFragment extends Fragment implements LoggedView {
         buttonLogout = header.findViewById(R.id.imgLogout);
         buttonLogout.setOnClickListener(buttonLogoutClick);
 
-        loggedController = new LoggedController(this);
-        loggedController.loadHeader();
+        homeController = new HomeController(this);
+        homeController.loadHeader();
 
         return vw;
     }
@@ -74,7 +74,7 @@ public class LoggedFragment extends Fragment implements LoggedView {
         txtViewUserAccount.setText(userAccount.getFullBankData());
         txtViewUserBalance.setText(userAccount.getBalance());
 
-        loggedController.loadStatements();
+        homeController.loadStatements();
     }
 
     @Override

@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="animation_loader.json"
+        app:lottie_fileName="loading.json"
         app:lottie_loop="true"/>
 
 </android.support.constraint.ConstraintLayout>

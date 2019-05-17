@@ -1,4 +1,4 @@
-package com.testeandroidv2.view.activity;
+package com.testeandroidv2.view.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.testeandroidv2.R;
-import com.testeandroidv2.view.fragment.LoginFragment;
+import com.testeandroidv2.view.ui.fragment.LoginFragment;
 
 public class LoginActivity extends AppCompatActivity {
 

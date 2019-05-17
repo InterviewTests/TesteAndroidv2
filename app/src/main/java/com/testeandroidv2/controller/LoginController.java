@@ -37,16 +37,17 @@ public class LoginController implements LoginPresenter {
                 loginView.showMessageInvalidCPF();
                 loginView.dismissProgress();
             }
-            else
+            else {
                 doLogin(user);
+            }
         } else {
-
-            /*if(!Validation.isValidEmail(user.getUser())) {
+            if(!Validation.isValidEmail(user.getUser())) {
                 loginView.showMessageInvalidEmail();
                 loginView.dismissProgress();
             }
-            else*/
+            else {
                 doLogin(user);
+            }
         }
 
     }

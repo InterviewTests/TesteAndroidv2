@@ -1,4 +1,4 @@
-package com.testeandroidv2.view.fragment;
+package com.testeandroidv2.view.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,8 +16,8 @@ import com.testeandroidv2.contract.view.LoginView;
 import com.testeandroidv2.controller.LoginController;
 import com.testeandroidv2.model.User;
 import com.testeandroidv2.utility.ProgressDialog;
-import com.testeandroidv2.view.activity.ErrorActivity;
-import com.testeandroidv2.view.activity.LoginActivity;
+import com.testeandroidv2.view.ui.activity.ErrorActivity;
+import com.testeandroidv2.view.ui.activity.LoginActivity;
 
 import java.util.Objects;
 
@@ -83,8 +83,8 @@ public class LoginFragment extends Fragment implements LoginView {
         userLayout.setError(null);
         passwordLayout.setError(null);
 
-        LoggedFragment fragment = new LoggedFragment();
-        ((LoginActivity) getActivity()).changeFragment(fragment, LoggedFragment.TAG);
+        HomeFragment fragment = new HomeFragment();
+        ((LoginActivity) getActivity()).changeFragment(fragment, HomeFragment.TAG);
     }
 
     @Override

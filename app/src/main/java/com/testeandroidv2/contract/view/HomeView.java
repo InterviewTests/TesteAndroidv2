@@ -6,7 +6,7 @@ import com.testeandroidv2.repository.response.UserAccount;
 
 import java.util.List;
 
-public interface LoggedView {
+public interface HomeView {
 
     void showProgress();
     void dismissProgress();

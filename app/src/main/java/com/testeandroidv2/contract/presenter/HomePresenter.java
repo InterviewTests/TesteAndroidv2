@@ -1,6 +1,6 @@
 package com.testeandroidv2.contract.presenter;
 
-public interface LoggedInPresenter {
+public interface HomePresenter {
 
     void loadHeader();
     void loadStatements();
