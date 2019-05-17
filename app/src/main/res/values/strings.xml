@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">IdleTime</string>
+
+	<string name="app_name" translatable="false">IdleTime</string>
+	<string name="bank_logo" translatable="false">Bank Logo</string>
+
+	<string name="user_hint">Usuário ou CPF:</string>
+	<string name="pass_hint">Senha:</string>
+	<string name="txt_login">Entrar</string>
 </resources>
