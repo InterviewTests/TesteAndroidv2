@@ -1,11 +1,25 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="PrimaryFrameTextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlineBox.Dense">
+        <item name="boxStrokeColor">@color/ice</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="android:textColorHint">@color/grey</item>
+    </style>
+    
+    <style name="HelveticaNeueLight" parent="android:TextAppearance">
+        <item name="fontPath">fonts/HelveticaNeue-Light.ttf</item>
+    </style>
+
+    <style name="HelveticaNeue" parent="android:TextAppearance">
+        <item name="fontPath">fonts/helvetica-neue.ttf</item>
     </style>
 
 </resources>
