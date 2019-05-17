@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TesteAndroid</string>
+
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="user_invalid">Usuário obrigatório!</string>
+    <string name="cpf_invalid">Cpf inválido!</string>
+    <string name="email_invalid">E-mail inválido!</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="latest_statements">Recentes</string>
+</resources>
