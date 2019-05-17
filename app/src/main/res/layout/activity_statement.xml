@@ -83,4 +83,22 @@
 
     </LinearLayout>
 
+    <TextView
+            android:id="@+id/statement_recent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recentes"
+            android:textColor="#FF485465"
+            android:textSize="@dimen/t16sp"
+            android:padding="@dimen/m16dp"
+            app:layout_constraintTop_toBottomOf="@id/statement_subheader_container"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/statement_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/statement_recent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

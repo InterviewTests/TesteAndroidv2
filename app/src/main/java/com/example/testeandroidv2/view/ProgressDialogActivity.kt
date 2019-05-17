@@ -10,4 +10,11 @@ class ProgressDialogActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_progress_dialog)
     }
+
+    companion object {
+
+        fun finishDialog() {
+
+        }
+    }
 }

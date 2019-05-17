@@ -1,7 +1,11 @@
 package com.example.testeandroidv2.view
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.Editable
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.testeandroidv2.model.login.LoginBody
 import com.example.testeandroidv2.model.login.LoginResponse
@@ -23,7 +27,17 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        hasLoginSaved()
         setListeners()
+    }
+
+    private fun hasLoginSaved() {
+        val sharedPreferences = getSharedPreferences(getString(R.string.pref_file_name), Context.MODE_PRIVATE)
+        val user = sharedPreferences.getString(getString(R.string.user), null)
+
+        user?.let {
+            user_input_field.setText(it, TextView.BufferType.EDITABLE)
+        }
     }
 
     private fun setListeners() {
@@ -61,6 +75,8 @@ class LoginActivity : AppCompatActivity() {
                 if (!response?.isSuccessful!!) {
                     Utils().showAlertDialog(this@LoginActivity, getString(R.string.login_error_message))
                 } else {
+                    saveLogin()
+
                     val statementActivity = Intent(this@LoginActivity, StatementActivity::class.java)
 
                     response.body()?.let { loginResponse ->
@@ -78,5 +94,13 @@ class LoginActivity : AppCompatActivity() {
         })
 
         startActivity(Intent(this@LoginActivity, ProgressDialogActivity::class.java))
+    }
+
+    private fun saveLogin() {
+        val sharedPreferences = getSharedPreferences(getString(R.string.pref_file_name), Context.MODE_PRIVATE).edit()
+
+        sharedPreferences.putString(getString(R.string.user), mUser)
+
+        sharedPreferences.apply()
     }
 }

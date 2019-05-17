@@ -19,4 +19,6 @@
     <string name="user_name_hint">Jose da Silva Teste</string>
     <string name="account">Conta</string>
     <string name="account_balance">Saldo</string>
+
+    <string name="pref_file_name">app_bank_test</string>
 </resources>

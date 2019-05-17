@@ -2,13 +2,14 @@ package com.example.testeandroidv2.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.testeandroidv2.R
+import com.example.testeandroidv2.adapter.StatementListAdapter
 import com.example.testeandroidv2.model.statement.StatementResponse
 import com.example.testeandroidv2.service.RetrofitInitializer
 import com.example.testeandroidv2.util.Utils
 import kotlinx.android.synthetic.main.activity_statement.*
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
 import java.text.NumberFormat
 
@@ -86,7 +87,10 @@ class StatementActivity : AppCompatActivity() {
                     Utils().showAlertDialog(this@StatementActivity, getString(R.string.statement_loading_error))
                 } else {
                     response.body()?.let {
-                        val r = it
+                        statement_list.layoutManager = LinearLayoutManager(this@StatementActivity)
+                        val adapter = StatementListAdapter(this@StatementActivity, it.statementList)
+                        statement_list.adapter = adapter
+                        adapter.notifyDataSetChanged()
                     }
                 }
             }
