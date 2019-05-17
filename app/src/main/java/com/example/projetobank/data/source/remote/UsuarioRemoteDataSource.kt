@@ -14,7 +14,6 @@ import retrofit2.Response
 
 class UsuarioRemoteDataSource
     (val appExecutors: AppExecutors) : UsuarioDataSource {
-
     override fun pegaUsuario(
         concentrador: Usuario?,
         callbackResponse: CallbackResponse<UsuarioResposta>
@@ -51,6 +50,9 @@ class UsuarioRemoteDataSource
         }
     }
 
+    override fun pegaUsuarioLogado(callbackResponse: CallbackResponse<Usuario>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
     override fun deletaUsuario(acao: () -> Unit) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

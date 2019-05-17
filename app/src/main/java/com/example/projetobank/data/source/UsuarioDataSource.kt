@@ -8,6 +8,8 @@ interface UsuarioDataSource {
 
     fun pegaUsuario(concentrador: Usuario?, callbackResponse: CallbackResponse<UsuarioResposta>)
 
+    fun pegaUsuarioLogado(callbackResponse: CallbackResponse<Usuario>)
+
     fun deletaUsuario(acao: () -> Unit)
 
     fun salvaDadosDeAutenticacao(

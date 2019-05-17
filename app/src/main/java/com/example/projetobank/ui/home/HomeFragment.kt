@@ -10,8 +10,11 @@ import com.example.projetobank.data.model.Statement
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.source.RetrofitInicializador
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import kotlinx.android.synthetic.main.layout_dados_usuario.*
 import com.example.projetobank.R
+import com.example.projetobank.ui.widget.AlertDialogFragment
+import com.example.projetobank.util.TAG_DIALOG
+import com.example.projetobank.util.pegaFragmentTranscation
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment(), HomeContrato.View {
@@ -29,7 +32,6 @@ class HomeFragment : Fragment(), HomeContrato.View {
       //  presenter.start()
         if (arguments != null) {
             dadoObjeto = arguments!!.getParcelable("dadosBancario")
-          //  adicionarDadosBancarioDoUsuario(dadoObjeto)
         }
         return root
     }
@@ -37,23 +39,24 @@ class HomeFragment : Fragment(), HomeContrato.View {
     override fun onResume() {
         super.onResume()
         presenter.start()
+        adicionarDadosBancarioDoUsuario(dadoObjeto)
     }
 
     private fun adicionarDadosBancarioDoUsuario(dados: userAccount) {
-        til_conta_label.text =dados.bankAccount
+        til_conta_value.text =dados.bankAccount
         tv_user_login.text = dados.name
-        til_Saldo_label.text = dados.balance.toString()
+        til_saldo_value.text = dados.balance.toString()
     }
 
     override fun exibeInformacao(mensagem: String) {
-//        activity?.let {
-//            val alertDialogFragment = AlertDialogFragment()
-//            alertDialogFragment.setMensagem(mensagem)
-//            alertDialogFragment.setBotaoNeutro("ok") {
-//                alertDialogFragment.dismiss()
-//            }
-//            alertDialogFragment.show(pegaFragmentTranscation(), TAG_DIALOG)
-//        }
+        activity?.let {
+            val alertDialogFragment = AlertDialogFragment()
+            alertDialogFragment.setMensagem(mensagem)
+            alertDialogFragment.setBotaoNeutro("ok") {
+                alertDialogFragment.dismiss()
+            }
+            alertDialogFragment.show(pegaFragmentTranscation(), TAG_DIALOG)
+        }
     }
 
     override fun listarStatement(statement: List<Statement>) {

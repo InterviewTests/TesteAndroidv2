@@ -11,6 +11,7 @@ class UsuarioRepositorio
     private val localDataSource: UsuarioDataSource,
     private val remoteDataSource: UsuarioRemoteDataSource
 ) : UsuarioDataSource {
+
     private lateinit var user : Usuario
     override fun pegaUsuario(concentrador: Usuario?, callbackResponse: CallbackResponse<UsuarioResposta>) {
         concentrador?.let {
@@ -31,7 +32,11 @@ class UsuarioRepositorio
             })
             return
         }
-        //localDataSource.pegaUsuario(null, callbackResponse)
+       localDataSource.pegaUsuario(null, callbackResponse)
+    }
+
+    override fun pegaUsuarioLogado(callbackResponse: CallbackResponse<Usuario>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun deletaUsuario(acao: () -> Unit) {

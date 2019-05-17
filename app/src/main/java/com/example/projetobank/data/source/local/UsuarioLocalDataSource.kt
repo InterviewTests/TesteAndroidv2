@@ -1,6 +1,7 @@
 package com.example.projetobank.data.source.local
 
 import android.support.annotation.VisibleForTesting
+import android.util.Log
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.model.Usuario
 import com.example.projetobank.data.model.UsuarioResposta
@@ -13,20 +14,22 @@ class UsuarioLocalDataSource(
     val usuarioDao: UsuarioDao
 
 ) : UsuarioDataSource {
-
-
-    override fun pegaUsuario(concentrador: Usuario?, callbackResponse: CallbackResponse<UsuarioResposta>) {
+    override fun pegaUsuarioLogado(callbackResponse: CallbackResponse<Usuario>) {
         appExecutors.diskIO.execute {
             val usuarios = usuarioDao.pegarUsuario()
-           // val usuarioResposta = UsuarioResposta(usuario = usuarios)
             appExecutors.mainThread.execute {
                 if (usuarios.isEmpty()) {
                     callbackResponse.erro()
                 } else {
-                   // callbackResponse.sucesso(usuarioResposta)
+                    Log.e("entrou aquiii ", usuarios[0].user)
+                     callbackResponse.sucesso(usuarios[0])
                 }
             }
         }
+    }
+
+
+    override fun pegaUsuario(concentrador: Usuario?, callbackResponse: CallbackResponse<UsuarioResposta>) {
     }
 
     override fun deletaUsuario(acao: () -> Unit) {

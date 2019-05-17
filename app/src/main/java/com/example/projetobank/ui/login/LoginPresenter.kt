@@ -12,9 +12,7 @@ class LoginPresenter
     (
     var repositorio: UsuarioRepositorio,
     val fragment: LoginContrato.View
-)
-
-    : LoginContrato.Presenter {
+) : LoginContrato.Presenter {
 
     init {
         fragment.presenter = this
@@ -26,7 +24,6 @@ class LoginPresenter
             try {
                 pegaUsuario(login)
             } catch (e: Exception) {
-                fragment.exibe("Erro de conexão!")
                 Log.e("erroAutentica ", e.message)
             }
         }
@@ -37,13 +34,13 @@ class LoginPresenter
         usuario?.let {
             repositorio.pegaUsuario(usuario, object : CallbackResponse<UsuarioResposta> {
                 override fun sucesso(response: UsuarioResposta) {
-                    fragment.exibe("deeeu certo!")
-                   fragment.escondeProgressBar()
+                    fragment.escondeProgressBar()
                     fragment.vaiParaHome(response.userAccount)
                 }
 
                 override fun erro() {
-                    Log.e("erroPegarUsuario ","erro")
+                    fragment.escondeProgressBar()
+                    Log.e("erroPegarUsuario ", "erro")
                 }
             })
         }
@@ -54,7 +51,7 @@ class LoginPresenter
 
     private fun valida(login: Usuario): Boolean {
         return login.ehValido { autenticacaoCampo ->
-                fragment.informaErroDeValidacao(autenticacaoCampo)
+            fragment.informaErroDeValidacao(autenticacaoCampo)
         }
     }
 }

@@ -13,6 +13,9 @@ import com.example.projetobank.data.model.Usuario
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.source.RetrofitInicializador
 import com.example.projetobank.ui.home.HomeActivity
+import com.example.projetobank.ui.widget.AlertDialogFragment
+import com.example.projetobank.util.TAG_DIALOG
+import com.example.projetobank.util.pegaFragmentTranscation
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
 
@@ -81,14 +84,14 @@ class LoginFragment : Fragment(), LoginContrato.View {
     }
 
     override fun exibe(mensagem: String) {
-//        activity?.let {
-//            val alertDialogFragment = AlertDialogFragment()
-//            alertDialogFragment.setMensagem(mensagem)
-//            alertDialogFragment.setBotaoNeutro(resources.getString(R.string.ok)) {
-//                alertDialogFragment.dismiss()
-//            }
-//            alertDialogFragment.show(pegaFragmentTranscation(), TAG_DIALOG)
-//        }
+        activity?.let {
+            val alertDialogFragment = AlertDialogFragment()
+            alertDialogFragment.setMensagem(mensagem)
+            alertDialogFragment.setBotaoNeutro(resources.getString(R.string.ok)) {
+                alertDialogFragment.dismiss()
+            }
+            alertDialogFragment.show(pegaFragmentTranscation(), TAG_DIALOG)
+        }
     }
 
     override fun exibeProgressBar() {
