@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context=".ui.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-	<ImageView
-		android:id="@+id/logo"
-		android:layout_width="128dp"
-		android:layout_height="0dp"
-		android:contentDescription="@string/bank_logo"
-		android:src="@drawable/ic_logo"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintDimensionRatio="16:9"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintVertical_bias=".12" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@android:color/white"
+        tools:title="João da Silva Sauro" />
 
-	<android.support.design.widget.TextInputLayout
-		android:id="@+id/input_layout_user"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:hint="@string/user_hint"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/logo"
-		app:layout_constraintVertical_bias=".1"
-		app:layout_constraintWidth_percent=".8">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-		<android.support.design.widget.TextInputEditText
-			android:layout_width="match_parent"
-			android:layout_height="match_parent" />
-	</android.support.design.widget.TextInputLayout>
+        <TextView
+            android:id="@+id/lbl_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Conta"
+            android:textColor="@android:color/white"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-	<android.support.design.widget.TextInputLayout
-		android:id="@+id/input_layout_pass"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="8dp"
-		android:hint="@string/pass_hint"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/input_layout_user"
-		app:layout_constraintWidth_percent=".8">
+        <TextView
+            android:id="@+id/txt_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbl_account"
+            tools:text="2002 / 01.129319-0" />
 
-		<android.support.design.widget.TextInputEditText
-			android:layout_width="match_parent"
-			android:layout_height="match_parent" />
-	</android.support.design.widget.TextInputLayout>
+        <TextView
+            android:id="@+id/lbl_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Saldo"
+            android:textColor="@android:color/white"
+            android:textSize="10sp"
+            app:layout_constraintEnStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_account" />
 
-	<Button
-		android:id="@+id/btt_login"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:background="@color/colorAccent"
-		android:text="@string/txt_login"
-		android:textAllCaps="false"
-		android:textColor="@android:color/white"
-		android:textSize="16sp"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/input_layout_pass"
-		app:layout_constraintVertical_bias=".08" />
+        <TextView
+            android:id="@+id/txt_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbl_balance"
+            tools:text="R$ 3.000,00" />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
