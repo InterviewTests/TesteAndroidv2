@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TesteSantander</string>
+    <string name="app_name">TesteAndroid</string>
 
     <string name="user">User</string>
     <string name="password">Password</string>
