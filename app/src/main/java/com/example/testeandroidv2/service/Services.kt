@@ -15,5 +15,5 @@ interface Services {
     fun login(@Body loginBody: LoginBody): Call<LoginResponse>?
 
     @GET("statements/{idUser}")
-    fun getStatement(@Path("idUser") idUser: String): Call<StatementResponse>?
+    fun getStatement(@Path("idUser") idUser: Int): Call<StatementResponse>?
 }

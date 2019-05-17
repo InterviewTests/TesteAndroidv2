@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.testeandroidv2.R
 import com.example.testeandroidv2.model.statement.StatementResponse
 import com.example.testeandroidv2.service.RetrofitInitializer
+import com.example.testeandroidv2.util.Utils
 import kotlinx.android.synthetic.main.activity_statement.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -73,15 +74,21 @@ class StatementActivity : AppCompatActivity() {
 
     private fun requestStatement() {
         val statementService = RetrofitInitializer().statementService()
-        val callStatement = statementService.getStatement(intent.getStringExtra(getString(R.string.userId)))
+        val callStatement = statementService.getStatement(intent.getIntExtra(getString(R.string.userId), 0))
 
         callStatement?.enqueue(object : retrofit2.Callback<StatementResponse> {
             override fun onFailure(call: Call<StatementResponse>?, t: Throwable?) {
-
+                Utils().showAlertDialog(this@StatementActivity, getString(R.string.statement_loading_error))
             }
 
             override fun onResponse(call: Call<StatementResponse>?, response: Response<StatementResponse>?) {
-
+                if (!response?.isSuccessful!!) {
+                    Utils().showAlertDialog(this@StatementActivity, getString(R.string.statement_loading_error))
+                } else {
+                    response.body()?.let {
+                        val r = it
+                    }
+                }
             }
         })
     }

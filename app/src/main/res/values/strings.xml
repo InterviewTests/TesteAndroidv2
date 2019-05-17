@@ -9,6 +9,7 @@
     <string name="ok">OK</string>
     <string name="progress_header_text_hint">Aguarde um instante…</string>
     <string name="progress_footer_text_hint">Estamos fazendo login…</string>
+    <string name="statement_loading_error">Erro ao carregar detalhes!</string>
 
     <string name="userId">userId</string>
     <string name="name">name</string>
