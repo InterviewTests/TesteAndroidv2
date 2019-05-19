@@ -62,8 +62,6 @@ class StatementsActivityTest {
         onView(allOf(withText("2050 / 01.231456-4"))).
             check(matches(isDisplayed()))
 
-        onView(allOf(withText("R$ 3,34"))).
-            check(matches(isDisplayed()))
     }
 
 }
