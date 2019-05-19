@@ -52,6 +52,10 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$support_version"
     implementation "com.android.support:design:$support_version"
 
+    //Dagger
+    implementation "com.google.dagger:dagger:2.22.1"
+    kapt "com.google.dagger:dagger-compiler:2.22.1"
+
     //Test
     testImplementation "junit:junit:4.12"
     androidTestImplementation "com.android.support.test:runner:1.0.2"
