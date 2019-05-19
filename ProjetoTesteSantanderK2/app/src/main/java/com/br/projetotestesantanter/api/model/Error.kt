@@ -2,9 +2,11 @@ package com.br.projetotestesantanter.api.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 
 data class Error (
-    var error : String
+    @SerializedName("error")
+    var error : String? = null
 ) : Parcelable {
     constructor(parcel: Parcel) : this(parcel.readString())
 

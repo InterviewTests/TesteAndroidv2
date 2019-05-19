@@ -6,4 +6,6 @@
     <string name="label_account">Conta</string>
     <string name="label_balance">Saldo</string>
     <string name="item_statement_label_payment">Pagamento</string>
+    <string name="error_password">A senha deve conter pelo menos uma maiuscula e um caracter especial</string>
+    <string name="error_user"> Usuário invalido , utilize seu CPF ou e-mail para logar</string>
 </resources>

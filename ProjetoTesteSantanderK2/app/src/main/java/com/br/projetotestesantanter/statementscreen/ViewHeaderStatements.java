@@ -20,6 +20,12 @@ public class ViewHeaderStatements extends ConstraintLayout {
     private ImageView imgExit;
     private TextView txtNumberAccount;
     private TextView txtValueBalance;
+    private OnItemClickListener listener = null;
+
+
+    public interface OnItemClickListener {
+        void onItemClick(ImageView item);
+    }
 
     public ViewHeaderStatements(Context context) {
         super(context);
@@ -43,23 +49,17 @@ public class ViewHeaderStatements extends ConstraintLayout {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.view_header_statements, this, true);
-        initComponents();
+        initComponents(context);
 
     }
 
-    private void initComponents() {
+    private void initComponents(final Context context) {
 
         txtNameCliente = view.findViewById(R.id.txt_name_cliente);
         imgExit = view.findViewById(R.id.img_exit);
         txtNumberAccount = view.findViewById(R.id.txt_number_account);
         txtValueBalance = view.findViewById(R.id.txt_value_balance);
-        imgExit.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                ((Activity)getContext()).finish();
-            }
-        });
     }
 
     public void bind(LoginResponse loginResponse){
@@ -69,5 +69,21 @@ public class ViewHeaderStatements extends ConstraintLayout {
         txtValueBalance.setText(Utils.Companion.converMoney(loginResponse.getUserAccount().getBalance()));
 
     }
+
+
+
+    public void setListener(final OnItemClickListener listener) {
+        this.listener = listener;
+        imgExit.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(imgExit);
+            }
+        });
+    }
+
+
+
+
 
 }

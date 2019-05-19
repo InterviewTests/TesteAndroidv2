@@ -9,24 +9,24 @@ import com.br.projetotestesantanter.api.model.Statement
 
 class ItemStatementViewHolder (itemStatements : View) : RecyclerView.ViewHolder(itemStatements) {
 
-     var txt_payment : TextView
-     var txt_data_payment : TextView
-     var txt_desc_payment : TextView
-     var txt_value_payment : TextView
+     var txt_payment : TextView ? = null
+     var txt_data_payment : TextView ? = null
+     var txt_desc_payment : TextView ? = null
+     var txt_value_payment : TextView? = null
 
     init {
         txt_payment = itemStatements.findViewById(R.id.txt_payment)
         txt_data_payment = itemStatements.findViewById(R.id.txt_data_payment)
         txt_desc_payment = itemStatements.findViewById(R.id.txt_desc_payment)
-        txt_value_payment = itemStatements.findViewById(R.id.txt_value_balance)
+        txt_value_payment = itemStatements.findViewById(R.id.txt_value_payment)
 
     }
 
     fun bindInfo(statement : Statement) {
-        txt_payment.text = statement.title
-        txt_desc_payment.text = statement.desc
-        txt_value_payment.text = Utils.converMoney(statement.value)
-        txt_data_payment.text = Utils.stringData(statement.date)
+        txt_payment?.text = statement.title
+        txt_desc_payment?.text = statement.desc
+        txt_value_payment?.text = Utils.converMoney(statement.value)
+        txt_data_payment?.text = Utils.stringData(statement.date)
 
     }
 }

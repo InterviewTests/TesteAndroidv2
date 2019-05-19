@@ -7,9 +7,9 @@ class RetrofitConfiguration {
 
     companion object {
 
-        fun getRetrofitInstance(path : String) : Retrofit {
+        fun getRetrofitInstance() : Retrofit {
             return Retrofit.Builder()
-                .baseUrl(path)
+                .baseUrl("https://bank-app-test.herokuapp.com/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }

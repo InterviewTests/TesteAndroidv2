@@ -32,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
     <EditText
+            android:id="@+id/edt_user"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:inputType="text"
@@ -58,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <EditText
+                android:id="@+id/edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:inputType="textPassword"
@@ -84,4 +86,13 @@
             android:layout_marginBottom="36dp"
             style="@style/styleButtonBlue"
             app:layout_constraintBottom_toBottomOf="parent"/>
+    <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="35dp"
+            android:visibility="gone"
+            android:layout_height="0dp"
+            android:id="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintTop_toBottomOf="@+id/edPassword"
+            android:layout_marginTop="32dp"/>
 </android.support.constraint.ConstraintLayout>

@@ -18,7 +18,7 @@ class Utils {
         fun stringData(inputDateStr : String) : String {
 
             val inputFormat = SimpleDateFormat("yyyy-MM-dd")
-            val outputFormat = SimpleDateFormat("dd MMM yyyy")
+            val outputFormat = SimpleDateFormat("dd/MM/yyyy")
             val date = inputFormat.parse(inputDateStr)
             return outputFormat.format(date)
         }

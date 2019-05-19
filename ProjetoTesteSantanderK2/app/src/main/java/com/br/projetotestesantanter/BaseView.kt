@@ -1,4 +1,12 @@
 package com.br.projetotestesantanter
 
-class BaseView {
+import android.content.Context
+
+interface BaseView  {
+
+    fun getContext() : Context
+    fun showErroMsg(msg : String)
+    fun showProgressBar()
+    fun hiddenProgressBar()
+
 }
