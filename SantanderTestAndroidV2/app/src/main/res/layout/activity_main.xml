@@ -60,6 +60,7 @@
 		</com.google.android.material.textfield.TextInputLayout>
 
 		<Button
+				android:id="@+id/btnLogin"
 				android:layout_width="202dp"
 				android:layout_height="62dp"
 				android:text="@string/login"

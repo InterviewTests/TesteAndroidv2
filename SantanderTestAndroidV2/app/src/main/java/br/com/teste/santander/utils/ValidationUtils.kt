@@ -7,7 +7,7 @@ class ValidationUtils {
 
     companion object {
         fun isValidUserName(user: String): Boolean {
-            return isValidCpf(user) || isValidEemail(user)
+            return isValidCpf(user) || isValidEmail(user)
         }
 
         fun isValidCpf(cpf: String): Boolean {
@@ -75,7 +75,7 @@ class ValidationUtils {
             return true
         }
 
-        fun isValidEemail(email: String): Boolean {
+        fun isValidEmail(email: String): Boolean {
             return Patterns.EMAIL_ADDRESS.toRegex().matches(email);
         }
 
