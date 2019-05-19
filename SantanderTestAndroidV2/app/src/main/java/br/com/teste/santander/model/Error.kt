@@ -1,4 +1,4 @@
-package br.com.teste.santander.login.repository.model
+package br.com.teste.santander.model
 
 data class Error(
     val code: Int?,

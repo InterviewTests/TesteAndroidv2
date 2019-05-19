@@ -4,4 +4,10 @@
 
 	<string name="account">%s / %s</string>
 	<string name="balance">R$ %.2f</string>
+	<string name="user">User</string>
+	<string name="password">Password</string>
+	<string name="login">Login</string>
+	<string name="recentes">Recentes</string>
+	<string name="conta">Conta</string>
+	<string name="saldo">Saldo</string>
 </resources>

@@ -19,26 +19,29 @@
 				android:id="@+id/lblRecentes"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="Recentes"
-				android:textSize="17sp"
+				android:text="@string/recentes"
+				android:textSize="@dimen/font_17sp"
 				android:textColor="@color/grey_text"
 				app:layout_constraintTop_toBottomOf="@+id/statemetsHeader"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
-				android:layout_marginTop="14dp"
-				android:layout_marginEnd="16dp"
-				android:layout_marginStart="16dp"/>
+				android:layout_marginTop="@dimen/dimen_14dp"
+				android:layout_marginEnd="@dimen/dimen_16dp"
+				android:layout_marginStart="@dimen/dimen_16dp"/>
 
 		<androidx.recyclerview.widget.RecyclerView
 				android:id="@+id/recyclerViewStatements"
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
-				android:layout_marginTop="8dp"
+				android:layout_marginTop="@dimen/dimen_8dp"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/lblRecentes"
 				app:layout_constraintBottom_toBottomOf="parent"
 				tools:listitem="@layout/statements_item"/>
+
+		<include layout="@layout/loading_layout"
+				 android:id="@+id/progressBar"/>
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
