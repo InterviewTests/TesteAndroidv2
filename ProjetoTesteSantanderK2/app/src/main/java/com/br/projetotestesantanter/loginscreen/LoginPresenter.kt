@@ -2,6 +2,7 @@ package com.br.projetotestesantanter.loginscreen
 
 import android.widget.EditText
 import com.br.projetotestesantanter.R
+import com.br.projetotestesantanter.Utils
 import com.br.projetotestesantanter.ValidationUtil
 import com.br.projetotestesantanter.api.Endpoint
 import com.br.projetotestesantanter.api.RetrofitConfiguration
@@ -79,30 +80,34 @@ class LoginPresenter : LoginContract.Presenter {
 
     private fun dataLogin(loginModel: LoginModel) {
 
-        val retrofitClient = RetrofitConfiguration
-            .getRetrofitInstance()
+        if(view?.getContext()?.let { Utils.isConected(it) }!!) {
 
-        val endpoint = retrofitClient.create(Endpoint::class.java)
-        val callback = endpoint.login(loginModel.user,loginModel.password)
+            val retrofitClient = RetrofitConfiguration
+                .getRetrofitInstance()
 
-        callback.enqueue(object : Callback<LoginResponse> {
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+            val endpoint = retrofitClient.create(Endpoint::class.java)
+            val callback = endpoint.login(loginModel.user, loginModel.password)
 
-                t.message?.let { view?.showErroMsg(it) }
-                view?.hiddenProgressBar()
+            callback.enqueue(object : Callback<LoginResponse> {
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
 
-            }
+                    t.message?.let { view?.showErroMsg(it) }
+                    view?.hiddenProgressBar()
 
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                }
 
-                response.body()?.let { view?.openScreenStatement(it) }
-                view?.hiddenProgressBar()
+                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+
+                    response.body()?.let { view?.openScreenStatement(it) }
+                    view?.hiddenProgressBar()
 
 
-            }
+                }
 
-        })
-
+            })
+        } else {
+            this.view?.showErroMsg(this.view!!.getContext().getString(R.string.error_not_internet))
+        }
 
     }
 

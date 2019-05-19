@@ -1,5 +1,7 @@
 package com.br.projetotestesantanter.statementscreen
 
+import com.br.projetotestesantanter.R
+import com.br.projetotestesantanter.Utils
 import com.br.projetotestesantanter.api.Endpoint
 import com.br.projetotestesantanter.api.RetrofitConfiguration
 import com.br.projetotestesantanter.api.model.LoginResponse
@@ -8,11 +10,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class StatementPresenter  : StatementContract.Presenter{
+class StatementPresenter : StatementContract.Presenter {
 
-    var view : StatementContract.View? = null
+    var view: StatementContract.View? = null
 
-    var loginResponse : LoginResponse? = null
+    var loginResponse: LoginResponse? = null
 
     override fun resultLogin(loginResponse: LoginResponse) {
 
@@ -26,7 +28,7 @@ class StatementPresenter  : StatementContract.Presenter{
 
 
     override fun start() {
-        if(this.loginResponse == null || this.loginResponse!!.userAccount == null ) {
+        if (this.loginResponse == null || this.loginResponse!!.userAccount == null) {
 
             this.view?.showErroMsg("Erro ao carregar as informacoes")
             this.view?.hiddenProgressBar()
@@ -44,26 +46,32 @@ class StatementPresenter  : StatementContract.Presenter{
 
     private fun loadInfoPayment() {
 
-        val retrofitClient = RetrofitConfiguration
-            .getRetrofitInstance()
+        if (view?.getContext()?.let { Utils.isConected(it) }!!) {
 
-        val endpoint = retrofitClient.create(Endpoint::class.java)
 
-       val call = loginResponse?.userAccount?.userId?.let { endpoint.getStatements(it) }
+            val retrofitClient = RetrofitConfiguration
+                .getRetrofitInstance()
 
-        call?.enqueue(object : Callback<StatementListResponse> {
-            override fun onFailure(call: Call<StatementListResponse>, t: Throwable) {
-                t.message?.let { view?.showErroMsg(it) }
-                view?.hiddenProgressBar()
-            }
+            val endpoint = retrofitClient.create(Endpoint::class.java)
 
-            override fun onResponse(call: Call<StatementListResponse>, response: Response<StatementListResponse>) {
+            val call = loginResponse?.userAccount?.userId?.let { endpoint.getStatements(it) }
 
-                response.body()?.let { view?.listStatement(it) }
-            }
+            call?.enqueue(object : Callback<StatementListResponse> {
+                override fun onFailure(call: Call<StatementListResponse>, t: Throwable) {
+                    t.message?.let { view?.showErroMsg(it) }
+                    view?.hiddenProgressBar()
+                }
 
-        })
+                override fun onResponse(call: Call<StatementListResponse>, response: Response<StatementListResponse>) {
 
+                    response.body()?.let { view?.listStatement(it) }
+                }
+
+            })
+        } else {
+            this.view?.showErroMsg(this.view!!.getContext().getString(R.string.error_not_internet))
+
+        }
 
 
     }

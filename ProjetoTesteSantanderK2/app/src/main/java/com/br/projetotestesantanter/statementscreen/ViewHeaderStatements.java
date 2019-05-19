@@ -1,6 +1,5 @@
 package com.br.projetotestesantanter.statementscreen;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
@@ -49,11 +48,11 @@ public class ViewHeaderStatements extends ConstraintLayout {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.view_header_statements, this, true);
-        initComponents(context);
+        initComponents();
 
     }
 
-    private void initComponents(final Context context) {
+    private void initComponents() {
 
         txtNameCliente = view.findViewById(R.id.txt_name_cliente);
         imgExit = view.findViewById(R.id.img_exit);
@@ -70,8 +69,6 @@ public class ViewHeaderStatements extends ConstraintLayout {
 
     }
 
-
-
     public void setListener(final OnItemClickListener listener) {
         this.listener = listener;
         imgExit.setOnClickListener(new OnClickListener() {
@@ -81,9 +78,4 @@ public class ViewHeaderStatements extends ConstraintLayout {
             }
         });
     }
-
-
-
-
-
 }

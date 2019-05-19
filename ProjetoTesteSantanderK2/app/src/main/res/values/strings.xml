@@ -8,4 +8,5 @@
     <string name="item_statement_label_payment">Pagamento</string>
     <string name="error_password">A senha deve conter pelo menos uma maiuscula e um caracter especial</string>
     <string name="error_user"> Usuário invalido , utilize seu CPF ou e-mail para logar</string>
+    <string name="error_not_internet">Seu aparelho esta sem acesso a Internet</string>
 </resources>
