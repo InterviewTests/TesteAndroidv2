@@ -1,5 +1,8 @@
 package br.com.teste.santander.login.repository
 
+import android.content.Context
+import com.android.volley.Response
+
 interface LoginRepository {
-    fun doLogin(user: String, password: String)
+    fun doLogin(context: Context, user: String, password: String, succesResponseListener: Response.Listener<String>, errorResponseListener: Response.ErrorListener)
 }

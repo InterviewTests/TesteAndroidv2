@@ -1,5 +1,8 @@
 package br.com.teste.santander.login.interactor
 
+import android.content.Context
+
 interface LoginInteractor {
-    fun doLogin(user: String, password: String)
+    fun verifyLastUser(context: Context)
+    fun doLogin(context: Context, user: String, password: String)
 }
