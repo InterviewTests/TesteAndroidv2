@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">projetoTesteSantanter</string>
+    <string name="login_user"> User</string>
+    <string name="Loginpassword">Password</string>
+    <string name="LoginTextButton">Login</string>
+    <string name="label_account">Conta</string>
+    <string name="label_balance">Saldo</string>
+    <string name="item_statement_label_payment">Pagamento</string>
 </resources>

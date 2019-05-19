@@ -8,4 +8,49 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+    <style name="styleButtonBlue">
+        <item name="android:background">@drawable/shape_login</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_width">202dp</item>
+        <item name="android:layout_height">62dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="labelTitle">
+        <item name="android:textColor">@color/gray_485465</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="labelNameUser">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="labelAccount">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="labelNumberAccount">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="labelPayment">
+        <item name="android:textColor">@color/gray_A8B4C4</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="labelPaymentData">
+        <item name="android:textColor">@color/gray_A8B4C4</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="InfoPayment">
+        <item name="android:textColor">@color/gray_485465</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>
