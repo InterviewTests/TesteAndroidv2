@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <color name="colorPrimary">#3B48EE</color>
+    <color name="colorPrimaryDark">#3B48EE</color>
+    <color name="colorAccent">#3B48EE</color>
+
+    <color name="color_text_inverse">#FFFFFF</color>
+    <color name="color_text_primary">#485465</color>
+    <color name="color_text_secondary">#A8B4C4</color>
+
+    <color name="button_state_pressed">#32FFFFFF</color>
+    <color name="button_state_not_pressed">#00FFFFFF</color>
+
+</resources>
