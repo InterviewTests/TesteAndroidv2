@@ -64,7 +64,7 @@ public class ViewHeaderStatements extends ConstraintLayout {
     public void bind(LoginResponse loginResponse){
 
         txtNameCliente.setText(loginResponse.getUserAccount().getName());
-        txtNumberAccount.setText(loginResponse.getUserAccount().getAgency() + " / " + loginResponse.getUserAccount().getBankAccount());
+        txtNumberAccount.setText(Utils.Companion.formatAgencyAccount(loginResponse.getUserAccount().getBankAccount(),loginResponse.getUserAccount().getAgency()));
         txtValueBalance.setText(Utils.Companion.converMoney(loginResponse.getUserAccount().getBalance()));
 
     }

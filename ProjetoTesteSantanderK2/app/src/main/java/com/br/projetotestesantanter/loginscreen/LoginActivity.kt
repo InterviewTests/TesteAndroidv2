@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() , LoginContract.View {
 
     }
 
-    var presenter : LoginPresenter? = null
+    private lateinit var presenter : LoginPresenter
 
     override fun getContext(): Context {
         return this
@@ -48,19 +48,24 @@ class LoginActivity : AppCompatActivity() , LoginContract.View {
 
     private fun init() {
         presenter = LoginPresenter()
-        presenter?.attachView(this)
-        presenter?.setEditUser(edt_user)
-        presenter?.setEditPassword(edt_password)
+        presenter.attachView(this)
+        presenter.setEditUser(edt_user)
+        presenter.setEditPassword(edt_password)
     }
 
     private fun initListener() {
         btnLogar.setOnClickListener {
-            presenter?.logar()
+            presenter.logar()
         }
     }
 
     override fun showErroMsg(msg: String) {
 
         Snackbar.make(findViewById(android.R.id.content),msg,Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun onDestroy() {
+        presenter.detachView()
+        super.onDestroy()
     }
 }

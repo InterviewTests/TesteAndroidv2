@@ -5,9 +5,19 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="08ced7db-5a42-4840-8ed4-cf1e6a6d7186" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/androidTest/java/com/br/projetotestesantanter/ExampleInstrumentedTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/java/com/br/projetotestesantanter/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/java/com/br/projetotestesantanter/Utils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/java/com/br/projetotestesantanter/Utils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/java/com/br/projetotestesantanter/loginscreen/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/java/com/br/projetotestesantanter/loginscreen/LoginActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/java/com/br/projetotestesantanter/statementscreen/StatementsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/java/com/br/projetotestesantanter/statementscreen/StatementsActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/java/com/br/projetotestesantanter/statementscreen/ViewHeaderStatements.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/java/com/br/projetotestesantanter/statementscreen/ViewHeaderStatements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +56,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="78" />
     <option name="y" value="23" />
     <option name="width" value="1400" />
@@ -211,7 +221,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="488" y="295" width="1400" height="767" extended-state="1" />
+    <frame x="78" y="23" width="1400" height="767" extended-state="1" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3298969" />
@@ -224,10 +234,10 @@
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" />
       <window_info anchor="bottom" id="Debug" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="Logcat" order="1" />
+      <window_info anchor="bottom" id="Version Control" order="0" weight="0.3288889" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.3288889" />
       <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="3" weight="0.3288889" />
+      <window_info anchor="bottom" id="Terminal" order="3" visible="true" weight="0.3288889" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Android Profiler" order="5" show_stripe_button="false" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />

@@ -71,10 +71,10 @@ class StatementsActivity : AppCompatActivity() , StatementContract.View, ViewHea
         if(intent.getParcelableExtra<LoginResponse>("login") != null){
 
             loginResponse = intent.getParcelableExtra("login")
+            init()
 
         }
 
-        init()
         setOnClickHeader()
 
     }
@@ -89,5 +89,11 @@ class StatementsActivity : AppCompatActivity() , StatementContract.View, ViewHea
 
     private fun setOnClickHeader() {
         header_statements.setListener(this)
+    }
+
+    override fun onDestroy() {
+        // 4
+        presenter.detachView()
+        super.onDestroy()
     }
 }
