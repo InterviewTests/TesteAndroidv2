@@ -1,6 +1,6 @@
 package br.com.teste.santander.login.presenter
 
-import br.com.teste.santander.login.repository.model.UserAccount
+import br.com.teste.santander.model.UserAccount
 
 interface LoginPresenter {
     fun setUser(user: String)

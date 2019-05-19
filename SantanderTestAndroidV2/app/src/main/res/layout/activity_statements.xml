@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+	<androidx.constraintlayout.widget.ConstraintLayout
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			xmlns:app="http://schemas.android.com/apk/res-auto"
+			xmlns:tools="http://schemas.android.com/tools"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			tools:context=".statements.view.StatementsActivity"
+			android:background="@color/white_screen">
+
+		<include layout="@layout/statements_header"
+				 android:id="@+id/statemetsHeader"
+				 app:layout_constraintTop_toTopOf="parent"
+				 app:layout_constraintEnd_toEndOf="parent"
+				 app:layout_constraintStart_toStartOf="parent"/>
+
+		<TextView
+				android:id="@+id/lblRecentes"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Recentes"
+				android:textSize="17sp"
+				android:textColor="@color/grey_text"
+				app:layout_constraintTop_toBottomOf="@+id/statemetsHeader"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				android:layout_marginTop="14dp"
+				android:layout_marginEnd="16dp"
+				android:layout_marginStart="16dp"/>
+
+		<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/recyclerViewStatements"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_marginTop="8dp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/lblRecentes"
+				app:layout_constraintBottom_toBottomOf="parent"
+				tools:listitem="@layout/statements_item"/>
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

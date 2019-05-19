@@ -1,6 +1,6 @@
 package br.com.teste.santander.login.view
 
-import br.com.teste.santander.login.repository.model.UserAccount
+import br.com.teste.santander.model.UserAccount
 
 interface LoginView {
     fun init()

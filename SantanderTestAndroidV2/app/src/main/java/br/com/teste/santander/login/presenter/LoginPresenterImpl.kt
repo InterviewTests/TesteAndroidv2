@@ -1,7 +1,6 @@
 package br.com.teste.santander.login.presenter
 
-import br.com.teste.santander.login.repository.model.Error
-import br.com.teste.santander.login.repository.model.UserAccount
+import br.com.teste.santander.model.UserAccount
 import br.com.teste.santander.login.view.LoginView
 import java.lang.ref.WeakReference
 

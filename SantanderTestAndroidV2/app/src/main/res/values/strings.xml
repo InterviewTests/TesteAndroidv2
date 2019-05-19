@@ -1,0 +1,7 @@
+<resources>
+	<string name="app_name">SantanderTestAndroidV2</string>
+	<string name="title_activity_statments">StatmentsActivity</string>
+
+	<string name="account">%s / %s</string>
+	<string name="balance">R$ %.2f</string>
+</resources>

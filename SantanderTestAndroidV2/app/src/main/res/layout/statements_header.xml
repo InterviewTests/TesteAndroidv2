@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+	<data>
+		<variable name="user" type="br.com.teste.santander.model.UserAccount"/>
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+			xmlns:app="http://schemas.android.com/apk/res-auto"
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			xmlns:tools="http://schemas.android.com/tools"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingEnd="16dp"
+			android:paddingStart="16dp"
+			android:background="@color/design_default_color_primary" tools:showIn="@layout/activity_statements">
+
+		<TextView
+				android:id="@+id/txtUser"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toStartOf="@+id/btnLogout"
+				tools:text="Jose da Silva Teste"
+				android:text="@{user.name}"
+				android:textColor="@android:color/white"
+				android:textSize="25sp"
+				android:layout_marginTop="20dp"/>
+
+		<ImageButton
+				android:id="@+id/btnLogout"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/ic_logout"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				android:layout_marginTop="20dp"
+				android:onClick="logout"
+				android:background="@android:color/transparent"/>
+
+		<TextView
+				android:id="@+id/lblConta"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				app:layout_constraintTop_toBottomOf="@+id/txtUser"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				android:text="Conta"
+				android:textColor="@android:color/white"
+				android:textSize="12sp"
+				android:layout_marginTop="28dp"/>
+
+		<TextView
+				android:id="@+id/txtConta"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintTop_toBottomOf="@+id/lblConta"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				tools:text="2050 / 01.111222-4"
+				android:text="@{String.format(@string/account, user.agency, user.bankAccount)}"
+				android:textColor="@android:color/white"
+				android:textSize="25sp"
+				android:layout_marginTop="6dp"/>
+
+		<TextView
+				android:id="@+id/lblSaldo"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				app:layout_constraintTop_toBottomOf="@+id/txtConta"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				android:text="Saldo"
+				android:textColor="@android:color/white"
+				android:textSize="12sp"
+				android:layout_marginTop="28dp"/>
+
+		<TextView
+				android:id="@+id/txtSaldo"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintTop_toBottomOf="@+id/lblSaldo"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				tools:text="R$1.000,00"
+				android:text="@{String.format(@string/balance, user.balance)}"
+				android:textColor="@android:color/white"
+				android:textSize="25sp"
+				android:layout_marginTop="6dp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				android:layout_marginBottom="16dp"/>
+
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
