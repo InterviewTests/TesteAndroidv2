@@ -15,11 +15,9 @@ class Utils {
 
     companion object {
 
-        fun  converMoney( value : Float) : String {
+        fun  converMoney(value : Float) : String {
             val ptBr = Locale("pt", "BR")
-            val valueString = NumberFormat.getCurrencyInstance(ptBr).format(value)
-            return valueString;
-
+            return NumberFormat.getCurrencyInstance(ptBr).format(value)
         }
 
         fun stringData(inputDateStr : String) : String {
@@ -31,7 +29,7 @@ class Utils {
         }
 
         fun isConected(context: Context): Boolean {
-            val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val cm = context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
 
             if (cm != null) {
                 val ni = cm.activeNetworkInfo
