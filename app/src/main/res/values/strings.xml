@@ -6,4 +6,7 @@
 	<string name="user_hint">Usuário ou CPF:</string>
 	<string name="pass_hint">Senha:</string>
 	<string name="txt_login">Entrar</string>
+	<string name="lbl_balance">Saldo</string>
+	<string name="lbl_account">Conta</string>
+	<string name="lbl_last">Recentes</string>
 </resources>

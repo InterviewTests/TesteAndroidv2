@@ -40,7 +40,7 @@
 		android:id="@+id/input_layout_pass"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="8dp"
+		android:layout_marginTop="@dimen/medium_margin"
 		android:hint="@string/pass_hint"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
@@ -54,17 +54,18 @@
 
 	<Button
 		android:id="@+id/btt_login"
-		android:layout_width="wrap_content"
+		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:background="@color/colorAccent"
+		android:background="@drawable/bg_btt_login"
 		android:text="@string/txt_login"
 		android:textAllCaps="false"
 		android:textColor="@android:color/white"
-		android:textSize="16sp"
+		android:textSize="@dimen/big_text_size"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@id/input_layout_pass"
-		app:layout_constraintVertical_bias=".08" />
+		app:layout_constraintVertical_bias=".08"
+		app:layout_constraintWidth_percent=".4" />
 
 </android.support.constraint.ConstraintLayout>

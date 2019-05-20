@@ -3,4 +3,8 @@
 	<string name="user_hint">User:</string>
 	<string name="pass_hint">Password:</string>
 	<string name="txt_login">Login</string>
+	<string name="lbl_balance">Balance</string>
+	<string name="lbl_account">Account</string>
+	<string name="lbl_last">Last</string>
+
 </resources>

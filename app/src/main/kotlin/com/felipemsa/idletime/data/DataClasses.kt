@@ -1,4 +1,4 @@
-package com.felipemsa.idletime.model
+package com.felipemsa.idletime.data
 
 data class LoginResponse(var userAccount: UserAccount, var error: Error)
 

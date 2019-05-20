@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#6B26FD</color>
-    
-    <color name="mainBgColor">#EEE</color>
+	<color name="colorPrimary">@color/colorCobalt</color>
+	<color name="colorPrimaryDark">@color/colorSmalt</color>
+	<color name="colorAccent">@color/colorRoyalBlue</color>
+
+	<color name="colorCobalt">#003AB8</color>
+	<color name="colorSmalt">#00319C</color>
+	<color name="colorRoyalBlue">#3B48EE</color>
+
+	<color name="colorGallery">#EEE</color>
+	<color name="colorCadetBlue">#A8B4C4</color>
+	<color name="colorRiverBed">#485465</color>
+
 </resources>
