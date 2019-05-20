@@ -26,16 +26,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="8dp">
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tvDescricao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="15dp"
                     android:layout_weight="1"
                     android:gravity="left"
                     android:text="Pagamento"
@@ -45,10 +45,6 @@
                     android:id="@+id/tvData"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="15dp"
                     android:layout_weight="1"
                     android:gravity="right"
                     android:text="18/05/2019"
@@ -59,16 +55,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="8dp">
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tvTitulo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="15dp"
                     android:layout_weight="1"
                     android:gravity="left"
                     android:text="Conta de Luz"
@@ -78,10 +74,6 @@
                     android:id="@+id/tvValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="15dp"
                     android:layout_weight="1"
                     android:gravity="right"
                     android:text="70,00 R$"

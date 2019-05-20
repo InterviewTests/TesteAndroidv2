@@ -34,11 +34,11 @@
                     android:layout_height="48dp"
                     android:text="Francelize Melo Monteiro "/>
 
-            <android.support.design.widget.FloatingActionButton
-                    android:layout_width="match_parent"
-                    android:backgroundTint="@android:color/white"
+            <android.support.v7.widget.AppCompatImageButton
+                    android:layout_width="50dp"
+                    android:backgroundTint="#3484F5"
                     app:layout_constraintRight_toRightOf="parent"
-                    android:src="@android:drawable/bottom_bar"
+                    android:src="@drawable/ic_sair"
                     android:layout_marginRight="16dp"
                     android:layout_height="wrap_content"/>
 

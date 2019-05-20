@@ -36,7 +36,7 @@ class HomePresenter
                 fragment.listarStatement(response.statementList)
             }
             override fun erro() {
-               Log.e("erroRequisicao ", "errooo")
+               fragment.exibeInformacao("Erro de conexão!")
             }
         })
     }
