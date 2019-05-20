@@ -7,4 +7,5 @@
     <string name="login_msg_erro_usuario">Campo vazio! Por favor, informe seu usuario ou email</string>
     <string name="login_msg_erro_senha">"A senha deve conter pelo menos um caracter especial, ter pelo uma letra alfanumerica</string>
     <string name="ok">OK</string>
+    <string name="aviso">Aviso</string>
 </resources>

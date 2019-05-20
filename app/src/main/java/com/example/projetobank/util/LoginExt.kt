@@ -7,11 +7,10 @@ import com.example.projetobank.ui.login.LoginCampo
 fun Usuario.ehValido(delegate: (loginCmapo: LoginCampo) -> Unit): Boolean {
 
     if (user.equals("")) {
-        Log.e("usuario ", user + "nome")
         delegate(LoginCampo.USUARIO)
         return false
     }
-    if (!password.matches(".*[A-Z].*".toRegex()) && !password.matches(".*[~!.......].*".toRegex())) {
+    if (!password.matches(".*[A-Z].*".toRegex()) && !password.matches(".*[~!.......].*".toRegex()) && !password.matches("[A-Za-z0-9]+".toRegex())) {
         delegate(LoginCampo.SENHA)
         return false
     }

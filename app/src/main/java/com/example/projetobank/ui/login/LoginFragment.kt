@@ -71,8 +71,6 @@ class LoginFragment : Fragment(), LoginContrato.View {
     override fun vaiParaHome(dados : userAccount) {
         activity?.let {
             val homeIntent = Intent(context, HomeActivity::class.java)
-            Log.e("dadosBancario", dados.name)
-
             homeIntent.putExtra("name",dados.name)
             homeIntent.putExtra("userId",dados.userId)
             homeIntent.putExtra("bankAccount",dados.bankAccount)
@@ -87,6 +85,7 @@ class LoginFragment : Fragment(), LoginContrato.View {
         activity?.let {
             val alertDialogFragment = AlertDialogFragment()
             alertDialogFragment.setMensagem(mensagem)
+            alertDialogFragment.setTitulo(getString(R.string.aviso))
             alertDialogFragment.setBotaoNeutro(resources.getString(R.string.ok)) {
                 alertDialogFragment.dismiss()
             }

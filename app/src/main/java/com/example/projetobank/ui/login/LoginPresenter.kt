@@ -40,7 +40,7 @@ class LoginPresenter
 
                 override fun erro() {
                     fragment.escondeProgressBar()
-                    Log.e("erroPegarUsuario ", "erro")
+                    fragment.exibe("Erro de conexão, tente novamente!")
                 }
             })
         }
