@@ -10,7 +10,7 @@ import com.android.volley.Response
 import com.google.gson.Gson
 
 
-class LoginInteractorImpl : LoginInteractor {
+open class LoginInteractorImpl : LoginInteractor {
     private val USER_DATA = "user_data"
     private val USER_KEY = "user"
 
@@ -18,7 +18,7 @@ class LoginInteractorImpl : LoginInteractor {
     var repository: LoginRepository? = null
 
     override fun verifyLastUser(context: Context) {
-        val user = context.getSharedPreferences(USER_DATA, MODE_PRIVATE).getString(USER_KEY, "")
+        val user = context.getSharedPreferences(USER_DATA, MODE_PRIVATE)?.getString(USER_KEY, "")
         presenter?.setUser(user ?: "")
     }
 

@@ -14,7 +14,7 @@ import br.com.teste.santander.login.interactor.LoginInteractor
 import br.com.teste.santander.model.UserAccount
 import br.com.teste.santander.statements.view.StatementsActivity
 
-class LoginActivity : AppCompatActivity(), LoginView {
+open class LoginActivity : AppCompatActivity(), LoginView {
     private lateinit var binding: ActivityMainBinding
     var interactor: LoginInteractor? = null
 
