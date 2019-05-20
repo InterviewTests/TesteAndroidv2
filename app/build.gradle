@@ -15,6 +15,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "HOST_URL", '"https://bank-app-test.herokuapp.com/api/"'
+        buildConfigField "String", "USERNAME", '"user_name"'
     }
     buildTypes {
         release {
@@ -39,6 +40,8 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    implementation "com.orhanobut:hawk:$hawk_version"
 
     testImplementation "junit:junit:4.12"
     androidTestImplementation "com.android.support.test:runner:1.0.2"

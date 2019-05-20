@@ -1,97 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:ignore="SmallSp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="SmallSp">
 
-	<android.support.v7.widget.Toolbar
-		android:id="@+id/toolbar"
-		android:layout_width="0dp"
-		android:layout_height="?actionBarSize"
-		android:background="@color/colorPrimary"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		app:titleTextColor="@android:color/white"
-		tools:title="João da Silva Sauro" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@android:color/white"
+        tools:title="João da Silva Sauro" />
 
-	<android.support.constraint.ConstraintLayout
-		android:id="@+id/transaction_header"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:background="@color/colorPrimary"
-		android:padding="@dimen/default_padding"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/toolbar">
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/transaction_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/default_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-		<TextView
-			android:id="@+id/lbl_account"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/lbl_account"
-			android:textColor="@android:color/white"
-			android:textSize="@dimen/small_text_size"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/lbl_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_account"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/small_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-		<TextView
-			android:id="@+id/txt_account"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textColor="@android:color/white"
-			android:textSize="@dimen/big_text_size"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/lbl_account"
-			tools:text="2002 / 01.129319-0" />
+        <TextView
+            android:id="@+id/txt_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/big_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbl_account"
+            tools:text="2002 / 01.129319-0" />
 
-		<TextView
-			android:id="@+id/lbl_balance"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginTop="16dp"
-			android:text="@string/lbl_balance"
-			android:textColor="@android:color/white"
-			android:textSize="@dimen/small_text_size"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/txt_account" />
+        <TextView
+            android:id="@+id/lbl_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/lbl_balance"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/small_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_account" />
 
-		<TextView
-			android:id="@+id/txt_balance"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textColor="@android:color/white"
-			android:textSize="@dimen/big_text_size"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/lbl_balance"
-			tools:text="R$ 3.000,00" />
-	</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/txt_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/big_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lbl_balance"
+            tools:text="R$ 3.000,00" />
+    </android.support.constraint.ConstraintLayout>
 
-	<TextView
-		android:id="@+id/lbl_last"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:paddingStart="@dimen/default_padding"
-		android:paddingTop="@dimen/medium_padding"
-		android:paddingEnd="@dimen/default_padding"
-		android:paddingBottom="@dimen/medium_padding"
-		android:text="@string/lbl_last"
-		android:textColor="@color/colorRiverBed"
-		android:textSize="@dimen/default_text_size"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/transaction_header" />
+    <TextView
+        android:id="@+id/lbl_last"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/default_padding"
+        android:paddingTop="@dimen/medium_padding"
+        android:paddingEnd="@dimen/default_padding"
+        android:paddingBottom="@dimen/medium_padding"
+        android:text="@string/lbl_last"
+        android:textColor="@color/colorRiverBed"
+        android:textSize="@dimen/default_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/transaction_header" />
 
-	<android.support.v7.widget.RecyclerView
-		android:layout_width="0dp"
-		android:layout_height="0dp"
-		android:padding="@dimen/medium_padding"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/lbl_last"
-		tools:listitem="@layout/item_transaction" />
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/medium_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lbl_last"
+        tools:listitem="@layout/item_transaction" />
 
 </android.support.constraint.ConstraintLayout>

@@ -6,5 +6,7 @@
 	<string name="lbl_balance">Balance</string>
 	<string name="lbl_account">Account</string>
 	<string name="lbl_last">Last</string>
+    <string name="switch_save_user">Save user</string>
+    <string name="warning_error_login">Login error.</string>
 
 </resources>
