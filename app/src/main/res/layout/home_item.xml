@@ -4,18 +4,10 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/tvRecente"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="Recente"
-        android:textColor="@color/colorPrimaryDark" />
-
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_margin="15dp"
+        android:layout_margin="16dp"
         >
 
         <LinearLayout
@@ -28,8 +20,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp">
 
                 <android.support.v7.widget.AppCompatTextView
@@ -39,16 +31,17 @@
                     android:layout_weight="1"
                     android:gravity="left"
                     android:text="Pagamento"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:textColor="@color/colorCinza" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tvData"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textSize="12sp"
                     android:gravity="right"
                     android:text="18/05/2019"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:textColor="@color/colorCinza" />
 
             </LinearLayout>
 
@@ -57,8 +50,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp">
 
                 <android.support.v7.widget.AppCompatTextView
@@ -67,8 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
-                    android:text="Conta de Luz"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:text="Conta de Luz"/>
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/tvValue"
@@ -76,8 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="70,00 R$"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:text="70,00 R$"/>
 
             </LinearLayout>
 

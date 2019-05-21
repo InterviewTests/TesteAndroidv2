@@ -32,7 +32,6 @@ class LoginFragment : Fragment(), LoginContrato.View {
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.fragment_login, container, false)
-       // presenter.start()
         configurarAcesso()
         return root
     }

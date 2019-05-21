@@ -70,7 +70,7 @@
                 android:text="Login"
                 android:layout_margin="48dp"
                 android:textColor="@android:color/white"
-                android:backgroundTint="#3484F5"
+                android:backgroundTint="@color/colorPrimary"
                 android:id="@+id/btn_login"/>
         <ProgressBar
                 android:id="@+id/login_progress_bar"

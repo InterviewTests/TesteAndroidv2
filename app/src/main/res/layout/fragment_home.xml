@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="#3484F5"
+            android:background="@color/colorPrimary"
             android:paddingTop="16dp"
             android:id="@+id/layout_dados_usuario"
             app:layout_constraintTop_toBottomOf="parent"
@@ -36,7 +36,7 @@
 
             <android.support.v7.widget.AppCompatImageButton
                     android:layout_width="50dp"
-                    android:backgroundTint="#3484F5"
+                    android:backgroundTint="@color/colorPrimary"
                     app:layout_constraintRight_toRightOf="parent"
                     android:src="@drawable/ic_sair"
                     android:layout_marginRight="16dp"
@@ -84,6 +84,16 @@
 
     </LinearLayout>
 
+    <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tvRecente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="Recente"
+            app:layout_constraintStart_toStartOf="@+id/layout_dados_usuario"
+            app:layout_constraintTop_toBottomOf="@+id/layout_dados_usuario"
+    />
+
     <android.support.v7.widget.RecyclerView
             android:id="@+id/home_statement_recycler"
             android:layout_width="0dp"
@@ -92,7 +102,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_dados_usuario"
+            app:layout_constraintTop_toBottomOf="@+id/tvRecente"
             tools:listitem="@layout/home_item"/>
 
 </android.support.constraint.ConstraintLayout>
