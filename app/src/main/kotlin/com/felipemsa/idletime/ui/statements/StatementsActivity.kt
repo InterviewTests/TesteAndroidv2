@@ -1,4 +1,4 @@
-package com.felipemsa.idletime.ui
+package com.felipemsa.idletime.ui.statements
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -8,7 +8,7 @@ import com.felipemsa.idletime.helper.DataStorage
 import com.felipemsa.idletime.helper.formatToCurrency
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class StatementsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

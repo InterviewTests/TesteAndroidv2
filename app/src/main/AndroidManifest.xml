@@ -15,7 +15,7 @@
             android:theme="@style/IdleTheme"
             tools:ignore="GoogleAppIndexingWarning">
         <activity
-                android:name=".ui.ActivityLogin"
+                android:name=".ui.login.ActivityLogin"
                 android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".ui.MainActivity"
+                android:name=".ui.statements.StatementsActivity"
                 android:screenOrientation="portrait"/>
     </application>
 
