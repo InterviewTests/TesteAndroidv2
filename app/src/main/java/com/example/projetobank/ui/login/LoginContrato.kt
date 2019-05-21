@@ -13,6 +13,7 @@ interface LoginContrato {
         fun exibe(mensagem: String)
         fun exibeProgressBar()
         fun escondeProgressBar()
+        fun mostrarUsuarioLogado(usuario: Usuario)
     }
 
     interface Presenter: BasePresenter {

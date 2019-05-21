@@ -5,7 +5,11 @@ import android.os.Bundle
 import com.example.projetobank.R
 import com.example.projetobank.data.model.userAccount
 import com.example.projetobank.data.source.DadosBancarioRepositorio
+import com.example.projetobank.data.source.UsuarioRepositorio
+import com.example.projetobank.data.source.local.AppDataBase
+import com.example.projetobank.data.source.local.UsuarioLocalDataSource
 import com.example.projetobank.data.source.remote.DadosBancarioRemoteDataSource
+import com.example.projetobank.data.source.remote.UsuarioRemoteDataSource
 import com.example.projetobank.util.AppExecutors
 import com.example.projetobank.util.replaceFragmentInActivity
 
@@ -37,11 +41,12 @@ class HomeActivity : AppCompatActivity() {
             replaceFragmentInActivity(it, R.id.homeContentFrame)
         }
 
+
         val dadosBancario = DadosBancarioRemoteDataSource.getInstance(
                 AppExecutors()
         )
 
         val repositorio = DadosBancarioRepositorio(dadosBancario)
-        presenter = HomePresenter(repositorio, homeFragment)
+        presenter = HomePresenter(repositorio,homeFragment)
     }
 }

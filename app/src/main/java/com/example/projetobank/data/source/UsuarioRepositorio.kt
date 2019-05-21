@@ -36,7 +36,7 @@ class UsuarioRepositorio
     }
 
     override fun pegaUsuarioLogado(callbackResponse: CallbackResponse<Usuario>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        localDataSource.pegaUsuarioLogado(callbackResponse)
     }
 
     override fun deletaUsuario(acao: () -> Unit) {

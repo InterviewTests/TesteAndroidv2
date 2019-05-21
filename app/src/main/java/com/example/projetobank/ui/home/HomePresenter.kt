@@ -1,14 +1,8 @@
 package com.example.projetobank.ui.home
 
 import android.util.Log
-import com.example.projetobank.data.model.DadosBancarioResposta
-import com.example.projetobank.data.model.UsuarioResposta
-import com.example.projetobank.data.model.statementList
-import com.example.projetobank.data.model.userAccount
-import com.example.projetobank.data.source.CallbackResponse
-import com.example.projetobank.data.source.DadosBancarioDataSource
-import com.example.projetobank.data.source.DadosBancarioRepositorio
-import com.example.projetobank.data.source.UsuarioDataSource
+import com.example.projetobank.data.model.*
+import com.example.projetobank.data.source.*
 
 class HomePresenter
     (
@@ -40,4 +34,5 @@ class HomePresenter
             }
         })
     }
+
 }

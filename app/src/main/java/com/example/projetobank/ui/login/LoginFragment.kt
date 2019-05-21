@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.example.projetobank.ui.home.HomeActivity
 import com.example.projetobank.ui.widget.AlertDialogFragment
 import com.example.projetobank.util.TAG_DIALOG
 import com.example.projetobank.util.pegaFragmentTranscation
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
 
 
@@ -30,9 +32,14 @@ class LoginFragment : Fragment(), LoginContrato.View {
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.fragment_login, container, false)
-        presenter.start()
+       // presenter.start()
         configurarAcesso()
         return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.start()
     }
 
     private fun configurarAcesso() {
@@ -54,6 +61,12 @@ class LoginFragment : Fragment(), LoginContrato.View {
             val senha = til_senha_autenticacao.editText?.text.toString()
             return Usuario(usuario, senha)
         }
+    }
+
+
+    override fun mostrarUsuarioLogado(usuario: Usuario) {
+        til_usuario_autenticacao.editText!!.text =  Editable.Factory.getInstance().newEditable(usuario.user)
+        til_senha_autenticacao.editText!!.text = Editable.Factory.getInstance().newEditable(usuario.password)
     }
 
     override fun informaErroDeValidacao(loginCampo: LoginCampo) {
@@ -111,12 +124,6 @@ class LoginFragment : Fragment(), LoginContrato.View {
 
     override fun configuraUrlRetrofit() {
         RetrofitInicializador.url = "https://bank-app-test.herokuapp.com/api/"
-    }
-
-
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
     }
 
     companion object {

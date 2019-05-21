@@ -40,6 +40,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     android:src="@drawable/ic_sair"
                     android:layout_marginRight="16dp"
+                    android:id="@+id/ib_logout"
                     android:layout_height="wrap_content"/>
 
         </LinearLayout>

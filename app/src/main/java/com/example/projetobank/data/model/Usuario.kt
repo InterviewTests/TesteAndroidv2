@@ -18,11 +18,4 @@ class Usuario
         return "user: $user, senha: $password"
     }
 
-    fun converteParaHashMap(): LinkedHashMap<String, String> {
-        return linkedMapOf<String, String>(
-            Pair("user", user),
-            Pair("senha", password)
-        )
-    }
-
 }

@@ -47,11 +47,24 @@ class LoginPresenter
     }
 
     override fun start() {
+        recuperaUsuarioLogado()
     }
 
     private fun valida(login: Usuario): Boolean {
         return login.ehValido { autenticacaoCampo ->
             fragment.informaErroDeValidacao(autenticacaoCampo)
         }
+    }
+
+    private fun recuperaUsuarioLogado() {
+        repositorio.pegaUsuarioLogado(object : CallbackResponse<Usuario> {
+            override fun sucesso(response: Usuario) {
+                if (response != null)
+                    fragment.mostrarUsuarioLogado(response)
+            }
+            override fun erro() {
+                Log.e("erro", "erro ao recuperar usuario")
+            }
+        })
     }
 }
