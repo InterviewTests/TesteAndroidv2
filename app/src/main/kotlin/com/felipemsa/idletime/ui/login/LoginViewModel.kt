@@ -20,13 +20,11 @@ class LoginViewModel : ViewModel() {
         BankApi().banckApi().login(user, pass).enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful) {
-                    response.body()?.let {
-                        if (saveUserData)
-                            DataStorage.saveUser(user)
+                    if (saveUserData)
+                        DataStorage.saveUser(user)
 
-                        saveUser.postValue(user)
-                        DataStorage.setAccount(it.userAccount)
-                    }
+                    saveUser.postValue(user)
+                    DataStorage.setAccount(response.body()!!.userAccount)
                 } else loginError.postValue(R.string.message_cant_login)
             }
 

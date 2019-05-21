@@ -20,9 +20,9 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 class ActivityLogin : AppCompatActivity() {
 
-    var saveUserData = false
+    private var saveUserData = false
 
-    private val loginViewModel: LoginViewModel by lazy { ViewModelProviders.of(this).get(LoginViewModel::class.java) }
+    private val loginViewModel by lazy { ViewModelProviders.of(this).get(LoginViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

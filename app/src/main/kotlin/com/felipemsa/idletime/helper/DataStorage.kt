@@ -9,7 +9,7 @@ object DataStorage {
 
     private var userAccount: UserAccount? = null
 
-    fun setAccount(userAccount: UserAccount) {
+    fun setAccount(userAccount: UserAccount?) {
         this.userAccount = userAccount
     }
 
@@ -20,6 +20,8 @@ object DataStorage {
     }
 
     fun getUser(): String? = get(USERNAME)
+
+    fun getUserId() : Int = userAccount!!.userId
 
     fun save(key: String, value: String) {
         Hawk.put(key, value)
