@@ -1,7 +1,6 @@
 package com.example.projetobank.data.source.remote
 
 import android.util.Log
-import com.example.projetobank.data.model.DadosBancarioResposta
 import com.example.projetobank.data.model.Statement
 import com.example.projetobank.data.model.statementList
 import com.example.projetobank.data.source.CallbackResponse
