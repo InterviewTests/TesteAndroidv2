@@ -18,7 +18,7 @@ import com.felipemsa.idletime.helper.hideKeyboard
 import com.felipemsa.idletime.ui.statements.StatementsActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
-class ActivityLogin : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     private var saveUserData = false
 
@@ -59,8 +59,8 @@ class ActivityLogin : AppCompatActivity() {
             }
         }
 
-        btt_login.setOnClickListener {
-            clickLogin()
+        btt_login.setOnClickListener {view ->
+            clickLogin(view)
         }
 
         input_layout_user.editText?.addTextChangedListener(object : TextWatcher {
@@ -105,10 +105,9 @@ class ActivityLogin : AppCompatActivity() {
             }
         })
 
-        input_layout_pass.editText?.setOnEditorActionListener { v, actionId, event ->
+        input_layout_pass.editText?.setOnEditorActionListener { view, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_GO) {
-                v.hideKeyboard()
-                clickLogin()
+                clickLogin(view)
                 true
             } else {
                 false
@@ -139,7 +138,9 @@ class ActivityLogin : AppCompatActivity() {
         })
     }
 
-    private fun clickLogin() {
+    private fun clickLogin(view: View) {
+        view.hideKeyboard()
+
         btt_login.isEnabled = false
         login_progress.visibility = View.VISIBLE
 

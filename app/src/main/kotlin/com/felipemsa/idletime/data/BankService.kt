@@ -10,5 +10,5 @@ interface BankService {
     fun login(@Field("user") user: String, @Field("password") pass: String): Call<LoginResponse>
 
     @GET("statements/{user_id}")
-    fun statements(@Query("user_id") user: Int): Call<StatementsResponse>
+    fun statements(@Path("user_id") user: Int): Call<StatementsResponse>
 }

@@ -12,4 +12,6 @@
     <string name="switch_save_user">Salvar usuário</string>
     <string name="warning_error_login">Problema ao realizar o login.</string>
     <string name="message_cant_login">Usuário ou senha inválido.</string>
+    <string name="action_logout">Logout</string>
+
 </resources>
