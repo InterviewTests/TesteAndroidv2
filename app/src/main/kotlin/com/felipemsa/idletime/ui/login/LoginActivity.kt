@@ -3,7 +3,6 @@ package com.felipemsa.idletime.ui.login
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
-import android.net.wifi.p2p.WifiP2pManager
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -13,8 +12,8 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import com.felipemsa.idletime.R
-import com.felipemsa.idletime.helper.DataStorage
-import com.felipemsa.idletime.helper.hideKeyboard
+import com.felipemsa.idletime.data.DataStorage
+import com.felipemsa.idletime.hideKeyboard
 import com.felipemsa.idletime.ui.statements.StatementsActivity
 import kotlinx.android.synthetic.main.activity_login.*
 

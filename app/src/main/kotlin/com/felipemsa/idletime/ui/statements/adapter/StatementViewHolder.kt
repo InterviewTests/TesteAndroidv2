@@ -3,7 +3,7 @@ package com.felipemsa.idletime.ui.statements.adapter
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.felipemsa.idletime.data.Statement
-import com.felipemsa.idletime.helper.formatToCurrency
+import com.felipemsa.idletime.formatToCurrency
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_transaction.*
 

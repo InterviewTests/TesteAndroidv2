@@ -3,15 +3,19 @@
 	<string name="app_name" translatable="false">IdleTime</string>
 	<string name="bank_logo" translatable="false">Bank Logo</string>
 
+	<string name="action_logout" translatable="false">Logout</string>
+
 	<string name="user_hint">Usuário ou CPF:</string>
 	<string name="pass_hint">Senha:</string>
 	<string name="txt_login">Entrar</string>
+
 	<string name="lbl_balance">Saldo</string>
 	<string name="lbl_account">Conta</string>
 	<string name="lbl_last">Recentes</string>
-    <string name="switch_save_user">Salvar usuário</string>
-    <string name="warning_error_login">Problema ao realizar o login.</string>
-    <string name="message_cant_login">Usuário ou senha inválido.</string>
-    <string name="action_logout">Logout</string>
+
+	<string name="switch_save_user">Salvar usuário</string>
+	<string name="warning_error_login">Problema ao realizar o login.</string>
+	<string name="message_cant_login">Usuário ou senha inválido.</string>
+	<string name="message_invalid_password">Senha insegura.</string>
 
 </resources>

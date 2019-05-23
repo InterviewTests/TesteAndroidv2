@@ -9,5 +9,6 @@
     <string name="switch_save_user">Save user</string>
     <string name="warning_error_login">Login error.</string>
     <string name="message_cant_login">Invalid user or password.</string>
+	<string name="message_invalid_password">Insecure password.</string>
 
 </resources>

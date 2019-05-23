@@ -4,8 +4,9 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import com.felipemsa.idletime.R
 import com.felipemsa.idletime.data.BankApi
+import com.felipemsa.idletime.data.DataStorage
 import com.felipemsa.idletime.data.LoginResponse
-import com.felipemsa.idletime.helper.DataStorage
+import com.felipemsa.idletime.isValidPassword
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -17,21 +18,26 @@ class LoginViewModel : ViewModel() {
     val buttonEnabled = MutableLiveData<Boolean>()
 
     fun login(user: String, pass: String, saveUserData: Boolean) {
-        BankApi().banckApi().login(user, pass).enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                if (response.isSuccessful) {
-                    if (saveUserData)
-                        DataStorage.saveUser(user)
 
-                    saveUser.postValue(user)
-                    DataStorage.setAccount(response.body()!!.userAccount)
-                } else loginError.postValue(R.string.message_cant_login)
-            }
+        if (pass.isValidPassword())
+            BankApi().banckApi().login(user, pass).enqueue(object : Callback<LoginResponse> {
+                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                    if (response.isSuccessful) {
+                        if (saveUserData)
+                            DataStorage.saveUser(user)
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                loginError.postValue(R.string.warning_error_login)
-            }
-        })
+                        saveUser.postValue(user)
+                        DataStorage.setAccount(response.body()!!.userAccount)
+                    } else loginError.postValue(R.string.message_cant_login)
+                }
+
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    loginError.postValue(R.string.warning_error_login)
+                }
+            })
+        else {
+            loginError.postValue(R.string.message_invalid_password)
+        }
     }
 
 }

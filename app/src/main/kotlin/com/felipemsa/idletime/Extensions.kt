@@ -1,4 +1,4 @@
-package com.felipemsa.idletime.helper
+package com.felipemsa.idletime
 
 import android.content.Context
 import android.view.View
@@ -33,4 +33,17 @@ fun String.mask(mask: String): String {
 fun View.hideKeyboard() {
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(windowToken, 0)
+}
+
+fun String.isValidPassword(): Boolean {
+
+    val conditionUppercase = "[A-Z]".toRegex()
+    val conditionNumber = "[0-9]".toRegex()
+    val conditionEspecial = "[^a-zA-Z0-9]".toRegex()
+
+    if (!conditionUppercase.containsMatchIn(this)) return false
+    if (!conditionNumber.containsMatchIn(this)) return false
+    if (!conditionEspecial.containsMatchIn(this)) return false
+
+    return true
 }

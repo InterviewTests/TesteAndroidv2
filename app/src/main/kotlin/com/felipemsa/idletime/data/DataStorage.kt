@@ -1,6 +1,5 @@
-package com.felipemsa.idletime.helper
+package com.felipemsa.idletime.data
 
-import com.felipemsa.idletime.data.UserAccount
 import com.orhanobut.hawk.Hawk
 
 object DataStorage {
@@ -10,16 +9,21 @@ object DataStorage {
     private var userAccount: UserAccount? = null
 
     fun setAccount(userAccount: UserAccount?) {
-        this.userAccount = userAccount
+        DataStorage.userAccount = userAccount
     }
 
     fun getAccount(): UserAccount? = userAccount
+
+    fun logout() {
+        userAccount = null
+    }
 
     fun saveUser(user: String) {
         save(USERNAME, user)
     }
 
-    fun getUser(): String? = get(USERNAME)
+    fun getUser(): String? =
+        get(USERNAME)
 
     fun getUserId() : Int = userAccount!!.userId
 

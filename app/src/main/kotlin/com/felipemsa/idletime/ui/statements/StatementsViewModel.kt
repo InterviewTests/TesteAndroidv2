@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModel
 import com.felipemsa.idletime.data.BankApi
 import com.felipemsa.idletime.data.Statement
 import com.felipemsa.idletime.data.StatementsResponse
-import com.felipemsa.idletime.helper.DataStorage
+import com.felipemsa.idletime.data.DataStorage
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

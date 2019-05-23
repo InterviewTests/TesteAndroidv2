@@ -1,6 +1,6 @@
 package com.felipemsa.idletime.data
 
-import com.felipemsa.idletime.helper.mask
+import com.felipemsa.idletime.mask
 
 data class LoginResponse(var userAccount: UserAccount, var error: Error)
 
