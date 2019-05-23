@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                       xmlns:tools="http://schemas.android.com/tools"
+                                                       android:layout_width="match_parent"
+                                                       android:layout_height="match_parent"
+                                                       android:background="@color/colorWhiteBackGround">
+
+
+        <View
+                android:id="@+id/vBackground"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:background="@color/colorPurpleBackground"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_232dp"/>
+        <TextView
+                android:id="@+id/tvName"
+                tools:text="Jose da Silva Teste"
+                android:textSize="@dimen/string_size25sp"
+                android:layout_marginStart="@dimen/margin_18dp"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="@dimen/margin_20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:id="@+id/ivLogout"
+                android:src="@drawable/logout_2"
+                android:layout_marginEnd="@dimen/margin_13dp"
+                app:layout_constraintTop_toTopOf="@id/tvName"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="@dimen/margin_27dp"
+                android:layout_height="@dimen/margin_27dp"/>
+
+        <TextView
+                android:id="@+id/tvAccount"
+                android:layout_marginTop="@dimen/margin_21dp"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                app:layout_constraintLeft_toLeftOf="@id/tvName"
+                android:textColor="@color/colorWhite"
+                android:text="@string/account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <TextView
+                android:id="@+id/tvBankAccount"
+                tools:text="2050 / 01.111222-4"
+                android:textSize="@dimen/string_size25sp"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintTop_toBottomOf="@id/tvAccount"
+                app:layout_constraintLeft_toLeftOf="@id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/tvBalance"
+                android:text="@string/balance"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="@dimen/margin_21dp"
+                app:layout_constraintTop_toBottomOf="@id/tvBankAccount"
+                app:layout_constraintLeft_toLeftOf="@id/tvBankAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/tvBalanceNumber"
+                tools:text="R$1.000,00"
+                android:textSize="@dimen/string_size25sp"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintTop_toBottomOf="@id/tvBalance"
+                app:layout_constraintLeft_toLeftOf="@id/tvBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/tvRecents"
+                android:layout_marginStart="@dimen/margin_18dp"
+                android:layout_marginTop="@dimen/margin_14dp"
+                android:textColor="@color/colorGreyDark"
+                app:layout_constraintTop_toBottomOf="@id/vBackground"
+                app:layout_constraintLeft_toLeftOf="@id/vBackground"
+                android:text="@string/recent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginStart="@dimen/margin_18dp"
+                android:id="@+id/rvStatements"
+                tools:listitem="@layout/adapter_statements"
+                app:layout_constraintTop_toBottomOf="@id/tvRecents"
+                android:layout_marginEnd="@dimen/margin_16dp"
+                android:layout_marginTop="@dimen/margin_4dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        <ProgressBar
+                android:id="@+id/pbLoadingStatements"
+                android:indeterminateTint="@color/colorPurple"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+
