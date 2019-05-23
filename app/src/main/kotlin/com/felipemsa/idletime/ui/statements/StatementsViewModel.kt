@@ -17,8 +17,10 @@ class StatementsViewModel: ViewModel() {
     fun getStatements() {
         BankApi().banckApi().statements(DataStorage.getUserId()).enqueue(object: Callback<StatementsResponse> {
             override fun onResponse(call: Call<StatementsResponse>, response: Response<StatementsResponse>) {
-                if (response.isSuccessful)
-                    statementsList.postValue(response.body()!!.statementList)
+                if (response.isSuccessful) {
+                    val list = response.body()!!.statementList.sortedByDescending { it.date }
+                    statementsList.postValue(list)
+                }
             }
 
             override fun onFailure(call: Call<StatementsResponse>, t: Throwable) {

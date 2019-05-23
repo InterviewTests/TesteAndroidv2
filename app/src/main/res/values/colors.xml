@@ -14,4 +14,7 @@
 	<color name="colorRiverBed">#485465</color>
 
 	<color name="black40">#66000000</color>
+
+	<color name="colorNegativeBalance">#C50202</color>
+	<color name="colorPositiveBalance">#119700</color>
 </resources>

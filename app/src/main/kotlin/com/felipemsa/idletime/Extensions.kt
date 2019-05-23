@@ -7,7 +7,11 @@ import java.text.NumberFormat
 import java.util.*
 
 fun Double.formatToCurrency(): String {
-    return NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(this).replace("R$", "R$ ")
+    var currency = NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(this).replace("R$", "R$ ")
+
+    //to android api lvl 19
+    currency = currency.replace(")", "").replace("(", "-")
+    return currency
 }
 
 fun String.mask(mask: String): String {
