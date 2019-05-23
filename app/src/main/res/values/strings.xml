@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TesteSantander</string>
+    <string name="login">Login</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="recent">Recentes</string>
+    <string name="invalid_user">Usuário inválido, verifique se digitou corretamente</string>
+    <string name="invalid_password">Senha inválida, verifique se a senha tem pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico </string>
+</resources>

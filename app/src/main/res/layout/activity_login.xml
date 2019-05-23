@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.login.LoginActivity">
+
+    <ImageView
+            android:id="@+id/ivLogo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.084"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@drawable/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <View
+            android:id="@+id/v"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"/>
+
+    <EditText
+            android:id="@+id/etUser"
+            android:hint="@string/user"
+            android:paddingStart="@dimen/margin_13dp"
+            android:paddingTop="@dimen/margin_12dp"
+            android:paddingBottom="@dimen/margin_15dp"
+            android:layout_marginStart="@dimen/margin_17dp"
+            android:layout_marginEnd="@dimen/margin_16dp"
+            android:inputType="textAutoComplete"
+            android:background="@drawable/rounded_border"
+            app:layout_constraintLeft_toLeftOf="@id/v"
+            app:layout_constraintRight_toRightOf="@id/v"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    <EditText
+            android:id="@+id/etPassword"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:paddingStart="@dimen/margin_13dp"
+            android:paddingTop="@dimen/margin_13dp"
+            android:paddingBottom="@dimen/margin_14dp"
+            android:background="@drawable/rounded_border"
+            app:layout_constraintLeft_toLeftOf="@id/etUser"
+            app:layout_constraintRight_toRightOf="@id/etUser"
+            app:layout_constraintTop_toBottomOf="@id/etUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    <Button
+            android:id="@+id/btnSend"
+            app:layout_constraintLeft_toLeftOf="@id/ivLogo"
+            app:layout_constraintRight_toRightOf="@id/ivLogo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.951"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/button_rounded_corners"
+            android:textSize="@dimen/string_size16sp"
+            android:textColor="@color/colorWhite"
+            android:textAllCaps="false"
+            android:text="@string/login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    <ProgressBar
+            android:id="@+id/pbLoading"
+            android:indeterminateTint="@color/colorPurple"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintVertical_bias="0.3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
