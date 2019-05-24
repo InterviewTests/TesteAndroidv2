@@ -19,6 +19,7 @@ android {
 }
 
 def supportLibsVersion = '27.0.0'
+def eventBusVersion = '3.1.1'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -32,5 +33,6 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.9.0'
     implementation "com.android.support:recyclerview-v7:$supportLibsVersion"
     implementation "com.android.support:cardview-v7:$supportLibsVersion"
+    implementation "org.greenrobot:eventbus:$eventBusVersion"
 
 }
