@@ -9,20 +9,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.santanderapp.santander.R;
 import com.example.santanderapp.santander.detailScreen.adapter.StatementAdapter;
-import com.example.santanderapp.santander.detailScreen.interfaceService.StatementsService;
-import com.example.santanderapp.santander.detailScreen.model.RequestStatement;
+import com.example.santanderapp.santander.detailScreen.controller.DetailsController;
 import com.example.santanderapp.santander.detailScreen.model.ResponseStatement;
 import com.example.santanderapp.santander.util.Utils;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -40,6 +36,8 @@ public class DetailsActivity extends AppCompatActivity {
 
     private ProgressDialog progress;
 
+    private DetailsController detailsController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,56 +49,9 @@ public class DetailsActivity extends AppCompatActivity {
 
         ivLogout.setOnClickListener(listenerLogout);
 
-        callAPI();
-    }
+        detailsController = new DetailsController(this);
 
-    private void callAPI() {
-
-        progress = new ProgressDialog(DetailsActivity.this);
-        progress.setTitle(getString(R.string.loading));
-        progress.setMessage(getString(R.string.whaitDetails));
-        progress.setCancelable(false);
-        progress.show();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(StatementsService.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        StatementsService service = retrofit.create(StatementsService.class);
-
-        RequestStatement requestStatement = new RequestStatement();
-        requestStatement.user = userId.toString();
-
-        Call<ResponseStatement> requestCatalog = service.listStat(requestStatement.user);
-
-        requestCatalog.enqueue(new Callback<ResponseStatement>() {
-            @Override
-            public void onResponse(Call<ResponseStatement> call, Response<ResponseStatement> response) {
-                if (!response.isSuccess()) {
-                    Toast.makeText(DetailsActivity.this, getString(R.string.error) + response.code(), Toast.LENGTH_SHORT).show();
-
-                } else {
-                    progress.dismiss();
-                    if (response.body() != null) {
-                        ResponseStatement responseStatement = response.body();
-
-                        layoutRV = new LinearLayoutManager(DetailsActivity.this);
-                        statementAdapter = new StatementAdapter(responseStatement.statementList);
-                        listExpenses.setAdapter(statementAdapter);
-                        listExpenses.setLayoutManager(layoutRV);
-                        statementAdapter.notifyDataSetChanged();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseStatement> call, Throwable t) {
-                if (!Utils.isConected(DetailsActivity.this)) {
-                    Toast.makeText(DetailsActivity.this, getString(R.string.notConnectInternet), Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(DetailsActivity.this, getString(R.string.fail) + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        detailsController.callAPI(userId.toString());
 
     }
 
@@ -112,7 +63,15 @@ public class DetailsActivity extends AppCompatActivity {
         tvBalance = findViewById(R.id.tvBalance);
         listExpenses = findViewById(R.id.listExpenses);
 
+        progress = new ProgressDialog(DetailsActivity.this);
+        progress.setTitle(getString(R.string.loading));
+        progress.setMessage(getString(R.string.whaitDetails));
+        progress.setCancelable(false);
+        progress.show();
+
+
     }
+
 
     private void getSharedPreferences() {
         SharedPreferences preferences = getSharedPreferences(getString(R.string.userAccount), MODE_PRIVATE);
@@ -131,5 +90,27 @@ public class DetailsActivity extends AppCompatActivity {
             finish();
         }
     };
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void dismissProgress(ResponseStatement responseStatement) {
+        populationScreen(responseStatement);
+    }
+
+    public void populationScreen(ResponseStatement responseStatement) {
+        progress.dismiss();
+        layoutRV = new LinearLayoutManager(DetailsActivity.this);
+        statementAdapter = new StatementAdapter(responseStatement.statementList);
+        listExpenses.setAdapter(statementAdapter);
+        listExpenses.setLayoutManager(layoutRV);
+        statementAdapter.notifyDataSetChanged();
+    }
+
+    public void register() {
+        EventBus.getDefault().register(this);
+    }
+
+    public void Unregister() {
+        EventBus.getDefault().unregister(this);
+    }
 
 }

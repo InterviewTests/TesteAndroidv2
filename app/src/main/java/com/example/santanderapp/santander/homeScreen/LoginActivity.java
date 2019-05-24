@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.santanderapp.santander.R;
+import com.example.santanderapp.santander.homeScreen.controller.LoginController;
 import com.example.santanderapp.santander.util.Utils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
             progress.setMessage(getString(R.string.whaitLoading));
             progress.setCancelable(false);
             progress.show();
-            loginController.teste(edtUser.getText().toString(), edtPassword.getText().toString());
+            loginController.callAPI(edtUser.getText().toString(), edtPassword.getText().toString());
 
         }
     };
@@ -73,7 +73,6 @@ public class LoginActivity extends AppCompatActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void dismissProgress(Boolean event) {
         progress.dismiss();
-        Toast.makeText(this, "ffrhtjytjyujyujyjr", Toast.LENGTH_SHORT).show();
     }
 
     public void register() {

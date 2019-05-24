@@ -1,4 +1,4 @@
-package com.example.santanderapp.santander.homeScreen;
+package com.example.santanderapp.santander.homeScreen.controller;
 
 import android.content.Context;
 import android.content.Intent;
@@ -40,7 +40,7 @@ public class LoginController {
 
     }
 
-    public void teste(final String edtUser, String edtPassword) {
+    public void callAPI(final String edtUser, String edtPassword) {
 
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -59,7 +59,7 @@ public class LoginController {
             requestCatalog.enqueue(new Callback<ResponseLogin>() {
                 @Override
                 public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-                    //progress.dismiss();
+
                     EventBus.getDefault().register(context);
                     EventBus.getDefault().post(true);
                     EventBus.getDefault().unregister(context);
@@ -96,7 +96,6 @@ public class LoginController {
             });
 
         } else {
-            //progress.dismiss();
             EventBus.getDefault().register(context);
             EventBus.getDefault().post(true);
             EventBus.getDefault().unregister(context);
