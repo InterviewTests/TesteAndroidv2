@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TesteAndroid</string>
+    <string name="bank">Bank</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="recent">Recentes</string>
+    <string name="user_missing">É necessário preencher um usuário e senha.</string>
+    <string name="invalid_password">Senha inválida</string>
+    <string name="value_type">R$ </string>
+    <string name="separator">\u0020/\u0020</string>
+    <string name="connectionError">Erro na conexão, tente novamente</string>
+    <string name="error">Error</string>
+</resources>
