@@ -1,0 +1,14 @@
+<resources>
+
+	<string name="user_hint">User:</string>
+	<string name="pass_hint">Password:</string>
+	<string name="txt_login">Login</string>
+	<string name="lbl_balance">Balance</string>
+	<string name="lbl_account">Account</string>
+	<string name="lbl_last">Last</string>
+    <string name="switch_save_user">Save user</string>
+    <string name="warning_error_login">Login error.</string>
+    <string name="message_cant_login">Invalid user or password.</string>
+	<string name="message_invalid_password">Insecure password.</string>
+
+</resources>
