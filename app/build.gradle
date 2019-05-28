@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.felipemsa.idletime"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "HOST_URL", '"https://bank-app-test.herokuapp.com/api/"'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    
+    implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:cardview-v7:$support_version"
+    implementation "com.android.support:design:$support_version"
+
+    implementation "com.android.support.constraint:constraint-layout:$constraints_version"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    implementation "com.orhanobut:hawk:$hawk_version"
+
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+    implementation "android.arch.lifecycle:viewmodel:$lifecycle_version"
+
+    implementation "joda-time:joda-time:$jodatime_version"
+
+    testImplementation "junit:junit:4.12"
+
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test:rules:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'com.android.support:support-annotations:28.0.0'
+}
