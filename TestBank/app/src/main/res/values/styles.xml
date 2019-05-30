@@ -1,0 +1,67 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Widget.MyApp.ActionBar" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="theme">@style/ThemeOverlay.MyApp.ActionBar</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="ThemeOverlay.MyApp.ActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+    </style>
+
+    <!-- Button -->
+    <style name="login_button">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@color/buttonNormal</item>
+    </style>
+
+    <style name="login_field">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+        <item name="android:textCursorDrawable">@drawable/cursor_field</item>
+    </style>
+
+    <style name="statement_title">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:layout_marginLeft">16dp</item>
+    </style>
+    <style name="statement_title1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorField</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    <style name="statement_text">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:layout_marginLeft">16dp</item>
+    </style>
+
+    <!-- Item -->
+    <style name="statement_item_column1">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+    <style name="statement_item_column2">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+    <style name="statement_item_column3">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorField</item>
+    </style>
+    <style name="statement_item_column4">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorField</item>
+    </style>
+</resources>
