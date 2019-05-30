@@ -1,10 +1,14 @@
 # Ferramentas e SDK utilizados
 
-Foi utilizado as seguintes API´s e SDK:
-- SDK Version mínimo: Android 4.4 (19);
+Foi utilizado as seguintes APIÂ´s e SDK:
+- SDK Version mÃ­nimo: Android 4.4 (19);
 - SDK Version compile: Android 9.0 (28);
 - Android Anotation Version 4.3.1;
 - Android Support Version 28.0.0;
+
+# Aplicativo
+
+O Aplicativo estÃ¡ na pasta "TestBank".
 
 # Empresa
 
