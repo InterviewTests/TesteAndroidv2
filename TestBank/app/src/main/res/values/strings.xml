@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Teste Bank</string>
+
+    <!-- Login -->
+    <string name="login_hint1">User</string>
+    <string name="login_hint2">Password</string>
+    <string name="login_button">Login</string>
+    <string name="login_error1">O campo User deve ser digitado</string>
+    <string name="login_error2">O campo Password deve ser digitado</string>
+    <string name="login_error3">A senha deve ter pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico</string>
+
+    <!-- Statements -->
+    <string name="statements_title1">Conta</string>
+    <string name="statements_title2">Saldo</string>
+    <string name="statements_title3">Recentes</string>
+    <string name="statements_saldo">R$1.000,00</string>
+
+    <!-- Menu -->
+    <string name="action_logout">Conta</string>
+
+</resources>
