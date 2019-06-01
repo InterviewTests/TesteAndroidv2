@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.login.LoginActivity">
+
+    <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/til_user_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="32dp"
+            android:src="@drawable/logo"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_usuario_autenticacao"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_user_login"
+            android:hint="User">
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/tie_matricula_autenticacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"/>
+    </android.support.design.widget.TextInputLayout>
+    />
+
+    <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_senha_autenticacao"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@id/til_usuario_autenticacao"
+            app:layout_constraintTop_toBottomOf="@id/til_usuario_autenticacao"
+            android:hint="Passaword"
+            app:passwordToggleEnabled="true">
+        <android.support.design.widget.TextInputEditText
+                android:id="@+id/tie_teste_autenticacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+            android:id="@+id/logino_layout_botao_avancar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        <android.support.v7.widget.AppCompatButton
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:text="Login"
+                android:layout_margin="48dp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/colorPrimary"
+                android:id="@+id/btn_login"/>
+        <ProgressBar
+                android:id="@+id/login_progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
