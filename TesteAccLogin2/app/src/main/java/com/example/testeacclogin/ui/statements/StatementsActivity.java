@@ -21,12 +21,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Locale;
-
-import static java.lang.String.format;
 
 public class StatementsActivity extends AppCompatActivity {
 
@@ -91,12 +87,9 @@ public class StatementsActivity extends AppCompatActivity {
                                         double estValue = stat.getDouble("value");
 
 
-                                        Date date = new Date();
-                                        SimpleDateFormat ft  = new SimpleDateFormat("dd/MM/yyyy");
-
 
                                         mStateList.add(new StateItem(estTitle, estDesc,
-                                                ft.format(date),
+                                                estData,
                                                 NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(estValue)));
 
 
@@ -122,6 +115,8 @@ public class StatementsActivity extends AppCompatActivity {
                 mRequestQueue.add(request);
 
             }
+
+
 
         }.start();
 

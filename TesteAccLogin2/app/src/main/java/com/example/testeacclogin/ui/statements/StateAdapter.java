@@ -12,26 +12,26 @@ import com.example.testeacclogin.R;
 
 import java.util.ArrayList;
 
-public class StateAdapter extends RecyclerView.Adapter<StateAdapter.ExampleViewHolder> {
+public class StateAdapter extends RecyclerView.Adapter<StateAdapter.StateViewHolder> {
     private Context mContext;
-    private ArrayList<StateItem> mExampleList;
+    private ArrayList<StateItem> mStateList;
 
-    public StateAdapter(Context context, ArrayList<StateItem> exampleList){
+    public StateAdapter(Context context, ArrayList<StateItem> stateList){
         mContext = context;
-        mExampleList = exampleList;
+        mStateList = stateList;
     }
 
     @NonNull
     @Override
-    public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public StateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(mContext).inflate(R.layout.state_item, parent, false);
-            return new ExampleViewHolder(v);
+            return new StateViewHolder(v);
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ExampleViewHolder holder, int position) {
-        StateItem currentItem = mExampleList.get(position);
+    public void onBindViewHolder(@NonNull StateViewHolder holder, int position) {
+        StateItem currentItem = mStateList.get(position);
 
         String estTitle = currentItem.getmTitle();
         String estDesc = currentItem.getmDesc();
@@ -48,17 +48,17 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.ExampleViewH
 
     @Override
     public int getItemCount() {
-        return mExampleList.size();
+        return mStateList.size();
     }
 
-    public class ExampleViewHolder extends RecyclerView.ViewHolder {
+    public class StateViewHolder extends RecyclerView.ViewHolder {
 
         public TextView mTextViewTitle;
         public TextView mTextViewDesc;
         public TextView mTextViewData;
         public TextView mTextViewValue;
 
-        public ExampleViewHolder(@NonNull View itemView) {
+        public StateViewHolder(@NonNull View itemView) {
             super(itemView);
             mTextViewTitle = itemView.findViewById(R.id.text_view_title);
             mTextViewDesc = itemView.findViewById(R.id.text_view_desc);

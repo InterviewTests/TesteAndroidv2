@@ -26,6 +26,10 @@ import com.example.testeacclogin.ui.login.LoginViewModel;
 import com.example.testeacclogin.ui.login.LoginViewModelFactory;
 import com.example.testeacclogin.ui.statements.StatementsActivity;
 
+
+
+
+
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;

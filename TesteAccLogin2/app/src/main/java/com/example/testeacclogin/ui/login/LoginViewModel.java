@@ -10,13 +10,15 @@ import com.example.testeacclogin.data.Result;
 import com.example.testeacclogin.data.model.LoggedInUser;
 import com.example.testeacclogin.R;
 
+import static android.util.Patterns.EMAIL_ADDRESS;
+
 public class LoginViewModel extends ViewModel {
 
     private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
     private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
     private LoginRepository loginRepository;
 
-    LoginViewModel(LoginRepository loginRepository) {
+    public LoginViewModel(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
     }
 
@@ -51,22 +53,26 @@ public class LoginViewModel extends ViewModel {
     }
 
     // A placeholder username validation check
-    private boolean isUserNameValid(String username) {
+        private boolean isUserNameValid(String username) {
         if (username == null) {
             return false;
         }
-        //Valida se é email ou CPF
-        if (username == "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$ | d{3}.?d{3}.?d{3}-?d{2}") {
 
-            return Patterns.EMAIL_ADDRESS.matcher(username).matches();
+        // Valida email.
+        if (username.contains("@")) {
+            return EMAIL_ADDRESS.matcher(username).matches();
+        }
+        // Valida se foi passado um CPF(número) de 11 dígitos.
+        else if (username.length() !=11) {
 
-
-        } else {
+            return Boolean.parseBoolean(username);
+        }
+        else {
             return !username.trim().isEmpty();
         }
     }
 
-    // A placeholder password validation check
+    // Valida se a senha contém pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.
     private boolean isPasswordValid(String password) {
 
         if (password == null) return false;
