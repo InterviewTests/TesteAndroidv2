@@ -1,11 +1,310 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <!--  application  Theme.AppCompat.Light.NoActionBar -->
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- toolbar -->
+
+        <!-- item name="android:windowDisablePreview">true</item -->
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <!-- item name="android:windowTranslucentNavigation">true</item -->
+        <!-- item name="android:windowTranslucentStatus">true</item -->
+        <item name="android:fitsSystemWindows">true</item>
+
+        <!--   -->
+
+        <!-- item name="android:background">#ffffff</item -->
+        <!-- item name="android:statusBarColor">@color/transparent</item -->
+
+        <!-- design -->
+
+        <item name="android:fontFamily">@font/helvetica</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- toolbar -->
+
+        <!-- item name="colorControlNormal">#c5c5c5</item -->
+        <!-- item name="colorControlActivated">@color/colorAccent</item -->
+        <!-- item name="colorControlHighlight">@color/colorAccent</item -->
+
+        <!-- forms -->
+
+        <item name="android:textColorHint">@color/colorTextNormal</item>
+        <!-- item name="android:checkboxStyle">@style/checkBoxNormal</item -->
+
+        <!--item name="android:buttonStyle">@style/bt_field_normal</item -->
+
+        <!-- android:background="@drawable/shape_selector_button_circle" -->
+
+
+
+
+
     </style>
+
+    <style name="CollapsedAppBar" parent="AppTheme">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="CollapsedAppBarExpanded" parent="AppTheme">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@android:color/transparent</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:layout_marginTop">16sp</item>
+    </style>
+
+
+
+    <style name="toolbar_top" parent="AppTheme">
+        <item name="android:displayOptions">showHome|homeAsUp|showTitle</item>
+        <item name="displayOptions">showHome|homeAsUp|showTitle</item>
+        <item name="android:icon">@android:color/transparent</item>
+    </style>
+    <!--- forms  -->
+
+
+    <style name="tv_text_bold" parent="AppTheme">
+        <item name="android:textColor">@color/colorTextNormal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginBottom">35dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+
+    <style name="et_field_hint">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColorHint">#666666</item>
+        <item name="android:textColor">#666666</item>
+        <item name="colorControlActivated">#333333</item>
+        <item name="colorControlHighlight">#333333</item>
+    </style>
+
+
+    <style name="et_field_text">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">78dp</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@color/colorTextNormal</item>
+        <item name="android:visibility">visible</item>
+        <!-- item name="android:background">@color/colorLines</item -->
+        <!-- item name="android:background">@drawable/shape_selector_field</item -->
+    </style>
+
+
+
+
+    <style name="et_field_email">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">78dp</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@color/colorTextNormal</item>
+        <item name="android:visibility">visible</item>
+        <!-- item name="android:background">@color/colorLines</item -->
+        <!-- item name="android:background">@drawable/shape_selector_field</item -->
+    </style>
+
+
+    <style name="et_field_telNumber">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">78dp</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@color/colorTextNormal</item>
+        <item name="android:visibility">visible</item>
+        <!-- item name="android:background">@color/colorLines</item -->
+        <!-- item name="android:background">@drawable/shape_selector_field</item -->
+    </style>
+
+
+    <style name="cb_checkbox" parent="AppTheme">
+        <!--
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+        <item name="selectableItemBackground">@drawable/ico_download</item>
+        -->
+    </style>
+
+    <style name="checkBoxNormal" parent="AppTheme">
+        <item name="android:listChoiceIndicatorMultiple">?android:attr/listChoiceIndicatorMultiple</item>
+
+    </style>
+
+
+    <style name="bt_field_normal" parent="AppTheme">
+        <item name="android:textColor">@color/colorTextInverse</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">48dp</item>
+    </style>
+
+    <style name="bt_field_pressed" parent="AppTheme">
+        <item name="android:textColor">@color/colorTextInverse</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:layout_marginBottom">48dp</item>
+    </style>
+
+
+    <!-- final theme -->
+
+    <!--- start texts -->
+
+
+    <style name="editTextNormal2" parent="AppTheme">
+        <item name="android:textColor">@color/colorTextInverse</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:layout_marginBottom">48dp</item>
+
+
+    </style>
+
+
+    <style name="editTextNormal">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">78dp</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">#666666</item>
+        <item name="android:visibility">visible</item>
+        <!-- item name="android:background">@color/colorLines</item -->
+        <!-- item name="android:background">@drawable/shape_selector_field</item -->
+    </style>
+    <style name="textTitle" parent="AppTheme">
+        <item name="android:textColor">@color/colorTextNormal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="textSubTitle" parent="AppTheme">
+        <item name="android:textColor">@color/colorTextNormal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="textText" parent="AppTheme">
+        <item name="android:textColor">@color/colorTextNormal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="textCaption" parent="AppTheme">
+        <item name="android:textColor">@color/colorTextNormal</item>
+        <item name="android:textSize">8sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <!-- alerts -->
+
+    <style name="alertMessage" parent="AppTheme">
+        <item name="android:textColor">@color/colorTextNormal</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:gravity">center_horizontal</item>
+
+    </style>
+
+    <!-- buttons -->
+
+    <style name="buttonSquare" parent="AppTheme">
+        <item name="android:textColor">@color/colorTextInverse</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="buttonCircle" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/colorTextInverse</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">48dp</item>
+    </style>
+
+    <style name="buttonCircleDefault" parent="AppTheme">
+        <item name="android:textColor">@color/colorTextInverse</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:layout_marginBottom">48dp</item>
+    </style>
+
+    <style name="elementInvible" parent="AppTheme">
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <!-- forms -->
+
+    <style name="buttonCheckbox" parent="AppTheme">
+        <item name="android:textColor">@color/colorTextNormal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:layout_marginBottom">48dp</item>
+    </style>
+
+
 
 </resources>
