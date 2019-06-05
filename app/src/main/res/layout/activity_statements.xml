@@ -1,0 +1,258 @@
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+    <TextView
+        android:id="@+id/recycle_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="16dp"
+        android:background="@android:color/transparent"
+        android:text="Recentes"
+        android:textColor="#666666"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_collapseMode="parallax"
+        app:layout_collapseParallaxMultiplier="1.5"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+        />
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rvSwipeRefresh"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.statements.StatementsView"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="32dp"
+            android:visibility="gone"
+
+
+            />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/msg_status_alert"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:layout_margin="16dp"
+        android:background="#FFFFFF"
+        android:animateLayoutChanges="true"
+        >
+
+
+        <ProgressBar
+            android:id="@+id/msg_progress_bar"
+            android:layout_width="65dp"
+            android:layout_gravity="center"
+            android:layout_height="65dp"
+            android:layout_centerHorizontal="true"
+            app:layout_anchorGravity="center_horizontal"
+            android:visibility="gone"
+
+            />
+
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="65dp"
+            />
+
+
+        <TextView
+            android:id="@+id/msg_status_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="35dp"
+            android:text="STATUS MESSAGE HERE"
+            android:textAlignment="center"
+            android:textColor="#666666"
+            android:textSize="20sp" />
+
+
+        <Button
+            android:id="@+id/msg_status_button"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="45dp"
+            android:height="37.5dp"
+            android:background="@color/colorPrimaryDark"
+            android:clickable="true"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal|bottom"
+            android:text="BUTTON TEXT HERE"
+            android:textColor="#ffffff" />
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:paddingTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="264dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:visibility="gone" >
+
+        <android.support.design.widget.CollapsingToolbarLayout
+
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:minHeight="?attr/actionBarSize"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:expandedTitleMarginStart="16dp"
+            app:expandedTitleMarginEnd="16dp"
+            app:expandedTitleGravity="bottom|left"
+            app:expandedTitleTextAppearance="@style/CollapsedAppBarExpanded"
+            app:collapsedTitleTextAppearance="@style/CollapsedAppBar" >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="16dp"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="1.5"
+                android:clickable="true"
+                >
+
+                <TextView
+                    android:id="@+id/uc_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:background="@android:color/transparent"
+                    android:text="USER NAME HERE"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/us_bankAccount_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/uc_name"
+                    android:layout_marginTop="24dp"
+                    android:background="@android:color/transparent"
+                    android:text="ACCOUNT"
+                    android:textColor="#ffffff"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/us_bankAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/uc_name"
+                    android:layout_marginTop="0dp"
+                    android:background="@android:color/transparent"
+                    android:text="0000 / 00.0000-0"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/us_balance_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/uc_name"
+                    android:layout_marginTop="24dp"
+                    android:background="@android:color/transparent"
+                    android:text="BALANCE"
+                    android:textColor="#ffffff"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/us_balance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/us_bankAccount"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:background="@android:color/transparent"
+                    android:text="R$ 000.000,00"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
+
+
+
+            </LinearLayout>
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:displayOptions ="showHome|homeAsUp|showTitle"
+                android:icon="@android:color/transparent"
+
+                app:layout_collapseMode="pin"
+                app:statusBarScrim="@android:color/transparent"
+                app:layout_scrollFlags="scroll|enterAlways"
+
+                >
+                <!--
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="Toolbar Title"
+                    android:layout_gravity="center"
+                    android:id="@+id/toolbar_title" />
+                -->
+            </android.support.v7.widget.Toolbar>
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_goback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/colorPrimaryDark"
+        android:elevation="0dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logout2"
+        app:backgroundTint="@android:color/transparent"
+        app:borderWidth="0dp"
+        app:elevation="0dp"
+        app:fabSize="normal"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="top|end"
+        android:clickable="true"
+
+        />
+
+</android.support.design.widget.CoordinatorLayout>

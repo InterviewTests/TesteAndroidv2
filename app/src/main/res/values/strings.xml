@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">Santander</string>
+
+
+    <string name="activity_label_splash">Santander</string>
+    <string name="activity_label_login">Entre</string>
+    <string name="activity_label_home">Inicio</string>
+    <string name="activity_label_contact">Contato</string>
+    <string name="activity_label_fund_detail">Investimento</string>
+    <string name="activity_label_fund_list">Investimento</string>
+    <string name="activity_label_message">Mensagem</string>
+    <string name="activity_label_statements">Conta</string>
+
+
+    <!-- alert sites -->
+
+    <string name="activity_splash">wwww.teste.com</string>
+    <string name="activity_home">www.teste.com/images</string>
+    <string name="activity_contact">www.teste.com/files</string>
+    <string name="activity_files">www.teste.com/files</string>
+
+
+    <!-- alert sites -->
+
+    <string name="adress_site">wwww.teste.com</string>
+    <string name="adress_site_images">www.teste.com/images</string>
+    <string name="adress_site_files">www.teste.com/files</string>
+
+    <!-- alert emails -->
+
+    <string name="adress_email_title">Titulo do Email</string>
+    <string name="adress_email_body">Corpo do Email</string>
+    <string name="adress_email_sales">busqe.irece@gmail</string>
+    <string name="adress_email_sales_copy">adrianosouzai@gmail.com</string>
+
+    <!-- servers data -->
+
+    <string-array name="load_information_list">
+        <item name="LOAD_PREFERENCES">0</item>
+        <item name="LOAD_DATABASE">1</item>
+        <item name="LOAD_INTERNET">2</item>
+    </string-array>
+
+    <string-array name="load_language_list">
+        <item name="SITE_NATIONAL">0</item>
+        <item name="SITE_INTERNATIONAL">1</item>
+    </string-array>
+
+
+
+
+    <!-- alert default -->
+
+    <string name="alert_area">Title</string>
+    <string name="alert_title">Attention</string>
+    <string name="alert_message">Message text here</string>
+    <string name="alert_text">Action</string>
+    <string name="alert_loading">Carregando</string>
+    <string name="alert_style">buttonCircle</string>
+
+    <!-- loading -->
+
+    <string-array name="alert_loading_app">
+        <item name="m_area"></item>
+        <item name="m_title"></item>
+        <item name="m_message">Carregando</item>
+        <item name="m_text"></item>
+        <item name="m_style">elementInvible</item>
+    </string-array>
+
+    <string-array name="alert_sending_app">
+        <item name="m_area"></item>
+        <item name="m_title"></item>
+        <item name="m_message">Enviando</item>
+        <item name="m_text"></item>
+        <item name="m_style">elementInvible</item>
+    </string-array>
+
+</resources>
