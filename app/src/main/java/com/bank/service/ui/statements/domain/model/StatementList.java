@@ -13,12 +13,4 @@ public class StatementList {
     }
 
 
-    /*
-"title": "Pagamento",
-"desc": "Conta de luz",
-"date": "2018-08-15",
-"value": -50
-
-*/
-
 }

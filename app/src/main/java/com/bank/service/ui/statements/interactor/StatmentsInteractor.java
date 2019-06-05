@@ -1,24 +1,29 @@
 package com.bank.service.ui.statements.interactor;
 
 
+import android.icu.text.DateFormat;
 import android.util.Log;
 
 import com.bank.service.data.local.LoadLocalTest;
 import com.google.gson.Gson;
 
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import com.bank.service.ui.statements.IStatements;
 import com.bank.service.ui.statements.IStatementsService;
 import com.bank.service.ui.statements.domain.model.StatementList;
 import com.bank.service.ui.statements.domain.model.Statements;
+import com.google.gson.GsonBuilder;
 
-//import retrofit2.Call;
-//import retrofit2.Callback;
-//import retrofit2.Response;
-//import retrofit2.Retrofit;
-//import retrofit2.converter.gson.GsonConverterFactory;
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class StatmentsInteractor implements IStatements.Interactor{
@@ -27,7 +32,7 @@ public class StatmentsInteractor implements IStatements.Interactor{
     public IStatements.Presenter presenter;
 
     public List<StatementList> listStm = new ArrayList<>();
-
+    public List<Statements> listItens = new ArrayList<>();
 
 
     public StatmentsInteractor(IStatements.Presenter presenter){
@@ -38,51 +43,85 @@ public class StatmentsInteractor implements IStatements.Interactor{
     }
 
 
+    public void onComplete(StatementList listGet){
 
-    /*
 
-    public List<StatementList> loadDetail(String areaApp){
+        if(listGet!=null) {
+            presenter.onSuccess(listGet);
 
+            for(Statements objStm : listGet.statementList){
+
+               // Log.i(TAG,"getTitle = " + objStm.getTitle());
+              //  Log.i(TAG,"getDesc = " + objStm.getDesc());
+              //  Log.i(TAG,"getDate = " + objStm.getDate());
+              //  Log.i(TAG,"getValue = " + objStm.getValue());
+              //  Log.i(TAG,"------------------ ");
+
+            }
+
+        }else{
+            presenter.onError("Erro ao carregar itens!",1);
+        }
+    }
+
+
+
+    public List<Statements> loadList(String areaApp){
        // final List<StatementList> listData = new ArrayList<>();
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                //.callTimeout()
+                .connectTimeout(1, TimeUnit.MINUTES)
+                .readTimeout(15,TimeUnit.SECONDS)
+                .writeTimeout(5,TimeUnit.SECONDS)
+                .build();
+
+        Gson gson = new GsonBuilder()
+                .setDateFormat(DateFormat.LONG)
+                .create();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(IStatementsService.URL_STATEMENT)
-                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         IStatementsService service = retrofit.create(IStatementsService.class);
-        Call<StatementList> requestList = service.getStatements();
+        Call<StatementList> requestList = service.getList();
         //StatementList<Statements> requestList = service.getStatements();
 
         requestList.enqueue(new Callback<StatementList>() {
             @Override
+            //public void onResponse(Call<StatementList> call, Response<StatementList> response) {
             public void onResponse(Call<StatementList> call, Response<StatementList> response) {
 
                 if(response.isSuccessful()){
                     try {
                         if(response.body()!=null)
                         {
-                            StatementList statement = response.body();
-
-                            Gson gson = new Gson();
-
-                            IStatementsService SERV = gson
-                                    .fromJson(response.errorBody().string(),
-                                     IStatementsService.class);
+                            StatementList listGet = response.body();
+                           // Statements itemGet = response.body().getList();
+                            onComplete(listGet);
 
                             int i = 0;
-                            for(Statements stmOBj : statement.statementList){
+                            for(Statements objStm : listGet.statementList){
 
-                                Log.i(TAG,"TESTEX = " + stmOBj.getTitle());
+                                //Log.i(TAG,"getTitle = " + objStm.getTitle());
+                                //Log.i(TAG,"getDesc = " + objStm.getDesc());
+                                //Log.i(TAG,"getDate = " + objStm.getDate());
+                                //Log.i(TAG,"getValue = " + objStm.getValue());
+
+                                //listItens = statements.getDate();
+
+                                //listItens = listGet.statementList;
+
+                                //Teste(objStm);
 
                                i++;
                             }
 
-                           // List<StatementList> tasks = call.execute().body();
-                            listStm.add(response.body());
-                            //listUpdate.addAll(response.body());
+                            listStm.add(listGet);
 
-                            Log.e(TAG, "I/onResponse/listUpdate=" + (listStm.size() ) );
 
                         }else{
                             Log.e(TAG,"onResponse/ERRO/response.body()=nulo ");
@@ -90,6 +129,7 @@ public class StatmentsInteractor implements IStatements.Interactor{
 
                     }catch (Exception e){
                         Log.e(TAG,"onResponse/ERRO=" + e.getMessage());
+
                     }
                 }else{
                     Log.e(TAG, "onResponse/ERRO=" + response.code() );
@@ -98,14 +138,14 @@ public class StatmentsInteractor implements IStatements.Interactor{
             }
             @Override
             public void onFailure(Call<StatementList> call, Throwable t) {
-                Log.e(TAG, "onFailure/EERO="+ t.getStackTrace() );
+
+                presenter.onError("Erro ao carregar lista",1);
             }
         });
 
-        return listStm;
+        return listItens;
     }
 
-*/
 
 
 
@@ -122,4 +162,12 @@ public class StatmentsInteractor implements IStatements.Interactor{
 
         return  listData;
     }
+
+    public void Teste(Statements statements){
+
+        Log.e(TAG, "TESTEZ = " + statements.getTitle());
+    }
+
+
+
  }

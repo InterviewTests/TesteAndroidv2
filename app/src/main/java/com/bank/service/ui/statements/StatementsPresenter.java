@@ -1,6 +1,7 @@
 package com.bank.service.ui.statements;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,48 +19,67 @@ public class StatementsPresenter implements IStatements.Presenter {
     private IStatements.Interactor interactor;
     private IStatements.Views views;
     private StatementList stmList;
-   // private Statements stmItem;
-   // private Alert alert;
 
-    private List<StatementList> listStm = new ArrayList<>();
-    private List<Statements> listItem = new ArrayList<>();
-    // private List<UseAccount> listUseraAccount = new ArrayList<>();
+    public List<StatementList> listStm = new ArrayList<>();
+    public List<Statements> listItens = new ArrayList<>();
 
 
      StatementsPresenter(IStatements.Views views) {
 
-        //template = new FundModelTemplate();
-
         interactor = new StatmentsInteractor(this);
-        //alert = new Alert();
-
         this.views = views;
 
     }
+
+
+    public void loadList(){
+
+        // listItem = interactor.loadListTest("teste");
+        listItens = interactor.loadList("teste");
+        Log.e(TAG,"P/loadList/interactor" );
+
+    }
+
+
+    public void onSuccess(StatementList listObj){
+        Log.e(TAG, "P/onSucess/teste=" + listObj.getList().size());
+        if(listObj!=null){
+
+          //  for(Statements objStm : listObj.statementList){
+
+               // Log.i(TAG,"getTitle = " + objStm.getTitle());
+                // Log.i(TAG,"getDesc = " + objStm.getDesc());
+                // Log.i(TAG,"getDate = " + objStm.getDate());
+                // Log.i(TAG,"getValue = " + objStm.getValue());
+                //Log.i(TAG,"------------------ ");
+            //}
+
+            views.updateAlert("Lista carregada com sucesso",1);
+            views.updateRecView(listObj);
+        }else{
+            views.updateAlert("Algo de Errado!",0);
+
+        }
+    }
+
+    /**
+     *  Codigo=0 erro, codigo=1 sucesso
+     *
+     * @param message
+     * @param code
+     */
+
+
+    public void onError(String message, int code){
+        views.updateAlert("Algo de Errado!",0);
+       // Log.e(TAG, "P/onError/teste=" + message);
+    }
+
 
     //@Override
     public Context getContext() {
         return (Context) views;
     }
-
-
-    public void loadList(){
-        listItem = interactor.loadListTest("teste");
-        // listStm = interactor.loadDetail("teste");
-
-        if(listItem!=null){
-            views.updateRecView(listItem);
-        }else{
-            loadAlert(1,getContext()  );
-        }
-    }
-
-
-    public void loadAlert(int msgCode, Context context){
-        msgCode = (msgCode >= 0 && msgCode <= 5 ) ? msgCode : 0;
-        views.updateAlert(msgCode, context);
-    }
-
 
 
 

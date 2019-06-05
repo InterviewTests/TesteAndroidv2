@@ -13,27 +13,26 @@ public interface IStatements {
 
     interface Presenter{
 
-        void loadAlert(int msgCode, Context context);
-        void  loadList();
-        //void checkOptionList();
+        void onSuccess(StatementList lis);
+        void onError(String message, int code);
+        void loadList();
+
     }
 
     interface Interactor{
 
-        //List<StatementList> loadDetail(String areaApp);
-       // List<StatementList> loadList(String areaApp);
-        List<Statements> loadListTest(String areaApp);
 
-
+        List<Statements> loadList(String areaApp);
+        //void onError(String message, int code);
 
     }
 
     interface Views{
 
         void loadRecView();
-        void updateRecView(List<Statements> list);
+        void updateRecView(StatementList listObj );
         int checkRecView();
-        void updateAlert(int msgCode, Context context);
+        void updateAlert(String message, int code);
     }
 
 

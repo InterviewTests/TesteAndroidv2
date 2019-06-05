@@ -266,8 +266,9 @@
         <item name="android:textColor">@color/colorTextInverse</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:background">#3B49EE</item>
     </style>
 
     <style name="buttonCircle" parent="@style/Widget.AppCompat.Button.Borderless">

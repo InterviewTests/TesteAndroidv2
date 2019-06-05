@@ -23,10 +23,10 @@
         tools:ignore="GoogleAppIndexingWarning"
         >
 
-        <activity android:name="com.bank.service.MainActivity">
+        <activity
+            android:name="com.bank.service.ui.userlogin.UserLoginView"  >
 
         </activity>
-
 
 
         <activity
