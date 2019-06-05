@@ -52,16 +52,6 @@ public class StatmentsInteractor implements IStatements.Interactor{
         if(listGet!=null) {
             presenter.onSuccess(listGet);
 
-            for(Statements objStm : listGet.statementList){
-
-               // Log.i(TAG,"getTitle = " + objStm.getTitle());
-              //  Log.i(TAG,"getDesc = " + objStm.getDesc());
-              //  Log.i(TAG,"getDate = " + objStm.getDate());
-              //  Log.i(TAG,"getValue = " + objStm.getValue());
-              //  Log.i(TAG,"------------------ ");
-
-            }
-
         }else{
             presenter.onError("Erro ao carregar itens!",1);
         }
@@ -106,25 +96,7 @@ public class StatmentsInteractor implements IStatements.Interactor{
                            // Statements itemGet = response.body().getList();
                             onComplete(listGet);
 
-                            int i = 0;
-                            for(Statements objStm : listGet.statementList){
-
-                                //Log.i(TAG,"getTitle = " + objStm.getTitle());
-                                //Log.i(TAG,"getDesc = " + objStm.getDesc());
-                                //Log.i(TAG,"getDate = " + objStm.getDate());
-                                //Log.i(TAG,"getValue = " + objStm.getValue());
-
-                                //listItens = statements.getDate();
-
-                                //listItens = listGet.statementList;
-
-                                //Teste(objStm);
-
-                               i++;
-                            }
-
                             listStm.add(listGet);
-
 
                         }else{
                             Log.e(TAG,"onResponse/ERRO/response.body()=nulo ");
@@ -142,9 +114,7 @@ public class StatmentsInteractor implements IStatements.Interactor{
             @Override
             public void onFailure(Call<StatementList> call, Throwable t) {
 
-
                 onError();
-
 
             }
         });
@@ -156,10 +126,9 @@ public class StatmentsInteractor implements IStatements.Interactor{
     public void onError(){
 
         CONNECTION_TENTATIVES = CONNECTION_TENTATIVES + 1;
-        if(CONNECTION_TENTATIVES < MAX_CONNECTION_TENTATIVES){
+        if(CONNECTION_TENTATIVES <= MAX_CONNECTION_TENTATIVES){
 
             loadList("statements");
-
             Log.i(TAG,"I/onError/Tentando conectar=" + CONNECTION_TENTATIVES );
 
         }else{
@@ -167,6 +136,10 @@ public class StatmentsInteractor implements IStatements.Interactor{
         }
 
 
+        if(CONNECTION_TENTATIVES > MAX_CONNECTION_TENTATIVES){
+
+           // CONNECTION_TENTATIVES = 0;
+        }
     }
 
 

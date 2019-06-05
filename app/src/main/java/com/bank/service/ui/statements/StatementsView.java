@@ -1,7 +1,9 @@
 package com.bank.service.ui.statements;
 
+import android.animation.LayoutTransition;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -14,8 +16,11 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Fade;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -69,12 +74,14 @@ public class StatementsView extends AppCompatActivity implements
          presenter = new StatementsPresenter(this);
         //((StatementsPresenter) presenter).setView(this);
 
-        if(checkInternet()){
-           presenter.loadList();
+        presenter.loadList();
 
+        if(checkInternet()){
+
+         //   presenter.loadList();
         }else{
            int msgCode = 2;
-           presenter.onError("",1 );
+
         }
 
 
@@ -99,7 +106,6 @@ public class StatementsView extends AppCompatActivity implements
         }
 
     }
-
 
     public void loadRecView(){
 
@@ -174,23 +180,18 @@ public class StatementsView extends AppCompatActivity implements
         msgStatusButton = (Button) findViewById(R.id.msg_status_button);
         msgStatusButton.setOnClickListener(this);
 
-
+        msgStatusText = (TextView) findViewById(R.id.msg_status_text);
+        msgStatusText.setText("Por favor, conecte-se a Internet!");
 
         rvSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            int rvcounter = 1;
-
             @Override
             public void onRefresh() {
 
-
-                //rvcounter++;
-               // mAdapter.notifyDataSetChanged();
+                mAdapter.notifyDataSetChanged();
                 presenter.loadList();
                // rvSwipeRefresh.setRefreshing(false);
 
-               // Log.e(TAG, "CONTADOR = " + rvcounter);
             }
-
 
         });
 
@@ -208,13 +209,30 @@ public class StatementsView extends AppCompatActivity implements
 
         }else{
 
+
             app_bar.setVisibility(View.GONE);
             recyclerView.setVisibility(View.GONE);
             msgStatusAlert.setVisibility(View.VISIBLE);
             msgStatusButton.setText("Tentar Conectar");
 
+/*
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+
+                ((ViewGroup) findViewById(R.id.msg_status_alert))
+                        .getLayoutTransition()
+                        .enableTransitionType(LayoutTransition.CHANGING);
+
+                 Fade mFade = new Fade();
+                 TransitionManager.beginDelayedTransition(msgStatusAlert, mFade);
+
+         }
+ */
+
+
             msgStatusButton.setVisibility(View.VISIBLE);
             msgProgressBar.setVisibility(View.GONE);
+
+
 
            // mAdapter.
 
@@ -237,6 +255,7 @@ public class StatementsView extends AppCompatActivity implements
                 msgStatusButton.setVisibility(View.GONE);
                 msgProgressBar.setVisibility(View.VISIBLE);
                 presenter.loadList();
+                msgStatusText.setText("");
 
               break;
             case R.id.btn_goback:
