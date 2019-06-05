@@ -1,4 +1,4 @@
 package business.usecase
 
-interface GetStatementsByUserId {
+interface GetStatementsUseCase {
 }
