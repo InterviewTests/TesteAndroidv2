@@ -45,19 +45,11 @@ public class StatementsPresenter implements IStatements.Presenter {
         Log.e(TAG, "P/onSucess/teste=" + listObj.getList().size());
         if(listObj!=null){
 
-          //  for(Statements objStm : listObj.statementList){
 
-               // Log.i(TAG,"getTitle = " + objStm.getTitle());
-                // Log.i(TAG,"getDesc = " + objStm.getDesc());
-                // Log.i(TAG,"getDate = " + objStm.getDate());
-                // Log.i(TAG,"getValue = " + objStm.getValue());
-                //Log.i(TAG,"------------------ ");
-            //}
-
-            views.updateAlert("Lista carregada com sucesso",1);
+            views.loadViews("Lista carregada com sucesso",1);
             views.updateRecView(listObj);
         }else{
-            views.updateAlert("Algo de Errado!",0);
+            views.loadViews("Algo de Errado!",0);
 
         }
     }
@@ -71,7 +63,7 @@ public class StatementsPresenter implements IStatements.Presenter {
 
 
     public void onError(String message, int code){
-        views.updateAlert("Algo de Errado!",0);
+        views.loadViews("Algo de Errado!",0);
        // Log.e(TAG, "P/onError/teste=" + message);
     }
 

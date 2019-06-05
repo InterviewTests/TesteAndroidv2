@@ -28,6 +28,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class StatmentsInteractor implements IStatements.Interactor{
 
+    public int MAX_CONNECTION_TENTATIVES = 5;
+    public int CONNECTION_TENTATIVES = 0;
+
     public  final String TAG = "STATEMENTS";
     public IStatements.Presenter presenter;
 
@@ -72,8 +75,8 @@ public class StatmentsInteractor implements IStatements.Interactor{
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 //.callTimeout()
                 .connectTimeout(1, TimeUnit.MINUTES)
-                .readTimeout(15,TimeUnit.SECONDS)
-                .writeTimeout(5,TimeUnit.SECONDS)
+                .readTimeout(30,TimeUnit.SECONDS)
+                .writeTimeout(15,TimeUnit.SECONDS)
                 .build();
 
         Gson gson = new GsonBuilder()
@@ -139,13 +142,32 @@ public class StatmentsInteractor implements IStatements.Interactor{
             @Override
             public void onFailure(Call<StatementList> call, Throwable t) {
 
-                presenter.onError("Erro ao carregar lista",1);
+
+                onError();
+
+
             }
         });
 
         return listItens;
     }
 
+
+    public void onError(){
+
+        CONNECTION_TENTATIVES = CONNECTION_TENTATIVES + 1;
+        if(CONNECTION_TENTATIVES < MAX_CONNECTION_TENTATIVES){
+
+            loadList("statements");
+
+            Log.i(TAG,"I/onError/Tentando conectar=" + CONNECTION_TENTATIVES );
+
+        }else{
+            presenter.onError("Erro ao carregar lista!",1);
+        }
+
+
+    }
 
 
 

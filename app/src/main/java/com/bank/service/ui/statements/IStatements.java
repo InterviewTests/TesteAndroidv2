@@ -32,7 +32,7 @@ public interface IStatements {
         void loadRecView();
         void updateRecView(StatementList listObj );
         int checkRecView();
-        void updateAlert(String message, int code);
+        void loadViews(String message, int code);
     }
 
 

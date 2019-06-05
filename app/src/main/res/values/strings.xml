@@ -8,7 +8,7 @@
     <string name="activity_label_fund_detail">Investimento</string>
     <string name="activity_label_fund_list">Investimento</string>
     <string name="activity_label_message">Mensagem</string>
-    <string name="activity_label_statements">Recentes</string>
+    <string name="activity_label_statements">Conta</string>
 
     <!-- alert sites -->
 
@@ -45,81 +45,7 @@
     </string-array>
 
 
-    <string name="adress_site_contact">LOCAL_DATA_DEVICE</string>
-    <string name="adress_site_contact_external">https://floating-mountain-50292.herokuapp.com/cells.json</string>
 
-    <string name="adress_site_fund">LOCAL_DATA_DEVICE</string>
-    <string name="adress_site_fund_external">https://floating-mountain-50292.herokuapp.com/fund.json</string>
-
-    <string-array name="adress_site_fund_national">
-        <item name="fd_site1">@string/adress_site_fund</item>
-        <item name="fd_site2">@string/adress_site_fund</item>
-    </string-array>
-
-    <string-array name="adress_site_fund_international">
-        <item name="fd_site1">@string/adress_site_fund</item>
-        <item name="fd_site2">@string/adress_site_fund</item>
-    </string-array>
-
-
-    <string-array name="adress_local_fund_national">
-        <item name="fd_site1">LOCAL_DATA_DEVICE</item>
-        <item name="fd_site2">LOCAL_DATA_DEVICE</item>
-    </string-array>
-
-    <string-array name="adress_local_fund_international">
-        <item name="fd_site1">LOCAL_DATA_DEVICE</item>
-        <item name="fd_site2">LOCAL_DATA_DEVICE</item>
-    </string-array>
-
-
-
-    <!-- ///////////////// FUND //////////////////// -->
-
-    <string name="fund_list_title">Titulo do Fundo</string>
-    <string name="fund_list_month">Mes: 0.1%</string>
-    <string name="fund_list_year">Ano: 0.12%</string>
-    <string name="fund_list_time">12 meses: 12.24%</string>
-
-
-
-    <string-array name="fund_detail_success">
-        <item name="fd_area">Investimento</item>
-        <item name="fd_title">Fundo de Investimento</item>
-        <item name="fd_message">Tipo de Fundo Selecionado</item>
-        <item name="fd_text">O que é?</item>
-        <item name="fd_explain">Explicação do tipo de fundo selecionado pelo cliente.</item>
-        <item name="fd_style">chart_fund_comparative</item>
-    </string-array>
-
-    <string-array name="fund_detail_error">
-        <item name="m_area">Erro</item>
-        <item name="m_title">Atenção!</item>
-        <item name="m_message">Erro ao carregar detalhes do fundo!</item>
-        <item name="m_text">Tentar Novamente</item>
-        <item name="m_style">buttonCircleDefault</item>
-    </string-array>
-
-    <!-- ///////////////// FUND DETAILS //////////////////// -->
-
-    <string name="fund_detail_fund_area">Investimento"</string>
-    <string name="fund_detail_fund_title">Fundos de investimento"</string>
-    <string name="fund_detail_fund_fundname">Vinci Valorem FI Multimercado</string>
-    <string name="fund_detail_fund_whatis">O que é?</string>
-    <string name="fund_detail_fund_definition">O Fundo tem por objetivo proporcionar aos seus cotistas rentabilidade no longo prazo através de investimentos.</string>
-    <string name="fund_detail_fund_risktitle">Grau de risco do investimento</string>
-    <string name="fund_detail_fund_risk">4</string>
-
-    <string name="fund_detail_fund_infotitle">Mais informações sobre o investimento</string>
-
-    <string-array name="fund_detail_moreinfo">
-        <item name="mi_month" >month</item>
-        <item name="mi_tyear">year</item>
-        <item name="mi_time">12months</item>
-    </string-array>
-
-
-    <!-- ///////////////// APP MSGS //////////////////// -->
 
     <!-- alert default -->
 
@@ -129,57 +55,6 @@
     <string name="alert_text">Action</string>
     <string name="alert_loading">Carregando</string>
     <string name="alert_style">buttonCircle</string>
-
-
-    <!-- buttons -->
-
-    <string name="area_button_action1">Investimento</string>
-    <string name="area_button_action2">Contato</string>
-    <string name="area_button_action3">Click Here</string>
-
-    <!-- alerts -->
-
-    <string-array name="alert_connection_sucess">
-        <item name="m_area">Conexão</item>
-        <item name="m_title">Mensagem</item>
-        <item name="m_message">Conectado com sucesso!</item>
-        <item name="m_text">Carregando...</item>
-        <item name="m_style">buttonCircleDefault</item>
-    </string-array>
-
-    <string-array name="alert_connection_error">
-        <item name="m_area">Conexão</item>
-        <item name="m_title">Atenção!</item>
-        <item name="m_message">Verique sua conexão!</item>
-        <item name="m_text">Tentar Novamente</item>
-        <item name="m_style">buttonCircleDefault</item>
-    </string-array>
-
-    <string-array name="alert_unknown_error">
-        <item name="m_area">Erro</item>
-        <item name="m_title">Desculpe!</item>
-        <item name="m_message">Ocorreu um erro!</item>
-        <item name="m_text">Abrir Home</item>
-        <item name="m_style">buttonCircleDefault</item>
-    </string-array>
-
-    <!-- contact -->
-
-    <string-array name="alert_contact_success">
-        <item name="m_area">Contato</item>
-        <item name="m_title">Mensagem</item>
-        <item name="m_message">Email enviado com sucesso!</item>
-        <item name="m_text">Enviar outro Email</item>
-        <item name="m_style">buttonCircleDefault</item>
-    </string-array>
-
-    <string-array name="alert_contact_error">
-        <item name="m_area">Contato</item>
-        <item name="m_title">Mensagem</item>
-        <item name="m_message">Erro ao enviar Email</item>
-        <item name="m_text">Tentar Novamente</item>
-        <item name="m_style">buttonCircleDefault</item>
-    </string-array>
 
     <!-- loading -->
 

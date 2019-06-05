@@ -3,6 +3,8 @@ package com.bank.service.ui.statements;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -38,13 +40,18 @@ public class StatementsView extends AppCompatActivity implements
     private RecyclerView recyclerView;
     private StatementsAdapter mAdapter;
 
+    public SwipeRefreshLayout rvSwipeRefresh;
     public ConnectionChek internet;
-    public ProgressBar progressBar;
+    public ProgressBar msgProgressBar;
     public AppBarLayout app_bar;
-    public Toolbar toolbar;
+   // public Toolbar toolbar;
+
     public CoordinatorLayout msgStatusAlert;
     public Button msgStatusButton;
     public TextView msgStatusText;
+
+    public FloatingActionButton btnGoBackButton;
+
 
 
     @Override
@@ -57,7 +64,7 @@ public class StatementsView extends AppCompatActivity implements
 
 
         loadRecView();
-        updateAlert("",1); // loadViews
+        loadViews("",1); // loadViews
 
          presenter = new StatementsPresenter(this);
         //((StatementsPresenter) presenter).setView(this);
@@ -93,11 +100,6 @@ public class StatementsView extends AppCompatActivity implements
 
     }
 
-    public void LoadAppBar(){
-
-
-
-    }
 
     public void loadRecView(){
 
@@ -127,7 +129,6 @@ public class StatementsView extends AppCompatActivity implements
 
         Statements statements  ;
 
-
         for(Statements objStm : listObj.statementList){
 
            // Log.i(TAG,"getTitle = " + objStm.getTitle());
@@ -151,35 +152,6 @@ public class StatementsView extends AppCompatActivity implements
 
     }
 
-    public void updateRecViewV1(List<Statements> list) {
-
-        Statements statements ;
-
-        if(list != null) {
-            for (int count = 0; count < list.size(); count++) {
-
-               // Log.d(TAG, "V/updateRecView/getData=" + list.get(count).getData());
-
-                statements = new Statements(
-                        list.get(count).getTitle(),
-                        list.get(count).getDesc(),
-                        list.get(count).getDate(),
-                        list.get(count).getValue()
-                );
-
-               stmList.add(statements);
-            }
-
-           // stmList.add(stm);
-            mAdapter.notifyDataSetChanged();
-
-        }else{
-            Log.d(TAG, "V/updateRecView/ERROR" );
-        }
-
-
-    }
-
     public int checkRecView(){
 
         int contItens = 0;
@@ -189,13 +161,38 @@ public class StatementsView extends AppCompatActivity implements
             return contItens;
     }
 
-    public void updateAlert(String message, int code){
+    public void loadViews(String message, int code){
 
+        msgProgressBar = (ProgressBar) findViewById(R.id.msg_progress_bar);
+        btnGoBackButton = (FloatingActionButton) findViewById(R.id.btn_goback);
+        btnGoBackButton.setOnClickListener(this);
+
+        rvSwipeRefresh = (SwipeRefreshLayout) findViewById(R.id.rvSwipeRefresh);
         app_bar = (AppBarLayout) findViewById(R.id.app_bar);
         msgStatusAlert = (CoordinatorLayout) findViewById(R.id.msg_status_alert);
         //msgStatusText = (TextView) findViewById(R.id.status_text);
         msgStatusButton = (Button) findViewById(R.id.msg_status_button);
         msgStatusButton.setOnClickListener(this);
+
+
+
+        rvSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            int rvcounter = 1;
+
+            @Override
+            public void onRefresh() {
+
+
+                //rvcounter++;
+               // mAdapter.notifyDataSetChanged();
+                presenter.loadList();
+               // rvSwipeRefresh.setRefreshing(false);
+
+               // Log.e(TAG, "CONTADOR = " + rvcounter);
+            }
+
+
+        });
 
 
         if(code==1) {
@@ -204,39 +201,51 @@ public class StatementsView extends AppCompatActivity implements
             recyclerView.setVisibility(View.VISIBLE);
             msgStatusAlert.setVisibility(View.GONE);
             msgStatusButton.setText("");
+            rvSwipeRefresh.setRefreshing(false);
+            mAdapter.notifyDataSetChanged();
+
+            msgProgressBar.setVisibility(recyclerView.GONE);
 
         }else{
 
             app_bar.setVisibility(View.GONE);
             recyclerView.setVisibility(View.GONE);
             msgStatusAlert.setVisibility(View.VISIBLE);
-            msgStatusButton.setText("Tentar Novamente");
+            msgStatusButton.setText("Tentar Conectar");
+
+            msgStatusButton.setVisibility(View.VISIBLE);
+            msgProgressBar.setVisibility(View.GONE);
+
+           // mAdapter.
 
         }
 
-        Log.d(TAG,"V/updateAlert/code=" +  code);
+        Log.d(TAG,"V/loadViews/code=" +  code);
 
     }
 
     @Override
     public void onClick(View view) {
 
-        Intent IT;
-        Context context = getApplicationContext();
-
+       // Context context = getApplicationContext();
 
         switch (view.getId()){
 
             case R.id.msg_status_button:
 
-                msgStatusButton.setText("Carregando...");
+                //msgStatusButton.setText("Carregando...");
+                msgStatusButton.setVisibility(View.GONE);
+                msgProgressBar.setVisibility(View.VISIBLE);
                 presenter.loadList();
 
               break;
+            case R.id.btn_goback:
+
+                Log.i(TAG,"SAINDO....");
+                break;
 
         }
 
-        // add click aqui
     }
 
 

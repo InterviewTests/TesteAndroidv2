@@ -5,15 +5,48 @@
     android:layout_height="match_parent">
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
+
+
+    <TextView
+        android:id="@+id/recycle_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="16dp"
+        android:background="@android:color/transparent"
+        android:text="Recentes"
+        android:textColor="#666666"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_collapseMode="parallax"
+        app:layout_collapseParallaxMultiplier="1.5"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+        />
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rvSwipeRefresh"
+        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="32dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:visibility="gone"
-        />
+        tools:context=".ui.statements.StatementsView"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="32dp"
+            android:visibility="gone"
+
+
+            />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
 
 
     <android.support.design.widget.CoordinatorLayout
@@ -26,7 +59,22 @@
         android:background="#FFFFFF"
 
         >
+
+
+        <ProgressBar
+            android:id="@+id/msg_progress_bar"
+            android:layout_width="65dp"
+            android:layout_gravity="center"
+            android:layout_height="65dp"
+            android:layout_centerHorizontal="true"
+            app:layout_anchorGravity="center_horizontal"
+
+            />
+
 <!--
+
+ style="?android:attr/progressBarStyleLarge"
+
         <TextView
             android:id="@+id/msg_status_text"
             android:layout_width="match_parent"
@@ -50,11 +98,13 @@
             android:height="37.5dp"
             android:gravity="center"
             android:layout_gravity="center"
-            android:background="#3B49EE"
+            android:background="@color/colorPrimaryDark"
             android:text="BUTTON TEXT HERE"
             android:textColor="#ffffff"
             android:clickable="true"
             />
+
+
 
 
     </android.support.design.widget.CoordinatorLayout>
@@ -185,6 +235,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_goback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
@@ -199,6 +250,7 @@
         app:fabSize="normal"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="top|end"
+        android:clickable="true"
 
         />
 
