@@ -5,14 +5,17 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.testeacclogin.R;
 
@@ -22,7 +25,9 @@ import org.json.JSONObject;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class StatementsActivity extends AppCompatActivity {
 
@@ -32,8 +37,6 @@ public class StatementsActivity extends AppCompatActivity {
     private RequestQueue mRequestQueue;
 
     private ImageButton logoutButton;
-
-
 
 
     @Override
@@ -52,6 +55,7 @@ public class StatementsActivity extends AppCompatActivity {
 
         mRecyclerView.setAdapter(mStateAdapter);
 
+
         mStateList = new ArrayList<>();
 
         mRequestQueue = Volley.newRequestQueue(this);
@@ -59,8 +63,8 @@ public class StatementsActivity extends AppCompatActivity {
 
         parseJson();
 
-    }
 
+    }
 
     private void parseJson() {
 
@@ -130,10 +134,6 @@ public class StatementsActivity extends AppCompatActivity {
 
 
     }
-
-
-
-
 
 }
 

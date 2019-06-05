@@ -11,9 +11,9 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle_view"
-        android:layout_width="411dp"
-        android:layout_height="560dp"
-        android:layout_marginBottom="128dp"
+        android:layout_width="415dp"
+        android:layout_height="416dp"
+        android:layout_marginBottom="8dp"
         android:background="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,13 +111,13 @@
         android:id="@+id/tv_recentes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="52dp"
         android:background="#fff"
         android:padding="25dp"
 
         android:text="Recentes"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_saldonumero" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_saldo" />
 
 </android.support.constraint.ConstraintLayout>

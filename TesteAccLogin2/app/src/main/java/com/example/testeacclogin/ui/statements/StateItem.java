@@ -6,6 +6,7 @@ public class StateItem {
     private String mData;
     private String mValue;
 
+
     public StateItem(String title, String desc, String data, String value){
         mTitle = title;
         mDesc = desc;

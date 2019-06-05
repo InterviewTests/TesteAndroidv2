@@ -3,7 +3,6 @@ package com.example.testeacclogin.ui.login;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.util.Patterns;
 
 import com.example.testeacclogin.data.LoginRepository;
 import com.example.testeacclogin.data.Result;
@@ -21,6 +20,7 @@ public class LoginViewModel extends ViewModel {
     public LoginViewModel(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
     }
+
 
     LiveData<LoginFormState> getLoginFormState() {
         return loginFormState;
@@ -52,17 +52,21 @@ public class LoginViewModel extends ViewModel {
         }
     }
 
+
     // A placeholder username validation check
-        private boolean isUserNameValid(String username) {
+        public boolean isUserNameValid(String username) {
         if (username == null) {
             return false;
         }
+
 
         // Valida email.
         if (username.contains("@")) {
             return EMAIL_ADDRESS.matcher(username).matches();
         }
-        // Valida se foi passado um CPF(número) de 11 dígitos.
+
+
+        // Valida se foi passado um CPF de 11 dígitos.
         else if (username.length() !=11) {
 
             return Boolean.parseBoolean(username);
@@ -73,7 +77,7 @@ public class LoginViewModel extends ViewModel {
     }
 
     // Valida se a senha contém pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.
-    private boolean isPasswordValid(String password) {
+    public boolean isPasswordValid(String password) {
 
         if (password == null) return false;
 
@@ -94,5 +98,13 @@ public class LoginViewModel extends ViewModel {
         }
 
         return Numero && Maiuscula && Minuscula && Simbolo;
+
+
     }
+
+
+
+
+
+
 }
