@@ -24,13 +24,21 @@
         >
 
         <activity
-            android:label="@string/activity_label_login"
-            android:name="com.bank.service.ui.userlogin.UserLoginView"  >
+            android:label="@string/activity_label_statements"
+            android:name="com.bank.service.ApplicationConfig"  >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
+        </activity>
+
+        <activity
+            android:label="@string/activity_label_login"
+            android:name="com.bank.service.ui.userlogin.UserLoginView"  >
+
 
         </activity>
 
