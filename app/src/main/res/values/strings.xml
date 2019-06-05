@@ -3,12 +3,14 @@
 
 
     <string name="activity_label_splash">Santander</string>
+    <string name="activity_label_login">Entre</string>
     <string name="activity_label_home">Inicio</string>
     <string name="activity_label_contact">Contato</string>
     <string name="activity_label_fund_detail">Investimento</string>
     <string name="activity_label_fund_list">Investimento</string>
     <string name="activity_label_message">Mensagem</string>
     <string name="activity_label_statements">Conta</string>
+
 
     <!-- alert sites -->
 

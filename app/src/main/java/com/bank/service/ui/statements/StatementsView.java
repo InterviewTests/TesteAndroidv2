@@ -56,6 +56,7 @@ public class StatementsView extends AppCompatActivity implements
     public TextView msgStatusText;
 
     public FloatingActionButton btnGoBackButton;
+    public CollapsingToolbarLayout collapsing;
 
 
 
@@ -64,26 +65,13 @@ public class StatementsView extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statements);
 
-        CollapsingToolbarLayout collapsing = findViewById(R.id.collapsing_toolbar);
-        collapsing.setTitle(getTitle());
-
 
         loadRecView();
         loadViews("",1); // loadViews
 
          presenter = new StatementsPresenter(this);
         //((StatementsPresenter) presenter).setView(this);
-
         presenter.loadList();
-
-        if(checkInternet()){
-
-         //   presenter.loadList();
-        }else{
-           int msgCode = 2;
-
-        }
-
 
     }
 
@@ -91,21 +79,9 @@ public class StatementsView extends AppCompatActivity implements
     public void onResume() {
     super.onResume();
 
+      //  checkRecView();
     }
 
-    public boolean checkInternet(){
-
-        internet = new ConnectionChek();
-
-        if(internet.isNetworkAvailable(getApplicationContext())){
-          //  Log.d(TAG, " V/checkInternet=SUCCESS") ;
-            return true;
-        }else{
-           // Log.d(TAG, " V/checkInternet=ERROR") ;
-            return false;
-        }
-
-    }
 
     public void loadRecView(){
 
@@ -164,10 +140,14 @@ public class StatementsView extends AppCompatActivity implements
         if (recyclerView.getAdapter() != null) {
             contItens = recyclerView.getAdapter().getItemCount();
         }
+
             return contItens;
     }
 
     public void loadViews(String message, int code){
+
+        collapsing = findViewById(R.id.collapsing_toolbar);
+        collapsing.setTitle(getTitle());
 
         msgProgressBar = (ProgressBar) findViewById(R.id.msg_progress_bar);
         btnGoBackButton = (FloatingActionButton) findViewById(R.id.btn_goback);
@@ -189,7 +169,7 @@ public class StatementsView extends AppCompatActivity implements
 
                 mAdapter.notifyDataSetChanged();
                 presenter.loadList();
-               // rvSwipeRefresh.setRefreshing(false);
+                rvSwipeRefresh.setRefreshing(true);
 
             }
 
@@ -198,43 +178,25 @@ public class StatementsView extends AppCompatActivity implements
 
         if(code==1) {
 
+
             app_bar.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.VISIBLE);
             msgStatusAlert.setVisibility(View.GONE);
             msgStatusButton.setText("");
             rvSwipeRefresh.setRefreshing(false);
             mAdapter.notifyDataSetChanged();
-
             msgProgressBar.setVisibility(recyclerView.GONE);
 
         }else{
-
 
             app_bar.setVisibility(View.GONE);
             recyclerView.setVisibility(View.GONE);
             msgStatusAlert.setVisibility(View.VISIBLE);
             msgStatusButton.setText("Tentar Conectar");
-
-/*
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-
-                ((ViewGroup) findViewById(R.id.msg_status_alert))
-                        .getLayoutTransition()
-                        .enableTransitionType(LayoutTransition.CHANGING);
-
-                 Fade mFade = new Fade();
-                 TransitionManager.beginDelayedTransition(msgStatusAlert, mFade);
-
-         }
- */
-
-
             msgStatusButton.setVisibility(View.VISIBLE);
             msgProgressBar.setVisibility(View.GONE);
 
-
-
-           // mAdapter.
+           // mAdapter...
 
         }
 

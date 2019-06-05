@@ -34,15 +34,17 @@ public class UserLoginView extends AppCompatActivity implements
     private StatementsAdapter mAdapter;
 
     private ConnectionChek internet;
-    private ProgressBar progressBar;
-    private Toolbar toolbar;
+    public ProgressBar progressBar;
+    public Toolbar toolbar;
+
+    public CollapsingToolbarLayout collapsing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        CollapsingToolbarLayout collapsing = findViewById(R.id.collapsing_toolbar);
+        collapsing = findViewById(R.id.collapsing_toolbar);
         collapsing.setTitle(getTitle());
 
         loadLogin();
@@ -51,7 +53,8 @@ public class UserLoginView extends AppCompatActivity implements
         //((StatementsPresenter) presenter).setView(this);
 
         // presenter.loadLogin();
-
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //toolbar.setContentInsetsAbsolute(1,toolbar.getContentInsetStartWithNavigation());
 
     }
 
