@@ -2,11 +2,12 @@ apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
 dependencies {
+    def deps = rootProject.ext.deps
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
-    implementation "io.reactivex.rxjava2:rxjava:2.2.5"
-    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
+    implementation deps.kotlin
+    implementation deps.rx
+
 }
 
 sourceCompatibility = "7"
