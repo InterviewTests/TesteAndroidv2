@@ -1,6 +1,6 @@
 package com.zuptest.santander.di
 
-import com.zuptest.data.api.Api
+import com.zuptest.data.remote.api.Api
 import com.zuptest.santander.BuildConfig
 import com.zuptest.santander.BuildConfig.DEBUG
 import okhttp3.OkHttpClient
@@ -28,13 +28,18 @@ object AppModule {
         }
 
         single<OkHttpClient> {
-            val interceptor = HttpLoggingInterceptor()
-            if (DEBUG) {
-                interceptor.level = HttpLoggingInterceptor.Level.BODY
-            } else {
-                interceptor.level = HttpLoggingInterceptor.Level.NONE
+            val interceptor = HttpLoggingInterceptor().apply {
+                level = getLoggingLevelByBuildType()
             }
             OkHttpClient.Builder().addInterceptor(interceptor).build()
+        }
+    }
+
+    private fun getLoggingLevelByBuildType(): HttpLoggingInterceptor.Level {
+        return if (DEBUG) {
+            HttpLoggingInterceptor.Level.BODY
+        } else {
+            HttpLoggingInterceptor.Level.NONE
         }
     }
 }
