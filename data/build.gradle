@@ -30,6 +30,7 @@ dependencies {
     implementation deps.rxKotlin
 
     implementation deps.koin
+    implementation deps.retrofit
 
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])

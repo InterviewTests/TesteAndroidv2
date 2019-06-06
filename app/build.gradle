@@ -15,8 +15,14 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+            buildConfigField "String", "SERVER_URL", "\"https://bank-app-test.herokuapp.com/api/\""
+
+        }
         release {
             minifyEnabled false
+            buildConfigField "String", "SERVER_URL", "\"https://bank-app-test.herokuapp.com/api/\""
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -31,6 +37,14 @@ dependencies {
     implementation deps.rxKotlin
 
     implementation deps.koin
+
+    implementation deps.gson
+    implementation deps.retrofit
+    implementation deps.retrofitConverter
+    implementation deps.retrofitadapter
+    implementation deps.okHttp
+    implementation deps.okhttpLogging
+
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
