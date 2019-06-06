@@ -1,4 +1,6 @@
-package business.usecase
+package com.zuptest.domain.business.usecase
 
-interface DoLoginUseCase {
-}
+import com.zuptest.domain.business.model.Account
+import com.zuptest.domain.business.model.Credentials
+
+interface DoLoginUseCase : UseCase.WithParameter<Credentials, Account>

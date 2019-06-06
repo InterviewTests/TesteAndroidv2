@@ -1,4 +1,4 @@
-package business.usecase
+package com.zuptest.domain.business.usecase
 
 import io.reactivex.Observable
 

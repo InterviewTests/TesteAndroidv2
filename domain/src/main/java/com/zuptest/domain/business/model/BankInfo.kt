@@ -1,4 +1,4 @@
-package business.model
+package com.zuptest.domain.business.model
 
 data class BankInfo(
     val account: String,

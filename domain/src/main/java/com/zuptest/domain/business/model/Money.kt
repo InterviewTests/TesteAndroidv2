@@ -1,4 +1,4 @@
-package business.model
+package com.zuptest.domain.business.model
 
 import java.math.BigDecimal
 import java.math.RoundingMode

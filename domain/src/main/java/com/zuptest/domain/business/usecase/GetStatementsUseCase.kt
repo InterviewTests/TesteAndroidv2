@@ -1,4 +1,5 @@
-package business.usecase
+package com.zuptest.domain.business.usecase
 
-interface GetStatementsUseCase {
-}
+import com.zuptest.domain.business.model.Statement
+
+interface GetStatementsUseCase : UseCase.WithParameter<String, List<Statement>>
