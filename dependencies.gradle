@@ -51,8 +51,8 @@ ext {
             spekRunner   : "org.spekframework.spek2:spek-runner-junit5:${versions.spek}",
             spekJunit    : "org.jetbrains.spek:spek-junit-platform-engine:${versions.spek}",
             junitPlatform: "org.junit.platform:junit-platform-runner:${versions.jjunitPlatformVersion}",
-            kotlinReflect: "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}",
-            junit        : "junit:junit:${junitVersion}",
+            kotlinReflect: "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin}",
+            junit        : "junit:junit:${versions.androidJunit5}",
             runner       : "androidx.test:runner:1.1.2-alpha01",
             espresso     : "androidx.test.espresso:espresso-core:3.1.2-alpha01"
 

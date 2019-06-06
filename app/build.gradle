@@ -25,6 +25,13 @@ android {
 dependencies {
     implementation project(':data')
     implementation project(':domain')
+
+    def deps = rootProject.ext.deps
+    implementation deps.rxJava
+    implementation deps.rxKotlin
+
+    implementation deps.koin
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'

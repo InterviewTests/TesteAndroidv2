@@ -6,7 +6,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation deps.kotlin
-    implementation deps.rx
+    implementation deps.rxJava
+    implementation deps.rxKotlin
+
+    implementation deps.koin
 
 }
 
