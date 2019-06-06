@@ -5,7 +5,7 @@ import com.zuptest.domain.business.model.Money
 import com.zuptest.domain.business.model.Statement
 import java.util.*
 
-fun StatementsResponse.mapFrom(): List<Statement> {
+fun StatementsResponse.mapToEntity(): List<Statement> {
     return this.statements.map {
         Statement(
             title = it.title,
