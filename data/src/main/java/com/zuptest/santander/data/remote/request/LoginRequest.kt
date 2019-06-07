@@ -1,4 +1,4 @@
-package com.zuptest.data.remote.request
+package com.zuptest.santander.data.remote.request
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,6 +1,6 @@
-package com.zuptest.data.remote.mapper
+package com.zuptest.santander.data.remote.mapper
 
-import com.zuptest.data.remote.response.StatementsResponse
+import com.zuptest.santander.data.remote.response.StatementsResponse
 import com.zuptest.santander.domain.business.model.Money
 import com.zuptest.santander.domain.business.model.Statement
 import java.util.*

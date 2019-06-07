@@ -1,7 +1,7 @@
-package com.zuptest.data.repository
+package com.zuptest.santander.data.repository
 
-import com.zuptest.data.remote.api.Api
-import com.zuptest.data.remote.mapper.mapToEntity
+import com.zuptest.santander.data.remote.api.Api
+import com.zuptest.santander.data.remote.mapper.mapToEntity
 import com.zuptest.santander.domain.business.model.Statement
 import com.zuptest.santander.domain.repository.StatementRepository
 import io.reactivex.Observable

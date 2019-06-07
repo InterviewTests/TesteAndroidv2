@@ -1,8 +1,8 @@
-package com.zuptest.data.repository
+package com.zuptest.santander.data.repository
 
-import com.zuptest.data.remote.api.Api
-import com.zuptest.data.remote.mapper.mapToEntity
-import com.zuptest.data.remote.mapper.mapToRequest
+import com.zuptest.santander.data.remote.api.Api
+import com.zuptest.santander.data.remote.mapper.mapToEntity
+import com.zuptest.santander.data.remote.mapper.mapToRequest
 import com.zuptest.santander.domain.business.model.Account
 import com.zuptest.santander.domain.business.model.Credentials
 import com.zuptest.santander.domain.repository.LoginRepository
