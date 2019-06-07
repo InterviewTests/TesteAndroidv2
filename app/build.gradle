@@ -62,11 +62,11 @@ dependencies {
     implementation deps.okhttpLogging
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-//    implementation deps.cardview
-//    implementation deps.recyclerview
+    implementation deps.cardview
+    implementation deps.recyclerview
     implementation(deps.androidx)
-//    implementation deps.constraintlayout
-//    implementation deps.materialDesign
+    implementation deps.constraintlayout
+    implementation deps.materialDesign
 
 
     testImplementation 'junit:junit:4.12'
