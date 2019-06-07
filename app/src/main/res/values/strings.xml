@@ -2,4 +2,10 @@
     <string name="app_name">SantanderTest</string>
     <string name="login_hint_text">User</string>
     <string name="password_hint_text">Password</string>
+    <string name="feedback_invalid_login">Opa! Este não parece ser um login válido. Confira se está tudo certo e tente
+        novamente
+    </string>
+    <string name="feedback_invalid_password">Opa! Parece que essa senha não atende aos critérios de segurança.</string>
+    <string name="feedback_invalid_cpf">Opa! Parece que este não é um CPF válido.</string>
+    <string name="feedback_empty_password">Opa! O campo de Login não pode estar em branco.</string>
 </resources>

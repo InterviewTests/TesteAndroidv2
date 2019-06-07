@@ -48,8 +48,11 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+    implementation deps.anko
+
     implementation deps.rxJava
     implementation deps.rxKotlin
+    implementation deps.rxAndroid
 
     implementation deps.koin
     implementation deps.koinAndroid
