@@ -1,8 +1,8 @@
 package com.zuptest.santander.di
 
-import com.zuptest.data.remote.api.Api
 import com.zuptest.santander.BuildConfig
 import com.zuptest.santander.BuildConfig.DEBUG
+import com.zuptest.santander.data.remote.api.Api
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

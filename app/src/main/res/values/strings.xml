@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SantanderTest</string>
+    <string name="login_hint_text">User</string>
+    <string name="password_hint_text">Password</string>
 </resources>

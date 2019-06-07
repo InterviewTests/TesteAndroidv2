@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -26,17 +24,35 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = "8"
+        targetCompatibility = "8"
+    }
+    androidExtensions {
+        experimental = true
+    }
+}
+configurations.all {
+    resolutionStrategy {
+        force "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+    }
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':data')
     implementation project(':domain')
 
     def deps = rootProject.ext.deps
+
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     implementation deps.rxJava
     implementation deps.rxKotlin
 
     implementation deps.koin
+    implementation deps.koinAndroid
 
     implementation deps.gson
     implementation deps.retrofit
@@ -44,12 +60,15 @@ dependencies {
     implementation deps.retrofitadapter
     implementation deps.okHttp
     implementation deps.okhttpLogging
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+//    implementation deps.cardview
+//    implementation deps.recyclerview
+    implementation(deps.androidx)
+//    implementation deps.constraintlayout
+//    implementation deps.materialDesign
 
 
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
