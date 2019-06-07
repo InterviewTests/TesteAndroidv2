@@ -48,7 +48,7 @@ public class LoginViewModelTest extends TestCase {
 
         boolean cpf = model.isUserNameValid(username);
         boolean expCPF = true;
-        assertEquals(cpf, expCPF);
+        assertThat(expCPF, is(equalTo(cpf)));
 
     }
 
@@ -61,7 +61,7 @@ public class LoginViewModelTest extends TestCase {
 
       boolean expPass = true;
       boolean pass = model.isPasswordValid(password);
-      assertEquals(pass, expPass);
+      assertThat(expPass, is(equalTo(pass)));
 
     }
 }
