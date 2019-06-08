@@ -6,7 +6,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.core.widget.addTextChangedListener
 import com.zuptest.santander.R
+import com.zuptest.santander.domain.business.model.Account
 import com.zuptest.santander.getText
+import com.zuptest.santander.statement.StatementsActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.toast
 import org.koin.android.ext.android.inject
@@ -78,7 +80,7 @@ class LoginActivity : Activity(), LoginContract.View {
         toast(R.string.feedback_empty_password)
     }
 
-    override fun launchStatementsScreen() {
-        //TODO: Intent para tela de Statements
+    override fun launchStatementsScreen(account: Account) {
+        startActivity(StatementsActivity.newIntent(this, account))
     }
 }

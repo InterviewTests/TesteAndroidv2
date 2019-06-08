@@ -4,9 +4,12 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.zuptest.santander.R
 import com.zuptest.santander.domain.business.model.Account
 import com.zuptest.santander.domain.business.model.Statement
+import kotlinx.android.synthetic.main.activity_statements.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -30,18 +33,25 @@ class StatementsActivity : Activity(), StatementsContract.View {
     }
 
     override fun displayHolderName(name: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        holderName?.text = name
     }
 
     override fun displayAccountInfo(agency: String, account: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        accountValue?.text = getString(R.string.header_account, account, agency)
     }
 
     override fun displayBalance(balance: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        balanceValue?.text = balance
     }
 
     override fun displayStatements(statements: List<Statement>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        statementsRecyclerView?.apply {
+            adapter = StatementAdapter(statements)
+            layoutManager = LinearLayoutManager(this@StatementsActivity)
+            addItemDecoration(DividerItemDecoration(this@StatementsActivity, LinearLayoutManager.VERTICAL)
+                .apply {
+                    setDrawable(resources.getDrawable(R.drawable.divider_list))
+                })
+        }
     }
 }

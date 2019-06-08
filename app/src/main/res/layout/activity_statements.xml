@@ -1,7 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:clipChildren="false">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/statementsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="22dp"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/account_header_height">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleGravity="top"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <TextView
+                        android:id="@+id/holderName"
+                        style="@style/HeaderInfo"
+                        tools:text="Gustavo S. N. Lima"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="18dp"/>
+
+                <TextView
+                        android:id="@+id/accountLabel"
+                        style="@style/HeaderLabel"
+                        android:text="@string/label_account"
+                        android:layout_marginTop="28dp"
+                        app:layout_constraintStart_toStartOf="@id/holderName"
+                        app:layout_constraintTop_toBottomOf="@id/holderName"/>
+
+                <TextView
+                        android:id="@+id/accountValue"
+                        style="@style/HeaderInfo"
+                        tools:text="2050 / 01.111222-4"
+                        app:layout_constraintStart_toStartOf="@id/holderName"
+                        app:layout_constraintTop_toBottomOf="@id/accountLabel"/>
+
+                <TextView
+                        android:id="@+id/balanceLabel"
+                        style="@style/HeaderLabel"
+                        android:text="@string/label_balance"
+                        android:layout_marginTop="28dp"
+                        app:layout_constraintStart_toStartOf="@id/holderName"
+                        app:layout_constraintTop_toBottomOf="@id/accountValue"/>
+
+                <TextView
+                        android:id="@+id/balanceValue"
+                        style="@style/HeaderInfo"
+                        tools:text="R$ 99.999,99"
+                        app:layout_constraintStart_toStartOf="@id/holderName"
+                        app:layout_constraintTop_toBottomOf="@id/balanceLabel"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"/>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,5 +1,7 @@
 package com.zuptest.santander.login
 
+import com.zuptest.santander.domain.business.model.Account
+
 object LoginContract {
 
     interface View {
@@ -9,7 +11,7 @@ object LoginContract {
         fun displayEmptyPasswordFeedBack()
         fun applyEmailLogin()
         fun applyCPFLogin()
-        fun launchStatementsScreen()
+        fun launchStatementsScreen(account: Account)
     }
 
     interface Presenter {

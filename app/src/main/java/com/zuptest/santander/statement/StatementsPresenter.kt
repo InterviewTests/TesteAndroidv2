@@ -1,5 +1,6 @@
 package com.zuptest.santander.statement
 
+import android.util.Log
 import com.zuptest.santander.domain.business.model.Account
 import com.zuptest.santander.domain.business.usecase.ListStatementsUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -26,7 +27,9 @@ class StatementsPresenter(
                 onNext = {
                     view.displayStatements(it)
                 },
-                onError = {},
+                onError = {
+                    Log.d("error", it.message)
+                },
                 onComplete = {}
             )
     }

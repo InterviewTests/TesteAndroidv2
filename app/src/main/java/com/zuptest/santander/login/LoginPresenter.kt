@@ -1,5 +1,6 @@
 package com.zuptest.santander.login
 
+import android.util.Log
 import com.zuptest.santander.domain.business.model.Credentials
 import com.zuptest.santander.domain.business.usecase.DoLoginUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -30,10 +31,10 @@ class LoginPresenter(
             .subscribeOn(Schedulers.io())
             .subscribeBy(
                 onNext = {
-                    view.launchStatementsScreen()
+                    view.launchStatementsScreen(it)
                 },
                 onError = {
-
+                    Log.d("error", it.message)
                 }
             )
     }
