@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dimensions used in Login Screen -->
+    <dimen name="login_logo_margin_top">36dp</dimen>
+    <dimen name="login_user_margin_top">105dp</dimen>
+    <dimen name="login_edit_text_horizontal_margin">16dp</dimen>
+    <dimen name="login_edit_text_pass_margin_top">16dp</dimen>
+    <dimen name="login_edit_text_horizontal_padding">16dp</dimen>
+    <dimen name="login_edit_text_height_box">50dp</dimen>
+    <dimen name="login_btn_login_margin_bottom">32dp</dimen>
+    <dimen name="login_btn_login_width">200dp</dimen>
+</resources>

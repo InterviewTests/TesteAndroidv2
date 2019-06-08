@@ -1,3 +1,9 @@
 <resources>
+    <!-- General String Resources -->
     <string name="app_name">Bank</string>
+
+    <!-- Strings used in Login Screen -->
+    <string name="login_user_field_hint">Usuário</string>
+    <string name="login_pass_field_hint">Senha</string>
+    <string name="login_btn_login">Login</string>
 </resources>
