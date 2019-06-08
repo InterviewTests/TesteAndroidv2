@@ -6,4 +6,15 @@
     <string name="login_user_field_hint">Usuário</string>
     <string name="login_pass_field_hint">Senha</string>
     <string name="login_btn_login">Login</string>
+    <string name="login_empty_username">Nome de usuário não informado!</string>
+    <string name="login_empty_password">Senha não informada!</string>
+    <string name="login_invalid_cpf">O CPF informado não está com formato válido!</string>
+    <string name="login_invalid_email_cpf">O usuário informado não é nem um CPF nem Email com formato válido!</string>
+    <string name="login_invalid_password_pattern">
+        A senha não atende aos critérios necessários:\n
+        - ter ao menos 1 letra maiúscula\n
+        - ter ao menos 1 número\n
+        - ter ao menos 1 caracter especial
+    </string>
+    <string name="login_dialog_error_ok_btn">OK</string>
 </resources>
