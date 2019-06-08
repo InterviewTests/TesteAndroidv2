@@ -8,7 +8,7 @@ data class LoginResponse(
 
 data class AccountResponse(
     @SerializedName("userId") val userId: Int,
-    @SerializedName("holder") val userName: String,
+    @SerializedName("name") val userName: String,
     @SerializedName("bankAccount") val bankAccount: String,
     @SerializedName("agency") val bankAgency: String,
     @SerializedName("balance") val balance: Double
