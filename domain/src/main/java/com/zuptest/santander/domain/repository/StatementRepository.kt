@@ -5,5 +5,5 @@ import io.reactivex.Observable
 
 interface StatementRepository {
 
-    fun listStatementsByAccountId(accountId: String): Observable<List<Statement>>
+    fun listStatementsByAccountId(accountId: Int): Observable<List<Statement>>
 }

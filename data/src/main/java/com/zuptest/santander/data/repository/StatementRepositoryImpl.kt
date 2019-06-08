@@ -7,7 +7,7 @@ import com.zuptest.santander.domain.repository.StatementRepository
 import io.reactivex.Observable
 
 class StatementRepositoryImpl(private val api: Api) : StatementRepository {
-    override fun listStatementsByAccountId(accountId: String): Observable<List<Statement>> {
+    override fun listStatementsByAccountId(accountId: Int): Observable<List<Statement>> {
         return api.listStatementsByUserId(accountId).map {
             it.mapToEntity()
         }

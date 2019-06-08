@@ -18,6 +18,6 @@ interface Api {
 
     @GET("statements/{idUser}")
     fun listStatementsByUserId(
-        @Path("idUser") userId: String
+        @Path("idUser") userId: Int
     ): Observable<StatementsResponse>
 }
