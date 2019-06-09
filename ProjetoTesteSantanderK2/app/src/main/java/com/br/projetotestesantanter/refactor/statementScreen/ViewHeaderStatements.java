@@ -1,4 +1,4 @@
-package com.br.projetotestesantanter.statementscreen;
+package com.br.projetotestesantanter.refactor.statementScreen;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.br.projetotestesantanter.R;
 import com.br.projetotestesantanter.Utils;
 import com.br.projetotestesantanter.api.model.LoginResponse;
+import com.br.projetotestesantanter.refactor.loginScreen.LoginModel;
 
 
 public class ViewHeaderStatements extends ConstraintLayout {
@@ -69,13 +70,23 @@ public class ViewHeaderStatements extends ConstraintLayout {
 
     }
 
+    public void bind(LoginModel.Login login) {
+
+        if(null != login.getLoginResponse().getName()) {
+            txtNameCliente.setText(login.getLoginResponse().getName());
+        }
+
+        if(null != login.getLoginResponse().getBankAccount() && null != login.getLoginResponse().getAgency()) {
+            txtNumberAccount.setText(Utils.Companion.formatAgencyAccount(login.getLoginResponse().getBankAccount(),
+                    login.getLoginResponse().getAgency()));
+        }
+        if(String.valueOf(login.getLoginResponse().getBalance()).length() >0) {
+            txtValueBalance.setText(Utils.Companion.converMoney(login.getLoginResponse().getBalance()));
+        }
+    }
+
     public void setListener(final OnItemClickListener listener) {
         this.listener = listener;
-        imgExit.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onItemClick(imgExit);
-            }
-        });
+        imgExit.setOnClickListener(v -> listener.onItemClick(imgExit));
     }
 }

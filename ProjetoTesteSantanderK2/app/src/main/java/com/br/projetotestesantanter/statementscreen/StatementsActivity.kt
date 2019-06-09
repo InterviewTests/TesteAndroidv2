@@ -11,6 +11,7 @@ import com.br.projetotestesantanter.R
 import com.br.projetotestesantanter.api.model.LoginResponse
 import com.br.projetotestesantanter.api.model.Statement
 import com.br.projetotestesantanter.api.model.StatementListResponse
+import com.br.projetotestesantanter.refactor.statementScreen.ViewHeaderStatements
 import kotlinx.android.synthetic.main.activity_statements.*
 
 class StatementsActivity : AppCompatActivity() , StatementContract.View, ViewHeaderStatements.OnItemClickListener{
@@ -28,7 +29,10 @@ class StatementsActivity : AppCompatActivity() , StatementContract.View, ViewHea
 
         recycler_statements.layoutManager = LinearLayoutManager(this)
 
-        adapter = StatementAdapter(statements.statementListResponse as ArrayList<Statement>,this)
+        adapter = StatementAdapter(
+            statements.statementListResponse as ArrayList<Statement>,
+            this
+        )
 
         recycler_statements.adapter = adapter
 

@@ -4,7 +4,9 @@ package com.br.projetotestesantanter.refactor.loginScreen;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -12,8 +14,10 @@ import com.br.projetotestesantanter.R;
 import com.br.projetotestesantanter.refactor.loginScreen.LoginModel.LoginRequest;
 
 interface LoginActivityInput {
-    void displayHomeMetaData(LoginModel.LoginResponse response);
+    void displayHomeMetaData(LoginModel.Login response);
     void displayMensagem(String mensage);
+    void showProgressBar();
+    void hideProgressBar();
 }
 
 public class LoginActivity extends AppCompatActivity implements LoginActivityInput {
@@ -27,6 +31,9 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
    @BindView(R.id.edt_password)
    EditText edtPassword;
 
+   @BindView(R.id.progressBar)
+   ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
     }
 
     @Override
-    public void displayHomeMetaData(LoginModel.LoginResponse response) {
+    public void displayHomeMetaData(LoginModel.Login response) {
 
         router.statementScreen(response);
     }
@@ -46,6 +53,17 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
     public void displayMensagem(String mensage) {
         Snackbar.make(findViewById(android.R.id.content),
                 mensage,Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showProgressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgressBar() {
+
+        progressBar.setVisibility(View.GONE);
     }
 
     @OnClick(R.id.btnLogar)

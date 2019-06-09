@@ -28,15 +28,16 @@ public class LoginInteractor implements LoginInteractorInput {
     }
 
     private boolean validationRequestLogin(LoginModel.LoginRequest request) {
+        output.visibleProgressBar();
 
         if (!ValidationUtil.Companion.isCPF(request.login) && !ValidationUtil.Companion.isValidEmail(request.login)) {
-
+            output.hideProgressBar();
             output.displayMessageErro(erroLogin);
             return false;
         }
 
         if (!ValidationUtil.Companion.validationPassword(request.password)) {
-
+            output.hideProgressBar();
             output.displayMessageErro(erroPassword);
             return false;
         }
@@ -50,17 +51,18 @@ public class LoginInteractor implements LoginInteractorInput {
         RetrofitConfiguration.Companion.getRetrofitInstance();
         Endpoint endpoint = RetrofitConfiguration.Companion.getRetrofitInstance().create(Endpoint.class);
 
-        endpoint.login(request.login, request.password).enqueue(new Callback<LoginModel.LoginResponse>() {
+        endpoint.login(request.login, request.password).enqueue(new Callback<LoginModel.Login>() {
             @Override
-            public void onResponse(Call<LoginModel.LoginResponse> call, Response<LoginModel.LoginResponse> response) {
+            public void onResponse(Call<LoginModel.Login> call, Response<LoginModel.Login> response) {
+                output.hideProgressBar();
                 output.presentLoginMetaData(response.body());
             }
 
             @Override
-            public void onFailure(Call<LoginModel.LoginResponse> call, Throwable t) {
+            public void onFailure(Call<LoginModel.Login> call, Throwable t) {
+                output.hideProgressBar();
                 output.displayMessageErro(t.getMessage());
             }
         });
-
     }
 }

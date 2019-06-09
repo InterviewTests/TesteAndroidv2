@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.br.projetotestesantanter.R
 import com.br.projetotestesantanter.api.model.Statement
+import com.br.projetotestesantanter.statementscreen.ItemStatementViewHolder
 
 class StatementAdapter(private val listStatement: ArrayList<Statement>, private val context: Context) :
     RecyclerView.Adapter<ItemStatementViewHolder>() {
@@ -13,7 +14,13 @@ class StatementAdapter(private val listStatement: ArrayList<Statement>, private 
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ItemStatementViewHolder {
 
-        return ItemStatementViewHolder(LayoutInflater.from(context).inflate(R.layout.item_statement, parent, false))
+        return ItemStatementViewHolder(
+            LayoutInflater.from(context).inflate(
+                R.layout.item_statement,
+                parent,
+                false
+            )
+        )
 
     }
 

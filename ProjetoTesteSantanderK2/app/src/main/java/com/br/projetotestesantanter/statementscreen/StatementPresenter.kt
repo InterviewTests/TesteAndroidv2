@@ -46,7 +46,7 @@ class StatementPresenter : StatementContract.Presenter {
 
     private fun loadInfoPayment() {
 
-        if (view?.getContext()?.let { Utils.isConected(it) }!!) {
+      /*  if (view?.getContext()?.let { Utils.isConected(it) }!!) {
 
 
             val retrofitClient = RetrofitConfiguration
@@ -71,7 +71,7 @@ class StatementPresenter : StatementContract.Presenter {
         } else {
             this.view?.showErroMsg(this.view!!.getContext().getString(R.string.error_not_internet))
 
-        }
+        }*/
 
 
     }
