@@ -2,6 +2,7 @@ package com.zuptest.santander.login
 
 import android.util.Log
 import com.zuptest.santander.domain.business.model.Credentials
+import com.zuptest.santander.domain.business.model.PasswordValidator
 import com.zuptest.santander.domain.business.usecase.DoLoginUseCase
 import com.zuptest.santander.domain.business.usecase.RetrieveLastLoginUseCase
 import com.zuptest.santander.domain.business.usecase.SaveSuccessfulLoginInfoUseCase
@@ -36,37 +37,23 @@ class LoginPresenter(
         }
     }
 
-    override fun doLogin(login: String?, password: String?) {
-        validateLogin(login)
-        validatePassword(password)
+    override fun doLogin(login: String, password: String) {
 
-        doLoginUseCase.execute(Credentials(login!!, password!!))
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .subscribeBy(
-                onNext = {
-                    saveSuccessfulLoginInfoUseCase.execute(login)
-                    view.launchStatementsScreen(it)
-                },
-                onError = {
-                    Log.d("error", it.message)
-                }
-            )
-    }
-
-    private fun validateLogin(login: String?) {
-        login?.let {
-            if (it.isBlank())
-                view.displayInvalidEmailLoginFeedBack()
-            return
-        }
-    }
-
-    private fun validatePassword(password: String?) {
-        password?.let {
-            if (it.isBlank())
-                view.displayEmptyPasswordFeedBack()
-            return
+        if (PasswordValidator.isValid(password)) {
+            doLoginUseCase.execute(Credentials(login, password))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribeBy(
+                    onNext = {
+                        saveSuccessfulLoginInfoUseCase.execute(login)
+                        view.launchStatementsScreen(it)
+                    },
+                    onError = {
+                        Log.d("error", it.message)
+                    }
+                )
+        } else {
+            view.displayInvalidPasswordFeedBack()
         }
     }
 }

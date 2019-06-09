@@ -17,7 +17,7 @@ object LoginContract {
 
     interface Presenter {
 
-        fun doLogin(password: String?, login: String?)
+        fun doLogin(password: String, login: String)
         fun checkPreviousLogin()
         fun checkLoginType(charSequence: CharSequence?)
     }

@@ -45,8 +45,8 @@ class LoginActivity : Activity(), LoginContract.View {
         loginButton?.apply {
             setOnClickListener {
                 presenter.doLogin(
-                    loginEditText?.getText(),
-                    passwordEditText?.getText()
+                    loginEditText.getText(),
+                    passwordEditText.getText()
                 )
 
                 Log.d("Login",loginEditText?.getText())
