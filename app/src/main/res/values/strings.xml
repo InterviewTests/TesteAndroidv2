@@ -17,4 +17,5 @@
         - ter ao menos 1 caracter especial
     </string>
     <string name="login_dialog_error_ok_btn">OK</string>
+    <string name="login_generic_error">Algo inesperado aconteceu, tente novamente!</string>
 </resources>

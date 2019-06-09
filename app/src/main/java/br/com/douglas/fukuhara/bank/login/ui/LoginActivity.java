@@ -1,5 +1,6 @@
 package br.com.douglas.fukuhara.bank.login.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import br.com.douglas.fukuhara.bank.R;
 import br.com.douglas.fukuhara.bank.login.Contract;
 import br.com.douglas.fukuhara.bank.login.configurator.LoginConfigurator;
 import br.com.douglas.fukuhara.bank.login.router.LoginRouter;
+import br.com.douglas.fukuhara.bank.network.vo.UserAccount;
 
 public class LoginActivity extends AppCompatActivity implements Contract.LoginActivityInput {
 
@@ -84,10 +86,31 @@ public class LoginActivity extends AppCompatActivity implements Contract.LoginAc
     }
 
     @Override
-    public void notifyErrorToUser(int stringRes) {
+    public void notifyResourceErrorToUser(int stringRes) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(stringRes);
         builder.setPositiveButton(R.string.login_dialog_error_ok_btn, (dialogInterface, i) -> {});
         builder.create().show();
+    }
+
+    @Override
+    public void notifyErrorToUser(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message);
+        builder.setPositiveButton(R.string.login_dialog_error_ok_btn, (dialogInterface, i) -> {});
+        builder.create().show();
+    }
+
+    @Override
+    public void onSuccessfulLogin(UserAccount userAccount) {
+        Intent intent = mRouter.determineNextScreen();
+        mRouter.passDataToNextScene(userAccount, intent);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        mOutput.disposeAll();
+        super.onDestroy();
     }
 }

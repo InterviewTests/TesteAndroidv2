@@ -4,6 +4,7 @@ import java.lang.ref.WeakReference;
 
 import br.com.douglas.fukuhara.bank.R;
 import br.com.douglas.fukuhara.bank.login.Contract;
+import br.com.douglas.fukuhara.bank.network.vo.UserAccount;
 
 public class LoginPresenter implements Contract.LoginPresenterInput {
 
@@ -20,35 +21,56 @@ public class LoginPresenter implements Contract.LoginPresenterInput {
     @Override
     public void emptyUsername() {
         if (getLoginActivity() != null) {
-            getLoginActivity().notifyErrorToUser(R.string.login_empty_username);
+            getLoginActivity().notifyResourceErrorToUser(R.string.login_empty_username);
         }
     }
 
     @Override
     public void emptyPassword() {
         if (getLoginActivity() != null) {
-            getLoginActivity().notifyErrorToUser(R.string.login_empty_password);
+            getLoginActivity().notifyResourceErrorToUser(R.string.login_empty_password);
         }
     }
 
     @Override
     public void invalidCpf() {
         if (getLoginActivity() != null) {
-            getLoginActivity().notifyErrorToUser(R.string.login_invalid_cpf);
+            getLoginActivity().notifyResourceErrorToUser(R.string.login_invalid_cpf);
         }
     }
 
     @Override
     public void invalidEmailCpf() {
         if (getLoginActivity() != null) {
-            getLoginActivity().notifyErrorToUser(R.string.login_invalid_email_cpf);
+            getLoginActivity().notifyResourceErrorToUser(R.string.login_invalid_email_cpf);
         }
     }
 
     @Override
     public void invalidPasswordType() {
         if (getLoginActivity() != null) {
-            getLoginActivity().notifyErrorToUser(R.string.login_invalid_password_pattern);
+            getLoginActivity().notifyResourceErrorToUser(R.string.login_invalid_password_pattern);
+        }
+    }
+
+    @Override
+    public void showLoginErrorMessage(String formatLoginErrorMsg) {
+        if (getLoginActivity() != null) {
+            getLoginActivity().notifyErrorToUser(formatLoginErrorMsg);
+        }
+    }
+
+    @Override
+    public void showLoginGenericError() {
+        if (getLoginActivity() != null) {
+            getLoginActivity().notifyResourceErrorToUser(R.string.login_generic_error);
+        }
+    }
+
+    @Override
+    public void onSuccessfulLoginResponse(UserAccount userAccount) {
+        if (getLoginActivity() != null) {
+            getLoginActivity().onSuccessfulLogin(userAccount);
         }
     }
 }

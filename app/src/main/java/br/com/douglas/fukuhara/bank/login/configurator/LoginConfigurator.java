@@ -7,6 +7,7 @@ import br.com.douglas.fukuhara.bank.login.interactor.LoginInteractor;
 import br.com.douglas.fukuhara.bank.login.presenter.LoginPresenter;
 import br.com.douglas.fukuhara.bank.login.router.LoginRouter;
 import br.com.douglas.fukuhara.bank.login.ui.LoginActivity;
+import br.com.douglas.fukuhara.bank.network.RetrofitImpl;
 
 public final class LoginConfigurator {
     public static void configure(LoginActivity activity) {
@@ -20,7 +21,7 @@ public final class LoginConfigurator {
         presenter.setOutput(new WeakReference<Contract.LoginActivityInput>(activity));
 
         // Creates the Interactor and set a reference of the presenter in it
-        LoginInteractor interactor = new LoginInteractor();
+        LoginInteractor interactor = new LoginInteractor(RetrofitImpl.getInstance());
         interactor.setPresenter(presenter);
 
         // If not yet set, configures LoginInteractor as the Output for Activity

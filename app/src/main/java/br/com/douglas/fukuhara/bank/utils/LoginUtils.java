@@ -1,6 +1,11 @@
 package br.com.douglas.fukuhara.bank.utils;
 
+import android.content.Intent;
+
+import java.util.Locale;
 import java.util.regex.Pattern;
+
+import br.com.douglas.fukuhara.bank.network.vo.UserAccount;
 
 public final class LoginUtils {
     // Constants used in CPF verification
@@ -8,6 +13,9 @@ public final class LoginUtils {
     private static final int CPF_LENGTH_FULL_FORM = 11;
     private static final int CPF_FIRST_DIGIT_POSITION = 10;
     private static final int CPF_SECOND_DIGIT_POSITION = CPF_LENGTH_FULL_FORM;
+
+    // Constant for Un/Serialize UserAccount object from Bundle
+    private static final String BUNDLE_USER_ACCOUNT_OBJ = "bundle_user_account_obj";
 
     /*
         Password validation
@@ -87,5 +95,20 @@ public final class LoginUtils {
         String regex = "^[a-z](?:[0-9a-z\\.\\-_])*?@[0-9a-z][0-9a-z-_]*(?:\\.[0-9a-z-_]+)*(?:\\.[0-9a-z]+)+$";
 
         return Pattern.matches(regex, username);
+    }
+
+    public static String formatLoginErrorMsg(String message, int code) {
+        return String.format(Locale.getDefault(), "%s (%d)", message, code);
+    }
+
+    public static void serializeUserAccountObj(UserAccount userAccount, Intent intent) {
+        intent.putExtra(BUNDLE_USER_ACCOUNT_OBJ, userAccount);
+    }
+
+    public static UserAccount getUserAccountFromBundle(Intent intent) {
+        if (intent.hasExtra(BUNDLE_USER_ACCOUNT_OBJ)) {
+            return intent.getParcelableExtra(BUNDLE_USER_ACCOUNT_OBJ);
+        }
+        return null;
     }
 }
