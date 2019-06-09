@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:focusable="true" android:focusableInTouchMode="true">
+
+    <include layout="@layout/toolbar_general"/>
+
+    <include android:layout_width="match_parent" android:layout_height="match_parent" layout="@layout/frame_progress"/>
+    <androidx.core.widget.NestedScrollView android:orientation="vertical"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                           android:layout_height="match_parent">
+
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          app:layout_constraintStart_toStartOf="parent"
+                          app:layout_constraintHorizontal_bias="0.5"
+                          app:layout_constraintEnd_toEndOf="parent"
+                          app:layout_constraintTop_toTopOf="parent"
+                          android:background="@color/colorPrimary"
+                          android:orientation="vertical"
+                          android:id="@+id/cardView_info">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    <TextView
+                            android:text="@string/title_account"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView_account_title"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="@dimen/margin_medium" style="@style/TextWhite"
+                            android:layout_marginTop="@dimen/margin_small"/>
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView_account_number"
+                            app:layout_constraintTop_toBottomOf="@+id/textView_account_title"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="@dimen/margin_medium"
+                            tools:text="@string/tools_account_number"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="@dimen/margin_medium" style="@style/TextWhiteBig"/>
+                    <TextView
+                            android:text="@string/title_balance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/textView_balance_title"
+                            app:layout_constraintTop_toBottomOf="@+id/textView_account_number"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="@dimen/margin_medium" style="@style/TextWhite"/>
+                    <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView_balance_value"
+                            app:layout_constraintTop_toBottomOf="@+id/textView_balance_title"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginStart="@dimen/margin_medium"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="@dimen/margin_medium"
+                            tools:text="@string/tools_value" style="@style/TextWhiteBig"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginBottom="@dimen/margin_small"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/cardView_recent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView_info"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="@dimen/margin_small">
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:text="@string/title_recent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView_recent_title"
+                            android:layout_margin="@dimen/margin_medium" style="@style/TextGrey"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" tools:listitem="@layout/item_currency"
+                            android:nestedScrollingEnabled="false"
+                            tools:targetApi="lollipop" android:id="@+id/recycler_statements"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

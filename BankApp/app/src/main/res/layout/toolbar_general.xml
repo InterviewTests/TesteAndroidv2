@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/toolbar_general"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp"
+        android:theme="@style/CustomToolbar"
+        tools:targetApi="lollipop">
+
+    <TextView
+            android:id="@+id/title_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            style="@style/TextWhiteBig"/>
+
+    <ImageView
+            android:id="@+id/image_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_logout"
+            android:visibility="visible"
+            android:contentDescription="@string/description_logout"/>
+
+</androidx.appcompat.widget.Toolbar>

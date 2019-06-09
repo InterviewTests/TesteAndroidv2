@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   xmlns:tools="http://schemas.android.com/tools"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="80dp"
+                                   android:layout_marginStart="16dp"
+                                   android:layout_marginEnd="16dp"
+                                   android:layout_marginBottom="@dimen/margin_small"
+                                   app:cardCornerRadius="@dimen/radius_default"
+                                   tools:cardCornerRadius="@dimen/radius_default">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent">
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_payment_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/margin_small"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintBottom_toTopOf="@+id/textView_payment_description"
+                app:layout_constraintEnd_toStartOf="@+id/textView_date"
+                tools:text="Pagamento"
+                android:layout_marginEnd="@dimen/margin_medium"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_payment_description"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintTop_toBottomOf="@+id/textView_payment_title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/margin_small"
+                tools:text="Conta de luz"
+                app:layout_constraintEnd_toStartOf="@+id/textView_value"
+                android:layout_marginEnd="@dimen/margin_medium" style="@style/TextGrey"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="@dimen/margin_small"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/textView_value"
+                tools:text="12/12/2019"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/textView_value"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="R$1000,00" android:layout_marginEnd="@dimen/margin_small" style="@style/TextGrey"
+                android:textSize="20sp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
