@@ -49,14 +49,18 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         }
         textEditText_password.addTextChangedListener(textWatcher)
         textEditText_email.addTextChangedListener(textWatcher)
+
+        scrollView_login.requestFocus()
     }
 
     override fun showProgress() {
+        constraint_login.visibility = View.GONE
         frame_progress.visibility = View.VISIBLE
     }
 
     override fun hideProgress() {
         frame_progress.visibility = View.GONE
+        constraint_login.visibility = View.VISIBLE
     }
 
     override fun noUserLogged() {
@@ -83,13 +87,15 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
     private fun saveUser(name: String) {
         saveShared(name, SHARED_LOGIN, SHARED_USERNAME, applicationContext)
         saveShared("true", SHARED_LOGIN, SHARED_HAS_LOGIN, applicationContext)
-        SecureSharedPreferences(
-            this,
-            SHARED_LOGIN,
-            resources.getString(R.string.key_password), true
-        ).put(
-            Constants.SHARED_PASSWORD, textEditText_password.text.toString()
-        )
+        if (textEditText_password.text.toString().isNotEmpty()) {
+            SecureSharedPreferences(
+                this,
+                SHARED_LOGIN,
+                resources.getString(R.string.key_password), true
+            ).put(
+                Constants.SHARED_PASSWORD, textEditText_password.text.toString()
+            )
+        }
     }
 
     override fun errorLogin(errorResult: ErrorResult) {
