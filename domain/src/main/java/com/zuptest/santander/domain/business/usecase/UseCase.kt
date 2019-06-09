@@ -12,4 +12,8 @@ abstract class UseCase {
         fun execute(): Observable<R>
     }
 
+    interface Completable<P> {
+        fun execute(params: P): io.reactivex.Completable
+    }
+
 }
