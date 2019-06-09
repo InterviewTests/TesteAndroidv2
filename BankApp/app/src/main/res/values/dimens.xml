@@ -5,4 +5,5 @@
     <dimen name="margin_large">32dp</dimen>
     <dimen name="margin_button_large">100dp</dimen>
     <dimen name="radius_default">6dp</dimen>
+    <dimen name="elevation_card_default">8dp</dimen>
 </resources>

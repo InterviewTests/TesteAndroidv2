@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">BankApp</string>
+    <string name="error_generic">Ocorreu um erro inesperado. Por favor, tente novamente.</string>
+    <string name="action_login">Login</string>
+    <string name="hint_user">User</string>
+    <string name="hint_password">Password</string>
+    <string name="description_logo_bank">Logo bank</string>
+    <string name="title_recent">Recentes</string>
+    <string name="title_account">Conta</string>
+    <string name="title_balance">Saldo</string>
+    <string name="tools_account_number">2050 / 01.111222-4</string>
+    <string name="tools_value">R$ 10000,00</string>
+    <string name="description_logout">Logout</string>
+    <string name="msg_success_logout">Você saiu da sua conta com successo.</string>
 </resources>
