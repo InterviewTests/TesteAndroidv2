@@ -7,6 +7,7 @@ class RetrofitConfiguration {
 
     companion object {
 
+
         fun getRetrofitInstance() : Retrofit {
             return Retrofit.Builder()
                 .baseUrl("https://bank-app-test.herokuapp.com/api/")

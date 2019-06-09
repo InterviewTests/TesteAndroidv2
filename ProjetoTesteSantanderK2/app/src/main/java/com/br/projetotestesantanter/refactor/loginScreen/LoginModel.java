@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class LoginModel {
 
 
-    class LoginResponse {
+    public static class LoginResponse {
 
         @SerializedName("userId")
         private Long userId;
@@ -48,6 +48,10 @@ public class LoginModel {
 
         public Error getError() {
             return error;
+        }
+
+        public LoginResponse() {
+
         }
     }
 

@@ -9,7 +9,13 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08ced7db-5a42-4840-8ed4-cf1e6a6d7186" name="Default Changelist" comment="" />
+    <list default="true" id="08ced7db-5a42-4840-8ed4-cf1e6a6d7186" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/java/com/br/projetotestesantanter/refactor/loginScreen/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/java/com/br/projetotestesantanter/refactor/loginScreen/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoTesteSantanderK2/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetoTesteSantanderK2/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetoTesteSantanderK2/gradle.properties" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +54,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="78" />
+    <option name="x" value="40" />
     <option name="y" value="23" />
     <option name="width" value="1400" />
     <option name="height" value="767" />
@@ -58,9 +64,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -73,10 +78,110 @@
               <item name="TesteAndroidv2" type="462c0819:PsiDirectoryNode" />
               <item name="ProjetoTesteSantanderK2" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="TesteAndroidv2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TesteAndroidv2" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoTesteSantanderK2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TesteAndroidv2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TesteAndroidv2" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoTesteSantanderK2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TesteAndroidv2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TesteAndroidv2" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoTesteSantanderK2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TesteAndroidv2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TesteAndroidv2" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoTesteSantanderK2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TesteAndroidv2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TesteAndroidv2" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoTesteSantanderK2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TesteAndroidv2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TesteAndroidv2" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoTesteSantanderK2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="br" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TesteAndroidv2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TesteAndroidv2" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoTesteSantanderK2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="br" type="462c0819:PsiDirectoryNode" />
+              <item name="projetotestesantanter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TesteAndroidv2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TesteAndroidv2" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoTesteSantanderK2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="br" type="462c0819:PsiDirectoryNode" />
+              <item name="projetotestesantanter" type="462c0819:PsiDirectoryNode" />
+              <item name="refactor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TesteAndroidv2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TesteAndroidv2" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoTesteSantanderK2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="br" type="462c0819:PsiDirectoryNode" />
+              <item name="projetotestesantanter" type="462c0819:PsiDirectoryNode" />
+              <item name="refactor" type="462c0819:PsiDirectoryNode" />
+              <item name="loginScreen" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TesteAndroidv2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TesteAndroidv2" type="462c0819:PsiDirectoryNode" />
+              <item name="ProjetoTesteSantanderK2" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -166,6 +271,7 @@
       </method>
     </configuration>
     <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <properties />
       <listeners />
@@ -188,7 +294,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="78" y="23" width="1400" height="767" extended-state="0" />
+    <frame x="40" y="23" width="1400" height="767" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3298969" />
@@ -199,14 +305,14 @@
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
-      <window_info anchor="bottom" id="Run" />
-      <window_info anchor="bottom" id="Debug" />
       <window_info anchor="bottom" id="Version Control" order="0" weight="0.3288889" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.3288889" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Terminal" order="3" visible="true" weight="0.3288889" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Android Profiler" order="5" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="6" />
+      <window_info anchor="bottom" id="Debug" order="7" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
@@ -218,15 +324,15 @@
     <entry file="file://$PROJECT_DIR$/bank_app_layout/data.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/bank_app_layout/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="27" selection-start-column="20" selection-end-column="27" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bank_app_layout/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/bank_app_layout/assets/logout 2.png">
       <provider selected="true" editor-type-id="images" />

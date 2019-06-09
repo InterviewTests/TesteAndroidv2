@@ -28,7 +28,7 @@ class StatementPresenter : StatementContract.Presenter {
 
 
     override fun start() {
-        if (this.loginResponse == null || this.loginResponse!!.userAccount == null) {
+        /*if (this.loginResponse == null || this.loginResponse!!.userAccount == null) {
 
             this.view?.showErroMsg("Erro ao carregar as informacoes")
             this.view?.hiddenProgressBar()
@@ -36,7 +36,7 @@ class StatementPresenter : StatementContract.Presenter {
         }
 
         loadInfoPayment()
-        this.view?.dataHeader(loginResponse!!)
+        this.view?.dataHeader(loginResponse!!)*/
 
     }
 

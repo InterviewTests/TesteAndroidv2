@@ -5,6 +5,7 @@ import java.lang.ref.WeakReference;
 
 interface LoginPresenterInput {
     void presentLoginMetaData(LoginModel.LoginResponse response);
+    void displayMessageErro(String message);
 }
 
 public class LoginPresenter implements LoginPresenterInput {
@@ -16,9 +17,13 @@ public class LoginPresenter implements LoginPresenterInput {
     @Override
     public void presentLoginMetaData(LoginModel.LoginResponse response) {
 
-
-
         output.get().displayHomeMetaData(response);
 
     }
+
+    @Override
+    public void displayMessageErro(String message) {
+        output.get().displayMensagem(message);
+    }
+
 }

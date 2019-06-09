@@ -80,7 +80,7 @@ class LoginPresenter : LoginContract.Presenter {
 
     private fun dataLogin(loginModel: LoginModel) {
 
-        if(view?.getContext()?.let { Utils.isConected(it) }!!) {
+      /*  if(view?.getContext()?.let { Utils.isConected(it) }!!) {
 
             val retrofitClient = RetrofitConfiguration
                 .getRetrofitInstance()
@@ -107,7 +107,7 @@ class LoginPresenter : LoginContract.Presenter {
             })
         } else {
             this.view?.showErroMsg(this.view!!.getContext().getString(R.string.error_not_internet))
-        }
+        }*/
 
     }
 

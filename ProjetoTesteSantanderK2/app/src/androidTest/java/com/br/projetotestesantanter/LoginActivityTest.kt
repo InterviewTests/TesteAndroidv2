@@ -6,7 +6,6 @@ import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.intent.rule.IntentsTestRule
 import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.runner.AndroidJUnit4
-import com.br.projetotestesantanter.loginscreen.LoginActivity
 import org.hamcrest.Matchers.allOf
 import org.junit.Rule
 import org.junit.Test
