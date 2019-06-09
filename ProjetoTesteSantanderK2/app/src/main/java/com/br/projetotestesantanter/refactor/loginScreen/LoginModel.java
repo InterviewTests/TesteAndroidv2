@@ -7,17 +7,22 @@ import com.google.gson.annotations.SerializedName;
 public class LoginModel {
 
 
-    public static class Login implements Parcelable{
+    public static class Login implements Parcelable {
 
         @SerializedName("userAccount")
         private LoginResponse loginResponse;
 
-        public Login(){
+        @SerializedName("error")
+        private Error error;
+
+        public Login() {
 
         }
 
+
         protected Login(Parcel in) {
             loginResponse = in.readParcelable(LoginResponse.class.getClassLoader());
+            error = in.readParcelable(Error.class.getClassLoader());
         }
 
         public static final Creator<Login> CREATOR = new Creator<Login>() {
@@ -32,14 +37,6 @@ public class LoginModel {
             }
         };
 
-        public LoginResponse getLoginResponse() {
-            return loginResponse;
-        }
-
-        public void setLoginResponse(LoginResponse loginResponse) {
-            this.loginResponse = loginResponse;
-        }
-
         @Override
         public int describeContents() {
             return 0;
@@ -48,6 +45,15 @@ public class LoginModel {
         @Override
         public void writeToParcel(Parcel dest, int flags) {
             dest.writeParcelable(loginResponse, flags);
+            dest.writeParcelable(error, flags);
+        }
+
+        public LoginResponse getLoginResponse() {
+            return loginResponse;
+        }
+
+        public Error getError() {
+            return error;
         }
     }
 
@@ -65,10 +71,8 @@ public class LoginModel {
         @SerializedName("balance")
         private float balance;
 
-        @SerializedName("error")
-        private Error error;
 
-        public LoginResponse(){
+        public LoginResponse() {
 
         }
 
@@ -115,10 +119,6 @@ public class LoginModel {
             dest.writeFloat(balance);
         }
 
-        class Error {
-
-        }
-
         public Long getUserId() {
             return userId;
         }
@@ -137,10 +137,6 @@ public class LoginModel {
 
         public float getBalance() {
             return balance;
-        }
-
-        public Error getError() {
-            return error;
         }
 
         public void setUserId(Long userId) {
@@ -163,8 +159,42 @@ public class LoginModel {
             this.balance = balance;
         }
 
-        public void setError(Error error) {
-            this.error = error;
+    }
+
+    public static class Error implements Parcelable {
+
+        private Object object;
+
+        public Error() {
+        }
+
+        public Error(Object object) {
+            this.object = object;
+        }
+
+        protected Error(Parcel in) {
+
+        }
+
+        public static final Creator<Error> CREATOR = new Creator<Error>() {
+            @Override
+            public Error createFromParcel(Parcel in) {
+                return new Error(in);
+            }
+
+            @Override
+            public Error[] newArray(int size) {
+                return new Error[size];
+            }
+        };
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
         }
     }
 
