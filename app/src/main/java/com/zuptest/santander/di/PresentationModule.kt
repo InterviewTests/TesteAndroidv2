@@ -13,7 +13,9 @@ object PresentationModule {
         factory<LoginContract.Presenter> { (view: LoginContract.View) ->
             LoginPresenter(
                 view = view,
-                doLoginUseCase = get()
+                doLoginUseCase = get(),
+                retrieveLastLoginUseCase = get(),
+                saveSuccessfulLoginInfoUseCase = get()
             )
         }
 

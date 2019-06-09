@@ -12,10 +12,13 @@ object LoginContract {
         fun applyEmailLogin()
         fun applyCPFLogin()
         fun launchStatementsScreen(account: Account)
+        fun displayLastLogin(login: String?)
     }
 
     interface Presenter {
+
         fun doLogin(password: String?, login: String?)
+        fun checkPreviousLogin()
         fun checkLoginType(charSequence: CharSequence?)
     }
 }

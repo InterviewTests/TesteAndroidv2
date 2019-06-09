@@ -1,10 +1,13 @@
 package com.zuptest.santander.di
 
+import android.content.Context
+import android.content.SharedPreferences
 import com.zuptest.santander.BuildConfig
 import com.zuptest.santander.BuildConfig.DEBUG
 import com.zuptest.santander.data.remote.api.Api
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -32,6 +35,10 @@ object AppModule {
                 level = getLoggingLevelByBuildType()
             }
             OkHttpClient.Builder().addInterceptor(interceptor).build()
+        }
+
+        single<SharedPreferences> {
+            androidApplication().getSharedPreferences("zup_preferences", Context.MODE_PRIVATE);
         }
     }
 

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.core.widget.addTextChangedListener
 import com.zuptest.santander.R
 import com.zuptest.santander.domain.business.model.Account
@@ -21,6 +22,8 @@ class LoginActivity : Activity(), LoginContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        presenter.checkPreviousLogin()
 
         loginEditText?.editText?.apply {
             addTextChangedListener {
@@ -42,9 +45,13 @@ class LoginActivity : Activity(), LoginContract.View {
         loginButton?.apply {
             setOnClickListener {
                 presenter.doLogin(
-                    login = loginEditText?.getText(),
-                    password = passwordEditText?.getText()
+                    loginEditText?.getText(),
+                    passwordEditText?.getText()
                 )
+
+                Log.d("Login",loginEditText?.getText())
+                Log.d("pssw",passwordEditText?.getText())
+
             }
         }
 
@@ -78,6 +85,12 @@ class LoginActivity : Activity(), LoginContract.View {
 
     override fun displayEmptyPasswordFeedBack() {
         toast(R.string.feedback_empty_password)
+    }
+
+    override fun displayLastLogin(login: String?) {
+        login?.let {
+            loginEditText?.editText?.setText(it)
+        }
     }
 
     override fun launchStatementsScreen(account: Account) {
