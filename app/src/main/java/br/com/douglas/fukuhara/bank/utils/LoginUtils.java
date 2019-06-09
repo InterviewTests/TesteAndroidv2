@@ -67,7 +67,7 @@ public final class LoginUtils {
         String calculatedCpf = calculateCpf(cpfWithoutDigits, CPF_FIRST_DIGIT_POSITION);
         calculatedCpf = calculateCpf(calculatedCpf, CPF_SECOND_DIGIT_POSITION);
 
-        if (username.equals(calculatedCpf)) {
+        if (plainNumber.equals(calculatedCpf)) {
             return UsernameValidation.VALID_CPF;
         }
         return UsernameValidation.INVALID_CPF;

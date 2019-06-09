@@ -14,7 +14,6 @@ public interface Contract {
     interface LoginRouterInput {
         void passDataToNextScene(UserAccount userAccount, Intent intent);
         Intent determineNextScreen();
-
     }
 
     interface LoginInteractorInput {

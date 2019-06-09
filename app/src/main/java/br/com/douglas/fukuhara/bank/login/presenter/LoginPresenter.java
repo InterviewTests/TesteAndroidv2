@@ -54,16 +54,16 @@ public class LoginPresenter implements Contract.LoginPresenterInput {
     }
 
     @Override
-    public void showLoginErrorMessage(String formatLoginErrorMsg) {
+    public void showLoginGenericError() {
         if (getLoginActivity() != null) {
-            getLoginActivity().notifyErrorToUser(formatLoginErrorMsg);
+            getLoginActivity().notifyResourceErrorToUser(R.string.login_generic_error);
         }
     }
 
     @Override
-    public void showLoginGenericError() {
+    public void showLoginErrorMessage(String formatLoginErrorMsg) {
         if (getLoginActivity() != null) {
-            getLoginActivity().notifyResourceErrorToUser(R.string.login_generic_error);
+            getLoginActivity().notifyErrorToUser(formatLoginErrorMsg);
         }
     }
 

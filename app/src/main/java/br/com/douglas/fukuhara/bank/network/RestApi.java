@@ -9,12 +9,8 @@ import retrofit2.http.POST;
 public interface RestApi {
 
     String LOGIN = "/api/login";
-    String STATEMENT_ID_PATH = "statementId";
 
     @FormUrlEncoded
     @POST(LOGIN)
     Observable<LoginVo> doLogin(@Field("user") String user, @Field("password") String password);
-    @FormUrlEncoded
-    @POST(LOGIN)
-    Observable<LoginVo> doLoginv2(@Field("user") String user);
 }

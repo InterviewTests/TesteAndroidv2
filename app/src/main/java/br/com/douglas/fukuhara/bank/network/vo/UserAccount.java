@@ -19,6 +19,14 @@ public class UserAccount implements Parcelable {
     @SerializedName("balance")
     BigDecimal balance;
 
+    public UserAccount(int userId, String name, String bankAccount, String agency, BigDecimal balance) {
+        this.userId = userId;
+        this.name = name;
+        this.bankAccount = bankAccount;
+        this.agency = agency;
+        this.balance = balance;
+    }
+
     protected UserAccount(Parcel in) {
         userId = in.readInt();
         name = in.readString();
