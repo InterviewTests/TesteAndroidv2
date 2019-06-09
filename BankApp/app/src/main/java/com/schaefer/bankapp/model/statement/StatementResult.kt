@@ -7,7 +7,7 @@ import com.schaefer.bankapp.model.ErrorResult
 class StatementResult {
     @Expose
     @SerializedName("statementList")
-    lateinit var list: List<StatementModel>
+    lateinit var list: ArrayList<StatementModel>
     @Expose
     @SerializedName("error")
     lateinit var errors: ErrorResult

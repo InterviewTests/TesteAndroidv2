@@ -3,17 +3,17 @@ package com.schaefer.bankapp.model.statement
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class StatementModel {
+class StatementModel(
     @Expose
     @SerializedName("title")
-    lateinit var title: String
+    var title: String,
     @Expose
     @SerializedName("desc")
-    lateinit var desc: String
+    var desc: String,
     @Expose
     @SerializedName("date")
-    lateinit var date: String
+    var date: String,
     @Expose
     @SerializedName("value")
     var value: Float = 0.0F
-}
+)
