@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Santander Bank</string>
+    <string name="user_name_login">User</string>
+    <string name="password_login">Password</string>
+    <string name="login_btn">Login</string>
+    <string name="recents">Recentes</string>
+    <string name="username_message_error">E-mail/CPF inválido!</string>
+    <string name="username_password_message_error">E-mail/CPF e senha inválidos!</string>
+    <string name="password_message_error">Senha inválida!</string>
+    <string name="agency_info">%1$s / %2$s</string>
+    <string name="error_title">Não foi possível carregar suas informações</string>
+    <string name="error_subtitle">Clique aqui para recarregar</string>
+</resources>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.statements.BankInfoActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="232dp"
+        android:background="@color/blue_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_info_name"
+            android:layout_width="215dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="40dp"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="name" />
+
+        <ImageView
+            android:id="@+id/iv_info_logout"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="335dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/logout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_account_title"
+            android:layout_width="47dp"
+            android:layout_height="13dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="97dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="conta" />
+
+        <TextView
+            android:id="@+id/tv_account_info"
+            android:layout_width="300dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="116dp"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="11111" />
+
+        <TextView
+            android:id="@+id/tv_balance_name"
+            android:layout_width="47dp"
+            android:layout_height="13dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="166dp"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="saldo" />
+
+        <TextView
+            android:id="@+id/tv_balance_info"
+            android:layout_width="184dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="186dp"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="R$4444" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="246dp"
+        android:text="@string/recents"
+        android:textColor="@color/gray"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_balance"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="274dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/bank_info_item"/>
+
+    <include
+        android:id="@+id/include_error_layout"
+        layout="@layout/error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
