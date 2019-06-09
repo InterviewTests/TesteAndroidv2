@@ -12,7 +12,6 @@ dependencies {
     implementation deps.rxKotlin
 
     implementation deps.koin
-    implementation deps.auth
 
 }
 

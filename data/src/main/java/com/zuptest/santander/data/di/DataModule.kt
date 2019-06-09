@@ -1,5 +1,7 @@
 package com.zuptest.santander.data.di
 
+import com.zuptest.santander.data.local.Preferences
+import com.zuptest.santander.data.local.PreferencesImpl
 import com.zuptest.santander.data.repository.LoginRepositoryImpl
 import com.zuptest.santander.data.repository.StatementRepositoryImpl
 import com.zuptest.santander.domain.repository.LoginRepository
@@ -12,13 +14,20 @@ object DataModule {
 
         single<LoginRepository> {
             LoginRepositoryImpl(
-                api = get()
+                api = get(),
+                preferences = get()
             )
         }
 
         single<StatementRepository> {
             StatementRepositoryImpl(
                 api = get()
+            )
+        }
+
+        single<Preferences> {
+            PreferencesImpl(
+                sharedPreferences = get()
             )
         }
     }
