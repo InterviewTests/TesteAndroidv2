@@ -22,8 +22,8 @@ public final class FormaterUtils {
     public static String formatAgencyWithMask(String agency) {
         return String.format("%s.%s-%s",
                 agency.substring(0, 2),
-                agency.substring(2, 7),
-                agency.substring(7, agency.length()));
+                agency.substring(2, 8),
+                agency.substring(8, agency.length()));
     }
 
     public static String includeCurrencyInValue(BigDecimal balance) {

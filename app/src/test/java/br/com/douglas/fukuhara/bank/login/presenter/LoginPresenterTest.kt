@@ -23,6 +23,12 @@ class LoginPresenterTest {
         mPresenter.setOutput(mOutput)
     }
 
+    @After
+    fun tearDown() {
+        mOutput.clear()
+        unmockkAll()
+    }
+
     @Test
     fun `When Interactor Informs Empty Username, Then Presenter Must Send Username Resource To Activity Alert Dialog`() {
         mPresenter.emptyUsername()
@@ -49,7 +55,7 @@ class LoginPresenterTest {
     fun `When Interactor Informs Invalid CPF, Then Presenter Must Send Invalid CPF To Activity Alert Dialog`() {
         mPresenter.invalidCpf()
 
-        verify(exactly = 1) {
+        verify {
             mOutput.get()?.notifyResourceErrorToUser(R.string.login_invalid_cpf)
         }
 
@@ -82,7 +88,7 @@ class LoginPresenterTest {
     fun `When Interactor Informs Generic Error, Then Presenter Must Send Generic Error To Activity Alert Dialog`() {
         mPresenter.showLoginGenericError()
 
-        verify(exactly = 1) {
+        verify {
             mOutput.get()?.notifyResourceErrorToUser(R.string.login_generic_error)
         }
 
@@ -106,15 +112,10 @@ class LoginPresenterTest {
         val referenceUserAccount = UserAccount(10, "Givenname Surname", "0001", "001", BigDecimal(10))
         mPresenter.onSuccessfulLoginResponse(referenceUserAccount)
 
-        verify(exactly = 1) {
+        verify {
             mOutput.get()?.onSuccessfulLogin(referenceUserAccount)
         }
 
         mOutput.get()?.let { confirmVerified(it) }
-    }
-
-    @After
-    fun tearDown() {
-        unmockkAll()
     }
 }

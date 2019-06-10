@@ -16,6 +16,10 @@ public class HomePresenter implements Contract.HomePresenterInput {
 
     private WeakReference<Contract.HomeActivityInput> mOutput;
 
+    public HomePresenter() {
+        mOutput = null;
+    }
+
     public void setOutput(WeakReference<Contract.HomeActivityInput> output) {
         mOutput = output;
     }
@@ -23,7 +27,6 @@ public class HomePresenter implements Contract.HomePresenterInput {
     private Contract.HomeActivityInput getOutput() {
         return mOutput.get();
     }
-
 
     @Override
     public void noUserInfo() {
