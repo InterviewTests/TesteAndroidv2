@@ -22,7 +22,9 @@ class LoginPresenter(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onNext = {
-                    view.displayLastLogin(it)
+                    if (it.isNotBlank()) {
+                        view.displayLastLogin(it)
+                    }
                 }
             )
     }
