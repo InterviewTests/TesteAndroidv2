@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity implements Contract.LoginAc
     }
 
     private void onLoginClickListener(View view) {
+        mBtnLogin.setEnabled(false);
         String username = mEdtUser.getText().toString();
         String password = mEdtPassword.getText().toString();
 
@@ -91,6 +92,8 @@ public class LoginActivity extends AppCompatActivity implements Contract.LoginAc
         builder.setMessage(stringRes);
         builder.setPositiveButton(R.string.login_dialog_error_ok_btn, (dialogInterface, i) -> {});
         builder.create().show();
+
+        mBtnLogin.setEnabled(true);
     }
 
     @Override
@@ -99,6 +102,8 @@ public class LoginActivity extends AppCompatActivity implements Contract.LoginAc
         builder.setMessage(message);
         builder.setPositiveButton(R.string.login_dialog_error_ok_btn, (dialogInterface, i) -> {});
         builder.create().show();
+
+        mBtnLogin.setEnabled(true);
     }
 
     @Override
