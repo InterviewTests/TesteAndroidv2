@@ -29,8 +29,6 @@ class StatementsPresenter(
                 },
                 onError = {
                     Log.d("error", it.message)
-                },
-                onComplete = {}
-            )
+                })
     }
 }

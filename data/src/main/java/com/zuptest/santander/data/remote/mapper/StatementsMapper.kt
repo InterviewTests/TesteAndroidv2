@@ -12,7 +12,6 @@ fun StatementsResponse.mapToEntity(): List<Statement> {
             title = it.title,
             description = it.description,
             amount = Money(it.amount),
-
             date = parseDate(it.date)
         )
     }

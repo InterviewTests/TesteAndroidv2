@@ -5,7 +5,7 @@ import com.zuptest.santander.domain.business.usecase.ListStatementsUseCase
 import com.zuptest.santander.domain.business.usecase.RetrieveLastLoginUseCase
 import com.zuptest.santander.domain.business.usecase.SaveSuccessfulLoginInfoUseCase
 import com.zuptest.santander.domain.business.usecase.impl.DoLoginUseCaseImpl
-import com.zuptest.santander.domain.business.usecase.impl.GetStatementsUseCaseImpl
+import com.zuptest.santander.domain.business.usecase.impl.ListStatementsUseCaseImpl
 import com.zuptest.santander.domain.business.usecase.impl.RetrieveLastLoginUseCaseImpl
 import com.zuptest.santander.domain.business.usecase.impl.SaveSuccessfulLoginInfoUseCaseImpl
 import org.koin.dsl.module
@@ -19,7 +19,7 @@ object DomainModule {
         }
 
         factory<ListStatementsUseCase> {
-            GetStatementsUseCaseImpl(repository = get())
+            ListStatementsUseCaseImpl(repository = get())
         }
 
         factory<SaveSuccessfulLoginInfoUseCase> {
