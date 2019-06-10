@@ -5,38 +5,37 @@ import br.com.douglas.fukuhara.bank.home.Contract
 import br.com.douglas.fukuhara.bank.home.ui.HomeActivity
 import br.com.douglas.fukuhara.bank.network.vo.StatementListVo
 import br.com.douglas.fukuhara.bank.utils.TestUtils
-import io.mockk.*
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import org.mockito.Mockito.*
 import java.lang.ref.WeakReference
 import java.math.BigDecimal
 
 class HomePresenterTest {
-    private val mActivity: HomeActivity = mockk(relaxed = true)
+    private val mActivity: HomeActivity = mock(HomeActivity::class.java)
     private lateinit var mOutput: WeakReference<Contract.HomeActivityInput>
     private lateinit var mPresenter: HomePresenter
 
     @Before
     fun setUp() {
         mPresenter = HomePresenter()
-        mOutput = spyk(WeakReference<Contract.HomeActivityInput>(mActivity))
+        mOutput = spy(WeakReference<Contract.HomeActivityInput>(mActivity))
         mPresenter.setOutput(mOutput)
     }
 
     @After
     fun tearDown() {
         mOutput.clear()
-        unmockkAll()
     }
 
     @Test
     fun `Given An Empty User Info, Then Request Activity To Fill User Info with Dashed Value`() {
         mPresenter.noUserInfo()
 
-        verify(exactly = 1) { mOutput.get()?.setHeaderInformation("-", "-", "-") }
+        verify(mOutput.get())?.setHeaderInformation("-", "-", "-")
 
-        mOutput.get()?.let { confirmVerified(it) }
+        verifyNoMoreInteractions(mOutput.get())
     }
 
     @Test
@@ -50,22 +49,20 @@ class HomePresenterTest {
         val refBalance = "R$12,35"
         mPresenter.setHomeHeaderInfo(passedName, passedAgency, passedBankAccount, passedBalance)
 
-        verify(exactly = 1) { mOutput.get()?.setHeaderInformation(refName, refAccount, refBalance) }
+        verify(mOutput.get())?.setHeaderInformation(refName, refAccount, refBalance)
 
-        mOutput.get()?.let { confirmVerified(it) }
+        verifyNoMoreInteractions(mOutput.get())
     }
 
     @Test
     fun `Given A Empty List Of Recent Items, Then Request Activity To Cancel Loader And Show No Data Available`() {
         mPresenter.setNoUserDataAvailable()
 
-        verify(exactly = 1) {
-            mOutput.get()?.hideContentLoader()
-            mOutput.get()?.hideUserDataContainer()
-            mOutput.get()?.showNoDataAvailable()
-        }
+        verify(mOutput.get())?.hideContentLoader()
+        verify(mOutput.get())?.hideUserDataContainer()
+        verify(mOutput.get())?.showNoDataAvailable()
 
-        mOutput.get()?.let { confirmVerified(it) }
+        verifyNoMoreInteractions(mOutput.get())
     }
 
     @Test
@@ -73,41 +70,35 @@ class HomePresenterTest {
         val messageError = "Algo deu errado, tente novamente!"
         mPresenter.showUserDataErrorMessage(messageError)
 
-        verify(exactly = 1) {
-            mOutput.get()?.hideContentLoader()
-            mOutput.get()?.hideUserDataContainer()
-            mOutput.get()?.showNoDataAvailable()
-            mOutput.get()?.notifyErrorToUser(messageError)
-        }
+        verify(mOutput.get())?.hideContentLoader()
+        verify(mOutput.get())?.hideUserDataContainer()
+        verify(mOutput.get())?.showNoDataAvailable()
+        verify(mOutput.get())?.notifyErrorToUser(messageError)
 
-        mOutput.get()?.let { confirmVerified(it) }
+        verifyNoMoreInteractions(mOutput.get())
     }
 
     @Test
     fun `Given A Server Error Without Message, Then Notify Activity With Generic Error Message`() {
         mPresenter.showUserDataGenericError()
 
-        verify(exactly = 1) {
-            mOutput.get()?.hideContentLoader()
-            mOutput.get()?.hideUserDataContainer()
-            mOutput.get()?.showNoDataAvailable()
-            mOutput.get()?.notifyResourceErrorToUser(R.string.login_generic_error)
-        }
+        verify(mOutput.get())?.hideContentLoader()
+        verify(mOutput.get())?.hideUserDataContainer()
+        verify(mOutput.get())?.showNoDataAvailable()
+        verify(mOutput.get())?.notifyResourceErrorToUser(R.string.login_generic_error)
 
-        mOutput.get()?.let { confirmVerified(it) }
+        verifyNoMoreInteractions(mOutput.get())
     }
 
     @Test
     fun `When Performing A Data Fetch, Then Invoke Loader In Activity`() {
         mPresenter.onDataFetch()
 
-        verify(exactly = 1) {
-            mOutput.get()?.showContentLoader()
-            mOutput.get()?.hideUserDataContainer()
-            mOutput.get()?.hideNoDataAvailable()
-        }
+        verify(mOutput.get())?.showContentLoader()
+        verify(mOutput.get())?.hideUserDataContainer()
+        verify(mOutput.get())?.hideNoDataAvailable()
 
-        mOutput.get()?.let { confirmVerified(it) }
+        verifyNoMoreInteractions(mOutput.get())
     }
 
     @Test
@@ -117,13 +108,11 @@ class HomePresenterTest {
 
         mPresenter.setUserDataInfo(statementList)
 
-        verify(exactly = 1) {
-            mOutput.get()?.setRecentList(statementList)
-            mOutput.get()?.hideContentLoader()
-            mOutput.get()?.showUserDataContainer()
-            mOutput.get()?.hideNoDataAvailable()
-        }
+        verify(mOutput.get())?.setRecentList(statementList)
+        verify(mOutput.get())?.hideContentLoader()
+        verify(mOutput.get())?.showUserDataContainer()
+        verify(mOutput.get())?.hideNoDataAvailable()
 
-        mOutput.get()?.let { confirmVerified(it) }
+        verifyNoMoreInteractions(mOutput.get())
     }
 }
