@@ -9,4 +9,26 @@
     <dimen name="login_edit_text_height_box">50dp</dimen>
     <dimen name="login_btn_login_margin_bottom">32dp</dimen>
     <dimen name="login_btn_login_width">200dp</dimen>
+
+    <!-- Dimensions used in Home Screen -->
+    <dimen name="home_header_top_layout_margin">20dp</dimen>
+    <dimen name="home_header_horizontal_margin">16dp</dimen>
+    <dimen name="home_header_primary_text_size">25dp</dimen>
+    <dimen name="home_header_label_text_size">12dp</dimen>
+    <dimen name="home_header_margin_name_and_label">28dp</dimen>
+    <dimen name="home_header_margin_label_and_item">8dp</dimen>
+    <dimen name="home_header_margin_item_and_label">21dp</dimen>
+    <dimen name="home_header_bottom_layout_margin">16dp</dimen>
+    <dimen name="home_recents_margin_top">14dp</dimen>
+    <dimen name="home_recents_label_size">17dp</dimen>
+    <dimen name="recent_item_layout_height">80dp</dimen>
+    <dimen name="recent_item_margin_horizontal">16dp</dimen>
+    <dimen name="recent_item_margin_top">5dp</dimen>
+    <dimen name="recent_item_margin_bottom">10dp</dimen>
+    <dimen name="recent_width_constrainted">0dp</dimen>
+    <dimen name="recent_text_margin_top">8dp</dimen>
+    <dimen name="recent_text_margin_bottom">8dp</dimen>
+    <dimen name="Recent_text_margin_horizontal">16dp</dimen>
+    <dimen name="home_header_margin_bottom">8dp</dimen>
+
 </resources>

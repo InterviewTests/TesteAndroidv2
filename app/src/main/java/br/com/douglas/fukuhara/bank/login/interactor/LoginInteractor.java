@@ -24,7 +24,7 @@ public class LoginInteractor implements Contract.LoginInteractorInput {
         mRestClient = restClient;
     }
 
-    public void setPresenter(LoginPresenter presenter) {
+    public void setPresenter(Contract.LoginPresenterInput presenter) {
         mPresenter = presenter;
     }
 

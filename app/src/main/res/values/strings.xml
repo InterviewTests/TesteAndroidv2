@@ -3,6 +3,7 @@
     <string name="app_name">Bank</string>
 
     <!-- Strings used in Login Screen -->
+    <string name="login_logo_img_desc">Logo da aplicação</string>
     <string name="login_user_field_hint">Usuário</string>
     <string name="login_pass_field_hint">Senha</string>
     <string name="login_btn_login">Login</string>
@@ -18,4 +19,14 @@
     </string>
     <string name="login_dialog_error_ok_btn">OK</string>
     <string name="login_generic_error">Algo inesperado aconteceu, tente novamente!</string>
+
+    <!-- Strings used in Home Screen -->
+    <string name="home_account_label">Conta</string>
+    <string name="home_balance_label">Saldo</string>
+    <string name="home_logout_img_desc">Botão para logout</string>
+    <string name="home_logout_cancel">Não</string>
+    <string name="home_logout_proceed">Sim</string>
+    <string name="home_logout_message">Desaja realmente realizar logout de sua conta?</string>
+    <string name="home_recents_label">Recentes</string>
+    <string name="home_recents_no_content">Não há lançamentos recentes</string>
 </resources>

@@ -106,6 +106,7 @@ public class LoginActivity extends AppCompatActivity implements Contract.LoginAc
         Intent intent = mRouter.determineNextScreen();
         mRouter.passDataToNextScene(userAccount, intent);
         startActivity(intent);
+        finish();
     }
 
     @Override

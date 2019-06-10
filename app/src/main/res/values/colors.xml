@@ -11,4 +11,14 @@
     <color name="login_edit_hint_text_color">#A8B4C4</color>
     <color name="login_btn_login_bg_color">#3B48EE</color>
     <color name="login_btn_login_text_color">#FFFFFF</color>
+
+    <!-- Home Screen -->
+    <color name="home_header_bg_color">#3B49EE</color>
+    <color name="home_header_text_color">#A8B4C4</color>
+    <color name="home_header_label_color">#A8B4C4</color>
+    <color name="home_background_color">#FEFEFE</color>
+    <color name="home_recents_label_color">#485465</color>
+
+    <!-- Recent Item -->
+    <color name="recent_bg_color">#FFFFFF</color>
 </resources>

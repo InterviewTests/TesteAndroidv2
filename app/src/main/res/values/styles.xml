@@ -7,5 +7,49 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    
+    <style name="HomePrimaryTextStyle">
+        <item name="android:textColor">@color/home_header_text_color</item>
+        <item name="android:textSize">@dimen/home_header_primary_text_size</item>
+    </style>
 
+    <style name="HomeLabelTextStyle">
+        <item name="android:textColor">@color/home_header_label_color</item>
+        <item name="android:textSize">@dimen/home_header_label_text_size</item>
+    </style>
+
+    <style name="HomeRecentsLabelStyle">
+        <item name="android:textColor">@color/home_recents_label_color</item>
+        <item name="android:textSize">@dimen/home_recents_label_size</item>
+    </style>
+
+    <style name="RecentTitleStyle">
+        <item name="android:textColor">@color/recent_title_color</item>
+        <item name="android:textSize">@dimen/recent_title_size</item>
+
+    </style>
+
+    <style name="RecentDateStyle">
+        <item name="android:textColor">@color/recent_date_color</item>
+        <item name="android:textSize">@dimen/recent_date_size</item>
+    </style>
+
+    <style name="RecentDescStyle">
+        <item name="android:textColor">@color/recent_desc_color</item>
+        <item name="android:textSize">@dimen/recent_desc_size</item>
+    </style>
+
+    <style name="RecentValueStyle">
+        <item name="android:textColor">@color/recent_value_color</item>
+        <item name="android:textSize">@dimen/recent_value_size</item>
+    </style>
+
+    <color name="recent_title_color">#A8B4C4</color>
+    <color name="recent_date_color">#A8B4C4</color>
+    <color name="recent_desc_color">#485465</color>
+    <color name="recent_value_color">#485465</color>
+    <dimen name="recent_title_size">16dp</dimen>
+    <dimen name="recent_date_size">12dp</dimen>
+    <dimen name="recent_desc_size">16dp</dimen>
+    <dimen name="recent_value_size">20dp</dimen>
 </resources>
