@@ -25,6 +25,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:textColor="@color/secondaryText"
                 android:textSize="16sp"
+                android:fontFamily="@font/helvetica_neue"
                 tools:text="Pagamento"/>
 
         <TextView
@@ -35,6 +36,7 @@
                 android:textColor="@color/secondaryText"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:textSize="12sp"
+                android:fontFamily="@font/helvetica_neue"
                 tools:text="01/01/2019"/>
 
         <TextView
@@ -47,6 +49,7 @@
                 android:layout_marginTop="20dp"
                 android:textSize="16sp"
                 android:textColor="@color/primaryText"
+                android:fontFamily="@font/helvetica_neue"
                 tools:text="Conta de Luz"/>
 
         <TextView
@@ -57,6 +60,7 @@
                 android:textSize="20sp"
                 android:textColor="@color/primaryText"
                 tools:text="R$ 99.999,99"
+                android:fontFamily="@font/helvetica_neue_light"
                 app:layout_constraintBaseline_toBaselineOf="@+id/description"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,4 +11,6 @@
     <string name="label_account">Conta</string>
     <string name="label_balance">Saldo</string>
     <string name="header_account">%s / %s</string>
+    <string name="logout">Sair</string>
+    <string name="account_balance">Saldo: %s</string>
 </resources>

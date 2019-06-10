@@ -1,9 +1,11 @@
 package com.zuptest.santander.statement
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zuptest.santander.R
@@ -13,7 +15,8 @@ import kotlinx.android.synthetic.main.activity_statements.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-class StatementsActivity : Activity(), StatementsContract.View {
+
+class StatementsActivity : AppCompatActivity(), StatementsContract.View {
 
     private val presenter by inject<StatementsContract.Presenter> { parametersOf(this) }
 
@@ -29,6 +32,7 @@ class StatementsActivity : Activity(), StatementsContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_statements)
+        setSupportActionBar(toolbar)
         presenter.init(intent.getSerializableExtra(ACCOUNT_EXTRA) as Account)
     }
 
@@ -42,6 +46,7 @@ class StatementsActivity : Activity(), StatementsContract.View {
 
     override fun displayBalance(balance: String) {
         balanceValue?.text = balance
+        title = getString(R.string.account_balance, balance)
     }
 
     override fun displayStatements(statements: List<Statement>) {
@@ -53,5 +58,17 @@ class StatementsActivity : Activity(), StatementsContract.View {
                     setDrawable(resources.getDrawable(R.drawable.divider_list))
                 })
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_statements, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.menu_item_logout -> this@StatementsActivity.finish()
+        }
+        return true
     }
 }
