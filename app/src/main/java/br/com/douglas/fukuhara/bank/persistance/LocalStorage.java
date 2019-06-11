@@ -2,6 +2,13 @@ package br.com.douglas.fukuhara.bank.persistance;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
+
+import androidx.security.crypto.EncryptedSharedPreferences;
+import androidx.security.crypto.MasterKeys;
+
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 public class LocalStorage implements Storage {
 
@@ -11,6 +18,27 @@ public class LocalStorage implements Storage {
     private static SharedPreferences mPreference;
 
     private LocalStorage(Context context) {
+        String masterKeyAlias;
+
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)  {
+                masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
+                mPreference = EncryptedSharedPreferences.create(
+                        SHARED_PREF_NAME,
+                        masterKeyAlias,
+                        context,
+                        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM);
+            } else {
+                mPreference = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+            }
+            return;
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         mPreference = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
     }
 
