@@ -21,7 +21,8 @@
         app:layout_constraintEnd_toStartOf="@+id/recent_tv_date"
         app:layout_constraintBottom_toTopOf="@+id/recent_tv_desc"
         app:layout_constraintVertical_chainStyle="spread_inside"
-        tools:text="Pagamento"
+        android:singleLine="true"
+        tools:text="Pagamento de uma cobrança bem longa que pode sair da tela"
         style="@style/RecentTitleStyle" />
 
     <TextView
@@ -51,7 +52,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recent_tv_title"
         app:layout_constraintVertical_chainStyle="spread_inside"
-        tools:text="Conta de luz"
+        android:singleLine="true"
+        tools:text="Conta de agua, luz, telefone, internet e de bastante outras coisas"
         style="@style/RecentDescStyle" />
 
     <TextView

@@ -24,7 +24,8 @@
             <TextView
                 android:id="@+id/home_tv_username"
                 style="@style/HomePrimaryTextStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                app:layout_constraintWidth_default="wrap"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/home_header_horizontal_margin"
                 android:layout_marginTop="@dimen/home_header_top_layout_margin"
