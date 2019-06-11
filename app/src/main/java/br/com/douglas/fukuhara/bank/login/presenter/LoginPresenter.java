@@ -73,4 +73,11 @@ public class LoginPresenter implements Contract.LoginPresenterInput {
             getLoginActivity().onSuccessfulLogin(userAccount);
         }
     }
+
+    @Override
+    public void setLoginFromPreviousLoggedUser(String lastSavedUser) {
+        if (getLoginActivity() != null) {
+            getLoginActivity().setLoginField(lastSavedUser);
+        }
+    }
 }

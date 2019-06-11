@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity implements Contract.LoginAc
 
         // Setting the Configurator
         LoginConfigurator.configure(this);
+        mOutput.checkForPreviousLoggedUser();
     }
 
     private void setViews() {
@@ -104,6 +105,11 @@ public class LoginActivity extends AppCompatActivity implements Contract.LoginAc
         builder.create().show();
 
         mBtnLogin.setEnabled(true);
+    }
+
+    @Override
+    public void setLoginField(String lastSavedUser) {
+        mEdtUser.setText(lastSavedUser);
     }
 
     @Override

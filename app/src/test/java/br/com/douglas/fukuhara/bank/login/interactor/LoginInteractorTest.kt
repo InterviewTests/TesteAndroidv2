@@ -3,6 +3,7 @@ package br.com.douglas.fukuhara.bank.login.interactor
 import br.com.douglas.fukuhara.bank.login.presenter.LoginPresenter
 import br.com.douglas.fukuhara.bank.network.RestClient
 import br.com.douglas.fukuhara.bank.network.vo.LoginVo
+import br.com.douglas.fukuhara.bank.persistance.Storage
 import br.com.douglas.fukuhara.bank.utils.TestUtils.fromJsonToObj
 import br.com.douglas.fukuhara.bank.utils.TestUtils.getGenericServer
 import br.com.douglas.fukuhara.bank.utils.TestUtils.getServerErrorWithMessage
@@ -20,6 +21,7 @@ import java.util.concurrent.Executor
 class LoginInteractorTest {
     private val mClient: RestClient = mockk(relaxed = true)
     private val mPresenter: LoginPresenter = mockk(relaxed = true)
+    private val mStorage: Storage = mockk(relaxed = true)
     private lateinit var mInteractor: LoginInteractor
 
     companion object {
@@ -51,7 +53,7 @@ class LoginInteractorTest {
             RxAndroidPlugins.setInitMainThreadSchedulerHandler { this }
         }
 
-        mInteractor = LoginInteractor(mClient)
+        mInteractor = LoginInteractor(mClient, mStorage)
         mInteractor.setPresenter(mPresenter)
     }
 
@@ -204,6 +206,112 @@ class LoginInteractorTest {
 
         verify(exactly = 1) {
             mPresenter.showLoginErrorMessage(formattedErrorMessage)
+        }
+
+        confirmVerified(mPresenter)
+    }
+
+
+    @Test
+    fun `Given A Server Error Without Message, Then The Username Should Not Be Stored In SharedPreferences`() {
+        every {
+            mClient.api.doLogin(VALID_PATTERN_EMAIL_USERNAME, VALID_PATTERN_PASSWORD)
+        } returns getGenericServer()
+
+        mInteractor.onLogin(VALID_PATTERN_EMAIL_USERNAME, VALID_PATTERN_PASSWORD)
+
+        verify(inverse = true) {
+            mStorage.saveLogin(any())
+        }
+
+        confirmVerified(mStorage)
+    }
+
+    @Test
+    fun `Given A Server Error With Message, Then The Username Should Not Be Stored In SharedPreferences`() {
+        val messageErrorFromServer = "Something Just Went Wrong"
+        every {
+            mClient.api.doLogin(VALID_PATTERN_EMAIL_USERNAME, VALID_PATTERN_PASSWORD)
+        } returns getServerErrorWithMessage(messageErrorFromServer)
+
+        mInteractor.onLogin(VALID_PATTERN_EMAIL_USERNAME, VALID_PATTERN_PASSWORD)
+
+        verify(inverse = true) {
+            mStorage.saveLogin(any())
+        }
+
+        confirmVerified(mStorage)
+    }
+
+    @Test
+    fun `Given A Server Response With Non Empty User Account, Then The Username Should Be Stored In SharedPreferences`() {
+        val loginVoResponse = fromJsonToObj("json/successful_user_account.json", LoginVo::class.java)
+        every {
+            mClient.api.doLogin(VALID_PATTERN_EMAIL_USERNAME, VALID_PATTERN_PASSWORD)
+        } returns Observable.just(loginVoResponse)
+
+        mInteractor.onLogin(VALID_PATTERN_EMAIL_USERNAME, VALID_PATTERN_PASSWORD)
+
+        verify(exactly = 1) {
+            mStorage.saveLogin(any())
+        }
+
+        confirmVerified(mStorage)
+    }
+
+    @Test
+    fun `Given A Server Response With Non Error Response, Then The Username Should Not Be Stored In SharedPreferences`() {
+        val loginVoResponse = fromJsonToObj("json/wrong_user_or_password.json", LoginVo::class.java)
+        every {
+            mClient.api.doLogin(VALID_PATTERN_EMAIL_USERNAME, VALID_PATTERN_PASSWORD)
+        } returns Observable.just(loginVoResponse)
+
+        mInteractor.onLogin(VALID_PATTERN_EMAIL_USERNAME, VALID_PATTERN_PASSWORD)
+
+        verify(inverse = true) {
+            mStorage.saveLogin(any())
+        }
+
+        confirmVerified(mStorage)
+    }
+
+    @Test
+    fun `Given A Non Empty Username Returned From SharedPreferences, Then Presenter Should Be Notified About Username`() {
+        val returnedUsername = "address@domain.com"
+        every { mStorage.login } returns returnedUsername
+
+        mInteractor.checkForPreviousLoggedUser()
+
+        verify(exactly = 1) {
+            mPresenter.setLoginFromPreviousLoggedUser(returnedUsername)
+        }
+
+        confirmVerified(mPresenter)
+    }
+
+    @Test
+    fun `Given An Empty Username Returned From SharedPreferences, Then Presenter Should Be Notified About Username`() {
+        val returnedUsername = ""
+        every { mStorage.login } returns returnedUsername
+
+        mInteractor.checkForPreviousLoggedUser()
+
+        verify(inverse = true) {
+            mPresenter.setLoginFromPreviousLoggedUser(returnedUsername)
+        }
+
+        confirmVerified(mPresenter)
+    }
+
+    @Test
+    fun `Given A Null Username Returned From SharedPreferences, Then Presenter Should Be Notified About Username`() {
+        val returnedUsername: String? = null
+        every { mStorage.login } returns returnedUsername
+
+        mInteractor.checkForPreviousLoggedUser()
+
+        verify(inverse = true) {
+            mPresenter.setLoginFromPreviousLoggedUser(returnedUsername)
         }
 
         confirmVerified(mPresenter)

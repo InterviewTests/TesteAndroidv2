@@ -1,11 +1,11 @@
 package br.com.douglas.fukuhara.bank.login.interactor;
 
 import br.com.douglas.fukuhara.bank.login.Contract;
-import br.com.douglas.fukuhara.bank.login.presenter.LoginPresenter;
 import br.com.douglas.fukuhara.bank.network.RestClient;
 import br.com.douglas.fukuhara.bank.network.vo.LoginVo;
 import br.com.douglas.fukuhara.bank.network.vo.UserAccount;
 import br.com.douglas.fukuhara.bank.network.vo.UserError;
+import br.com.douglas.fukuhara.bank.persistance.Storage;
 import br.com.douglas.fukuhara.bank.utils.LoginUtils;
 import br.com.douglas.fukuhara.bank.utils.UsernameValidation;
 import io.reactivex.disposables.CompositeDisposable;
@@ -19,9 +19,11 @@ public class LoginInteractor implements Contract.LoginInteractorInput {
     private final CompositeDisposable mCompositeDisposable = new CompositeDisposable();
     private Contract.LoginPresenterInput mPresenter;
     private RestClient mRestClient;
+    private Storage mStorage;
 
-    public LoginInteractor(RestClient restClient) {
+    public LoginInteractor(RestClient restClient, Storage storage) {
         mRestClient = restClient;
+        mStorage = storage;
     }
 
     public void setPresenter(Contract.LoginPresenterInput presenter) {
@@ -64,11 +66,11 @@ public class LoginInteractor implements Contract.LoginInteractorInput {
                 mRestClient.getApi().doLogin(username, password)
                         .compose(getObservableNetworkThread())
                         .subscribe(
-                                this::onLoginResponse,
+                                (LoginVo loginVoResponse) -> onLoginResponse(loginVoResponse, username),
                                 this::onLoginFailure));
     }
 
-    private void onLoginResponse(LoginVo loginVoResponse) {
+    private void onLoginResponse(LoginVo loginVoResponse, String username) {
         UserError userError = loginVoResponse.getUserError();
         if (userError != null) {
             String errorMsg = userError.getMessage();
@@ -90,6 +92,7 @@ public class LoginInteractor implements Contract.LoginInteractorInput {
                 return;
             }
         }
+        mStorage.saveLogin(username);
         mPresenter.onSuccessfulLoginResponse(userAccount);
     }
 
@@ -99,6 +102,14 @@ public class LoginInteractor implements Contract.LoginInteractorInput {
             mPresenter.showLoginErrorMessage(errorMessage);
         } else {
             mPresenter.showLoginGenericError();
+        }
+    }
+
+    @Override
+    public void checkForPreviousLoggedUser() {
+        String lastSavedUser = mStorage.getLogin();
+        if (lastSavedUser != null && !lastSavedUser.isEmpty()) {
+            mPresenter.setLoginFromPreviousLoggedUser(lastSavedUser);
         }
     }
 

@@ -9,6 +9,7 @@ public interface Contract {
         void notifyResourceErrorToUser(int stringRes);
         void notifyErrorToUser(String message);
         void onSuccessfulLogin(UserAccount userAccount);
+        void setLoginField(String lastSavedUser);
     }
 
     interface LoginRouterInput {
@@ -19,6 +20,7 @@ public interface Contract {
     interface LoginInteractorInput {
         void onLogin(String username, String password);
         void disposeAll();
+        void checkForPreviousLoggedUser();
     }
 
     interface LoginPresenterInput {
@@ -30,5 +32,6 @@ public interface Contract {
         void showLoginErrorMessage(String formatLoginErrorMsg);
         void showLoginGenericError();
         void onSuccessfulLoginResponse(UserAccount userAccount);
+        void setLoginFromPreviousLoggedUser(String lastSavedUser);
     }
 }

@@ -101,4 +101,14 @@ class LoginPresenterTest {
 
         verifyNoMoreInteractions(mOutput.get())
     }
+
+    @Test
+    fun `When Interactor Sends The Username String, Then Presenter Must Pass It To Activity`() {
+        val referenceUsername = "address@domain.com"
+        mPresenter.setLoginFromPreviousLoggedUser(referenceUsername)
+
+        verify(mOutput.get())?.setLoginField(referenceUsername)
+
+        verifyNoMoreInteractions(mOutput.get())
+    }
 }
