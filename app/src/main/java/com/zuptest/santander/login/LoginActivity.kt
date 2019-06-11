@@ -25,66 +25,18 @@ class LoginActivity : Activity(), LoginContract.View {
 
         presenter.checkPreviousLogin()
 
-        loginEditText?.editText?.apply {
-            addTextChangedListener {
-                object : TextWatcher {
-                    override fun afterTextChanged(p0: Editable?) {
-                    }
-
-                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    }
-
-                    override fun onTextChanged(charSequence: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                        presenter.checkLoginType(charSequence)
-
-                    }
-                }
-            }
-        }
-
         loginButton?.apply {
             setOnClickListener {
                 presenter.doLogin(
                     loginEditText.getText(),
                     passwordEditText.getText()
                 )
-
-                Log.d("Login",loginEditText?.getText())
-                Log.d("pssw",passwordEditText?.getText())
-
             }
         }
-
     }
 
     override fun displayInvalidPasswordFeedBack() {
         toast(R.string.feedback_invalid_password)
-    }
-
-    override fun displayInvalidEmailLoginFeedBack() {
-        toast(R.string.feedback_invalid_login)
-    }
-
-    override fun displayInvalidCPFLoginFeedBack() {
-        toast(R.string.feedback_invalid_cpf)
-    }
-
-    override fun applyEmailLogin() {
-        loginEditText?.editText?.apply {
-            // TODO: criar watcher de email
-            addTextChangedListener()
-        }
-    }
-
-    override fun applyCPFLogin() {
-        loginEditText?.editText?.apply {
-            // TODO: criar watcher de CPF
-            addTextChangedListener()
-        }
-    }
-
-    override fun displayEmptyPasswordFeedBack() {
-        toast(R.string.feedback_empty_password)
     }
 
     override fun displayLastLogin(login: String?) {

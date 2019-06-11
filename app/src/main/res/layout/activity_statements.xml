@@ -85,6 +85,4 @@
                     app:theme="@style/ToolbarTheme"/>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

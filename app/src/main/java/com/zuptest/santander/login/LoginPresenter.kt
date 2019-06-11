@@ -29,18 +29,7 @@ class LoginPresenter(
             )
     }
 
-    override fun checkLoginType(login: CharSequence?) {
-        login?.let {
-            if (it[0].isLetter()) {
-                view.applyEmailLogin()
-            } else {
-                view.applyCPFLogin()
-            }
-        }
-    }
-
     override fun doLogin(login: String, password: String) {
-
         if (PasswordValidator.isValid(password)) {
             doLoginUseCase.execute(Credentials(login, password))
                 .observeOn(AndroidSchedulers.mainThread())
