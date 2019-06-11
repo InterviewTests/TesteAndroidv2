@@ -1,0 +1,68 @@
+ext {
+    versions = [
+            kotlin        : '1.3.31',
+            retrofit      : '2.5.0',
+            okhttp        : '3.8.1',
+            spek          : '2.0.4',
+            junit5Runner  : '0.2.2',
+            androidJunit5 : '1.3.2.0',
+            koin          : '2.0.0-GA4',
+            anko          : "0.10.6",
+            mockito       : "2.0.0-alpha01",
+            gson          : "2.8.5",
+            materialDesign: "1.1.0-alpha07",
+            supportLibrary: "1.1.0-alpha05"
+    ]
+
+    deps = [
+            kotlin           : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+            kotlinReflect    : "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin}",
+
+            kotlinJdk7       : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}",
+            kotlinJdk8       : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${versions.kotlin}",
+            kotlinTest       : "org.jetbrains.kotlin:kotlin-test:${versions.kotlin}",
+
+            appcompat        : "androidx.appcompat:appcompat:${versions.supportLibrary}",
+            cardview         : 'androidx.cardview:cardview:1.0.0',
+            recyclerview     : 'androidx.recyclerview:recyclerview:1.0.0',
+            androidx         : "androidx.core:core-ktx:${versions.supportLibrary}",
+            constraintlayout : 'androidx.constraintlayout:constraintlayout:1.1.3',
+            materialDesign   : "com.google.android.material:material:${versions.materialDesign}",
+
+            gson             : "com.google.code.gson:gson:${versions.gson}",
+
+            retrofit         : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+            retrofitConverter: "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+            retrofitadapter  : "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}",
+
+            okHttp           : "com.squareup.okhttp3:okhttp:${versions.okhttp}",
+            okhttpLogging    : "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
+
+            rxAndroid        : 'io.reactivex.rxjava2:rxandroid:2.1.0',
+            rxJava           : 'io.reactivex.rxjava2:rxjava:2.2.0',
+            rxKotlin         : 'io.reactivex.rxjava2:rxkotlin:2.2.0',
+            rxBinding        : "com.jakewharton.rxbinding3:rxbinding:${versions.rxbinding}",
+
+            koin             : "org.koin:koin-core:${versions.koin}",
+            koinAndroid      : "org.koin:koin-android:${versions.koin}",
+            koinTest         : "org.koin:koin-test:${versions.koin}",
+
+            anko             : "org.jetbrains.anko:anko-commons:${versions.anko}",
+            ankoDesign       : "org.jetbrains.anko:anko-design:${versions.anko}",
+
+    ]
+    testDeps = [
+            mockito      : "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockito}",
+            spekDsl      : "org.spekframework.spek2:spek-dsl-jvm:${versions.spek}",
+            spekRunner   : "org.spekframework.spek2:spek-runner-junit5:${versions.spek}",
+            spekJunit    : "org.jetbrains.spek:spek-junit-platform-engine:${versions.spek}",
+            kotlinReflect: "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin}",
+            runner       : "androidx.test:runner:1.1.2-alpha01",
+            espresso     : "androidx.test.espresso:espresso-core:3.1.2-alpha01",
+            mannodermaus : "de.mannodermaus.junit5:android-instrumentation-test-runner:${versions.junit5Runner}",
+    ]
+}
+
+
+
+

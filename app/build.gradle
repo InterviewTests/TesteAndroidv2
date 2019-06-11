@@ -1,0 +1,104 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "de.mannodermaus.android-junit5"
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.zuptest.santander"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    sourceSets.each {
+        it.java.srcDirs += "src/$it.name/kotlin"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            buildConfigField "String", "SERVER_URL", "\"https://bank-app-test.herokuapp.com/api/\""
+
+        }
+        release {
+            minifyEnabled false
+            buildConfigField "String", "SERVER_URL", "\"https://bank-app-test.herokuapp.com/api/\""
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        junitPlatform {
+            filters {
+                engines {
+                    include 'spek2'
+                }
+            }
+        }
+
+        unitTests {
+            returnDefaultValues = true
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility = "8"
+        targetCompatibility = "8"
+    }
+    androidExtensions {
+        experimental = true
+    }
+}
+configurations.all {
+    resolutionStrategy {
+        force "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':data')
+    implementation project(':domain')
+
+    def deps = rootProject.ext.deps
+
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation deps.anko
+
+    implementation deps.rxJava
+    implementation deps.rxKotlin
+    implementation deps.rxAndroid
+
+    implementation deps.koin
+    implementation deps.koinAndroid
+
+    implementation deps.gson
+    implementation deps.retrofit
+    implementation deps.retrofitConverter
+    implementation deps.retrofitadapter
+    implementation deps.okHttp
+    implementation deps.okhttpLogging
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    implementation deps.cardview
+    implementation deps.recyclerview
+    implementation(deps.androidx)
+    implementation deps.constraintlayout
+    implementation deps.materialDesign
+
+    implementation deps.kotlinJdk8
+
+    testImplementation testDeps.mockito
+    testImplementation testDeps.spekDsl
+    testImplementation testDeps.spekRunner
+    testImplementation testDeps.kotlinReflect
+
+    androidTestImplementation testDeps.runner
+    androidTestImplementation testDeps.espresso
+}

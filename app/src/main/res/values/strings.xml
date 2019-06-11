@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SantanderTest</string>
+    <string name="login_hint_text">User</string>
+    <string name="password_hint_text">Password</string>
+    <string name="feedback_invalid_password">Opa! Parece que essa senha não atende aos critérios de segurança.</string>
+    <string name="feedback_empty_password">Opa! O campo de Login não pode estar em branco.</string>
+    <string name="label_account">Conta</string>
+    <string name="label_balance">Saldo</string>
+    <string name="header_account">%s / %s</string>
+    <string name="logout">Sair</string>
+    <string name="account_balance">Saldo: %s</string>
+</resources>

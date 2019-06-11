@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        buildConfigField "String", "APP_ACCOUNT_STORE_KEY", "\"http://accounts.zup.com\""
+    }
+}
+dependencies {
+    implementation project(':domain')
+    def deps = rootProject.ext.deps
+    implementation deps.kotlinReflect
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation deps.rxJava
+    implementation deps.rxKotlin
+
+    implementation deps.koin
+    implementation deps.retrofit
+    implementation deps.gson
+
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    testImplementation 'junit:junit:4.12'
+}
