@@ -31,4 +31,10 @@
     <dimen name="Recent_text_margin_horizontal">16dp</dimen>
     <dimen name="home_header_margin_bottom">8dp</dimen>
 
+    <!-- Dimensions used in Statement Item Layout -->
+    <dimen name="recent_title_size">16dp</dimen>
+    <dimen name="recent_date_size">12dp</dimen>
+    <dimen name="recent_desc_size">16dp</dimen>
+    <dimen name="recent_value_size">20dp</dimen>
+
 </resources>

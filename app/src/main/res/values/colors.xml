@@ -21,4 +21,8 @@
 
     <!-- Recent Item -->
     <color name="recent_bg_color">#FFFFFF</color>
+    <color name="recent_title_color">#A8B4C4</color>
+    <color name="recent_date_color">#A8B4C4</color>
+    <color name="recent_desc_color">#485465</color>
+    <color name="recent_value_color">#485465</color>
 </resources>
