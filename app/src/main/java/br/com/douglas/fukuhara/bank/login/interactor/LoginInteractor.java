@@ -6,7 +6,7 @@ import br.com.douglas.fukuhara.bank.network.vo.LoginVo;
 import br.com.douglas.fukuhara.bank.network.vo.UserAccount;
 import br.com.douglas.fukuhara.bank.network.vo.UserError;
 import br.com.douglas.fukuhara.bank.persistance.Storage;
-import br.com.douglas.fukuhara.bank.utils.LoginUtils;
+import br.com.douglas.fukuhara.bank.utils.FormatterUtils;
 import br.com.douglas.fukuhara.bank.utils.UsernameValidation;
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -18,8 +18,8 @@ public class LoginInteractor implements Contract.LoginInteractorInput {
 
     private final CompositeDisposable mCompositeDisposable = new CompositeDisposable();
     private Contract.LoginPresenterInput mPresenter;
-    private RestClient mRestClient;
-    private Storage mStorage;
+    private final RestClient mRestClient;
+    private final Storage mStorage;
 
     public LoginInteractor(RestClient restClient, Storage storage) {
         mRestClient = restClient;
@@ -77,7 +77,7 @@ public class LoginInteractor implements Contract.LoginInteractorInput {
             int errorCode = userError.getCode();
 
             if (errorMsg != null && !errorMsg.isEmpty() && errorCode != 0) {
-                mPresenter.showLoginErrorMessage(LoginUtils.formatLoginErrorMsg(errorMsg, errorCode));
+                mPresenter.showLoginErrorMessage(FormatterUtils.formatLoginErrorMsg(errorMsg, errorCode));
                 return;
             }
         }

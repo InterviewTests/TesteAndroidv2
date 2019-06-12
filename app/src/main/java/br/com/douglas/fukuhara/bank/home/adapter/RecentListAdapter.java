@@ -13,8 +13,8 @@ import java.util.List;
 import br.com.douglas.fukuhara.bank.R;
 import br.com.douglas.fukuhara.bank.network.vo.StatementListVo;
 
-import static br.com.douglas.fukuhara.bank.utils.FormaterUtils.formatDateToBrazilian;
-import static br.com.douglas.fukuhara.bank.utils.FormaterUtils.includeCurrencyInValue;
+import static br.com.douglas.fukuhara.bank.utils.FormatterUtils.formatDateToBrazilian;
+import static br.com.douglas.fukuhara.bank.utils.FormatterUtils.includeCurrencyInValue;
 
 public class RecentListAdapter extends RecyclerView.Adapter<RecentListAdapter.RecentItemViewHolder> {
 
@@ -54,7 +54,7 @@ public class RecentListAdapter extends RecyclerView.Adapter<RecentListAdapter.Re
         private final TextView recentDesc;
         private final TextView recentValue;
 
-        public RecentItemViewHolder(@NonNull View itemView) {
+        RecentItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
             recentTitle = itemView.findViewById(R.id.recent_tv_title);
@@ -63,7 +63,7 @@ public class RecentListAdapter extends RecyclerView.Adapter<RecentListAdapter.Re
             recentValue = itemView.findViewById(R.id.recent_tv_value);
         }
 
-        public void onBind(StatementListVo.StatementItem recentItem) {
+        void onBind(StatementListVo.StatementItem recentItem) {
 
             String formattedValue = includeCurrencyInValue(recentItem.getValue());
             String formattedDate = formatDateToBrazilian(recentItem.getDate());

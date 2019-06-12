@@ -8,9 +8,9 @@ import br.com.douglas.fukuhara.bank.R;
 import br.com.douglas.fukuhara.bank.home.Contract;
 import br.com.douglas.fukuhara.bank.network.vo.StatementListVo;
 
-import static br.com.douglas.fukuhara.bank.utils.FormaterUtils.formatAgencyWithMask;
-import static br.com.douglas.fukuhara.bank.utils.FormaterUtils.formatBankAccountAndAgency;
-import static br.com.douglas.fukuhara.bank.utils.FormaterUtils.includeCurrencyInValue;
+import static br.com.douglas.fukuhara.bank.utils.FormatterUtils.formatAgencyWithMask;
+import static br.com.douglas.fukuhara.bank.utils.FormatterUtils.formatBankAccountAndAgency;
+import static br.com.douglas.fukuhara.bank.utils.FormatterUtils.includeCurrencyInValue;
 
 public class HomePresenter implements Contract.HomePresenterInput {
 

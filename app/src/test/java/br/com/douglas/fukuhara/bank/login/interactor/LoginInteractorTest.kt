@@ -33,7 +33,7 @@ class LoginInteractorTest {
         const val VALID_PATTERN_PASSWORD = "P@s5"
         const val INVALID_PASSWORD_PATTERN_NO_CAPITAL = "p@s5"
         const val INVALID_PASSWORD_PATTERN_NO_SPECIAL = "Pas5"
-        const val INVALID_PASSWORD_PATTERN_NO_NUMBER = "P@ss"
+        const val INVALID_PASSWORD_PATTERN_NO_NUMBER = "P@$"
         const val INVALID_FORMATTED_CPF = "123.456.789-01"
         const val INVALID_PLAIN_CPF = "12345678901"
         const val INVALID_EMAIL_OR_CPF_USERNAME = "123456789@email"

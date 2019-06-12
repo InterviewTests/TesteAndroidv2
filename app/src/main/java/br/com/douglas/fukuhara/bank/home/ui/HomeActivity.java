@@ -27,7 +27,6 @@ public class HomeActivity extends AppCompatActivity implements Contract.HomeActi
     private TextView mUsername;
     private TextView mAccount;
     private TextView mBalance;
-    private ImageView mLogout;
     private TextView mRecentLabel;
     private TextView mRecentNoDataAvailable;
     private RecyclerView mRecyclerView;
@@ -65,13 +64,13 @@ public class HomeActivity extends AppCompatActivity implements Contract.HomeActi
         mUsername = findViewById(R.id.home_tv_username);
         mAccount = findViewById(R.id.home_tv_account);
         mBalance = findViewById(R.id.home_tv_balance);
-        mLogout = findViewById(R.id.home_btn_logout);
         mRecentLabel = findViewById(R.id.home_tv_recents_label);
         mRecentNoDataAvailable = findViewById(R.id.home_tv_no_content);
         mRecyclerView = findViewById(R.id.home_rv_recents_list);
         mProgressBar = findViewById(R.id.home_pg_load_rv);
 
-        mLogout.setOnClickListener(this::onLogoutClicked);
+        ImageView logout = findViewById(R.id.home_btn_logout);
+        logout.setOnClickListener(this::onLogoutClicked);
     }
 
     private void onLogoutClicked(View view) {

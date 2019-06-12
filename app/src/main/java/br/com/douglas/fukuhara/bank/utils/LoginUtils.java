@@ -2,7 +2,6 @@ package br.com.douglas.fukuhara.bank.utils;
 
 import android.content.Intent;
 
-import java.util.Locale;
 import java.util.regex.Pattern;
 
 import br.com.douglas.fukuhara.bank.network.vo.UserAccount;
@@ -25,7 +24,7 @@ public final class LoginUtils {
         // - at least one Capitol Letter : (?=.*[A-Z])
         // - at least one special char : (?=.*[+×÷=/_€£¥₩!@#$%^&*:;,?\|])
         // - at least one alphanumeric : (?=.*[0-9])
-        String regex = "(?=.*[A-Z])(?=.*[+×÷=/_€£¥₩!@#$%^&*:;,?\\|])(?=.*[0-9])[0-9a-zA-Z+×÷=/_€£¥₩!@#$%^&*:;,?\\|]+";
+        String regex = "(?=.*[A-Z])(?=.*[+×÷=/_€£¥₩!@#$%^&*:;,?\\|])(?=.*[0-9a-z])[0-9a-zA-Z+×÷=/_€£¥₩!@#$%^&*:;,?\\|]+";
 
         return Pattern.matches(regex, password);
     }
@@ -57,10 +56,6 @@ public final class LoginUtils {
         // calculate the checksum to validate this number
         String regex = "[\\.-]";
         String plainNumber = username.replaceAll(regex, "");
-
-        if (plainNumber.length() != CPF_LENGTH_FULL_FORM) {
-            return UsernameValidation.INVALID_CPF;
-        }
 
         String cpfWithoutDigits = plainNumber.substring(0, CPF_LENGTH_WITHOUT_DIGITS);
 
@@ -95,10 +90,6 @@ public final class LoginUtils {
         String regex = "^[a-z](?:[0-9a-z\\.\\-_])*?@[0-9a-z][0-9a-z-_]*(?:\\.[0-9a-z-_]+)*(?:\\.[0-9a-z]+)+$";
 
         return Pattern.matches(regex, username);
-    }
-
-    public static String formatLoginErrorMsg(String message, int code) {
-        return String.format(Locale.getDefault(), "%s (%d)", message, code);
     }
 
     public static void serializeUserAccountObj(UserAccount userAccount, Intent intent) {

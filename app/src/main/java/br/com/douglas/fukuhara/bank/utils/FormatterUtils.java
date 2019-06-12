@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public final class FormaterUtils {
+public final class FormatterUtils {
 
     private static String bigdecimalToCurrency(BigDecimal balance) {
         NumberFormat numberFormatter;
@@ -23,7 +23,7 @@ public final class FormaterUtils {
         return String.format("%s.%s-%s",
                 agency.substring(0, 2),
                 agency.substring(2, 8),
-                agency.substring(8, agency.length()));
+                agency.substring(8));
     }
 
     public static String includeCurrencyInValue(BigDecimal balance) {
@@ -40,7 +40,7 @@ public final class FormaterUtils {
 
     public static String formatDateToBrazilian(String dateToBeFormatted) {
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        Date data = null;
+        Date data;
         try {
             data = formato.parse(dateToBeFormatted);
             formato.applyPattern("dd/MM/yyyy");
@@ -49,5 +49,9 @@ public final class FormaterUtils {
             e.printStackTrace();
         }
         return dateToBeFormatted;
+    }
+
+    public static String formatLoginErrorMsg(String message, int code) {
+        return String.format(Locale.getDefault(), "%s (%d)", message, code);
     }
 }

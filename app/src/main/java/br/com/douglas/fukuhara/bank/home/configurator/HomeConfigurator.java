@@ -10,7 +10,7 @@ import br.com.douglas.fukuhara.bank.home.ui.HomeActivity;
 import br.com.douglas.fukuhara.bank.network.RetrofitImpl;
 
 public final class HomeConfigurator {
-    public static final void configure(HomeActivity activity) {
+    public static void configure(HomeActivity activity) {
 
         // Creates the Router and set a weak reference of the activity in it
         HomeRouter router = new HomeRouter();

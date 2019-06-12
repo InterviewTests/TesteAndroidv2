@@ -7,7 +7,7 @@ import br.com.douglas.fukuhara.bank.network.RestClient;
 import br.com.douglas.fukuhara.bank.network.vo.StatementListVo;
 import br.com.douglas.fukuhara.bank.network.vo.UserAccount;
 import br.com.douglas.fukuhara.bank.network.vo.UserError;
-import br.com.douglas.fukuhara.bank.utils.LoginUtils;
+import br.com.douglas.fukuhara.bank.utils.FormatterUtils;
 import io.reactivex.disposables.CompositeDisposable;
 
 import static br.com.douglas.fukuhara.bank.network.NetworkUtils.getObservableNetworkThread;
@@ -16,7 +16,7 @@ public class HomeInteractor implements Contract.HomeInteractorInput {
 
     private final CompositeDisposable mCompositeDisposable = new CompositeDisposable();
     private Contract.HomePresenterInput mOutput;
-    private RestClient mClient;
+    private final RestClient mClient;
     private UserAccount mUserAccount;
 
     public HomeInteractor(RestClient client) {
@@ -63,7 +63,7 @@ public class HomeInteractor implements Contract.HomeInteractorInput {
             int errorCode = userError.getCode();
 
             if (errorMsg != null && !errorMsg.isEmpty() && errorCode != 0) {
-                mOutput.showUserDataErrorMessage(LoginUtils.formatLoginErrorMsg(errorMsg, errorCode));
+                mOutput.showUserDataErrorMessage(FormatterUtils.formatLoginErrorMsg(errorMsg, errorCode));
                 return;
             }
         }

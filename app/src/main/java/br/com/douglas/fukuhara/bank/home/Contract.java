@@ -1,7 +1,6 @@
 package br.com.douglas.fukuhara.bank.home;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 
 import java.math.BigDecimal;
 import java.util.List;

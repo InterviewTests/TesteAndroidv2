@@ -29,10 +29,9 @@ public class LocalStorage implements Storage {
                         context,
                         EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
                         EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM);
-            } else {
-                mPreference = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
+                return;
             }
-            return;
         } catch (GeneralSecurityException e) {
             e.printStackTrace();
         } catch (IOException e) {
