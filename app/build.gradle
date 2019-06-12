@@ -12,6 +12,9 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "BASE_URL", "\"https://bank-app-test.herokuapp.com/\""
+        buildConfigField "long", "SALT_VALUE", "274942539972101411L"
+        buildConfigField "String", "PBE_PASS", "\"!qa2Ws3eD4%6RtYfGh\""
+        buildConfigField "String", "IV_SPEC", "\"1q2w3e4r5t6y7u8i\""
     }
     buildTypes {
         release {
