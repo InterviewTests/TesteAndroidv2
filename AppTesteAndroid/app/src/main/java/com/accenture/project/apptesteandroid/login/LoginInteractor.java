@@ -2,6 +2,8 @@ package com.accenture.project.apptesteandroid.login;
 
 import android.util.Log;
 
+import com.accenture.project.apptesteandroid.model.LoginRequest;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,6 +32,8 @@ public class LoginInteractor implements ILoginInteractor {
 
             //call api
 
+            LoginRequest loginRequest = new LoginRequest(user, password);
+            loginRepository.getLoginResponse(loginRequest);
 
             Log.d("LoginLog", "login: call api");
 
