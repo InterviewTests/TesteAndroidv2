@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AppTesteAndroid</string>
     <string name="button_label">Login</string>
+    <string name="edt_user">Usuário</string>
+    <string name="edt_password">Senha</string>
+    <string name="label_recentes">Recentes</string>
 </resources>
