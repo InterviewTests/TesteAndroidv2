@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".bankStatement.BankStatementActivity">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layout_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlue">
+
+        <TextView
+            android:id="@+id/tv_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:text=""
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_view_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="onCLickLogout"
+            app:srcCompat="@drawable/ic_logout" />
+
+        <TextView
+            android:id="@+id/tv_lbl_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:text="Conta"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_name" />
+
+        <TextView
+            android:id="@+id/tv_account_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="8dp"
+            android:text=""
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lbl_account" />
+
+        <TextView
+            android:id="@+id/tv_lbl_saldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:text="Saldo"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_account_number" />
+
+        <TextView
+            android:id="@+id/tv_lbl_sifrao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="8dp"
+            android:text="R$"
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lbl_saldo" />
+
+        <TextView
+            android:id="@+id/tv_saldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="8dp"
+            android:text=""
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_lbl_sifrao"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lbl_saldo" />
+
+        <TextView
+            android:id="@+id/tv_lbl_separator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="/"
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_account_number"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lbl_account" />
+
+        <TextView
+            android:id="@+id/tv_agency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text=""
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_lbl_separator"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lbl_account" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+        <TextView
+            android:id="@+id/tv_lbl_recentes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/label_recentes"
+            android:textSize="17sp"
+            android:visibility="gone"
+            android:layout_below="@+id/layout_account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_statement_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            android:layout_below="@+id/tv_lbl_recentes" />
+
+
+</RelativeLayout>
