@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/iv_main-logo"
+        android:layout_width="125dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/logo"
+        android:contentDescription="@string/mainLogoDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_user"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="105dp"
+        android:background="@drawable/ic_borda"
+        android:fontFamily="@font/helvetica_neue_med"
+        android:hint="@string/User"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:paddingStart="13dp"
+        android:paddingEnd="13dp"
+        android:textColorHint="@color/cinza_texto"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_main-logo"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="21dp"
+        android:background="@drawable/ic_borda"
+        android:fontFamily="@font/helvetica_neue_med"
+        android:hint="@string/Password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:paddingStart="13dp"
+        android:paddingEnd="13dp"
+        android:textColorHint="@color/cinza_texto"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_user"
+        tools:importantForAutofill="no"
+        tools:targetApi="o" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="202dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="33dp"
+        android:background="@drawable/ic_bg_btn_login"
+        android:fontFamily="@font/helvetica_neue_med"
+        android:text="@string/Login"
+        android:textAllCaps="false"
+        android:textColor="@color/branco"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
