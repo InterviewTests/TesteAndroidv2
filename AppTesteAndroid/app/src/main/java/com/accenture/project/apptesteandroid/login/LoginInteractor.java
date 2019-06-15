@@ -1,53 +1,83 @@
 package com.accenture.project.apptesteandroid.login;
 
+import android.content.Context;
 import android.util.Log;
 
+import com.accenture.project.apptesteandroid.model.ErrorMessages;
 import com.accenture.project.apptesteandroid.model.LoginRequest;
+import com.accenture.project.apptesteandroid.model.UserAccount;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 interface ILoginInteractor {
 
+    void fetchLastUserLogged();
+
     void login(String user, String password);
 
-    boolean validUser(String user);
+    void loginResponseError();
 
-    boolean validPassword(String password);
+    void loginResponseOk(UserAccount userAccount, String login);
+
 }
 
 public class LoginInteractor implements ILoginInteractor {
 
     private LoginRepository loginRepository;
+    public Context context;
+    public ILoginPresenter presenter;
+    public LoginRouter router;
 
     public LoginInteractor() {
-
         loginRepository = new LoginRepository();
     }
 
     @Override
     public void login(String user, String password) {
-
-        if (validUser(user) && validPassword(password)) {
-
-            //call api
-
-            LoginRequest loginRequest = new LoginRequest(user, password);
-            loginRepository.getLoginResponse(loginRequest);
-
-            Log.d("LoginLog", "login: call api");
-
+        if (!validUser(user)) {
+            presenter.presentMessage(ErrorMessages.USER_INVALID);
+        } else if (!validPassword(password)) {
+            presenter.presentMessage(ErrorMessages.PASSWORD_INVALID);
         } else {
-
-            //return message to user
-
-            Log.d("LoginLog", "login: return message to user");
+            LoginRequest loginRequest = new LoginRequest(user, password);
+            loginRepository.getLoginResponse(loginRequest, this);
         }
 
 
     }
 
     @Override
+    public void loginResponseError() {
+        presenter.presentMessage(ErrorMessages.ERROR_CONNECTION);
+    }
+
+    @Override
+    public void loginResponseOk(UserAccount userAccount, String user) {
+        if (userAccount != null) {
+
+            userAccount.setBalance(presenter.formatBalance(userAccount.getBalance()));
+            userAccount.setAgency(presenter.formatAccountNumber(userAccount.getAgency()));
+            Log.d("userAccount", "loginResponseOk: " + userAccount.getUserId());
+            router.callNextActivity(userAccount);
+            if (loginRepository.fetchLastUserLogged(context) != null) {
+                loginRepository.removeLastUserLogged(context);
+            }
+            loginRepository.insertLastUserLogged(user, context);
+            presenter.resetPasswordField();
+
+        }
+
+    }
+
+    @Override
+    public void fetchLastUserLogged() {
+        String lastUserLogged = loginRepository.fetchLastUserLogged(context);
+        if (lastUserLogged != null) {
+            presenter.presentLastUser(lastUserLogged);
+        }
+    }
+
     public boolean validUser(String user) {
 
         if (user != null && !user.isEmpty()) {
@@ -92,8 +122,6 @@ public class LoginInteractor implements ILoginInteractor {
         return false;
     }
 
-
-    @Override
     public boolean validPassword(String password) {
 
         if (password != null && !password.isEmpty()) {
