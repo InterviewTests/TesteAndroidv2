@@ -59,6 +59,8 @@ dependencies {
     implementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation "com.orhanobut:hawk:2.0.1"
+    implementation 'com.github.AnJiaoDe:StatusNavigationTransparent:V1.1.2'
 
     kapt "androidx.databinding:databinding-compiler:3.4.1"
 

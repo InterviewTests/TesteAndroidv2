@@ -1,9 +1,9 @@
 package com.accenture.santander.remote.service.login
 
+import com.accenture.santander.viewmodel.User
 import com.accenture.santander.entity.Auth
 import com.accenture.santander.remote.iservice.IUser
 import com.accenture.santander.remote.connect.URL
-import com.accenture.santander.viewmodel.UserViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -13,7 +13,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ServiceLogin : IServiceLogin {
 
     override fun login(
-        user: UserViewModel, success: (note: Response<Auth?>) -> Unit,
+        user: User,
+        success: (note: Response<Auth?>) -> Unit,
         failure: (throwable: Throwable) -> Unit
     ) {
         val retrofit = Retrofit.Builder()
@@ -21,7 +22,7 @@ class ServiceLogin : IServiceLogin {
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(IUser::class.java)
 
-        val call = retrofit.login(user)
+        val call = retrofit.login(user = user.login,password = user.password)
         call.enqueue(object : Callback<Auth?> {
             override fun onResponse(call: Call<Auth?>?, response: Response<Auth?>?) {
                 response?.let {

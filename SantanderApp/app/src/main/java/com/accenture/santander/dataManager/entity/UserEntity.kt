@@ -14,7 +14,7 @@ data class UserEntity(
     var iduser: Int = 0,
 
     @ColumnInfo(name = "NAME")
-    var name: Int = 0,
+    var name: String = "",
 
     @ColumnInfo(name = "BANKACCOUNT")
     var bankAccount: String = "",

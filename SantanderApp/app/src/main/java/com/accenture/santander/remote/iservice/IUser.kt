@@ -6,7 +6,7 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface IUser {
-    @Headers("Content-Type: application/json")
+    @FormUrlEncoded
     @POST("login")
-    fun login(@Body user: UserViewModel): Call<Auth>
+    fun login(@Field("user") user: String, @Field("password") password: String): Call<Auth>
 }

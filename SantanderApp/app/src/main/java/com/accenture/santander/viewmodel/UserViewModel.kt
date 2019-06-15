@@ -1,6 +1,7 @@
 package com.accenture.santander.viewmodel
 
+import androidx.lifecycle.ViewModel
+
 data class UserViewModel(
-    var login: String = "",
-    var password: String = ""
-)
+    val user: User = User()
+) : ViewModel()

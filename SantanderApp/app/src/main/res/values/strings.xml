@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Santander</string>
+
+    <string name="assets_logo">Logo.png</string>
+    <string name="assets_logout">logout 2.png</string>
+
+    <string name="login_edit_hint_login">User</string>
+    <string name="login_edit_hint_passowrd">Password</string>
+    <string name="login_btn_hint_login">Login</string>
+
+    <string name="fail_connection">Falha na conexão</string>
+    <string name="fail_load_image">Falha ao carregar a imagem</string>
+    <string name="fail_request">serviço fora do ar</string>
+
+    <string name="invalide_login">O login deve ser o e-mail ou o cpf</string>
+    <string name="invalide_password">O password deve contrar um numero, um caracter especial e uma letra maiuscula
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

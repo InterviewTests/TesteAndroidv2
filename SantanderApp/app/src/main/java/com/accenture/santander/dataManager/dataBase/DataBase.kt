@@ -7,7 +7,8 @@ import com.accenture.santander.dataManager.entity.UserEntity
 
 @Database(entities = arrayOf(
         UserEntity::class),
-        version = 1, exportSchema = false)
+        version = 1,
+    exportSchema = false)
 abstract class DataBase : RoomDatabase() {
 
     companion object {
