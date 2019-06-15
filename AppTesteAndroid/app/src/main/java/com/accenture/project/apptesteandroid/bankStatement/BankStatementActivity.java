@@ -36,7 +36,7 @@ public class BankStatementActivity extends AppCompatActivity implements IBankSta
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_statement);
+        setContentView(R.layout.activity_bank_statement);
 
 
         initViews();
