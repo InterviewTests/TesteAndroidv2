@@ -1,26 +1,15 @@
 package com.accenture.project.apptesteandroid.model;
 
-public class UserAccount {
+import java.io.Serializable;
+
+public class UserAccount implements Serializable {
 
     private int userId;
-    private String login;
     private String name;
     private String bankAccount;
     private String agency;
     private String balance;
 
-
-    public UserAccount() {
-    }
-
-    public UserAccount(int userId, String login, String name, String bankAccount, String agency, String balance) {
-        this.userId = userId;
-        this.login = login;
-        this.name = name;
-        this.bankAccount = bankAccount;
-        this.agency = agency;
-        this.balance = balance;
-    }
 
     public int getUserId() {
         return userId;
@@ -28,14 +17,6 @@ public class UserAccount {
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getName() {

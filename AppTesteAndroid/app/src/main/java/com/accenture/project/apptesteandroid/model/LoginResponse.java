@@ -1,7 +1,8 @@
 package com.accenture.project.apptesteandroid.model;
 
-import com.accenture.project.apptesteandroid.model.UserAccount;
-
+/**
+  Recebe os dados convertidos por Jackson configurados no Retrofit, após a chamada da API
+ */
 public class LoginResponse {
 
     private UserAccount userAccount;
