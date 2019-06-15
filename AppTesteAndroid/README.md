@@ -3,8 +3,8 @@ sendo assim, divide os papéis e responsabilidades em classes, facilitando a lei
 do código e tornando o aplicativo testável.
 
 Para consumir a api disponibilizada, foi utilizado a lib http Retrofit da Square, que considero uma lib leve,
-muito utilizada pelos desenvolvedores e fácil de trabalhar, inserir interceptors e modificar requisições como headers,
-time out e entre outros.
+muito utilizada pelos desenvolvedores, fácil de trabalhar, inserir interceptors e modificar requisições como headers,
+timeout e entre outros.
 
 O Aplicativo salva localmente o login do último usuário logado no aplicativo, por ser uma pequena quantidade
 de dados, optei pela SharedPreferences, pois não vi necessidade de criar um database (SQLite) para isso.
