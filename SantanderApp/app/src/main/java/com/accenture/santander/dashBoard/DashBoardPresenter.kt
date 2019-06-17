@@ -6,12 +6,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.accenture.santander.R
+import com.accenture.santander.entity.Error
 import com.accenture.santander.interector.dataManager.entity.UserEntity
 import com.accenture.santander.entity.ListStatement
 import com.accenture.santander.entity.Statement
 import com.accenture.santander.utils.DateTime
 import com.accenture.santander.viewmodel.Account
-import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
 import javax.inject.Inject
 
@@ -46,7 +46,7 @@ class DashBoardPresenter(
             iDashBoardPresenterOutput.loadLogout(drawable)
             ims?.close()
         } catch (ex: IOException) {
-            Toast.makeText(activity, R.string.fail_load_image, Toast.LENGTH_LONG).show()
+            iDashBoardPresenterOutput.failImageLogout()
         }
     }
 

@@ -7,18 +7,29 @@ import org.mockito.MockitoAnnotations
 import org.robolectric.Robolectric
 import android.view.View
 import com.accenture.santander.dashBoard.DashBoardContracts
+import com.accenture.santander.dashBoard.DashBoardInteractor
 import com.accenture.santander.dashBoard.DashBoardPresenter
+import com.accenture.santander.entity.Error
+import com.accenture.santander.entity.ListStatement
 import com.accenture.santander.index.IndexActivity
+import org.junit.Assert
 import org.junit.Before
 import org.mockito.BDDMockito
+import org.mockito.Mockito
 import org.robolectric.RobolectricTestRunner
+import java.util.*
+import kotlin.collections.ArrayList
 
 @RunWith(RobolectricTestRunner::class)
-class TestDashBoardPresenter{
+class TestDashBoardPresenter {
 
-    lateinit var activity: IndexActivity
+    companion object {
+        val TIME_OUT = 10000L
+    }
 
     lateinit var dashBoardPresenter: DashBoardPresenter
+
+    lateinit var dashBoardInteractor: DashBoardInteractor
 
     @Mock
     lateinit var iDashBoardInteractorInput: DashBoardContracts.DashBoardInteractorInput
@@ -31,29 +42,39 @@ class TestDashBoardPresenter{
 
     @Before
     fun setup() {
-        this.activity = Robolectric.setupActivity(IndexActivity::class.java)
+        val activity = Robolectric.setupActivity(IndexActivity::class.java)
         MockitoAnnotations.initMocks(this)
         dashBoardPresenter = DashBoardPresenter(activity, View(activity), iDashBoardPresenterOutput)
-        iDashBoardInteractorOutput = dashBoardPresenter
         dashBoardPresenter.iDashBoardInteractorInput = iDashBoardInteractorInput
+        dashBoardInteractor = DashBoardInteractor(activity, iDashBoardInteractorOutput)
+        Assert.assertNotNull(dashBoardPresenter)
+        Assert.assertNotNull(dashBoardInteractor)
     }
 
     @Test
-    fun delete() {
-        BDDMockito.given(dashBoardPresenter.iDashBoardInteractorInput.deletaAccount()).will {}
+    fun loadStatements() {
+        dashBoardPresenter.loadStatements()
+        Mockito.verify(iDashBoardInteractorInput, Mockito.times(1)).searchStatements()
     }
 
     @Test
-    fun searchData() {
-        BDDMockito.given(dashBoardPresenter.iDashBoardInteractorInput.searchData()).will {
-            iDashBoardInteractorOutput.resultData(null)
-        }
+    fun resultStatements() {
+        dashBoardPresenter.resultStatements(ListStatement(ArrayList(), Error()))
+        Mockito.verify(iDashBoardPresenterOutput, Mockito.times(1)).goneRefrash()
     }
 
     @Test
-    fun registerUser() {
-        BDDMockito.given(dashBoardPresenter.iDashBoardInteractorInput.searchStatements()).will {
-            iDashBoardInteractorOutput.resultStatements(null)
-        }
+    fun searchStatements() {
+        dashBoardInteractor.searchStatements()
+
+        Thread.sleep(TIME_OUT)
+        Thread(Runnable {
+            Mockito.verify(
+                iDashBoardInteractorOutput,
+                Mockito.times(1))
+                .resultStatements(
+                    ListStatement(statementList = arrayListOf(), error = Error())
+                )
+        }).start()
     }
 }

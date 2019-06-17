@@ -8,8 +8,8 @@ import android.widget.Toast
 import com.accenture.santander.R
 import com.accenture.santander.viewmodel.User
 import com.accenture.santander.entity.Auth
+import com.accenture.santander.entity.Error
 import com.accenture.santander.utils.Validate
-import com.google.android.material.snackbar.Snackbar
 import java.io.IOException
 import javax.inject.Inject
 
@@ -40,19 +40,16 @@ class LoginPresenter(
             ims?.close()
             iLoginPresenterOutput.loadLogo(drawable)
         } catch (ex: IOException) {
-            Toast.makeText(context, R.string.fail_load_image, Toast.LENGTH_LONG).show()
+            iLoginPresenterOutput.failLoadImage()
         }
     }
 
     override fun login(user: User) {
 
-        //é necessario tirar o "!" para realizar o teste, pois o login que foi fornecido para os teste não é um e-mail nem um cpf
-        if (Validate.validateLogin(user.login)) {
+        if (!Validate.validateLogin(user.login)) {
             iLoginPresenterOutput.invalideLogin()
             return
         }
-
-        assert(Validate.validatePassword(user.password))
 
         if (!Validate.validatePassword(user.password)) {
             iLoginPresenterOutput.invalidePassword()
@@ -63,16 +60,7 @@ class LoginPresenter(
         iLoginInteractorInput.login(user)
     }
 
-    override fun sucessLogin(auth: Auth?, user: User) {
-        if (auth == null) {
-            failNetWork()
-        } else {
-            if (auth.userAccount.userId > 0) {
-                iLoginInteractorInput.registerUser(auth = auth.userAccount, user = user)
-            } else {
-                iLoginPresenterOutput.errorService(auth.error.message)
-            }
-        }
+    override fun sucessLogin() {
         iLoginPresenterOutput.goneProgress()
     }
 
@@ -104,5 +92,10 @@ class LoginPresenter(
         user.login = login
         user.password = password
         iLoginPresenterOutput.resultData(user)
+    }
+
+    override fun errorMensage(mensage: String?) {
+        iLoginPresenterOutput.goneProgress()
+        iLoginPresenterOutput.errorService(mensage)
     }
 }

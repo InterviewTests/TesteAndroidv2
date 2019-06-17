@@ -3,8 +3,10 @@ package com.accenture.santander.dashBoard
 import android.app.Activity
 import android.graphics.drawable.Drawable
 import androidx.lifecycle.LiveData
+import com.accenture.santander.entity.Error
 import com.accenture.santander.interector.dataManager.entity.UserEntity
 import com.accenture.santander.entity.ListStatement
+import com.accenture.santander.login.LoginContracts
 import com.accenture.santander.viewmodel.Account
 
 class DashBoardContracts {
@@ -39,6 +41,7 @@ class DashBoardContracts {
         fun visibleRefrash()
 
         fun mensageLogout()
+        fun failImageLogout()
         fun errorStatements()
         fun failNetWork()
         fun failRequest()

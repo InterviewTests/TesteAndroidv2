@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class DashBoardInteractor(
     private val activity: Activity,
-    private val iDashBoardInteractorOutput: DashBoardContracts.DashBoardInteractorOutput
+    private var iDashBoardInteractorOutput: DashBoardContracts.DashBoardInteractorOutput
 ) : DashBoardContracts.DashBoardInteractorInput {
 
 
@@ -44,8 +44,6 @@ class DashBoardInteractor(
             iUserRepository.findDesc()?.let {
                 iServiceStatement.statement(it.id,
                     success = {
-                        assert(it.code() == 200)
-
                         if (it.code() == 200) {
                             iDashBoardInteractorOutput.resultStatements(it.body())
                         } else {
@@ -68,5 +66,4 @@ class DashBoardInteractor(
             iUserRepository.delete(user)
         }
     }
-
 }

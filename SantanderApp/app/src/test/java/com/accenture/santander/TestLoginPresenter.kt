@@ -2,33 +2,41 @@ package com.accenture.santander
 
 import com.accenture.santander.login.LoginContracts
 import com.accenture.santander.login.LoginInteractor
-import org.junit.Test
 import org.junit.Assert.*
 import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
 import org.robolectric.annotation.Config
 import org.robolectric.Robolectric
 import android.app.Activity
 import android.view.View
+import androidx.lifecycle.Observer
 import com.accenture.santander.entity.Auth
+import com.accenture.santander.entity.Error
 import com.accenture.santander.entity.UserAccount
 import com.accenture.santander.index.IndexActivity
 import com.accenture.santander.interector.dataManager.entity.UserEntity
 import com.accenture.santander.login.LoginPresenter
 import com.accenture.santander.viewmodel.User
-import org.junit.Before
-import org.junit.BeforeClass
-import org.junit.Rule
-import org.mockito.BDDMockito
+import org.junit.*
+import org.mockito.*
+import org.mockito.Mockito.*
 import org.robolectric.RobolectricTestRunner
+import java.util.*
 
 @RunWith(RobolectricTestRunner::class)
 class TestLoginPresenter {
 
+    companion object{
+        val TIME_OUT = 10000L
+    }
+
     lateinit var activity: IndexActivity
 
     lateinit var loginPresenter: LoginPresenter
+
+    lateinit var loginInteractor: LoginInteractor
+
+    @Captor
+    private lateinit var observable: ArgumentCaptor<Observer<List<LoginContracts.LoginInteractorOutput>>>
 
     @Mock
     lateinit var iLoginInteractorInput: LoginContracts.LoginInteractorInput
@@ -43,52 +51,40 @@ class TestLoginPresenter {
     fun setup() {
         this.activity = Robolectric.setupActivity(IndexActivity::class.java)
         MockitoAnnotations.initMocks(this)
+
         loginPresenter = LoginPresenter(activity, View(activity), iLoginPresenterOutput)
-        iLoginInteractorOutput = loginPresenter
         loginPresenter.iLoginInteractorInput = iLoginInteractorInput
+        loginInteractor = LoginInteractor(activity, iLoginInteractorOutput)
+        assertNotNull(loginPresenter)
+        assertNotNull(loginInteractor)
     }
 
     @Test
-    fun login() {
-        var auth: Auth? = null
-
+    fun loginValidate() {
         val user = User()
-        user.login = ""
-        user.password = ""
-
-        BDDMockito.given(loginPresenter.iLoginInteractorInput.login(user = user)).will {
-            iLoginInteractorOutput.sucessLogin(auth, user)
-        }
+        user.login = "test_user@hotmail.com"
+        user.password = "Test@"
+        loginPresenter.login(user = user)
+        verify(iLoginInteractorInput, times(1)).login(user)
     }
 
     @Test
     fun searchData() {
-        val user = User()
-        user.login = ""
-        user.password = ""
-        BDDMockito.given(loginPresenter.iLoginInteractorInput.searchData()).will {
-            iLoginInteractorOutput.resultData("", "")
-        }
+        loginPresenter.searchData()
+        verify(iLoginInteractorInput, times(1)).searchData()
     }
 
     @Test
-    fun registerUser() {
+    fun loginService() {
         val user = User()
-        user.login = ""
-        user.password = ""
+        user.login = "test_user@hotmail.com"
+        user.password = "Test@"
 
-        val userAccount = UserAccount(
-            userId = 1,
-            name = "teste",
-            bankAccount = "111111111",
-            agency = "1111",
-            balance = 3.55
-        )
+        loginInteractor.login(user)
 
-        BDDMockito.given(
-            loginPresenter.iLoginInteractorInput.registerUser(auth = userAccount, user = user)
-        ).will {
-            iLoginInteractorOutput.startLogged()
-        }
+        Thread.sleep(TIME_OUT)
+        Thread(Runnable {
+            verify(iLoginInteractorOutput, times(1)).sucessLogin()
+        }).start()
     }
 }

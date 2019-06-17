@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class LoginInteractor(
     private val activity: Activity,
-    private val iLoginInteractorOutput: LoginContracts.LoginInteractorOutput
+    var iLoginInteractorOutput: LoginContracts.LoginInteractorOutput
 ) : LoginContracts.LoginInteractorInput {
 
     @Inject
@@ -43,7 +43,17 @@ class LoginInteractor(
             iServiceLogin.login(user = user,
                 success = {
                     if (it.code() == 200) {
-                        iLoginInteractorOutput.sucessLogin(auth = it.body(), user = user)
+                        val auth = it.body()
+                        if (auth == null) {
+                            iLoginInteractorOutput.failNetWork()
+                        } else {
+                            if (auth.userAccount.userId > 0) {
+                                registerUser(auth = auth.userAccount, user = user)
+                                iLoginInteractorOutput.sucessLogin()
+                            } else {
+                                iLoginInteractorOutput.errorMensage(auth.error.message)
+                            }
+                        }
                     } else {
                         iLoginInteractorOutput.failResquest(it.code())
                     }

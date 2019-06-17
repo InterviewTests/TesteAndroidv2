@@ -8,8 +8,8 @@ object Validate {
     }
 
     fun validatePassword(password: String): Boolean {
-        return Regex("[:upper:]").containsMatchIn(password) &&
-                Regex("[:punct:]").containsMatchIn(password) &&
-                Regex("[:alnum:]").containsMatchIn(password)
+        return Regex("[A-Z]").containsMatchIn(password) &&
+                Regex("[!\"\\#\$%&'()*+,\\-./:;<=>?@\\[\\\\\\]^_`{|}~]").containsMatchIn(password) &&
+                Regex("[a-zA-Z0-9]").containsMatchIn(password)
     }
 }

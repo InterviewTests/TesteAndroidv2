@@ -1,5 +1,7 @@
 package com.accenture.santander.interector.remote.service.statement
 
+import com.accenture.santander.entity.Auth
+import com.accenture.santander.entity.Error
 import com.accenture.santander.entity.ListStatement
 import com.accenture.santander.interector.remote.iservice.IUser
 import com.accenture.santander.interector.remote.connect.URL
@@ -13,7 +15,7 @@ class ServiceStatement : IServiceStatement {
 
     override fun statement(
         idUser: Int,
-        success: (note: Response<ListStatement?>) -> Unit,
+        success: (listStatement: Response<ListStatement?>) -> Unit,
         failure: (throwable: Throwable) -> Unit
     ) {
         val retrofit = Retrofit.Builder()
@@ -23,16 +25,13 @@ class ServiceStatement : IServiceStatement {
 
         val call = retrofit.statements(idUser.toString())
         call.enqueue(object : Callback<ListStatement?> {
-            override fun onResponse(
-                call: Call<ListStatement?>,
-                response: Response<ListStatement?>
-            ) {
-                response.let {
+            override fun onResponse(call: Call<ListStatement?>?, response: Response<ListStatement?>?) {
+                response?.let {
                     success.invoke(it)
                 }
             }
 
-            override fun onFailure(call: Call<ListStatement?>, t: Throwable) {
+            override fun onFailure(call: Call<ListStatement?>?, t: Throwable) {
                 failure.invoke(t)
             }
         })

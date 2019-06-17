@@ -143,18 +143,22 @@ class DashBoardFragment : Fragment(), DashBoardContracts.DashBoardPresenterOutpu
     }
 
     override fun errorStatements() {
-        Snackbar.make(view!!, R.string.fail_connection, Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.root, R.string.fail_connection, Snackbar.LENGTH_LONG).show()
     }
 
     override fun errorService(mensage: String?) {
-        Snackbar.make(view!!, mensage ?: activity!!.getText(R.string.fail_result_request), Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.root, mensage ?: activity!!.getText(R.string.fail_result_request), Snackbar.LENGTH_LONG).show()
     }
 
     override fun failRequest() {
-        Snackbar.make(view!!, R.string.fail_request, Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.root, R.string.fail_request, Snackbar.LENGTH_LONG).show()
     }
 
     override fun failNetWork() {
-        Snackbar.make(view!!, R.string.fail_connection, Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.root, R.string.fail_connection, Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun failImageLogout() {
+        Toast.makeText(activity, R.string.fail_load_image, Toast.LENGTH_LONG).show()
     }
 }
