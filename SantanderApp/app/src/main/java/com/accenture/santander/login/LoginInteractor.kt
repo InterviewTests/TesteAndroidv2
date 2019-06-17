@@ -15,7 +15,8 @@ import javax.inject.Inject
 
 class LoginInteractor(
     private val activity: Activity,
-    var iLoginInteractorOutput: LoginContracts.LoginInteractorOutput
+    private val iLoginInteractorOutput: LoginContracts.LoginInteractorOutput,
+    private val iServiceLogin: IServiceLogin
 ) : LoginContracts.LoginInteractorInput {
 
     @Inject
@@ -26,9 +27,6 @@ class LoginInteractor(
 
     @Inject
     lateinit var iStoragManager: IStoragManager
-
-    @Inject
-    lateinit var iServiceLogin: IServiceLogin
 
     init {
         DaggerLoginComponents

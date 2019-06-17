@@ -6,6 +6,8 @@ import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 import org.robolectric.Robolectric
 import android.view.View
+import com.accenture.santander.ServiceTest.TestServiceLogin
+import com.accenture.santander.ServiceTest.TestServiceStatement
 import com.accenture.santander.dashBoard.DashBoardContracts
 import com.accenture.santander.dashBoard.DashBoardInteractor
 import com.accenture.santander.dashBoard.DashBoardPresenter
@@ -42,7 +44,7 @@ class TestDashBoardPresenter {
         MockitoAnnotations.initMocks(this)
         dashBoardPresenter = DashBoardPresenter(activity, View(activity), iDashBoardPresenterOutput)
         dashBoardPresenter.iDashBoardInteractorInput = iDashBoardInteractorInput
-        dashBoardInteractor = DashBoardInteractor(activity, iDashBoardInteractorOutput)
+        dashBoardInteractor = DashBoardInteractor(activity, iDashBoardInteractorOutput, TestServiceStatement())
         Assert.assertNotNull(dashBoardPresenter)
         Assert.assertNotNull(dashBoardInteractor)
     }
@@ -67,7 +69,7 @@ class TestDashBoardPresenter {
             iDashBoardInteractorOutput,
             Mockito.times(1)
         ).resultStatements(
-                ListStatement(statementList = arrayListOf(), error = Error())
-            )
+            ListStatement(statementList = arrayListOf(), error = Error())
+        )
     }
 }

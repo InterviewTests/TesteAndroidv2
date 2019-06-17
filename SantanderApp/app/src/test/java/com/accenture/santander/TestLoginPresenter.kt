@@ -9,6 +9,7 @@ import org.robolectric.Robolectric
 import android.app.Activity
 import android.view.View
 import androidx.lifecycle.Observer
+import com.accenture.santander.ServiceTest.TestServiceLogin
 import com.accenture.santander.entity.Auth
 import com.accenture.santander.entity.Error
 import com.accenture.santander.entity.UserAccount
@@ -50,7 +51,7 @@ class TestLoginPresenter {
 
         loginPresenter = LoginPresenter(activity, View(activity), iLoginPresenterOutput)
         loginPresenter.iLoginInteractorInput = iLoginInteractorInput
-        loginInteractor = LoginInteractor(activity, iLoginInteractorOutput)
+        loginInteractor = LoginInteractor(activity, iLoginInteractorOutput, TestServiceLogin())
         assertNotNull(loginPresenter)
         assertNotNull(loginInteractor)
     }

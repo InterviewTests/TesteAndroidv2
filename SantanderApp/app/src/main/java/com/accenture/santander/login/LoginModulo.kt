@@ -47,7 +47,7 @@ class LoginModulo(
 
     @Provides
     fun provideLoginInteractorInput(): LoginContracts.LoginInteractorInput {
-        return LoginInteractor(context!!, loginPresenter!!)
+        return LoginInteractor(context!!, loginPresenter!!,ServiceLogin())
     }
 
     @Provides

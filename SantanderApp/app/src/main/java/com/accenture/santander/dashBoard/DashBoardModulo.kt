@@ -49,7 +49,7 @@ class DashBoardModulo(
 
     @Provides
     fun provideDashBoardInteractorInput(): DashBoardContracts.DashBoardInteractorInput {
-        return DashBoardInteractor(context!!, dashBoardPresenter!!)
+        return DashBoardInteractor(context!!, dashBoardPresenter!!, ServiceStatement())
     }
 
     @Provides

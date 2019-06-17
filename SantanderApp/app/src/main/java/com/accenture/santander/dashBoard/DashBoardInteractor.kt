@@ -11,7 +11,8 @@ import javax.inject.Inject
 
 class DashBoardInteractor(
     private val activity: Activity,
-    private var iDashBoardInteractorOutput: DashBoardContracts.DashBoardInteractorOutput
+    private val iDashBoardInteractorOutput: DashBoardContracts.DashBoardInteractorOutput,
+    private val iServiceStatement: IServiceStatement
 ) : DashBoardContracts.DashBoardInteractorInput {
 
 
@@ -23,9 +24,6 @@ class DashBoardInteractor(
 
     @Inject
     lateinit var iStoragManager: IStoragManager
-
-    @Inject
-    lateinit var iServiceStatement: IServiceStatement
 
     init {
         DaggerDashBoardComponents
