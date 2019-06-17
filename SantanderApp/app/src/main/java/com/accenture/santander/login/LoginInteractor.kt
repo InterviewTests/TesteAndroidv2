@@ -1,40 +1,48 @@
 package com.accenture.santander.login
 
-import android.content.Context
+import android.app.Activity
 import com.accenture.santander.viewmodel.User
-import com.accenture.santander.dataManager.Storag.StoragManager
-import com.accenture.santander.dataManager.entity.UserEntity
-import com.accenture.santander.dataManager.repository.deviceRepository.IUserRepository
-import com.accenture.santander.dataManager.repository.deviceRepository.UserRepository
+import com.accenture.santander.interector.dataManager.storag.StoragManager
+import com.accenture.santander.interector.dataManager.entity.UserEntity
+import com.accenture.santander.interector.dataManager.repository.deviceRepository.IUserRepository
+import com.accenture.santander.interector.dataManager.storag.IStoragManager
 import com.accenture.santander.entity.UserAccount
-import com.accenture.santander.remote.service.login.IServiceLogin
-import com.accenture.santander.remote.service.login.ServiceLogin
-import com.accenture.santander.utils.Connect
+import com.accenture.santander.interector.remote.service.login.IServiceLogin
+import com.accenture.santander.interector.remote.service.Connect
+import com.accenture.santander.interector.remote.service.IConnect
+import javax.inject.Inject
 
-import org.junit.Assert.*
-import org.junit.Test
 
 class LoginInteractor(
-    private val context: Context,
+    private val activity: Activity,
     private val iLoginInteractorOutput: LoginContracts.LoginInteractorOutput
 ) : LoginContracts.LoginInteractorInput {
 
-    private val iUserRepository: IUserRepository = UserRepository(context)
-    private val storagManager: StoragManager = StoragManager(context)
-    private val iServiceLogin: IServiceLogin = ServiceLogin()
+    @Inject
+    lateinit var iConnect: IConnect
 
-    @Test
+    @Inject
+    lateinit var iUserRepository: IUserRepository
+
+    @Inject
+    lateinit var iStoragManager: IStoragManager
+
+    @Inject
+    lateinit var iServiceLogin: IServiceLogin
+
+    init {
+        DaggerLoginComponents
+            .builder()
+            .loginModulo(LoginModulo(context = activity, loginInteractor = this))
+            .build()
+            .inject(this)
+    }
+
     override fun login(user: User) {
-
-        assert(Connect.verifyConnection(context))
-
-        if (Connect.verifyConnection(context)) {
+        if (iConnect.verifyConnection()) {
             iServiceLogin.login(user = user,
                 success = {
-                    assert(it.code() == 200)
-
                     if (it.code() == 200) {
-                        assertNotNull(it.body())
                         iLoginInteractorOutput.sucessLogin(auth = it.body(), user = user)
                     } else {
                         iLoginInteractorOutput.failResquest(it.code())
@@ -48,41 +56,24 @@ class LoginInteractor(
         }
     }
 
-    @Test
     override fun registerUser(auth: UserAccount, user: User) {
-        val userEntity = iUserRepository.findViewById(1)
+        val userEntity = iUserRepository.findDesc()
 
         if (userEntity != null) {
-            userEntity.iduser = auth.userId
-            userEntity.name = auth.name
-            userEntity.bankAccount = auth.bankAccount
-            userEntity.agency = auth.agency
-            userEntity.balance = auth.balance
-            iUserRepository.update(userEntity)
+            iUserRepository.update(userEntity.mapper(auth))
         } else {
             iUserRepository.insert(
-                UserEntity(
-                    id = 1,
-                    iduser = auth.userId,
-                    name = auth.name,
-                    bankAccount = auth.bankAccount,
-                    agency = auth.agency,
-                    balance = auth.balance
-                )
+                UserEntity().mapper(auth)
             )
         }
 
-        storagManager.setPreferences(StoragManager.LOGIN, user.login)
-        assertNotNull(storagManager.getPreferences(StoragManager.LOGIN))
-        assert(!storagManager.getPreferences(StoragManager.LOGIN).equals(""))
+        iStoragManager.setPreferences(StoragManager.LOGIN, user.login)
 
         iLoginInteractorOutput.startLogged()
     }
 
     override fun searchData() {
-        val login = storagManager.getPreferences(StoragManager.LOGIN)
-        assert(!login.equals(""))
-
+        val login = iStoragManager.getPreferences(StoragManager.LOGIN)
         iLoginInteractorOutput.resultData(login, "")
     }
 }

@@ -1,5 +1,6 @@
 package com.accenture.santander.login
 
+import android.app.Activity
 import android.graphics.drawable.Drawable
 import com.accenture.santander.viewmodel.User
 import com.accenture.santander.entity.Auth
@@ -8,7 +9,7 @@ import com.accenture.santander.entity.UserAccount
 class LoginContracts {
 
     interface LoginPresenterInput {
-        fun searchLogo()
+        fun searchLogo(context: Activity)
         fun searchData()
         fun login(user: User)
     }
@@ -21,9 +22,16 @@ class LoginContracts {
 
     interface LoginPresenterOutput {
         fun loadLogo(drawable: Drawable)
-        fun invalideLogin(mensage: String)
-        fun invalidePassword(mensage: String)
+        fun invalideLogin()
+        fun invalidePassword()
         fun resultData(user: User)
+        fun goneProgress()
+        fun visibleProgress()
+
+        fun errorLogin()
+        fun failNetWork()
+        fun failRequest()
+        fun errorService(mensage: String?)
     }
 
     interface LoginInteractorOutput {

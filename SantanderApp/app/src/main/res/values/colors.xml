@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">@android:color/white</color>
     <color name="colorAccent">@android:color/black</color>
     <color name="colorHintText">#A8B4C4</color>
+    <color name="colorHintTextDark">#485465</color>
+    <color name="backgroundDashBoard">#FEFEFE</color>
 </resources>

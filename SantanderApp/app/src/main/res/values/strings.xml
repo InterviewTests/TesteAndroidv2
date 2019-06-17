@@ -7,15 +7,21 @@
     <string name="login_edit_hint_login">User</string>
     <string name="login_edit_hint_passowrd">Password</string>
     <string name="login_btn_hint_login">Login</string>
+    <string name="login_image_description">Logo</string>
+
+    <string name="dash_board_text_hint_account">Conta</string>
+    <string name="dash_board_text_hint_cash">Saldo</string>
+    <string name="dash_board_image_description">Logout</string>
+
+    <string name="item_statement_header_text_hint_recents">Recentes</string>
 
     <string name="fail_connection">Falha na conexão</string>
     <string name="fail_load_image">Falha ao carregar a imagem</string>
     <string name="fail_request">serviço fora do ar</string>
+    <string name="fail_result_request">Falha na resposta do servidor</string>
+    <string name="logout_mensage">Realizando loggof...</string>
 
-    <string name="invalide_login">O login deve ser o e-mail ou o cpf</string>
+    <string name="invalide_login">O login deve ser o e-mail ou o cpf valido</string>
     <string name="invalide_password">O password deve contrar um numero, um caracter especial e uma letra maiuscula
     </string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

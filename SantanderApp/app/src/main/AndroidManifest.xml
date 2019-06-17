@@ -13,7 +13,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:exported="false"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".index.IndexActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
