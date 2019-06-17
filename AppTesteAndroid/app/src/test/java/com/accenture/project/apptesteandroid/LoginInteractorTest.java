@@ -5,6 +5,9 @@ import com.accenture.project.apptesteandroid.login.LoginInteractor;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.hamcrest.core.Is.is;
+
+
 public class LoginInteractorTest {
 
     @Test
@@ -17,12 +20,14 @@ public class LoginInteractorTest {
         String senha = "7878";
 
         //When
-        boolean result = loginInteractor.validPassword(senha);
+        boolean actualPassword = loginInteractor.validPassword(senha);
 
 
         //Then
-        Assert.assertFalse("Assert must be false because the password must have one special " +
-                "character, one in Upper Case and an alphanumeric", result);
+        Assert.assertThat(actualPassword, is(false));
+
+        //actualPassword must be false because the password must have one special
+        //character, one in Upper Case and an alphanumeric
     }
 
     @Test
@@ -35,11 +40,13 @@ public class LoginInteractorTest {
         String senha = "abcdepoop";
 
         //When
-        boolean result = loginInteractor.validPassword(senha);
+        boolean actualPassword = loginInteractor.validPassword(senha);
 
         //Then
-        Assert.assertFalse("Assert must be false because the password must have one special " +
-                "character, one in Upper Case and an alphanumeric", result);
+        Assert.assertThat(actualPassword, is(false));
+
+        //actualPassword must be false because the password must have one special
+        // character, one in Upper Case and an alphanumeric
     }
 
     @Test
@@ -52,12 +59,15 @@ public class LoginInteractorTest {
         String senha = "#8aad";
 
         //When
-        boolean result = loginInteractor.validPassword(senha);
+        boolean actualPassword = loginInteractor.validPassword(senha);
 
 
          //Then
-        Assert.assertFalse("Assert must be false because the password must have one special " +
-                "character, one in Upper Case and an alphanumeric", result);
+        Assert.assertThat(actualPassword, is(false));
+
+        //actualPassword must be false because the password must have one special
+        // character, one in Upper Case and an alphanumeric
+
     }
 
     @Test
@@ -70,11 +80,13 @@ public class LoginInteractorTest {
 
         //When
         String senha = "#E789s";
-        boolean result = loginInteractor.validPassword(senha);
+        boolean actualPassword = loginInteractor.validPassword(senha);
 
          //Then
-        Assert.assertTrue("Assert must be true because the password must have one special " +
-                "character, one in Upper Case and an alphanumeric", result);
+        Assert.assertThat(actualPassword, is(true));
+
+        //Assert must be true because the password should have one special
+        //character, one in Upper Case and an alphanumeric"
     }
 
     @Test
@@ -87,10 +99,12 @@ public class LoginInteractorTest {
         String user = "#android.teste";
 
         //When
-        boolean result = loginInteractor.validUser(user);
+        boolean actualUser = loginInteractor.validUser(user);
 
         //Then
-        Assert.assertFalse("Assert must be false because email should contain '@' and'.com'", result);
+        Assert.assertThat(actualUser, is(false));
+
+        //actualUser must be false because email should contain '@' and'.com'
     }
 
     @Test
@@ -103,10 +117,12 @@ public class LoginInteractorTest {
         String user = "111.222.333-56";
 
         //When
-        boolean result = loginInteractor.validUser(user);
+        boolean actualUser = loginInteractor.validUser(user);
 
-         //Then
-        Assert.assertFalse("Assert must be false because it must contain only digits", result);
+        //Then
+        Assert.assertThat(actualUser, is(false));
+
+        //actualUser must be false because it must contain only digits
     }
 
     @Test
@@ -119,11 +135,13 @@ public class LoginInteractorTest {
         String user = "11122233344456";
 
         //When
-        boolean result = loginInteractor.validUser(user);
+        boolean actualUser = loginInteractor.validUser(user);
 
-         //Then
-        Assert.assertFalse("Assert must be false because cpf must contain only 11 digits",
-                result);
+        //Then
+        Assert.assertThat(actualUser, is(false));
+
+        //Assert must be false because cpf must contain only 11 digits
+
     }
 
     @Test
@@ -135,12 +153,14 @@ public class LoginInteractorTest {
         LoginInteractor loginInteractor = new LoginInteractor();
         String user = "11111111111";
 
-       //When
-        boolean result = loginInteractor.validUser(user);
-
+        //When
+        boolean actualUser = loginInteractor.validUser(user);
 
         //Then
-        Assert.assertFalse("Assert must be false because cpf can't be a sequence of equals digits",result);
+        Assert.assertThat(actualUser, is(false));
+
+
+        //actualUser must be false because cpf can't be a sequence of equals digits
     }
 
     @Test
@@ -152,12 +172,14 @@ public class LoginInteractorTest {
         String user = "11122233344";
 
         //When
-        boolean result = loginInteractor.validUser(user);
+        boolean actualUser = loginInteractor.validUser(user);
+
+        //Then
+        Assert.assertThat(actualUser, is(true));
 
 
-         //Then
-        Assert.assertTrue("Assert must be true because cpf must contain 11 digits and not " +
-                "contain anyone special characters and a sequence of equals digits",result);
+         //actualUser must be true because cpf should contain 11 digits and not
+         //contain anyone special characters and a sequence of equals digits
     }
 
 
@@ -170,9 +192,9 @@ public class LoginInteractorTest {
         String user = "jose@accenture.com";
 
         //When
-        boolean result = loginInteractor.validUser(user);
+        boolean actualUser = loginInteractor.validUser(user);
 
         //Then
-        Assert.assertTrue(result);
+        Assert.assertThat(actualUser, is(true));
     }
 }
