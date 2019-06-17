@@ -23,10 +23,6 @@ import kotlin.collections.ArrayList
 @RunWith(RobolectricTestRunner::class)
 class TestDashBoardPresenter {
 
-    companion object {
-        val TIME_OUT = 10000L
-    }
-
     lateinit var dashBoardPresenter: DashBoardPresenter
 
     lateinit var dashBoardInteractor: DashBoardInteractor
@@ -67,14 +63,11 @@ class TestDashBoardPresenter {
     fun searchStatements() {
         dashBoardInteractor.searchStatements()
 
-        Thread.sleep(TIME_OUT)
-        Thread(Runnable {
-            Mockito.verify(
-                iDashBoardInteractorOutput,
-                Mockito.times(1))
-                .resultStatements(
-                    ListStatement(statementList = arrayListOf(), error = Error())
-                )
-        }).start()
+        Mockito.verify(
+            iDashBoardInteractorOutput,
+            Mockito.times(1)
+        ).resultStatements(
+                ListStatement(statementList = arrayListOf(), error = Error())
+            )
     }
 }

@@ -25,10 +25,6 @@ import java.util.*
 @RunWith(RobolectricTestRunner::class)
 class TestLoginPresenter {
 
-    companion object{
-        val TIME_OUT = 500000L
-    }
-
     lateinit var activity: IndexActivity
 
     lateinit var loginPresenter: LoginPresenter
@@ -82,11 +78,6 @@ class TestLoginPresenter {
 
         loginInteractor.login(user)
 
-        Thread.sleep(TIME_OUT)
-        Thread(Runnable {
-
-            verify(iLoginInteractorOutput, times(1)).sucessLogin()
-
-        }).start()
+        verify(iLoginInteractorOutput, times(1)).sucessLogin()
     }
 }
