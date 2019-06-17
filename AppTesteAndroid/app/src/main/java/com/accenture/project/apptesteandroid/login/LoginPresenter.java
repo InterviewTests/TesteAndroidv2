@@ -56,7 +56,6 @@ public class LoginPresenter implements ILoginPresenter {
     public String formatBalance(String originalBalance) {
         //formata o valor do saldo do usuário na forma correta para ser exibido
         DecimalFormat df = new DecimalFormat("#,###.00");
-        Log.d("balance", "formatBalance: " + originalBalance);
         if(originalBalance != null) {
 
             double balance = Double.parseDouble(originalBalance);
