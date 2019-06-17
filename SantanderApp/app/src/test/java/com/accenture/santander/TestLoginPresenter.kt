@@ -26,7 +26,7 @@ import java.util.*
 class TestLoginPresenter {
 
     companion object{
-        val TIME_OUT = 10000L
+        val TIME_OUT = 500000L
     }
 
     lateinit var activity: IndexActivity
@@ -84,7 +84,9 @@ class TestLoginPresenter {
 
         Thread.sleep(TIME_OUT)
         Thread(Runnable {
+
             verify(iLoginInteractorOutput, times(1)).sucessLogin()
+
         }).start()
     }
 }
