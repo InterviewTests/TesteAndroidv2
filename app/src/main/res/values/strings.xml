@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AndroidTest04</string>
+    <string name="hint_user">User</string>
+    <string name="hint_password">Password</string>
+</resources>
