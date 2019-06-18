@@ -12,8 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/backgroundDashBoard"
-            tools:context=".dashBoard.DashBoardFragment">
+            android:background="@color/backgroundStatement"
+            tools:context=".statements.StatementFragment">
 
         <LinearLayout
                 android:orientation="vertical"
@@ -43,13 +43,13 @@
                           android:text="@{account.name}"/>
 
                 <ImageView
-                        android:id="@+id/dash_board_img_logout"
+                        android:id="@+id/statement_img_logout"
                         android:layout_width="27dp"
                         android:layout_height="27dp"
                         android:layout_gravity="center"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="13dp"
-                        android:contentDescription="@string/dash_board_image_description"
+                        android:contentDescription="@string/statement_image_description"
                         android:gravity="center"/>
             </LinearLayout>
             <TextView android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                       android:layout_marginTop="28dp"
                       android:textSize="12dp"
                       android:textColor="@android:color/white"
-                      android:text="@string/dash_board_text_hint_account"/>
+                      android:text="@string/statement_text_hint_account"/>
 
             <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                       android:layout_marginEnd="18dp"
                       android:textSize="12dp"
                       android:textColor="@android:color/white"
-                      android:text="@string/dash_board_text_hint_cash"/>
+                      android:text="@string/statement_text_hint_cash"/>
 
 
             <TextView android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                 app:layout_constraintVertical_bias="0.0">
 
             <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/dash_board_list_statement"
+                    android:id="@+id/statement_list_statement"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
             />

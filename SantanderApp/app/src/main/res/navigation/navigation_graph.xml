@@ -13,8 +13,8 @@
             tools:layout="@layout/fragment_login">
 
         <action
-                android:id="@+id/action_loginFragment_to_dashBoardFragment"
-                app:destination="@id/dashBoardFragment"
+                android:id="@+id/action_loginFragment_to_statementFragment"
+                app:destination="@id/statementFragment"
                 app:enterAnim="@anim/nav_default_enter_anim"
                 app:exitAnim="@anim/nav_default_exit_anim"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -22,8 +22,8 @@
     </fragment>
 
     <fragment
-            android:id="@+id/dashBoardFragment"
-            android:name="com.accenture.santander.dashBoard.DashBoardFragment"
-            android:label="fragment_dash_board"
-            tools:layout="@layout/fragment_dash_board"/>
+            android:id="@+id/statementFragment"
+            android:name="com.accenture.santander.statements.StatementFragment"
+            android:label="fragment_statement"
+            tools:layout="@layout/fragment_statement"/>
 </navigation>

@@ -1,31 +1,29 @@
-package com.accenture.santander.dashBoard
+package com.accenture.santander.statements
 
 import android.app.Activity
 import android.graphics.drawable.Drawable
 import androidx.lifecycle.LiveData
-import com.accenture.santander.entity.Error
 import com.accenture.santander.interector.dataManager.entity.UserEntity
 import com.accenture.santander.entity.ListStatement
-import com.accenture.santander.login.LoginContracts
 import com.accenture.santander.viewmodel.Account
 
-class DashBoardContracts {
+class StatementContracts {
 
-    interface DashBoardPresenterInput {
+    interface StatementPresenterInput {
         fun soliciteData()
         fun searchLogout(activity: Activity)
         fun logout()
         fun loadStatements()
     }
 
-    interface DashBoardInteractorInput {
+    interface StatementInteractorInput {
         fun searchData()
         fun searchStatements(iduser: Int)
         fun deletaAccount()
         fun searchIdUserStatements()
     }
 
-    interface DashBoardInteractorOutput {
+    interface StatementInteractorOutput {
         fun resultData(user: UserEntity?)
         fun resultStatements(listStatement: ListStatement?)
         fun errorStatements(throwable: Throwable)
@@ -33,7 +31,7 @@ class DashBoardContracts {
         fun failResquest(code: Int)
     }
 
-    interface DashBoardPresenterOutput {
+    interface StatementPresenterOutput {
         fun apresentationData(user: LiveData<Account>)
         fun cleanData()
         fun loadLogout(drawable: Drawable)

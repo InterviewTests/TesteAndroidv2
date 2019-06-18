@@ -1,19 +1,18 @@
-package com.accenture.santander.dashBoard
+package com.accenture.santander.statements
 
 import android.app.Activity
 import com.accenture.santander.interector.dataManager.repository.deviceRepository.IUserRepository
 import com.accenture.santander.interector.dataManager.storag.IStoragManager
 import com.accenture.santander.interector.remote.service.statement.IServiceStatement
-import com.accenture.santander.interector.remote.service.Connect
 import com.accenture.santander.interector.remote.service.IConnect
 
 import javax.inject.Inject
 
-class DashBoardInteractor(
+class StatementInteractor(
     private val activity: Activity,
-    private val iDashBoardInteractorOutput: DashBoardContracts.DashBoardInteractorOutput,
+    private val iStatementInteractorOutput: StatementContracts.StatementInteractorOutput,
     private val iServiceStatement: IServiceStatement
-) : DashBoardContracts.DashBoardInteractorInput {
+) : StatementContracts.StatementInteractorInput {
 
 
     @Inject
@@ -26,15 +25,15 @@ class DashBoardInteractor(
     lateinit var iStoragManager: IStoragManager
 
     init {
-        DaggerDashBoardComponents
+        DaggerStatementComponents
             .builder()
-            .dashBoardModulo(DashBoardModulo(context = activity, dashBoardInteractor = this))
+            .statementModulo(StatementModulo(context = activity, statementInteractor = this))
             .build()
             .inject(this)
     }
 
     override fun searchData() {
-        iDashBoardInteractorOutput.resultData(iUserRepository.findDesc())
+        iStatementInteractorOutput.resultData(iUserRepository.findDesc())
     }
 
     override fun searchStatements(iduser: Int) {
@@ -42,16 +41,16 @@ class DashBoardInteractor(
             iServiceStatement.statement(iduser,
                 success = {
                     if (it.code() == 200) {
-                        iDashBoardInteractorOutput.resultStatements(it.body())
+                        iStatementInteractorOutput.resultStatements(it.body())
                     } else {
-                        iDashBoardInteractorOutput.failResquest(it.code())
+                        iStatementInteractorOutput.failResquest(it.code())
                     }
                 },
                 failure = {
-                    iDashBoardInteractorOutput.errorStatements(it)
+                    iStatementInteractorOutput.errorStatements(it)
                 })
         } else {
-            iDashBoardInteractorOutput.failNetWork()
+            iStatementInteractorOutput.failNetWork()
         }
     }
 

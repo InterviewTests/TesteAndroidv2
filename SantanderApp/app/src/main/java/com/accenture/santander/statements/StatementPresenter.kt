@@ -1,65 +1,62 @@
-package com.accenture.santander.dashBoard
+package com.accenture.santander.statements
 
 import android.app.Activity
 import android.graphics.drawable.Drawable
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.accenture.santander.R
-import com.accenture.santander.entity.Error
 import com.accenture.santander.interector.dataManager.entity.UserEntity
 import com.accenture.santander.entity.ListStatement
-import com.accenture.santander.entity.Statement
 import com.accenture.santander.utils.DateTime
 import com.accenture.santander.viewmodel.Account
 import java.io.IOException
 import javax.inject.Inject
 
-class DashBoardPresenter(
+class StatementPresenter(
     private val activity: Activity,
     private val view: View,
-    private val iDashBoardPresenterOutput: DashBoardContracts.DashBoardPresenterOutput
-) : DashBoardContracts.DashBoardPresenterInput, DashBoardContracts.DashBoardInteractorOutput {
+    private val iStatementPresenterOutput: StatementContracts.StatementPresenterOutput
+) : StatementContracts.StatementPresenterInput, StatementContracts.StatementInteractorOutput {
 
     @Inject
-    lateinit var iDashBoardInteractorInput: DashBoardContracts.DashBoardInteractorInput
+    lateinit var iStatementInteractorInput: StatementContracts.StatementInteractorInput
 
     @Inject
-    lateinit var loginRouter: DashBoardRouter
+    lateinit var loginRouter: StatementRouter
 
     init {
-        DaggerDashBoardComponents
+        DaggerStatementComponents
             .builder()
-            .dashBoardModulo(DashBoardModulo(context = activity, view = view, dashBoardPresenter = this))
+            .statementModulo(StatementModulo(context = activity, view = view, statementPresenter = this))
             .build()
             .inject(this)
     }
 
     override fun soliciteData() {
-        iDashBoardInteractorInput.searchData()
+        iStatementInteractorInput.searchData()
     }
 
     override fun searchLogout(activity: Activity) {
         try {
             val ims = activity.getAssets()?.open(activity.getString(R.string.assets_logout))
             val drawable = Drawable.createFromStream(ims, null)
-            iDashBoardPresenterOutput.loadLogout(drawable)
+            iStatementPresenterOutput.loadLogout(drawable)
             ims?.close()
         } catch (ex: IOException) {
-            iDashBoardPresenterOutput.failImageLogout()
+            iStatementPresenterOutput.failImageLogout()
         }
     }
 
     override fun logout() {
-        iDashBoardPresenterOutput.mensageLogout()
-        iDashBoardInteractorInput.deletaAccount()
-        iDashBoardPresenterOutput.cleanData()
+        iStatementPresenterOutput.mensageLogout()
+        iStatementInteractorInput.deletaAccount()
+        iStatementPresenterOutput.cleanData()
         loginRouter.popBackStack()
     }
 
     override fun resultData(user: UserEntity?) {
         user?.let {
-            iDashBoardPresenterOutput.apresentationData(
+            iStatementPresenterOutput.apresentationData(
                 MutableLiveData<Account>().apply {
                     value = Account().mapper(it)
                 }
@@ -68,14 +65,14 @@ class DashBoardPresenter(
     }
 
     override fun loadStatements() {
-        iDashBoardPresenterOutput.visibleRefrash()
-        iDashBoardInteractorInput.searchIdUserStatements()
+        iStatementPresenterOutput.visibleRefrash()
+        iStatementInteractorInput.searchIdUserStatements()
     }
 
     override fun resultStatements(listStatement: ListStatement?) {
 
         if (listStatement?.error?.code != 0) {
-            iDashBoardPresenterOutput.errorService(listStatement?.error?.message)
+            iStatementPresenterOutput.errorService(listStatement?.error?.message)
             return
         }
 
@@ -85,25 +82,25 @@ class DashBoardPresenter(
             DateTime.conversor(it.date)
         }.toMutableList()
 
-        iDashBoardPresenterOutput.apresentationStatements(
+        iStatementPresenterOutput.apresentationStatements(
             MutableLiveData<MutableList<com.accenture.santander.viewmodel.Statement>>().apply {
                 value = statementsMap
             })
-        iDashBoardPresenterOutput.goneRefrash()
+        iStatementPresenterOutput.goneRefrash()
     }
 
     override fun failResquest(code: Int) {
-        iDashBoardPresenterOutput.goneRefrash()
-        iDashBoardPresenterOutput.failRequest()
+        iStatementPresenterOutput.goneRefrash()
+        iStatementPresenterOutput.failRequest()
     }
 
     override fun errorStatements(throwable: Throwable) {
-        iDashBoardPresenterOutput.goneRefrash()
-        iDashBoardPresenterOutput.errorStatements()
+        iStatementPresenterOutput.goneRefrash()
+        iStatementPresenterOutput.errorStatements()
     }
 
     override fun failNetWork() {
-        iDashBoardPresenterOutput.goneRefrash()
-        iDashBoardPresenterOutput.failNetWork()
+        iStatementPresenterOutput.goneRefrash()
+        iStatementPresenterOutput.failNetWork()
     }
 }

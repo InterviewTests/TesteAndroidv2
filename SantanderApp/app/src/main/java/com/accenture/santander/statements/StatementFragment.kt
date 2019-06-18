@@ -1,7 +1,6 @@
-package com.accenture.santander.dashBoard
+package com.accenture.santander.statements
 
 
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
@@ -11,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -20,15 +18,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.accenture.santander.R
-import com.accenture.santander.databinding.FragmentDashBoardBinding
-import com.accenture.santander.login.DaggerLoginComponents
-import com.accenture.santander.login.LoginModulo
+import com.accenture.santander.databinding.FragmentStatementBinding
 import com.accenture.santander.recyclerview.adapter.StatementAdapter
-import com.accenture.santander.utils.Coroutine
 import com.accenture.santander.utils.StatusBar
 import com.accenture.santander.viewmodel.*
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_dash_board.*
+import kotlinx.android.synthetic.main.fragment_statement.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -36,32 +31,32 @@ import javax.inject.Inject
  * A simple [Fragment] subclass.
  *
  */
-class DashBoardFragment : Fragment(), DashBoardContracts.DashBoardPresenterOutput {
+class StatementFragment : Fragment(), StatementContracts.StatementPresenterOutput {
 
-    private lateinit var binding: FragmentDashBoardBinding
+    private lateinit var binding: FragmentStatementBinding
     private lateinit var accounViewModel: AccountViewModel
     private lateinit var statements: StatementViewModel
-    private val fragment: DashBoardFragment = this
+    private val fragment: StatementFragment = this
     private lateinit var statementAdapter: StatementAdapter
 
     @Inject
-    lateinit var iDashBoardPresenterInput: DashBoardContracts.DashBoardPresenterInput
+    lateinit var iStatementPresenterInput: StatementContracts.StatementPresenterInput
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDashBoardBinding.inflate(layoutInflater)
+        binding = FragmentStatementBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        DaggerDashBoardComponents
+        DaggerStatementComponents
             .builder()
-            .dashBoardModulo(DashBoardModulo(activity!!, binding.root, dashBoardFragment = this))
+            .statementModulo(StatementModulo(activity!!, binding.root, statementFragment = this))
             .build()
             .inject(this)
 
@@ -76,24 +71,24 @@ class DashBoardFragment : Fragment(), DashBoardContracts.DashBoardPresenterOutpu
             binding.account = accounViewModel.account
             statementAdapter = StatementAdapter(statements.statements)
 
-            binding.dashBoardListStatement.apply {
+            binding.statementListStatement.apply {
                 adapter = statementAdapter
                 layoutManager = LinearLayoutManager(activity!!, RecyclerView.VERTICAL, false)
             }
 
-            iDashBoardPresenterInput.searchLogout(activity!!)
+            iStatementPresenterInput.searchLogout(activity!!)
 
-            dash_board_img_logout.setOnClickListener {
-                iDashBoardPresenterInput.logout()
+            statement_img_logout.setOnClickListener {
+                iStatementPresenterInput.logout()
             }
 
             dash_board_refrash_statements.setOnRefreshListener {
-                iDashBoardPresenterInput.loadStatements()
+                iStatementPresenterInput.loadStatements()
             }
 
-            iDashBoardPresenterInput.soliciteData()
+            iStatementPresenterInput.soliciteData()
 
-            iDashBoardPresenterInput.loadStatements()
+            iStatementPresenterInput.loadStatements()
         }
     }
 
@@ -115,7 +110,7 @@ class DashBoardFragment : Fragment(), DashBoardContracts.DashBoardPresenterOutpu
     }
 
     override fun loadLogout(drawable: Drawable) {
-        binding.dashBoardImgLogout.setImageDrawable(drawable)
+        binding.statementImgLogout.setImageDrawable(drawable)
     }
 
     override fun apresentationStatements(statements: LiveData<MutableList<Statement>>) {

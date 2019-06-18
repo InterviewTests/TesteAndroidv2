@@ -9,9 +9,9 @@
     <string name="login_btn_hint_login">Login</string>
     <string name="login_image_description">Logo</string>
 
-    <string name="dash_board_text_hint_account">Conta</string>
-    <string name="dash_board_text_hint_cash">Saldo</string>
-    <string name="dash_board_image_description">Logout</string>
+    <string name="statement_text_hint_account">Conta</string>
+    <string name="statement_text_hint_cash">Saldo</string>
+    <string name="statement_image_description">Logout</string>
 
     <string name="item_statement_header_text_hint_recents">Recentes</string>
 
