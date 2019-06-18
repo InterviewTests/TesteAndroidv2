@@ -1,4 +1,4 @@
-package com.everis.TesteAndroidv2;
+package com.everis.TesteAndroidv2.Repository;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -14,7 +14,9 @@ public class RetrofitConfig {
                 .build();
     }
 
-    public StatementService getStatementService(){
-        return this.retrofit.create(StatementService.class);
+    public ConnectionService getConnectionService(){
+        return this.retrofit.create(ConnectionService.class);
     }
+
+
 }

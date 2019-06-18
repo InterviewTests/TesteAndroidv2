@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cor_extrato_background"
-    tools:context=".View.ExtratoActivity">
+    tools:context=".Extrato.View.ExtratoActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_extrato_infos"

@@ -1,10 +1,12 @@
-package com.everis.TesteAndroidv2;
+package com.everis.TesteAndroidv2.Extrato.View;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.everis.TesteAndroidv2.R;
 
 class LineHolder extends RecyclerView.ViewHolder {
 

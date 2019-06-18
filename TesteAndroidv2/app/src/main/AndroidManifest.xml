@@ -15,10 +15,10 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:fullBackupContent="true">
         <activity
-            android:name="com.everis.TesteAndroidv2.View.ExtratoActivity"
+            android:name="com.everis.TesteAndroidv2.Extrato.View.ExtratoActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.everis.TesteAndroidv2.View.MainActivity"
+            android:name="com.everis.TesteAndroidv2.Login.View.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

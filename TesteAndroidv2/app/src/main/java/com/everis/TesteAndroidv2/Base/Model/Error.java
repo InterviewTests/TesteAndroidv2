@@ -1,4 +1,4 @@
-package com.everis.TesteAndroidv2;
+package com.everis.TesteAndroidv2.Base.Model;
 
 public class Error {
     private Float code;
@@ -8,15 +8,7 @@ public class Error {
         return code;
     }
 
-    public void setCode(Float code) {
-        this.code = code;
-    }
-
     public String getMessage() {
         return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }

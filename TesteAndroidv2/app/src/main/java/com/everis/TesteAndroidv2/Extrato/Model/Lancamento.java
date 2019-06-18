@@ -1,7 +1,8 @@
-package com.everis.TesteAndroidv2;
+package com.everis.TesteAndroidv2.Extrato.Model;
+
+import com.everis.TesteAndroidv2.Base.Model.Error;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Lancamento {
     private ArrayList<Statements> statementList;
@@ -11,15 +12,7 @@ public class Lancamento {
         return statementList;
     }
 
-    public void setStatementList(ArrayList<Statements> statementList) {
-        this.statementList = statementList;
-    }
-
     public Error getError() {
         return error;
-    }
-
-    public void setError(Error error) {
-        this.error = error;
     }
 }

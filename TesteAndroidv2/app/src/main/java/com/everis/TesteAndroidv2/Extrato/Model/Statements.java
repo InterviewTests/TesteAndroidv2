@@ -1,4 +1,4 @@
-package com.everis.TesteAndroidv2;
+package com.everis.TesteAndroidv2.Extrato.Model;
 
 public class Statements {
     private String title;
@@ -6,19 +6,19 @@ public class Statements {
     private String date;
     private Float value;
 
-    String getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    String getDesc() {
+    public String getDesc() {
         return desc;
     }
 
-    String getDate() {
+    public String getDate() {
         return date;
     }
 
-    Float getValue() {
+    public Float getValue() {
         return value;
     }
 }
