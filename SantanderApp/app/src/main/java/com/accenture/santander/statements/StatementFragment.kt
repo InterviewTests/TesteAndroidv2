@@ -82,7 +82,7 @@ class StatementFragment : Fragment(), StatementContracts.StatementPresenterOutpu
                 iStatementPresenterInput.logout()
             }
 
-            dash_board_refrash_statements.setOnRefreshListener {
+            statement_refrash_statements.setOnRefreshListener {
                 iStatementPresenterInput.loadStatements()
             }
 
@@ -93,11 +93,11 @@ class StatementFragment : Fragment(), StatementContracts.StatementPresenterOutpu
     }
 
     override fun visibleRefrash() {
-        dash_board_refrash_statements.isRefreshing = true
+        statement_refrash_statements.isRefreshing = true
     }
 
     override fun goneRefrash() {
-        dash_board_refrash_statements.isRefreshing = false
+        statement_refrash_statements.isRefreshing = false
     }
 
     override fun apresentationData(user: LiveData<Account>) {

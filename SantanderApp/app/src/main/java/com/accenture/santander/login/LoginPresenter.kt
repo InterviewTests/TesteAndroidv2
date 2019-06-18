@@ -80,7 +80,7 @@ class LoginPresenter(
     }
 
     override fun startLogged() {
-        loginRouter.navigationToDashBoard()
+        loginRouter.navigationToStatement()
     }
 
     override fun searchData() {

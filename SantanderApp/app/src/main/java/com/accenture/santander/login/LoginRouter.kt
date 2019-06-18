@@ -6,7 +6,7 @@ import com.accenture.santander.R
 
 class LoginRouter(private val view: View) {
 
-    fun navigationToDashBoard() {
+    fun navigationToStatement() {
         view.findNavController().navigate(R.id.action_loginFragment_to_statementFragment)
     }
 
