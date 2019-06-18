@@ -1,4 +1,4 @@
-package com.banco.TesteAndroidv2;
+package com.everis.TesteAndroidv2;
 
 import org.junit.Test;
 

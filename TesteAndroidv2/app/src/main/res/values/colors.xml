@@ -6,5 +6,7 @@
     <color name="azul_banco">#3B48EE</color>
     <color name="branco">#FFF</color>
     <color name="cinza_texto">#A8B4C4</color>
-    <color name="cinza_borda">#DCE2EE</color>
+    <color name="cinza_main_borda">#DCE2EE</color>
+    <color name="cor_lancamento_borda">#4DDBDFE3</color>
+    <color name="cor_extrato_background">#FFFEFEFE</color>
 </resources>

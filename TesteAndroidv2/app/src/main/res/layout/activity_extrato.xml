@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExtratoActivity">
+    android:background="@color/cor_extrato_background"
+    tools:context=".View.ExtratoActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_extrato_infos"
@@ -35,9 +36,9 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="13dp"
             android:background="@drawable/logout"
+            android:contentDescription="@string/logoutButtonDescription"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/logoutButtonDescription"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_extrato_conta"
@@ -105,11 +106,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cl_extrato_infos" />
 
-    <view
-        class="androidx.appcompat.app.AlertController$RecycleListView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_extrato"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_extrato_recentes"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_extrato_recentes"
+        tools:listitem="@layout/extrato_lancamento_line" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

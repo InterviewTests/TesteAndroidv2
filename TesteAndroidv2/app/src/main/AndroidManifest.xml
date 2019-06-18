@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.banco.TesteAndroidv2">
+    package="com.everis.TesteAndroidv2">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -13,10 +15,10 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:fullBackupContent="true">
         <activity
-            android:name=".ExtratoActivity"
+            android:name="com.everis.TesteAndroidv2.View.ExtratoActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".MainActivity"
+            android:name="com.everis.TesteAndroidv2.View.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

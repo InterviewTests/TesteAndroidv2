@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".View.MainActivity">
 
     <ImageView
         android:id="@+id/iv_main-logo"
         android:layout_width="125dp"
         android:layout_height="70dp"
         android:layout_marginTop="56dp"
-        android:background="@drawable/logo"
+        android:src="@drawable/logo"
         android:contentDescription="@string/mainLogoDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         android:layout_width="342dp"
         android:layout_height="50dp"
         android:layout_marginTop="105dp"
-        android:background="@drawable/ic_borda"
+        android:background="@drawable/ic_main_borda"
         android:fontFamily="@font/helvetica_neue_med"
         android:hint="@string/User"
         android:importantForAutofill="no"
@@ -41,7 +41,7 @@
         android:layout_width="342dp"
         android:layout_height="50dp"
         android:layout_marginTop="21dp"
-        android:background="@drawable/ic_borda"
+        android:background="@drawable/ic_main_borda"
         android:fontFamily="@font/helvetica_neue_med"
         android:hint="@string/Password"
         android:importantForAutofill="no"
