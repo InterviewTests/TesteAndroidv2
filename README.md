@@ -5,6 +5,6 @@ Apos isso, sera necessario apenas executar a aplicação em um emulador.
 
 # Recursos para os testes unitarios
 
-decidi utilizar o rebolectric para inicializar a activity, e os mockitos para a comparação dos metodos a serem chamados, ja que a arquitetura é baseada em port and adapters.
+decidi utilizar o rebolectric para inicializar a activity, e os mockitos para a comparação dos metodos a serem chamados, ja que a arquitetura é baseada em port and adapters, tambem estou utilizando o Junit para os testes unitarios juntamente com o Coverage.
 
 
