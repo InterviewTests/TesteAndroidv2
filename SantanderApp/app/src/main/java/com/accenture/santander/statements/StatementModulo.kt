@@ -40,17 +40,17 @@ class StatementModulo(
     }
 
     @Provides
-    fun provideDashBoardRouter(): StatementRouter {
+    fun provideStatementRouter(): StatementRouter {
         return StatementRouter(view!!)
     }
 
     @Provides
-    fun provideDashBoardInteractorInput(): StatementContracts.StatementInteractorInput {
+    fun provideStatementInteractorInput(): StatementContracts.StatementInteractorInput {
         return StatementInteractor(context!!, statementPresenter!!, ServiceStatement())
     }
 
     @Provides
-    fun provideLoginPresenterInput(): StatementContracts.StatementPresenterInput {
+    fun provideStatementPresenterInput(): StatementContracts.StatementPresenterInput {
         return StatementPresenter(context!!, view!!, statementFragment!!)
     }
 
