@@ -20,8 +20,9 @@ class DashBoardContracts {
 
     interface DashBoardInteractorInput {
         fun searchData()
-        fun searchStatements()
+        fun searchStatements(iduser: Int)
         fun deletaAccount()
+        fun searchIdUserStatements()
     }
 
     interface DashBoardInteractorOutput {

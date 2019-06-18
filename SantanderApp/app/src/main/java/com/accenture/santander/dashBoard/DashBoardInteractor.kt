@@ -28,7 +28,7 @@ class DashBoardInteractor(
     init {
         DaggerDashBoardComponents
             .builder()
-            .dashBoardModulo(DashBoardModulo(context = activity,dashBoardInteractor = this))
+            .dashBoardModulo(DashBoardModulo(context = activity, dashBoardInteractor = this))
             .build()
             .inject(this)
     }
@@ -37,31 +37,33 @@ class DashBoardInteractor(
         iDashBoardInteractorOutput.resultData(iUserRepository.findDesc())
     }
 
-    override fun searchStatements() {
+    override fun searchStatements(iduser: Int) {
         if (iConnect.verifyConnection()) {
-            iUserRepository.findDesc()?.let {
-                iServiceStatement.statement(it.id,
-                    success = {
-                        if (it.code() == 200) {
-                            iDashBoardInteractorOutput.resultStatements(it.body())
-                        } else {
-                            iDashBoardInteractorOutput.failResquest(it.code())
-                        }
-                    },
-                    failure = {
-                        iDashBoardInteractorOutput.errorStatements(it)
-                    })
-            }
+            iServiceStatement.statement(iduser,
+                success = {
+                    if (it.code() == 200) {
+                        iDashBoardInteractorOutput.resultStatements(it.body())
+                    } else {
+                        iDashBoardInteractorOutput.failResquest(it.code())
+                    }
+                },
+                failure = {
+                    iDashBoardInteractorOutput.errorStatements(it)
+                })
         } else {
             iDashBoardInteractorOutput.failNetWork()
         }
     }
-
 
     override fun deletaAccount() {
         val user = iUserRepository.findDesc()
         user?.let {
             iUserRepository.delete(user)
         }
+    }
+
+    override fun searchIdUserStatements() {
+        val data = iUserRepository.findDesc()
+        searchStatements(data?.iduser ?: 0)
     }
 }

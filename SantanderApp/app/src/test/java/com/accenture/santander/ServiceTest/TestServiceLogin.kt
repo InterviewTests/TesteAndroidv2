@@ -5,12 +5,14 @@ import com.accenture.santander.interector.remote.connect.URL
 import com.accenture.santander.interector.remote.iservice.IUser
 import com.accenture.santander.interector.remote.service.login.IServiceLogin
 import com.accenture.santander.viewmodel.User
+import org.junit.Test
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class TestServiceLogin : IServiceLogin {
 
+    @Test
     override fun login(
         user: User,
         success: (note: Response<Auth?>) -> Unit,

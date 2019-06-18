@@ -4,12 +4,14 @@ import com.accenture.santander.entity.ListStatement
 import com.accenture.santander.interector.remote.connect.URL
 import com.accenture.santander.interector.remote.iservice.IUser
 import com.accenture.santander.interector.remote.service.statement.IServiceStatement
+import org.junit.Test
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class TestServiceStatement : IServiceStatement {
 
+    @Test
     override fun statement(
         idUser: Int,
         success: (listStatement: Response<ListStatement?>) -> Unit,

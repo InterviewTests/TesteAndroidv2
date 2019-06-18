@@ -69,17 +69,18 @@ class DashBoardPresenter(
 
     override fun loadStatements() {
         iDashBoardPresenterOutput.visibleRefrash()
-        iDashBoardInteractorInput.searchStatements()
+        iDashBoardInteractorInput.searchIdUserStatements()
     }
 
     override fun resultStatements(listStatement: ListStatement?) {
+
         if (listStatement?.error?.code != 0) {
             iDashBoardPresenterOutput.errorService(listStatement?.error?.message)
             return
         }
 
         val statementsMap = listStatement.statementList.map {
-            com.accenture.santander.viewmodel.Statement().mapper(it ?: Statement())
+            com.accenture.santander.viewmodel.Statement().mapper(it)
         }.sortedByDescending {
             DateTime.conversor(it.date)
         }.toMutableList()
