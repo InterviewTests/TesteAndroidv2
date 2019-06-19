@@ -7,6 +7,7 @@ import br.com.vinicius.bankapp.R
 import br.com.vinicius.bankapp.domain.User
 import br.com.vinicius.bankapp.infra.App
 import br.com.vinicius.bankapp.infra.SharedPreferences
+import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
 
@@ -17,6 +18,13 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         setContentView(R.layout.activity_login)
         loadUI()
         verifyLogin()
+        loadSaveButton()
+    }
+
+    private fun loadSaveButton() {
+        buttonLogin.setOnClickListener {
+            
+        }
     }
 
     private fun loadUI(){
