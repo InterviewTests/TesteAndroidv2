@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorBlueLoginButton">#3B48EE</color>
+    <color name="colorShadowLoginButton">#4D3B48EE</color>
+    <color name="colorBlueBankAccount">#3B49EE</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBorderLogin">#DCE2EE</color>
+    <color name="colorBorderPayments">#4DDBDFE3</color>
+    <color name="colorLightGreyBackground">#FEFEFE</color>
+    <color name="colorShadowPayments">#80D9E2E9</color>
+    <color name="colorDarkLetters">#485465</color>
+    <color name="colorGreyLetters">#A8B4C4</color>
 </resources>
