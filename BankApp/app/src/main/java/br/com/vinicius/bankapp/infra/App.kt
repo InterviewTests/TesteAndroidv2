@@ -6,5 +6,7 @@ object App : Application(){
 
     override fun onCreate() {
         super.onCreate()
+        SharedPreferences.init(this)
+
     }
 }

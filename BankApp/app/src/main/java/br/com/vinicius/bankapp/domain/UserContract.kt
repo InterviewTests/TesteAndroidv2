@@ -5,7 +5,7 @@ import br.com.vinicius.bankapp.infra.BaseCallback
 class UserContract {
 
     interface IUser{
-        val email: String
+        val username: String
         val password: String
 
         fun isValid(): Boolean
