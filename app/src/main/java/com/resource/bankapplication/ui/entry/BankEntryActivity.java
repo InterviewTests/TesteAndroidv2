@@ -1,4 +1,4 @@
-package com.resource.bankapplication.ui;
+package com.resource.bankapplication.ui.entry;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.resource.bankapplication.R;
 
-public class BankLoginActivity extends AppCompatActivity {
+public class BankEntryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bank_login);
+        setContentView(R.layout.activity_bank_entry);
     }
 }
