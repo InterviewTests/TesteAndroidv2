@@ -4,9 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Adapter;
 
-import com.example.bankapp.adapter.AdapterCurrency;
+import com.example.bankapp.ui.adapter.AdapterCurrency;
 
 import java.util.ArrayList;
 import java.util.List;

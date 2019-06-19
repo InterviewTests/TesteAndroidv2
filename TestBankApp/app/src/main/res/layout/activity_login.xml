@@ -6,11 +6,10 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".LoginActivity">
+        tools:context=".ui.LoginActivity">
 
         <ImageView
             android:id="@+id/imageView"
@@ -20,7 +19,8 @@
             android:layout_marginTop="36dp"
             android:layout_marginEnd="124dp"
             android:layout_marginBottom="541dp"
-            android:src="@drawable/logo"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_logo_foreground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,9 +34,8 @@
             android:layout_marginTop="105dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="21dp"
-            android:background="@drawable/border_edit_text"
-            android:ems="10"
             android:hint="User"
+            android:background="@drawable/border_edittext"
             android:inputType="textPersonName"
             app:layout_constraintBottom_toTopOf="@+id/editTextPassword"
             app:layout_constraintEnd_toEndOf="parent"
@@ -50,8 +49,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="21dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/border_edit_text"
-            android:ems="10"
+            android:background="@drawable/border_edittext"
             android:hint="Password"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +64,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="86dp"
             android:layout_marginBottom="33dp"
-            android:background="@drawable/round_button"
+            android:background="@drawable/round_button_login"
             android:text="Login"
             android:textColor="#ffff"
             app:layout_constraintBottom_toBottomOf="parent"
