@@ -1,7 +1,7 @@
 package com.example.bankapp.domain;
 
 import com.example.bankapp.helper.BaseCallback;
-import com.example.bankapp.model.userAccountModel;
+import com.example.bankapp.model.user.userAccountModel;
 
 public class UserContract {
     public interface IRepository{

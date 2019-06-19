@@ -2,8 +2,7 @@ package com.example.bankapp.repository;
 
 import com.example.bankapp.domain.UserContract;
 import com.example.bankapp.helper.BaseCallback;
-import com.example.bankapp.model.userAccount;
-import com.example.bankapp.model.userAccountModel;
+import com.example.bankapp.model.user.userAccountModel;
 import com.example.bankapp.remote.BuildApi;
 import com.example.bankapp.remote.LoginAPI;
 
@@ -20,12 +19,12 @@ public class LoginRepository extends BuildApi implements UserContract.IRepositor
                 .login(userName,password).enqueue(new Callback<userAccountModel>() {
             @Override
             public void onResponse(Call<userAccountModel> call, Response<userAccountModel> response) {
-                if(response.body().getError()!=null){
+                if(response.body().getError().getMessage()!=null){
                     result.onUnsuccessful(response.body().getError().getMessage());
                     return;
                 }
 
-                result.onUnsuccessful("foi");
+                result.onSuccessful(response.body());
             }
 
             @Override

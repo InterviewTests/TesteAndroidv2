@@ -1,16 +1,15 @@
-package com.example.bankapp.ui;
+package com.example.bankapp.ui.login;
 
 import com.example.bankapp.domain.UserDomain;
 import com.example.bankapp.helper.BaseCallback;
-import com.example.bankapp.model.userAccount;
-import com.example.bankapp.model.userAccountModel;
+import com.example.bankapp.model.user.userAccountModel;
 import com.example.bankapp.repository.LoginRepository;
 
-public class LoginPresenter implements LoginContract.loginPresenter {
+public class LoginPresenter implements LoginViewPresenter.loginPresenter {
 
-    private LoginContract.loginView view;
+    private LoginViewPresenter.loginView view;
 
-    public LoginPresenter(LoginContract.loginView view) {
+    public LoginPresenter(LoginViewPresenter.loginView view) {
         this.view = view;
     }
 
@@ -23,7 +22,7 @@ public class LoginPresenter implements LoginContract.loginPresenter {
             @Override
             public void onSuccessful(userAccountModel value) {
                 view.goToHome();
-                view.showErrorMessage("FOI");
+                //view.showErrorMessage("FOI");
             }
 
             @Override

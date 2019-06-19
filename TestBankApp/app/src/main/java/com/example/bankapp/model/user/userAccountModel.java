@@ -1,9 +1,9 @@
-package com.example.bankapp.model;
+package com.example.bankapp.model.user;
 
 public class userAccountModel {
 
     private userAccount userAccount;
-    private error error;
+    private com.example.bankapp.model.user.error error;
 
     public error getError() {
         return error;

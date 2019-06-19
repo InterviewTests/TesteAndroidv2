@@ -14,7 +14,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -33,9 +33,9 @@
             android:text="12/12/2019"
             android:textColor="@color/colorLightGray"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView" />
+            app:layout_constraintTop_toTopOf="@+id/textViewTitle" />
 
         <TextView
             android:id="@+id/textViewTypeAccount"
@@ -52,7 +52,7 @@
             app:layout_constraintEnd_toStartOf="@+id/textViewValue"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
         <TextView
             android:id="@+id/textViewValue"

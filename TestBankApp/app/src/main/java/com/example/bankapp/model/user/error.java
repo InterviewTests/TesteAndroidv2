@@ -1,4 +1,4 @@
-package com.example.bankapp.model;
+package com.example.bankapp.model.user;
 
 public class error {
 

@@ -1,7 +1,6 @@
 package com.example.bankapp.remote;
 
-import com.example.bankapp.model.userAccount;
-import com.example.bankapp.model.userAccountModel;
+import com.example.bankapp.model.user.userAccountModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

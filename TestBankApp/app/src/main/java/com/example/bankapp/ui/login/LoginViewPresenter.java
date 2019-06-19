@@ -1,6 +1,6 @@
-package com.example.bankapp.ui;
+package com.example.bankapp.ui.login;
 
-public class LoginContract {
+public class LoginViewPresenter {
 
     public interface loginView{
         void goToHome();

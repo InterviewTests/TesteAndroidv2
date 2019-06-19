@@ -8,15 +8,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.bankapp.R;
-import com.example.bankapp.UserDataAccount;
+import com.example.bankapp.model.dashboard.statementList;
 
 import java.util.List;
 
-public class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyViewHolder>{
-    public List<UserDataAccount> userDataAccountList;
+public class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyViewHolder> {
+    public List<statementList> list;
 
-    public AdapterCurrency(List<UserDataAccount> userDataAccountList) {
-        this.userDataAccountList = userDataAccountList;
+    public AdapterCurrency(List<statementList> statementLists) {
+        this.list = statementLists;
     }
 
     @NonNull
@@ -30,29 +30,32 @@ public class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        UserDataAccount userDataAccount = userDataAccountList.get(i);
+        statementList model = list.get(i);
 
-        myViewHolder.textViewPayDay.setText(userDataAccount.getDate());
-        myViewHolder.textViewValue.setText(userDataAccount.getValue()+"");
-        myViewHolder.textViewTypeAccount.setText(userDataAccount.getTypeAccount());
+        myViewHolder.textViewPayDay.setText(model.getDate());
+        myViewHolder.textViewValue.setText(model.getValue() + "");
+        myViewHolder.textViewTypeAccount.setText(model.getDesc());
+        myViewHolder.textViewTitle.setText(model.getTitle());
     }
 
     @Override
     public int getItemCount() {
-        return userDataAccountList.size();
+        return list.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewPayDay;
         TextView textViewValue;
         TextView textViewTypeAccount;
+        TextView textViewTitle;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewTypeAccount = itemView.findViewById(R.id.textViewTypeAccount);
             textViewValue = itemView.findViewById(R.id.textViewValue);
             textViewPayDay = itemView.findViewById(R.id.textViewPayDay);
+            textViewTitle = itemView.findViewById(R.id.textViewTitle);
         }
     }
 }
