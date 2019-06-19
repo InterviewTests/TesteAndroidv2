@@ -20,13 +20,14 @@ object RetrofitClient {
         .addInterceptor(interceptor)
         .build()
 
-    val instance: Api by lazy {
+    val instance: ApiService by lazy {
 
         val retrofit = Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(URL_API)
             .build()
 
-        retrofit.create(Api::class.java)
+        retrofit.create(ApiService::class.java)
     }
+
 }

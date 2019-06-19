@@ -1,14 +1,23 @@
 package br.com.vinicius.bankapp.data.remote
 
-import br.com.vinicius.bankapp.infra.Api
+import br.com.vinicius.bankapp.data.remote.model.LoginModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
 import retrofit2.Retrofit
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
 
-interface ApiService: Api {
+interface ApiService{
 
-
+    @FormUrlEncoded
+    @POST("login")
+    fun login(
+        @Field("user") username: String,
+        @Field("password") password: String
+    ): Call<LoginModel>
 
     companion object {
         operator fun invoke () : ApiService {
@@ -26,7 +35,6 @@ interface ApiService: Api {
                 .baseUrl("https://bank-app-test.herokuapp.com/api/")
                 .build()
                 .create(ApiService::class.java)
-
         }
     }
 }
