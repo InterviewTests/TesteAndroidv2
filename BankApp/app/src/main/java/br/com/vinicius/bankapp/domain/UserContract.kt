@@ -1,6 +1,6 @@
 package br.com.vinicius.bankapp.domain
 
-import br.com.vinicius.bankapp.infra.BaseCallback
+import br.com.vinicius.bankapp.internal.BaseCallback
 
 class UserContract {
 
@@ -9,9 +9,11 @@ class UserContract {
         val password: String
 
         fun isValid(): Boolean
+
+        fun startLogin(listener: BaseCallback<User>)
     }
 
     interface IRepository {
-        fun login(username: String, password: String, onResult: BaseCallback<User>)
+        fun startLogin(username: String, password: String, onResult: BaseCallback<User>)
     }
 }

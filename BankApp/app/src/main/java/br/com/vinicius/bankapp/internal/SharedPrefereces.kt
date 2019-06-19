@@ -1,4 +1,4 @@
-package br.com.vinicius.bankapp.infra
+package br.com.vinicius.bankapp.internal
 
 import android.content.Context
 import android.content.SharedPreferences

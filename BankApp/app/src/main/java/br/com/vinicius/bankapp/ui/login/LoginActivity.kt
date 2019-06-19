@@ -3,10 +3,10 @@ package br.com.vinicius.bankapp.ui.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import br.com.vinicius.bankapp.R
 import br.com.vinicius.bankapp.domain.User
-import br.com.vinicius.bankapp.infra.App
-import br.com.vinicius.bankapp.infra.SharedPreferences
+import br.com.vinicius.bankapp.internal.SharedPreferences
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     private fun loadSaveButton() {
         buttonLogin.setOnClickListener {
-            
+            presenter.startLogin(editTextUsername.text.toString(), editTextPassword.text.toString())
         }
     }
 
@@ -45,6 +45,10 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
             startActivity(intent)
             finish()
         }
+    }
+
+    override fun notification(message: String) {
+        Toast.makeText(this@LoginActivity, message, Toast.LENGTH_LONG).show()
     }
 
 }

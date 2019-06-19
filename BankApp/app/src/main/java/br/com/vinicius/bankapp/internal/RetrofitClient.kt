@@ -1,4 +1,4 @@
-package br.com.vinicius.bankapp.infra
+package br.com.vinicius.bankapp.internal
 
 import br.com.vinicius.bankapp.data.remote.ApiService
 import okhttp3.OkHttpClient
