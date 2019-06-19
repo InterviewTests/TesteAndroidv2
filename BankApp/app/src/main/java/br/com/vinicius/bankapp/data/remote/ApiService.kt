@@ -1,11 +1,14 @@
 package br.com.vinicius.bankapp.data.remote
 
+import br.com.vinicius.bankapp.infra.Api
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 
-interface ApiService {
+interface ApiService: Api {
+
+
 
     companion object {
         operator fun invoke () : ApiService {
