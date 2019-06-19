@@ -1,17 +1,20 @@
 package com.resource.bankapplication.domain;
 
+import com.resource.bankapplication.config.BaseCallback;
+
 public class UserAccount {
 
+    public UserAccountContract.IRepository repository;
     private Long id;
     private String name;
     private String bankAccount;
     private String agency;
-    private String balance;
+    private Double balance;
 
     private String username;
     private String password;
 
-    public UserAccount(Long id, String name, String bankAccount, String agency, String balance) {
+    public UserAccount(Long id, String name, String bankAccount, String agency, Double balance) {
         this.id = id;
         this.name = name;
         this.bankAccount = bankAccount;
@@ -40,7 +43,7 @@ public class UserAccount {
         return agency;
     }
 
-    public String getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
@@ -50,5 +53,31 @@ public class UserAccount {
 
     public String getPassword() {
         return password;
+    }
+
+    public void login(BaseCallback<UserAccount> onResult){
+        if(repository == null){
+            onResult.onUnsuccessful("Repository não pode ser nulo!");
+            return;
+        }
+        if(username.isEmpty()){
+            onResult.onUnsuccessful("Usuário não pode ser nulo!");
+            return;
+        }
+        if(password.isEmpty()){
+            onResult.onUnsuccessful("Senha não pode ser nulo!");
+            return;
+        }
+        repository.login(username, password, new BaseCallback<UserAccount>() {
+            @Override
+            public void onSuccessful(UserAccount value) {
+                onResult.onSuccessful(value);
+            }
+
+            @Override
+            public void onUnsuccessful(String error) {
+                onResult.onUnsuccessful(error);
+            }
+        });
     }
 }
