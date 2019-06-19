@@ -4,9 +4,9 @@ import android.app.Application
 
 object App : Application(){
 
+    val sharedPreferences: SharedPreferences = SharedPreferences(this)
+
     override fun onCreate() {
         super.onCreate()
-        SharedPreferences.init(this)
-
     }
 }

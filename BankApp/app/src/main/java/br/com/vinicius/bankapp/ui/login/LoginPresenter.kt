@@ -17,6 +17,7 @@ class LoginPresenter(val view: LoginContract.View): LoginContract.Presenter {
             user.startLogin(object : BaseCallback<User>{
                 override fun onSuccessful(value: User) {
                     view.notification("Sucesso")
+                    view.saveUserPreferences(value)
                 }
 
                 override fun onUnsuccessful(error: String) {

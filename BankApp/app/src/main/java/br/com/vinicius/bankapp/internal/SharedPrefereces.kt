@@ -8,27 +8,24 @@ const val USERNAME = "username"
 const val PASSWORD = "password"
 const val NAME_PREFS = "user_preferences"
 
-object SharedPreferences {
+class SharedPreferences(context: Context) {
 
-    private lateinit var sharedPreference: SharedPreferences
-
-    fun init(context: Context) {
-        sharedPreference = context.getSharedPreferences(NAME_PREFS, Context.MODE_PRIVATE)
-    }
-
-
+    private val sharedPreference: SharedPreferences = context.getSharedPreferences(NAME_PREFS, Context.MODE_PRIVATE)
 
     private var user: User? = null
 
     fun saveUser(user: User) {
         this.user = user
-        val editor: SharedPreferences.Editor = sharedPreference.edit()
-        editor.putString(USERNAME, user.username)
-        editor.putString(PASSWORD, user.password)
-        editor.apply()
+
+        sharedPreference.edit()
+            .putString(USERNAME, user.username)
+            .putString(PASSWORD, user.password)
+            .apply()
 
         savedPreferences()
     }
+
+
 
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     fun savedPreferences() {

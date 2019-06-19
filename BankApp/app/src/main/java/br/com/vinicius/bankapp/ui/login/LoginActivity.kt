@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.widget.Toast
 import br.com.vinicius.bankapp.R
 import br.com.vinicius.bankapp.domain.User
+import br.com.vinicius.bankapp.internal.App
 import br.com.vinicius.bankapp.internal.SharedPreferences
+import br.com.vinicius.bankapp.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
@@ -33,15 +35,14 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
 
     private fun verifyLogin(){
-        if (SharedPreferences.isSave())
-           goToHome(SharedPreferences.getPreferences())
+        if (App.sharedPreferences.isSave())
+           goToHome(App.sharedPreferences.getPreferences())
     }
-
 
 
     private fun goToHome(preferences: User?) {
         if(preferences != null){
-            val intent: Intent = Intent()
+            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -49,6 +50,10 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     override fun notification(message: String) {
         Toast.makeText(this@LoginActivity, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun saveUserPreferences(user: User) {
+        App.sharedPreferences.saveUser(user)
     }
 
 }
