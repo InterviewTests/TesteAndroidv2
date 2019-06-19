@@ -1,4 +1,4 @@
-package com.resource.bankapplication.ui;
+package com.resource.bankapplication.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,8 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.resource.bankapplication.R;
-
-import java.util.List;
+import com.resource.bankapplication.ui.entry.BankEntryActivity;
 
 public class BankLoginActivity extends AppCompatActivity {
 
@@ -27,12 +26,9 @@ public class BankLoginActivity extends AppCompatActivity {
     }
 
     private void loadActions() {
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(BankLoginActivity.this, BankEntryActivity.class);
-                startActivity(intent);
-            }
+        buttonLogin.setOnClickListener(v -> {
+            Intent intent = new Intent(BankLoginActivity.this, BankEntryActivity.class);
+            startActivity(intent);
         });
     }
 

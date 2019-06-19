@@ -1,4 +1,4 @@
-package com.resource.bankapplication.ui;
+package com.resource.bankapplication.ui.entry;
 
 import androidx.appcompat.app.AppCompatActivity;
 
