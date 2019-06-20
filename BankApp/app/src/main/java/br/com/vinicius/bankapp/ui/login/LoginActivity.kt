@@ -1,13 +1,14 @@
 package br.com.vinicius.bankapp.ui.login
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import br.com.vinicius.bankapp.R
 import br.com.vinicius.bankapp.domain.User
 import br.com.vinicius.bankapp.internal.App
-import br.com.vinicius.bankapp.internal.SharedPreferences
+import br.com.vinicius.bankapp.internal.Preferences
 import br.com.vinicius.bankapp.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -35,8 +36,8 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
 
     private fun verifyLogin(){
-        if (App.sharedPreferences.isSave())
-           goToHome(App.sharedPreferences.getPreferences())
+        if (Preferences.isSave())
+           goToHome(Preferences.getPreferences())
     }
 
 
@@ -53,7 +54,8 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun saveUserPreferences(user: User) {
-        App.sharedPreferences.saveUser(user)
+        Preferences.saveUser(user)
+        goToHome(user)
     }
 
 }

@@ -41,4 +41,13 @@ dependencies {
     // RECYCLER AND CARD
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+
+
+    // KODEIN
+    implementation "org.kodein.di:kodein-di-generic-jvm:5.2.0"
+    implementation "org.kodein.di:kodein-di-framework-android-x:5.2.0"
+
+
+    // Better dateTime-time support even on older Android versions
+    implementation "com.jakewharton.threetenabp:threetenabp:1.1.0"
 }
