@@ -66,4 +66,14 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="86dp" android:layout_marginBottom="33dp"
             app:layout_constraintBottom_toBottomOf="parent" android:textColor="@color/colorWhite"/>
 
+    <ProgressBar
+            android:id="@+id/progressBarButtonLogin"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonLogin"
+            app:layout_constraintTop_toTopOf="@+id/buttonLogin"
+            app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
+            app:layout_constraintStart_toStartOf="@+id/buttonLogin"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

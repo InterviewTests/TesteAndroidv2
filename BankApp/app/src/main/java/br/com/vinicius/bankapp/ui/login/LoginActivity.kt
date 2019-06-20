@@ -1,9 +1,13 @@
 package br.com.vinicius.bankapp.ui.login
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.ViewPropertyAnimator
 import android.widget.Toast
 import br.com.vinicius.bankapp.R
 import br.com.vinicius.bankapp.domain.User
@@ -15,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     private lateinit var presenter: LoginContract.Presenter
+    private var shortAnimTime:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +37,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     private fun loadUI(){
         presenter = LoginPresenter(this@LoginActivity)
+        shortAnimTime = resources.getInteger(android.R.integer.config_shortAnimTime)
     }
 
 
@@ -58,4 +64,16 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         goToHome(user)
     }
 
+    override fun showProgressBar(show: Boolean) {
+        buttonLogin.visibility = if(show) View.INVISIBLE else View.VISIBLE
+        progressBarButtonLogin.visibility = if(show) View.VISIBLE else View.GONE
+        progressBarButtonLogin.animate().setDuration(shortAnimTime.toLong()).alpha(if(show) 1F else 0F)
+            .setListener( object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator?) {
+                    progressBarButtonLogin.visibility = if(show) View.VISIBLE else View.GONE
+                }
+            })
+    }
+
 }
+

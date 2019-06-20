@@ -1,8 +1,6 @@
 package br.com.vinicius.bankapp.internal
 
 import android.app.Application
-import android.content.SharedPreferences
-import br.com.vinicius.bankapp.data.repository.StatementRepository
 import com.jakewharton.threetenabp.AndroidThreeTen
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -17,7 +15,6 @@ class App : Application(), KodeinAware {
         import(androidXModule(this@App))
 
         bind() from singleton { Preferences(instance()) }
-        bind() from singleton { StatementRepository() }
     }
 
 

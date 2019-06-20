@@ -8,6 +8,8 @@ class LoginContract {
         fun notification(message: String)
 
         fun saveUserPreferences(user: User)
+
+        fun showProgressBar(show: Boolean)
     }
 
     interface Presenter {
