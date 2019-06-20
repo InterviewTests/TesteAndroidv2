@@ -7,7 +7,7 @@ import com.farage.testeandroidv2.util.ResultState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class UserDataSource(private val retrofitConfiguration: RetrofitConfiguration) {
+class UserDataSource(private var retrofitConfiguration: RetrofitConfiguration) {
 
     suspend fun doUserLogin(): ResultState<UserResponse>? {
         var result: ResultState<UserResponse>? = ResultState.emptyData<UserResponse>()
