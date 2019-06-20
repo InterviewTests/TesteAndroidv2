@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -48,6 +47,7 @@ public class BankLoginActivity extends AppCompatActivity implements BankLoginCon
         Intent intent = new Intent(this, BankEntryActivity.class);
         intent.putExtra(USER_ACCOUNT, userAccount);
         startActivity(intent);
+        finish();
     }
 
     @Override
