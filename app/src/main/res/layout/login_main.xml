@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".ui.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -56,8 +56,9 @@
         android:layout_width="0dp"
         android:layout_height="62dp"
         android:layout_marginStart="87dp"
+        android:layout_marginTop="256dp"
         android:layout_marginEnd="86dp"
-        android:layout_marginBottom="216dp"
+        android:layout_marginBottom="42dp"
         android:background="@drawable/button_login"
         android:fontFamily=""
         android:text="Login"
@@ -66,6 +67,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idPassword" />
 
 </android.support.constraint.ConstraintLayout>

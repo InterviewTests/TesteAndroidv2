@@ -4,13 +4,15 @@ import android.content.Context;
 
 public class LoginContract {
 
+
         interface View {
             void showProgress(final boolean show);
 
             void showError(String error);
 
-            void navigationToExtract();
+            void navigateToHome();
 
+            void navigateToHomeAdmin();
 
             Context getContext();
         }
