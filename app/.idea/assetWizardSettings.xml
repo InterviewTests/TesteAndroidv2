@@ -94,8 +94,8 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="C:\Users\resource\Desktop\Logo.png" />
-                                      <entry key="outputName" value="ic_launcher_logo_bank" />
+                                      <entry key="imageAsset" value="C:\Users\resource\Desktop\logout 2.png" />
+                                      <entry key="outputName" value="ic_launcher_logout2" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -135,6 +135,11 @@
                 </map>
               </option>
             </PersistentState>
+          </value>
+        </entry>
+        <entry key="vectorWizard">
+          <value>
+            <PersistentState />
           </value>
         </entry>
       </map>
