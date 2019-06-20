@@ -2,7 +2,9 @@ package com.resource.bankapplication.domain;
 
 import com.resource.bankapplication.config.BaseCallback;
 
-public class UserAccount {
+import java.io.Serializable;
+
+public class UserAccount implements Serializable {
 
     public UserAccountContract.IRepository repository;
     private Long id;
@@ -68,6 +70,7 @@ public class UserAccount {
             onResult.onUnsuccessful("Senha não pode ser nulo!");
             return;
         }
+
         repository.login(username, password, new BaseCallback<UserAccount>() {
             @Override
             public void onSuccessful(UserAccount value) {

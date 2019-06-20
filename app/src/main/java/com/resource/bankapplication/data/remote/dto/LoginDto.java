@@ -1,19 +1,18 @@
-package com.resource.bankapplication.data.remote.model;
+package com.resource.bankapplication.data.remote.dto;
 
-import com.resource.bankapplication.domain.UserAccount;
 
-public class LoginModel {
-    private Long userId;
+public class LoginDto {
+    private long userId;
     private String name;
     private String bankAccount;
     private String agency;
-    private Double balance;
+    private double balance;
 
-    public Long getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
@@ -41,15 +40,15 @@ public class LoginModel {
         this.agency = agency;
     }
 
-    public Double getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
-    public UserAccount toDomain() {
-        return new UserAccount(userId, name, bankAccount, agency, balance);
+    public com.resource.bankapplication.domain.UserAccount toDomain() {
+        return new com.resource.bankapplication.domain.UserAccount(userId, name, bankAccount, agency, balance);
     }
 }
