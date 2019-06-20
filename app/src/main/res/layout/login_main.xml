@@ -4,4 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.LoginActivity"/>
+    android:background="#FFFFFF"
+    tools:context=".ui.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="180dp"
+        android:layout_height="122dp"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="124dp"
+        android:src="@mipmap/ic_bank"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/idUser"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_edit"
+        android:ems="10"
+        android:hint="User"
+        android:inputType="textPersonName"
+        android:paddingLeft="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <EditText
+        android:id="@+id/idPassword"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_edit"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="numberPassword"
+        android:paddingLeft="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idUser" />
+
+    <Button
+        android:id="@+id/idButton"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="256dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginBottom="42dp"
+        android:background="@drawable/button_login"
+        android:fontFamily=""
+        android:text="Login"
+        android:textColor="#FFFFFF "
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idPassword" />
+
+</android.support.constraint.ConstraintLayout>
