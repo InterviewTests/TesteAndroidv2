@@ -3,18 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".adapter.AccountAdapter">
 
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="104dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/shape_adapter"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textViewPagamento"
@@ -24,7 +28,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:text="Pagamento"
-            android:textColor="@color/colorShape"
+            android:textColor="@color/colorTextClara"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +41,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:text="12/12/2018"
-            android:textColor="@color/colorShape"
+            android:textColor="@color/colorTextClara"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginBottom="6dp"
+            android:layout_marginBottom="16dp"
             android:text="Conta de Luz"
             android:textColor="@color/colorTextEscura"
             android:textSize="16sp"
@@ -63,11 +67,13 @@
             android:layout_marginLeft="177dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:text="R$ 1.000,00"
             android:textColor="@color/colorTextEscura"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textViewDesc" />
     </android.support.constraint.ConstraintLayout>
 

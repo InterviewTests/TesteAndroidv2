@@ -3,10 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#4452F0</color>
-    <color name="colorShape">#A8B4C4</color>
+    <color name="colorShape">#DCE2EE</color>
     <color name="colorBtnLogin">#4452F0</color>
     <color name="colorText">#ffffff</color>
     <color name="colorTextEscura">#485465</color>
+    <color name="colorTextClara">#A8B4C4</color>
     <color name="colorBorder">#DBDFE3</color>
 
 </resources>

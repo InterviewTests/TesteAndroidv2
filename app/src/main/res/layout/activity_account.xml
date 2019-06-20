@@ -8,7 +8,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="416dp"
+        android:layout_width="0dp"
         android:layout_height="257dp"
         android:background="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,14 +19,14 @@
 
         <TextView
             android:id="@+id/textViewName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="João da Silva Teste"
+            android:text="José da Silva Teste"
             android:textColor="@color/colorText"
             android:textSize="25sp"
             app:layout_constraintEnd_toStartOf="@+id/imageButtonLogout"
@@ -47,7 +47,7 @@
 
         <TextView
             android:id="@+id/textViewConta"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
@@ -63,7 +63,7 @@
 
         <TextView
             android:id="@+id/textViewCC_Ag"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
@@ -81,7 +81,7 @@
 
         <TextView
             android:id="@+id/textViewSaldo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
@@ -97,13 +97,13 @@
 
         <TextView
             android:id="@+id/textViewMostraSaldo"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="32dp"
             android:text="R$ 1.000,00"
             android:textColor="@color/colorText"
             android:textSize="25sp"
@@ -116,7 +116,7 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
@@ -133,7 +133,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewAccount"
-        android:layout_width="384dp"
+        android:layout_width="0dp"
         android:layout_height="347dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
