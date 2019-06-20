@@ -4,8 +4,9 @@ import android.text.TextUtils
 import android.util.Patterns
 import br.com.vinicius.bankapp.internal.BaseCallback
 import br.com.vinicius.bankapp.internal.ValidationException
+import java.io.Serializable
 
-class User(override var username: String, override var password: String) : UserContract.IUser{
+class User(override var username: String, override var password: String) : UserContract.IUser, Serializable{
 
     var repository: UserContract.IRepository? = null
 

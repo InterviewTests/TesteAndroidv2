@@ -5,7 +5,7 @@ import br.com.vinicius.bankapp.domain.User
 import br.com.vinicius.bankapp.internal.BaseCallback
 import br.com.vinicius.bankapp.internal.ValidationException
 
-class LoginPresenter(val view: LoginContract.View): LoginContract.Presenter {
+class LoginPresenter(override val view: LoginContract.View): LoginContract.Presenter {
 
     override fun startLogin(username: String, password: String) {
         val user: User = User(username, password)

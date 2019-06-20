@@ -13,6 +13,8 @@ class LoginContract {
     }
 
     interface Presenter {
+        val view: LoginContract.View
+
         fun startLogin(username: String, password:String)
     }
 }

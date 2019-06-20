@@ -9,10 +9,12 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewPropertyAnimator
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import br.com.vinicius.bankapp.R
 import br.com.vinicius.bankapp.domain.User
 import br.com.vinicius.bankapp.internal.App
 import br.com.vinicius.bankapp.internal.Preferences
+import br.com.vinicius.bankapp.internal.USER_ACCOUNT
 import br.com.vinicius.bankapp.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -50,6 +52,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     private fun goToHome(preferences: User?) {
         if(preferences != null){
             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+            intent.putExtra(USER_ACCOUNT, preferences)
             startActivity(intent)
             finish()
         }

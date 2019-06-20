@@ -2,11 +2,8 @@ package br.com.vinicius.bankapp.internal
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.provider.Telephony.Carriers.PASSWORD
 import br.com.vinicius.bankapp.domain.User
-
-const val USERNAME = "username"
-const val PASSWORD = "password"
-const val NAME_PREFS = "user_preferences"
 
 object Preferences {
 
