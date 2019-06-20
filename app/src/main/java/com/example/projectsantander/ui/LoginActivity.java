@@ -13,12 +13,22 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     private EditText userName;
     private EditText password;
-    private Button login;
-    
+    private Button buttonLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
+
+
+
+
+    }
+
+    private void loadUI(){
+        userName = findViewById(R.id.idUser);
+        password = findViewById(R.id.idPassword);
+        buttonLogin = findViewById(R.id.idButton);
     }
 
     @Override
@@ -43,6 +53,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public Context getContext() {
-        return null;
+        return LoginActivity.this;
     }
 }
