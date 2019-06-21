@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply from: "$rootDir/flavors.gradle"
+
+android {
+    compileSdkVersion versions.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+        versionCode versions.versionCode
+        versionName versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.kotlin.jdk
+    implementation project(':domain')
+
+    // Network
+    implementation deps.retrofit.core
+    implementation deps.retrofit.converter
+    implementation deps.retrofit.adapter
+    implementation deps.google.gson
+    implementation deps.okhttp.core
+    implementation deps.okhttp.logging
+
+    // Tests
+    androidTestImplementation deps.androidx.test.runner
+    androidTestImplementation deps.androidx.test.junit
+    androidTestImplementation deps.androidx.test.espresso
+
+    testImplementation deps.androidx.test.runner
+    testImplementation deps.androidx.test.espresso
+    implementation deps.androidx.annotation
+}

@@ -1,0 +1,18 @@
+android {
+
+    flavorDimensions "normal"
+
+    productFlavors {
+
+        dev {
+            versionNameSuffix "-DEV"
+            dimension "normal"
+            buildConfigField "String", "BASE_URL", "\"https://bank-app-test.herokuapp.com/api/\""
+        }
+
+        prd {
+            dimension "normal"
+            buildConfigField "String", "BASE_URL", "\"https://bank-app-test.herokuapp.com/api/\""
+        }
+    }
+}

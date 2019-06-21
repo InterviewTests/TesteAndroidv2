@@ -1,0 +1,36 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.kotlin.jdk
+
+    // di
+    api deps.koin.core
+    api deps.koin.android
+
+    // Reactive
+    api deps.rx.android
+    api deps.rx.java
+    api deps.rx.kotlin
+
+    // test
+    testImplementation(deps.test.spek.dsl) {
+        exclude group: 'org.jetbrains.kotlin'
+    }
+    testImplementation(deps.test.spek.runner) {
+        exclude group: 'org.junit.platform'
+        exclude group: 'org.jetbrains.kotlin'
+    }
+    testImplementation deps.kotlin.reflect
+}
+
+// setup the test task
+test {
+    useJUnitPlatform {
+        includeEngines 'spek2'
+    }
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

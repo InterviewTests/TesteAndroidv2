@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/blue</color>
+    <color name="colorPrimaryDark">@color/blue</color>
+    <color name="colorAccent">@color/gray_dark</color>
+
+    <color name="textColorHint">@color/gray_light</color>
+    <color name="colorBorderField">#DCE2EE</color>
+
+    <color name="gray_dark">#485465</color>
+    <color name="gray_light">#A8B4C4</color>
+    <color name="blue">#3B48EE</color>
+</resources>

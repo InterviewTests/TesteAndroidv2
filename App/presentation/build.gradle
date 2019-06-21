@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: "$rootDir/flavors.gradle"
+
+apply plugin: "de.mannodermaus.android-junit5"
+
+android {
+    compileSdkVersion versions.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.santander.app"
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+        versionCode versions.versionCode
+        versionName versions.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+
+        unitTests {
+            returnDefaultValues = true
+        }
+
+        junitPlatform {
+            filters {
+                engines {
+                    include 'spek2'
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':data')
+    implementation project(':domain')
+
+    implementation deps.kotlin.jdk
+    implementation deps.androidx.appcompat
+    implementation deps.androidx.constraintlayout
+    implementation deps.androidx.design
+
+    // Tests
+    androidTestImplementation deps.androidx.test.runner
+    androidTestImplementation deps.androidx.test.espresso
+
+    testImplementation deps.test.spek.dsl
+    testRuntimeOnly deps.test.spek.runner
+    testImplementation deps.test.mockito
+    testImplementation deps.koin.test
+
+    testImplementation deps.kotlin.reflect
+}
