@@ -6,4 +6,6 @@
     <string name="login_hint_user">User</string>
     <string name="login_hint_password">Password</string>
     <string name="login_button_text">Login</string>
+    <string name="login_error_message_invalid_username">Invalid user name. User name should be a valid CPF or E-Mail.</string>
+    <string name="login_error_message_invalid_password">Invalid password. Password should contain at least one uppercase, one alphanumeric and one special character.</string>
 </resources>

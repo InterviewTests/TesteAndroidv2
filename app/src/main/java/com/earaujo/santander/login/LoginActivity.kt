@@ -18,26 +18,33 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         setContentView(R.layout.activity_login)
         setupHomeActivity()
         btn_login.setOnClickListener {
-            loginInteractorInput.performLogin(LoginRequest("username", "password"))
+            val username = et_username.text.toString()
+            val password = et_password.text.toString()
+            loginInteractorInput.performLogin(LoginRequest(username, password))
         }
     }
 
     fun setupHomeActivity() {
         loginRouter = LoginRouter()
 
-        loginInteractorInput = LoginInteractor().also {
+        loginInteractorInput = LoginInteractor(this).also {
             it.loginPresenterInput = LoginPresenter().also {
-                it.loginActivityInput = WeakReference<LoginActivityInput>(this)
+                it.loginActivityInput = WeakReference(this)
             }
         }
     }
 
     override fun displayData(loginModel: LoginActivityModel) {
+        tv_error_message.visibility = View.INVISIBLE
+    }
+
+    override fun displayErrorMessage(errorMessage: String) {
         tv_error_message.visibility = View.VISIBLE
-        tv_error_message.text = loginModel.result
+        tv_error_message.text = errorMessage
     }
 }
 
 interface LoginActivityInput {
     fun displayData(loginModel: LoginActivityModel)
+    fun displayErrorMessage(errorMessage: String)
 }

@@ -16,6 +16,5 @@
     <dimen name="login_button_height">62dp</dimen>
     <dimen name="login_button_text_size">16sp</dimen>
     <dimen name="login_error_message_margin_top">15dp</dimen>
-    <dimen name="login_error_message_height">20dp</dimen>
     <dimen name="login_error_message_text_size">16sp</dimen>
 </resources>

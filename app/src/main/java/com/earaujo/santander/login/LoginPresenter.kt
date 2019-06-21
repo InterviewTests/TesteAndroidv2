@@ -10,8 +10,13 @@ class LoginPresenter : LoginPresenterInput {
     override fun presentLoginResponse(loginResponse: LoginResponse) {
         loginActivityInput.get()?.displayData(LoginActivityModel("passou"))
     }
+
+    override fun presentErrorMessage(errorMessage: String) {
+        loginActivityInput.get()?.displayErrorMessage(errorMessage)
+    }
 }
 
 interface LoginPresenterInput {
     fun presentLoginResponse(loginResponse: LoginResponse)
+    fun presentErrorMessage(errorMessage: String)
 }
