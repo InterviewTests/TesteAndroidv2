@@ -4,6 +4,8 @@
 A estrutura deste projeto foi desenvolvida usando abordagem MVP Clean Architecture.
 ## Introdução
 
+![](/captures/screenshot_login.jpg?raw=true "Login Screen")  ![](/captures/screenshot_statements.jpg?raw=true "Statement Screen")
+
 A Clean Architecture definida por Robert Martin em 2012, possui dois principais princípios:
 1. **Separação de camadas** -  Divisão da aplicativo em três camadas
    - **data** (modulo android library)
