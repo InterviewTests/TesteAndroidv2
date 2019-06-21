@@ -13,7 +13,6 @@ class LoginUseCaseImpl(
 
     override fun execute(params: SessionQuery.SignIn): Completable {
         return loginRepository.login(params)
-//            .doOnNext { loginRepository.saveUser(params.user) }
             .flatMapCompletable {
                 accountRepository.save(it).andThen(loginRepository.saveUser(params.user))
             }
