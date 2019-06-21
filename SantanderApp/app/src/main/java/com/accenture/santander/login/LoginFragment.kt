@@ -18,7 +18,6 @@ import android.view.*
 import android.widget.ProgressBar
 import android.widget.Toast
 import com.accenture.santander.R
-import com.accenture.santander.interector.remote.service.login.ServiceLogin
 import com.accenture.santander.utils.StatusBar
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
@@ -50,7 +49,7 @@ class LoginFragment : Fragment(), LoginContracts.LoginPresenterOutput {
 
         DaggerLoginComponents
             .builder()
-            .loginModulo(LoginModulo(activity!!, binding.root, loginFragment = this))
+            .loginModule(LoginModule(activity!!, binding.root, loginFragment = this))
             .build()
             .inject(this)
 

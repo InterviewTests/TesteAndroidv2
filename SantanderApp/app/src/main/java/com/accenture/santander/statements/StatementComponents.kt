@@ -2,7 +2,7 @@ package com.accenture.santander.statements
 
 import dagger.Component
 
-@Component(modules = [StatementModulo::class])
+@Component(modules = [StatementModule::class])
 interface StatementComponents {
     fun inject(fragment: StatementFragment)
     fun inject(presenter: StatementPresenter)

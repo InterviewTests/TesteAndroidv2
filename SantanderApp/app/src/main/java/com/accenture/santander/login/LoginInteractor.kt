@@ -8,7 +8,6 @@ import com.accenture.santander.interector.dataManager.repository.deviceRepositor
 import com.accenture.santander.interector.dataManager.storag.IStoragManager
 import com.accenture.santander.entity.UserAccount
 import com.accenture.santander.interector.remote.service.login.IServiceLogin
-import com.accenture.santander.interector.remote.service.Connect
 import com.accenture.santander.interector.remote.service.IConnect
 import javax.inject.Inject
 
@@ -31,7 +30,7 @@ class LoginInteractor(
     init {
         DaggerLoginComponents
             .builder()
-            .loginModulo(LoginModulo(context = activity, loginInteractor = this))
+            .loginModule(LoginModule(activity))
             .build()
             .inject(this)
     }

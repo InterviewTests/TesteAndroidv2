@@ -26,34 +26,21 @@ import java.util.*
 @RunWith(RobolectricTestRunner::class)
 class TestLoginPresenter {
 
-    lateinit var activity: IndexActivity
-
     lateinit var loginPresenter: LoginPresenter
-
-    lateinit var loginInteractor: LoginInteractor
-
-    @Captor
-    private lateinit var observable: ArgumentCaptor<Observer<List<LoginContracts.LoginInteractorOutput>>>
 
     @Mock
     lateinit var iLoginInteractorInput: LoginContracts.LoginInteractorInput
-
-    @Mock
-    lateinit var iLoginInteractorOutput: LoginContracts.LoginInteractorOutput
 
     @Mock
     lateinit var iLoginPresenterOutput: LoginContracts.LoginPresenterOutput
 
     @Before
     fun setup() {
-        this.activity = Robolectric.setupActivity(IndexActivity::class.java)
+        val activity = Robolectric.setupActivity(IndexActivity::class.java)
         MockitoAnnotations.initMocks(this)
-
         loginPresenter = LoginPresenter(activity, View(activity), iLoginPresenterOutput)
         loginPresenter.iLoginInteractorInput = iLoginInteractorInput
-        loginInteractor = LoginInteractor(activity, iLoginInteractorOutput, TestServiceLogin())
         assertNotNull(loginPresenter)
-        assertNotNull(loginInteractor)
     }
 
     @Test
@@ -69,16 +56,5 @@ class TestLoginPresenter {
     fun searchData() {
         loginPresenter.searchData()
         verify(iLoginInteractorInput, times(1)).searchData()
-    }
-
-    @Test
-    fun loginService() {
-        val user = User()
-        user.login = "test_user@hotmail.com"
-        user.password = "Test@"
-
-        loginInteractor.login(user)
-
-        verify(iLoginInteractorOutput, times(1)).sucessLogin()
     }
 }

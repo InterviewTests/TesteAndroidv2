@@ -18,34 +18,27 @@ import org.robolectric.RobolectricTestRunner
 import kotlin.collections.ArrayList
 
 @RunWith(RobolectricTestRunner::class)
-class TestStatementPresenter {
+class TestStatementInteractor {
 
-    lateinit var statementPresenter: StatementPresenter
-
-    @Mock
-    lateinit var iStatementInteractorInput: StatementContracts.StatementInteractorInput
+    lateinit var statementInteractor: StatementInteractor
 
     @Mock
-    lateinit var iStatementPresenterOutput: StatementContracts.StatementPresenterOutput
+    lateinit var iStatementInteractorOutput: StatementContracts.StatementInteractorOutput
 
     @Before
     fun setup() {
         val activity = Robolectric.setupActivity(IndexActivity::class.java)
         MockitoAnnotations.initMocks(this)
-        statementPresenter = StatementPresenter(activity, View(activity), iStatementPresenterOutput)
-        statementPresenter.iStatementInteractorInput = iStatementInteractorInput
-        Assert.assertNotNull(statementPresenter)
+        statementInteractor = StatementInteractor(activity, iStatementInteractorOutput, TestServiceStatement())
+        Assert.assertNotNull(statementInteractor)
     }
 
     @Test
-    fun loadStatements() {
-        statementPresenter.loadStatements()
-        Mockito.verify(iStatementInteractorInput, Mockito.times(1)).searchIdUserStatements()
-    }
-
-    @Test
-    fun resultStatements() {
-        statementPresenter.resultStatements(ListStatement(ArrayList(), Error()))
-        Mockito.verify(iStatementPresenterOutput, Mockito.times(1)).goneRefrash()
+    fun searchStatements() {
+        statementInteractor.searchStatements(1)
+        Mockito.verify(
+            iStatementInteractorOutput,
+            Mockito.times(1)
+        ).resultStatements(Mockito.any(ListStatement::class.java))
     }
 }

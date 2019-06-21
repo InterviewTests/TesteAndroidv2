@@ -56,15 +56,14 @@ class StatementFragment : Fragment(), StatementContracts.StatementPresenterOutpu
 
         DaggerStatementComponents
             .builder()
-            .statementModulo(StatementModulo(activity!!, binding.root, statementFragment = this))
+            .statementModule(StatementModule(activity!!, binding.root, statementFragment = this))
             .build()
             .inject(this)
 
         lifecycleScope.launch {
             StatusBar.setStatusBarColor(activity, ContextCompat.getColor(activity!!, R.color.colorPrimary))
 
-            accounViewModel =
-                activity?.run { ViewModelProviders.of(this).get(AccountViewModel::class.java) } ?: AccountViewModel()
+            accounViewModel = activity?.run { ViewModelProviders.of(this).get(AccountViewModel::class.java) } ?: AccountViewModel()
             statements = activity?.run { ViewModelProviders.of(this).get(StatementViewModel::class.java) }
                 ?: StatementViewModel()
 

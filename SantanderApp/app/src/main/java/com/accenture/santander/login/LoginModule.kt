@@ -1,4 +1,4 @@
-package com.accenture.santander.statements
+package com.accenture.santander.login
 
 
 import android.app.Activity
@@ -9,19 +9,22 @@ import com.accenture.santander.interector.dataManager.storag.IStoragManager
 import com.accenture.santander.interector.dataManager.storag.StoragManager
 import com.accenture.santander.interector.remote.service.Connect
 import com.accenture.santander.interector.remote.service.IConnect
-import com.accenture.santander.interector.remote.service.statement.IServiceStatement
-import com.accenture.santander.interector.remote.service.statement.ServiceStatement
+import com.accenture.santander.interector.remote.service.login.IServiceLogin
+import com.accenture.santander.interector.remote.service.login.ServiceLogin
+import com.accenture.santander.statements.StatementFragment
+import com.accenture.santander.statements.StatementInteractor
+import com.accenture.santander.statements.StatementPresenter
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 
 @Module
-class StatementModulo(
+class LoginModule(
     val context: Activity? = null,
     val view: View? = null,
-    val statementFragment: StatementFragment? = null,
-    val statementPresenter: StatementPresenter? = null,
-    val statementInteractor: StatementInteractor? = null
+    val loginFragment: LoginFragment? = null,
+    val loginPresenter: LoginPresenter? = null
 ) {
 
     @Provides
@@ -35,23 +38,23 @@ class StatementModulo(
     }
 
     @Provides
-    fun provideIServiceStatement(): IServiceStatement {
-        return ServiceStatement()
+    fun provideIServiceLogin(): IServiceLogin {
+        return ServiceLogin()
     }
 
     @Provides
-    fun provideStatementRouter(): StatementRouter {
-        return StatementRouter(view!!)
+    fun provideLoginRouter(): LoginRouter {
+        return LoginRouter(view!!)
     }
 
     @Provides
-    fun provideStatementInteractorInput(): StatementContracts.StatementInteractorInput {
-        return StatementInteractor(context!!, statementPresenter!!, ServiceStatement())
+    fun provideLoginPresenterInput(): LoginContracts.LoginPresenterInput {
+        return LoginPresenter(context!!, view!!, loginFragment!!)
     }
 
     @Provides
-    fun provideStatementPresenterInput(): StatementContracts.StatementPresenterInput {
-        return StatementPresenter(context!!, view!!, statementFragment!!)
+    fun provideLoginInteractorInput(): LoginContracts.LoginInteractorInput {
+        return LoginInteractor(context!!, loginPresenter!!, ServiceLogin())
     }
 
     @Provides

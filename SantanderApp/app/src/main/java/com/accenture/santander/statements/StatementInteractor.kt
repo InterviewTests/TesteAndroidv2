@@ -27,7 +27,7 @@ class StatementInteractor(
     init {
         DaggerStatementComponents
             .builder()
-            .statementModulo(StatementModulo(context = activity, statementInteractor = this))
+            .statementModule(StatementModule(context = activity))
             .build()
             .inject(this)
     }

@@ -1,9 +1,8 @@
 package com.accenture.santander.login
 
 import dagger.Component
-import javax.inject.Singleton
 
-@Component(modules = [LoginModulo::class])
+@Component(modules = [LoginModule::class])
 interface LoginComponents {
     fun inject(fragment: LoginFragment)
     fun inject(presenter: LoginPresenter)

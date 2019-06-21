@@ -1,14 +1,10 @@
 package com.accenture.santander.login
 
 import android.app.Activity
-import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.View
-import android.widget.Toast
 import com.accenture.santander.R
 import com.accenture.santander.viewmodel.User
-import com.accenture.santander.entity.Auth
-import com.accenture.santander.entity.Error
 import com.accenture.santander.utils.Validate
 import java.io.IOException
 import javax.inject.Inject
@@ -28,7 +24,7 @@ class LoginPresenter(
     init {
         DaggerLoginComponents
             .builder()
-            .loginModulo(LoginModulo(context = activity, view = view, loginPresenter = this))
+            .loginModule(LoginModule(activity, view, loginPresenter = this))
             .build()
             .inject(this)
     }

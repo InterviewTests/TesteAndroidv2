@@ -27,7 +27,7 @@ class StatementPresenter(
     init {
         DaggerStatementComponents
             .builder()
-            .statementModulo(StatementModulo(context = activity, view = view, statementPresenter = this))
+            .statementModule(StatementModule(context = activity, view = view, statementPresenter = this))
             .build()
             .inject(this)
     }
