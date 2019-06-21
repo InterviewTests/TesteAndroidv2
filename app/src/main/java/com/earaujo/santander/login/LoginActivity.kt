@@ -2,6 +2,7 @@ package com.earaujo.santander.login
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.earaujo.santander.R
 import com.earaujo.santander.repository.models.LoginRequest
 import kotlinx.android.synthetic.main.activity_login.*
@@ -16,7 +17,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         setupHomeActivity()
-        btn_hello.setOnClickListener {
+        btn_login.setOnClickListener {
             loginInteractorInput.performLogin(LoginRequest("username", "password"))
         }
     }
@@ -32,7 +33,8 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
     }
 
     override fun displayData(loginModel: LoginActivityModel) {
-        btn_hello.text = loginModel.result
+        tv_error_message.visibility = View.VISIBLE
+        tv_error_message.text = loginModel.result
     }
 }
 
