@@ -8,6 +8,8 @@ class HomeContract {
         fun notification(message: String)
 
         fun initRecyclerView(models: List<StatementModel>)
+
+        fun showProgressRecycler(show:Boolean)
     }
 
     interface Presenter {

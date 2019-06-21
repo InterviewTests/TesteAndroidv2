@@ -86,11 +86,18 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="0.0" android:textColor="@color/colorTextAccount"
             android:textSize="17dp"/>
-    <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="0dp"
-            tools:listitem="@layout/card_view_statement"
-            android:layout_height="0dp" android:layout_marginTop="8dp"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayoutStatement"
             app:layout_constraintTop_toBottomOf="@+id/textViewRecent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="12dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="12dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/recyclerViewStatement"/>
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_height="0dp"
+            android:layout_width="0dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="0dp"
+                tools:listitem="@layout/card_view_statement"
+                android:layout_height="0dp" android:layout_marginTop="8dp"
+                 android:id="@+id/recyclerViewStatement"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

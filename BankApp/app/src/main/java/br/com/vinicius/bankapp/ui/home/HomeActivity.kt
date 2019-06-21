@@ -28,7 +28,18 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
         loadUI()
         loadFonts()
         logout()
+        actionRefresh()
         user.userId?.let { id -> presenter.fetchListStatements(id) }
+    }
+
+    private fun actionRefresh() {
+        swipeRefreshLayoutStatement.setOnRefreshListener {
+            user.userId?.let { id -> presenter.fetchListStatements(id) }
+        }
+    }
+
+    override fun showProgressRecycler(show: Boolean) {
+        swipeRefreshLayoutStatement.isRefreshing = show
     }
 
     private fun loadExtras() {
@@ -69,10 +80,10 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
 
     private fun logout(){
         imageViewLogout.setOnClickListener {
-            val intentHome = Intent(this@HomeActivity, LoginActivity::class.java)
+            val intentHome = Intent(this, LoginActivity::class.java)
             Preferences.clearPreferences()
-            this@HomeActivity.startActivity(intentHome)
-            this@HomeActivity.finish()
+            startActivity(intentHome)
+            finish()
         }
     }
 

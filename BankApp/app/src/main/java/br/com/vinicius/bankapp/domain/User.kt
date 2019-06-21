@@ -3,8 +3,11 @@ package br.com.vinicius.bankapp.domain
 import android.text.TextUtils
 import android.util.Patterns
 import br.com.vinicius.bankapp.internal.BaseCallback
+import br.com.vinicius.bankapp.internal.CPF_PATTERN
+import br.com.vinicius.bankapp.internal.PASSWORD_PATTERN
 import br.com.vinicius.bankapp.internal.ValidationException
 import java.io.Serializable
+import java.util.regex.Pattern
 
 class User(override var username: String, override var password: String) : UserContract.IUser, Serializable{
 
@@ -32,8 +35,22 @@ class User(override var username: String, override var password: String) : UserC
         this.userId = userId
     }
 
-    override fun isValid(): Boolean = (!TextUtils.isEmpty(username)
-            && Patterns.EMAIL_ADDRESS.matcher(username).matches() && password.length > 6)
+    override fun isValid(): Boolean = (username.isEmpty() && password.isEmpty()
+            && (validationEmail() || validationCpf()) && validationPassword())
+
+    private fun validationPassword():Boolean{
+        val pattern = Pattern.compile(PASSWORD_PATTERN)
+        val matcher = pattern.matcher(password)
+        return matcher.matches()
+    }
+
+    private fun validationCpf():Boolean {
+        val pattern = Pattern.compile(CPF_PATTERN)
+        val matcher = pattern.matcher(username)
+        return matcher.matches()
+    }
+
+    private fun validationEmail():Boolean = Patterns.EMAIL_ADDRESS.matcher(username).matches()
 
     override fun startLogin(listener: BaseCallback<User>) {
 
