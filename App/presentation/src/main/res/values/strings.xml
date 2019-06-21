@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Bank</string>
+    <string name="empty"/>
+
+    <!--LOGIN-->
+    <string name="hint_user">User</string>
+    <string name="hint_password">Password</string>
+    <string name="action_login">Login</string>
+    <string name="error_empty_fields">Preencha todos os campos.</string>
+    <string name="error_invalid_user_password">Usuário e/ou senha inválido(s).</string>
+    <string name="error_invalid_password">Sua senha não atende aos requisitos de validação.</string>
+
+    <!--STATEMENT-->
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="recent">Recentes</string>
+
+    <!---->
+    <string name="logout_title">Sair</string>
+    <string name="logout_message">Têm certeza que deseja sair?</string>
+    <string name="action_yes">OK</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_ok">OK, entendi</string>
+    <string name="default_error_title">Ops!</string>
+    <string name="default_error_message">Ocorreu um erro inesperado.</string>
+    <string name="error_no_network">Parece que tivemos um problema. Verifique se o celular está conectado ou tente novamente mais tarde.</string>
+
+    <string name="action_exit">Sair</string>
+</resources>

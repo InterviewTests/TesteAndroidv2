@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:showIn="@layout/activity_statement"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".feature.statement.StatementActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:id="@+id/tvRecent"
+                android:layout_width="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/gray_dark"
+                android:textSize="@dimen/sp_17"
+                android:text="@string/recent"
+                android:padding="@dimen/dp_16"
+                android:layout_height="wrap_content"/>
+
+        <!--<androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+        <!--android:id="@+id/swipeRefreshStatement"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStatement"
+                android:layout_width="0dp"
+                android:clipToPadding="true"
+                android:paddingTop="@dimen/dp_48"
+                android:paddingEnd="@dimen/dp_16"
+                android:paddingStart="@dimen/dp_16"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:itemCount="5"
+                android:paddingBottom="@dimen/dp_64"
+                tools:listitem="@layout/item_statement"/>
+
+        <!--</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+
+        <ProgressBar
+                android:id="@+id/progressStatement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvRecent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
