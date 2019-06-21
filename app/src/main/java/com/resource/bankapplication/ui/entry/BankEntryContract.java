@@ -11,6 +11,8 @@ public class BankEntryContract {
         void listSpent(List<Spent> value);
 
         void showError(String error);
+
+        void showProgress(boolean show);
     }
     interface Presenter{
 

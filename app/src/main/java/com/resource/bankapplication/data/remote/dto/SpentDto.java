@@ -1,8 +1,12 @@
 package com.resource.bankapplication.data.remote.dto;
 
 import com.resource.bankapplication.domain.Spent;
+import com.resource.bankapplication.util.DateTypeDeserializer;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SpentDto {
@@ -28,8 +32,9 @@ public class SpentDto {
     public List<Spent> toDomain() {
         List<Spent> list = new ArrayList<>();
         for (StatementsDto statementsDto : statementList) {
+
             list.add(new Spent(statementsDto.getTitle(), statementsDto.getDesc(),
-                    statementsDto.getDate(), statementsDto.getValue()));
+                    DateTypeDeserializer.formatDate(statementsDto.getDate()), statementsDto.getValue()));
         }
         return list;
     }

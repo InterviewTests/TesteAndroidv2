@@ -9,6 +9,8 @@ public class BankLoginContract {
         void navigationToHome(UserAccount userAccount);
 
         void showError(String error);
+
+        void showProgress(boolean show);
     }
     interface Presenter{
 

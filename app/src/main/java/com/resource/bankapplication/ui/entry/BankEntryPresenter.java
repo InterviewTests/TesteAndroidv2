@@ -16,16 +16,19 @@ public class BankEntryPresenter implements BankEntryContract.Presenter {
 
     @Override
     public void loadList(Long idUser) {
+        view.showProgress(true);
         Spent spent = new Spent();
         spent.setRepository(new StatementsRepository());
         spent.listSpent(idUser, new BaseCallback<List<Spent>>() {
             @Override
             public void onSuccessful(List<Spent> value) {
+                view.showProgress(false);
                 view.listSpent(value);
             }
 
             @Override
             public void onUnsuccessful(String error) {
+                view.showProgress(false);
                 view.showError(error);
             }
         });

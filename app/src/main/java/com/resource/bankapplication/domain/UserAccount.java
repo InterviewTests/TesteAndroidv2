@@ -66,8 +66,17 @@ public class UserAccount implements Serializable {
             onResult.onUnsuccessful("Usuário não pode ser nulo!");
             return;
         }
+
         if(password.isEmpty()){
             onResult.onUnsuccessful("Senha não pode ser nulo!");
+            return;
+        }
+        if(!validUsername()) {
+            onResult.onUnsuccessful("Usuário invalido!");
+            return;
+        }
+        if(!validPassword()){
+            onResult.onUnsuccessful("Senha não é valida!");
             return;
         }
 
@@ -82,5 +91,17 @@ public class UserAccount implements Serializable {
                 onResult.onUnsuccessful(error);
             }
         });
+    }
+
+    private boolean validPassword() {
+        if(password.matches("([a-z]+[A-Z]+[0-9]+[?=.*}{,@!'#$%¨&:;|<>^~+_]+)"))
+            return true;
+        return false;
+    }
+
+    private boolean validUsername() {
+        if(username.matches(".+@.+\\..+")) return true;
+        if(username.matches("[0-9]{11}")) return true;
+        return false;
     }
 }

@@ -2,6 +2,7 @@ package com.resource.bankapplication.domain;
 
 import com.resource.bankapplication.config.BaseCallback;
 
+import java.util.Date;
 import java.util.List;
 
 public class Spent {

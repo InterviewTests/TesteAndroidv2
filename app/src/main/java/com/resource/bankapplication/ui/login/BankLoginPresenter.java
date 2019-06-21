@@ -14,16 +14,19 @@ public class BankLoginPresenter implements BankLoginContract.Presenter {
 
     @Override
     public void login(String username, String password) {
+        view.showProgress(true);
         UserAccount userAccount = new UserAccount(username, password);
         userAccount.repository = new LoginRepository();
         userAccount.login(new BaseCallback<UserAccount>() {
             @Override
             public void onSuccessful(UserAccount value) {
+                view.showProgress(false);
                 view.navigationToHome(value);
             }
 
             @Override
             public void onUnsuccessful(String error) {
+                view.showProgress(false);
                 view.showError(error);
             }
         });
