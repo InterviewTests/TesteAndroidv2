@@ -2,6 +2,8 @@ package com.resource.bankapplication.config;
 
 import android.app.Application;
 
+import com.resource.bankapplication.data.local.LoginSharedPref;
+
 public class App extends Application {
 
     private static App instance;

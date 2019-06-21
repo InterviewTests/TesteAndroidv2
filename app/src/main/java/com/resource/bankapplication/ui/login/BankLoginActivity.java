@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.resource.bankapplication.R;
+import com.resource.bankapplication.config.App;
 import com.resource.bankapplication.domain.UserAccount;
 import com.resource.bankapplication.ui.entry.BankEntryActivity;
 
@@ -35,6 +36,7 @@ public class BankLoginActivity extends AppCompatActivity implements BankLoginCon
         presenter = new BankLoginPresenter(this);
         loadUi();
         loadActions();
+        presenter.loadPreference();
     }
 
     private void loadActions() {
@@ -94,5 +96,16 @@ public class BankLoginActivity extends AppCompatActivity implements BankLoginCon
                 progressLogin.setVisibility (show ? View.VISIBLE : View.GONE);
             }
         });
+    }
+
+    @Override
+    public void setPreferences(UserAccount value) {
+        editTextUsername.setText(value.getUsername());
+        editTextPassword.setText(value.getPassword());
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 }

@@ -1,18 +1,17 @@
 package com.resource.bankapplication.ui.entry;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.resource.bankapplication.R;
 import com.resource.bankapplication.domain.Spent;
@@ -22,7 +21,6 @@ import com.resource.bankapplication.ui.login.BankLoginActivity;
 import com.resource.bankapplication.util.CoinUtil;
 
 import java.util.List;
-import java.util.regex.*;
 
 public class BankEntryActivity extends AppCompatActivity implements BankEntryContract.View {
 
@@ -41,9 +39,18 @@ public class BankEntryActivity extends AppCompatActivity implements BankEntryCon
         setContentView(R.layout.activity_bank_entry);
         loadUi();
         loadExtras();
+        loadActions();
         presenter = new BankEntryPresenter(this);
         presenter.loadList(userAccount.getId());
     }
+
+    private void loadActions() {
+        imageEntryLogout.setOnClickListener(v -> {
+            startActivity(new Intent(this, BankLoginActivity.class));
+            finish();
+        });
+    }
+
     private void loadUi() {
         textNameCustomer = findViewById(R.id.text_name_customer);
         textEntryAccount = findViewById(R.id.text_entry_account);
@@ -53,7 +60,6 @@ public class BankEntryActivity extends AppCompatActivity implements BankEntryCon
         progressEntry = findViewById(R.id.progress_entry);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void loadExtras() {
         if(getIntent().hasExtra(BankLoginActivity.USER_ACCOUNT)) {
             userAccount = (UserAccount) getIntent()

@@ -1,9 +1,14 @@
 package com.resource.bankapplication.data.repository;
 
+import android.content.Context;
+
+import com.resource.bankapplication.config.App;
 import com.resource.bankapplication.config.BaseCallback;
 import com.resource.bankapplication.config.Repository;
+import com.resource.bankapplication.data.local.LoginSharedPref;
 import com.resource.bankapplication.data.remote.LoginService;
 import com.resource.bankapplication.data.remote.dto.UserAccountDto;
+import com.resource.bankapplication.domain.UserAccount;
 import com.resource.bankapplication.domain.UserAccountContract;
 
 import retrofit2.Call;
@@ -12,6 +17,8 @@ import retrofit2.Response;
 
 public class LoginRepository extends Repository implements UserAccountContract.IRepository {
 
+    private static LoginSharedPref sharedPref;
+
     @Override
     public void login(String username, String password, BaseCallback<com.resource.bankapplication.domain.UserAccount> onResult) {
         super.data.restApi(LoginService.class)
@@ -19,9 +26,10 @@ public class LoginRepository extends Repository implements UserAccountContract.I
                 .enqueue(new Callback<UserAccountDto>() {
                     @Override
                     public void onResponse(Call<UserAccountDto> call, Response<UserAccountDto> response) {
-                        if(response.body().getError().getCode()==0)
+                        if(response.body().getError().getCode()==0) {
+                            sharedPref.saveSharedPref(username, password);
                             onResult.onSuccessful(response.body().getUserAccount().toDomain());
-                        else
+                        }else
                             onResult.onUnsuccessful(response.body().getError().getMessage());
                     }
 
@@ -30,5 +38,11 @@ public class LoginRepository extends Repository implements UserAccountContract.I
                         onResult.onUnsuccessful(t.getMessage());
                     }
                 });
+    }
+
+    @Override
+    public void loadPreference(Context context, BaseCallback<UserAccount> onResult) {
+        sharedPref = new LoginSharedPref(context);
+        onResult.onSuccessful(new UserAccount(sharedPref.getUsername(), sharedPref.getPassword()));
     }
 }
