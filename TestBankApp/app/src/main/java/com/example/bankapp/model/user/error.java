@@ -1,6 +1,8 @@
 package com.example.bankapp.model.user;
 
-public class error {
+import java.io.Serializable;
+
+public class Error implements Serializable {
 
     private long code;
     private String message;

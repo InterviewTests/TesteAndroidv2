@@ -8,14 +8,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.bankapp.R;
-import com.example.bankapp.model.dashboard.statementList;
+import com.example.bankapp.helper.MyConveter;
+import com.example.bankapp.model.dashboard.StatementList;
 
 import java.util.List;
 
 public class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyViewHolder> {
-    public List<statementList> list;
+    public List<StatementList> list;
 
-    public AdapterCurrency(List<statementList> statementLists) {
+    public AdapterCurrency(List<StatementList> statementLists) {
         this.list = statementLists;
     }
 
@@ -30,10 +31,10 @@ public class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        statementList model = list.get(i);
+        StatementList model = list.get(i);
 
-        myViewHolder.textViewPayDay.setText(model.getDate());
-        myViewHolder.textViewValue.setText(model.getValue() + "");
+        myViewHolder.textViewPayDay.setText(MyConveter.formatDate(model.getDate()));
+        myViewHolder.textViewValue.setText(MyConveter.formatCurrency(model.getValue()));
         myViewHolder.textViewTypeAccount.setText(model.getDesc());
         myViewHolder.textViewTitle.setText(model.getTitle());
     }

@@ -1,7 +1,7 @@
 package com.example.bankapp.domain;
 
 import com.example.bankapp.helper.BaseCallback;
-import com.example.bankapp.model.dashboard.statementListModel;
+import com.example.bankapp.model.dashboard.StatementListModel;
 
 public class DashboardDomain {
 
@@ -12,10 +12,10 @@ public class DashboardDomain {
 
     public DashboardContract.IRepository repository;
 
-    public void getList(long id, final BaseCallback<statementListModel> listener){
-        repository.getList(id, new BaseCallback<statementListModel>() {
+    public void getList(long id, final BaseCallback<StatementListModel> listener){
+        repository.getList(id, new BaseCallback<StatementListModel>() {
             @Override
-            public void onSuccessful(statementListModel value) {
+            public void onSuccessful(StatementListModel value) {
                 listener.onSuccessful(value);
             }
 

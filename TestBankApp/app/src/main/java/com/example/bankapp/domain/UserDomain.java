@@ -1,7 +1,10 @@
 package com.example.bankapp.domain;
 
 import com.example.bankapp.helper.BaseCallback;
-import com.example.bankapp.model.user.userAccountModel;
+import com.example.bankapp.model.user.UserAccountModel;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserDomain {
 
@@ -31,10 +34,38 @@ public class UserDomain {
     }
 
 
-    public void login(final BaseCallback<userAccountModel> listener) {
-        repository.login(userName, password, new BaseCallback<userAccountModel>() {
+    public void login(final BaseCallback<UserAccountModel> listener) throws Exception {
+        Pattern uppChar = Pattern.compile("[A-Z]");
+        Pattern lowChar = Pattern.compile("[a-z]");
+        Pattern num = Pattern.compile("[0-9]");
+        Pattern especial = Pattern.compile("[$&+,:;=?@#|'<>.^*()%!-]");
+
+        Matcher matcherUpp = uppChar.matcher(password);
+        Matcher matcherLow = lowChar.matcher(password);
+        Matcher matcherNum = num.matcher(password);
+        Matcher matcherEpecial = especial.matcher(password);
+
+        if(userName == null || userName.isEmpty())
+            throw new Exception("Preencha o campo user");
+
+        if(password==null || password.isEmpty())
+            throw new Exception("Preencha o campo senha");
+
+        if(!matcherUpp.find())
+            throw new Exception("Senha deve conter ao menos uma letra maiuscula");
+
+        if(!matcherLow.find())
+            throw new Exception("Senha deve conter ao menos uma letra minuscula");
+
+        if(!matcherNum.find())
+            throw new Exception("Senha deve conter ao menos numero");
+
+        if(!matcherEpecial.find())
+            throw new Exception("Senha deve conter ao menos um caractere especial");
+
+        repository.login(userName, password, new BaseCallback<UserAccountModel>() {
             @Override
-            public void onSuccessful(userAccountModel value) {
+            public void onSuccessful(UserAccountModel value) {
                 listener.onSuccessful(value);
             }
 

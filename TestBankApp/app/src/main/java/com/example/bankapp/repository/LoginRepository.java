@@ -2,7 +2,7 @@ package com.example.bankapp.repository;
 
 import com.example.bankapp.domain.UserContract;
 import com.example.bankapp.helper.BaseCallback;
-import com.example.bankapp.model.user.userAccountModel;
+import com.example.bankapp.model.user.UserAccountModel;
 import com.example.bankapp.remote.BuildApi;
 import com.example.bankapp.remote.LoginAPI;
 
@@ -14,11 +14,11 @@ public class LoginRepository extends BuildApi implements UserContract.IRepositor
 
 
     @Override
-    public void login(String userName, String password, final BaseCallback<userAccountModel> result) {
+    public void login(String userName, String password, final BaseCallback<UserAccountModel> result) {
         super.getBuild(LoginAPI.class)
-                .login(userName,password).enqueue(new Callback<userAccountModel>() {
+                .login(userName,password).enqueue(new Callback<UserAccountModel>() {
             @Override
-            public void onResponse(Call<userAccountModel> call, Response<userAccountModel> response) {
+            public void onResponse(Call<UserAccountModel> call, Response<UserAccountModel> response) {
                 if(response.body().getError().getMessage()!=null){
                     result.onUnsuccessful(response.body().getError().getMessage());
                     return;
@@ -28,7 +28,7 @@ public class LoginRepository extends BuildApi implements UserContract.IRepositor
             }
 
             @Override
-            public void onFailure(Call<userAccountModel> call, Throwable t) {
+            public void onFailure(Call<UserAccountModel> call, Throwable t) {
                 result.onUnsuccessful(t.getMessage());
             }
         });

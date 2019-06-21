@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.bankapp.DashboardActivity;
+import com.example.bankapp.model.user.UserAccount;
+import com.example.bankapp.model.user.UserAccountModel;
+import com.example.bankapp.ui.dashboard.DashboardActivity;
 import com.example.bankapp.R;
 
 public class LoginActivity extends AppCompatActivity implements LoginViewPresenter.loginView {
@@ -41,9 +43,10 @@ public class LoginActivity extends AppCompatActivity implements LoginViewPresent
     }
 
     @Override
-    public void goToHome() {
-        Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
-        startActivity(intent);
+    public void goToHome(UserAccount user) {
+        Intent intentDash = new Intent(LoginActivity.this, DashboardActivity.class);
+        intentDash.putExtra("userData", user);
+        startActivity(intentDash);
     }
 
     @Override

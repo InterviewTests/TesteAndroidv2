@@ -1,23 +1,25 @@
 package com.example.bankapp.model.user;
 
-public class userAccountModel {
+import java.io.Serializable;
 
-    private userAccount userAccount;
-    private com.example.bankapp.model.user.error error;
+public class UserAccountModel implements Serializable {
 
-    public error getError() {
+    private UserAccount userAccount;
+    private Error error;
+
+    public Error getError() {
         return error;
     }
 
-    public void setError(error error) {
+    public void setError(Error error) {
         this.error = error;
     }
 
-    public userAccount getUserAccount() {
+    public UserAccount getUserAccount() {
         return userAccount;
     }
 
-    public void setUserAccount(userAccount userAccount) {
+    public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
     }
 

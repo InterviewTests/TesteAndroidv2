@@ -1,9 +1,12 @@
 package com.example.bankapp.ui.login;
 
+import com.example.bankapp.model.user.UserAccount;
+import com.example.bankapp.model.user.UserAccountModel;
+
 public class LoginViewPresenter {
 
     public interface loginView{
-        void goToHome();
+        void goToHome(UserAccount user);
         void showErrorMessage(String text);
     }
 

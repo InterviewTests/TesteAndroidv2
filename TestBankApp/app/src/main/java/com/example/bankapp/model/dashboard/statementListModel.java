@@ -1,26 +1,26 @@
 package com.example.bankapp.model.dashboard;
 
-import com.example.bankapp.model.user.error;
+import com.example.bankapp.model.user.Error;
 
 import java.util.List;
 
-public class statementListModel {
-    private List<statementList> statementList;
-    private error error;
+public class StatementListModel {
+    private List<StatementList> statementList;
+    private Error error;
 
-    public error getError() {
+    public Error getError() {
         return error;
     }
 
-    public void setError(error error) {
+    public void setError(Error error) {
         this.error = error;
     }
 
-    public List<statementList> getStatementList() {
+    public List<StatementList> getStatementList() {
         return statementList;
     }
 
-    public void setStatementList(List<statementList> statementList) {
+    public void setStatementList(List<StatementList> statementList) {
         this.statementList = statementList;
 
 

@@ -1,13 +1,15 @@
-package com.example.bankapp.ui;
+package com.example.bankapp.ui.dashboard;
 
-import com.example.bankapp.model.dashboard.statementList;
+import com.example.bankapp.model.dashboard.StatementList;
 
 import java.util.List;
 
 public class DashboardViewPresenter {
 
     public interface dashboardView{
-        void showList(List<statementList> list);
+        void showList(List<StatementList> list);
+
+        void showMessageError(String text);
     }
 
     public interface dashboardPresenter{

@@ -1,6 +1,6 @@
 package com.example.bankapp.model.dashboard;
 
-public class statementList {
+public class StatementList {
 
     private String title;
     private String desc;

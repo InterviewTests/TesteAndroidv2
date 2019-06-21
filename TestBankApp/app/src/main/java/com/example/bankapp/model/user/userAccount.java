@@ -1,6 +1,8 @@
 package com.example.bankapp.model.user;
 
-public class userAccount {
+import java.io.Serializable;
+
+public class UserAccount implements Serializable {
     private long userId;
     private String name;
     private String bankAccount;

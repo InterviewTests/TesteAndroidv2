@@ -1,8 +1,8 @@
-package com.example.bankapp.ui;
+package com.example.bankapp.ui.dashboard;
 
 import com.example.bankapp.domain.DashboardDomain;
 import com.example.bankapp.helper.BaseCallback;
-import com.example.bankapp.model.dashboard.statementListModel;
+import com.example.bankapp.model.dashboard.StatementListModel;
 import com.example.bankapp.repository.DashboardRepository;
 
 public class DashboardPresenter implements DashboardViewPresenter.dashboardPresenter {
@@ -17,15 +17,15 @@ public class DashboardPresenter implements DashboardViewPresenter.dashboardPrese
         DashboardDomain dashboardDomain = new DashboardDomain();
         dashboardDomain.repository = new DashboardRepository();
 
-        dashboardDomain.getList(id, new BaseCallback<statementListModel>() {
+        dashboardDomain.getList(id, new BaseCallback<StatementListModel>() {
             @Override
-            public void onSuccessful(statementListModel value) {
+            public void onSuccessful(StatementListModel value) {
                 view.showList(value.getStatementList());
             }
 
             @Override
             public void onUnsuccessful(String text) {
-
+                view.showMessageError(text);
             }
         });
     }
