@@ -4,4 +4,13 @@
     <string name="login">Login</string>
     <string name="user">User</string>
     <string name="password">Password</string>
+    <string name="pay">Pagamento</string>
+    <string name="description_account">Conta de Luz</string>
+    <string name="logout">Logout</string>
+    <string name="name_test">Jose da Silva Teste</string>
+    <string name="account_name">Conta</string>
+    <string name="account_test">2050 / 01.111222-4</string>
+    <string name="balance_name">Saldo</string>
+    <string name="balance_test">R$1.000,00</string>
+    <string name="recent_name">Recentes</string>
 </resources>

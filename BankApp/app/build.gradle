@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'org.jetbrains.kotlin.android.extensions'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -24,6 +26,10 @@ android {
         unitTests {
             includeAndroidResources = true
         }
+    }
+
+    androidExtensions {
+        experimental = true
     }
 }
 
@@ -55,4 +61,9 @@ dependencies {
 
     // Better dateTime-time support even on older Android versions
     implementation "com.jakewharton.threetenabp:threetenabp:1.1.0"
+
+
+    // Groupie RecyclerView
+    implementation 'com.xwray:groupie:2.1.0'
+    implementation 'com.xwray:groupie-kotlin-android-extensions:2.1.0'
 }

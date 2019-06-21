@@ -10,7 +10,7 @@ class HomePresenter(val view: HomeContract.View): HomeContract.Presenter {
         StatementRepository().startStatements(idUser,
             object:BaseCallback<List<StatementModel>>{
                 override fun onSuccessful(value: List<StatementModel>) {
-                    view.notification("LISTA CHEGOU")
+                    view.initRecyclerView(value)
                 }
 
                 override fun onUnsuccessful(error: String) {

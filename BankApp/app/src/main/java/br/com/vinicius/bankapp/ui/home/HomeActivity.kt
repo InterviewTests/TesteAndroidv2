@@ -3,16 +3,15 @@ package br.com.vinicius.bankapp.ui.home
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Typeface
-import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.vinicius.bankapp.R
+import br.com.vinicius.bankapp.data.remote.model.StatementModel
 import br.com.vinicius.bankapp.domain.User
-import br.com.vinicius.bankapp.internal.FONT_HELVETICANEUE
-import br.com.vinicius.bankapp.internal.FONT_HELVETICANEUELIGHT
-import br.com.vinicius.bankapp.internal.USER_ACCOUNT
+import br.com.vinicius.bankapp.internal.*
+import br.com.vinicius.bankapp.ui.login.LoginActivity
 
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -28,6 +27,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
         loadExtras()
         loadUI()
         loadFonts()
+        logout()
         user.userId?.let { id -> presenter.fetchListStatements(id) }
     }
 
@@ -39,8 +39,9 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
     private fun loadUI() {
         presenter = HomePresenter(this@HomeActivity)
         textViewName.text = user.name
-        textViewAccountNumber.text = "${user.bankAccount} / ${user.agency}"
-        textViewBalanceNumber.text = "${user.balance}"
+        textViewAccountNumber.text = "${user.bankAccount} / ${user.agency?.let {
+            Formation.accountFormat(it) }}"
+        textViewBalanceNumber.text = "${user.balance?.let { Formation.currencyFormat(it)}}"
     }
 
     private fun loadFonts() {
@@ -55,6 +56,24 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
 
     override fun notification(message: String) {
         Toast.makeText(this@HomeActivity, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun initRecyclerView(models: List<StatementModel>) {
+
+        recyclerViewStatement.apply {
+            layoutManager = LinearLayoutManager(this@HomeActivity)
+            adapter = HomeAdapterStatement(this@HomeActivity, models)
+        }
+
+    }
+
+    private fun logout(){
+        imageViewLogout.setOnClickListener {
+            val intentHome = Intent(this@HomeActivity, LoginActivity::class.java)
+            Preferences.clearPreferences()
+            this@HomeActivity.startActivity(intentHome)
+            this@HomeActivity.finish()
+        }
     }
 
 }

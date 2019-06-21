@@ -17,7 +17,6 @@ class LoginPresenter(override val view: LoginContract.View): LoginContract.Prese
             view.showProgressBar(true)
             user.startLogin(object : BaseCallback<User>{
                 override fun onSuccessful(value: User) {
-                    view.notification("Sucesso")
                     view.saveUserPreferences(value)
                     view.showProgressBar(false)
                 }
