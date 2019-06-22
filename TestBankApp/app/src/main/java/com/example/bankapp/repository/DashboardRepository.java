@@ -26,7 +26,7 @@ public class DashboardRepository extends BuildApi implements DashboardContract.I
 
             @Override
             public void onFailure(Call<StatementListModel> call, Throwable t) {
-                result.onUnsuccessful(t.getMessage());
+                result.onUnsuccessful("Verifique suas conexões com a internet");
             }
         });
     }

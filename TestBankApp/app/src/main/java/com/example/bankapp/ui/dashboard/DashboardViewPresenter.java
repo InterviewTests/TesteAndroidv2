@@ -9,6 +9,8 @@ public class DashboardViewPresenter {
     public interface dashboardView{
         void showList(List<StatementList> list);
 
+        void showProgress(boolean key);
+
         void showMessageError(String text);
     }
 

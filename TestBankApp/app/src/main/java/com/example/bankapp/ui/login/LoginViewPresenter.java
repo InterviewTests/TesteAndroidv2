@@ -11,6 +11,8 @@ public class LoginViewPresenter {
 
         void showErrorMessage(String text);
 
+        void showProgress(boolean key);
+
         Context getContext();
     }
 

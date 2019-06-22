@@ -31,7 +31,7 @@ public class LoginRepository extends BuildApi implements UserContract.IRepositor
 
             @Override
             public void onFailure(Call<UserAccountModel> call, Throwable t) {
-                result.onUnsuccessful(t.getMessage());
+                result.onUnsuccessful("Verifique suas conexões com a internet");
             }
         });
     }

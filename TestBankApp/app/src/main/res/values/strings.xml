@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Bank App</string>
+    <string name="conta">Conta</string>
+    <string name="saldo">Saldo</string>
+    <string name="text_error_dashboard">Nenhuma movimentação recente. \n  Deslize para atualizar</string>
+    <string name="recentes">Recentes</string>
 </resources>

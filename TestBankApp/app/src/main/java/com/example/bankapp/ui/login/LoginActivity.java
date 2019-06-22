@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.bankapp.R;
@@ -20,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViewPresent
     private Button buttonLogin;
     private LoginViewPresenter.loginPresenter presenter;
     private SaveUserPreferences preferences;
+    private ProgressBar progressBarLogin;
 
 
     @Override
@@ -54,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViewPresent
         editTextUser = (EditText) findViewById(R.id.editTextUser);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
+        progressBarLogin = (ProgressBar) findViewById(R.id.progressBarLogin);
         preferences = new SaveUserPreferences(this);
         presenter = new LoginPresenter(this);
     }
@@ -69,6 +72,18 @@ public class LoginActivity extends AppCompatActivity implements LoginViewPresent
     @Override
     public void showErrorMessage(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showProgress(boolean key) {
+        progressBarLogin.setVisibility(key ? View.VISIBLE : View.INVISIBLE);
+        if(key) {
+            buttonLogin.setText("");
+            buttonLogin.setEnabled(false);
+        }else{
+            buttonLogin.setText("Login");
+            buttonLogin.setEnabled(true);
+        }
     }
 
     @Override

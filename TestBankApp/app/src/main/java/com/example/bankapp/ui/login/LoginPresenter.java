@@ -15,6 +15,7 @@ public class LoginPresenter implements LoginViewPresenter.loginPresenter {
 
     @Override
     public void login(String userName, String password) {
+        view.showProgress(true);
         UserDomain userDomain = new UserDomain(userName, password, view.getContext());
         userDomain.repository = new LoginRepository();
 
@@ -23,15 +24,18 @@ public class LoginPresenter implements LoginViewPresenter.loginPresenter {
                 @Override
                 public void onSuccessful(UserAccountModel value) {
                     view.goToHome(value.getUserAccount());
+                    view.showProgress(false);
                 }
 
                 @Override
                 public void onUnsuccessful(String text) {
                     view.showErrorMessage(text);
+                    view.showProgress(false);
                 }
             });
         } catch (Exception e) {
             view.showErrorMessage(e.getMessage());
+            view.showProgress(false);
         }
     }
 }
