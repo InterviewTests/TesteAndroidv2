@@ -53,10 +53,10 @@ public class LoginActivity extends AppCompatActivity implements LoginViewPresent
     }
 
     private void loadUi() {
-        editTextUser = (EditText) findViewById(R.id.editTextUser);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        buttonLogin = (Button) findViewById(R.id.buttonLogin);
-        progressBarLogin = (ProgressBar) findViewById(R.id.progressBarLogin);
+        editTextUser = findViewById(R.id.editTextUser);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        buttonLogin = findViewById(R.id.buttonLogin);
+        progressBarLogin = findViewById(R.id.progressBarLogin);
         preferences = new SaveUserPreferences(this);
         presenter = new LoginPresenter(this);
     }

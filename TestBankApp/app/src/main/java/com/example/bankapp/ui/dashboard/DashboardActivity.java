@@ -17,7 +17,7 @@ import com.example.bankapp.R;
 import com.example.bankapp.helper.MyConveter;
 import com.example.bankapp.model.dashboard.StatementList;
 import com.example.bankapp.model.user.UserAccount;
-import com.example.bankapp.ui.adapter.AdapterCurrency;
+import com.example.bankapp.ui.dashboard.adapter.AdapterCurrency;
 import com.example.bankapp.ui.login.LoginActivity;
 
 import java.util.List;
@@ -48,7 +48,6 @@ public class DashboardActivity extends AppCompatActivity implements DashboardVie
         setUserDataText();
 
         swipeRefreshDash.setOnRefreshListener(() -> presenter.getList(userData.getUserId()));
-
     }
 
     private void actionLogoutButton() {
@@ -89,12 +88,11 @@ public class DashboardActivity extends AppCompatActivity implements DashboardVie
 
     @Override
     public void showList(List<StatementList> list) {
-
-        if(list != null) {
+        if (list != null) {
             textViewError.setVisibility(View.GONE);
             listDash = list;
             configAdapter();
-        }else {
+        } else {
             textViewError.setVisibility(View.VISIBLE);
         }
     }

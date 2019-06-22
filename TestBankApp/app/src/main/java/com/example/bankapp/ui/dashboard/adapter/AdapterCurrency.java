@@ -1,4 +1,4 @@
-package com.example.bankapp.ui.adapter;
+package com.example.bankapp.ui.dashboard.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -34,7 +34,9 @@ public class AdapterCurrency extends RecyclerView.Adapter<AdapterCurrency.MyView
         StatementList model = list.get(i);
 
         myViewHolder.textViewPayDay.setText(MyConveter.formatDate(model.getDate()));
-        myViewHolder.textViewValue.setText(MyConveter.formatCurrency(model.getValue()));
+        myViewHolder.textViewValue.setText(MyConveter.formatCurrency(model.getValue())
+                .replace("(", "-")
+                .replace(")", ""));
         myViewHolder.textViewTypeAccount.setText(model.getDesc());
         myViewHolder.textViewTitle.setText(model.getTitle());
     }
