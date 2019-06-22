@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViewPresent
         Intent intentDash = new Intent(LoginActivity.this, DashboardActivity.class);
         intentDash.putExtra("userData", user);
         startActivity(intentDash);
+        finish();
     }
 
     @Override
