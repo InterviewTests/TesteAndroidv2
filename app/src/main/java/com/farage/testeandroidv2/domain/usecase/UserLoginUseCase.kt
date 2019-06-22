@@ -8,7 +8,8 @@ import com.farage.testeandroidv2.util.isEmailValid
 import com.farage.testeandroidv2.util.isValidPassword
 
 class UserLoginUseCase(private var userRepository: UserRepository) {
-    suspend fun execute(user: String, password: String): ResultState<UserAccount> {
+
+    suspend fun executeLogin(user: String, password: String): ResultState<UserAccount> {
         return when {
             !user.isEmailValid() && !user.isCPFValid() -> ResultState.error("Email ou CPF invalido")
             !password.isValidPassword() -> ResultState.error("Senha invalida")

@@ -3,8 +3,8 @@ package com.farage.testeandroidv2.ui
 import android.arch.lifecycle.Observer
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
-import android.widget.Toast
 import com.farage.testeandroidv2.R
 import com.farage.testeandroidv2.di.KodeinContainers
 import com.farage.testeandroidv2.domain.model.UserAccount
@@ -66,11 +66,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun errorLogin(message: String?) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Snackbar.make(layout, message.toString(), Snackbar.LENGTH_SHORT).show()
     }
 
     private fun emptyDataLogin() {
-        Toast.makeText(this, "empty data", Toast.LENGTH_SHORT).show()
+        Snackbar.make(layout, "Dados não encontrados", Snackbar.LENGTH_SHORT).show()
     }
 
     private fun handleLoginAction() {

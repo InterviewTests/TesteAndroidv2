@@ -9,14 +9,14 @@ import kotlinx.coroutines.withContext
 
 class UserDataSource(private var retrofitConfiguration: RetrofitConfiguration) {
 
-    suspend fun doUserLogin(): ResultState<UserResponse>? {
+    suspend fun doUserLogin(user: String, password: String): ResultState<UserResponse>? {
         var result: ResultState<UserResponse>? = ResultState.emptyData()
 
         withContext(Dispatchers.IO) {
             try {
                 val retrofitInstance = retrofitConfiguration.instance
                 val userService = retrofitInstance.create(UserApi::class.java)
-                val request = userService.userLogin("user", "senha")
+                val request = userService.userLogin(user, password)
                 val response = request.await()
 
                 request.let {

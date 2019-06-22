@@ -9,7 +9,7 @@ import com.farage.testeandroidv2.util.toMoney
 class UserRepositoryImpl(private var userDataSource: UserDataSource) : UserRepository {
 
     override suspend fun userLogin(user: String, password: String): ResultState<UserAccount> {
-        userDataSource.doUserLogin().let { it ->
+        userDataSource.doUserLogin(user, password).let { it ->
             it?.data.let {
                 val userModel = UserAccount(
                     userId = it?.userAccountResponse?.userId,

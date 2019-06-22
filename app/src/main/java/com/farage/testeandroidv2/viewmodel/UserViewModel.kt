@@ -24,6 +24,7 @@ class UserViewModel(
 
     val getScreenStateLiveData: LiveData<ResultState<UserAccount>>
         get() = screenStateLiveData
+
     val getRouterScreen: LiveData<Intent>
         get() = routerScreen
 
@@ -33,7 +34,7 @@ class UserViewModel(
 
     private fun handleUserLogin(user: String, password: String) {
         MainScope().launch {
-            userLoginUseCase.execute(user, password).let {
+            userLoginUseCase.executeLogin(user, password).let {
                 screenStateLiveData.postValue(it)
             }
         }
