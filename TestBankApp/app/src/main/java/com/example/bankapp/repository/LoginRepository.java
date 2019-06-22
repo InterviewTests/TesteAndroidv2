@@ -14,17 +14,19 @@ public class LoginRepository extends BuildApi implements UserContract.IRepositor
 
 
     @Override
-    public void login(String userName, String password, final BaseCallback<UserAccountModel> result) {
+    public void login(final String userName, final String password, final BaseCallback<UserAccountModel> result) {
         super.getBuild(LoginAPI.class)
-                .login(userName,password).enqueue(new Callback<UserAccountModel>() {
+                .login(userName, password).enqueue(new Callback<UserAccountModel>() {
             @Override
             public void onResponse(Call<UserAccountModel> call, Response<UserAccountModel> response) {
-                if(response.body().getError().getMessage()!=null){
+                if (response.body().getError().getMessage() != null) {
                     result.onUnsuccessful(response.body().getError().getMessage());
                     return;
                 }
 
+
                 result.onSuccessful(response.body());
+
             }
 
             @Override
@@ -33,4 +35,6 @@ public class LoginRepository extends BuildApi implements UserContract.IRepositor
             }
         });
     }
+
+
 }

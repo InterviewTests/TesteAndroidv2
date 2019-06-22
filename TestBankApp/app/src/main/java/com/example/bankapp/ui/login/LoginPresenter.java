@@ -15,7 +15,7 @@ public class LoginPresenter implements LoginViewPresenter.loginPresenter {
 
     @Override
     public void login(String userName, String password) {
-        UserDomain userDomain = new UserDomain(userName,password);
+        UserDomain userDomain = new UserDomain(userName, password, view.getContext());
         userDomain.repository = new LoginRepository();
 
         try {
@@ -23,12 +23,11 @@ public class LoginPresenter implements LoginViewPresenter.loginPresenter {
                 @Override
                 public void onSuccessful(UserAccountModel value) {
                     view.goToHome(value.getUserAccount());
-                    //view.showErrorMessage("FOI");
                 }
 
                 @Override
                 public void onUnsuccessful(String text) {
-                view.showErrorMessage(text);
+                    view.showErrorMessage(text);
                 }
             });
         } catch (Exception e) {

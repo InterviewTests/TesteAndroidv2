@@ -1,16 +1,20 @@
 package com.example.bankapp.ui.login;
 
+import android.content.Context;
+
 import com.example.bankapp.model.user.UserAccount;
-import com.example.bankapp.model.user.UserAccountModel;
 
 public class LoginViewPresenter {
 
-    public interface loginView{
+    public interface loginView {
         void goToHome(UserAccount user);
+
         void showErrorMessage(String text);
+
+        Context getContext();
     }
 
-    public interface loginPresenter{
+    public interface loginPresenter {
         void login(String userName, String password);
     }
 
