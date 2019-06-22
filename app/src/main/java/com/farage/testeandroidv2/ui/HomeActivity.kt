@@ -77,7 +77,7 @@ class HomeActivity : AppCompatActivity() {
     private fun fillLabels(user: UserAccount) {
         user.let {
             main_name_client.text = it.name
-            main_bankAccount.text = "${it.agency} / ${it.bankAccount}"
+            main_bankAccount.text = "${it.bankAccount} / ${it.agency}"
             main_balance.text = it.balance
         }
     }
