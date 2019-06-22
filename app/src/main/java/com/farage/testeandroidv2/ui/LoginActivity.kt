@@ -75,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun handleLoginAction() {
         login_btn_login.setOnClickListener {
-            viewModel.callHandleUserLogin()
+            viewModel.callHandleUserLogin(login_et_email.text.toString(), login_et_password.text.toString())
         }
     }
 
