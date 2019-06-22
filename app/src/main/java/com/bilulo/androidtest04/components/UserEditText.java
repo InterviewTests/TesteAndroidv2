@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 
+import com.bilulo.androidtest04.utils.StringUtil;
+
 public class UserEditText extends android.support.v7.widget.AppCompatEditText {
     private boolean mDelete;
 
@@ -40,15 +42,15 @@ public class UserEditText extends android.support.v7.widget.AppCompatEditText {
             public void onTextChanged(CharSequence s, int start, int before,
                                       int count) {
                 String cpf = s.toString();
-                String cpfAux = convertToOnlyNumberString(cpf);
                 int length = cpf.length();
                 if (length == 0)
                     return;
-                if (!cpfAux.matches("^[0-9]+$")) {
+                if (StringUtil.containsEmailCharacters(cpf)) {
                     return;
                 }
                 if (length > 14) {
-                    UserEditText.this.setText(cpf.substring(0, 14));
+                    UserEditText.this.getText().clear();
+                    UserEditText.this.append(cpf.substring(0, 14));
                     return;
                 }
 
@@ -69,9 +71,11 @@ public class UserEditText extends android.support.v7.widget.AppCompatEditText {
                 });
 
                 if (before == 0) {
+                    String cpfAux = convertToOnlyNumberString(cpf);
                     UserEditText.this.removeTextChangedListener(this);
                     cpfAux = setCPFMask(cpfAux);
-                    UserEditText.this.setText(cpfAux);
+                    UserEditText.this.getText().clear();
+                    UserEditText.this.append(cpfAux);
                     UserEditText.this.addTextChangedListener(this);
                 }
 

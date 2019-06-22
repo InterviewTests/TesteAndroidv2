@@ -5,9 +5,10 @@ import java.util.InputMismatchException;
 public class FormValidationUtil {
 
     public static boolean isValidCpf(String cpf) {
-        if (cpf == null) {
+        if (!isCpf(cpf)) {
             return false;
-        } else if (cpf.contains(".") && cpf.contains("-")) {
+        }
+        if (cpf.contains(".") && cpf.contains("-")) {
             cpf = cpf.replace(".", "").replace("-", "");
         }
         if (cpf.equals("00000000000") ||
