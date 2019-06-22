@@ -35,7 +35,7 @@ class KodeinContainers {
             bind<StatementsUseCase>() with provider { StatementsUseCase(instance()) }
             bind<StatementRepository>() with provider { StatementRepositoryImpl(instance()) }
             bind<StatementDataSource>() with provider { StatementDataSource(instance()) }
-            bind<HomeViewModel>() with provider { HomeViewModel(instance()) }
+            bind<HomeViewModel>() with provider { HomeViewModel(instance(), instance()) }
         }
     }
 

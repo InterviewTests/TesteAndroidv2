@@ -1,10 +1,12 @@
 package com.farage.testeandroidv2.ui
 
 import android.arch.lifecycle.Observer
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.farage.testeandroidv2.R
 import com.farage.testeandroidv2.di.KodeinContainers
@@ -41,18 +43,35 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        viewModel = KodeinContainers.diBaseProject.newInstance { HomeViewModel(instance()) }
+        viewModel = KodeinContainers.diBaseProject.newInstance { HomeViewModel(instance(), instance()) }
     }
 
     private fun observeViewModel() {
-        viewModel.getScreenState.observe(this, Observer {
-            onResultReceived(it)
-        })
+        viewModel.let {
+            it.getScreenState.observe(this, Observer {
+                onResultReceived(it)
+            })
+            it.getRouterState.observe(this, Observer { changeScreen(it) })
+        }
+    }
+
+    private fun changeScreen(intent: Intent?) {
+        startActivity(intent)
+        finish()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        if (item?.itemId == R.id.menu_exit) {
+            viewModel.logout(this)
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun fillLabels(user: UserAccount) {

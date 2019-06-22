@@ -19,4 +19,7 @@ class LoginRouter {
         return intent
     }
 
+    fun moveUserToLoginPage(activity: HomeActivity): Intent = Intent(activity, LoginActivity::class.java)
+
+
 }
