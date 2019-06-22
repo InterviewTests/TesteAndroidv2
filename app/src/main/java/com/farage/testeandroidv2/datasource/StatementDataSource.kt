@@ -1,37 +1,36 @@
 package com.farage.testeandroidv2.datasource
 
-import com.farage.testeandroidv2.datasource.api.UserApi
-import com.farage.testeandroidv2.datasource.model.UserResponse
+import com.farage.testeandroidv2.datasource.api.StatementsApi
+import com.farage.testeandroidv2.datasource.model.StatementRequest
 import com.farage.testeandroidv2.datasource.retrofit.RetrofitConfiguration
 import com.farage.testeandroidv2.util.ResultState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class UserDataSource(private var retrofitConfiguration: RetrofitConfiguration) {
+class StatementDataSource(private var retrofitConfiguration: RetrofitConfiguration) {
 
-    suspend fun doUserLogin(): ResultState<UserResponse>? {
-        var result: ResultState<UserResponse>? = ResultState.emptyData()
+    suspend fun getAllStatements(id: Int): ResultState<StatementRequest>? {
+        var result = ResultState.emptyData<StatementRequest>()
 
         withContext(Dispatchers.IO) {
             try {
                 val retrofitInstance = retrofitConfiguration.instance
-                val userService = retrofitInstance.create(UserApi::class.java)
-                val request = userService.userLogin("user", "senha")
+                val statementService = retrofitInstance.create(StatementsApi::class.java)
+                val request = statementService.getAllStatements(id)
                 val response = request.await()
 
                 request.let {
                     when {
                         it.isCompleted -> result = ResultState.success(response)
-                        it.isCancelled -> result = ResultState.error("Erro ao logar")
+                        it.isCancelled -> result = ResultState.error("Erro ao carregar statements")
                     }
                 }
-
             } catch (ex: Exception) {
-                result = ex.message?.let { ResultState.error(it) }
+                result = ResultState.error(ex.message!!)
             }
         }
-
         return result
+
     }
 
 }

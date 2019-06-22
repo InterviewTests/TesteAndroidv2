@@ -8,5 +8,5 @@ data class UserAccount(
     val name: String?,
     val bankAccount: String?,
     val agency: String?,
-    val balance: Double?
+    val balance: String?
 ) : Serializable

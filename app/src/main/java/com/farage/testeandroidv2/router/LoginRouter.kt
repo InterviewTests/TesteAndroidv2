@@ -11,7 +11,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 class LoginRouter {
 
-    fun moveUserToHome(activity: LoginActivity ,data: UserAccount?): Intent {
+    fun moveUserToHome(activity: LoginActivity, data: UserAccount?): Intent {
         val intent = Intent(activity, HomeActivity::class.java)
         val bundleData = Bundle()
         bundleData.putSerializable(Constants.USER_KEY_BUNDLE, data)

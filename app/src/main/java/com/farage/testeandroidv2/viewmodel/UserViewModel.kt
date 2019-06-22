@@ -2,8 +2,8 @@ package com.farage.testeandroidv2.viewmodel
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
 import android.content.Intent
-import com.farage.testeandroidv2.base.BaseViewModel
 import com.farage.testeandroidv2.domain.model.UserAccount
 import com.farage.testeandroidv2.domain.usecase.UserLoginUseCase
 import com.farage.testeandroidv2.router.LoginRouter
@@ -16,7 +16,8 @@ import kotlinx.coroutines.launch
 @ExperimentalCoroutinesApi
 class UserViewModel(
     private var userLoginUseCase: UserLoginUseCase,
-    private var loginRouter: LoginRouter) : BaseViewModel() {
+    private var loginRouter: LoginRouter
+) : ViewModel() {
 
     private val screenStateLiveData: MutableLiveData<ResultState<UserAccount>> = MutableLiveData()
     private val routerScreen: MutableLiveData<Intent> = MutableLiveData()
@@ -38,7 +39,8 @@ class UserViewModel(
         }
     }
 
-    fun callLoginRouter(activity: LoginActivity,data: UserAccount?) = routerScreen.postValue(loginRouter.moveUserToHome(activity, data))
+    fun callLoginRouter(activity: LoginActivity, data: UserAccount?) =
+        routerScreen.postValue(loginRouter.moveUserToHome(activity, data))
 
 
 }
