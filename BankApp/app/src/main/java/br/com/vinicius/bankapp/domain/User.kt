@@ -35,30 +35,42 @@ class User(override var username: String, override var password: String) : UserC
         this.userId = userId
     }
 
-    override fun isValid(): Boolean = (username.isEmpty() && password.isEmpty()
-            && (validationEmail() || validationCpf()) && validationPassword())
+    override fun isValidEmpty(): Boolean = (username.isEmpty() || password.isEmpty())
 
-    private fun validationPassword():Boolean{
+    override fun validationPassword():Boolean{
         val pattern = Pattern.compile(PASSWORD_PATTERN)
         val matcher = pattern.matcher(password)
         return matcher.matches()
     }
 
-    private fun validationCpf():Boolean {
+    override fun validationCpf():Boolean {
         val pattern = Pattern.compile(CPF_PATTERN)
-        val matcher = pattern.matcher(username)
+        val matcher = pattern.matcher(replaceChars(username))
         return matcher.matches()
     }
 
-    private fun validationEmail():Boolean = Patterns.EMAIL_ADDRESS.matcher(username).matches()
+    private fun replaceChars(cpfFull : String) : String {
+        return cpfFull.replace(".", "").replace("-", "")
+            .replace("(", "").replace(")", "")
+            .replace("/", "").replace(" ", "")
+            .replace("*", "")
+    }
+
+    override fun validationEmail():Boolean =
+        Patterns.EMAIL_ADDRESS.matcher(username).matches()
 
     override fun startLogin(listener: BaseCallback<User>) {
 
         if(repository == null) throw ValidationException("Repository nullable")
 
-        if(username.isEmpty()) throw ValidationException("Username nullable")
+        if(isValidEmpty()) throw ValidationException("User or Password is empty")
 
-        if(password.isEmpty()) throw ValidationException("Password nullable")
+        val v = validationCpf()
+        val e = validationEmail()
+        if(!(validationCpf() || validationEmail()))
+           throw ValidationException("User field must be a email or CPF format")
+
+        if(!validationPassword()) throw ValidationException("Password format is incorrect")
 
         repository?.startLogin(username, password, object : BaseCallback<User>{
             override fun onSuccessful(value: User) {

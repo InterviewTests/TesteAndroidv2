@@ -32,6 +32,12 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
         user.userId?.let { id -> presenter.fetchListStatements(id) }
     }
 
+    override fun onStart() {
+        super.onStart()
+        presenter.validateNetwork(this)
+
+    }
+
     private fun actionRefresh() {
         swipeRefreshLayoutStatement.setOnRefreshListener {
             user.userId?.let { id -> presenter.fetchListStatements(id) }
@@ -78,7 +84,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
 
     }
 
-    private fun logout(){
+    override fun logout(){
         imageViewLogout.setOnClickListener {
             val intentHome = Intent(this, LoginActivity::class.java)
             Preferences.clearPreferences()
@@ -86,5 +92,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
             finish()
         }
     }
+
+    override fun getActivity(): AppCompatActivity = this
 
 }

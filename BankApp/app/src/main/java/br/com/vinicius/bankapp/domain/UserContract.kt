@@ -8,7 +8,13 @@ class UserContract {
         val username: String
         val password: String
 
-        fun isValid(): Boolean
+        fun isValidEmpty(): Boolean
+
+        fun validationPassword():Boolean
+
+        fun validationCpf():Boolean
+
+        fun validationEmail():Boolean
 
         fun startLogin(listener: BaseCallback<User>)
     }

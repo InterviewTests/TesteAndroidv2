@@ -80,7 +80,6 @@ class HomeTestList {
             Mockito.`when`(view.notification(capture())).then {  }
             //verify(view, times(1)).notification(capture())
            // Mockito.`when`(view.notification(firstValue)).then {  }
-
         }
     }
 

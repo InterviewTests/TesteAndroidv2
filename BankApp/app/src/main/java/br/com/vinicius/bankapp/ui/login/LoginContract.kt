@@ -1,6 +1,10 @@
 package br.com.vinicius.bankapp.ui.login
 
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import br.com.vinicius.bankapp.R
 import br.com.vinicius.bankapp.domain.User
+import com.google.android.material.snackbar.Snackbar
 
 class LoginContract {
 
@@ -10,11 +14,17 @@ class LoginContract {
         fun saveUserPreferences(user: User)
 
         fun showProgressBar(show: Boolean)
+
+        fun getActivity(): AppCompatActivity
+
+        fun showSnack(message: String)
     }
 
     interface Presenter {
         val view: LoginContract.View
 
         fun startLogin(username: String, password:String)
+
+        fun showSnack(view: android.view.View, message: String, length: Int = Snackbar.LENGTH_LONG)
     }
 }

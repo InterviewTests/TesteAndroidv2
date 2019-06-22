@@ -13,6 +13,7 @@ import androidx.core.os.bundleOf
 import br.com.vinicius.bankapp.R
 import br.com.vinicius.bankapp.domain.User
 import br.com.vinicius.bankapp.internal.App
+import br.com.vinicius.bankapp.internal.CpfMask
 import br.com.vinicius.bankapp.internal.Preferences
 import br.com.vinicius.bankapp.internal.USER_ACCOUNT
 import br.com.vinicius.bankapp.ui.home.HomeActivity
@@ -44,8 +45,11 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
 
     private fun verifyLogin(){
-        if (Preferences.isSave())
-           goToHome(Preferences.getPreferences())
+        if (Preferences.isSave()) {
+            editTextUsername.setText(Preferences.getPreferences()?.username)
+            editTextPassword.setText(Preferences.getPreferences()?.password)
+        }
+
     }
 
 
@@ -76,6 +80,12 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
                     progressBarButtonLogin.visibility = if(show) View.VISIBLE else View.GONE
                 }
             })
+    }
+
+    override fun getActivity(): AppCompatActivity = this
+
+    override fun showSnack(message: String) {
+        presenter.showSnack(constraintLayoutLogin, message)
     }
 
 }
