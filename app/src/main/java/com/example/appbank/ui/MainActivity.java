@@ -1,6 +1,7 @@
 package com.example.appbank.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnLogin;
     private TextView textUser;
     private TextView textPassword;
+    private static final String ARQUIVO_PREFERENCIA = "ArquivoPreferencia";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +36,23 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sharedPreferencesUser();
                 LoginRequest loginRequest = new LoginRequest(textUser.getText().toString(), textPassword.getText().toString());
                 login(loginRequest);
+
             }
         });
+
+        SharedPreferences preferences = getSharedPreferences(ARQUIVO_PREFERENCIA, 0);
+        if(preferences.contains("user")){
+
+            String user = preferences.getString("user", "User");
+            textUser.setText(user);
+
+        }else{
+            textUser.setText("User");
+        }
+
     }
 
     private void login(LoginRequest loginRequest) {
@@ -76,12 +91,26 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     private void loadUi() {
         textPassword = findViewById(R.id.textPassword);
         textUser = findViewById(R.id.textUser);
+    }
+
+    private void sharedPreferencesUser() {
+
+        //somente o app que vai conseguir salvar e ler o arquivo = modo 0
+        SharedPreferences preferences = getSharedPreferences(ARQUIVO_PREFERENCIA, 0);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        if (textUser.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Preencha o usuário", Toast.LENGTH_LONG).show();
+        } else {
+            String user = textUser.getText().toString();
+            editor.putString("user", user);
+            editor.commit();
+            textUser.setText(user);
+        }
     }
 }
