@@ -17,12 +17,14 @@ import com.bilulo.androidtest04.components.UserEditText;
 import com.bilulo.androidtest04.ui.login.configurator.LoginConfigurator;
 import com.bilulo.androidtest04.ui.login.contract.LoginContract;
 import com.bilulo.androidtest04.ui.login.router.LoginRouter;
+import com.bilulo.androidtest04.utils.SharedPreferencesUtil;
 import com.bilulo.androidtest04.utils.ValidationUtil;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.ActivityContract, View.OnClickListener {
 
     public LoginContract.InteractorContract interactor;
     public LoginRouter router;
+    public SharedPreferencesUtil sharedPreferencesUtil;
 
     /*private Guideline horizontalGuideline10;
     private Guideline verticalGuideline25;
@@ -170,5 +172,15 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Ac
                 .setTitle(title);
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    @Override
+    public void loginSucessful() {
+        int x=2;
+    }
+
+    @Override
+    public void loginError() {
+        showAlertDialog(getString(R.string.login_server_error));
     }
 }

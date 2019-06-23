@@ -5,6 +5,7 @@ import com.bilulo.androidtest04.ui.login.interactor.LoginInteractor;
 import com.bilulo.androidtest04.ui.login.presenter.LoginPresenter;
 import com.bilulo.androidtest04.ui.login.router.LoginRouter;
 import com.bilulo.androidtest04.ui.login.view.LoginActivity;
+import com.bilulo.androidtest04.ui.login.worker.LoginWorker;
 
 import java.lang.ref.WeakReference;
 
@@ -18,6 +19,10 @@ public class LoginConfigurator {
 
         LoginInteractor interactor = new LoginInteractor();
         interactor.presenter = presenter;
+
+        LoginWorker loginWorker = new LoginWorker();
+        loginWorker.interactor = interactor;
+        interactor.worker = loginWorker;
 
         if (activity.interactor == null) {
             activity.interactor = interactor;
