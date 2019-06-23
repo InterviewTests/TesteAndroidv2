@@ -1,4 +1,4 @@
-package com.example.appbank.Domain.Model;
+package com.example.appbank.data.remote.model;
 
 public class UserAccount {
 
@@ -6,7 +6,7 @@ public class UserAccount {
     private String name;
     private String bankAccount;
     private String agency;
-    private double balance;
+    private float balance;
 
     public void setUserId(int userId) {
         this.userId = userId;
@@ -40,7 +40,7 @@ public class UserAccount {
         return this.agency;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(float balance) {
         this.balance = balance;
     }
 
