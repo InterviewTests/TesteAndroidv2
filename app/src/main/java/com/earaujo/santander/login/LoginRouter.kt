@@ -1,6 +1,7 @@
 package com.earaujo.santander.login
 
 import android.content.Intent
+import com.earaujo.santander.repository.models.UserAccountModel
 import com.earaujo.santander.statements.StatementsActivity
 import java.lang.ref.WeakReference
 
@@ -15,7 +16,7 @@ class LoginRouter : LoginRouterInput {
         }
     }
 
-    override fun startStatementScreen(loginModel: LoginActivityModel) {
+    override fun startStatementScreen() {
         activity?.get()?.let {
             val intent = Intent(it, StatementsActivity::class.java)
             passDataToNextScene(intent)
@@ -26,5 +27,5 @@ class LoginRouter : LoginRouterInput {
 }
 
 interface LoginRouterInput {
-    fun startStatementScreen(loginModel: LoginActivityModel)
+    fun startStatementScreen()
 }

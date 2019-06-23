@@ -8,7 +8,7 @@ class LoginRepositoryFakeImpl : LoginRepository {
 
     override fun fetchLogin(loginRequest: LoginRequest, loginRepositoryCallback: LoginRepositoryCallback) {
         loginRepositoryCallback.onData(LoginResponse(
-            UserAccountModel(1, "Eduardo", "123", "0123", 1.0),
+            UserAccountModel(1, "Eduardo", "123", "0123", 15000.0),
             null
         ))
     }

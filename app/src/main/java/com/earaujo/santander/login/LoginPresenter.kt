@@ -9,13 +9,7 @@ class LoginPresenter : LoginPresenterInput {
     lateinit var loginActivityInput: WeakReference<LoginActivityInput>
 
     override fun presentLoginResponse(loginResponse: LoginResponse) {
-        loginActivityInput.get()?.loginCallback(LoginActivityModel(UserAccountModel(
-                1,
-                "Eduardo Nunes",
-                "1234",
-                "4321",
-                15000.0
-            )))
+        loginActivityInput.get()?.loginCallback(loginResponse.userAccountModel)
     }
 
     override fun presentErrorMessage(errorMessage: String) {

@@ -37,10 +37,10 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         }
     }
 
-    override fun loginCallback(loginModel: LoginActivityModel) {
+    override fun loginCallback(userAccountModel: UserAccountModel) {
         //TODO check loading and response ok
-        userAccount = loginModel.userAccount
-        loginRouter.startStatementScreen(loginModel)
+        userAccount = userAccountModel
+        loginRouter.startStatementScreen()
         tv_error_message.visibility = View.INVISIBLE
     }
 
@@ -51,6 +51,6 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
 }
 
 interface LoginActivityInput {
-    fun loginCallback(loginModel: LoginActivityModel)
+    fun loginCallback(userAccountModel: UserAccountModel)
     fun displayErrorMessage(errorMessage: String)
 }
