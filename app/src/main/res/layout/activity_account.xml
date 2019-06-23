@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Account">
+    tools:context=".ui.AccountActivity">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -23,10 +23,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="José da Silva Teste"
+            android:text="TextView Nome"
             android:textColor="@color/colorText"
             android:textSize="25sp"
             app:layout_constraintEnd_toStartOf="@+id/imageButtonLogout"
@@ -62,14 +62,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
         <TextView
-            android:id="@+id/textViewCC_Ag"
+            android:id="@+id/textViewBankAccount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="2050 / 01.111222-4"
+            android:text="Agencia/ Conta"
             android:textColor="@color/colorText"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -93,10 +93,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCC_Ag" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewBankAccount" />
 
         <TextView
-            android:id="@+id/textViewMostraSaldo"
+            android:id="@+id/textViewBalance"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -104,7 +104,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="32dp"
-            android:text="R$ 1.000,00"
+            android:text="R$ Dinheiros"
             android:textColor="@color/colorText"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
