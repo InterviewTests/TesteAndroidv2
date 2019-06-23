@@ -33,6 +33,9 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/shape_input_login"
             android:hint="@string/bank_login_user"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:singleLine="true"
             android:paddingLeft="13dp"
             android:paddingTop="12dp"
             android:paddingBottom="15dp"
@@ -50,6 +53,9 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/shape_input_login"
             android:hint="@string/bank_login_password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true"
             android:paddingLeft="13dp"
             android:paddingTop="12dp"
             android:paddingBottom="15dp"
@@ -61,7 +67,7 @@
         <Button
             android:id="@+id/button_login"
             android:layout_width="202dp"
-            android:layout_height="62dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="202dp"
             android:layout_marginBottom="42dp"
             android:background="@drawable/shape_button_login"
@@ -73,5 +79,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_password" />
+
+        <ProgressBar
+            android:id="@+id/progress_login"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

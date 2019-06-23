@@ -13,8 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.resource.bankapplication.R;
 import com.resource.bankapplication.domain.Spent;
+import com.resource.bankapplication.util.CoinUtil;
 
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class AdapterCardEntry extends RecyclerView.Adapter<AdapterCardEntry.AdapterCardEntryViewHolder> {
 
@@ -67,7 +77,8 @@ public class AdapterCardEntry extends RecyclerView.Adapter<AdapterCardEntry.Adap
             textTypeTransaction.setText(spent.getTypeTransaction());
             textDate.setText(spent.getDate());
             textDescription.setText(spent.getDescription());
-            textValue.setText(spent.getValue());
+            textValue.setText(CoinUtil.formatReal(spent.getValue()));
         }
+
     }
 }

@@ -1,8 +1,12 @@
 package com.resource.bankapplication.domain;
 
+import android.content.Context;
+
 import com.resource.bankapplication.config.BaseCallback;
 
-public class UserAccount {
+import java.io.Serializable;
+
+public class UserAccount implements Serializable {
 
     public UserAccountContract.IRepository repository;
     private Long id;
@@ -13,6 +17,9 @@ public class UserAccount {
 
     private String username;
     private String password;
+
+    public UserAccount() {
+    }
 
     public UserAccount(Long id, String name, String bankAccount, String agency, Double balance) {
         this.id = id;
@@ -64,11 +71,47 @@ public class UserAccount {
             onResult.onUnsuccessful("Usuário não pode ser nulo!");
             return;
         }
+
         if(password.isEmpty()){
             onResult.onUnsuccessful("Senha não pode ser nulo!");
             return;
         }
+        if(!validUsername()) {
+            onResult.onUnsuccessful("Usuário invalido!");
+            return;
+        }
+        if(!validPassword()){
+            onResult.onUnsuccessful("Senha não é valida!");
+            return;
+        }
+
         repository.login(username, password, new BaseCallback<UserAccount>() {
+            @Override
+            public void onSuccessful(UserAccount value) {
+                onResult.onSuccessful(value);
+            }
+
+            @Override
+            public void onUnsuccessful(String error) {
+                onResult.onUnsuccessful(error);
+            }
+        });
+    }
+
+    private boolean validPassword() {
+        if(password.matches("((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!&*()_=+{}?;:><,.|']).{4,})"))
+            return true;
+        return false;
+    }
+
+    private boolean validUsername() {
+        if(username.matches(".+@.+\\..+")) return true;
+        if(username.matches("[0-9]{11}")) return true;
+        return false;
+    }
+
+    public void loadPreference(Context context, BaseCallback<UserAccount> onResult) {
+        repository.loadPreference(context, new BaseCallback<UserAccount>() {
             @Override
             public void onSuccessful(UserAccount value) {
                 onResult.onSuccessful(value);
