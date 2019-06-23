@@ -24,7 +24,6 @@ public class LoginRepository extends BuildApi implements UserContract.IRepositor
                     return;
                 }
 
-
                 result.onSuccessful(response.body());
 
             }

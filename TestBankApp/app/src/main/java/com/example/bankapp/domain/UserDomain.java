@@ -41,7 +41,7 @@ public class UserDomain {
         });
     }
 
-    private void validateFields() throws Exception {
+    public void validateFields() throws Exception {
         Pattern uppChar = Pattern.compile("[A-Z]");
         Pattern lowChar = Pattern.compile("[a-z]");
         Pattern num = Pattern.compile("[0-9]");
@@ -50,13 +50,14 @@ public class UserDomain {
         Matcher matcherUpp = uppChar.matcher(password);
         Matcher matcherLow = lowChar.matcher(password);
         Matcher matcherNum = num.matcher(password);
-        Matcher matcherEpecial = especial.matcher(password);
+        Matcher matcherEspecial = especial.matcher(password);
+
 
         if (userName == null || userName.isEmpty())
-            throw new Exception("Preencha o campo user");
+            throw new Exception("Preencha o campo user com um email ou cpf válidos");
 
         if (password == null || password.isEmpty())
-            throw new Exception("Preencha o campo senha");
+            throw new Exception("Preencha o campo password");
 
         if (!matcherUpp.find())
             throw new Exception(ERROR_PASSWORD);
@@ -67,11 +68,12 @@ public class UserDomain {
         if (!matcherNum.find())
             throw new Exception(ERROR_PASSWORD);
 
-        if (!matcherEpecial.find())
+        if (!matcherEspecial.find())
             throw new Exception(ERROR_PASSWORD);
     }
 
     private void saveLogin() {
         new SaveUserPreferences(userName, password, context);
     }
+
 }

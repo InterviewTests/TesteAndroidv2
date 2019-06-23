@@ -34,7 +34,7 @@ public class DashboardActivity extends AppCompatActivity implements DashboardVie
     private ImageView imageViewLogout;
     private DashboardViewPresenter.dashboardPresenter presenter;
     private UserAccount userData;
-    private ProgressBar progressBarDashbar;
+    private ProgressBar progressBarDashboard;
     private SwipeRefreshLayout swipeRefreshDash;
 
     @Override
@@ -72,7 +72,7 @@ public class DashboardActivity extends AppCompatActivity implements DashboardVie
         imageViewLogout = findViewById(R.id.imageViewLogout);
         textViewNameUser = findViewById(R.id.textViewNameUser);
         textViewCash = findViewById(R.id.textViewCash);
-        progressBarDashbar = findViewById(R.id.progressBarDashbar);
+        progressBarDashboard = findViewById(R.id.progressBarDashbar);
         textViewError = findViewById(R.id.textViewError);
         textViewNumberAccount = findViewById(R.id.textViewNumberAccount);
     }
@@ -99,7 +99,7 @@ public class DashboardActivity extends AppCompatActivity implements DashboardVie
 
     @Override
     public void showProgress(boolean key) {
-        progressBarDashbar.setVisibility(key ? View.VISIBLE : View.INVISIBLE);
+        progressBarDashboard.setVisibility(key ? View.VISIBLE : View.INVISIBLE);
         textViewError.setVisibility(View.INVISIBLE);
         recyclerViewCurrency.setVisibility(key ? View.INVISIBLE : View.VISIBLE);
         swipeRefreshDash.setRefreshing(false);
