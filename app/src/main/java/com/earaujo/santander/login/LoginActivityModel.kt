@@ -1,5 +1,7 @@
 package com.earaujo.santander.login
 
+import com.earaujo.santander.repository.models.UserAccountModel
+
 data class LoginActivityModel(
-    var result: String
+    var userAccount: UserAccountModel
 )

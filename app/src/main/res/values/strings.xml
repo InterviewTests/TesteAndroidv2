@@ -8,4 +8,11 @@
     <string name="login_button_text">Login</string>
     <string name="login_error_message_invalid_username">Invalid user name. User name should be a valid CPF or E-Mail.</string>
     <string name="login_error_message_invalid_password">Invalid password. Password should contain at least one uppercase, one alphanumeric and one special character.</string>
+
+    <!--STATEMENTS-->
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="statements_account_label">Conta</string>
+    <string name="statements_balance_label">Saldo</string>
+    <string name="statements_logout_description">Logout</string>
+    <string name="statements_recents_label">Recentes</string>
 </resources>

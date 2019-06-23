@@ -5,4 +5,9 @@
     <color name="colorAccent">#3B48EE</color>
 
     <color name="colorLoginInputBackground">#DCE2EE</color>
+    <color name="colorStatementsRecents">#485465</color>
+    <color name="colorStatementsItemTitle">#A8B4C4</color>
+    <color name="colorStatementsItemDate">#A8B4C4</color>
+    <color name="colorStatementsItemDescription">#485465</color>
+    <color name="colorStatementsItemValue">#485465</color>
 </resources>

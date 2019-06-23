@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.earaujo.santander.R
 import com.earaujo.santander.repository.models.LoginRequest
+import com.earaujo.santander.repository.models.UserAccountModel
 import kotlinx.android.synthetic.main.activity_login.*
 import java.lang.ref.WeakReference
 
@@ -12,6 +13,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
 
     lateinit var loginInteractorInput: LoginInteractorInput
     lateinit var loginRouter: LoginRouter
+    var userAccount: UserAccountModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
 
     fun setupHomeActivity() {
         loginRouter = LoginRouter()
+        loginRouter.activity = WeakReference(this)
 
         loginInteractorInput = LoginInteractor(this).also {
             it.loginPresenterInput = LoginPresenter().also {
@@ -34,7 +37,10 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         }
     }
 
-    override fun displayData(loginModel: LoginActivityModel) {
+    override fun loginCallback(loginModel: LoginActivityModel) {
+        //TODO check loading and response ok
+        userAccount = loginModel.userAccount
+        loginRouter.startStatementScreen(loginModel)
         tv_error_message.visibility = View.INVISIBLE
     }
 
@@ -45,6 +51,6 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
 }
 
 interface LoginActivityInput {
-    fun displayData(loginModel: LoginActivityModel)
+    fun loginCallback(loginModel: LoginActivityModel)
     fun displayErrorMessage(errorMessage: String)
 }

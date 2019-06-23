@@ -17,4 +17,30 @@
     <dimen name="login_button_text_size">16sp</dimen>
     <dimen name="login_error_message_margin_top">15dp</dimen>
     <dimen name="login_error_message_text_size">16sp</dimen>
+
+    <!--STATEMENTS-->
+    <dimen name="statements_big_text_size">25sp</dimen>
+    <dimen name="statements_label_text_size">12sp</dimen>
+    <dimen name="statements_margin_start">18dp</dimen>
+    <dimen name="statements_margin_bottom">17dp</dimen>
+    <dimen name="statements_username_margin_top">20dp</dimen>
+    <dimen name="statements_label_account_margin_top">28dp</dimen>
+    <dimen name="statements_account_margin_top">6dp</dimen>
+    <dimen name="statements_label_balance_margin_top">21dp</dimen>
+    <dimen name="statements_balance_margin_top">7dp</dimen>
+    <dimen name="statements_logout_margin_top">20dp</dimen>
+    <dimen name="statements_logout_margin_end">13dp</dimen>
+    <dimen name="statements_recents_margin_top">14dp</dimen>
+    <dimen name="statements_recents_text_size">17sp</dimen>
+    <dimen name="statements_list_side_margin">16dp</dimen>
+    <dimen name="statements_list_margin_top">8dp</dimen>
+    <dimen name="statements_item_side_margin">9dp</dimen>
+    <dimen name="statements_item_title_text_size">16sp</dimen>
+    <dimen name="statements_item_date_text_size">12sp</dimen>
+    <dimen name="statements_item_description_text_size">16sp</dimen>
+    <dimen name="statements_item_value_text_size">20sp</dimen>
+    <dimen name="statements_item_margin_bottom">10dp</dimen>
+    <dimen name="statements_item_margin_top">10dp</dimen>
+
+
 </resources>
