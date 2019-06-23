@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences(ARQUIVO_PREFERENCIA, 0);
         if(preferences.contains("user")){
 
-            String user = preferences.getString("user", "User");
+            String user = preferences.getString("user", "");
             textUser.setText(user);
 
         }else{

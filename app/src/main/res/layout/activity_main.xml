@@ -38,7 +38,7 @@
             android:id="@+id/textUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="User"
+            android:hint="@string/user"
             android:singleLine="true" />
     </android.support.design.widget.TextInputLayout>
 
@@ -61,7 +61,7 @@
             android:id="@+id/textPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/password"
             android:singleLine="true"
             android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
@@ -72,7 +72,7 @@
         android:layout_height="49dp"
         android:layout_marginBottom="48dp"
         android:background="@drawable/btn_customizado_login"
-        android:text="Login"
+        android:text="@string/login"
         android:textSize="15sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/colorText"

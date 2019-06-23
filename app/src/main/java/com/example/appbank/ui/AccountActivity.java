@@ -1,5 +1,6 @@
 package com.example.appbank.ui;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -7,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,11 +35,9 @@ public class AccountActivity extends AppCompatActivity {
     private ImageButton imageButtonLogout;
     private RecyclerView recyclerViewAccount;
     private List<AccountActivity> listAccount;
-    private TextView textViewName;
-    private TextView textViewConta;
-    private TextView textViewBankAccount;
-    private TextView textViewSaldo;
-    private TextView textViewBalance;
+    private TextView textViewName, textViewConta, textViewBankAccount, textViewSaldo, textViewBalance;
+    private Dialog dialog;
+    private Button buttonChosserYes, buttonChosserNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +63,9 @@ public class AccountActivity extends AppCompatActivity {
         imageButtonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AccountActivity.this, MainActivity.class);
-                startActivity(intent);
+                showDialogChooser();
             }
         });
-
 
     }
 
@@ -108,7 +108,6 @@ public class AccountActivity extends AppCompatActivity {
         textViewBankAccount = findViewById(R.id.textViewBankAccount);
         textViewSaldo = findViewById(R.id.textViewSaldo);
         textViewBalance = findViewById(R.id.textViewBalance);
-
     }
 
     private void setFonts() {
@@ -121,5 +120,35 @@ public class AccountActivity extends AppCompatActivity {
         textViewSaldo.setTypeface(normal);
         textViewBalance.setTypeface(normal);
     }
+
+    public void showDialogChooser() {
+        dialog = new Dialog(this, R.style.CustomAlertDialog);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_dialog_chooser);
+        dialog.setCancelable(false);
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.
+                SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        dialog.show();
+
+        buttonChosserYes = dialog.findViewById(R.id.button_dialog_chooser_yes);
+        buttonChosserNo = dialog.findViewById(R.id.buttton_dialog_chooser_no);
+
+        buttonChosserYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Statement statement = (Statement) AccountActivity.this.getIntent().getSerializableExtra("statement");
+
+                Intent intent = new Intent(AccountActivity.this, MainActivity.class);
+                AccountActivity.this.startActivity(intent);
+            }
+        });
+        buttonChosserNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+    }
+
 
 }
