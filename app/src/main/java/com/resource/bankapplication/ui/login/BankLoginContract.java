@@ -6,7 +6,7 @@ import com.resource.bankapplication.domain.UserAccount;
 
 public class BankLoginContract {
 
-    interface View{
+    public interface View{
 
         void navigationToHome(UserAccount userAccount);
 

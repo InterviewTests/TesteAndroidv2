@@ -1,7 +1,5 @@
 package com.resource.bankapplication.ui.login;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
@@ -15,8 +13,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.resource.bankapplication.R;
-import com.resource.bankapplication.config.App;
 import com.resource.bankapplication.domain.UserAccount;
 import com.resource.bankapplication.ui.entry.BankEntryActivity;
 

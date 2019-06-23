@@ -99,15 +99,15 @@ public class UserAccount implements Serializable {
     }
 
     private boolean validPassword() {
-//        if(password.matches("([a-z]+[A-Z]+[0-9]+[?=.*}{,@!'#$%¨&:;|<>^~+_]+)"))
-//            return true;
-        return true;
+        if(password.matches("((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%!&*()_=+{}?;:><,.|']).{4,})"))
+            return true;
+        return false;
     }
 
     private boolean validUsername() {
-//        if(username.matches(".+@.+\\..+")) return true;
-//        if(username.matches("[0-9]{11}")) return true;
-        return true;
+        if(username.matches(".+@.+\\..+")) return true;
+        if(username.matches("[0-9]{11}")) return true;
+        return false;
     }
 
     public void loadPreference(Context context, BaseCallback<UserAccount> onResult) {
