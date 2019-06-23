@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.earaujo.santander.R
 import com.earaujo.santander.repository.models.StatementsListModel
+import com.earaujo.santander.util.toBrl
 import kotlinx.android.synthetic.main.item_statements_card.view.*
 
 class StatementsListAdapter(private val statements: List<StatementsListModel>) :
@@ -38,7 +39,7 @@ class StatementsListAdapter(private val statements: List<StatementsListModel>) :
             itemView.tv_title.text = statement.title
             itemView.tv_date.text = statement.date
             itemView.tv_description.text = statement.desc
-            itemView.tv_value.text = statement.value.toString()
+            itemView.tv_value.text = statement.value.toBrl()
         }
 
     }

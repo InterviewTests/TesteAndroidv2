@@ -6,8 +6,11 @@ import android.support.v7.widget.LinearLayoutManager
 import com.earaujo.santander.R
 import com.earaujo.santander.repository.models.StatementsListModel
 import com.earaujo.santander.repository.models.UserAccountModel
+import com.earaujo.santander.util.toBrl
 import kotlinx.android.synthetic.main.activity_statements.*
 import java.lang.ref.WeakReference
+import java.text.NumberFormat
+import java.util.*
 
 class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
 
@@ -44,7 +47,7 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
     override fun displayUserData(userAccount: UserAccountModel) {
         tv_username.text = userAccount.name
         tv_account.text = userAccount.bankAccount
-        tv_balance.text = userAccount.balance.toString()
+        tv_balance.text = userAccount.balance.toBrl()
     }
 
     override fun displayStatementsData(statementList: List<StatementsListModel>) {
