@@ -1,5 +1,7 @@
 package com.example.appbank.ui;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -32,24 +34,44 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         loadUi();
 
+        textUser.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    validUserData(textUser.getText().toString());
+                }
+            }
+        });
+
+        textPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    validPasswordData(textPassword.getText().toString());
+                }
+            }
+        });
+
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedPreferencesUser();
-                LoginRequest loginRequest = new LoginRequest(textUser.getText().toString(), textPassword.getText().toString());
-                login(loginRequest);
+                if (validPasswordData(textPassword.getText().toString())) {
+                    LoginRequest loginRequest = new LoginRequest(textUser.getText().toString(), textPassword.getText().toString());
+                    login(loginRequest);
+                }
+                //showProgress(true);
 
             }
         });
 
         SharedPreferences preferences = getSharedPreferences(ARQUIVO_PREFERENCIA, 0);
-        if(preferences.contains("user")){
+        if (preferences.contains("user")) {
 
             String user = preferences.getString("user", "");
             textUser.setText(user);
 
-        }else{
+        } else {
             textUser.setText("User");
         }
 
@@ -80,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     b.putDouble("Balance", loginResponse.getUserAccount().getBalance());
                     intent.putExtras(b);
                     startActivity(intent);
+                    sharedPreferencesUser();
                     finish();
                     return;
                 }
@@ -112,5 +135,57 @@ public class MainActivity extends AppCompatActivity {
             editor.commit();
             textUser.setText(user);
         }
+    }
+
+    public void showProgress(final boolean show) {
+        int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
+
+        btnLogin.setVisibility(show ? View.INVISIBLE : View.VISIBLE);
+        btnLogin.animate().setDuration(shortAnimTime).alpha(
+                show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                btnLogin.setVisibility(show ? View.INVISIBLE : View.VISIBLE);
+            }
+        });
+
+        btnLogin.setVisibility(show ? View.VISIBLE : View.GONE);
+        btnLogin.animate().setDuration(shortAnimTime).alpha(
+                show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                btnLogin.setVisibility(show ? View.VISIBLE : View.GONE);
+            }
+        });
+    }
+
+    private void validUserData(String userData) {
+        if (userData.matches("[0-9]+")) {
+            if (userData.length() != 11) {
+                textUser.setError("CPF inválido");
+                btnLogin.setEnabled(false);
+                return;
+            }
+            btnLogin.setEnabled(true);
+        } else {
+            if (userData.matches("[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+")) {
+                textUser.setError("E-mail inválido");
+                btnLogin.setEnabled(false);
+                return;
+            }
+            btnLogin.setEnabled(true);
+        }
+    }
+
+    private boolean validPasswordData(String passwordData) {
+        boolean result = passwordData.matches("^(?=.[0-9])(?=.[a-z])(?=.[A-Z])(?=.[@#$%^&+=])(?=\\S+$).{8,15}$");
+        if (passwordData.matches("^(?=.[0-9])(?=.[a-z])(?=.[A-Z])(?=.[@#$%^&+=])(?=\\S+$).{8,15}$")) {
+            Toast.makeText(getApplicationContext(), "deu certo", Toast.LENGTH_LONG).show();
+            return true;
+        }
+        textPassword.setError("A senha deve conter pelo menos 8 caracteres, sendo 1 carecter especial, uma letra maiúscula" +
+                " e um caracter alfanumérico");
+
+        return false;
     }
 }
