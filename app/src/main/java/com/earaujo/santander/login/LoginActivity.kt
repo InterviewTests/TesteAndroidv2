@@ -3,6 +3,7 @@ package com.earaujo.santander.login
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import com.earaujo.santander.R
 import com.earaujo.santander.repository.models.LoginRequest
 import com.earaujo.santander.repository.models.UserAccountModel
@@ -34,12 +35,22 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         }
 
         btn_login.setOnClickListener {
-            val username = et_username.text.toString()
-            val password = et_password.text.toString()
-            loginInteractorInput.performLogin(LoginRequest(username, password))
+            performLogin()
+        }
+        et_password.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                performLogin()
+            }
+            false
         }
 
         Preferences.setSharePreference(this)
+    }
+
+    fun performLogin() {
+        val userName = et_username.text.toString()
+        val password = et_password.text.toString()
+        loginInteractorInput.performLogin(LoginRequest(userName, password))
     }
 
     override fun loginCallback(userAccountModel: UserAccountModel) {
