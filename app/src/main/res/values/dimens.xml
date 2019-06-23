@@ -32,8 +32,9 @@
     <dimen name="statements_logout_margin_end">13dp</dimen>
     <dimen name="statements_recents_margin_top">14dp</dimen>
     <dimen name="statements_recents_text_size">17sp</dimen>
-    <dimen name="statements_list_side_margin">16dp</dimen>
+    <dimen name="statements_list_side_margin">15dp</dimen>
     <dimen name="statements_list_margin_top">8dp</dimen>
+    <dimen name="statements_list_margin_bottom">10dp</dimen>
     <dimen name="statements_item_side_margin">9dp</dimen>
     <dimen name="statements_item_title_text_size">16sp</dimen>
     <dimen name="statements_item_date_text_size">12sp</dimen>
@@ -41,6 +42,5 @@
     <dimen name="statements_item_value_text_size">20sp</dimen>
     <dimen name="statements_item_margin_bottom">10dp</dimen>
     <dimen name="statements_item_margin_top">10dp</dimen>
-
 
 </resources>

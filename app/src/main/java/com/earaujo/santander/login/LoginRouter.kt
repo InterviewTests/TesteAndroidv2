@@ -21,6 +21,7 @@ class LoginRouter : LoginRouterInput {
             val intent = Intent(it, StatementsActivity::class.java)
             passDataToNextScene(intent)
             it.startActivity(intent)
+            it.finish()
         }
     }
 

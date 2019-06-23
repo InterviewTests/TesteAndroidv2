@@ -19,11 +19,14 @@ class LoginUtils {
             return if (sum > 9) 0 else sum
         }
 
+        fun onlyNumber(s: String) = s.replace("[^\\d]".toRegex(), "")
+
         private fun isValidCpf(cpf: String): Boolean {
-            if (cpf.length != 11) return false
-            val digit1 = calculateDigit(cpf.substring(0, 9), CpfWeight)
-            val digit2 = calculateDigit(cpf.substring(0, 9) + digit1, CpfWeight)
-            return cpf == cpf.substring(0, 9) + digit1.toString() + digit2.toString()
+            val filteredCpf = onlyNumber(cpf)
+            if (filteredCpf.length != 11) return false
+            val digit1 = calculateDigit(filteredCpf.substring(0, 9), CpfWeight)
+            val digit2 = calculateDigit(filteredCpf.substring(0, 9) + digit1, CpfWeight)
+            return filteredCpf == filteredCpf.substring(0, 9) + digit1.toString() + digit2.toString()
         }
 
         private fun isValidEmail(s: String): Boolean {
