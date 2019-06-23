@@ -15,9 +15,14 @@ class LoginPresenter : LoginPresenterInput {
     override fun presentErrorMessage(errorMessage: String) {
         loginActivityInput.get()?.displayErrorMessage(errorMessage)
     }
+
+    override fun presentSetUserName(userName: String) {
+        loginActivityInput.get()?.displayUserName(userName)
+    }
 }
 
 interface LoginPresenterInput {
     fun presentLoginResponse(loginResponse: LoginResponse)
     fun presentErrorMessage(errorMessage: String)
+    fun presentSetUserName(userName: String)
 }

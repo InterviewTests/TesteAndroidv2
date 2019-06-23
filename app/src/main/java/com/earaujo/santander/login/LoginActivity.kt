@@ -6,6 +6,7 @@ import android.view.View
 import com.earaujo.santander.R
 import com.earaujo.santander.repository.models.LoginRequest
 import com.earaujo.santander.repository.models.UserAccountModel
+import com.earaujo.santander.util.Preferences
 import kotlinx.android.synthetic.main.activity_login.*
 import java.lang.ref.WeakReference
 
@@ -19,11 +20,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         setupHomeActivity()
-        btn_login.setOnClickListener {
-            val username = et_username.text.toString()
-            val password = et_password.text.toString()
-            loginInteractorInput.performLogin(LoginRequest(username, password))
-        }
+        loginInteractorInput.checkUserLoggedIn()
     }
 
     fun setupHomeActivity() {
@@ -35,10 +32,19 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
                 it.loginActivityInput = WeakReference(this)
             }
         }
+
+        btn_login.setOnClickListener {
+            val username = et_username.text.toString()
+            val password = et_password.text.toString()
+            loginInteractorInput.performLogin(LoginRequest(username, password))
+        }
+
+        Preferences.setSharePreference(this)
     }
 
     override fun loginCallback(userAccountModel: UserAccountModel) {
         //TODO check loading and response ok
+        Preferences.setUserName(et_username.text.toString())
         userAccount = userAccountModel
         loginRouter.startStatementScreen()
         tv_error_message.visibility = View.INVISIBLE
@@ -48,9 +54,15 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         tv_error_message.visibility = View.VISIBLE
         tv_error_message.text = errorMessage
     }
+
+    override fun displayUserName(userName: String) {
+        et_username.setText(userName)
+        et_password.requestFocus()
+    }
 }
 
 interface LoginActivityInput {
     fun loginCallback(userAccountModel: UserAccountModel)
     fun displayErrorMessage(errorMessage: String)
+    fun displayUserName(userName: String)
 }

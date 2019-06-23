@@ -6,6 +6,7 @@ import com.earaujo.santander.repository.LoginRepositoryCallback
 import com.earaujo.santander.repository.LoginRepositoryFakeImpl
 import com.earaujo.santander.repository.models.LoginRequest
 import com.earaujo.santander.repository.models.LoginResponse
+import com.earaujo.santander.util.Preferences
 import com.earaujo.santander.util.isValidPassword
 import com.earaujo.santander.util.isValidUsername
 
@@ -31,8 +32,16 @@ class LoginInteractor(private val context: Context) : LoginInteractorInput {
             }
         })
     }
+
+    override fun checkUserLoggedIn() {
+        val userName = Preferences.getUserName()
+        if (userName.isNotBlank()) {
+            loginPresenterInput.presentSetUserName(userName)
+        }
+    }
 }
 
 interface LoginInteractorInput {
     fun performLogin(loginRequest: LoginRequest)
+    fun checkUserLoggedIn()
 }
