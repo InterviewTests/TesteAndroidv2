@@ -17,12 +17,14 @@ class StatementsInteractor : StatementsInteractorInput {
     }
 
     override fun fetchStatements() {
+        statementsPresenterInput.presentLoading()
         statementsRepository.fetchStatements(object: StatementsRepositoryCallback {
             override fun onData(statementsResponse: StatementsResponse) {
                 statementsPresenterInput.presentLoginResponse(statementsResponse.statementList)
             }
         })
     }
+
 }
 
 interface StatementsInteractorInput {

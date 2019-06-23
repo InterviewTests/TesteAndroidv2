@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import com.earaujo.santander.R
+import com.earaujo.santander.repository.Resource
 import com.earaujo.santander.repository.models.LoginRequest
 import com.earaujo.santander.repository.models.UserAccountModel
 import com.earaujo.santander.util.Preferences
+import com.earaujo.santander.repository.Status.*
 import kotlinx.android.synthetic.main.activity_login.*
 import java.lang.ref.WeakReference
 
@@ -53,17 +55,24 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         loginInteractorInput.performLogin(LoginRequest(userName, password))
     }
 
-    override fun loginCallback(userAccountModel: UserAccountModel) {
-        //TODO check loading and response ok
-        Preferences.setUserName(et_username.text.toString())
-        userAccount = userAccountModel
-        loginRouter.startStatementScreen()
-        tv_error_message.visibility = View.INVISIBLE
-    }
-
-    override fun displayErrorMessage(errorMessage: String) {
-        tv_error_message.visibility = View.VISIBLE
-        tv_error_message.text = errorMessage
+    override fun loginCallback(loginResponse: Resource<UserAccountModel>) {
+        when (loginResponse.status) {
+            LOADING -> {
+                pb_loading.visibility = View.VISIBLE
+            }
+            SUCCESS -> {
+                pb_loading.visibility = View.GONE
+                Preferences.setUserName(et_username.text.toString())
+                this.userAccount = loginResponse.data
+                loginRouter.startStatementScreen()
+                tv_error_message.visibility = View.INVISIBLE
+            }
+            ERROR -> {
+                pb_loading.visibility = View.GONE
+                tv_error_message.visibility = View.VISIBLE
+                tv_error_message.text = loginResponse.message
+            }
+        }
     }
 
     override fun displayUserName(userName: String) {
@@ -73,7 +82,6 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
 }
 
 interface LoginActivityInput {
-    fun loginCallback(userAccountModel: UserAccountModel)
-    fun displayErrorMessage(errorMessage: String)
+    fun loginCallback(loginResponse: Resource<UserAccountModel>)
     fun displayUserName(userName: String)
 }

@@ -26,6 +26,7 @@ class LoginInteractor(private val context: Context) : LoginInteractorInput {
             return
         }
 
+        loginPresenterInput.presentLoading()
         loginRepository.fetchLogin(loginRequest, object : LoginRepositoryCallback {
             override fun onData(loginResponse: LoginResponse) {
                 loginPresenterInput.presentLoginResponse(loginResponse)

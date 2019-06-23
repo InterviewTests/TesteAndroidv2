@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.earaujo.santander.R
+import com.earaujo.santander.repository.Resource
+import com.earaujo.santander.repository.Status.*
 import com.earaujo.santander.repository.models.StatementsListModel
 import com.earaujo.santander.repository.models.UserAccountModel
 import com.earaujo.santander.util.toBrl
 import kotlinx.android.synthetic.main.activity_statements.*
 import java.lang.ref.WeakReference
-import java.text.NumberFormat
-import java.util.*
 
 class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
 
@@ -44,10 +44,22 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
         }
     }
 
-    override fun displayUserData(userAccount: UserAccountModel) {
-        tv_username.text = userAccount.name
-        tv_account.text = userAccount.bankAccount
-        tv_balance.text = userAccount.balance.toBrl()
+    override fun displayUserData(statementsResponse: Resource<UserAccountModel>) {
+        when (statementsResponse.status) {
+            LOADING -> {
+                //TODO implement loading
+            }
+            SUCCESS -> {
+                statementsResponse.data?.let {
+                    tv_username.text = it.name
+                    tv_account.text = it.bankAccount
+                    tv_balance.text = it.balance.toBrl()
+                }
+            }
+            ERROR -> {
+                //TODO handle error message
+            }
+        }
     }
 
     override fun displayStatementsData(statementList: List<StatementsListModel>) {
@@ -55,7 +67,7 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
         linearLayoutManager = LinearLayoutManager(this)
         rv_statements.layoutManager = linearLayoutManager
         rv_statements.adapter = adapter
-        nsv_statements.post{ nsv_statements.scrollTo(0, 0) }
+        nsv_statements.post { nsv_statements.scrollTo(0, 0) }
     }
 
     companion object {
@@ -65,6 +77,6 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
 }
 
 interface StatementsActivityInput {
-    fun displayUserData(userAccount: UserAccountModel)
+    fun displayUserData(statementsResponse: Resource<UserAccountModel>)
     fun displayStatementsData(statementList: List<StatementsListModel>)
 }
