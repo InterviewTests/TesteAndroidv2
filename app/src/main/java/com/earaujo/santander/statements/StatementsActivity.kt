@@ -1,15 +1,11 @@
 package com.earaujo.santander.statements
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.earaujo.santander.R
-import com.earaujo.santander.login.LoginActivity
-import com.earaujo.santander.login.LoginRouter
 import com.earaujo.santander.repository.models.StatementsListModel
 import com.earaujo.santander.repository.models.UserAccountModel
-import com.earaujo.santander.util.Preferences
 import kotlinx.android.synthetic.main.activity_statements.*
 import java.lang.ref.WeakReference
 
@@ -20,17 +16,13 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
     private lateinit var adapter: StatementsListAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
 
-    lateinit var userAccount: UserAccountModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_statements)
-        userAccount = intent.getSerializableExtra(INTENT_USER_DATA) as UserAccountModel
 
         setupHomeActivity()
 
-        displayUserData(userAccount)
-
+        statementsInteractorInput.fetchUserData(intent)
         statementsInteractorInput.fetchStatements()
     }
 
@@ -49,7 +41,7 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
         }
     }
 
-    fun displayUserData(userAccount: UserAccountModel) {
+    override fun displayUserData(userAccount: UserAccountModel) {
         tv_username.text = userAccount.name
         tv_account.text = userAccount.bankAccount
         tv_balance.text = userAccount.balance.toString()
@@ -70,5 +62,6 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
 }
 
 interface StatementsActivityInput {
+    fun displayUserData(userAccount: UserAccountModel)
     fun displayStatementsData(statementList: List<StatementsListModel>)
 }
