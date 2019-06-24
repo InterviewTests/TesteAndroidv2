@@ -32,7 +32,7 @@ public class UserAccountTest {
 
     @Test
     public void testLoginDomain() {
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
         Mockito.when(userAccount.getUsername()).thenReturn("test@test.teste");
         Mockito.when(userAccount.getPassword()).thenReturn("Test@1");
         Assert.assertEquals(userAccount.getUsername(), "test@test.teste");
@@ -43,7 +43,7 @@ public class UserAccountTest {
 
     @Test
     public void loadPreference() {
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
         userAccount.loadPreference(Mockito.eq(view.getContext()), loadUserCallback.capture());
         Mockito.verify(userAccount).loadPreference(Mockito.eq(view.getContext()), loadUserCallback.capture());
     }
@@ -51,78 +51,91 @@ public class UserAccountTest {
 
     @Test(expected = Exception.class)
     public void testRepositoryNull(){
-        userAccount = new UserAccount("test@test.teste", "TEST@1");
+        userAccount = new UserAccount("test@test.teste", "Test@1");
         userAccount.login(null);
-    }@Test(expected = Exception.class)
+    }
+    @Test(expected = Exception.class)
     public void testFieldPasswordLowerCase(){
         userAccount = new UserAccount("test@test.teste", "TEST@1");
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
         userAccount.login(null);
     }
     @Test(expected = Exception.class)
     public void testFieldPasswordUpCase() {
         userAccount = new UserAccount("test@test.teste", "test@1");
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
         userAccount.login(null);
     }
     @Test(expected = Exception.class)
     public void testFieldPasswordNumber() {
         userAccount = new UserAccount("test@test.teste", "test@1");
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
         userAccount.login(null);
     }
     @Test(expected = Exception.class)
     public void testFieldPasswordSpecial() {
         userAccount = new UserAccount("test@test.teste", "testE1");
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
         userAccount.login(null);
     }
     @Test(expected = Exception.class)
     public void testFieldPasswordLength() {
         userAccount = new UserAccount("test@test.teste", "tes");
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
         userAccount.login(null);
     }
     @Test
-    public void testFieldLoginOk() {
+    public void testLoginEmailOk() {
         userAccount = new UserAccount("test@test.teste", "Test@1");
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
+        userAccount.login(null);
+    }
+    @Test
+    public void testLoginCpfOk() {
+        userAccount = new UserAccount("12345678910", "Test@1");
+        userAccount.setRepository(repository);
+        userAccount.login(null);
+    }
+    @Test(expected = Exception.class)
+    public void testLoginCpfInvalid() {
+        userAccount = new UserAccount("1234567891", "Test@1");
+        userAccount.setRepository(repository);
         userAccount.login(null);
     }
     @Test(expected = Exception.class)
     public void testFieldUsernameAt() {
         userAccount = new UserAccount("testtest.teste", "Test@1");
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
         userAccount.login(null);
     }
     @Test(expected = Exception.class)
     public void testFieldUsernameDot() {
         userAccount = new UserAccount("test@testteste", "Test@1");
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
         userAccount.login(null);
     }
     @Test(expected = Exception.class)
     public void testFieldUsernameEmpty() {
         userAccount = new UserAccount("", "Test@1");
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
         userAccount.login(null);
     }
     @Test(expected = Exception.class)
     public void testFieldUsernameSpace() {
         userAccount = new UserAccount("  ", "Test@1");
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
         userAccount.login(null);
     }
     @Test(expected = Exception.class)
     public void testFieldPasswordEmpty() {
         userAccount = new UserAccount("test@test.teste", "");
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
         userAccount.login(null);
     }
     @Test(expected = Exception.class)
     public void testFieldPasswordSpace() {
         userAccount = new UserAccount("test@test.teste", "  ");
-        userAccount.repository = this.repository;
+        userAccount.setRepository(repository);
         userAccount.login(null);
     }
 }

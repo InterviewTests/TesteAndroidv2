@@ -1,30 +1,19 @@
 package com.resource.bankapplication.ui.entry.adapter;
 
 import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.resource.bankapplication.R;
 import com.resource.bankapplication.domain.Spent;
 import com.resource.bankapplication.util.CoinUtil;
 
-import java.text.DateFormat;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class AdapterCardEntry extends RecyclerView.Adapter<AdapterCardEntry.AdapterCardEntryViewHolder> {
 

@@ -13,9 +13,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.resource.bankapplication.ConstantsApp;
 import com.resource.bankapplication.R;
 import com.resource.bankapplication.domain.Spent;
 import com.resource.bankapplication.domain.UserAccount;
+import com.resource.bankapplication.ui.DialogApp;
 import com.resource.bankapplication.ui.entry.adapter.AdapterCardEntry;
 import com.resource.bankapplication.ui.login.BankLoginActivity;
 import com.resource.bankapplication.util.CoinUtil;
@@ -80,7 +82,10 @@ public class BankEntryActivity extends AppCompatActivity implements BankEntryCon
 
     @Override
     public void showError(String error) {
-        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+        if(error.equals(ConstantsApp.NO_CONNECTION))
+            DialogApp.showDialogConnection(this);
+        else
+            Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
