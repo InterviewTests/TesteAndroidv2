@@ -2,20 +2,17 @@ package br.com.vinicius.bankapp
 
 import br.com.vinicius.bankapp.data.remote.model.StatementModel
 import br.com.vinicius.bankapp.data.repository.StatementRepository
-import br.com.vinicius.bankapp.domain.StatementContract
-import br.com.vinicius.bankapp.domain.User
 import br.com.vinicius.bankapp.internal.BaseCallback
 import br.com.vinicius.bankapp.ui.home.HomeContract
 import br.com.vinicius.bankapp.ui.home.HomePresenter
 import com.nhaarman.mockito_kotlin.argumentCaptor
-import com.nhaarman.mockito_kotlin.stub
 import org.junit.Before
 import org.junit.Test
-import kotlin.random.Random
-import org.junit.Assert.*
-import org.junit.runner.RunWith
-import org.mockito.*
+import org.mockito.Mock
+import org.mockito.Mockito
 import org.mockito.Mockito.*
+import org.mockito.MockitoAnnotations
+import kotlin.random.Random
 
 class HomeTestList {
 
@@ -32,6 +29,7 @@ class HomeTestList {
         MockitoAnnotations.initMocks(this)
         view = mock(HomeContract.View::class.java)
         presenter = HomePresenter(view)
+
     }
 
     @Test
@@ -41,7 +39,7 @@ class HomeTestList {
 //            ArgumentCaptor.forClass(BaseCallback::class.java) as ArgumentCaptor<BaseCallback<List<StatementModel>>>
         argumentCaptor<BaseCallback<List<StatementModel>>>().apply {
             Mockito.`when`(repository.startStatements(eq(1), capture())).then{
-                (it.getArgument(1) as BaseCallback<List<StatementModel>>). onSuccessful(getListStatements())
+                (it.getArgument(1) as BaseCallback<List<StatementModel>>).onSuccessful(getListStatements())
             }
             //verify(repository).startStatements(eq(1), capture())
             //assertTrue(.isNotEmpty())

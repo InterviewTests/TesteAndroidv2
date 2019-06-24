@@ -20,6 +20,7 @@ object Formation {
 
     @JvmStatic
     fun currencyFormat(value: Double): String = NumberFormat.getCurrencyInstance().format(value)
+        .replace("(", "").replace(")", "")
 
     @JvmStatic
     fun accountFormat(value: String):String {

@@ -27,7 +27,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
         loadExtras()
         loadUI()
         loadFonts()
-        logout()
+        logoutImage()
         actionRefresh()
         user.userId?.let { id -> presenter.fetchListStatements(id) }
     }
@@ -85,12 +85,17 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
     }
 
     override fun logout(){
+        val intentHome = Intent(this, LoginActivity::class.java)
+        Preferences.clearPreferences()
+        startActivity(intentHome)
+        finish()
+    }
+
+    private fun logoutImage() {
         imageViewLogout.setOnClickListener {
-            val intentHome = Intent(this, LoginActivity::class.java)
-            Preferences.clearPreferences()
-            startActivity(intentHome)
-            finish()
+            logout()
         }
+
     }
 
     override fun getActivity(): AppCompatActivity = this

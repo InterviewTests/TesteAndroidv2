@@ -14,7 +14,7 @@ class HomePresenter(val view: HomeContract.View): HomeContract.Presenter {
 
     override fun fetchListStatements(idUser: Int) {
         try {
-            validateNetwork(view.getActivity())
+            if(validateNetwork(view.getActivity())) return
             view.showProgressRecycler(true)
             StatementRepository().startStatements(idUser,
                 object:BaseCallback<List<StatementModel>>{
@@ -35,12 +35,14 @@ class HomePresenter(val view: HomeContract.View): HomeContract.Presenter {
 
     }
 
-    override fun validateNetwork(activity:AppCompatActivity){
-        try {
+    override fun validateNetwork(activity:AppCompatActivity):Boolean{
+        return try {
             verifyNetwork(activity)
+            false
         }catch (e: NotConnectionNetwork) {
             view.notification(CONNECTION_INTERNTET_ERROR)
             view.logout()
+            true
         }
     }
 
@@ -48,6 +50,7 @@ class HomePresenter(val view: HomeContract.View): HomeContract.Presenter {
         val connectivityManager = activity.getSystemService(Context.CONNECTIVITY_SERVICE)
                 as ConnectivityManager
         val networkInfo = connectivityManager.activeNetworkInfo
-        if(!(networkInfo!= null && networkInfo.isConnected)) throw NotConnectionNetwork()
+        if (networkInfo == null || !networkInfo.isConnected) throw NotConnectionNetwork()
+
     }
 }

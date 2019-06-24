@@ -13,7 +13,6 @@ import androidx.core.os.bundleOf
 import br.com.vinicius.bankapp.R
 import br.com.vinicius.bankapp.domain.User
 import br.com.vinicius.bankapp.internal.App
-import br.com.vinicius.bankapp.internal.CpfMask
 import br.com.vinicius.bankapp.internal.Preferences
 import br.com.vinicius.bankapp.internal.USER_ACCOUNT
 import br.com.vinicius.bankapp.ui.home.HomeActivity

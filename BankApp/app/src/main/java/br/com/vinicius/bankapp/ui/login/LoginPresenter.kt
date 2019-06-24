@@ -61,13 +61,14 @@ class LoginPresenter(override val view: LoginContract.View): LoginContract.Prese
         snackbar.setActionTextColor(R.color.colorPrimary)
         val snackbarView = snackbar.view
         snackbarView.setBackgroundColor(R.color.colorWhite)
-        snackbar.setTextColor(R.color.colorPrimary, 28f)
+        snackbar.setTextColor(R.color.colorPrimaryDark, 18f)
         snackbar.show()
     }
 
     fun Snackbar.setTextColor(color: Int, number: Float): Snackbar {
         val tv = view.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
         tv.setTextColor(color)
+        tv.textAlignment = View.TEXT_ALIGNMENT_CENTER
         tv.textSize = number
         return this
     }

@@ -20,6 +20,6 @@ class HomeContract {
     interface Presenter {
         fun fetchListStatements(idUser:Int)
 
-        fun validateNetwork(activity:AppCompatActivity)
+        fun validateNetwork(activity:AppCompatActivity):Boolean
     }
 }
