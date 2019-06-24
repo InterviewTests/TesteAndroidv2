@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Bank App</string>
+    <string name="conta">Conta</string>
+    <string name="saldo">Saldo</string>
+    <string name="text_error_dashboard">Nenhuma movimentação recente. \n  Deslize para atualizar</string>
+    <string name="recentes">Recentes</string>
+    <string name="text_edit_user">User</string>
+    <string name="text_edit_password">Password</string>
+    <string name="login">Login</string>
+</resources>
