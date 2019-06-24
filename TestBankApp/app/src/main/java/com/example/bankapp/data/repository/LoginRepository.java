@@ -1,11 +1,11 @@
-package com.example.bankapp.repository;
+package com.example.bankapp.data.repository;
 
 import com.example.bankapp.domain.UserContract;
 import com.example.bankapp.helper.BaseCallback;
 import com.example.bankapp.helper.ConstantsStrings;
-import com.example.bankapp.model.user.UserAccountModel;
-import com.example.bankapp.remote.BuildApi;
-import com.example.bankapp.remote.LoginAPI;
+import com.example.bankapp.data.remote.model.user.UserAccountModel;
+import com.example.bankapp.data.remote.BuildApi;
+import com.example.bankapp.data.remote.LoginAPI;
 
 import retrofit2.Call;
 import retrofit2.Callback;

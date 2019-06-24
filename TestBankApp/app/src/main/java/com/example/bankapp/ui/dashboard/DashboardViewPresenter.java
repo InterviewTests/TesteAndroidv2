@@ -1,6 +1,6 @@
 package com.example.bankapp.ui.dashboard;
 
-import com.example.bankapp.model.dashboard.StatementList;
+import com.example.bankapp.data.remote.model.dashboard.StatementList;
 
 import java.util.List;
 

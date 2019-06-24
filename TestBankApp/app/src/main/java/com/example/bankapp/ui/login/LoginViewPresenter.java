@@ -2,7 +2,7 @@ package com.example.bankapp.ui.login;
 
 import android.content.Context;
 
-import com.example.bankapp.model.user.UserAccount;
+import com.example.bankapp.data.remote.model.user.UserAccount;
 
 public class LoginViewPresenter {
 

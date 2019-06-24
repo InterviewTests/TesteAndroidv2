@@ -2,8 +2,8 @@ package com.example.bankapp.ui.login;
 
 import com.example.bankapp.domain.UserDomain;
 import com.example.bankapp.helper.BaseCallback;
-import com.example.bankapp.model.user.UserAccountModel;
-import com.example.bankapp.repository.LoginRepository;
+import com.example.bankapp.data.remote.model.user.UserAccountModel;
+import com.example.bankapp.data.repository.LoginRepository;
 
 public class LoginPresenter implements LoginViewPresenter.loginPresenter {
 

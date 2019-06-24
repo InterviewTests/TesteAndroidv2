@@ -1,6 +1,6 @@
-package com.example.bankapp.model.dashboard;
+package com.example.bankapp.data.remote.model.dashboard;
 
-import com.example.bankapp.model.user.Error;
+import com.example.bankapp.data.remote.model.user.Error;
 
 import java.util.List;
 

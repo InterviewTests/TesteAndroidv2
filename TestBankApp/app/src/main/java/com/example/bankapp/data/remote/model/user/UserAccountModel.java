@@ -1,4 +1,4 @@
-package com.example.bankapp.model.user;
+package com.example.bankapp.data.remote.model.user;
 
 import java.io.Serializable;
 

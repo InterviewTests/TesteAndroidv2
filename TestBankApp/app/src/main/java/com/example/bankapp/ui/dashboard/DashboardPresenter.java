@@ -2,8 +2,8 @@ package com.example.bankapp.ui.dashboard;
 
 import com.example.bankapp.domain.DashboardDomain;
 import com.example.bankapp.helper.BaseCallback;
-import com.example.bankapp.model.dashboard.StatementListModel;
-import com.example.bankapp.repository.DashboardRepository;
+import com.example.bankapp.data.remote.model.dashboard.StatementListModel;
+import com.example.bankapp.data.repository.DashboardRepository;
 
 public class DashboardPresenter implements DashboardViewPresenter.dashboardPresenter {
     private DashboardViewPresenter.dashboardView view;
@@ -18,18 +18,22 @@ public class DashboardPresenter implements DashboardViewPresenter.dashboardPrese
         DashboardDomain dashboardDomain = new DashboardDomain();
         dashboardDomain.repository = new DashboardRepository();
 
-        dashboardDomain.getList(id, new BaseCallback<StatementListModel>() {
-            @Override
-            public void onSuccessful(StatementListModel value) {
-                view.showProgress(false);
-                view.showList(value.getStatementList());
-            }
+        try {
+            dashboardDomain.getList(id, new BaseCallback<StatementListModel>() {
+                @Override
+                public void onSuccessful(StatementListModel value) {
+                    view.showProgress(false);
+                    view.showList(value.getStatementList());
+                }
 
-            @Override
-            public void onUnsuccessful(String text) {
-                view.showProgress(false);
-                view.showMessageError(text);
-            }
-        });
+                @Override
+                public void onUnsuccessful(String text) {
+                    view.showProgress(false);
+                    view.showMessageError(text);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

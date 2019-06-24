@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.bankapp.R;
 import com.example.bankapp.helper.MyConveter;
-import com.example.bankapp.model.dashboard.StatementList;
+import com.example.bankapp.data.remote.model.dashboard.StatementList;
 
 import java.util.List;
 

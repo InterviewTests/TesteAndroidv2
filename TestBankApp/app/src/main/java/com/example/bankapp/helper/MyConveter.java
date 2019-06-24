@@ -21,7 +21,6 @@ public class MyConveter {
 
     public static String formatDate(String date) {
         String[] arrayDate = date.split("-");
-        String newDate = arrayDate[2] + "/" + arrayDate[1] + "/" + arrayDate[0];
-        return newDate;
+        return arrayDate[2] + "/" + arrayDate[1] + "/" + arrayDate[0];
     }
 }

@@ -1,4 +1,4 @@
-package com.example.bankapp.model.dashboard;
+package com.example.bankapp.data.remote.model.dashboard;
 
 public class StatementList {
 

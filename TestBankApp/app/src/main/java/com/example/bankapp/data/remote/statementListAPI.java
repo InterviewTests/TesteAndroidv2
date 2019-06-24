@@ -1,6 +1,6 @@
-package com.example.bankapp.remote;
+package com.example.bankapp.data.remote;
 
-import com.example.bankapp.model.dashboard.StatementListModel;
+import com.example.bankapp.data.remote.model.dashboard.StatementListModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

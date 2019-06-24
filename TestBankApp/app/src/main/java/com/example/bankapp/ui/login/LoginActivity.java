@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.bankapp.R;
 import com.example.bankapp.helper.SaveUserPreferences;
-import com.example.bankapp.model.user.UserAccount;
+import com.example.bankapp.data.remote.model.user.UserAccount;
 import com.example.bankapp.ui.dashboard.DashboardActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginViewPresenter.loginView {
