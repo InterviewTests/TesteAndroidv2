@@ -7,5 +7,5 @@ interface StatementsRepository {
 }
 
 interface StatementsRepositoryCallback {
-    fun onData(statementsResponse: StatementsResponse)
+    fun onData(statementsResponse: Resource<StatementsResponse>)
 }

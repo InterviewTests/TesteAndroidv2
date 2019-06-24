@@ -10,6 +10,7 @@ import com.earaujo.santander.repository.models.LoginRequest
 import com.earaujo.santander.repository.models.UserAccountModel
 import com.earaujo.santander.util.Preferences
 import com.earaujo.santander.repository.Status.*
+import com.earaujo.santander.repository.models.LoginResponse
 import kotlinx.android.synthetic.main.activity_login.*
 import java.lang.ref.WeakReference
 
@@ -55,7 +56,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         loginInteractorInput.performLogin(LoginRequest(userName, password))
     }
 
-    override fun loginCallback(loginResponse: Resource<UserAccountModel>) {
+    override fun loginCallback(loginResponse: Resource<LoginResponse>) {
         when (loginResponse.status) {
             LOADING -> {
                 pb_loading.visibility = View.VISIBLE
@@ -63,7 +64,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
             SUCCESS -> {
                 pb_loading.visibility = View.GONE
                 Preferences.setUserName(et_username.text.toString())
-                this.userAccount = loginResponse.data
+                this.userAccount = loginResponse.data!!.userAccountModel
                 loginRouter.startStatementScreen()
                 tv_error_message.visibility = View.INVISIBLE
             }
@@ -82,6 +83,6 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
 }
 
 interface LoginActivityInput {
-    fun loginCallback(loginResponse: Resource<UserAccountModel>)
+    fun loginCallback(loginResponse: Resource<LoginResponse>)
     fun displayUserName(userName: String)
 }

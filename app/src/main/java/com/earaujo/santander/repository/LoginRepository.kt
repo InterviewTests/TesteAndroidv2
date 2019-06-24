@@ -8,5 +8,5 @@ interface LoginRepository {
 }
 
 interface LoginRepositoryCallback {
-    fun onData(loginResponse: LoginResponse)
+    fun onData(loginResponse: Resource<LoginResponse>)
 }

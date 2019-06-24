@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.earaujo.santander.R
 import com.earaujo.santander.repository.Resource
 import com.earaujo.santander.repository.Status.*
-import com.earaujo.santander.repository.models.StatementsListModel
+import com.earaujo.santander.repository.models.StatementsResponse
 import com.earaujo.santander.repository.models.UserAccountModel
 import com.earaujo.santander.util.toBrl
 import kotlinx.android.synthetic.main.activity_statements.*
@@ -44,30 +44,28 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
         }
     }
 
-    override fun displayUserData(statementsResponse: Resource<UserAccountModel>) {
-        when (statementsResponse.status) {
-            LOADING -> {
-                //TODO implement loading
-            }
-            SUCCESS -> {
-                statementsResponse.data?.let {
-                    tv_username.text = it.name
-                    tv_account.text = it.bankAccount
-                    tv_balance.text = it.balance.toBrl()
-                }
-            }
-            ERROR -> {
-                //TODO handle error message
-            }
-        }
+    override fun displayUserData(statementsResponse: UserAccountModel) {
+        tv_username.text = statementsResponse.name
+        tv_account.text = statementsResponse.bankAccount
+        tv_balance.text = statementsResponse.balance.toBrl()
     }
 
-    override fun displayStatementsData(statementList: List<StatementsListModel>) {
-        adapter = StatementsListAdapter(statementList)
-        linearLayoutManager = LinearLayoutManager(this)
-        rv_statements.layoutManager = linearLayoutManager
-        rv_statements.adapter = adapter
-        nsv_statements.post { nsv_statements.scrollTo(0, 0) }
+    override fun displayStatementsData(statementsResponse: Resource<StatementsResponse>) {
+        when(statementsResponse.status) {
+            LOADING -> {
+                //TODO Loading
+            }
+            SUCCESS -> {
+                adapter = StatementsListAdapter(statementsResponse.data!!.statementList!!)
+                linearLayoutManager = LinearLayoutManager(this)
+                rv_statements.layoutManager = linearLayoutManager
+                rv_statements.adapter = adapter
+                nsv_statements.post { nsv_statements.scrollTo(0, 0) }
+            }
+            ERROR -> {
+                //TODO Handle Error
+            }
+        }
     }
 
     companion object {
@@ -77,6 +75,6 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
 }
 
 interface StatementsActivityInput {
-    fun displayUserData(statementsResponse: Resource<UserAccountModel>)
-    fun displayStatementsData(statementList: List<StatementsListModel>)
+    fun displayUserData(statementsResponse: UserAccountModel)
+    fun displayStatementsData(statementsResponse: Resource<StatementsResponse>)
 }

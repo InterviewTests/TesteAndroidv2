@@ -3,7 +3,8 @@ package com.earaujo.santander.login
 import android.content.Context
 import com.earaujo.santander.R
 import com.earaujo.santander.repository.LoginRepositoryCallback
-import com.earaujo.santander.repository.LoginRepositoryFakeImpl
+import com.earaujo.santander.repository.LoginRepositoryImpl
+import com.earaujo.santander.repository.Resource
 import com.earaujo.santander.repository.models.LoginRequest
 import com.earaujo.santander.repository.models.LoginResponse
 import com.earaujo.santander.util.Preferences
@@ -13,22 +14,23 @@ import com.earaujo.santander.util.isValidUsername
 class LoginInteractor(private val context: Context) : LoginInteractorInput {
 
     lateinit var loginPresenterInput: LoginPresenterInput
-    val loginRepository = LoginRepositoryFakeImpl()
+    val loginRepository = LoginRepositoryImpl()
 
     override fun performLogin(loginRequest: LoginRequest) {
         if (!loginRequest.user.isValidUsername()) {
-            loginPresenterInput.presentErrorMessage(context.getString(R.string.login_error_message_invalid_username))
+            loginPresenterInput.presentLoginResponse(
+                Resource.error(context.getString(R.string.login_error_message_invalid_username), null))
             return
         }
 
         if (!loginRequest.password.isValidPassword()) {
-            loginPresenterInput.presentErrorMessage(context.getString(R.string.login_error_message_invalid_password))
+            loginPresenterInput.presentLoginResponse(
+                Resource.error(context.getString(R.string.login_error_message_invalid_password), null))
             return
         }
 
-        loginPresenterInput.presentLoading()
         loginRepository.fetchLogin(loginRequest, object : LoginRepositoryCallback {
-            override fun onData(loginResponse: LoginResponse) {
+            override fun onData(loginResponse: Resource<LoginResponse>) {
                 loginPresenterInput.presentLoginResponse(loginResponse)
             }
         })
