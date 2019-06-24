@@ -1,5 +1,6 @@
 package com.bilulo.androidtest04.ui.login.presenter;
 
+import com.bilulo.androidtest04.data.model.UserAccountModel;
 import com.bilulo.androidtest04.data.model.response.LoginResponse;
 import com.bilulo.androidtest04.ui.login.contract.LoginContract;
 
@@ -15,8 +16,9 @@ public class LoginPresenter implements LoginContract.PresenterContract {
 
     private void prepareAndSendData(LoginResponse response, boolean isSucessful) {
         if (isSucessful) {
-            if (response.getUserAccountModel().userId != null)
-                activity.get().loginSucessful();
+            UserAccountModel userAccountModel = response.getUserAccountModel();
+            if (userAccountModel.getUserId() != null)
+                activity.get().loginSuccessful(userAccountModel);
             else
                 activity.get().loginError();
         } else {

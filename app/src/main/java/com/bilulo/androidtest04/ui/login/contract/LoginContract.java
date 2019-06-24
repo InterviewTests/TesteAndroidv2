@@ -1,10 +1,11 @@
 package com.bilulo.androidtest04.ui.login.contract;
 
+import com.bilulo.androidtest04.data.model.UserAccountModel;
 import com.bilulo.androidtest04.data.model.response.LoginResponse;
 
 public interface LoginContract {
-    public interface ActivityContract{
-        void loginSucessful();
+    interface ActivityContract{
+        void loginSuccessful(UserAccountModel userAccountModel);
         void loginError();
     }
 
@@ -21,4 +22,7 @@ public interface LoginContract {
         void performLogin(String user, String password);
     }
 
+    interface RouterContract {
+        void loginSuccessful(UserAccountModel userAccountModel, String s);
+    }
 }

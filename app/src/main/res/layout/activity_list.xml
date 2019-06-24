@@ -62,7 +62,7 @@
             tools:text="0232 / 01.111111-4" />
 
         <TextView
-            android:id="@+id/tv_saldo_description"
+            android:id="@+id/tv_balance_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_margin_px"
@@ -75,7 +75,7 @@
             tools:text="Saldo" />
 
         <TextView
-            android:id="@+id/tv_saldo"
+            android:id="@+id/tv_balance"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/activity_margin_px"
@@ -85,7 +85,7 @@
             android:textColor="@android:color/white"
             android:textSize="28sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_saldo_description"
+            app:layout_constraintTop_toBottomOf="@id/tv_balance_description"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:text="R$1.000,00" />
 

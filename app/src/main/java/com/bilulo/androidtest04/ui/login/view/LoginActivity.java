@@ -1,5 +1,7 @@
 package com.bilulo.androidtest04.ui.login.view;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -8,23 +10,26 @@ import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.bilulo.androidtest04.R;
+import com.bilulo.androidtest04.common.BaseActivity;
 import com.bilulo.androidtest04.components.UserEditText;
+import com.bilulo.androidtest04.data.model.UserAccountModel;
 import com.bilulo.androidtest04.ui.login.configurator.LoginConfigurator;
 import com.bilulo.androidtest04.ui.login.contract.LoginContract;
 import com.bilulo.androidtest04.ui.login.router.LoginRouter;
 import com.bilulo.androidtest04.utils.SharedPreferencesUtil;
 import com.bilulo.androidtest04.utils.ValidationUtil;
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.ActivityContract, View.OnClickListener {
+public class LoginActivity extends BaseActivity implements LoginContract.ActivityContract, View.OnClickListener {
 
+    public static final String KEY_USER = "key-user";
     public LoginContract.InteractorContract interactor;
     public LoginRouter router;
-    public SharedPreferencesUtil sharedPreferencesUtil;
 
     /*private Guideline horizontalGuideline10;
     private Guideline verticalGuideline25;
@@ -41,13 +46,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Ac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         LoginConfigurator.configure(this);
-        findViews();
         hideActionBar();
-    }
-
-    private void hideActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) actionBar.hide();
+        findViews();
+        loadUsername();
     }
 
     private void findViews() {
@@ -63,14 +64,22 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Ac
         btnLogin.setOnClickListener(this);
     }
 
+    private void loadUsername() {
+        String userName = SharedPreferencesUtil.getString(this, KEY_USER, null);
+        if (ValidationUtil.isValidString(userName)) {
+            edtUser.setText(userName);
+        }
+    }
 
     @Override
     public void onClick(View v) {
         if (v.equals(btnLogin)) {
             Editable userText = edtUser.getText();
             Editable passwordText = edtPassword.getText();
-            if (isValidLogin(userText, passwordText))
+            if (isValidLogin(userText, passwordText)) {
+                showProgressDialog();
                 interactor.performLogin(userText.toString(), passwordText.toString());
+            }
         }
     }
 
@@ -112,7 +121,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Ac
         if (userText != null) {
             String user = userText.toString();
             if (ValidationUtil.isValidString(user)) {
-                String aux = user.replace(".", "").replace("-","");
+                String aux = user.replace(".", "").replace("-", "");
                 if (ValidationUtil.isFullCpf(user) || aux.matches("[0-9]+")) {
                     if (ValidationUtil.isValidCpf(user)) {
                         return true;
@@ -175,12 +184,15 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Ac
     }
 
     @Override
-    public void loginSucessful() {
-        int x=2;
+    public void loginSuccessful(UserAccountModel userAccountModel) {
+        String userName = edtUser.getText().toString();
+        hideProgressDialog();
+        router.loginSuccessful(userAccountModel, userName);
     }
 
     @Override
     public void loginError() {
+        hideProgressDialog();
         showAlertDialog(getString(R.string.login_server_error));
     }
 }
