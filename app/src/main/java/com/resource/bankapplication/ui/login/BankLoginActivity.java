@@ -15,8 +15,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.resource.bankapplication.ConstantsApp;
 import com.resource.bankapplication.R;
 import com.resource.bankapplication.domain.UserAccount;
+import com.resource.bankapplication.ui.DialogApp;
 import com.resource.bankapplication.ui.entry.BankEntryActivity;
 
 public class BankLoginActivity extends AppCompatActivity implements BankLoginContract.View {
@@ -71,7 +73,10 @@ public class BankLoginActivity extends AppCompatActivity implements BankLoginCon
 
     @Override
     public void showError(String error) {
-        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+        if(error.equals(ConstantsApp.NO_CONNECTION))
+            DialogApp.showDialogConnection(this);
+        else
+            Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
     }
 
     @Override

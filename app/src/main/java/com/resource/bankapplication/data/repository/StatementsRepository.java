@@ -1,5 +1,6 @@
 package com.resource.bankapplication.data.repository;
 
+import com.resource.bankapplication.ConstantsApp;
 import com.resource.bankapplication.config.BaseCallback;
 import com.resource.bankapplication.config.Repository;
 import com.resource.bankapplication.data.remote.StatementsService;
@@ -14,6 +15,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class StatementsRepository extends Repository implements SpentContract.IRepository {
+
     @Override
     public void listStatements(long idUser, BaseCallback<List<Spent>> onResult) {
         super.data.restApi(StatementsService.class).spentList(idUser)
@@ -22,7 +24,7 @@ public class StatementsRepository extends Repository implements SpentContract.IR
                     public void onResponse(Call<SpentDto> call, Response<SpentDto> response) {
                         if(response.isSuccessful() && response.body().getError().getCode()==0) {
                             if (response.body().getStatementList().size() < 1){
-                                onResult.onUnsuccessful("Nenhum registro Encontrado!");
+                                onResult.onUnsuccessful(ConstantsApp.NO_RECORDS_FOUND);
                                 return;
                             }
                             onResult.onSuccessful(response.body().toDomain());
@@ -33,7 +35,7 @@ public class StatementsRepository extends Repository implements SpentContract.IR
 
                     @Override
                     public void onFailure(Call<SpentDto> call, Throwable t) {
-                        onResult.onUnsuccessful(t.getMessage());
+                        onResult.onUnsuccessful(ConstantsApp.NO_CONNECTION);
                     }
                 });
     }

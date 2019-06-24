@@ -3,4 +3,8 @@
     <string name="bank_login_user">User</string>
     <string name="bank_login_password">Password</string>
     <string name="bank_login_button">Login</string>
+    <string name="connection_message">Verifique sua conexão</string>
+    <string name="conta">Conta</string>
+    <string name="saldo">Saldo</string>
+    <string name="recentes">Recentes</string>
 </resources>

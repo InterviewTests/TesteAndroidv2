@@ -18,7 +18,7 @@ public class BankLoginPresenter implements BankLoginContract.Presenter {
     public void login(String username, String password) {
         view.showProgress(true);
         UserAccount userAccount = new UserAccount(username, password);
-        userAccount.repository = new LoginRepository();
+        userAccount.setRepository(new LoginRepository());
         userAccount.login(new BaseCallback<UserAccount>() {
             @Override
             public void onSuccessful(UserAccount value) {
@@ -37,7 +37,7 @@ public class BankLoginPresenter implements BankLoginContract.Presenter {
     @Override
     public void loadPreference() {
         UserAccount userAccount = new UserAccount();
-        userAccount.repository = new LoginRepository();
+        userAccount.setRepository(new LoginRepository());
         userAccount.loadPreference(view.getContext(), new BaseCallback<UserAccount>() {
             @Override
             public void onSuccessful(UserAccount value) {

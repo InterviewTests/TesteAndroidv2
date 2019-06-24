@@ -2,13 +2,14 @@ package com.resource.bankapplication.domain;
 
 import android.content.Context;
 
+import com.resource.bankapplication.ConstantsApp;
 import com.resource.bankapplication.config.BaseCallback;
 
 import java.io.Serializable;
 
 public class UserAccount implements Serializable {
 
-    public UserAccountContract.IRepository repository;
+    private UserAccountContract.IRepository repository;
     private Long id;
     private String name;
     private String bankAccount;
@@ -32,6 +33,10 @@ public class UserAccount implements Serializable {
     public UserAccount(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public void setRepository(UserAccountContract.IRepository repository) {
+        this.repository = repository;
     }
 
     public Long getId() {
@@ -64,24 +69,24 @@ public class UserAccount implements Serializable {
 
     public void login(BaseCallback<UserAccount> onResult){
         if(repository == null){
-            onResult.onUnsuccessful("Repository não pode ser nulo!");
+            onResult.onUnsuccessful(ConstantsApp.REPOSITORY_NULL);
             return;
         }
         if(username.isEmpty()){
-            onResult.onUnsuccessful("Usuário não pode ser nulo!");
+            onResult.onUnsuccessful(ConstantsApp.USER_NULL);
             return;
         }
 
         if(password.isEmpty()){
-            onResult.onUnsuccessful("Senha não pode ser nulo!");
+            onResult.onUnsuccessful(ConstantsApp.PASSWORD_NULL);
             return;
         }
         if(!validUsername()) {
-            onResult.onUnsuccessful("Usuário invalido!");
+            onResult.onUnsuccessful(ConstantsApp.USER_INVALID);
             return;
         }
         if(!validPassword()){
-            onResult.onUnsuccessful("Senha não é valida!");
+            onResult.onUnsuccessful(ConstantsApp.PASSWORD_INVALID);
             return;
         }
 

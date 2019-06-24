@@ -1,8 +1,8 @@
 package com.resource.bankapplication.domain;
 
+import com.resource.bankapplication.ConstantsApp;
 import com.resource.bankapplication.config.BaseCallback;
 
-import java.util.Date;
 import java.util.List;
 
 public class Spent {
@@ -44,11 +44,11 @@ public class Spent {
     public void listSpent(long idUser, BaseCallback<List<Spent>> onResult){
 
         if(repository==null){
-            onResult.onUnsuccessful("Repository não pode ser nulo");
+            onResult.onUnsuccessful(ConstantsApp.REPOSITORY_NULL);
             return;
         }
         if(idUser<=0){
-            onResult.onUnsuccessful("Id de usuário invalido");
+            onResult.onUnsuccessful(ConstantsApp.ID_INVALID);
             return;
         }
         repository.listStatements(idUser, new BaseCallback<List<Spent>>() {

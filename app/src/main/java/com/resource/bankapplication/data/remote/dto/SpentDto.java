@@ -3,10 +3,7 @@ package com.resource.bankapplication.data.remote.dto;
 import com.resource.bankapplication.domain.Spent;
 import com.resource.bankapplication.util.DateTypeDeserializer;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class SpentDto {

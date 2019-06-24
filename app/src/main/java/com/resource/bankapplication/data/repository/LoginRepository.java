@@ -2,7 +2,7 @@ package com.resource.bankapplication.data.repository;
 
 import android.content.Context;
 
-import com.resource.bankapplication.config.App;
+import com.resource.bankapplication.ConstantsApp;
 import com.resource.bankapplication.config.BaseCallback;
 import com.resource.bankapplication.config.Repository;
 import com.resource.bankapplication.data.local.LoginSharedPref;
@@ -20,22 +20,23 @@ public class LoginRepository extends Repository implements UserAccountContract.I
     private static LoginSharedPref sharedPref;
 
     @Override
-    public void login(String username, String password, BaseCallback<com.resource.bankapplication.domain.UserAccount> onResult) {
+    public void login(String username, String password, BaseCallback<UserAccount> onResult) {
         super.data.restApi(LoginService.class)
                 .login(username, password)
                 .enqueue(new Callback<UserAccountDto>() {
                     @Override
                     public void onResponse(Call<UserAccountDto> call, Response<UserAccountDto> response) {
-                        if(response.body().getError().getCode()==0) {
+                        if(response.body().getError().getCode()!=0)
+                            onResult.onUnsuccessful(response.body().getError().getMessage());
+                        else{
                             sharedPref.saveSharedPref(username, password);
                             onResult.onSuccessful(response.body().getUserAccount().toDomain());
-                        }else
-                            onResult.onUnsuccessful(response.body().getError().getMessage());
+                        }
                     }
 
                     @Override
                     public void onFailure(Call<UserAccountDto> call, Throwable t) {
-                        onResult.onUnsuccessful(t.getMessage());
+                        onResult.onUnsuccessful(ConstantsApp.NO_CONNECTION);
                     }
                 });
     }
