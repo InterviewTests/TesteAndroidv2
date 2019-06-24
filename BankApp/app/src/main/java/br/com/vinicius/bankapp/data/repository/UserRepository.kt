@@ -22,7 +22,7 @@ class UserRepository : Repository(), UserContract.IRepository {
                 }
 
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    if(response.body() == null || response.isSuccessful) onResult.onUnsuccessful(response.message())
+                    if(response.body() == null || !response.isSuccessful) onResult.onUnsuccessful(response.message())
 
                     response.body()?.let {
                         if(it.error.code == 0)

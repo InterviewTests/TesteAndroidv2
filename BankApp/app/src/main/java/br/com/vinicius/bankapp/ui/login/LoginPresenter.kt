@@ -2,6 +2,7 @@ package br.com.vinicius.bankapp.ui.login
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.net.ConnectivityManager
 import android.view.View
 import android.widget.TextView
@@ -53,10 +54,8 @@ class LoginPresenter(override val view: LoginContract.View): LoginContract.Prese
     @SuppressLint("ResourceAsColor", "ResourceType")
     override fun showSnack(view: View, message: String, length: Int) {
         val snackbar = Snackbar.make(view, message, length).setAction("Action", null)
-        snackbar.setActionTextColor(R.color.colorPrimary)
-        val snackbarView = snackbar.view
-        snackbarView.setBackgroundColor(R.color.colorWhite)
-        snackbar.setTextColor(R.color.colorPrimaryDark, 18f)
+        snackbar.setActionTextColor(Color.BLUE)
+        snackbar.setTextColor(Color.WHITE, 18f)
         snackbar.show()
     }
 
