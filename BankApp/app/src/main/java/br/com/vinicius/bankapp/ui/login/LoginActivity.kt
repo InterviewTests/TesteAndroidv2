@@ -3,16 +3,12 @@ package br.com.vinicius.bankapp.ui.login
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.ViewPropertyAnimator
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import br.com.vinicius.bankapp.R
-import br.com.vinicius.bankapp.domain.User
-import br.com.vinicius.bankapp.internal.App
+import br.com.vinicius.bankapp.domain.user.User
 import br.com.vinicius.bankapp.internal.Preferences
 import br.com.vinicius.bankapp.internal.USER_ACCOUNT
 import br.com.vinicius.bankapp.ui.home.HomeActivity

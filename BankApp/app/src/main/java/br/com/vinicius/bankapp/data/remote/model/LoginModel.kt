@@ -1,6 +1,6 @@
 package br.com.vinicius.bankapp.data.remote.model
 
-import br.com.vinicius.bankapp.domain.User
+import br.com.vinicius.bankapp.domain.user.User
 
 data class LoginModel(
     val agency: String,

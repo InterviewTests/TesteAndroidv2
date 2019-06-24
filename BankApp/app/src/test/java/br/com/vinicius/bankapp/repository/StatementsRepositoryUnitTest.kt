@@ -1,4 +1,4 @@
-package br.com.vinicius.bankapp
+package br.com.vinicius.bankapp.repository
 
 import br.com.vinicius.bankapp.data.remote.model.StatementModel
 import br.com.vinicius.bankapp.data.repository.StatementRepository
@@ -14,7 +14,7 @@ import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 import kotlin.random.Random
 
-class HomeTestList {
+class StatementsRepositoryUnitTest {
 
     @Mock
     private lateinit var view:HomeContract.View

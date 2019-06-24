@@ -3,19 +3,13 @@ package br.com.vinicius.bankapp.ui.login
 import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
-import android.provider.SyncStateContract
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.getSystemService
 import br.com.vinicius.bankapp.R
 import br.com.vinicius.bankapp.data.repository.UserRepository
-import br.com.vinicius.bankapp.domain.User
-import br.com.vinicius.bankapp.internal.BaseCallback
-import br.com.vinicius.bankapp.internal.CONNECTION_INTERNTET_ERROR
-import br.com.vinicius.bankapp.internal.NotConnectionNetwork
-import br.com.vinicius.bankapp.internal.ValidationException
+import br.com.vinicius.bankapp.domain.user.User
+import br.com.vinicius.bankapp.internal.*
 import com.google.android.material.snackbar.Snackbar
 
 class LoginPresenter(override val view: LoginContract.View): LoginContract.Presenter {
@@ -25,7 +19,8 @@ class LoginPresenter(override val view: LoginContract.View): LoginContract.Prese
 
         try {
             verifyNetwork(view.getActivity())
-            val user: User = User(username, password)
+            val user: User =
+                User(username, password)
             user.repository = UserRepository()
             view.showProgressBar(true)
             user.startLogin(object : BaseCallback<User>{

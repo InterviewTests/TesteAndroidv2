@@ -1,11 +1,6 @@
-package br.com.vinicius.bankapp.domain
+package br.com.vinicius.bankapp.domain.user
 
-import android.text.TextUtils
-import android.util.Patterns
-import br.com.vinicius.bankapp.internal.BaseCallback
-import br.com.vinicius.bankapp.internal.CPF_PATTERN
-import br.com.vinicius.bankapp.internal.PASSWORD_PATTERN
-import br.com.vinicius.bankapp.internal.ValidationException
+import br.com.vinicius.bankapp.internal.*
 import java.io.Serializable
 import java.util.regex.Pattern
 
@@ -56,8 +51,7 @@ class User(override var username: String, override var password: String) : UserC
             .replace("*", "")
     }
 
-    override fun validationEmail():Boolean =
-        Patterns.EMAIL_ADDRESS.matcher(username).matches()
+    override fun validationEmail():Boolean = Formation.emailFormat(username)
 
     override fun startLogin(listener: BaseCallback<User>) {
 
@@ -65,8 +59,6 @@ class User(override var username: String, override var password: String) : UserC
 
         if(isValidEmpty()) throw ValidationException("User or Password is empty")
 
-        val v = validationCpf()
-        val e = validationEmail()
         if(!(validationCpf() || validationEmail()))
            throw ValidationException("User field must be a email or CPF format")
 

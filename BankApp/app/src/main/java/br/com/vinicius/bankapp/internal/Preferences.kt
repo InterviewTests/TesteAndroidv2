@@ -3,7 +3,7 @@ package br.com.vinicius.bankapp.internal
 import android.content.Context
 import android.content.SharedPreferences
 import android.provider.Telephony.Carriers.PASSWORD
-import br.com.vinicius.bankapp.domain.User
+import br.com.vinicius.bankapp.domain.user.User
 
 object Preferences {
 

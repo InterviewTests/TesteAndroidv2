@@ -1,5 +1,6 @@
-package br.com.vinicius.bankapp.domain
+package br.com.vinicius.bankapp.domain.user
 
+import br.com.vinicius.bankapp.domain.user.User
 import br.com.vinicius.bankapp.internal.BaseCallback
 
 class UserContract {

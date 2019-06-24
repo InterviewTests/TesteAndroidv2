@@ -1,4 +1,4 @@
-package br.com.vinicius.bankapp
+package br.com.vinicius.bankapp.formations
 
 import br.com.vinicius.bankapp.internal.Formation
 import org.junit.Test
@@ -33,5 +33,14 @@ class FormationsUnitTest {
     @Test
     fun validationDateFormat() {
         assertEquals("12/03/2019", Formation.stringToStringPattern("2019-03-12"))
+    }
+
+    @Test
+    fun validationEmail() {
+        assertTrue(Formation.emailFormat("test@test.com"))
+        assertFalse(Formation.emailFormat("test"))
+        assertFalse(Formation.emailFormat("test@dfs"))
+        assertFalse(Formation.emailFormat("test.cas"))
+        assertFalse(Formation.emailFormat("test@.sad"))
     }
 }

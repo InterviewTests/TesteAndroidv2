@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.vinicius.bankapp.R
 import br.com.vinicius.bankapp.data.remote.model.StatementModel
-import br.com.vinicius.bankapp.domain.User
+import br.com.vinicius.bankapp.domain.user.User
 import br.com.vinicius.bankapp.internal.*
 import br.com.vinicius.bankapp.ui.login.LoginActivity
 
@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_home.*
 class HomeActivity : AppCompatActivity(), HomeContract.View {
 
     private lateinit var presenter: HomePresenter
-    private lateinit var user:User
+    private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,10 +1,9 @@
 package br.com.vinicius.bankapp.data.repository
 
 import br.com.vinicius.bankapp.data.remote.ApiService
-import br.com.vinicius.bankapp.data.remote.model.LoginModel
 import br.com.vinicius.bankapp.data.remote.model.LoginResponse
-import br.com.vinicius.bankapp.domain.User
-import br.com.vinicius.bankapp.domain.UserContract
+import br.com.vinicius.bankapp.domain.user.User
+import br.com.vinicius.bankapp.domain.user.UserContract
 import br.com.vinicius.bankapp.internal.BaseCallback
 import br.com.vinicius.bankapp.internal.Repository
 import retrofit2.Call

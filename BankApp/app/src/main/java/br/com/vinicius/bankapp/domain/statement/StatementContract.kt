@@ -1,4 +1,4 @@
-package br.com.vinicius.bankapp.domain
+package br.com.vinicius.bankapp.domain.statement
 
 import br.com.vinicius.bankapp.data.remote.model.StatementModel
 import br.com.vinicius.bankapp.internal.BaseCallback

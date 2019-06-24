@@ -1,9 +1,7 @@
 package br.com.vinicius.bankapp.ui.login
 
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import br.com.vinicius.bankapp.R
-import br.com.vinicius.bankapp.domain.User
+import br.com.vinicius.bankapp.domain.user.User
 import com.google.android.material.snackbar.Snackbar
 
 class LoginContract {
