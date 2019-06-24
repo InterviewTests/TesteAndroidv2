@@ -2,7 +2,7 @@ package com.everis.TesteAndroidv2.Login.Model;
 
 import com.everis.TesteAndroidv2.Base.Model.Error;
 
-public class DadosLogin {
+public class LoginData {
     private UserAccount userAccount;
     private Error error;
 

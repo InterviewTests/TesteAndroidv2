@@ -11,12 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.everis.TesteAndroidv2.Login.Model.DadosLogin;
+import com.everis.TesteAndroidv2.Login.Model.LoginData;
 import com.everis.TesteAndroidv2.Login.Model.UserAccount;
 import com.everis.TesteAndroidv2.R;
 import com.everis.TesteAndroidv2.Repository.RetrofitConfig;
-import com.everis.TesteAndroidv2.Base.Utils.Validadores;
-import com.everis.TesteAndroidv2.Extrato.View.ExtratoActivity;
+import com.everis.TesteAndroidv2.Base.Utils.Validators;
+import com.everis.TesteAndroidv2.Statement.View.StatementActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         initVars();
     }
 
@@ -44,9 +44,9 @@ public class LoginActivity extends AppCompatActivity {
                 String user = etUser.getText().toString();
                 String password = etPassword.getText().toString();
 
-                if (Validadores.isValidCPF(user) || Validadores.isEmail(user)) {
-                    if (Validadores.isValidPassword(password)) {
-                        validarLogin(user, password);
+                if (Validators.isValidCPF(user) || Validators.isEmail(user)) {
+                    if (Validators.isValidPassword(password)) {
+                        checkLogin(user, password);
                     } else {
                         Toast.makeText(LoginActivity.this, "Senha não confere com os padrões", Toast.LENGTH_SHORT).show();
                     }
@@ -57,16 +57,16 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void validarLogin(final String user, String password){
-        Call<DadosLogin> call = new RetrofitConfig().getConnectionService().checarLogin(user, password);
-        call.enqueue(new Callback<DadosLogin>() {
+    private void checkLogin(final String user, String password){
+        Call<LoginData> call = new RetrofitConfig().getConnectionService().checkLoginPOST(user, password);
+        call.enqueue(new Callback<LoginData>() {
             @Override
-            public void onResponse(@NonNull Call<DadosLogin> call, @NonNull Response<DadosLogin> response) {
-                DadosLogin dl = response.body();
+            public void onResponse(@NonNull Call<LoginData> call, @NonNull Response<LoginData> response) {
+                LoginData dl = response.body();
                 assert dl != null;
                 if (dl.getUserAccount().getUserId() != null) {
                     UserAccount ua = dl.getUserAccount();
-                    proximaTela(ua);
+                    nextActivity(ua);
                 } else if (dl.getError().getCode() != null){
                     Float code = dl.getError().getCode();
                     String message = dl.getError().getMessage();
@@ -79,14 +79,14 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(@Nullable Call<DadosLogin> call, @NonNull Throwable t) {
+            public void onFailure(@Nullable Call<LoginData> call, @NonNull Throwable t) {
                 Toast.makeText(LoginActivity.this, "Falha de conexão", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    void proximaTela(UserAccount ua){
-        Intent intent = new Intent(LoginActivity.this, ExtratoActivity.class);
+    void nextActivity(UserAccount ua){
+        Intent intent = new Intent(LoginActivity.this, StatementActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("useraccount", ua);
         intent.putExtras(bundle);

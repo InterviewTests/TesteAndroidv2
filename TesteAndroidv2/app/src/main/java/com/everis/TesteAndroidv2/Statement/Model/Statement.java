@@ -1,14 +1,14 @@
-package com.everis.TesteAndroidv2.Extrato.Model;
+package com.everis.TesteAndroidv2.Statement.Model;
 
 import com.everis.TesteAndroidv2.Base.Model.Error;
 
 import java.util.ArrayList;
 
-public class Lancamento {
-    private ArrayList<Statements> statementList;
+public class Statement {
+    private ArrayList<TransactionInfo> statementList;
     private Error error;
 
-    public ArrayList<Statements> getStatementList() {
+    public ArrayList<TransactionInfo> getStatementList() {
         return statementList;
     }
 

@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Validadores {
+public class Validators {
 
     public static boolean isValidCPF(String CPF) {
         // considera-se erro CPF's formados por uma sequencia de numeros iguais

@@ -1,4 +1,4 @@
-package com.everis.TesteAndroidv2.Extrato.View;
+package com.everis.TesteAndroidv2.Statement.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,11 +17,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.everis.TesteAndroidv2.Extrato.Model.Lancamento;
+import com.everis.TesteAndroidv2.Statement.Model.Statement;
 import com.everis.TesteAndroidv2.Login.View.LoginActivity;
 import com.everis.TesteAndroidv2.R;
 import com.everis.TesteAndroidv2.Repository.RetrofitConfig;
-import com.everis.TesteAndroidv2.Extrato.Model.Statements;
+import com.everis.TesteAndroidv2.Statement.Model.TransactionInfo;
 import com.everis.TesteAndroidv2.Login.Model.UserAccount;
 
 import java.text.NumberFormat;
@@ -33,33 +33,31 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ExtratoActivity extends AppCompatActivity {
+public class StatementActivity extends AppCompatActivity {
 
-    TextView tvNome, tvConta, tvSaldo;
-    ImageButton ibSair;
-    RecyclerView rv_extrato;
-    UserAccount ua;
-
-    private LineAdapter mAdapter;
+    TextView tvName, tvAccount, tvBalance;
+    ImageButton ibLogout;
+    RecyclerView rvStatement;
+    UserAccount userAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_extrato);
-        ua = (UserAccount) getIntent().getSerializableExtra("useraccount");
+        setContentView(R.layout.activity_statement);
+        userAccount = (UserAccount) getIntent().getSerializableExtra("useraccount");
         initVars();
         carregarDadosPessoais();
         carregarExtrato();
     }
 
     void initVars() {
-        tvNome = findViewById(R.id.tv_extrato_nome);
-        tvConta = findViewById(R.id.tv_extrato_conta_num);
-        tvSaldo = findViewById(R.id.tv_extrato_saldo_num);
-        ibSair = findViewById(R.id.ib_extrato_sair);
-        rv_extrato = findViewById(R.id.rv_extrato);
+        tvName = findViewById(R.id.tv_statement_name);
+        tvAccount = findViewById(R.id.tv_statement_account_number);
+        tvBalance = findViewById(R.id.tv_statement_balance_value);
+        ibLogout = findViewById(R.id.ib_statement_logout);
+        rvStatement = findViewById(R.id.rv_statement);
 
-        ibSair.setOnClickListener(new View.OnClickListener() {
+        ibLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logoutQuestion();
@@ -94,34 +92,34 @@ public class ExtratoActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void carregarDadosPessoais(){
-        tvNome.setText(ua.getName());
-        tvConta.setText(
-                ua.getBankAccount() + " / "
-                + ua.getAgency().substring(0,2) + "."
-                + ua.getAgency().substring(2,8) + "-"
-                + ua.getAgency().substring(8)
+        tvName.setText(userAccount.getName());
+        tvAccount.setText(
+                userAccount.getBankAccount() + " / "
+                + userAccount.getAgency().substring(0,2) + "."
+                + userAccount.getAgency().substring(2,8) + "-"
+                + userAccount.getAgency().substring(8)
         );
         NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt","BR"));
         format.setCurrency(Currency.getInstance("BRL"));
-        tvSaldo.setText(format.format(ua.getBalance()));
+        tvBalance.setText(format.format(userAccount.getBalance()));
     }
 
     private void carregarExtrato() {
-        Call<Lancamento> call = new RetrofitConfig().getConnectionService().checarExtrato(ua.getUserId());
-        call.enqueue(new Callback<Lancamento>() {
+        Call<Statement> call = new RetrofitConfig().getConnectionService().checkStatementGET(userAccount.getUserId());
+        call.enqueue(new Callback<Statement>() {
             @Override
-            public void onResponse(@NonNull Call<Lancamento> call, @NonNull Response<Lancamento> response) {
-                Lancamento lanc = response.body();
+            public void onResponse(@NonNull Call<Statement> call, @NonNull Response<Statement> response) {
+                Statement lanc = response.body();
                 assert lanc != null;
                 if (!lanc.getStatementList().isEmpty()) {
                     setupRecycler(lanc.getStatementList());
                 } else if (lanc.getError().getCode() == null) {
-                    Toast.makeText(ExtratoActivity.this, "Extrato vazio", Toast.LENGTH_LONG).show();
+                    Toast.makeText(StatementActivity.this, "Extrato vazio", Toast.LENGTH_LONG).show();
                 } else {
                     Float code = lanc.getError().getCode();
                     String message = lanc.getError().getMessage();
                     Toast.makeText(
-                            ExtratoActivity.this,
+                            StatementActivity.this,
                             "Falha ao exibir extrato.\nCódigo: " + code + "\nMensagem: " + message,
                             Toast.LENGTH_LONG
                     ).show();
@@ -129,17 +127,17 @@ public class ExtratoActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(@Nullable Call<Lancamento> call, @NonNull Throwable t) {
-                Toast.makeText(ExtratoActivity.this, "Falha de conexão", Toast.LENGTH_SHORT).show();
+            public void onFailure(@Nullable Call<Statement> call, @NonNull Throwable t) {
+                Toast.makeText(StatementActivity.this, "Falha de conexão", Toast.LENGTH_SHORT).show();
                 Log.e("ConnectionService   ", "Erro de conexão: " + t.getMessage());
             }
         });
     }
 
-    private void setupRecycler(ArrayList<Statements> list) {
+    private void setupRecycler(ArrayList<TransactionInfo> list) {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        rv_extrato.setLayoutManager(layoutManager);
-        mAdapter = new LineAdapter(list);
-        rv_extrato.setAdapter(mAdapter);
+        rvStatement.setLayoutManager(layoutManager);
+        LineAdapter adapter = new LineAdapter(list);
+        rvStatement.setAdapter(adapter);
     }
 }

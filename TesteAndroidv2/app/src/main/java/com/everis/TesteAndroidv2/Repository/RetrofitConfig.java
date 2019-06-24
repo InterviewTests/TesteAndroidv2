@@ -17,6 +17,4 @@ public class RetrofitConfig {
     public ConnectionService getConnectionService(){
         return this.retrofit.create(ConnectionService.class);
     }
-
-
 }

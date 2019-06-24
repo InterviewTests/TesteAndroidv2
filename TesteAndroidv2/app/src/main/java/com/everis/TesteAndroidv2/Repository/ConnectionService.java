@@ -1,7 +1,7 @@
 package com.everis.TesteAndroidv2.Repository;
 
-import com.everis.TesteAndroidv2.Login.Model.DadosLogin;
-import com.everis.TesteAndroidv2.Extrato.Model.Lancamento;
+import com.everis.TesteAndroidv2.Login.Model.LoginData;
+import com.everis.TesteAndroidv2.Statement.Model.Statement;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -13,9 +13,9 @@ import retrofit2.http.Path;
 public interface ConnectionService {
 
     @GET("api/statements/{idUser}")
-    Call<Lancamento> checarExtrato(@Path("idUser") Integer idUser);
+    Call<Statement> checkStatementGET(@Path("idUser") Integer idUser);
 
     @FormUrlEncoded
     @POST("api/login")
-    Call<DadosLogin> checarLogin(@Field("user") String user, @Field("password") String password);
+    Call<LoginData> checkLoginPOST(@Field("user") String user, @Field("password") String password);
 }

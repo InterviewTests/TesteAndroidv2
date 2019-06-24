@@ -1,6 +1,6 @@
-package com.everis.TesteAndroidv2.Extrato.Model;
+package com.everis.TesteAndroidv2.Statement.Model;
 
-public class Statements {
+public class TransactionInfo {
     private String title;
     private String desc;
     private String date;

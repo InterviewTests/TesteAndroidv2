@@ -15,7 +15,7 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:fullBackupContent="true">
         <activity
-            android:name="com.everis.TesteAndroidv2.Extrato.View.ExtratoActivity"
+            android:name="com.everis.TesteAndroidv2.Statement.View.StatementActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name="com.everis.TesteAndroidv2.Login.View.LoginActivity"
