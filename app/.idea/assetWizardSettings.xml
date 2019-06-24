@@ -93,9 +93,10 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
+                                      <entry key="cropped" value="true" />
                                       <entry key="iconShape" value="NONE" />
                                       <entry key="imageAsset" value="C:\Users\resource\Desktop\logout 2.png" />
-                                      <entry key="outputName" value="ic_launcher_logout2" />
+                                      <entry key="outputName" value="ic_launcher_logout" />
                                     </map>
                                   </option>
                                 </PersistentState>

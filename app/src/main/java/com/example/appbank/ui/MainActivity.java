@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
             }
             btnLogin.setEnabled(true);
         } else {
-            if (userData.matches("[A-Za-z0-9\\._-]+@[A-Za-z]+\\.[A-Za-z]+")) {
+            if (userData.matches("/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/")) {
                 textUser.setError("E-mail inválido");
                 btnLogin.setEnabled(false);
                 return;
@@ -178,12 +178,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean validPasswordData(String passwordData) {
-        boolean result = passwordData.matches("^(?=.[0-9])(?=.[a-z])(?=.[A-Z])(?=.[@#$%^&+=])(?=\\S+$).{8,15}$");
-        if (passwordData.matches("^(?=.[0-9])(?=.[a-z])(?=.[A-Z])(?=.[@#$%^&+=])(?=\\S+$).{8,15}$")) {
-            Toast.makeText(getApplicationContext(), "deu certo", Toast.LENGTH_LONG).show();
+        if (passwordData.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d](?=.*[@#$%^&+=])(?=\\S+$).{4,}$")) {
             return true;
         }
-        textPassword.setError("A senha deve conter pelo menos 8 caracteres, sendo 1 carecter especial, uma letra maiúscula" +
+        textPassword.setError("A senha deve conter 1 carecter especial, uma letra maiúscula" +
                 " e um caracter alfanumérico");
 
         return false;
