@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -14,7 +15,8 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="124dp"
         android:layout_marginBottom="541dp"
-        android:background="@mipmap/ic_logo_bank"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_logo_bank"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +24,8 @@
 
     <EditText
         android:id="@+id/edit_text_user"
-        android:layout_width="342"
-        android:layout_height="50"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
         android:layout_marginStart="17dp"
         android:layout_marginTop="231dp"
         android:layout_marginEnd="16dp"
@@ -33,7 +35,6 @@
         android:gravity="start|top"
         android:hint="Usuário"
         android:inputType="textMultiLine"
-        android:text="Usuário"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,8 +42,8 @@
 
     <EditText
         android:id="@+id/edit_text_password"
-        android:layout_width="342"
-        android:layout_height="50"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
         android:layout_marginStart="17dp"
         android:layout_marginTop="21dp"
         android:layout_marginEnd="16dp"
@@ -52,7 +53,6 @@
         android:gravity="start|top"
         android:hint="Senha"
         android:inputType="textMultiLine"
-        android:text="Senha"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,8 +60,8 @@
 
     <Button
         android:id="@+id/button_login"
-        android:layout_width="202"
-        android:layout_height="62"
+        android:layout_width="202dp"
+        android:layout_height="62dp"
         android:layout_marginStart="87dp"
         android:layout_marginTop="572dp"
         android:layout_marginEnd="86dp"
