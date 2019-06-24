@@ -14,9 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bankapp.R;
-import com.example.bankapp.helper.MyConveter;
 import com.example.bankapp.data.remote.model.dashboard.StatementList;
 import com.example.bankapp.data.remote.model.user.UserAccount;
+import com.example.bankapp.helper.MyConveter;
 import com.example.bankapp.ui.dashboard.adapter.AdapterCurrency;
 import com.example.bankapp.ui.login.LoginActivity;
 

@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.bankapp.R;
-import com.example.bankapp.helper.MyConveter;
 import com.example.bankapp.data.remote.model.dashboard.StatementList;
+import com.example.bankapp.helper.MyConveter;
 
 import java.util.List;
 

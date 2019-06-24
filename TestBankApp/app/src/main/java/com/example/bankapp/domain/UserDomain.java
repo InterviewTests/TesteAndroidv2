@@ -2,10 +2,10 @@ package com.example.bankapp.domain;
 
 import android.content.Context;
 
+import com.example.bankapp.data.remote.model.user.UserAccountModel;
 import com.example.bankapp.helper.BaseCallback;
 import com.example.bankapp.helper.ConstantsStrings;
 import com.example.bankapp.helper.SaveUserPreferences;
-import com.example.bankapp.data.remote.model.user.UserAccountModel;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
