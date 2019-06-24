@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.home.HomeActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/constraintLayoutAccount"
+            android:background="@color/colorPrimary">
+
+        <TextView
+                android:text="@string/name_test"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewName"
+                android:minHeight="29dp"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="18dp" android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewLogout" android:layout_marginEnd="17dp"
+                android:textSize="25sp" android:fontFamily="sans-serif" android:textColor="@color/colorWhite"/>
+        <ImageView
+                android:layout_width="27dp"
+                android:layout_height="27dp" app:srcCompat="@mipmap/logout"
+                android:id="@+id/imageViewLogout" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="13dp"
+                android:layout_marginTop="22dp" app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/logout"/>
+        <TextView
+                android:text="@string/account_name"
+                android:layout_width="47dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewAcountName"
+                app:layout_constraintTop_toBottomOf="@+id/textViewName" android:layout_marginTop="28dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="18dp"
+                app:layout_constraintHorizontal_bias="0.0" android:textSize="12sp" android:layout_marginEnd="17dp"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewLogout" android:textColor="@color/colorWhite"/>
+        <TextView
+                android:text="@string/account_test"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewAccountNumber"
+                android:minHeight="29dp"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAcountName" android:layout_marginTop="6dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="18dp"
+                android:layout_marginEnd="17dp" android:textSize="25sp"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewLogout" android:fontFamily="sans-serif"
+                android:textColor="@color/colorWhite"/>
+        <TextView
+                android:text="@string/balance_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewBalanceName"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAccountNumber" android:layout_marginTop="21dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="18dp"
+                android:textSize="12sp" android:layout_marginEnd="17dp"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewLogout" app:layout_constraintHorizontal_bias="0.0"
+                android:textColor="@color/colorWhite"/>
+        <TextView
+                android:text="@string/balance_test"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="29dp"
+                android:textSize="25sp"
+                android:id="@+id/textViewBalanceNumber" android:layout_marginStart="18dp"
+                app:layout_constraintTop_toBottomOf="@+id/textViewBalanceName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewLogout" android:layout_marginEnd="17dp"
+                app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="7dp"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="17dp"
+                android:fontFamily="sans-serif" android:textColor="@color/colorWhite"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+            android:text="@string/recent_name"
+            android:minHeight="20dp"
+            android:minWidth="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewRecent" android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayoutAccount"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="18dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="0.0" android:textColor="@color/colorTextAccount"
+            android:textSize="17dp"/>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayoutStatement"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRecent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="12dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="12dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_height="0dp"
+            android:layout_width="0dp" android:layout_marginTop="8dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+
+                android:layout_width="0dp"
+                tools:listitem="@layout/card_view_statement"
+                android:layout_height="0dp" android:layout_marginTop="0dp"
+                android:id="@+id/recyclerViewStatement"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
