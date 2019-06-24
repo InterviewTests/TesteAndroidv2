@@ -1,41 +1,18 @@
-# Show me the code
+# Sobre o App
 
-Esse repositório contem todo o material necessário para realizar o teste: 
-- A especificação do layout está na pasta 'bank_app_layout' abrindo o index.html, utilizar os Styles do Android
+- Desenvolvido em JAVA;
+- Padrão utilizado foi o MVP (Model View Presenter) que se encaixa bem no conceito modular do "Android Clean Code";
+- Ferramenta escolhida para realizar os teste unitários foi o JUnit por ter mais familiaridade;
+- Foi utilizado o Retrofit 2.5.0 junto com o Gson 2.5.0 para realizar as requisições na API;
+- Os campos de login foram validados com base nos requerimentos pedidos;
 
-- Os dados da Api estão mockados, os exemplos e a especificação dos serviços (login e statements) se encontram no arquivo BankApp.postman_collection.json ( é necessário instalar o postman e importar a colection https://www.getpostman.com/apps)
-
-![Image of Yaktocat](https://github.com/SantanderTecnologia/TesteiOS/blob/new_test/telas.png)
-
-### # DESAFIO:
-
-Na primeira tela teremos um formulario de login, o campo user deve aceitar email ou cpf,
-o campo password deve validar se a senha tem pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.
-Apos a validação, realizar o login no endpoint https://bank-app-test.herokuapp.com/api/login e exibir os dados de retorno na próxima tela.
-O ultimo usuário logado deve ser salvo de forma segura localmente, e exibido na tela de login se houver algum salvo. 
-
-Na segunda tela será exibido os dados formatados do retorno do login e será necessário fazer um segundo request para obter os lançamentos do usuário, no endpoint https://bank-app-test.herokuapp.com/api/statements/{idUser} que retornará uma lista de lançamentos
-
-### # Avaliação
-
-Você será avaliado pela usabilidade, por respeitar o design e pela arquitetura do app. É esperado que você consiga explicar as decisões que tomou durante o desenvolvimento através de commits.
-
-Obrigatórios:
-
-* Java ou Kotlin
-* Material Design
-* O app deve funcionar a partir do android 4.4
-* Testes unitários, pode usar a ferramenta que você tem mais experiência, só nos explique o que ele tem de bom.
-* Arquitetura a ser utilizada: Android Clean Code (https://github.com/kmmraj/android-clean-code && https://medium.com/@kmmraj/android-clean-code-part-1-c66da6551d1)
-* Uso do git.
-
-### # Observações gerais
-
-Adicione um arquivo [README.md](http://README.md) com os procedimentos para executar o projeto.
-Pedimos que trabalhe sozinho e não divulgue o resultado na internet.
-
-Faça um fork desse desse repositório em seu Github e ao finalizar nos envie um Pull Request com o resultado, por favor informe por qual empresa você esta se candidatando.
-
-# Importante: não há prazo de entrega, faça com qualidade!
-
-# BOA SORTE!
+# Utilização
+- Para fazer login no app é obrigatório o usuário preencher todos os campos e estar conectado a uma rede de internet, requisitos para fazer login:
+    Campo User = entrar com um e-mail ou cpf validos, caso seja digitado um e-mail ou cpf invalido o usuário será avisado por uma mensagem rápida na tela(Toast).
+    Campo Password = a senha deve conter no mínimo um caractere maiúsculo, um especial e um alfanumérico, se a senha não obedecer esses critérios o usuário será avisado por uma mensagem rápida na tela(Toast).
+    
+- Passados os critérios acima o login será efetuado com sucesso;
+- Ao fazer login os dados do login do usuário ficam salvos localmente de forma segura com o SharedPreferences, para quando ele abrir o app novamente, os campos de User e Password já estarão preenchidos com os dados do ultimo usuário logado;
+- Na tela principal (Dashboard) o usuário vera suas informações junto com uma linha do tempo com suas ultimas movimentações da conta;
+- Caso ele queira atualizar a lista basta ele arrastar o dedo de cima para baixo na tela e a lista será atualizada com novos dados caso tenha, esse é um recurso muito utilizado no padrão Material Design para atualizar uma pagina, o app do google chrome utiliza esse recurso por exemplo;
+- No canto superior direito existe um ícone para sair da conta, ao clicar abrira uma caixa de dialogo perguntando se o usuário deseja realmente sair, ao clica em não nada acontece e o usuário continua na dashboard, caso clique em sim, ele volta para tela de login.
