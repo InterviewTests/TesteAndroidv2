@@ -3,6 +3,7 @@ package com.example.bankapp.domain;
 import android.content.Context;
 
 import com.example.bankapp.helper.BaseCallback;
+import com.example.bankapp.helper.ConstantsStrings;
 import com.example.bankapp.helper.SaveUserPreferences;
 import com.example.bankapp.model.user.UserAccountModel;
 
@@ -10,10 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserDomain {
-    private static final String ERROR_PASSWORD = "Senha não atende os requisitos";
-    private static final String ERROR_FIELD_USER_EMPTY = "Preencha o campo user";
-    private static final String ERROR_FIELD_PASSWORD_EMPTY = "Preencha o campo password";
-    private static final String ERROR_EMAIL_CPF = "Preencha o campo user com um email ou cpf válidos";
+
 
     public UserContract.IRepository repository;
     private Context context;
@@ -45,10 +43,10 @@ public class UserDomain {
     }
 
     public void validateFields() throws Exception {
-        Pattern emailCpf = Pattern.compile(".+@.+\\..+|[0-9]{11}");
-        Pattern uppChar = Pattern.compile("[A-Z]");
-        Pattern num = Pattern.compile("[0-9]");
-        Pattern especial = Pattern.compile("[$&+,:;=?@#|'<>.^*()%!-]");
+        Pattern emailCpf = Pattern.compile(ConstantsStrings.REGEX_EMAIL_CPF);
+        Pattern uppChar = Pattern.compile(ConstantsStrings.REGEX_UPPER_CHARACTERS);
+        Pattern num = Pattern.compile(ConstantsStrings.REGEX_NUMBER_CHARACTERS);
+        Pattern especial = Pattern.compile(ConstantsStrings.REGEX_SPECIAL_CHARACTERS);
 
         Matcher matcherEmailCpf = emailCpf.matcher(userName);
         Matcher matcherUpp = uppChar.matcher(password);
@@ -57,22 +55,22 @@ public class UserDomain {
 
 
         if (userName == null || userName.isEmpty())
-            throw new Exception(ERROR_FIELD_USER_EMPTY);
+            throw new Exception(ConstantsStrings.ERROR_FIELD_USER_EMPTY);
 
         if (password == null || password.isEmpty())
-            throw new Exception(ERROR_FIELD_PASSWORD_EMPTY);
+            throw new Exception(ConstantsStrings.ERROR_FIELD_PASSWORD_EMPTY);
 
         if (!matcherEmailCpf.find())
-            throw new Exception(ERROR_EMAIL_CPF);
+            throw new Exception(ConstantsStrings.ERROR_EMAIL_CPF);
 
         if (!matcherUpp.find())
-            throw new Exception(ERROR_PASSWORD);
+            throw new Exception(ConstantsStrings.ERROR_PASSWORD);
 
         if (!matcherNum.find())
-            throw new Exception(ERROR_PASSWORD);
+            throw new Exception(ConstantsStrings.ERROR_PASSWORD);
 
         if (!matcherEspecial.find())
-            throw new Exception(ERROR_PASSWORD);
+            throw new Exception(ConstantsStrings.ERROR_PASSWORD);
     }
 
     private void saveLogin() {

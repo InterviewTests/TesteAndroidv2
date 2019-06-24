@@ -2,6 +2,7 @@ package com.example.bankapp.repository;
 
 import com.example.bankapp.domain.UserContract;
 import com.example.bankapp.helper.BaseCallback;
+import com.example.bankapp.helper.ConstantsStrings;
 import com.example.bankapp.model.user.UserAccountModel;
 import com.example.bankapp.remote.BuildApi;
 import com.example.bankapp.remote.LoginAPI;
@@ -30,7 +31,7 @@ public class LoginRepository extends BuildApi implements UserContract.IRepositor
 
             @Override
             public void onFailure(Call<UserAccountModel> call, Throwable t) {
-                result.onUnsuccessful("Verifique suas conexões com a internet");
+                result.onUnsuccessful(ConstantsStrings.ERROR_INTERNET);
             }
         });
     }

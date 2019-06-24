@@ -5,11 +5,6 @@ import com.example.bankapp.model.dashboard.StatementListModel;
 
 public class DashboardDomain {
 
-    private String title;
-    private String desc;
-    private String date;
-    private double value;
-
     public DashboardContract.IRepository repository;
 
     public void getList(long id, final BaseCallback<StatementListModel> listener){

@@ -2,6 +2,7 @@ package com.example.bankapp.repository;
 
 import com.example.bankapp.domain.DashboardContract;
 import com.example.bankapp.helper.BaseCallback;
+import com.example.bankapp.helper.ConstantsStrings;
 import com.example.bankapp.model.dashboard.StatementListModel;
 import com.example.bankapp.remote.BuildApi;
 import com.example.bankapp.remote.statementListAPI;
@@ -26,7 +27,7 @@ public class DashboardRepository extends BuildApi implements DashboardContract.I
 
             @Override
             public void onFailure(Call<StatementListModel> call, Throwable t) {
-                result.onUnsuccessful("Verifique suas conexões com a internet");
+                result.onUnsuccessful(ConstantsStrings.ERROR_INTERNET);
             }
         });
     }
