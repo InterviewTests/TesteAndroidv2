@@ -10,19 +10,22 @@ public class LoginPresenter implements LoginContract.PresenterContract {
     public WeakReference<LoginContract.ActivityContract> activity;
 
     @Override
-    public void setLoginResponse(LoginResponse response, boolean isSucessful) {
-        prepareAndSendData(response, isSucessful);
+    public void setData(LoginResponse response, boolean isSuccessful) {
+        prepareAndSendData(response, isSuccessful);
     }
 
-    private void prepareAndSendData(LoginResponse response, boolean isSucessful) {
-        if (isSucessful) {
-            UserAccountModel userAccountModel = response.getUserAccountModel();
-            if (userAccountModel.getUserId() != null)
-                activity.get().loginSuccessful(userAccountModel);
-            else
-                activity.get().loginError();
+    private void prepareAndSendData(LoginResponse response, boolean isSuccessful) {
+        if (isSuccessful) {
+            if (response != null) {
+                UserAccountModel userAccountModel = response.getUserAccountModel();
+                if (userAccountModel != null && userAccountModel.getUserId() != null)
+                    activity.get().loginSuccessful(userAccountModel);
+                else
+                    activity.get().displayError();
+            } else
+                activity.get().displayError();
         } else {
-            activity.get().loginError();
+            activity.get().displayError();
         }
     }
 }

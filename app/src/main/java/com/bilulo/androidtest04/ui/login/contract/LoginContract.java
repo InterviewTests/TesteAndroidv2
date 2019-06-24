@@ -6,16 +6,16 @@ import com.bilulo.androidtest04.data.model.response.LoginResponse;
 public interface LoginContract {
     interface ActivityContract{
         void loginSuccessful(UserAccountModel userAccountModel);
-        void loginError();
+        void displayError();
     }
 
     interface InteractorContract{
         void performLogin(String user, String password);
-        void setLoginResponse(LoginResponse response, boolean isSucessful);
+        void setLoginResponse(LoginResponse response, boolean isSuccessful);
     }
 
     interface PresenterContract{
-        void setLoginResponse(LoginResponse response, boolean isSucessful);
+        void setData(LoginResponse response, boolean isSuccessful);
     }
 
     interface WorkerContract{

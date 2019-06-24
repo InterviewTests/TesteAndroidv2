@@ -14,8 +14,7 @@ public class LoginInteractor implements LoginContract.InteractorContract {
     }
 
     @Override
-    public void setLoginResponse(LoginResponse response, boolean isSucessful) {
-        presenter.setLoginResponse(response, isSucessful);
+    public void setLoginResponse(LoginResponse response, boolean isSuccessful) {
+        presenter.setData(response, isSuccessful);
     }
-
 }

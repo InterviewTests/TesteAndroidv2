@@ -1,12 +1,14 @@
 package com.bilulo.androidtest04.data.api.statements;
 
-import com.bilulo.androidtest04.data.model.response.LoginResponse;
+import com.bilulo.androidtest04.data.model.response.StatementsResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public interface StatementsApi {
     @GET("/api/statements/{userId}")
-    Call<LoginResponse> getStatements();
-
+    Call<StatementsResponse> getStatements(@Path("userId") int userId);
 }

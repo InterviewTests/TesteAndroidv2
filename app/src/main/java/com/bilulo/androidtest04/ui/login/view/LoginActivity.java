@@ -31,12 +31,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.Activit
     public LoginContract.InteractorContract interactor;
     public LoginRouter router;
 
-    /*private Guideline horizontalGuideline10;
-    private Guideline verticalGuideline25;
-    private Guideline horizontalGuideline40;
-    private Guideline verticalGuideline75;
-    private Guideline horizontalGuideline85;
-    private TextView tvTitle;*/
     private UserEditText edtUser;
     private EditText edtPassword;
     private Button btnLogin;
@@ -52,12 +46,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.Activit
     }
 
     private void findViews() {
-        /*horizontalGuideline10 = findViewById(R.id.horizontal_guideline10);
-        horizontalGuideline40 = findViewById(R.id.horizontal_guideline40);
-        horizontalGuideline85 = findViewById(R.id.horizontal_guideline85);
-        verticalGuideline25 = findViewById(R.id.vertical_guideline25);
-        verticalGuideline75 = findViewById(R.id.vertical_guideline75);
-        tvTitle = findViewById(R.id.tv_title);*/
         edtUser = findViewById(R.id.edt_user);
         edtPassword = findViewById(R.id.edt_password);
         btnLogin = findViewById(R.id.btn_login);
@@ -174,15 +162,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.Activit
         showAlertDialog(spannableStringBuilder);
     }
 
-    private void showAlertDialog(CharSequence message) {
-        String title = getString(R.string.validation_error_title);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(message)
-                .setTitle(title);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
-
     @Override
     public void loginSuccessful(UserAccountModel userAccountModel) {
         String userName = edtUser.getText().toString();
@@ -191,7 +170,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.Activit
     }
 
     @Override
-    public void loginError() {
+    public void displayError() {
         hideProgressDialog();
         showAlertDialog(getString(R.string.login_server_error));
     }

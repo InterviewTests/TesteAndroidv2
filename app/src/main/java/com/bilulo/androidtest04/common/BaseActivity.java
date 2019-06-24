@@ -32,4 +32,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (actionBar != null) actionBar.hide();
     }
 
+    protected void showAlertDialog(CharSequence message) {
+        String title = getString(R.string.validation_error_title);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(message)
+                .setTitle(title);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 }

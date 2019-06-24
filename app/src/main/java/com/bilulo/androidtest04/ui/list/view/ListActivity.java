@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,23 +12,25 @@ import android.widget.TextView;
 
 import com.bilulo.androidtest04.R;
 import com.bilulo.androidtest04.common.BaseActivity;
+import com.bilulo.androidtest04.data.model.StatementModel;
 import com.bilulo.androidtest04.data.model.UserAccountModel;
 import com.bilulo.androidtest04.ui.list.configurator.ListConfigurator;
 import com.bilulo.androidtest04.ui.list.contract.ListContract;
+import com.bilulo.androidtest04.ui.list.router.ListRouter;
 import com.bilulo.androidtest04.utils.FormatUtil;
 import com.bilulo.androidtest04.utils.ValidationUtil;
 
-public class ListActivity extends BaseActivity implements ListContract.ActivityContract, View.OnClickListener {
+import java.util.List;
+
+public class ListActivity extends BaseActivity implements ListContract.ActivityContract {
     public static final String EXTRA_USER_ACCOUNT = "extra-user-account";
     public ListContract.InteractorContract interactor;
+    public ListRouter router;
 
     private TextView tvClientName;
     private ImageView ivLogout;
-    private TextView tvAccountDescription;
     private TextView tvAccount;
-    private TextView tvBalanceDescription;
     private TextView tvBalance;
-    private TextView tvRecentDescription;
     private RecyclerView rvList;
 
     @Override
@@ -37,7 +40,12 @@ public class ListActivity extends BaseActivity implements ListContract.ActivityC
         ListConfigurator.configure(this);
         hideActionBar();
         findViews();
-        loadAccountData(getUserAccountModelExtra());
+        configureRecyclerView();
+        interactor.fetchAndLoadData(getUserAccountModelExtra());
+    }
+
+    private void configureRecyclerView() {
+        rvList.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void findViews() {
@@ -47,22 +55,12 @@ public class ListActivity extends BaseActivity implements ListContract.ActivityC
         tvBalance = findViewById(R.id.tv_balance);
         rvList = findViewById(R.id.rv_list);
 
-        ivLogout.setOnClickListener(this);
-    }
-
-    private void loadAccountData(UserAccountModel userAccountModelExtra) {
-        if (userAccountModelExtra != null) {
-            String name = userAccountModelExtra.getName();
-            if (ValidationUtil.isValidString(name)) {
-                tvClientName.setText(name);
+        ivLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                router.startLoginActivity();
             }
-            String bankAccount = userAccountModelExtra.getBankAccount();
-            String agency = userAccountModelExtra.getAgency();
-            String accountInfo = FormatUtil.formatAccountNumber(bankAccount, agency);
-            if (ValidationUtil.isValidString(accountInfo)) {
-                tvAccount.setText(accountInfo);
-            }
-        }
+        });
     }
 
     private UserAccountModel getUserAccountModelExtra() {
@@ -76,7 +74,29 @@ public class ListActivity extends BaseActivity implements ListContract.ActivityC
     }
 
     @Override
-    public void onClick(View v) {
+    public void loadUserAccountData(String name, String account, String balance) {
+        if (ValidationUtil.isValidString(name))
+            tvClientName.setText(name);
+        if (ValidationUtil.isValidString(account))
+            tvAccount.setText(account);
+        if (ValidationUtil.isValidString(balance))
+            tvBalance.setText(balance);
+    }
 
+    @Override
+    public void loadStatements(List<StatementModel> statements) {
+
+    }
+
+    @Override
+    public void displayError() {
+        hideProgressDialog();
+        showAlertDialog(getString(R.string.login_server_error));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        router.startLoginActivity();
     }
 }
