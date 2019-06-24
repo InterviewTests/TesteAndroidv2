@@ -25,6 +25,14 @@ public class LoginModelImpl implements LoginContract.LoginModel{
             presenter.senhaNaoInformada();
             return;
         }
+        if(!validarUser(usuario)){
+            presenter.userInvalido();
+            return;
+       }if(!validarPassword(senha)){
+           presenter.senhaInvalida();
+            return;
+       }
+
        presenter.loadingRequisicao();
         new RetrofitApi().getService().login(usuario, senha).enqueue(new Callback<LoginResponse>() {
             @Override
@@ -46,5 +54,13 @@ public class LoginModelImpl implements LoginContract.LoginModel{
                 presenter.erroServidor();
             }
         });
+    }
+   private boolean validarUser(String usuario){
+        String regex = "^(.+)@(.+)$|[0-9]{11}";
+        return usuario.matches(regex);
+    }
+    private boolean validarPassword(String senha){
+        String regex = "^(.+)@(.+)$|[0-9]{11}";
+        return senha.matches(regex);
     }
 }

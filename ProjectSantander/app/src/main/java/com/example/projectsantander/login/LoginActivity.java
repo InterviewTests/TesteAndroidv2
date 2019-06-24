@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     private LoginContract.LoginPresenter presenter;
     private ProgressDialog dialog;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
         vinculaEventos();
         edtUsuario.requestFocus();
     }
+
 
     private void vinculaAtributos() {
         edtUsuario = findViewById(R.id.edtUsuario);

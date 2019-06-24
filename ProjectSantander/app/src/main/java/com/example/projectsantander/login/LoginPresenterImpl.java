@@ -7,6 +7,7 @@ public class LoginPresenterImpl implements LoginContract.LoginPresenter {
     private LoginContract.LoginView view;
     private LoginContract.LoginModel model;
 
+
     public LoginPresenterImpl(LoginContract.LoginView view){
         this.view = view;
         this.model = new LoginModelImpl(this);
@@ -30,6 +31,17 @@ public class LoginPresenterImpl implements LoginContract.LoginPresenter {
     }
 
     @Override
+    public void senhaInvalida() {
+        view.exibeMensagem("Senha Invalido. Use um caractere especial\n" +
+                "e um alpha numerico");
+    }
+
+    @Override
+    public void userInvalido() {
+        view.exibeMensagem("Usuario Invalido!");
+    }
+
+    @Override
     public void loadingRequisicao() {
         view.exibeLoading("Entrando...");
     }
@@ -49,6 +61,8 @@ public class LoginPresenterImpl implements LoginContract.LoginPresenter {
         view.limparCampos();
         view.exibeMensagem(message);
     }
+
+
 
     @Override
     public void erroServidor() {

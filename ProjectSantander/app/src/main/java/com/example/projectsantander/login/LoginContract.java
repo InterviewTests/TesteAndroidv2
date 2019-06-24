@@ -12,6 +12,10 @@ public class LoginContract {
 
         void senhaNaoInformada();
 
+        void senhaInvalida();
+
+        void userInvalido();
+
         void loadingRequisicao();
 
         void fechaLoading();
@@ -19,6 +23,8 @@ public class LoginContract {
         void loginCompleto(Login login);
 
         void loginIncorreto(String message);
+
+
 
         void erroServidor();
     }
