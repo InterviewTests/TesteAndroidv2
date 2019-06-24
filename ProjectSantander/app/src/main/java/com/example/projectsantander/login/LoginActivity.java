@@ -91,6 +91,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     @Override
     public void limparCampos() {
         this.edtUsuario.getText().clear();
-        this.edtSenha.getText().clear();;
+        this.edtSenha.getText().clear();
     }
 }
