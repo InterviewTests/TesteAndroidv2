@@ -11,6 +11,9 @@ import java.util.regex.Pattern;
 
 public class UserDomain {
     private static final String ERROR_PASSWORD = "Senha não atende os requisitos";
+    private static final String ERROR_FIELD_USER_EMPTY = "Preencha o campo user";
+    private static final String ERROR_FIELD_PASSWORD_EMPTY = "Preencha o campo password";
+    private static final String ERROR_EMAIL_CPF = "Preencha o campo user com um email ou cpf válidos";
 
     public UserContract.IRepository repository;
     private Context context;
@@ -42,27 +45,27 @@ public class UserDomain {
     }
 
     public void validateFields() throws Exception {
+        Pattern emailCpf = Pattern.compile(".+@.+\\..+|[0-9]{11}");
         Pattern uppChar = Pattern.compile("[A-Z]");
-        Pattern lowChar = Pattern.compile("[a-z]");
         Pattern num = Pattern.compile("[0-9]");
         Pattern especial = Pattern.compile("[$&+,:;=?@#|'<>.^*()%!-]");
 
+        Matcher matcherEmailCpf = emailCpf.matcher(userName);
         Matcher matcherUpp = uppChar.matcher(password);
-        Matcher matcherLow = lowChar.matcher(password);
         Matcher matcherNum = num.matcher(password);
         Matcher matcherEspecial = especial.matcher(password);
 
 
         if (userName == null || userName.isEmpty())
-            throw new Exception("Preencha o campo user com um email ou cpf válidos");
+            throw new Exception(ERROR_FIELD_USER_EMPTY);
 
         if (password == null || password.isEmpty())
-            throw new Exception("Preencha o campo password");
+            throw new Exception(ERROR_FIELD_PASSWORD_EMPTY);
+
+        if (!matcherEmailCpf.find())
+            throw new Exception(ERROR_EMAIL_CPF);
 
         if (!matcherUpp.find())
-            throw new Exception(ERROR_PASSWORD);
-
-        if (!matcherLow.find())
             throw new Exception(ERROR_PASSWORD);
 
         if (!matcherNum.find())

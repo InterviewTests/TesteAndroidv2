@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,16 +30,14 @@ public class LoginActivity extends AppCompatActivity implements LoginViewPresent
         setContentView(R.layout.activity_login);
 
         loadUi();
-        //preferences.clearPref();
         verifyUser();
-
         actionLoginButton();
     }
 
     private void actionLoginButton() {
         buttonLogin.setOnClickListener(v ->
                 presenter.login(editTextUser.getText().toString(),
-                editTextPassword.getText().toString())
+                        editTextPassword.getText().toString())
         );
 
     }
@@ -48,8 +45,8 @@ public class LoginActivity extends AppCompatActivity implements LoginViewPresent
     private void verifyUser() {
         String[] loginUser = preferences.getLoginUser();
         if (loginUser.length > 0) {
-            editTextPassword.setText(loginUser[1]);
             editTextUser.setText(loginUser[0]);
+            editTextPassword.setText(loginUser[1]);
         }
     }
 
@@ -78,10 +75,10 @@ public class LoginActivity extends AppCompatActivity implements LoginViewPresent
     @Override
     public void showProgress(boolean key) {
         progressBarLogin.setVisibility(key ? View.VISIBLE : View.INVISIBLE);
-        if(key) {
+        if (key) {
             buttonLogin.setText("");
             buttonLogin.setEnabled(false);
-        }else{
+        } else {
             buttonLogin.setText("Login");
             buttonLogin.setEnabled(true);
         }
