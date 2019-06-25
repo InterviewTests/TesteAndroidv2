@@ -13,7 +13,6 @@ import org.junit.Test
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
-
 class LoginInteractorTest {
 
     @Mock
