@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="#FFCECCCC">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="366dp"
+        android:layout_height="104dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.378"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="120dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="18dp"
+            android:text="Pagamento"
+            android:textColor="@color/colorGreyClear"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="120dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="56dp"
+            android:text="Conta de Luz"
+            android:textColor="@color/colorGreyDark"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/conta_luz"
+            android:layout_width="184dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="27dp"
+            android:text="R$1.000,00"
+            android:textAlignment="textEnd"
+            android:textColor="@color/colorGreyDark"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/date_pagamento"
+            android:layout_width="117dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="71dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:text="12/12/2012"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textColor="@color/colorGreyClear"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>
