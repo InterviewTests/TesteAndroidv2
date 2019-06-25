@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import com.earaujo.santander.R
+import com.earaujo.santander.repository.LoginRepositoryImpl
 import com.earaujo.santander.repository.Resource
 import com.earaujo.santander.repository.models.LoginRequest
 import com.earaujo.santander.repository.models.UserAccountModel
@@ -31,7 +32,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         loginRouter = LoginRouter()
         loginRouter.activity = WeakReference(this)
 
-        loginInteractorInput = LoginInteractor(this).also {
+        loginInteractorInput = LoginInteractor(LoginRepositoryImpl(), LoginValidator()).also {
             it.loginPresenterInput = LoginPresenter().also {
                 it.loginActivityInput = WeakReference(this)
             }
@@ -71,7 +72,11 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
             ERROR -> {
                 pb_loading.visibility = View.GONE
                 tv_error_message.visibility = View.VISIBLE
-                tv_error_message.text = loginResponse.message
+                tv_error_message.text = when(loginResponse.message) {
+                    LoginInteractorErros.WRONG_USERNAME.errorNo -> getString(R.string.login_error_message_invalid_username)
+                    LoginInteractorErros.WRONG_PASSWORD.errorNo -> getString(R.string.login_error_message_invalid_password)
+                    else -> ""
+                }
             }
         }
     }

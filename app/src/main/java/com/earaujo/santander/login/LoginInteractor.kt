@@ -1,31 +1,29 @@
 package com.earaujo.santander.login
 
-import android.content.Context
-import com.earaujo.santander.R
+import com.earaujo.santander.repository.LoginRepository
 import com.earaujo.santander.repository.LoginRepositoryCallback
-import com.earaujo.santander.repository.LoginRepositoryImpl
 import com.earaujo.santander.repository.Resource
 import com.earaujo.santander.repository.models.LoginRequest
 import com.earaujo.santander.repository.models.LoginResponse
 import com.earaujo.santander.util.Preferences
-import com.earaujo.santander.util.isValidPassword
-import com.earaujo.santander.util.isValidUsername
 
-class LoginInteractor(private val context: Context) : LoginInteractorInput {
+class LoginInteractor(
+    private val loginRepository: LoginRepository,
+    private val loginRequestValidator: LoginValidator
+) : LoginInteractorInput {
 
     lateinit var loginPresenterInput: LoginPresenterInput
-    val loginRepository = LoginRepositoryImpl()
 
     override fun performLogin(loginRequest: LoginRequest) {
-        if (!loginRequest.user.isValidUsername()) {
+        if (!loginRequestValidator.isValidUsername(loginRequest.user)) {
             loginPresenterInput.presentLoginResponse(
-                Resource.error(context.getString(R.string.login_error_message_invalid_username), null))
+                Resource.error(LoginInteractorErros.WRONG_USERNAME.errorNo, null))
             return
         }
 
-        if (!loginRequest.password.isValidPassword()) {
+        if (!loginRequestValidator.isValidPassword(loginRequest.password)) {
             loginPresenterInput.presentLoginResponse(
-                Resource.error(context.getString(R.string.login_error_message_invalid_password), null))
+                Resource.error(LoginInteractorErros.WRONG_PASSWORD.errorNo, null))
             return
         }
 
@@ -47,4 +45,9 @@ class LoginInteractor(private val context: Context) : LoginInteractorInput {
 interface LoginInteractorInput {
     fun performLogin(loginRequest: LoginRequest)
     fun checkUserLoggedIn()
+}
+
+enum class LoginInteractorErros(val errorNo: String){
+    WRONG_USERNAME("invalid_username"),
+    WRONG_PASSWORD("invalid_password")
 }
