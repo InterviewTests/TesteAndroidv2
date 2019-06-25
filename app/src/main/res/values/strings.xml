@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TesteAndroidv2</string>
+    <string name="menu_exit_app">Sair do app</string>
+</resources>
