@@ -3,24 +3,22 @@ package com.bilulo.androidtest04.ui.list.view;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bilulo.androidtest04.R;
 import com.bilulo.androidtest04.common.BaseActivity;
-import com.bilulo.androidtest04.data.model.StatementModel;
 import com.bilulo.androidtest04.data.model.UserAccountModel;
 import com.bilulo.androidtest04.ui.list.configurator.ListConfigurator;
 import com.bilulo.androidtest04.ui.list.contract.ListContract;
 import com.bilulo.androidtest04.ui.list.router.ListRouter;
-import com.bilulo.androidtest04.utils.FormatUtil;
+import com.bilulo.androidtest04.ui.list.view.adapter.StatementsAdapter;
 import com.bilulo.androidtest04.utils.ValidationUtil;
-
-import java.util.List;
+import android.view.animation.AnimationUtils;
 
 public class ListActivity extends BaseActivity implements ListContract.ActivityContract {
     public static final String EXTRA_USER_ACCOUNT = "extra-user-account";
@@ -41,11 +39,14 @@ public class ListActivity extends BaseActivity implements ListContract.ActivityC
         hideActionBar();
         findViews();
         configureRecyclerView();
+        showProgressDialog();
         interactor.fetchAndLoadData(getUserAccountModelExtra());
     }
 
     private void configureRecyclerView() {
         rvList.setLayoutManager(new LinearLayoutManager(this));
+        LayoutAnimationController animationController = AnimationUtils.loadLayoutAnimation(this, R.anim.layout_anim_up_to_down);
+        rvList.setLayoutAnimation(animationController);
     }
 
     private void findViews() {
@@ -84,8 +85,9 @@ public class ListActivity extends BaseActivity implements ListContract.ActivityC
     }
 
     @Override
-    public void loadStatements(List<StatementModel> statements) {
-
+    public void loadStatements(StatementsAdapter adapter) {
+        hideProgressDialog();
+        rvList.setAdapter(adapter);
     }
 
     @Override

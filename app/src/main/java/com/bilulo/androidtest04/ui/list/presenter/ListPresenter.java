@@ -5,6 +5,7 @@ import com.bilulo.androidtest04.data.model.UserAccountModel;
 import com.bilulo.androidtest04.data.model.response.LoginResponse;
 import com.bilulo.androidtest04.data.model.response.StatementsResponse;
 import com.bilulo.androidtest04.ui.list.contract.ListContract;
+import com.bilulo.androidtest04.ui.list.view.adapter.StatementsAdapter;
 import com.bilulo.androidtest04.utils.FormatUtil;
 import com.bilulo.androidtest04.utils.ValidationUtil;
 
@@ -30,8 +31,11 @@ public class ListPresenter implements ListContract.PresenterContract {
         if (isSuccessful) {
             if (response != null) {
                 List<StatementModel> statementModelList = response.getStatementModelList();
-                if (statementModelList != null)
-                    activity.get().loadStatements(statementModelList);
+                if (statementModelList != null) {
+                    StatementsAdapter statementsAdapter = new StatementsAdapter();
+                    statementsAdapter.setData(statementModelList);
+                    activity.get().loadStatements(statementsAdapter);
+                }
             } else {
                 activity.get().displayError();
             }
