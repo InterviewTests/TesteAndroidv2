@@ -1,7 +1,5 @@
-package com.earaujo.santander
+package com.earaujo.santander.login
 
-import com.earaujo.santander.login.LoginActivity
-import com.earaujo.santander.login.LoginRouter
 import com.earaujo.santander.statements.StatementsActivity
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.earaujo.santander.R
 import com.earaujo.santander.repository.Resource
+import com.earaujo.santander.repository.StatementsRepositoryImpl
 import com.earaujo.santander.repository.Status.*
 import com.earaujo.santander.repository.models.StatementsResponse
 import com.earaujo.santander.repository.models.UserAccountModel
@@ -33,7 +34,7 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
         statementsRouter = StatementsRouter()
         statementsRouter.activity = WeakReference(this)
 
-        statementsInteractorInput = StatementsInteractor().also {
+        statementsInteractorInput = StatementsInteractor(StatementsRepositoryImpl()).also {
             it.statementsPresenterInput = StatementsPresenter().also {
                 it.statementsActivityInput = WeakReference(this)
             }

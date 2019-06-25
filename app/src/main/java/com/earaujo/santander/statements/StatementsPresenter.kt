@@ -13,12 +13,12 @@ class StatementsPresenter: StatementsPresenterInput {
         statementsActivityInput.get()?.displayUserData(userAccount)
     }
 
-    override fun presentLoginResponse(statementsResponse: Resource<StatementsResponse>) {
+    override fun presentStatementsResponse(statementsResponse: Resource<StatementsResponse>) {
         statementsActivityInput.get()?.displayStatementsData(statementsResponse)
     }
 }
 
 interface StatementsPresenterInput {
-    fun presentLoginResponse(statementsResponse: Resource<StatementsResponse>)
+    fun presentStatementsResponse(statementsResponse: Resource<StatementsResponse>)
     fun presentUserData(userAccount: UserAccountModel)
 }

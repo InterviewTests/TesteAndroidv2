@@ -1,4 +1,4 @@
-package com.earaujo.santander
+package com.earaujo.santander.login
 
 import com.earaujo.santander.login.LoginActivityInput
 import com.earaujo.santander.login.LoginPresenter

@@ -1,7 +1,6 @@
-package com.earaujo.santander
+package com.earaujo.santander.login
 
 import android.content.Context
-import com.earaujo.santander.login.*
 import com.earaujo.santander.repository.LoginRepository
 import com.earaujo.santander.repository.LoginRepositoryCallback
 import com.earaujo.santander.repository.Resource
