@@ -32,6 +32,7 @@ public class TransacaoActivity extends AppCompatActivity implements TransacaoCon
     private TransacaoContract.TransacaoPresenter presenter;
     private Login login;
     private ProgressDialog progressDialog;
+    Transacao transacao = new Transacao();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +107,11 @@ public class TransacaoActivity extends AppCompatActivity implements TransacaoCon
     public void preencheLista(List<Transacao> lista) {
         this.lista.clear();
         this.lista.addAll(lista);
+        if(lstTransacoes != null){
+            String a = String.valueOf(transacao.getValue());
+            String b = a.replace("(", "-");
+            String c = a.replace(")", "");
+        }
         adapter.notifyDataSetChanged();
     }
 

@@ -27,10 +27,11 @@ public class LoginModelImpl implements LoginContract.LoginModel{
         }
         if(!validarUser(usuario)){
             presenter.userInvalido();
+
             return;
-       }if(!validarPassword(senha)){
-           presenter.senhaInvalida();
-            return;
+//       }if(!validarPassword(senha)){
+//          presenter.senhaInvalida();
+//            return;
        }
 
        presenter.loadingRequisicao();
@@ -59,8 +60,7 @@ public class LoginModelImpl implements LoginContract.LoginModel{
         String regex = "^(.+)@(.+)$|[0-9]{11}";
         return usuario.matches(regex);
     }
-    private boolean validarPassword(String senha){
-        String regex = "^(.+)@(.+)$|[0-9]{11}";
-        return senha.matches(regex);
-    }
+//  private boolean validarPassword(String senha){
+//       String regex = "^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$";
+//       return senha.matches(regex); }
 }

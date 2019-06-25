@@ -5,7 +5,7 @@ public class Transacao {
     private String title;
     private String desc;
     private String date;
-    private double value;
+    private float value;
 
     public String getTitle() {
         return title;
@@ -31,11 +31,11 @@ public class Transacao {
         this.date = date;
     }
 
-    public double getValue() {
+    public float getValue() {
         return value;
     }
 
-    public void setValue(double value) {
+    public void setValue(float value) {
         this.value = value;
     }
 }

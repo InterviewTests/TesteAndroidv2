@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     private ProgressDialog dialog;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +61,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     public void focarUsuario() {
         edtUsuario.requestFocus();
     }
+
+
 
     @Override
     public void focarSenha() {

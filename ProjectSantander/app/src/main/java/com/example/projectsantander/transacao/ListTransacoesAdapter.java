@@ -59,7 +59,9 @@ public class ListTransacoesAdapter extends BaseAdapter {
         ((TextView)view.findViewById(R.id.edtDesc)).setText(t.getDesc());
         ((TextView)view.findViewById(R.id.edtData)).setText(dataFormatada);
         ((TextView)view.findViewById(R.id.edtTitulo)).setText(t.getTitle());
-        ((TextView)view.findViewById(R.id.edtValor)).setText(NumberFormat.getCurrencyInstance().format(t.getValue()));
+        ((TextView)view.findViewById(R.id.edtValor)).setText(NumberFormat.getCurrencyInstance().format(t.getValue())
+                .toString().replace("(","-")
+        .replace(")",""));
         return view;
     }
 }
