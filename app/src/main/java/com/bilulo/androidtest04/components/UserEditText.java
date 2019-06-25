@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.bilulo.androidtest04.utils.StringUtil;
 
-public class UserEditText extends android.support.v7.widget.AppCompatEditText {
+public class UserEditText extends androidx.appcompat.widget.AppCompatEditText {
     private boolean mDelete;
 
     public UserEditText(Context context) {

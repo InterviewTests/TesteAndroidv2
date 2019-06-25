@@ -1,16 +1,13 @@
 package com.bilulo.androidtest04.ui.login.view;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,9 +28,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.Activit
     public LoginContract.InteractorContract interactor;
     public LoginRouter router;
 
-    private UserEditText edtUser;
-    private EditText edtPassword;
-    private Button btnLogin;
+    public UserEditText edtUser;
+    public EditText edtPassword;
+    public Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

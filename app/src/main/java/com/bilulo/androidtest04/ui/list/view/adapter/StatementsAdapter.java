@@ -1,8 +1,8 @@
 package com.bilulo.androidtest04.ui.list.view.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,6 @@ import com.bilulo.androidtest04.utils.FormatUtil;
 import com.bilulo.androidtest04.utils.ValidationUtil;
 
 import java.math.BigDecimal;
-import java.text.Normalizer;
 import java.util.List;
 
 public class StatementsAdapter extends RecyclerView.Adapter<StatementsAdapter.StatementsViewHolder> {
