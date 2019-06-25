@@ -56,12 +56,12 @@ public class LoginActivityUnitTest {
 
         @Override
         public void performLogin(String user, String password) {
-            boolean isPerformLoginCalled = true;
+            isPerformLoginCalled = true;
         }
 
         @Override
         public void setLoginResponse(LoginResponse response, boolean isSuccessful) {
-            boolean isSetLoginResponseCalled = true;
+            isSetLoginResponseCalled = true;
             loginResponseCopy = response;
             isSuccessfulCopy = isSuccessful;
         }
