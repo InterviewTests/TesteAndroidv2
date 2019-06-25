@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".LoginActivity">
+    tools:context=".ui.LoginActivity">
 
     <ImageView
         android:id="@+id/image_view_bank"
@@ -27,18 +27,17 @@
         android:layout_width="342dp"
         android:layout_height="50dp"
         android:layout_marginStart="17dp"
-        android:layout_marginTop="231dp"
+        android:layout_marginTop="105dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="386dp"
         android:background="@drawable/login_edit_text"
         android:ems="10"
-        android:gravity="start|top"
         android:hint="Usuário"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/image_view_bank" />
 
     <EditText
         android:id="@+id/edit_text_password"
@@ -47,13 +46,12 @@
         android:layout_marginStart="17dp"
         android:layout_marginTop="21dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="304dp"
+        android:layout_marginBottom="220dp"
         android:background="@drawable/login_edit_text"
         android:ems="10"
-        android:gravity="start|top"
         android:hint="Senha"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_user" />

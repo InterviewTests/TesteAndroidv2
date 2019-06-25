@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BankPaymentsActivity">
+    tools:context=".ui.BankPaymentsActivity">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="413dp"
-        android:layout_height="250dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@color/colorBlueBankAccount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,40 +17,42 @@
 
         <TextView
             android:id="@+id/text_view_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="215dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="102dp"
             android:inputType="textPersonName"
             android:text="José da Silva Teste"
             android:textColor="@color/colorWhite"
             android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/image_view_logout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_view_bank_account_fixed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="72dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="47dp"
+            android:layout_height="13dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="310dp"
             android:inputType="text"
             android:text="Conta"
             android:textColor="@color/colorWhite"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.022"
+            app:layout_constraintHorizontal_bias="0.055"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_name" />
 
         <TextView
             android:id="@+id/text_view_bank_account"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="300dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="57dp"
             android:text="2050 / 01.111222-4"
             android:textColor="@color/colorWhite"
             android:textSize="24sp"
@@ -61,10 +63,11 @@
 
         <TextView
             android:id="@+id/text_view_account_balance_fixed"
-            android:layout_width="wrap_content"
-            android:layout_height="27dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="76dp"
+            android:layout_width="47dp"
+            android:layout_height="13dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="310dp"
             android:inputType="text"
             android:text="Saldo"
             android:textColor="@color/colorWhite"
@@ -72,18 +75,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.021"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_bank_account_fixed" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_bank_account" />
 
         <TextView
             android:id="@+id/text_view_account_balance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="184dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="173dp"
+            android:layout_marginBottom="17dp"
             android:inputType="numberDecimal"
             android:text="R$ 1.000,00"
             android:textColor="@color/colorWhite"
             android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.018"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,40 +99,46 @@
             android:id="@+id/image_view_logout"
             android:layout_width="27dp"
             android:layout_height="27dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="335dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="165dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.944"
-            app:layout_constraintStart_toEndOf="@+id/text_view_name"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/ic_logout_bank" />
+            android:src="@mipmap/ic_logout_bank" />
     </android.support.constraint.ConstraintLayout>
 
     <TextView
-        android:layout_width="137dp"
+        android:id="@+id/textView6"
+        android:layout_width="100dp"
         android:layout_height="20dp"
         android:layout_marginStart="18dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="257dp"
         android:layout_marginBottom="8dp"
         android:inputType="text"
         android:text="Recentes"
         android:textSize="17sp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewPayments"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view_payments"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewPayments"
+        android:id="@+id/recycler_view_payments"
         android:layout_width="395dp"
         android:layout_height="428dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
         tools:listitem="@layout/adapter_payments" />
 
 </android.support.constraint.ConstraintLayout>
