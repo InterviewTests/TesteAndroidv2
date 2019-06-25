@@ -19,6 +19,42 @@ class LoginValidatorTest {
     }
 
     @Test
+    fun `when gives a valid cpf isValidUsername should return true `() {
+        //Prepare
+        val userName = "596.441.600-45"
+
+        //Action
+        val result = loginValidator.isValidUsername(userName)
+
+        //Verification
+        assert(result == true)
+    }
+
+    @Test
+    fun `when gives a invalid first calc digit cpf isValidUsername should return false `() {
+        //Prepare
+        val userName = "596.441.600-55"
+
+        //Action
+        val result = loginValidator.isValidUsername(userName)
+
+        //Verification
+        assert(result == false)
+    }
+
+    @Test
+    fun `when gives a invalid second calc digit cpf isValidUsername should return false `() {
+        //Prepare
+        val userName = "596.441.600-44"
+
+        //Action
+        val result = loginValidator.isValidUsername(userName)
+
+        //Verification
+        assert(result == false)
+    }
+
+    @Test
     fun `when gives a valid email isValidUsername should return true `() {
         //Prepare
         val userName = "eduardo@gmail.com"
