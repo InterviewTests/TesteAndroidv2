@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.santandertestebank.R;
-import com.example.santandertestebank.adapter.AdapterBankPayments;
 import com.example.santandertestebank.model.models.PaymentsStatmentList;
+import com.example.santandertestebank.ui.adapter.AdapterBankPayments;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,11 +65,17 @@ public class BankPaymentsActivity extends AppCompatActivity {
         PaymentsStatmentList payment = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "12/12/18", 1000.00);
         paymentsList.add (payment);
 
-        PaymentsStatmentList payment2 = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "12/12/18", 2000.00);
+        PaymentsStatmentList payment2 = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "13/12/18", 2000.00);
         paymentsList.add (payment2);
 
-        PaymentsStatmentList payment3 = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "12/12/18", 3000.00);
+        PaymentsStatmentList payment3 = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "14/12/18", 3000.00);
         paymentsList.add (payment3);
+
+        PaymentsStatmentList payment4 = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "15/12/18", 4000.00);
+        paymentsList.add (payment4);
+
+        PaymentsStatmentList payment5 = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "16/12/18", 5000.00);
+        paymentsList.add (payment5);
     }
 
     private void loadUI() {

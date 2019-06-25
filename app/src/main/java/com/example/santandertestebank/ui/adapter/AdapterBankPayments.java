@@ -1,4 +1,4 @@
-package com.example.santandertestebank.adapter;
+package com.example.santandertestebank.ui.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

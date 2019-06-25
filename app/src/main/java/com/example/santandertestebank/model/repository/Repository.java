@@ -1,4 +1,5 @@
 package com.example.santandertestebank.model.repository;
 
-public class Repository {
+public class Repository implements IRepository {
+
 }

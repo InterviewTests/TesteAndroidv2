@@ -13,6 +13,13 @@ public class PaymentsStatmentList {
 
     private double value;
 
+    public PaymentsStatmentList(String title, String description, String date, double value) {
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.value = value;
+    }
+
     public String getTitle() {
         return title;
     }
