@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.santandertestebank.R;
-import com.example.santandertestebank.model.Payments;
+import com.example.santandertestebank.model.models.PaymentsStatmentList;
 
 import java.util.List;
 
 public class AdapterBankPayments extends RecyclerView.Adapter<AdapterBankPayments.MyViewHolder> {
 
-    private List<Payments> listPayments;
+    private List<PaymentsStatmentList> listPayments;
 
-    public AdapterBankPayments(List<Payments> list) {
+    public AdapterBankPayments(List<PaymentsStatmentList> list) {
         this.listPayments = list;
     }
 
@@ -40,11 +40,11 @@ public class AdapterBankPayments extends RecyclerView.Adapter<AdapterBankPayment
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
 
-        Payments payment = listPayments.get (i);
-        myViewHolder.textViewPaymentTitle.setText (payment.getPaymentTitle ());
-        myViewHolder.textViewPaymentDescription.setText (payment.getPaymentDescription ());
-        myViewHolder.textViewPaymentDate.setText (payment.getPaymentDate ());
-        myViewHolder.textViewPaymentValue.setText (String.valueOf (payment.getPaymentValue ()));
+        PaymentsStatmentList payment = listPayments.get (i);
+        myViewHolder.textViewPaymentTitle.setText (payment.getTitle ());
+        myViewHolder.textViewPaymentDescription.setText (payment.getDescription ());
+        myViewHolder.textViewPaymentDate.setText (payment.getDate ());
+        myViewHolder.textViewPaymentValue.setText (String.valueOf (payment.getValue ()));
     }
 
     @Override

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.santandertestebank.R;
 import com.example.santandertestebank.adapter.AdapterBankPayments;
-import com.example.santandertestebank.model.Payments;
+import com.example.santandertestebank.model.models.PaymentsStatmentList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class BankPaymentsActivity extends AppCompatActivity {
     private ImageView imageViewLogout;
 
     private RecyclerView recyclerViewPayments;
-    private List<Payments> paymentsList = new ArrayList<> ();
+    private List<PaymentsStatmentList> paymentsList = new ArrayList<> ();
 
 
     @Override
@@ -62,13 +62,13 @@ public class BankPaymentsActivity extends AppCompatActivity {
 
     public void createPayment() {
 
-        Payments payment = new Payments ("Pagamento", "Conta de Luz", "12/12/18", 1000.00);
+        PaymentsStatmentList payment = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "12/12/18", 1000.00);
         paymentsList.add (payment);
 
-        Payments payment2 = new Payments ("Pagamento", "Conta de Luz", "12/12/18", 2000.00);
+        PaymentsStatmentList payment2 = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "12/12/18", 2000.00);
         paymentsList.add (payment2);
 
-        Payments payment3 = new Payments ("Pagamento", "Conta de Luz", "12/12/18", 3000.00);
+        PaymentsStatmentList payment3 = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "12/12/18", 3000.00);
         paymentsList.add (payment3);
     }
 
