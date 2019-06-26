@@ -1,7 +1,6 @@
 package com.bilulo.androidtest04.ui.login.view;
 
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.StyleSpan;
@@ -30,11 +29,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.Activit
     public Button btnLogin;
 
     private boolean passwordNotEmpty;
-    private boolean hasUppercase;
-    private boolean hasSpecial;
-    private boolean hasAlphanumeric;
+    private boolean passwordHasUppercase;
+    private boolean passwordHasSpecial;
+    private boolean passwordHasAlphanumeric;
 
     private boolean userNotEmpty;
+    private Boolean userIsCpf;
     private boolean validCpf;
     private boolean validEmail;
 
@@ -50,13 +50,22 @@ public class LoginActivity extends BaseActivity implements LoginContract.Activit
     }
 
     private void resetValidationVariables() {
+        resetUserValidationVariables();
+        resetPasswordValidationVariables();
+    }
+
+    private void resetPasswordValidationVariables() {
         //password
         passwordNotEmpty = false;
-        hasUppercase = false;
-        hasSpecial = false;
-        hasAlphanumeric = false;
+        passwordHasUppercase = false;
+        passwordHasSpecial = false;
+        passwordHasAlphanumeric = false;
+    }
+
+    private void resetUserValidationVariables() {
         //user
         userNotEmpty = false;
+        userIsCpf = null;
         validCpf = false;
         validEmail = false;
     }
@@ -91,71 +100,80 @@ public class LoginActivity extends BaseActivity implements LoginContract.Activit
         if (isValidUser(userText) && isValidPassword(passwordText)) {
             return true;
         } else {
-            //TODO create
-            //createValidationErrorAlertDialog();
+            createValidationErrorAlertDialog();
             return false;
         }
     }
 
+    private void createValidationErrorAlertDialog() {
+        if (!userNotEmpty) {
+            showAlertDialog(getString(R.string.validation_error_empty_user));
+        } else if (!passwordNotEmpty) {
+            showAlertDialog(getString(R.string.validation_error_empty_password));
+        } else if (Boolean.TRUE.equals(userIsCpf)&& !validCpf) {
+            showAlertDialog(getString(R.string.validation_error_user_cpf));
+        } else if (Boolean.FALSE.equals(userIsCpf)&& !validEmail) {
+            showAlertDialog(getString(R.string.validation_error_user_email));
+        } else if (!passwordHasAlphanumeric || !passwordHasSpecial || !passwordHasUppercase) {
+            showAlertDialog(passwordHasUppercase, passwordHasSpecial, passwordHasAlphanumeric);
+        }
+    }
+
     public boolean isValidPassword(String passwordText) {
-        resetValidationVariables();
+        resetPasswordValidationVariables();
         if (passwordText != null) {
             if (ValidationUtil.isValidString(passwordText)) {
+                passwordNotEmpty = true;
                 if (ValidationUtil.hasUppercase(passwordText)) {
-                    hasUppercase = true;
+                    passwordHasUppercase = true;
                 }
                 if (ValidationUtil.hasSpecialCharacter(passwordText)) {
-                    hasSpecial = true;
+                    passwordHasSpecial = true;
                 }
                 if (ValidationUtil.hasAlphanumericCharacter(passwordText)) {
-                    hasAlphanumeric = true;
+                    passwordHasAlphanumeric = true;
                 }
-                if (!hasUppercase || !hasSpecial || !hasAlphanumeric) {
-                    //showAlertDialog(hasUppercase, hasSpecial, hasAlphanumeric);
-                    return false;
-                } else
-                    return true;
+                return passwordHasUppercase && passwordHasSpecial && passwordHasAlphanumeric;
             } else {
-                //showAlertDialog(getString(R.string.validation_error_empty_password));
                 passwordNotEmpty = false;
                 return false;
             }
         }
         passwordNotEmpty = false;
-        //showAlertDialog(getString(R.string.validation_error_empty_password));
         return false;
     }
 
     public boolean isValidUser(String userText) {
-        resetValidationVariables();
+        resetUserValidationVariables();
         if (userText != null) {
             if (ValidationUtil.isValidString(userText)) {
+                userNotEmpty = true;
                 String aux = userText.replace(".", "").replace("-", "");
                 if (ValidationUtil.isFullCpf(userText) || aux.matches("[0-9]+")) {
+                    userIsCpf = true;
                     if (ValidationUtil.isValidCpf(userText)) {
+                        validCpf = true;
                         return true;
                     } else {
                         validCpf = false;
-                        //showAlertDialog(getString(R.string.validation_error_user_cpf));
                         return false;
                     }
                 } else {
+                    userIsCpf = false;
                     if (ValidationUtil.isValidEmail(userText)) {
+                        validEmail = true;
                         return true;
                     } else {
                         validEmail = false;
-                        //showAlertDialog(getString(R.string.validation_error_user_email));
                         return false;
                     }
                 }
             } else {
                 userNotEmpty = false;
-                //showAlertDialog(getString(R.string.validation_error_empty_user));
                 return false;
             }
         } else {
             userNotEmpty = false;
-            //showAlertDialog(getString(R.string.validation_error_empty_user));
             return false;
         }
     }
