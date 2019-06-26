@@ -22,7 +22,7 @@ class SummaryViewModel(
     private val logout: MutableLiveData<Boolean> = MutableLiveData()
 
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun getUserSaved() {
         if (containsUser()) {
             val user = hawkContract.getObject(KEY_SAVE_USER) as UserAccount?

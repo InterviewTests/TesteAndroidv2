@@ -10,8 +10,8 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
 
-    single<LoginContract> { LoginRepository(get()) }
-    single<SummaryContract> { SummaryRepository(get()) }
-    single<HawkContract> { HawkRepository() }
+    factory<LoginContract> { LoginRepository(get()) }
+    factory<SummaryContract> { SummaryRepository(get()) }
+    factory<HawkContract> { HawkRepository() }
 
 }

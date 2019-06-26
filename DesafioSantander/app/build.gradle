@@ -12,7 +12,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "com.example.desafiosantander.runner.BankTestRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -67,6 +67,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso"
     androidTestImplementation "androidx.test:rules:$rules"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso"
-    androidTestImplementation "org.koin:koin-test:$koinVersion"
+    androidTestImplementation ("org.koin:koin-test:$koinVersion") { exclude group: 'org.mockito' }
+    androidTestImplementation "org.mockito:mockito-android:$mockito"
 
 }
