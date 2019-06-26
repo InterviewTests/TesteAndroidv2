@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".login.LoginActivity">
+
+        <ImageView
+                android:id="@+id/img_logo"
+                android:layout_width="@dimen/login_logo_width"
+                android:layout_height="@dimen/login_logo_height"
+                android:src="@drawable/logo"
+                android:layout_marginTop="@dimen/login_logo_margin_top"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/login_logo_description"/>
+
+        <EditText
+                android:id="@+id/et_username"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_input_height"
+                android:paddingStart="@dimen/login_input_padding_start"
+                android:paddingEnd="@dimen/login_input_padding_start"
+                android:hint="@string/login_hint_user"
+                android:fontFamily="@font/helvetica_neue_lt_std"
+                android:textSize="@dimen/login_input_text_size"
+                android:background="@drawable/login_input_background"
+                android:layout_marginTop="@dimen/login_username_margin_top"
+                android:layout_marginStart="@dimen/login_input_margin_side"
+                android:layout_marginEnd="@dimen/login_input_margin_side"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_logo"
+                android:importantForAutofill="no"
+                android:inputType="text"/>
+
+        <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/login_input_height"
+                android:paddingStart="@dimen/login_input_padding_start"
+                android:paddingEnd="@dimen/login_input_padding_start"
+                android:layout_marginTop="@dimen/login_password_margin_top"
+                android:layout_marginStart="@dimen/login_input_margin_side"
+                android:layout_marginEnd="@dimen/login_input_margin_side"
+                android:hint="@string/login_hint_password"
+                android:fontFamily="@font/helvetica_neue_lt_std"
+                android:textSize="@dimen/login_input_text_size"
+                android:background="@drawable/login_input_background"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_username"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"/>
+
+        <TextView
+                android:id="@+id/tv_error_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica_neue_lt_std"
+                android:textSize="@dimen/login_error_message_text_size"
+                android:layout_marginTop="@dimen/login_error_message_margin_top"
+                android:layout_marginStart="@dimen/login_input_margin_side"
+                android:layout_marginEnd="@dimen/login_input_margin_side"
+                android:textColor="@android:color/holo_red_dark"
+                android:maxLines="10"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                tools:text="Error test message"
+                android:gravity="center"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/et_password"/>
+
+        <Button
+                android:id="@+id/btn_login"
+                android:layout_width="@dimen/login_button_width"
+                android:layout_height="@dimen/login_button_height"
+                android:layout_marginTop="33dp"
+                android:layout_marginBottom="@dimen/login_button_margin_bottom"
+                android:textSize="@dimen/login_button_text_size"
+                android:text="@string/login_button_text"
+                android:fontFamily="@font/helvetica_neue_lt_std"
+                android:background="@drawable/login_button_background"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_error_message"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="1.0"/>
+
+        <ProgressBar
+                android:id="@+id/pb_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
