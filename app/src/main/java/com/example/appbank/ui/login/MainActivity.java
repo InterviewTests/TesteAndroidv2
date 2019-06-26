@@ -1,4 +1,4 @@
-package com.example.appbank.ui;
+package com.example.appbank.ui.login;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -12,10 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appbank.R;
-import com.example.appbank.data.remote.ILoginService;
+import com.example.appbank.data.remote.Contract.ILoginEndpoint;
 import com.example.appbank.data.remote.ServiceGenerator;
 import com.example.appbank.data.remote.model.LoginRequest;
 import com.example.appbank.data.remote.model.LoginResponse;
+import com.example.appbank.ui.account.AccountActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void login(LoginRequest loginRequest) {
         //preparando a minha classe de serviço para fazer uma chamada Rest
-        ILoginService loginService = ServiceGenerator.createService(ILoginService.class);
+        ILoginEndpoint loginService = ServiceGenerator.createService(ILoginEndpoint.class);
         //Criar a chamada do endPoint que eu preciso
         Call<LoginResponse> call = loginService.postLogin(loginRequest);
 

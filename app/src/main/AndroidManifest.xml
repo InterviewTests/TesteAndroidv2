@@ -13,9 +13,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".adapter.AccountAdapter"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ui.AccountActivity"
+        <activity android:name=".ui.account.AccountActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ui.MainActivity"
+        <activity android:name=".ui.login.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

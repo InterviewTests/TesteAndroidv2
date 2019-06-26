@@ -39,8 +39,8 @@ public class AdapterAccount extends RecyclerView.Adapter<AdapterAccount.MyViewHo
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         Statement statement = statements.get(i);
-        myViewHolder.textViewTitle.setText(statement.getTitle());
 
+        myViewHolder.textViewTitle.setText(statement.getTitle());
         myViewHolder.textViewDesc.setText(statement.getDesc());
 
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");

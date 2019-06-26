@@ -1,4 +1,4 @@
-package com.example.appbank.data.remote;
+package com.example.appbank.data.remote.Contract;
 
 import com.example.appbank.data.remote.model.LoginRequest;
 import com.example.appbank.data.remote.model.LoginResponse;
@@ -7,7 +7,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
-public interface ILoginService {
+public interface ILoginEndpoint {
     @POST("login")
     Call<LoginResponse> postLogin(@Body LoginRequest loginRequest);
 }

@@ -1,4 +1,4 @@
-package com.example.appbank.ui;
+package com.example.appbank.ui.account;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -16,21 +16,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appbank.R;
-import com.example.appbank.data.remote.IStatementService;
-import com.example.appbank.data.remote.ServiceGenerator;
 import com.example.appbank.data.remote.model.Statement;
-import com.example.appbank.data.remote.model.StatementResponse;
 import com.example.appbank.ui.adapter.AdapterAccount;
+import com.example.appbank.ui.login.MainActivity;
 
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class AccountActivity extends AppCompatActivity {
+public class AccountActivity extends AppCompatActivity implements AccountContract.ListStatementView {
 
     private ImageButton imageButtonLogout;
     private RecyclerView recyclerViewAccount;
@@ -46,45 +40,28 @@ public class AccountActivity extends AppCompatActivity {
 
         loadUi();
         setFonts();
+        //configAdapter();
 
         Bundle b = getIntent().getExtras();
 
         if (b != null) {
             textViewName.setText(b.getString("Name"));
-            textViewBankAccount.setText(b.getString("BankAccount") + " / " + b.getString("Agency"));
+            textViewBankAccount.setText(b.getString("BankAccount") + " / " +
+                    b.getString("Agency").replaceAll("([0-9]{2})([0-9]{6})([0-9])","$1.$2-$3"));
 
             Locale locale = new Locale("pt", "BR");
             NumberFormat format = NumberFormat.getCurrencyInstance(locale);
             String currency = format.format(b.getDouble("Balance"));
             textViewBalance.setText(currency);
-            getStatements(b.getInt("Id"));
+            AccountContract.ListStatementPresenter presenter
+                    = new AccountPresenter(this);
+            presenter.getStatement(b.getInt("Id"));
         }
 
         imageButtonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialogChooser();
-            }
-        });
-
-    }
-
-    private void getStatements(int Id) {
-        IStatementService statementService = ServiceGenerator.createService(IStatementService.class);
-        Call<StatementResponse> call = statementService.getStatement(Id);
-
-        call.enqueue(new Callback<StatementResponse>() {
-            @Override
-            public void onResponse(Call<StatementResponse> call, Response<StatementResponse> response) {
-                if (response.isSuccessful()) {
-                    StatementResponse statementResponse = response.body();
-                    configAdapter(statementResponse.getStatementList());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<StatementResponse> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Erro ao obter o seu extrato!", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -150,5 +127,14 @@ public class AccountActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void showList(List<Statement> statements) {
+        configAdapter(statements);
+    }
 
+    @Override
+    public void showError() {
+        Toast.makeText(getApplicationContext(), "Erro ao obter o seu extrato!", Toast.LENGTH_LONG).show();
+
+    }
 }

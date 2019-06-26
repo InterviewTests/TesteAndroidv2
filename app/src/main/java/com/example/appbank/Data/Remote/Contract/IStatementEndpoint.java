@@ -1,15 +1,12 @@
-package com.example.appbank.data.remote;
+package com.example.appbank.data.remote.Contract;
 
-import com.example.appbank.data.remote.model.Statement;
 import com.example.appbank.data.remote.model.StatementResponse;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-public interface IStatementService {
+public interface IStatementEndpoint {
     @GET("statements/{Id}")
     Call<StatementResponse> getStatement(@Path("Id") int Id);
 }
