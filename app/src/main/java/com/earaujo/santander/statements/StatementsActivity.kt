@@ -16,7 +16,7 @@ import java.lang.ref.WeakReference
 class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
 
     lateinit var statementsInteractorInput: StatementsInteractorInput
-    lateinit var statementsRouter: StatementsRouter
+    lateinit var statementsRouter: StatementsRouterInput
     private lateinit var adapter: StatementsListAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
 
@@ -31,8 +31,9 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
     }
 
     fun setupHomeActivity() {
-        statementsRouter = StatementsRouter()
-        statementsRouter.activity = WeakReference(this)
+        statementsRouter = StatementsRouter().apply {
+            activity = WeakReference(this@StatementsActivity)
+        }
 
         statementsInteractorInput = StatementsInteractor(StatementsRepositoryImpl()).also {
             it.statementsPresenterInput = StatementsPresenter().also {
