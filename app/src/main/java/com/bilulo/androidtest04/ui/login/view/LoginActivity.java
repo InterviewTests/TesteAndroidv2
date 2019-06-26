@@ -1,8 +1,5 @@
 package com.bilulo.androidtest04.ui.login.view;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Spannable;
@@ -32,6 +29,15 @@ public class LoginActivity extends BaseActivity implements LoginContract.Activit
     public EditText edtPassword;
     public Button btnLogin;
 
+    private boolean passwordNotEmpty;
+    private boolean hasUppercase;
+    private boolean hasSpecial;
+    private boolean hasAlphanumeric;
+
+    private boolean userNotEmpty;
+    private boolean validCpf;
+    private boolean validEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +45,20 @@ public class LoginActivity extends BaseActivity implements LoginContract.Activit
         LoginConfigurator.configure(this);
         hideActionBar();
         findViews();
+        resetValidationVariables();
         loadUsername();
+    }
+
+    private void resetValidationVariables() {
+        //password
+        passwordNotEmpty = false;
+        hasUppercase = false;
+        hasSpecial = false;
+        hasAlphanumeric = false;
+        //user
+        userNotEmpty = false;
+        validCpf = false;
+        validEmail = false;
     }
 
     private void findViews() {
@@ -59,75 +78,84 @@ public class LoginActivity extends BaseActivity implements LoginContract.Activit
     @Override
     public void onClick(View v) {
         if (v.equals(btnLogin)) {
-            Editable userText = edtUser.getText();
-            Editable passwordText = edtPassword.getText();
+            String userText = edtUser.getText() != null ? edtUser.getText().toString() : "";
+            String passwordText = edtPassword.getText() != null ? edtPassword.getText().toString() : "";
             if (isValidLogin(userText, passwordText)) {
                 showProgressDialog();
-                interactor.performLogin(userText.toString(), passwordText.toString());
+                interactor.performLogin(userText, passwordText);
             }
         }
     }
 
-    private boolean isValidLogin(Editable userText, Editable passwordText) {
-        return isValidUser(userText) && isValidPassword(passwordText);
+    private boolean isValidLogin(String userText, String passwordText) {
+        if (isValidUser(userText) && isValidPassword(passwordText)) {
+            return true;
+        } else {
+            //TODO create
+            //createValidationErrorAlertDialog();
+            return false;
+        }
     }
 
-    private boolean isValidPassword(Editable passwordText) {
+    public boolean isValidPassword(String passwordText) {
+        resetValidationVariables();
         if (passwordText != null) {
-            String password = passwordText.toString();
-            if (ValidationUtil.isValidString(password)) {
-                boolean hasUppercase = true;
-                boolean hasSpecial = true;
-                boolean hasAlphanumeric = true;
-                if (!ValidationUtil.hasUppercase(password)) {
-                    hasUppercase = false;
+            if (ValidationUtil.isValidString(passwordText)) {
+                if (ValidationUtil.hasUppercase(passwordText)) {
+                    hasUppercase = true;
                 }
-                if (!ValidationUtil.hasSpecialCharacter(password)) {
-                    hasSpecial = false;
+                if (ValidationUtil.hasSpecialCharacter(passwordText)) {
+                    hasSpecial = true;
                 }
-                if (!ValidationUtil.hasAlphanumericCharacter(password)) {
-                    hasAlphanumeric = false;
+                if (ValidationUtil.hasAlphanumericCharacter(passwordText)) {
+                    hasAlphanumeric = true;
                 }
                 if (!hasUppercase || !hasSpecial || !hasAlphanumeric) {
-                    showAlertDialog(hasUppercase, hasSpecial, hasAlphanumeric);
+                    //showAlertDialog(hasUppercase, hasSpecial, hasAlphanumeric);
                     return false;
                 } else
                     return true;
             } else {
-                showAlertDialog(getString(R.string.validation_error_empty_password));
+                //showAlertDialog(getString(R.string.validation_error_empty_password));
+                passwordNotEmpty = false;
                 return false;
             }
         }
-        showAlertDialog(getString(R.string.validation_error_empty_password));
+        passwordNotEmpty = false;
+        //showAlertDialog(getString(R.string.validation_error_empty_password));
         return false;
     }
 
-    private boolean isValidUser(Editable userText) {
+    public boolean isValidUser(String userText) {
+        resetValidationVariables();
         if (userText != null) {
-            String user = userText.toString();
-            if (ValidationUtil.isValidString(user)) {
-                String aux = user.replace(".", "").replace("-", "");
-                if (ValidationUtil.isFullCpf(user) || aux.matches("[0-9]+")) {
-                    if (ValidationUtil.isValidCpf(user)) {
+            if (ValidationUtil.isValidString(userText)) {
+                String aux = userText.replace(".", "").replace("-", "");
+                if (ValidationUtil.isFullCpf(userText) || aux.matches("[0-9]+")) {
+                    if (ValidationUtil.isValidCpf(userText)) {
                         return true;
                     } else {
-                        showAlertDialog(getString(R.string.validation_error_user_cpf));
+                        validCpf = false;
+                        //showAlertDialog(getString(R.string.validation_error_user_cpf));
                         return false;
                     }
                 } else {
-                    if (ValidationUtil.isValidEmail(user)) {
+                    if (ValidationUtil.isValidEmail(userText)) {
                         return true;
                     } else {
-                        showAlertDialog(getString(R.string.validation_error_user_email));
+                        validEmail = false;
+                        //showAlertDialog(getString(R.string.validation_error_user_email));
                         return false;
                     }
                 }
             } else {
-                showAlertDialog(getString(R.string.validation_error_empty_user));
+                userNotEmpty = false;
+                //showAlertDialog(getString(R.string.validation_error_empty_user));
                 return false;
             }
         } else {
-            showAlertDialog(getString(R.string.validation_error_empty_user));
+            userNotEmpty = false;
+            //showAlertDialog(getString(R.string.validation_error_empty_user));
             return false;
         }
     }
