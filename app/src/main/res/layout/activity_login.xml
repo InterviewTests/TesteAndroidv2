@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="125dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="124dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAccessibility="no"
+        app:srcCompat="@drawable/logo"
+        android:contentDescription="@null" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo"
+        android:layout_marginTop="105dp"
+        android:layout_marginStart="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/edUser"
+        android:textColorHint="#F6F6F6"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_user"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="text"
+            android:hint="@string/login_user"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center"
+
+            android:background="@null"
+            android:maxLines="1"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/edUser"
+        android:layout_marginTop="21dp"
+        android:layout_marginStart="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/edPassword"
+        android:textColorHint="#F6F6F6"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="textPassword"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="15dp"
+            android:background="@null"
+            android:hint="@string/Loginpassword"
+
+            android:layout_gravity="center"
+            android:maxLines="1"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:text="@string/LoginTextButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLogar"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="87dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="86dp"
+        android:layout_marginBottom="36dp"
+        style="@style/styleButtonBlue"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="35dp"
+        android:visibility="gone"
+        android:layout_height="0dp"
+        android:id="@+id/progressBar"
+        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp" app:layout_constraintTop_toBottomOf="@+id/edPassword"
+        android:layout_marginTop="32dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
