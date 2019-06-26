@@ -44,7 +44,7 @@ public class StatementActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statement);
-        userAccount = (UserAccount) getIntent().getSerializableExtra("useraccount");
+        userAccount = (UserAccount) getIntent().getSerializableExtra(getString(R.string.useraccount));
         initVars();
         carregarDadosPessoais();
         carregarExtrato();

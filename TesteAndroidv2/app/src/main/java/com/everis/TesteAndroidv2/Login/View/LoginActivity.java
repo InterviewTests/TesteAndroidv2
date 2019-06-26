@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
     EditText etUser, etPassword;
     Button btnLogin;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +36,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initVars() {
+        sharedPreferences = getSharedPreferences(getString(R.string.User),MODE_PRIVATE);
+
         etUser = findViewById(R.id.et_user);
         etPassword = findViewById(R.id.et_password);
         btnLogin = findViewById(R.id.btn_login);
+
+        etUser.setText(loadLoginField());
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,14 +68,15 @@ public class LoginActivity extends AppCompatActivity {
         call.enqueue(new Callback<LoginData>() {
             @Override
             public void onResponse(@NonNull Call<LoginData> call, @NonNull Response<LoginData> response) {
-                LoginData dl = response.body();
-                assert dl != null;
-                if (dl.getUserAccount().getUserId() != null) {
-                    UserAccount ua = dl.getUserAccount();
-                    nextActivity(ua);
-                } else if (dl.getError().getCode() != null){
-                    Float code = dl.getError().getCode();
-                    String message = dl.getError().getMessage();
+                LoginData loginData = response.body();
+                assert loginData != null;
+                if (loginData.getUserAccount().getUserId() != null) {
+                    UserAccount userAccount = loginData.getUserAccount();
+                    saveLoginField(user);
+                    nextActivity(userAccount);
+                } else if (loginData.getError().getCode() != null){
+                    Float code = loginData.getError().getCode();
+                    String message = loginData.getError().getMessage();
                     Toast.makeText(
                             LoginActivity.this,
                             "Falha ao se autenticar.\nCódigo: " + code + "\nMensagem: " + message,
@@ -85,10 +92,21 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    void nextActivity(UserAccount ua){
+    String loadLoginField(){
+        sharedPreferences = getSharedPreferences(getString(R.string.useraccount), MODE_PRIVATE);
+        return sharedPreferences.getString(getString(R.string.useraccount), "");
+    }
+
+    void saveLoginField(String user){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(getString(R.string.useraccount), user);
+        editor.apply();
+    }
+
+    void nextActivity(UserAccount userAccount){
         Intent intent = new Intent(LoginActivity.this, StatementActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable("useraccount", ua);
+        bundle.putSerializable(getString(R.string.useraccount), userAccount);
         intent.putExtras(bundle);
         startActivity(intent);
         finish();
