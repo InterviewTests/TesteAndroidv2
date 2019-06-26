@@ -21,6 +21,14 @@ public class LoginResponse implements Parcelable {
         this.userAccountModel = userAccountModel;
     }
 
+    public ErrorModel getErrorModel() {
+        return errorModel;
+    }
+
+    public void setErrorModel(ErrorModel errorModel) {
+        this.errorModel = errorModel;
+    }
+
     @Override
     public int describeContents() {
         return 0;

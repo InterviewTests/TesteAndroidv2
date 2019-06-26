@@ -6,7 +6,7 @@ import com.bilulo.androidtest04.ui.login.worker.LoginWorker;
 
 public class LoginInteractor implements LoginContract.InteractorContract {
     public LoginContract.PresenterContract presenter;
-    public LoginWorker worker;
+    public LoginContract.WorkerContract worker;
 
     @Override
     public void performLogin(String user, String password) {

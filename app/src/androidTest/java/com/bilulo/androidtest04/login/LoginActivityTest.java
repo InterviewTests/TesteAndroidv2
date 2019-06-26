@@ -1,21 +1,13 @@
 package com.bilulo.androidtest04.login;
 
-import android.widget.Button;
-import android.widget.EditText;
 
-import androidx.lifecycle.Lifecycle;
-import androidx.test.core.app.ActivityScenario;
-import androidx.test.espresso.Espresso;
-import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
 import com.bilulo.androidtest04.R;
-import com.bilulo.androidtest04.components.UserEditText;
 import com.bilulo.androidtest04.data.model.response.LoginResponse;
 import com.bilulo.androidtest04.ui.login.contract.LoginContract;
 import com.bilulo.androidtest04.ui.login.view.LoginActivity;
-import com.bilulo.androidtest04.utils.ValidationUtil;
 
 import org.junit.Assert;
 import org.junit.Rule;
@@ -32,7 +24,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 @RunWith(AndroidJUnit4.class)
-public class LoginActivityUnitTest {
+public class LoginActivityTest {
     @Rule
     public ActivityTestRule<LoginActivity> rule = new ActivityTestRule<>(LoginActivity.class);
 
