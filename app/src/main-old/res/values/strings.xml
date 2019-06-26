@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Santander</string>
+    <string name="nameBank_cd">Logo do banco</string>
+    <string name="buttonExit_cd">Logo do banco</string>
+    <string name="login">Login</string>
+    <string name="userAccount">UserAccount</string>
+    <string name="agency">agency</string>
+    <string name="user">user</string>
+    <string name="userId">userId</string>
+    <string name="name">name</string>
+    <string name="bankAccount">bankAccount</string>
+    <string name="balance">balance</string>
+    <string name="notConnectInternet">Sem conexão com a internet!</string>
+    <string name="fail">Falhou :</string>
+    <string name="error">Erro :</string>
+    <string name="errorLoginUser">Login não é um CPF ou E-mail!</string>
+    <string name="errorLoginPassword">Senha não obedece requisitos mínimos!</string>
+    <string name="errorLogin">Dados não encontrados ou permitidos!</string>
+    <string name="nameUser">Nome do usuário</string>
+    <string name="accountUser">9999 / 99.999999-9</string>
+    <string name="account">Conta</string>
+    <string name="balanceLabel">Saldo</string>
+    <string name="balanceUser">9.999,00</string>
+    <string name="reais">R$</string>
+    <string name="recent">Recentes</string>
+    <string name="toolsValue">R$1.000,00</string>
+    <string name="toolsDesc">Conta de luz</string>
+    <string name="toolsDate">00/00/0000</string>
+    <string name="toolsType">Pagamento</string>
+    <string name="loading">Carregando...</string>
+    <string name="whaitLoading">Aguarde enquanto logamos!</string>
+    <string name="whaitDetails">Aguarde enquanto carregamos!</string>
+
+</resources>

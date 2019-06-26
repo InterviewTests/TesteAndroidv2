@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/colorButtonLogin" />
+
+    <corners android:radius="6dp"
+        />
+    <padding android:top="@dimen/default_margin_10_dp"/>
+    <padding android:bottom="@dimen/default_margin_10_dp"/>
+    <padding android:left="@dimen/default_margin_80_dp"/>
+    <padding android:right="@dimen/default_margin_80_dp"/>
+</shape>
