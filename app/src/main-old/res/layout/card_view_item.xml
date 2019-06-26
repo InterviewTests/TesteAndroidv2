@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/default_size_80_dp"
+    android:layout_gravity="center"
+    android:layout_marginLeft="@dimen/default_margin_8_dp"
+    android:layout_marginRight="@dimen/default_margin_8_dp"
+    android:layout_marginBottom="@dimen/default_margin_4_dp"
+    card_view:cardCornerRadius="@dimen/default_margin_4_dp"
+    card_view:cardPreventCornerOverlap="false"
+    card_view:cardUseCompatPadding="false"
+    card_view:cardElevation="@dimen/text_size_0_sp">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:foregroundGravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/typeAccount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:textColor="@color/colorTypeAccount"
+                    android:textSize="@dimen/text_size_16_sp"
+                    tools:text="@string/toolsType" />
+
+                <TextView
+                    android:id="@+id/dateAccount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="right"
+                    android:textColor="@color/colorTypeAccount"
+                    android:textSize="@dimen/text_size_12_sp"
+                    tools:text="@string/toolsDate" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/desc"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@id/header">
+
+                <TextView
+                    android:id="@+id/descriptionAccount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorDescAccount"
+                    android:textSize="@dimen/text_size_16_sp"
+                    tools:text="@string/toolsDesc" />
+
+                <TextView
+                    android:id="@+id/valueAccount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:textColor="@color/colorDescAccount"
+                    android:textSize="@dimen/text_size_20_sp"
+                    tools:text="@string/toolsValue" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.v7.widget.CardView>

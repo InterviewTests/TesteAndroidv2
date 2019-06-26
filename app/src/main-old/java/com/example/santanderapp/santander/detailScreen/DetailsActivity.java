@@ -12,12 +12,15 @@ import android.widget.TextView;
 
 import com.example.santanderapp.santander.R;
 import com.example.santanderapp.santander.detailScreen.adapter.StatementAdapter;
-import com.example.santanderapp.santander.detailScreen.controller.DetailsPresenter;
-import com.example.santanderapp.santander.detailScreen.controller.IDetailsPresenter;
+import com.example.santanderapp.santander.detailScreen.controller.DetailsController;
 import com.example.santanderapp.santander.detailScreen.model.ResponseStatement;
 import com.example.santanderapp.santander.util.Utils;
 
-public class DetailsActivity extends AppCompatActivity implements IDetailsPresenter {
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+public class DetailsActivity extends AppCompatActivity {
 
     private Integer userId;
 
@@ -33,7 +36,7 @@ public class DetailsActivity extends AppCompatActivity implements IDetailsPresen
 
     private ProgressDialog progress;
 
-    private IDetailsActivity detailsPresenter;
+    private DetailsController detailsController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +49,9 @@ public class DetailsActivity extends AppCompatActivity implements IDetailsPresen
 
         ivLogout.setOnClickListener(listenerLogout);
 
-        detailsPresenter = new DetailsPresenter(this, this);
+        detailsController = new DetailsController(this);
 
-        detailsPresenter.callAPI(userId.toString());
+        detailsController.callAPI(userId.toString());
 
     }
 
@@ -88,9 +91,13 @@ public class DetailsActivity extends AppCompatActivity implements IDetailsPresen
         }
     };
 
-    @Override
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void dismissProgress(ResponseStatement responseStatement) {
+        populationScreen(responseStatement);
+    }
+
     public void populationScreen(ResponseStatement responseStatement) {
-        closeProgress();
+        progress.dismiss();
         layoutRV = new LinearLayoutManager(DetailsActivity.this);
         statementAdapter = new StatementAdapter(responseStatement.statementList);
         listExpenses.setAdapter(statementAdapter);
@@ -98,9 +105,12 @@ public class DetailsActivity extends AppCompatActivity implements IDetailsPresen
         statementAdapter.notifyDataSetChanged();
     }
 
-    @Override
-    public void closeProgress() {
-        progress.dismiss();
+    public void register() {
+        EventBus.getDefault().register(this);
+    }
+
+    public void Unregister() {
+        EventBus.getDefault().unregister(this);
     }
 
 }

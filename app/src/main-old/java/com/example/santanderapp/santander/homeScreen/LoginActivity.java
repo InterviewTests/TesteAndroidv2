@@ -8,18 +8,21 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.santanderapp.santander.R;
-import com.example.santanderapp.santander.homeScreen.presenter.ILoginPresenter;
-import com.example.santanderapp.santander.homeScreen.presenter.LoginPresenter;
+import com.example.santanderapp.santander.homeScreen.controller.LoginController;
 import com.example.santanderapp.santander.util.Utils;
 
-public class LoginActivity extends AppCompatActivity implements ILoginActivity {
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+public class LoginActivity extends AppCompatActivity {
 
     private Button btnLogin;
     private EditText edtUser;
     private EditText edtPassword;
     private ProgressDialog progress;
 
-    private ILoginPresenter loginPresenter;
+    private LoginController loginController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +31,9 @@ public class LoginActivity extends AppCompatActivity implements ILoginActivity {
 
         configureUI();
 
-        loginPresenter = new LoginPresenter(this, this);
+        loginController = new LoginController(this);
 
-        edtUser.setText(loginPresenter.verifyHasSavedLogin());
+        edtUser.setText(loginController.verifyHasSavedLogin());
 
         btnLogin.setOnClickListener(listenerLogin);
 
@@ -62,14 +65,22 @@ public class LoginActivity extends AppCompatActivity implements ILoginActivity {
             progress.setMessage(getString(R.string.whaitLoading));
             progress.setCancelable(false);
             progress.show();
-            loginPresenter.callAPI(edtUser.getText().toString(), edtPassword.getText().toString());
+            loginController.callAPI(edtUser.getText().toString(), edtPassword.getText().toString());
 
         }
     };
 
-    @Override
-    public void closeProgress() {
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void dismissProgress(Boolean event) {
         progress.dismiss();
+    }
+
+    public void register() {
+        EventBus.getDefault().register(this);
+    }
+
+    public void Unregister() {
+        EventBus.getDefault().unregister(this);
     }
 }
 
