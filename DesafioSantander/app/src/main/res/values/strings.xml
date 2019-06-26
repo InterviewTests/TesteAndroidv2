@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Desafio Santander</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="recent">Recentes</string>
+    <string name="invalid_email_cpf">E-mail ou CPF inválidos.</string>
+    <string name="invalid_password">Senha inválida!</string>
+    <string name="account_format">%1$s / %2$s</string>
+    <string name="attention">Atenção</string>
+    <string name="want_logout">Deseja realizar o logout?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+</resources>

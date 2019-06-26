@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="widget_info_text_view">
+        <attr name="widget_title" format="string" />
+        <attr name="widget_value" format="string" />
+    </declare-styleable>
+</resources>
