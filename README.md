@@ -1,41 +1,19 @@
-# Show me the code
+# Santander Login Test
 
-Esse repositório contem todo o material necessário para realizar o teste: 
-- A especificação do layout está na pasta 'bank_app_layout' abrindo o index.html, utilizar os Styles do Android
+Hi, my name is Eduardo Nunes, and I would like to share my test app with you.
 
-- Os dados da Api estão mockados, os exemplos e a especificação dos serviços (login e statements) se encontram no arquivo BankApp.postman_collection.json ( é necessário instalar o postman e importar a colection https://www.getpostman.com/apps)
+I am coming from Altran Brasil Company.
 
-![Image of Yaktocat](https://github.com/SantanderTecnologia/TesteiOS/blob/new_test/telas.png)
+This sample app was implemented using Kotlin and Clean Architecture.
 
-### # DESAFIO:
+It has a test coverage about 60%, including unit and instrumented tests.
 
-Na primeira tela teremos um formulario de login, o campo user deve aceitar email ou cpf,
-o campo password deve validar se a senha tem pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.
-Apos a validação, realizar o login no endpoint https://bank-app-test.herokuapp.com/api/login e exibir os dados de retorno na próxima tela.
-O ultimo usuário logado deve ser salvo de forma segura localmente, e exibido na tela de login se houver algum salvo. 
+For testing, I used espresso, robolectric, JUnit and Mockito.
 
-Na segunda tela será exibido os dados formatados do retorno do login e será necessário fazer um segundo request para obter os lançamentos do usuário, no endpoint https://bank-app-test.herokuapp.com/api/statements/{idUser} que retornará uma lista de lançamentos
+This app was developped using Android Studio 3.4.1
 
-### # Avaliação
+To run, just open this project on your Android Studio and press the Play button.
 
-Você será avaliado pela usabilidade, por respeitar o design e pela arquitetura do app. É esperado que você consiga explicar as decisões que tomou durante o desenvolvimento através de commits.
+If you would like to check the test coverage, just run *jacocoTestReport* task from gradle, but please, remember that you need to have a device plugged on your PC or a emulator running.
 
-Obrigatórios:
-
-* Java ou Kotlin
-* Material Design
-* O app deve funcionar a partir do android 4.4
-* Testes unitários, pode usar a ferramenta que você tem mais experiência, só nos explique o que ele tem de bom.
-* Arquitetura a ser utilizada: Android Clean Code (https://github.com/kmmraj/android-clean-code && https://medium.com/@kmmraj/android-clean-code-part-1-c66da6551d1)
-* Uso do git.
-
-### # Observações gerais
-
-Adicione um arquivo [README.md](http://README.md) com os procedimentos para executar o projeto.
-Pedimos que trabalhe sozinho e não divulgue o resultado na internet.
-
-Faça um fork desse desse repositório em seu Github e ao finalizar nos envie um Pull Request com o resultado, por favor informe por qual empresa você esta se candidatando.
-
-# Importante: não há prazo de entrega, faça com qualidade!
-
-# BOA SORTE!
+If you have any question, do not hesitate to contact me.
