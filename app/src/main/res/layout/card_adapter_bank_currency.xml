@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/text_title_bank_currency"
             android:layout_width="120dp"
             android:layout_height="18dp"
             android:layout_marginStart="25dp"
@@ -30,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/text_desc_bank_currency"
             android:layout_width="120dp"
             android:layout_height="18dp"
             android:layout_marginStart="25dp"
@@ -42,7 +42,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/conta_luz"
+            android:id="@+id/text_value_bank_currency"
             android:layout_width="184dp"
             android:layout_height="23dp"
             android:layout_marginTop="52dp"
@@ -55,7 +55,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/date_pagamento"
+            android:id="@+id/text_date_bank_currency"
             android:layout_width="117dp"
             android:layout_height="14dp"
             android:layout_marginStart="71dp"
@@ -67,7 +67,7 @@
             android:textColor="@color/colorGreyClear"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintStart_toEndOf="@+id/text_title_bank_currency"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
