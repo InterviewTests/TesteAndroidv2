@@ -22,6 +22,7 @@ public class ListPresenterTest {
     private StatementsResponse invalidResponse;
     private UserAccountModel validUserAccountModel;
     private UserAccountModel invalidUserAccountModel;
+
     @Before
     public void setTestVariables() {
         validResponse = new StatementsResponse();
@@ -47,7 +48,7 @@ public class ListPresenterTest {
         errorModel.setCode(1);
         errorModel.setMessage("Error");
         invalidResponse.setErrorModel(errorModel);
-        
+
         validUserAccountModel = new UserAccountModel();
         validUserAccountModel.setAgency("012314564");
         validUserAccountModel.setBalance(BigDecimal.valueOf(3123.33455));
@@ -115,7 +116,7 @@ public class ListPresenterTest {
         boolean isLoadUserAccountCalled = false;
         boolean isLoadStatementsCalled = false;
         boolean isDisplayErrorCalled = false;
-        
+
         @Override
         public void loadUserAccountData(String name, String account, String balance) {
             isLoadUserAccountCalled = true;

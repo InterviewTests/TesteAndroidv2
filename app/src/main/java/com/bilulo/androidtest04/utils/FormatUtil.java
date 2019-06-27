@@ -59,7 +59,7 @@ public class FormatUtil {
         SimpleDateFormat format = new SimpleDateFormat(formatPattern, new Locale("pt", "BR"));
         try {
             return format.format(date);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

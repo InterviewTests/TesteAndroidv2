@@ -2,7 +2,6 @@ package com.bilulo.androidtest04.ui.list.presenter;
 
 import com.bilulo.androidtest04.data.model.StatementModel;
 import com.bilulo.androidtest04.data.model.UserAccountModel;
-import com.bilulo.androidtest04.data.model.response.LoginResponse;
 import com.bilulo.androidtest04.data.model.response.StatementsResponse;
 import com.bilulo.androidtest04.ui.list.contract.ListContract;
 import com.bilulo.androidtest04.ui.list.view.adapter.StatementsAdapter;

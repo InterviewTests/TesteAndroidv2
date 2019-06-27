@@ -57,6 +57,7 @@ public class LoginInteractorTest {
         boolean setDataIsCalled = false;
         LoginResponse loginResponseCopy;
         Boolean isSuccessfulCopy;
+
         @Override
         public void setData(LoginResponse response, boolean isSuccessful) {
             setDataIsCalled = true;

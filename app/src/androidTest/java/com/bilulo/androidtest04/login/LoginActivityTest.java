@@ -1,6 +1,5 @@
 package com.bilulo.androidtest04.login;
 
-
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
@@ -93,6 +92,7 @@ public class LoginActivityTest {
             }
         }
     }
+
     @Test
     public void login_validation_withVALIDParameters() {
         LoginActivity activity = rule.getActivity();

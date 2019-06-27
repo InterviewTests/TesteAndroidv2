@@ -12,8 +12,8 @@ public class RetrofitInitializer {
     private static volatile RetrofitInitializer instance;
     private Retrofit retrofit;
 
-    private RetrofitInitializer(){
-        if (instance != null){
+    private RetrofitInitializer() {
+        if (instance != null) {
             throw new RuntimeException("Use getInstance() method to get the single instance of this class.");
         }
     }

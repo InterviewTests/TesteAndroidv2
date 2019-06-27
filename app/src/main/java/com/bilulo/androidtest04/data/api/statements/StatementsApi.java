@@ -2,8 +2,6 @@ package com.bilulo.androidtest04.data.api.statements;
 
 import com.bilulo.androidtest04.data.model.response.StatementsResponse;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

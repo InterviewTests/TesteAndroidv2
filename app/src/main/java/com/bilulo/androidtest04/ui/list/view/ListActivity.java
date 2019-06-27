@@ -2,13 +2,15 @@ package com.bilulo.androidtest04.ui.list.view;
 
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bilulo.androidtest04.R;
 import com.bilulo.androidtest04.common.BaseActivity;
@@ -18,7 +20,6 @@ import com.bilulo.androidtest04.ui.list.contract.ListContract;
 import com.bilulo.androidtest04.ui.list.router.ListRouter;
 import com.bilulo.androidtest04.ui.list.view.adapter.StatementsAdapter;
 import com.bilulo.androidtest04.utils.ValidationUtil;
-import android.view.animation.AnimationUtils;
 
 public class ListActivity extends BaseActivity implements ListContract.ActivityContract {
     public static final String EXTRA_USER_ACCOUNT = "extra-user-account";

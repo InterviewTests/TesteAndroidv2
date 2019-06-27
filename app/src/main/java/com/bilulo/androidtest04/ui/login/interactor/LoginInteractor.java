@@ -2,7 +2,6 @@ package com.bilulo.androidtest04.ui.login.interactor;
 
 import com.bilulo.androidtest04.data.model.response.LoginResponse;
 import com.bilulo.androidtest04.ui.login.contract.LoginContract;
-import com.bilulo.androidtest04.ui.login.worker.LoginWorker;
 
 public class LoginInteractor implements LoginContract.InteractorContract {
     public LoginContract.PresenterContract presenter;

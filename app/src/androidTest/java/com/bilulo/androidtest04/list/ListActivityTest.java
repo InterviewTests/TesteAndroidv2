@@ -28,7 +28,7 @@ public class ListActivityTest {
     class ListInteractorSpy implements ListContract.InteractorContract {
         boolean isFetchAndLoadDataCalled = false;
         boolean isSetStatementsResponseCalled = false;
-        
+
         @Override
         public void fetchAndLoadData(UserAccountModel userAccountModel) {
             isFetchAndLoadDataCalled = true;

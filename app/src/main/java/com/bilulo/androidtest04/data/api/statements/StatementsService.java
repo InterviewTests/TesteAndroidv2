@@ -14,7 +14,7 @@ import retrofit2.Response;
 
 public class StatementsService {
     private RetrofitInitializer retrofitInitializer = RetrofitInitializer.getInstance();
-    
+
     public void getStatements(int userId, final ResponseListener<StatementsResponse> listener) {
         StatementsApi statementsApi = retrofitInitializer.getStatementsApi();
         statementsApi.getStatements(userId).enqueue(new Callback<StatementsResponse>() {
