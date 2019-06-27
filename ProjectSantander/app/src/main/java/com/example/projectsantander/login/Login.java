@@ -52,5 +52,4 @@ public class Login implements Serializable{
         this.balance = balance;
     }
 
-
 }

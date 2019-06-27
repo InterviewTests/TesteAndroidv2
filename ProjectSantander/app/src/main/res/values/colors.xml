@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBorder">#DCE2EE</color>
+
+    <color name="colorDescription01">#485465</color>
+    <color name="colorDescription0">#A8B4C4 </color>
 </resources>

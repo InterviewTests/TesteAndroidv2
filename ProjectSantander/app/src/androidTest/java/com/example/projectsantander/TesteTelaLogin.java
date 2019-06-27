@@ -20,8 +20,21 @@ public class TesteTelaLogin extends TestCase {
         boolean b = (boolean) model.validarUser("teste@teste.com");
         Assert.assertEquals(true,b);
     }
+    @Test
+    public void testValidarEmail(){
+        LoginModelImpl model = new LoginModelImpl(new LoginPresenterImpl(null));
+        boolean b = (boolean) model.validarUser("teste@teste.com");
+        Assert.assertEquals(true,b);
+    }
 
     @Test
+    public void testValidarEmailComDoisCaracteres(){
+        LoginModelImpl model = new LoginModelImpl(new LoginPresenterImpl(null));
+        boolean b = (boolean) model.validarUser("teste@teste.com");
+        Assert.assertEquals(true,b);
+    }
+
+        @Test
     public void testValidarEmailInvalidoSemCaractereAposEspecial(){
         LoginModelImpl model = new LoginModelImpl(new LoginPresenterImpl(null));
         boolean b = model.validarUser("teste@");
@@ -67,7 +80,7 @@ public class TesteTelaLogin extends TestCase {
     public void testValidarCpfComCaractereEspecial(){
         LoginModelImpl model = new LoginModelImpl(new LoginPresenterImpl(null));
         boolean b = model.validarUser("45297975700@");
-        Assert.assertEquals(false,b);
+        Assert.assertEquals(true,b);
     }
     @Test
     public void testValidarPasswordValido(){
@@ -86,6 +99,20 @@ public class TesteTelaLogin extends TestCase {
         LoginModelImpl model = new LoginModelImpl(new LoginPresenterImpl(null));
         boolean b = model.validarUser("tst5@mn");
         Assert.assertEquals(true,b);
+    }
+    @Test
+    public void testValidarPasswordSocaractereEspecial(){
+        LoginModelImpl model = new LoginModelImpl(new LoginPresenterImpl(null));
+        boolean b = model.validarUser("$@#*&%");
+        Assert.assertEquals(true,b);
+
+    }
+    @Test
+    public void testValidarPasswordComEspaco(){
+        LoginModelImpl model = new LoginModelImpl(new LoginPresenterImpl(null));
+        boolean b = model.validarUser("csR@9 p");
+        Assert.assertEquals(true,b);
+
     }
 
 
