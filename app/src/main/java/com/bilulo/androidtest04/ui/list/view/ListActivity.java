@@ -40,6 +40,10 @@ public class ListActivity extends BaseActivity implements ListContract.ActivityC
         findViews();
         configureRecyclerView();
         showProgressDialog();
+        fetchAndLoadData();
+    }
+
+    public void fetchAndLoadData() {
         interactor.fetchAndLoadData(getUserAccountModelExtra());
     }
 

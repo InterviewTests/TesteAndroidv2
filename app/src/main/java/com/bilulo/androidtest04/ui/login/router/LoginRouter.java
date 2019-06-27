@@ -14,15 +14,23 @@ public class LoginRouter implements LoginContract.RouterContract {
     public WeakReference<LoginActivity> activity;
 
     private void startListActivity(UserAccountModel userAccountModel) {
+        activity.get().startActivity(getListActivityIntent(userAccountModel));
+        activity.get().finish();
+    }
+
+    public Intent getListActivityIntent(UserAccountModel userAccountModel) {
         Intent intent = new Intent(activity.get(), ListActivity.class);
         intent.putExtra(ListActivity.EXTRA_USER_ACCOUNT, userAccountModel);
-        activity.get().startActivity(intent);
-        activity.get().finish();
+        return intent;
+    }
+
+    public void saveUsernameInSharedPreferences(String username) {
+        SharedPreferencesUtil.saveString(activity.get(), LoginActivity.KEY_USER, username);
     }
 
     @Override
     public void loginSuccessful(UserAccountModel userAccountModel, String username) {
-        SharedPreferencesUtil.saveString(activity.get(), LoginActivity.KEY_USER, username);
+        saveUsernameInSharedPreferences(username);
         startListActivity(userAccountModel);
     }
 }

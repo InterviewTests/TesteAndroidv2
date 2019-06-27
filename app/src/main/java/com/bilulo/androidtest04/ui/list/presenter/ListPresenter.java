@@ -26,7 +26,8 @@ public class ListPresenter implements ListContract.PresenterContract {
             String name = getName(userAccountModel);
             String account = getAccountFormatted(userAccountModel);
             String balance = getBalanceFormatted(userAccountModel);
-            activity.get().loadUserAccountData(name, account, balance);
+            if (ValidationUtil.isValidString(name) && ValidationUtil.isValidString(account) && ValidationUtil.isValidString(balance))
+                activity.get().loadUserAccountData(name, account, balance);
         }
         if (isSuccessful) {
             if (response != null) {
@@ -35,6 +36,8 @@ public class ListPresenter implements ListContract.PresenterContract {
                     StatementsAdapter statementsAdapter = new StatementsAdapter();
                     statementsAdapter.setData(statementModelList);
                     activity.get().loadStatements(statementsAdapter);
+                } else {
+                    activity.get().displayError();
                 }
             } else {
                 activity.get().displayError();

@@ -8,6 +8,7 @@ import com.bilulo.androidtest04.ui.login.interactor.LoginInteractor;
 import org.junit.Assert;
 import org.junit.Test;
 
+
 public class LoginInteractorTest {
 
     @Test
