@@ -24,7 +24,7 @@ public class TransacaoPresenterImpl implements TransacaoContract.TransacaoPresen
     @Override
     public void setDados(Login dados) {
         view.preencherNome(dados.getName());
-        view.preencherDadosBancarios(dados.getAgency()+" / "+dados.getBankAccount());
+        view.preencherDadosBancarios(dados.getBankAccount()+" / "+dados.getAgency().replaceAll("([0-9]{2})([0-9]{6})([0-9])", "$1.$2-$3"));
         view.preencherSaldo(NumberFormat.getCurrencyInstance().format(dados.getBalance()));
         view.exibeLoading("Carregando transações...");
         model.getListagem(dados.getUserId());
