@@ -108,12 +108,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.Activit
     private void createValidationErrorAlertDialog() {
         if (!userNotEmpty) {
             showAlertDialog(getString(R.string.validation_error_empty_user));
+        } else if (Boolean.TRUE.equals(userIsCpf) && !validCpf) {
+            showAlertDialog(getString(R.string.validation_error_user_cpf));
+        } else if (Boolean.FALSE.equals(userIsCpf) && !validEmail) {
+            showAlertDialog(getString(R.string.validation_error_user_email));
         } else if (!passwordNotEmpty) {
             showAlertDialog(getString(R.string.validation_error_empty_password));
-        } else if (Boolean.TRUE.equals(userIsCpf)&& !validCpf) {
-            showAlertDialog(getString(R.string.validation_error_user_cpf));
-        } else if (Boolean.FALSE.equals(userIsCpf)&& !validEmail) {
-            showAlertDialog(getString(R.string.validation_error_user_email));
         } else if (!passwordHasAlphanumeric || !passwordHasSpecial || !passwordHasUppercase) {
             showAlertDialog(passwordHasUppercase, passwordHasSpecial, passwordHasAlphanumeric);
         }
