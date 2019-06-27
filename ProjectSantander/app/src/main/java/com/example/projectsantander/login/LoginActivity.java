@@ -14,7 +14,7 @@ import com.example.projectsantander.R;
 import com.example.projectsantander.services.LoginResponse;
 import com.example.projectsantander.transacao.TransacaoActivity;
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.LoginView{
+public class LoginActivity extends AppCompatActivity implements LoginContract.LoginView {
 
     private EditText edtUsuario;
     private EditText edtSenha;
@@ -24,14 +24,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     private String LOGIN_PREFERENCIA = "LoginPreferencia";
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         vinculaAtributos();
-        vinculaEventos();
+        linkEvents();
         edtUsuario.requestFocus();
     }
 
@@ -43,27 +42,27 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
         presenter = new LoginPresenterImpl(this);
     }
 
-    private void vinculaEventos(){
+    private void linkEvents() {
         this.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                SharedPreferences preferences = getSharedPreferences(LOGIN_PREFERENCIA,0);
+                SharedPreferences preferences = getSharedPreferences(LOGIN_PREFERENCIA, 0);
                 SharedPreferences.Editor editor = preferences.edit();
-
                 String usuario = edtUsuario.getText().toString();
-                editor.putString("user",usuario);
+                editor.putString("user", usuario);
                 editor.commit();
                 edtUsuario.setText(usuario);
                 String senha = edtSenha.getText().toString();
                 presenter.realizaLogin(usuario, senha);
             }
         });
-        SharedPreferences preferences = getSharedPreferences(LOGIN_PREFERENCIA,0);
-        String usuario = preferences.getString("user","");
+        SharedPreferences preferences = getSharedPreferences(LOGIN_PREFERENCIA, 0);
+        String usuario = preferences.getString("user", "");
         edtUsuario.setText(usuario);
 
     }
+
 
     @Override
     public void exibeMensagem(String msg) {
@@ -74,7 +73,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     public void focarUsuario() {
         edtUsuario.requestFocus();
     }
-
 
 
     @Override
@@ -91,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
 
     @Override
     public void fechaLoading() {
-        if(dialog!=null){
+        if (dialog != null) {
             dialog.dismiss();
         }
     }

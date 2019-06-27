@@ -32,8 +32,8 @@ public class LoginPresenterImpl implements LoginContract.LoginPresenter {
 
     @Override
     public void senhaInvalida() {
-        view.exibeMensagem("Senha Invalido. Use um caractere especial\n" +
-                "e um alpha numerico");
+        view.exibeMensagem("Senha Invalida. Use um caractere especial\n" +
+                " um alpha numerico \n e um caractere maiusculo.");
     }
 
     @Override

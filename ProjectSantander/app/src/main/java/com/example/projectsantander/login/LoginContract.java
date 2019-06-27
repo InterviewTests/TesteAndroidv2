@@ -16,7 +16,6 @@ public class LoginContract {
 
         void userInvalido();
 
-
         void loadingRequisicao();
 
         void fechaLoading();
@@ -36,6 +35,7 @@ public class LoginContract {
     }
 
     interface LoginView{
+
 
         void exibeMensagem(String msg);
 

@@ -28,9 +28,10 @@
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:text="Pagamento"
+                    android:text="@string/pagamento"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
+                    android:textColor="@color/colorDescription0"
                     android:textSize="17sp"/>
                 <TextView
                     android:id="@+id/edtData"
@@ -39,6 +40,7 @@
                     android:text="01/01/2015"
                     android:gravity="right"
                     android:paddingRight="15dp"
+                    android:textColor="@color/colorDescription0"
                     android:textSize="13sp"/>
             </LinearLayout>
             <LinearLayout
@@ -52,9 +54,9 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:text="Conta de Luz"
-                    android:textColor="@android:color/black"
+                    android:text="@string/conta_de_luz"
                     android:gravity="center_vertical"
+                    android:textColor="@color/colorDescription01"
                     android:paddingLeft="10dp"
                     android:textSize="17sp"/>
                 <TextView
@@ -63,6 +65,7 @@
                     android:layout_height="wrap_content"
                     android:text="R$1.000,00"
                     android:gravity="right"
+                    android:textColor="@color/colorDescription01"
                     android:paddingRight="15dp"
                     android:textSize="20sp"/>
 

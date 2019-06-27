@@ -100,17 +100,3 @@ public class LoginModelImpl implements LoginContract.LoginModel {
 
 }
 
-//    public boolean validarUser(String usuario) {
-//        String regex = "^.+@.+\\..+$|[0-9]{11}";
-////        String regex = "/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}" +
-////                "[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)$/";
-//        return usuario.matches(regex);
-//    }
-//
-//
-//    private boolean validarPassword(String senha) {
-//     //String regex = "^(.+)(.+)$|[0-9]";
-////       String regex = "^(?=(.*?[A-Z]){1})(?=(?:.*?[0-9]){1})(?=(?:.*?[!@#$%*()_+^&}{:;?.]){1})(?!.*\\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$";
-////        return senha.matches(regex);
-//        return true;
-//    }
