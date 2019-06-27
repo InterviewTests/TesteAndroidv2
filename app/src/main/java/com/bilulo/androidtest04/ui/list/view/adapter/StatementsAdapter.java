@@ -19,13 +19,12 @@ import java.util.List;
 public class StatementsAdapter extends RecyclerView.Adapter<StatementsAdapter.StatementsViewHolder> {
 
     private List<StatementModel> mData;
-    private Context mContext;
 
     @NonNull
     @Override
     public StatementsAdapter.StatementsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int index) {
-        mContext = viewGroup.getContext();
-        LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+        Context context = viewGroup.getContext();
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
         View itemView = layoutInflater.inflate(R.layout.list_item, viewGroup, false);
         return new StatementsViewHolder(itemView);
     }
