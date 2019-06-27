@@ -1,0 +1,10 @@
+/ProjectSantander/*.iml
+/ProjectSantander/.gradle
+/ProjectSantander/local.properties
+/ProjectSantander/.idea/libraries
+/ProjectSantander/.idea/modules.xml
+/ProjectSantander/.idea/workspace.xml
+/ProjectSantander/.DS_Store
+/ProjectSantander/build
+/ProjectSantander/captures
+/ProjectSantander/.externalNativeBuild

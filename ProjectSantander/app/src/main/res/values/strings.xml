@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ProjectSantander</string>
+    <string name="login">Login</string>
+    <string name="user">User</string>
+    <string name="conta_de_luz">Conta de Luz</string>
+    <string name="pagamento">Pagamento</string>
+    <string name="recentes">Recentes</string>
+    <string name="nome_da_pessoa">Nome da Pessoa</string>
+    <string name="conta">Conta</string>
+    <string name="_2145213015412547896">2145213015412547896</string>
+    <string name="saldo">Saldo</string>
+
+
+</resources>
