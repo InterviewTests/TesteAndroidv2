@@ -5,7 +5,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import com.example.desafiosantander.R
-import com.example.desafiosantander.base.TestRule
+import com.example.desafiosantander.rule.TestRule
 import com.example.desafiosantander.data.model.basic.UserAccount
 import com.example.desafiosantander.data.repository.hawk.HawkContract
 import com.example.desafiosantander.extensions.childAtPosition

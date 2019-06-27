@@ -4,7 +4,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.OnLifecycleEvent
-import com.example.desafiosantander.base.BaseViewModel
+import com.example.desafiosantander.rule.BaseViewModel
 import com.example.desafiosantander.data.model.basic.UserAccount
 import com.example.desafiosantander.data.model.basic.ViewModelState
 import com.example.desafiosantander.data.model.request.LoginRequest

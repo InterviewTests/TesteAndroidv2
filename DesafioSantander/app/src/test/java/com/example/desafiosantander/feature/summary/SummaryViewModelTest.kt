@@ -1,6 +1,6 @@
 package com.example.desafiosantander.feature.summary
 
-import com.example.desafiosantander.base.BaseViewModelTest
+import com.example.desafiosantander.rule.BaseViewModelTest
 import com.example.desafiosantander.data.model.basic.Statement
 import com.example.desafiosantander.data.model.basic.UserAccount
 import com.example.desafiosantander.data.model.basic.ViewModelState

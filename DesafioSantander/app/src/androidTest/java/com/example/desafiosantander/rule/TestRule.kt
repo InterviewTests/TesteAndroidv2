@@ -1,4 +1,4 @@
-package com.example.desafiosantander.base
+package com.example.desafiosantander.rule
 
 import android.app.Activity
 import androidx.test.core.app.ActivityScenario

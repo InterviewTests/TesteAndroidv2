@@ -6,6 +6,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.rule.ActivityTestRule
 import com.example.desafiosantander.R
+import com.example.desafiosantander.rule.TestRule
 import org.hamcrest.CoreMatchers.not
 import org.junit.Rule
 import org.junit.Test
@@ -14,7 +15,7 @@ import org.koin.test.KoinTest
 class LoginActivityTest : KoinTest {
 
     @get:Rule
-    var activityRule = object : ActivityTestRule<LoginActivity>(LoginActivity::class.java) {}
+    var activityRule = TestRule(LoginActivity::class.java)
 
     @Test
     fun checkEmailValid() {

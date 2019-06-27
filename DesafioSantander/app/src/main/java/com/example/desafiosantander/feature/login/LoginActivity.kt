@@ -64,24 +64,18 @@ class LoginActivity : AppCompatActivity() {
             with(it) {
                 when (status) {
                     ViewModelState.Status.LOADING -> {
-                        btLogin.disable()
-                        edtUser.disable()
-                        edtPassword.disable()
+                        disableField()
                         loading.visibility = View.VISIBLE
                     }
                     ViewModelState.Status.SUCCESS -> {
-                        btLogin.enable()
-                        edtUser.enable()
-                        edtPassword.enable()
+                        enableField()
                         loading.visibility = View.GONE
 
                         finish()
                         startActivity(Intent(this@LoginActivity, SummaryActivity::class.java))
                     }
                     ViewModelState.Status.ERROR -> {
-                        btLogin.enable()
-                        edtUser.enable()
-                        edtPassword.enable()
+                        enableField()
                         loading.visibility = View.GONE
 
                         Toast.makeText(this@LoginActivity, it.errors?.message, Toast.LENGTH_SHORT).show()
@@ -97,5 +91,17 @@ class LoginActivity : AppCompatActivity() {
         btLogin.setOnClickListener {
             validateLogin()
         }
+    }
+
+    private fun disableField() {
+        btLogin.disable()
+        edtUser.disable()
+        edtPassword.disable()
+    }
+
+    private fun enableField() {
+        btLogin.enable()
+        edtUser.enable()
+        edtPassword.enable()
     }
 }

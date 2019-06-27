@@ -1,4 +1,4 @@
-package com.example.desafiosantander.base
+package com.example.desafiosantander.rule
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.desafiosantander.di.BASE_URL

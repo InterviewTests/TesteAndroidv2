@@ -1,4 +1,4 @@
-package com.example.desafiosantander.base
+package com.example.desafiosantander.rule
 
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModel
