@@ -8,7 +8,9 @@ public class Login implements Serializable{
     private String name;
     private String bankAccount;
     private String agency;
-    private float balance;
+    private double balance;
+
+
 
     public int getUserId() {
         return userId;
@@ -42,11 +44,13 @@ public class Login implements Serializable{
         this.agency = agency;
     }
 
-    public float getBalance() {
+    public double getBalance() {
         return balance;
     }
 
     public void setBalance(float balance) {
         this.balance = balance;
     }
+
+
 }

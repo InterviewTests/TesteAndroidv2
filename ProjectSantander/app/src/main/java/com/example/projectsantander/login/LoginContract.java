@@ -16,6 +16,7 @@ public class LoginContract {
 
         void userInvalido();
 
+
         void loadingRequisicao();
 
         void fechaLoading();

@@ -2,6 +2,7 @@ package com.example.projectsantander.login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -20,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
     private CardView btnLogin;
     private LoginContract.LoginPresenter presenter;
     private ProgressDialog dialog;
+    private String LOGIN_PREFERENCIA = "LoginPreferencia";
 
 
 
@@ -45,11 +47,22 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Lo
         this.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                SharedPreferences preferences = getSharedPreferences(LOGIN_PREFERENCIA,0);
+                SharedPreferences.Editor editor = preferences.edit();
+
                 String usuario = edtUsuario.getText().toString();
+                editor.putString("user",usuario);
+                editor.commit();
+                edtUsuario.setText(usuario);
                 String senha = edtSenha.getText().toString();
                 presenter.realizaLogin(usuario, senha);
             }
         });
+        SharedPreferences preferences = getSharedPreferences(LOGIN_PREFERENCIA,0);
+        String usuario = preferences.getString("user","");
+        edtUsuario.setText(usuario);
+
     }
 
     @Override

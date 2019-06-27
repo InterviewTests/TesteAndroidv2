@@ -41,6 +41,7 @@ public class LoginPresenterImpl implements LoginContract.LoginPresenter {
         view.exibeMensagem("Usuario Invalido!");
     }
 
+
     @Override
     public void loadingRequisicao() {
         view.exibeLoading("Entrando...");
