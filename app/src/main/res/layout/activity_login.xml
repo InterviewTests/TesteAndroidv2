@@ -33,6 +33,8 @@
         android:id="@+id/edUser"
         android:textColorHint="#F6F6F6"
         android:gravity="center"
+        android:fontFamily="@font/helveticaneue"
+        android:hint="@string/login_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -40,16 +42,13 @@
             android:id="@+id/edt_user"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:inputType="text"
-            android:hint="@string/login_user"
-            android:layout_marginLeft="13dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="13dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
-            android:layout_gravity="center"
-
             android:background="@null"
-            android:maxLines="1"
-            />
+            android:inputType="text"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +61,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/edPassword"
         android:textColorHint="#F6F6F6"
-
+        android:hint="@string/Loginpassword"
+        android:fontFamily="@font/helveticaneue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -70,29 +70,27 @@
             android:id="@+id/edt_password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:inputType="textPassword"
-            android:layout_marginLeft="13dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="13dp"
             android:layout_marginTop="15dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginBottom="15dp"
             android:background="@null"
-            android:hint="@string/Loginpassword"
-
-            android:layout_gravity="center"
-            android:maxLines="1"
-            />
+            android:fontFamily="@font/helveticaneue"
+            android:inputType="textPassword"
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:text="@string/LoginTextButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="202dp"
+        android:layout_height="62dp"
         android:id="@+id/btnLogar"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="87dp"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="86dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="33dp"
         style="@style/styleButtonBlue"
         app:layout_constraintBottom_toBottomOf="parent"/>
     <ProgressBar

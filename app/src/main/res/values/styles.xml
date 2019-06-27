@@ -22,35 +22,55 @@
         <item name="android:layout_width">202dp</item>
         <item name="android:layout_height">62dp</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/helveticaneue</item>
     </style>
 
     <style name="labelTitle">
         <item name="android:textColor">@color/gray_485465</item>
         <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/helveticaneue</item>
+
     </style>
     <style name="labelNameUser">
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/helveticaneuelight</item>
+
     </style>
     <style name="labelAccount">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/helveticaneue</item>
+
     </style>
     <style name="labelNumberAccount">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/helveticaneue</item>
+
     </style>
     <style name="labelPayment">
         <item name="android:textColor">@color/gray_A8B4C4</item>
         <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/helveticaneue</item>
+
     </style>
     <style name="labelPaymentData">
         <item name="android:textColor">@color/gray_A8B4C4</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/helveticaneue</item>
+
     </style>
     <style name="InfoPayment">
         <item name="android:textColor">@color/gray_485465</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/helveticaneue</item>
+    </style>
+
+    <style name="InfoPaymentValue">
+        <item name="android:textColor">@color/gray_485465</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/helveticaneuelight</item>
     </style>
 
 </resources>

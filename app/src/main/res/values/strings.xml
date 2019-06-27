@@ -10,5 +10,6 @@
     <string name="error_user"> Usuário invalido , utilize seu CPF ou e-mail para logar</string>
     <string name="error_not_internet">Seu aparelho esta sem acesso a Internet</string>
     <string name="LoginTextButton">Login</string>
+    <string name="statement_recent">recentes</string>
 
 </resources>
