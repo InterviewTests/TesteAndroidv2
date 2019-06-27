@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.LoginActivity">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/bank"
+        android:layout_width="125dp"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="56dp"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Bank"
+            android:textColor="@android:color/white"
+            android:textSize="33sp"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textStyle="bold"/>
+    </android.support.v7.widget.CardView>
+
+    <EditText
+        android:id="@+id/edtSenha"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:paddingLeft="13dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:background="@drawable/edit_test"
+        android:layout_centerVertical="true"/>
+
+    <EditText
+        android:id="@+id/edtUsuario"
+        android:layout_width="371dp"
+        android:layout_height="50dp"
+        android:layout_above="@id/edtSenha"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="21dp"
+        android:paddingLeft="13dp"
+        android:background="@drawable/edit_test"
+        android:hint="User"
+
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/btnLogin"
+        android:layout_width="202dp"
+        android:layout_height="62dp"
+        android:translationZ="5dp"
+        app:cardCornerRadius="4dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="33dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true">
+
+        <TextView
+            android:id="@+id/id_botao_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textColor="@android:color/white"
+            android:textSize="16dp" />
+    </android.support.v7.widget.CardView>
+    
+
+
+
+</RelativeLayout>
