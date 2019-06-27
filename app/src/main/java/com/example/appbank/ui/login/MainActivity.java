@@ -4,30 +4,27 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appbank.R;
-import com.example.appbank.data.remote.Contract.ILoginEndpoint;
-import com.example.appbank.data.remote.ServiceGenerator;
 import com.example.appbank.data.remote.model.LoginRequest;
 import com.example.appbank.data.remote.model.LoginResponse;
 import com.example.appbank.ui.account.AccountActivity;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoginContract.LoginView {
 
     private Button btnLogin;
     private TextView textUser;
     private TextView textPassword;
     private static final String ARQUIVO_PREFERENCIA = "ArquivoPreferencia";
+
+    private LoginContract.LoginPresenter presenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +32,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         loadUi();
 
+        presenter = new LoginPresenter(this);
+
         textUser.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    validUserData(textUser.getText().toString());
+                    presenter.validUserData(textUser.getText().toString());
                 }
             }
         });
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    validPasswordData(textPassword.getText().toString());
+                    presenter.validPasswordData(textPassword.getText().toString());
                 }
             }
         });
@@ -57,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validPasswordData(textPassword.getText().toString())) {
+                if (presenter.validPasswordData(textPassword.getText().toString())); {
                     LoginRequest loginRequest = new LoginRequest(textUser.getText().toString(), textPassword.getText().toString());
-                    login(loginRequest);
+                    presenter.login(loginRequest);
                 }
                 //showProgress(true);
 
@@ -76,45 +75,8 @@ public class MainActivity extends AppCompatActivity {
             textUser.setText("User");
         }
 
-    }
+        LoginContract.LoginPresenter presenter =  new LoginPresenter(this);
 
-    private void login(LoginRequest loginRequest) {
-        //preparando a minha classe de serviço para fazer uma chamada Rest
-        ILoginEndpoint loginService = ServiceGenerator.createService(ILoginEndpoint.class);
-        //Criar a chamada do endPoint que eu preciso
-        Call<LoginResponse> call = loginService.postLogin(loginRequest);
-
-        call.enqueue(new Callback<LoginResponse>() {
-            @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                if (response.isSuccessful()) {
-                    LoginResponse loginResponse = response.body();
-                    if (loginResponse.getError().getCode() != 0) {
-                        Toast.makeText(getApplicationContext(), loginResponse.getError().getMassage(), Toast.LENGTH_LONG).show();
-                        return;
-                    }
-
-                    Intent intent = new Intent(MainActivity.this, AccountActivity.class);
-                    Bundle b = new Bundle();
-                    b.putInt("Id", loginResponse.getUserAccount().getUserId());
-                    b.putString("Name", loginResponse.getUserAccount().getName());
-                    b.putString("Agency", loginResponse.getUserAccount().getAgency());
-                    b.putString("BankAccount", loginResponse.getUserAccount().getBankAccount());
-                    b.putDouble("Balance", loginResponse.getUserAccount().getBalance());
-                    intent.putExtras(b);
-                    startActivity(intent);
-                    sharedPreferencesUser();
-                    finish();
-                    return;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Oops! Algo de errado aconteceu!", Toast.LENGTH_LONG).show();
-
-            }
-        });
     }
 
     private void loadUi() {
@@ -160,31 +122,37 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void validUserData(String userData) {
-        if (userData.matches("[0-9]+")) {
-            if (userData.length() != 11) {
-                textUser.setError("CPF inválido");
-                btnLogin.setEnabled(false);
-                return;
-            }
-            btnLogin.setEnabled(true);
-        } else {
-            if (userData.matches("/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/")) {
-                textUser.setError("E-mail inválido");
-                btnLogin.setEnabled(false);
-                return;
-            }
-            btnLogin.setEnabled(true);
-        }
+    @Override
+    public void showError() {
+        Toast.makeText(getApplicationContext(), "Erro", Toast.LENGTH_LONG).show();
     }
 
-    private boolean validPasswordData(String passwordData) {
-        if (passwordData.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d](?=.*[@#$%^&+=])(?=\\S+$).{4,}$")) {
-            return true;
-        }
-        textPassword.setError("A senha deve conter 1 carecter especial, uma letra maiúscula" +
-                " e um caracter alfanumérico");
+    @Override
+    public void navigateToList(LoginResponse loginResponse) {
+        Intent intent = new Intent(MainActivity.this, AccountActivity.class);
+        Bundle b = new Bundle();
+        b.putInt("Id", loginResponse.getUserAccount().getUserId());
+        b.putString("Name", loginResponse.getUserAccount().getName());
+        b.putString("Agency", loginResponse.getUserAccount().getAgency());
+        b.putString("BankAccount", loginResponse.getUserAccount().getBankAccount());
+        b.putDouble("Balance", loginResponse.getUserAccount().getBalance());
+        intent.putExtras(b);
+        startActivity(intent);
+        sharedPreferencesUser();
+    }
 
-        return false;
+    @Override
+    public void errorUsername(String message) {
+        textUser.setError(message);
+    }
+
+    @Override
+    public void enabledButton(boolean b) {
+        btnLogin.setEnabled(b);
+    }
+
+    @Override
+    public void errorPassword(String s) {
+        textPassword.setError(s);
     }
 }

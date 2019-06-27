@@ -40,7 +40,6 @@ public class AccountActivity extends AppCompatActivity implements AccountContrac
 
         loadUi();
         setFonts();
-        //configAdapter();
 
         Bundle b = getIntent().getExtras();
 
@@ -53,8 +52,9 @@ public class AccountActivity extends AppCompatActivity implements AccountContrac
             NumberFormat format = NumberFormat.getCurrencyInstance(locale);
             String currency = format.format(b.getDouble("Balance"));
             textViewBalance.setText(currency);
-            AccountContract.ListStatementPresenter presenter
-                    = new AccountPresenter(this);
+
+            AccountContract.ListStatementPresenter presenter = new AccountPresenter(this);
+
             presenter.getStatement(b.getInt("Id"));
         }
 

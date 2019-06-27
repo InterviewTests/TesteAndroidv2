@@ -29,7 +29,6 @@ public class AccountPresenter implements AccountContract.ListStatementPresenter 
             public void onResponse(Call<StatementResponse> call, Response<StatementResponse> response) {
                 if (response.isSuccessful()) {
                     StatementResponse statementResponse = response.body();
-                    //configAdapter(statementResponse.getStatementList());
                     view.showList(statementResponse.getStatementList());
                 }
             }
