@@ -1,6 +1,5 @@
 package com.example.santandertestebank.ui.adapter;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,17 +14,7 @@ import java.util.List;
 
 public class AdapterBankPayments extends RecyclerView.Adapter<AdapterBankPayments.MyViewHolder> {
 
-    private Context context;
     private List<PaymentsStatements> listPayments;
-
-    public AdapterBankPayments(Context context, List<PaymentsStatements> listPayments) {
-        this.context = context;
-        this.listPayments = listPayments;
-    }
-
-    public AdapterBankPayments(Context context) {
-        this.context = context;
-    }
 
     public AdapterBankPayments(List<PaymentsStatements> listPayments) {
         this.listPayments = listPayments;

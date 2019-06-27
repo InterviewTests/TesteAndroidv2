@@ -12,13 +12,10 @@ import android.widget.Toast;
 
 import com.example.santandertestebank.R;
 import com.example.santandertestebank.model.models.ObjectsStatements;
-import com.example.santandertestebank.model.models.PaymentsStatements;
+import com.example.santandertestebank.model.models.UserAccountLogin;
 import com.example.santandertestebank.model.service.ApiService;
 import com.example.santandertestebank.ui.adapter.AdapterBankPayments;
 import com.example.santandertestebank.ui.login.LoginActivity;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,14 +41,22 @@ public class BankPaymentsActivity extends AppCompatActivity {
 
         loadUI ();
         bringList ();
-
+        showUserInfos ();
         imageViewLogout.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
                 logoutApp ();
             }
         });
+    }
 
+    private void showUserInfos() {
+        UserAccountLogin userAccount =
+                (UserAccountLogin) getIntent ().getSerializableExtra ("keyLogin");
+
+        textViewName.setText (userAccount.getName ());
+        textViewBankAccount.setText (userAccount.getBankAccount ());
+        textViewAccountBalance.setText (String.valueOf (userAccount.getAccountBalance ()));
     }
 
     public void bringList() {
@@ -73,8 +78,9 @@ public class BankPaymentsActivity extends AppCompatActivity {
 
                     ObjectsStatements statements = response.body ();
 
-                    adapter = new AdapterBankPayments (statements.getPaymentsStatements ());
-
+                    if (statements != null) {
+                        adapter = new AdapterBankPayments (statements.getPaymentsStatements ());
+                    }
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager
                             (getApplicationContext ());
 

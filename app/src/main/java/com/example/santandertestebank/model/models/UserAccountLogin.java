@@ -2,7 +2,9 @@ package com.example.santandertestebank.model.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class UserAccountLogin {
+import java.io.Serializable;
+
+public class UserAccountLogin implements Serializable {
 
     private long userId;
 

@@ -2,9 +2,10 @@ package com.example.santandertestebank.model.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ObjectsStatements {
+public class ObjectsStatements implements Serializable {
 
     @SerializedName("statementList")
     private List<PaymentsStatements> paymentsStatements;

@@ -52,14 +52,17 @@ public class LoginActivity extends AppCompatActivity {
         requestLogin.enqueue (new Callback<ObjectsLogin> () {
             @Override
             public void onResponse(Call<ObjectsLogin> call, Response<ObjectsLogin> response) {
+
                 if (!response.isSuccessful ()) {
                     Toast.makeText (getApplicationContext (), "Erro: " + response.code (),
                             Toast.LENGTH_LONG).show ();
                 } else {
+
                     ObjectsLogin login = response.body ();
                     login.getUserAccountLogin ().getUserId ();
 
                     Intent i = new Intent (getApplicationContext (), BankPaymentsActivity.class);
+                    i.putExtra ("keyLogin", login.getUserAccountLogin ());
                     startActivity (i);
                     finish ();
                 }
