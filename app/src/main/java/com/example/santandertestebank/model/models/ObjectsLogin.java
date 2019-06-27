@@ -1,9 +1,13 @@
 package com.example.santandertestebank.model.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ObjectsLogin {
 
+    @SerializedName("userAccount")
     private UserAccountLogin userAccountLogin;
 
+    @SerializedName("error")
     private Error errorLogin;
 
     public UserAccountLogin getUserAccountLogin() {

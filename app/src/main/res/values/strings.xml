@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SantanderTesteBank</string>
+    <string name="error">Erro: </string>
 </resources>

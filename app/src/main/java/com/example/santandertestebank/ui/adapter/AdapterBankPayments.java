@@ -9,38 +9,43 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.santandertestebank.R;
-import com.example.santandertestebank.model.models.PaymentsStatmentList;
+import com.example.santandertestebank.model.models.PaymentsStatements;
 
 import java.util.List;
 
 public class AdapterBankPayments extends RecyclerView.Adapter<AdapterBankPayments.MyViewHolder> {
 
-    private List<PaymentsStatmentList> listPayments;
-
-    public AdapterBankPayments(List<PaymentsStatmentList> list) {
-        this.listPayments = list;
-    }
-
     private Context context;
+    private List<PaymentsStatements> listPayments;
+
+    public AdapterBankPayments(Context context, List<PaymentsStatements> listPayments) {
+        this.context = context;
+        this.listPayments = listPayments;
+    }
 
     public AdapterBankPayments(Context context) {
         this.context = context;
+    }
+
+    public AdapterBankPayments(List<PaymentsStatements> listPayments) {
+        this.listPayments = listPayments;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View listItem = LayoutInflater.from (viewGroup.getContext ())
+        View v = LayoutInflater.from (viewGroup.getContext ())
                 .inflate (R.layout.adapter_payments, viewGroup, false);
 
-        return new MyViewHolder (listItem);
+        return new MyViewHolder (v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
 
-        PaymentsStatmentList payment = listPayments.get (i);
+        PaymentsStatements payment = listPayments.get (i);
+
         myViewHolder.textViewPaymentTitle.setText (payment.getTitle ());
         myViewHolder.textViewPaymentDescription.setText (payment.getDescription ());
         myViewHolder.textViewPaymentDate.setText (payment.getDate ());
@@ -49,9 +54,12 @@ public class AdapterBankPayments extends RecyclerView.Adapter<AdapterBankPayment
 
     @Override
     public int getItemCount() {
-        return listPayments.size ();
+        if (listPayments != null) {
+            return listPayments.size ();
+        } else {
+            return 0;
+        }
     }
-
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 

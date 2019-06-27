@@ -2,7 +2,7 @@ package com.example.santandertestebank.model.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class PaymentsStatmentList {
+public class PaymentsStatements {
 
     private String title;
 
@@ -13,7 +13,7 @@ public class PaymentsStatmentList {
 
     private double value;
 
-    public PaymentsStatmentList(String title, String description, String date, double value) {
+    public PaymentsStatements(String title, String description, String date, double value) {
         this.title = title;
         this.description = description;
         this.date = date;

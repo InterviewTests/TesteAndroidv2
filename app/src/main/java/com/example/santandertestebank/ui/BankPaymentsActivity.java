@@ -8,13 +8,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.santandertestebank.R;
-import com.example.santandertestebank.model.models.PaymentsStatmentList;
+import com.example.santandertestebank.model.models.ObjectsStatements;
+import com.example.santandertestebank.model.models.PaymentsStatements;
+import com.example.santandertestebank.model.service.ApiService;
 import com.example.santandertestebank.ui.adapter.AdapterBankPayments;
+import com.example.santandertestebank.ui.login.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BankPaymentsActivity extends AppCompatActivity {
 
@@ -24,26 +34,16 @@ public class BankPaymentsActivity extends AppCompatActivity {
     private ImageView imageViewLogout;
 
     private RecyclerView recyclerViewPayments;
-    private List<PaymentsStatmentList> paymentsList = new ArrayList<> ();
-
+    private AdapterBankPayments adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
         setContentView (R.layout.activity_bank_payments);
         getSupportActionBar ().hide ();
 
         loadUI ();
-
-        this.createPayment ();
-
-        AdapterBankPayments adapterBankPayments = new AdapterBankPayments (paymentsList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager
-                (getApplicationContext ());
-
-        recyclerViewPayments.setLayoutManager (layoutManager);
-        recyclerViewPayments.setHasFixedSize (true);
-        recyclerViewPayments.setAdapter (adapterBankPayments);
+        bringList ();
 
         imageViewLogout.setOnClickListener (new View.OnClickListener () {
             @Override
@@ -54,28 +54,50 @@ public class BankPaymentsActivity extends AppCompatActivity {
 
     }
 
+    public void bringList() {
+        Retrofit retrofit = new Retrofit.Builder ()
+                .baseUrl (ApiService.BASE_URL)
+                .addConverterFactory (GsonConverterFactory.create ())
+                .build ();
+
+        ApiService service = retrofit.create (ApiService.class);
+        final Call<ObjectsStatements> requestStatements = service.bringStatements (3);
+
+        requestStatements.enqueue (new Callback<ObjectsStatements> () {
+            @Override
+            public void onResponse(Call<ObjectsStatements> call, Response<ObjectsStatements> response) {
+                if (!response.isSuccessful ()) {
+                    Toast.makeText (getApplicationContext (), "Erro: " + response.code (),
+                            Toast.LENGTH_LONG).show ();
+                } else {
+
+                    ObjectsStatements statements = response.body ();
+
+                    adapter = new AdapterBankPayments (statements.getPaymentsStatements ());
+
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager
+                            (getApplicationContext ());
+
+                    recyclerViewPayments.setLayoutManager (layoutManager);
+                    recyclerViewPayments.setHasFixedSize (true);
+                    recyclerViewPayments.setAdapter (adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ObjectsStatements> call, Throwable t) {
+                Toast.makeText (getApplicationContext (), "Erro: " + t.getMessage (),
+                        Toast.LENGTH_LONG).show ();
+            }
+        });
+
+
+    }
+
     private void logoutApp() {
         Intent intent = new Intent (this, LoginActivity.class);
         startActivity (intent);
         finish ();
-    }
-
-    public void createPayment() {
-
-        PaymentsStatmentList payment = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "12/12/18", 1000.00);
-        paymentsList.add (payment);
-
-        PaymentsStatmentList payment2 = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "13/12/18", 2000.00);
-        paymentsList.add (payment2);
-
-        PaymentsStatmentList payment3 = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "14/12/18", 3000.00);
-        paymentsList.add (payment3);
-
-        PaymentsStatmentList payment4 = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "15/12/18", 4000.00);
-        paymentsList.add (payment4);
-
-        PaymentsStatmentList payment5 = new PaymentsStatmentList ("Pagamento", "Conta de Luz", "16/12/18", 5000.00);
-        paymentsList.add (payment5);
     }
 
     private void loadUI() {
@@ -85,4 +107,5 @@ public class BankPaymentsActivity extends AppCompatActivity {
         imageViewLogout = findViewById (R.id.image_view_logout);
         recyclerViewPayments = findViewById (R.id.recycler_view_payments);
     }
+
 }
