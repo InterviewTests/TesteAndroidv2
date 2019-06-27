@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.login.view.LoginActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_guideline40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.40" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_guideline85"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical_guideline25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical_guideline75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_rectangle_blue_bg"
+        android:text="@string/bank"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/vertical_guideline75"
+        app:layout_constraintStart_toStartOf="@+id/vertical_guideline25"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline10" />
+
+    <com.bilulo.androidtest04.components.UserEditText
+        android:id="@+id/edt_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_rectangle_gray_stroke"
+        android:hint="@string/hint_user"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@.-"
+        android:layout_marginStart="@dimen/login_horizontal_margin"
+        android:layout_marginEnd="@dimen/login_horizontal_margin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_guideline40" />
+
+    <EditText
+        android:id="@+id/edt_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_rectangle_gray_stroke"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        android:imeOptions="actionDone"
+        android:maxLines="1"
+        android:layout_marginTop="@dimen/activity_margin"
+        android:layout_marginStart="@dimen/login_horizontal_margin"
+        android:layout_marginEnd="@dimen/login_horizontal_margin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_user" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_rectangle_blue_bg"
+        android:text="@string/login"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/vertical_guideline75"
+        app:layout_constraintStart_toStartOf="@+id/vertical_guideline25"
+        app:layout_constraintTop_toTopOf="@+id/horizontal_guideline85" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

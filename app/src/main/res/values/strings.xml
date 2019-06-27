@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">AndroidTest04</string>♦
+    <string name="hint_user">User</string>
+    <string name="hint_password">Password</string>
+    <string name="login">Login</string>
+    <string name="bank">Bank</string>
+    <string name="validation_error_title">Error</string>
+    <string name="validation_error_empty_password">The field password is mandatory.</string>
+    <string name="validation_error_empty_user">The field user is mandatory.</string>
+    <string name="validation_error_user_email">The e-mail provided is invalid. Please check.</string>
+    <string name="validation_error_user_cpf">The CPF provided is invalid. Please check.</string>
+    <string name="validation_error_password">The password must contain at least a %1$s, a %2$s and a %3$s</string>
+    <string name="validation_error_password_uppercase">Uppercase letter</string>
+    <string name="validation_error_password_special">Special character</string>
+    <string name="validation_error_password_alphanumeric">Alphanumeric character</string>
+    <string name="login_server_error">Error comunicating with the server. Please try again later.</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="recent">Recentes</string>
+</resources>
