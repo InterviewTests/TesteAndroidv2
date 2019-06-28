@@ -24,9 +24,24 @@ public class testLogin extends TestCase {
 
     @Test
     public void testLoginSucessTrue() {
-        LoginPresenter loginPresenter = new LoginPresenter(null);
+        LoginPresenter loginPresenter = new LoginPresenter(view);
         boolean b = loginPresenter.validPasswordData("A1@kl35");
         Assert.assertEquals(true, b);
+    }
+
+
+    @Test
+    public void testLoginOnlyLetter() {
+        LoginPresenter loginPresenter = new LoginPresenter(view);
+        boolean b = loginPresenter.validPasswordData("AheAe");
+        Assert.assertEquals(false, b);
+    }
+
+    @Test
+    public void testLoginOnlySpecialCharacter() {
+        LoginPresenter loginPresenter = new LoginPresenter(view);
+        boolean b = loginPresenter.validPasswordData("@!-@!@");
+        Assert.assertEquals(false, b);
     }
 
 
@@ -34,6 +49,20 @@ public class testLogin extends TestCase {
     public void testLoginIsEmpty() {
         LoginPresenter loginPresenter = new LoginPresenter(view);
         boolean a = loginPresenter.validPasswordData(" ");
+        Assert.assertEquals(false, a);
+    }
+
+    @Test
+    public void testLoginOnlyUpperCase() {
+        LoginPresenter loginPresenter = new LoginPresenter(view);
+        boolean a = loginPresenter.validPasswordData("EHIMI");
+        Assert.assertEquals(false, a);
+    }
+
+    @Test
+    public void testLoginOnlyLetterCase() {
+        LoginPresenter loginPresenter = new LoginPresenter(view);
+        boolean a = loginPresenter.validPasswordData("ehiar");
         Assert.assertEquals(false, a);
     }
 
@@ -61,6 +90,13 @@ public class testLogin extends TestCase {
     }
 
     @Test
+    public void testLoginOnlyNumbers() {
+        LoginPresenter loginPresenter = new LoginPresenter(view);
+        boolean b = loginPresenter.validPasswordData("2010");
+        Assert.assertEquals(false, b);
+    }
+
+    @Test
     public void testLoginNoNumbers() {
         LoginPresenter loginPresenter = new LoginPresenter(view);
         boolean b = loginPresenter.validPasswordData("Qhahan@");
@@ -75,7 +111,7 @@ public class testLogin extends TestCase {
     }
 
     @Test
-    public void testLoginNoLetter() {
+    public void testLoginNoLetters() {
         LoginPresenter loginPresenter = new LoginPresenter(view);
         boolean b = loginPresenter.validPasswordData("123@123");
         Assert.assertEquals(false, b);
@@ -110,6 +146,27 @@ public class testLogin extends TestCase {
     }
 
     @Test
+    public void testEmailWithoutDotBr() {
+        LoginPresenter loginPresenter = new LoginPresenter(view);
+        boolean b = loginPresenter.validPasswordData("michellearaujo92hotmail.com");
+        Assert.assertEquals(false, b);
+    }
+
+    @Test
+    public void testEmailOnlyUpperCase() {
+        LoginPresenter loginPresenter = new LoginPresenter(view);
+        boolean b = loginPresenter.validPasswordData("MICHELLE.ARAUJOGMAILCOMBR");
+        Assert.assertEquals(false, b);
+    }
+
+    @Test
+    public void testEmailOnlyLowerCase() {
+        LoginPresenter loginPresenter = new LoginPresenter(view);
+        boolean b = loginPresenter.validPasswordData("michellearaujogmailcombr");
+        Assert.assertEquals(false, b);
+    }
+
+    @Test
     public void testEmailWithSpace() {
         LoginPresenter loginPresenter = new LoginPresenter(view);
         boolean b = loginPresenter.validPasswordData("michelle.araujo92@hotmail. com");
@@ -124,6 +181,13 @@ public class testLogin extends TestCase {
     }
 
     @Test
+    public void testEmailOnlyNumbers() {
+        LoginPresenter loginPresenter = new LoginPresenter(view);
+        boolean b = loginPresenter.validPasswordData("212345");
+        Assert.assertEquals(false, b);
+    }
+
+    @Test
     public void testEmailWithoutDotCom() {
         LoginPresenter loginPresenter = new LoginPresenter(view);
         boolean b = loginPresenter.validPasswordData("michelle.araujo@gmail");
@@ -134,6 +198,13 @@ public class testLogin extends TestCase {
     public void testEmailUpperCase() {
         LoginPresenter loginPresenter = new LoginPresenter(view);
         boolean b = loginPresenter.validPasswordData("MICHELLE.ARAUJO@GMAIL.COM");
+        Assert.assertEquals(false, b);
+    }
+
+    @Test
+    public void testEmailOnlySpecialCharacters() {
+        LoginPresenter loginPresenter = new LoginPresenter(view);
+        boolean b = loginPresenter.validPasswordData("@1--.!@@");
         Assert.assertEquals(false, b);
     }
 

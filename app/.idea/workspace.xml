@@ -10,16 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e842e78e-4817-43de-a290-874de46d3ad5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/testLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/account/AccountActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/account/AccountActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/account/AccountPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/account/AccountPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/LoginContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/LoginContract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/LoginPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/LoginPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/testLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/testLogin.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,64 +32,7 @@
     <favorites_list name="TesteAndroidv2" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="155" selection-start-line="155" selection-end-line="155" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5745#5746#0" expanded="true" />
-                <element signature="e#5768#5769#0" expanded="true" />
-                <element signature="e#5845#5846#0" expanded="true" />
-                <element signature="e#5868#5869#0" expanded="true" />
-                <element signature="e#5464#5465#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/LoginContract.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/LoginPresenter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="87" selection-start-line="87" selection-end-line="87" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#528#529#0" expanded="true" />
-                <element signature="e#560#561#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/example/testLogin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="164" column="32" selection-start-line="164" selection-start-column="32" selection-end-line="164" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#530#531#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -161,9 +98,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/LoginContract.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/androidTest/java/com/example/testLogin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/LoginPresenter.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/test/java/com/example/testLogin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/LoginPresenter.java" />
       </list>
     </option>
   </component>
@@ -190,19 +127,12 @@
             <path>
               <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
             </path>
             <path>
               <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="example" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="example" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
             <path>
               <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
@@ -223,15 +153,7 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="appbank" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="remote" type="462c0819:PsiDirectoryNode" />
-              <item name="Contract" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="appbank" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="remote" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="contract" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
@@ -247,6 +169,14 @@
               <item name="appbank" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="account" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="appbank" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="adapter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
@@ -308,7 +238,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android JUnit.testLogin.testEmailOnlyOneUpperCase">
+  <component name="RunManager" selected="Android JUnit.testLogin.testEmailOnlySpecialCharacters">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -316,7 +246,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testLogin.testEmailIsEmpty" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="testLogin.testEmailOnlyLowerCase" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
@@ -326,14 +256,14 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example" />
       <option name="MAIN_CLASS_NAME" value="com.example.testLogin" />
-      <option name="METHOD_NAME" value="testEmailIsEmpty" />
+      <option name="METHOD_NAME" value="testEmailOnlyLowerCase" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testLogin.testEmailOnluOneUpperCase" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="testLogin.testEmailOnlyNumbers" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
@@ -343,14 +273,14 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example" />
       <option name="MAIN_CLASS_NAME" value="com.example.testLogin" />
-      <option name="METHOD_NAME" value="testEmailOnluOneUpperCase" />
+      <option name="METHOD_NAME" value="testEmailOnlyNumbers" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testLogin.testEmailOnlyOneUpperCase" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="testLogin.testEmailOnlySpecialCharacters" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
@@ -360,14 +290,14 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example" />
       <option name="MAIN_CLASS_NAME" value="com.example.testLogin" />
-      <option name="METHOD_NAME" value="testEmailOnlyOneUpperCase" />
+      <option name="METHOD_NAME" value="testEmailOnlySpecialCharacters" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testLogin.testEmailTowSpecialCharacters" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="testLogin.testEmailOnlyUpperCase" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
@@ -377,14 +307,14 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example" />
       <option name="MAIN_CLASS_NAME" value="com.example.testLogin" />
-      <option name="METHOD_NAME" value="testEmailTowSpecialCharacters" />
+      <option name="METHOD_NAME" value="testEmailOnlyUpperCase" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testLogin.testEmailWithNunbers" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="testLogin.testEmailWithoutBr" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
@@ -394,7 +324,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.example" />
       <option name="MAIN_CLASS_NAME" value="com.example.testLogin" />
-      <option name="METHOD_NAME" value="testEmailWithNunbers" />
+      <option name="METHOD_NAME" value="testEmailWithoutBr" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -456,11 +386,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Android JUnit.testLogin.testEmailOnlyOneUpperCase" />
-        <item itemvalue="Android JUnit.testLogin.testEmailWithNunbers" />
-        <item itemvalue="Android JUnit.testLogin.testEmailOnluOneUpperCase" />
-        <item itemvalue="Android JUnit.testLogin.testEmailTowSpecialCharacters" />
-        <item itemvalue="Android JUnit.testLogin.testEmailIsEmpty" />
+        <item itemvalue="Android JUnit.testLogin.testEmailOnlySpecialCharacters" />
+        <item itemvalue="Android JUnit.testLogin.testEmailOnlyNumbers" />
+        <item itemvalue="Android JUnit.testLogin.testEmailOnlyLowerCase" />
+        <item itemvalue="Android JUnit.testLogin.testEmailOnlyUpperCase" />
+        <item itemvalue="Android JUnit.testLogin.testEmailWithoutBr" />
       </list>
     </recent_temporary>
   </component>
@@ -478,43 +408,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="testLogin_testEmailWithoutDomain - 2019.06.27 at 17h 38m 38s.xml">
-      <configuration name="testLogin.testEmailWithoutDomain" configurationId="AndroidJUnit" />
+    <history-entry file="testLogin_testLoginOnlyLetter - 2019.06.28 at 13h 49m 23s.xml">
+      <configuration name="testLogin.testLoginOnlyLetter" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="testLogin_testEmailWithoutDomain - 2019.06.27 at 17h 38m 58s.xml">
-      <configuration name="testLogin.testEmailWithoutDomain" configurationId="AndroidJUnit" />
+    <history-entry file="testLogin_testLoginOnlySpecialCharacter - 2019.06.28 at 13h 50m 08s.xml">
+      <configuration name="testLogin.testLoginOnlySpecialCharacter" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="testLogin_testEmailWithoutDotCom - 2019.06.27 at 17h 39m 58s.xml">
-      <configuration name="testLogin.testEmailWithoutDotCom" configurationId="AndroidJUnit" />
+    <history-entry file="testLogin_testLoginOnlyUpperCase - 2019.06.28 at 13h 52m 27s.xml">
+      <configuration name="testLogin.testLoginOnlyUpperCase" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="testLogin_testEmailUpperCase - 2019.06.27 at 17h 41m 06s.xml">
-      <configuration name="testLogin.testEmailUpperCase" configurationId="AndroidJUnit" />
+    <history-entry file="testLogin_testLoginOnlyLetterCase - 2019.06.28 at 14h 16m 56s.xml">
+      <configuration name="testLogin.testLoginOnlyLetterCase" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="testLogin_testLoginUpperCase - 2019.06.27 at 17h 42m 44s.xml">
-      <configuration name="testLogin.testLoginUpperCase" configurationId="AndroidJUnit" />
+    <history-entry file="testLogin_testLoginOnlyLetterCase - 2019.06.28 at 14h 17m 09s.xml">
+      <configuration name="testLogin.testLoginOnlyLetterCase" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="testLogin_testEmailIsEmpty - 2019.06.27 at 17h 43m 25s.xml">
-      <configuration name="testLogin.testEmailIsEmpty" configurationId="AndroidJUnit" />
+    <history-entry file="testLogin_testEmailWithoutBr - 2019.06.28 at 14h 20m 34s.xml">
+      <configuration name="testLogin.testEmailWithoutBr" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="testLogin_testEmailTowSpecialCharacters - 2019.06.27 at 17h 49m 27s.xml">
-      <configuration name="testLogin.testEmailTowSpecialCharacters" configurationId="AndroidJUnit" />
+    <history-entry file="testLogin_testEmailOnlyUpperCase - 2019.06.28 at 14h 21m 33s.xml">
+      <configuration name="testLogin.testEmailOnlyUpperCase" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="testLogin_testEmailOnluOneUpperCase - 2019.06.27 at 17h 51m 04s.xml">
-      <configuration name="testLogin.testEmailOnluOneUpperCase" configurationId="AndroidJUnit" />
+    <history-entry file="testLogin_testEmailOnlyLowerCase - 2019.06.28 at 14h 22m 13s.xml">
+      <configuration name="testLogin.testEmailOnlyLowerCase" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="testLogin_testEmailWithNunbers - 2019.06.27 at 17h 52m 10s.xml">
-      <configuration name="testLogin.testEmailWithNunbers" configurationId="AndroidJUnit" />
+    <history-entry file="testLogin_testEmailOnlyNumbers - 2019.06.28 at 14h 22m 54s.xml">
+      <configuration name="testLogin.testEmailOnlyNumbers" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="testLogin_testEmailOnlyOneUpperCase - 2019.06.27 at 17h 52m 17s.xml">
-      <configuration name="testLogin.testEmailOnlyOneUpperCase" configurationId="AndroidJUnit" />
+    <history-entry file="testLogin_testEmailOnlySpecialCharacters - 2019.06.28 at 14h 23m 35s.xml">
+      <configuration name="testLogin.testEmailOnlySpecialCharacters" configurationId="AndroidJUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.50185186" side_tool="true" weight="0.23157895" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49814814" visible="true" weight="0.2672065" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49814814" visible="true" weight="0.2672065" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" sideWeight="0.50185186" side_tool="true" weight="0.23157895" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -721,16 +650,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/data/remote/ServiceGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/data/remote/model/UserAccount.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -742,26 +661,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/domain/Implementation/LoginServiceApi.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/Infra/BaseCallback.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/data/remote/Contract/ILoginServiceApi.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/data/remote/Contract/ILoginEndpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/data/remote/Contract/IStatementEndpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/os/Looper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2431">
@@ -815,77 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/adapter/AdapterAccount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/account/AccountPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-          <folding>
-            <element signature="e#593#594#0" expanded="true" />
-            <element signature="e#625#626#0" expanded="true" />
-            <element signature="e#1446#1447#0" expanded="true" />
-            <element signature="e#1494#1495#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/account/AccountContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/account/AccountActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
-          <folding>
-            <element signature="method#loadUi#0;class#AccountActivity#0" />
-            <element signature="method#setFonts#0;class#AccountActivity#0" />
-            <element signature="e#4869#4870#0" expanded="true" />
-            <element signature="e#4910#4911#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/LoginContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="155" selection-start-line="155" selection-end-line="155" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5745#5746#0" expanded="true" />
-            <element signature="e#5768#5769#0" expanded="true" />
-            <element signature="e#5845#5846#0" expanded="true" />
-            <element signature="e#5868#5869#0" expanded="true" />
-            <element signature="e#5464#5465#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1">
@@ -893,10 +721,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/example/testLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#530#531#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2312">
+          <caret line="155" selection-start-line="155" selection-end-line="155" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5484#5485#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/LoginPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        <state relative-caret-position="1105">
+          <caret line="65" column="25" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#528#529#0" expanded="true" />
@@ -905,13 +754,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/example/testLogin.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/account/AccountActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="164" column="32" selection-start-line="164" selection-start-column="32" selection-end-line="164" selection-end-column="32" />
+        <state relative-caret-position="1750">
+          <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#530#531#0" expanded="true" />
+            <element signature="method#loadUi#0;class#AccountActivity#0" />
+            <element signature="method#setFonts#0;class#AccountActivity#0" />
+            <element signature="e#4869#4870#0" expanded="true" />
+            <element signature="e#4910#4911#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/account/AccountPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/adapter/AdapterAccount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/login/LoginContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/data/remote/contract/ILoginEndpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/data/remote/contract/IStatementEndpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/ui/account/AccountContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/appbank/data/remote/ServiceGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

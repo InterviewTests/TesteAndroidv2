@@ -1,4 +1,4 @@
-package com.example.appbank.data.remote.Contract;
+package com.example.appbank.data.remote.contract;
 
 import com.example.appbank.data.remote.model.StatementResponse;
 

@@ -1,6 +1,6 @@
 package com.example.appbank.ui.login;
 
-import com.example.appbank.data.remote.Contract.ILoginEndpoint;
+import com.example.appbank.data.remote.contract.ILoginEndpoint;
 import com.example.appbank.data.remote.ServiceGenerator;
 import com.example.appbank.data.remote.model.LoginRequest;
 import com.example.appbank.data.remote.model.LoginResponse;

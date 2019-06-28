@@ -1,11 +1,8 @@
 package com.example.appbank.ui.account;
 
-import com.example.appbank.data.remote.Contract.IStatementEndpoint;
+import com.example.appbank.data.remote.contract.IStatementEndpoint;
 import com.example.appbank.data.remote.ServiceGenerator;
-import com.example.appbank.data.remote.model.Statement;
 import com.example.appbank.data.remote.model.StatementResponse;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
