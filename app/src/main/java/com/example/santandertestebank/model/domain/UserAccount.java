@@ -77,15 +77,25 @@ public class UserAccount {
         this.balance = balance;
     }
 
+
+    public void validateId() throws Exception {
+        if (userId < 1) throw new Exception ("O id do usuário é inválido");
+    }
+
     public void validateLogin() throws Exception {
         if (user.isEmpty ()) {
-            throw new Exception ("Digite um usuário para logar (emai-l ou CPF)");
-        }
+            throw new Exception ("Digite um email ou CPF para logar)");
+
+        } else if (!user.matches ("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@" +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+"))
+//            || (!user.matches ()) FALTA VALIDAR O CPF;
+            throw new Exception ("Digite um email ou CPF válido");
     }
 
     public void validadePassword() throws Exception {
         if (password.isEmpty ()) {
             throw new Exception ("Digite sua senha para logar");
+
         } else if (!password.matches ("^((?=.[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!*?])(?=\\S+$).{3,})$")) {
             throw new Exception ("A senha precisa ter pelo menos 1 letra maiúscula, 1 caractere especial e um cacactere alfanumérico");
         }
@@ -93,4 +103,3 @@ public class UserAccount {
     }
 
 }
-

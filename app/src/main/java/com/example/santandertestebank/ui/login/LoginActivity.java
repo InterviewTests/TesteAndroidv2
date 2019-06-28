@@ -13,6 +13,8 @@ import com.example.santandertestebank.model.models.ObjectsLogin;
 import com.example.santandertestebank.model.service.ApiService;
 import com.example.santandertestebank.ui.BankPaymentsActivity;
 
+import java.util.regex.Pattern;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
