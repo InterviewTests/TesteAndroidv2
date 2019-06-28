@@ -13,19 +13,19 @@ import com.example.santandertestebank.model.models.ObjectsLogin;
 import com.example.santandertestebank.model.service.ApiService;
 import com.example.santandertestebank.ui.BankPaymentsActivity;
 
-import java.util.regex.Pattern;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
     EditText editTextUser;
     EditText editTextPassword;
     Button buttonLogin;
+
+    //CRIAR O SharedPref !!!
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

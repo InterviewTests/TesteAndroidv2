@@ -23,7 +23,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class BankPaymentsActivity extends AppCompatActivity {
+public class BankPaymentsActivity extends AppCompatActivity implements BankPaymentsContract.View {
 
     private TextView textViewName;
     private TextView textViewBankAccount;
