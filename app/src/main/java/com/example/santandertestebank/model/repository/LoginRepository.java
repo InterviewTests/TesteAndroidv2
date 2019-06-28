@@ -1,18 +1,11 @@
-package com.example.santandertestebank.ui.login;
+package com.example.santandertestebank.model.repository;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.santandertestebank.R;
 import com.example.santandertestebank.model.models.ObjectsLogin;
 import com.example.santandertestebank.model.service.ApiService;
 import com.example.santandertestebank.ui.BankPaymentsActivity;
-import com.example.santandertestebank.ui.BankPaymentsContract;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,30 +13,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.View {
+public class LoginRepository {
 
-    EditText editTextUser;
-    EditText editTextPassword;
-    Button buttonLogin;
-
-    //CRIAR O SharedPref !!!
-
-    private BankPaymentsContract.Presenter presenter;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate (savedInstanceState);
-        setContentView (R.layout.activity_login);
-        getSupportActionBar ().hide ();
-
-        loadUI ();
-        buttonLogin.setOnClickListener (new View.OnClickListener () {
-            @Override
-            public void onClick(View v) {
-                sendUserInfo ();
-            }
-        });
-    }
 
     public void sendUserInfo() {
         Retrofit retrofit = new Retrofit.Builder ()
@@ -81,9 +52,4 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         });
     }
 
-    private void loadUI() {
-        editTextUser = findViewById (R.id.edit_text_user);
-        editTextPassword = findViewById (R.id.edit_text_password);
-        buttonLogin = findViewById (R.id.button_login);
-    }
 }

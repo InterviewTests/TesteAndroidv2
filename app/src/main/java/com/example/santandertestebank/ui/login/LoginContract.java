@@ -10,5 +10,6 @@ public class LoginContract {
     public interface Presenter {
 
 
+
     }
 }
