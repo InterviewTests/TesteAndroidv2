@@ -27,16 +27,11 @@ import kotlinx.android.synthetic.main.fragment_statement.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-/**
- * A simple [Fragment] subclass.
- *
- */
 class StatementFragment : Fragment(), StatementContracts.StatementPresenterOutput {
 
     private lateinit var binding: FragmentStatementBinding
     private lateinit var accounViewModel: AccountViewModel
     private lateinit var statements: StatementViewModel
-    private val fragment: StatementFragment = this
     private lateinit var statementAdapter: StatementAdapter
 
     @Inject
@@ -61,19 +56,35 @@ class StatementFragment : Fragment(), StatementContracts.StatementPresenterOutpu
             .inject(this)
 
         lifecycleScope.launch {
-            StatusBar.setStatusBarColor(activity, ContextCompat.getColor(activity!!, R.color.colorPrimary))
 
-            accounViewModel = activity?.run { ViewModelProviders.of(this).get(AccountViewModel::class.java) } ?: AccountViewModel()
+            iStatementPresenterInput.statusBarColor(activity!!)
+
+            accounViewModel =
+                activity?.run { ViewModelProviders.of(this).get(AccountViewModel::class.java) } ?: AccountViewModel()
             statements = activity?.run { ViewModelProviders.of(this).get(StatementViewModel::class.java) }
                 ?: StatementViewModel()
 
             binding.account = accounViewModel.account
-            statementAdapter = StatementAdapter(statements.statements)
+            statementAdapter = StatementAdapter(statements.statementLiveData.value ?: ArrayList())
 
             binding.statementListStatement.apply {
                 adapter = statementAdapter
                 layoutManager = LinearLayoutManager(activity!!, RecyclerView.VERTICAL, false)
             }
+
+            statements.statementLiveData.observe(this@StatementFragment,
+                Observer {
+                    iStatementPresenterInput.cleanAndAddStatements(it)
+                    statementAdapter.notifyDataSetChanged()
+                })
+
+            accounViewModel.accountLiveData.observe(this@StatementFragment,
+                Observer {
+                    accounViewModel.account.agency = it.agency
+                    accounViewModel.account.balance = it.balance
+                    accounViewModel.account.bankAccount = it.bankAccount
+                    accounViewModel.account.name = it.name
+                })
 
             iStatementPresenterInput.searchLogout(activity!!)
 
@@ -99,37 +110,30 @@ class StatementFragment : Fragment(), StatementContracts.StatementPresenterOutpu
         statement_refrash_statements.isRefreshing = false
     }
 
-    override fun apresentationData(user: LiveData<Account>) {
-        user.observe(this, Observer {
-            accounViewModel.account.agency = it.agency
-            accounViewModel.account.balance = it.balance
-            accounViewModel.account.bankAccount = it.bankAccount
-            accounViewModel.account.name = it.name
-        })
+    override fun apresentationData(user: Account) {
+        accounViewModel.accountLiveData.value = user
     }
 
     override fun loadLogout(drawable: Drawable) {
         binding.statementImgLogout.setImageDrawable(drawable)
     }
 
-    override fun apresentationStatements(statements: LiveData<MutableList<Statement>>) {
-        statements.observe(this, Observer {
-            this.statements.statements.clear()
-            this.statements.statements.addAll(it)
-            statementAdapter.notifyDataSetChanged()
-        })
+    override fun apresentationStatements(statements: MutableList<Statement>) {
+        this.statements.statementLiveData.value = statements
+    }
+
+    override fun getStatements(): MutableList<Statement> {
+        return this.statementAdapter.getStatements()
     }
 
     override fun cleanData() {
-        this.statements.statements.clear()
+        iStatementPresenterInput.cleanStatements()
         statementAdapter.notifyDataSetChanged()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        }
+        activity?.let { iStatementPresenterInput.onDestroyStatusBarColor(it) }
     }
 
     override fun mensageLogout() {
@@ -141,7 +145,8 @@ class StatementFragment : Fragment(), StatementContracts.StatementPresenterOutpu
     }
 
     override fun errorService(mensage: String?) {
-        Snackbar.make(binding.root, mensage ?: activity!!.getText(R.string.fail_result_request), Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.root, mensage ?: activity!!.getText(R.string.fail_result_request), Snackbar.LENGTH_LONG)
+            .show()
     }
 
     override fun failRequest() {

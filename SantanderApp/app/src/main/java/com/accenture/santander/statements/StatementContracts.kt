@@ -6,14 +6,19 @@ import androidx.lifecycle.LiveData
 import com.accenture.santander.interector.dataManager.entity.UserEntity
 import com.accenture.santander.entity.ListStatement
 import com.accenture.santander.viewmodel.Account
+import com.accenture.santander.viewmodel.Statement
 
-class StatementContracts {
+interface StatementContracts {
 
     interface StatementPresenterInput {
         fun soliciteData()
         fun searchLogout(activity: Activity)
         fun logout()
         fun loadStatements()
+        fun cleanStatements()
+        fun cleanAndAddStatements(statements : MutableList<Statement>)
+        fun statusBarColor(activity: Activity)
+        fun onDestroyStatusBarColor(activity: Activity)
     }
 
     interface StatementInteractorInput {
@@ -32,13 +37,13 @@ class StatementContracts {
     }
 
     interface StatementPresenterOutput {
-        fun apresentationData(user: LiveData<Account>)
+        fun apresentationData(user: Account)
         fun cleanData()
         fun loadLogout(drawable: Drawable)
-        fun apresentationStatements(statements: LiveData<MutableList<com.accenture.santander.viewmodel.Statement>>)
+        fun apresentationStatements(statements: MutableList<Statement>)
         fun goneRefrash()
         fun visibleRefrash()
-
+        fun getStatements() : MutableList<Statement>
         fun mensageLogout()
         fun failImageLogout()
         fun errorStatements()

@@ -1,6 +1,5 @@
 package com.accenture.santander.login
 
-
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -22,13 +21,11 @@ import com.accenture.santander.utils.StatusBar
 import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
-
 class LoginFragment : Fragment(), LoginContracts.LoginPresenterOutput {
 
     @Inject
     lateinit var iLoginPresenterInput: LoginContracts.LoginPresenterInput
 
-    private val fragment: LoginFragment = this
     private lateinit var userViewModel: UserViewModel
     private lateinit var binding: FragmentLoginBinding
 
@@ -36,11 +33,7 @@ class LoginFragment : Fragment(), LoginContracts.LoginPresenterOutput {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        StatusBar.setStatusBarColor(activity, Color.WHITE)
-        (activity as AppCompatActivity).supportActionBar?.hide()
-        (activity as AppCompatActivity).window.getDecorView()
-            .setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
-        binding = FragmentLoginBinding.inflate(layoutInflater)
+         binding = FragmentLoginBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -49,14 +42,21 @@ class LoginFragment : Fragment(), LoginContracts.LoginPresenterOutput {
 
         DaggerLoginComponents
             .builder()
-            .loginModule(LoginModule(activity!!, binding.root, loginFragment = this))
+            .loginModule(
+                LoginModule(
+                    activity!!,
+                    binding.root,
+                    loginFragment = this
+                )
+            )
             .build()
             .inject(this)
 
         lifecycleScope.launch {
 
-            userViewModel =
-                activity?.run { ViewModelProviders.of(this).get(UserViewModel::class.java) } ?: UserViewModel()
+            iLoginPresenterInput.statusBarColor(activity!!)
+
+            userViewModel = activity?.run { ViewModelProviders.of(this).get(UserViewModel::class.java) } ?: UserViewModel()
             binding.user = userViewModel.user
 
             iLoginPresenterInput.searchLogo(activity!!)
@@ -64,7 +64,7 @@ class LoginFragment : Fragment(), LoginContracts.LoginPresenterOutput {
             iLoginPresenterInput.searchData()
 
             login_btn_login.setOnClickListener {
-                    iLoginPresenterInput.login(userViewModel.user)
+                iLoginPresenterInput.login(userViewModel.user)
             }
         }
     }
@@ -81,9 +81,9 @@ class LoginFragment : Fragment(), LoginContracts.LoginPresenterOutput {
         binding.loginEditLogin.error = activity?.getString(R.string.invalide_login)
     }
 
-    override fun resultData(user: User) {
-        userViewModel.user.login = user.login
-        userViewModel.user.password = user.password
+    override fun resultData(login: String, password: String) {
+        userViewModel.user.login = login
+        userViewModel.user.password = password
     }
 
     override fun visibleProgress() {
@@ -96,9 +96,7 @@ class LoginFragment : Fragment(), LoginContracts.LoginPresenterOutput {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        }
+        activity?.let { iLoginPresenterInput.onDestroyStatusBarColor(it) }
     }
 
     override fun errorLogin() {

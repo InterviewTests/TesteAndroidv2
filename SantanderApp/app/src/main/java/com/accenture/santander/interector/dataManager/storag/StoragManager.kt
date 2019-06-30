@@ -6,19 +6,15 @@ import com.orhanobut.hawk.Hawk
 /**
  * Created by dev on 10/05/2018.
  */
-class StoragManager(private val context: Activity) : IStoragManager {
+class StoragManager(context: Activity) : IStoragManager {
 
     companion object {
         @JvmField
         val LOGIN = "TLOOKGEINN"
-
-        @JvmField
-        val PASSWORD = "TPOAKSESNWSOTDR"
     }
 
     init {
-        Hawk.init(context)
-            .build()
+        Hawk.init(context).build()
     }
 
     override fun setPreferences(key: String, value: String?) {

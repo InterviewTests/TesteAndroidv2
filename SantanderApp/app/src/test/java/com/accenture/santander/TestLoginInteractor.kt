@@ -1,6 +1,7 @@
 package com.accenture.santander
 
 import android.view.View
+import com.accenture.santander.ServiceTest.TestLoginApi
 import com.accenture.santander.ServiceTest.TestServiceLogin
 import com.accenture.santander.index.IndexActivity
 import com.accenture.santander.login.LoginContracts
@@ -26,6 +27,7 @@ class TestLoginInteractor {
     lateinit var iLoginInteractorOutput: LoginContracts.LoginInteractorOutput
 
     @Before
+    @TestLoginApi
     fun setup() {
         val activity = Robolectric.setupActivity(IndexActivity::class.java)
         MockitoAnnotations.initMocks(this)

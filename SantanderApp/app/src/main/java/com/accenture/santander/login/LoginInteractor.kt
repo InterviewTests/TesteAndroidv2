@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 
 class LoginInteractor(
-    private val activity: Activity,
+    activity: Activity,
     private val iLoginInteractorOutput: LoginContracts.LoginInteractorOutput,
     private val iServiceLogin: IServiceLogin
 ) : LoginContracts.LoginInteractorInput {

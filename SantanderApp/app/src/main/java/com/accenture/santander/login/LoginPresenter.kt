@@ -1,17 +1,22 @@
 package com.accenture.santander.login
 
 import android.app.Activity
+import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.view.View
+import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import com.accenture.santander.R
+import com.accenture.santander.utils.StatusBar
 import com.accenture.santander.viewmodel.User
 import com.accenture.santander.utils.Validate
 import java.io.IOException
 import javax.inject.Inject
 
 class LoginPresenter(
-    private val activity: Activity,
-    private val view: View,
+    activity: Activity,
+    view: View,
     private val iLoginPresenterOutput: LoginContracts.LoginPresenterOutput
 ) : LoginContracts.LoginPresenterInput, LoginContracts.LoginInteractorOutput {
 
@@ -84,14 +89,23 @@ class LoginPresenter(
     }
 
     override fun resultData(login: String, password: String) {
-        val user = User()
-        user.login = login
-        user.password = password
-        iLoginPresenterOutput.resultData(user)
+        iLoginPresenterOutput.resultData(login, password)
     }
 
     override fun errorMensage(mensage: String?) {
         iLoginPresenterOutput.goneProgress()
         iLoginPresenterOutput.errorService(mensage)
+    }
+
+    override fun statusBarColor(activity: Activity) {
+        StatusBar.setStatusBarColor(activity, Color.WHITE)
+        (activity as AppCompatActivity).supportActionBar?.hide()
+        activity.window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
+    }
+
+    override fun onDestroyStatusBarColor(activity: Activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            activity.window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        }
     }
 }

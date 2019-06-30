@@ -9,7 +9,7 @@ import com.accenture.santander.interector.remote.service.IConnect
 import javax.inject.Inject
 
 class StatementInteractor(
-    private val activity: Activity,
+    activity: Activity,
     private val iStatementInteractorOutput: StatementContracts.StatementInteractorOutput,
     private val iServiceStatement: IServiceStatement
 ) : StatementContracts.StatementInteractorInput {
@@ -27,7 +27,11 @@ class StatementInteractor(
     init {
         DaggerStatementComponents
             .builder()
-            .statementModule(StatementModule(context = activity))
+            .statementModule(
+                StatementModule(
+                    context = activity
+                )
+            )
             .build()
             .inject(this)
     }

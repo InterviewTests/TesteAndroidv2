@@ -5,6 +5,7 @@ import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import android.view.View
 import com.accenture.santander.ServiceTest.TestServiceStatement
+import com.accenture.santander.ServiceTest.TestStatementApi
 import com.accenture.santander.statements.StatementContracts
 import com.accenture.santander.statements.StatementInteractor
 import com.accenture.santander.statements.StatementPresenter
@@ -26,6 +27,7 @@ class TestStatementInteractor {
     lateinit var iStatementInteractorOutput: StatementContracts.StatementInteractorOutput
 
     @Before
+    @TestStatementApi
     fun setup() {
         val activity = Robolectric.setupActivity(IndexActivity::class.java)
         MockitoAnnotations.initMocks(this)

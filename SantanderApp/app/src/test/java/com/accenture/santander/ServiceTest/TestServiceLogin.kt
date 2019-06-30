@@ -10,6 +10,10 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+@Experimental(Experimental.Level.ERROR)
+annotation class TestLoginApi
+
+@TestLoginApi
 class TestServiceLogin : IServiceLogin {
 
     @Test

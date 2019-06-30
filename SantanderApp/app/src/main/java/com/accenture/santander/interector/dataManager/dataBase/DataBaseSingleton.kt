@@ -3,7 +3,7 @@ package com.accenture.santander.interector.dataManager.dataBase
 import androidx.room.Room
 import android.content.Context
 
-class DataBaseSingleton() {
+class DataBaseSingleton {
     companion object {
         private var _db: DataBase? = null
 

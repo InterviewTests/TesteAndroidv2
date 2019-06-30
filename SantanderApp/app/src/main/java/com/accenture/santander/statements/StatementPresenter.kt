@@ -2,19 +2,24 @@ package com.accenture.santander.statements
 
 import android.app.Activity
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.view.View
+import android.view.WindowManager
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import com.accenture.santander.R
 import com.accenture.santander.interector.dataManager.entity.UserEntity
 import com.accenture.santander.entity.ListStatement
 import com.accenture.santander.utils.DateTime
+import com.accenture.santander.utils.StatusBar
 import com.accenture.santander.viewmodel.Account
+import com.accenture.santander.viewmodel.Statement
 import java.io.IOException
 import javax.inject.Inject
 
 class StatementPresenter(
-    private val activity: Activity,
-    private val view: View,
+    activity: Activity,
+    view: View,
     private val iStatementPresenterOutput: StatementContracts.StatementPresenterOutput
 ) : StatementContracts.StatementPresenterInput, StatementContracts.StatementInteractorOutput {
 
@@ -27,7 +32,13 @@ class StatementPresenter(
     init {
         DaggerStatementComponents
             .builder()
-            .statementModule(StatementModule(context = activity, view = view, statementPresenter = this))
+            .statementModule(
+                StatementModule(
+                    context = activity,
+                    view = view,
+                    statementPresenter = this
+                )
+            )
             .build()
             .inject(this)
     }
@@ -55,13 +66,7 @@ class StatementPresenter(
     }
 
     override fun resultData(user: UserEntity?) {
-        user?.let {
-            iStatementPresenterOutput.apresentationData(
-                MutableLiveData<Account>().apply {
-                    value = Account().mapper(it)
-                }
-            )
-        }
+        user?.let { iStatementPresenterOutput.apresentationData(Account().mapper(it)) }
     }
 
     override fun loadStatements() {
@@ -82,10 +87,7 @@ class StatementPresenter(
             DateTime.conversor(it.date)
         }.toMutableList()
 
-        iStatementPresenterOutput.apresentationStatements(
-            MutableLiveData<MutableList<com.accenture.santander.viewmodel.Statement>>().apply {
-                value = statementsMap
-            })
+        iStatementPresenterOutput.apresentationStatements(statementsMap)
         iStatementPresenterOutput.goneRefrash()
     }
 
@@ -102,5 +104,24 @@ class StatementPresenter(
     override fun failNetWork() {
         iStatementPresenterOutput.goneRefrash()
         iStatementPresenterOutput.failNetWork()
+    }
+
+    override fun cleanStatements() {
+        iStatementPresenterOutput.getStatements().clear()
+    }
+
+    override fun cleanAndAddStatements(statements: MutableList<Statement>) {
+        iStatementPresenterOutput.getStatements().clear()
+        iStatementPresenterOutput.getStatements().addAll(statements)
+    }
+
+    override fun statusBarColor(activity: Activity) {
+        StatusBar.setStatusBarColor(activity, ContextCompat.getColor(activity, R.color.colorPrimary))
+    }
+
+    override fun onDestroyStatusBarColor(activity: Activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            activity.window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        }
     }
 }

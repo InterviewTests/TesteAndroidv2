@@ -7,12 +7,14 @@ import com.accenture.santander.entity.Auth
 import com.accenture.santander.entity.Error
 import com.accenture.santander.entity.UserAccount
 
-class LoginContracts {
+interface LoginContracts {
 
     interface LoginPresenterInput {
         fun searchLogo(context: Activity)
         fun searchData()
         fun login(user: User)
+        fun statusBarColor(activity: Activity)
+        fun onDestroyStatusBarColor(activity: Activity)
     }
 
     interface LoginInteractorInput {
@@ -25,10 +27,9 @@ class LoginContracts {
         fun loadLogo(drawable: Drawable)
         fun invalideLogin()
         fun invalidePassword()
-        fun resultData(user: User)
+        fun resultData(login: String, password: String)
         fun goneProgress()
         fun visibleProgress()
-
         fun errorLogin()
         fun failLoadImage()
         fun failNetWork()

@@ -12,6 +12,7 @@ import com.accenture.santander.databinding.ItemStatementHeaderBinding
 import com.accenture.santander.recyclerview.viewholder.StatementHeaderViewHolder
 import com.accenture.santander.recyclerview.viewholder.StatementViewHolder
 import com.accenture.santander.viewmodel.Statement
+import kotlin.collections.ArrayList
 
 
 /**
@@ -19,11 +20,17 @@ import com.accenture.santander.viewmodel.Statement
  */
 
 class StatementAdapter(
-    val _itens: MutableList<Statement>
+    private val _itens: MutableList<Statement> = ArrayList()
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val HEADER_VIEW = 0
-    private val TYPE_ITEM = 1
+    companion object {
+        private val HEADER_VIEW = 0
+        private val TYPE_ITEM = 1
+    }
+
+    fun getStatements(): MutableList<Statement> {
+        return _itens
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -35,6 +42,7 @@ class StatementAdapter(
                 false
             )
             return StatementViewHolder(binding)
+
         } else if (viewType == HEADER_VIEW) {
             val binding = DataBindingUtil.inflate<ItemStatementHeaderBinding>(
                 LayoutInflater.from(parent.context),
