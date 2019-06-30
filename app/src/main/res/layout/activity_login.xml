@@ -26,6 +26,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/user"
             android:background="@drawable/custom_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,6 +34,8 @@
             android:layout_marginBottom="@dimen/default_margin"/>
 
         <EditText
+            android:id="@+id/password"
+            android:inputType="textPassword"
             android:background="@drawable/custom_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

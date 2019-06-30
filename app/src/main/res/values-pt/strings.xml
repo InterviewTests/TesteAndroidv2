@@ -4,4 +4,8 @@
     <string name="user">User</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="invalid_user">Invalid user.</string>
+    <string name="invalid_password">Invalid password</string>
+    <string name="wait_dialog_message">Loading</string>
+    <string name="default_error">An error occurred.</string>
 </resources>
