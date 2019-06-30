@@ -4,6 +4,8 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.accenture.santander.BR
 import com.accenture.santander.entity.Statement
+import com.accenture.santander.utils.DateTime
+import com.accenture.santander.utils.MoneyFormact
 
 class Statement : BaseObservable() {
 
@@ -29,7 +31,7 @@ class Statement : BaseObservable() {
         }
 
     @Bindable
-    var value: Double = 0.0
+    var value: String = ""
         set(value) {
             field = value
             notifyPropertyChanged(BR.balance)
@@ -37,9 +39,9 @@ class Statement : BaseObservable() {
 
     fun mapper(state: Statement): com.accenture.santander.viewmodel.Statement {
         this.title = state.title
-        this.date = state.date
+        this.date = DateTime.mask(state.date)
         this.desc = state.desc
-        this.value = state.value
+        this.value = MoneyFormact.mask(state.value)
         return this
     }
 }

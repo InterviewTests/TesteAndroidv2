@@ -1,6 +1,7 @@
 package com.accenture.santander.statements
 
 import android.app.Activity
+import com.accenture.santander.components.notNull
 import com.accenture.santander.interector.dataManager.repository.deviceRepository.IUserRepository
 import com.accenture.santander.interector.dataManager.storag.IStoragManager
 import com.accenture.santander.interector.remote.service.statement.IServiceStatement
@@ -40,12 +41,21 @@ class StatementInteractor(
         iStatementInteractorOutput.resultData(iUserRepository.findDesc())
     }
 
-    override fun searchStatements(iduser: Int) {
+    override fun searchStatements(iduser: Int) =
         if (iConnect.verifyConnection()) {
             iServiceStatement.statement(iduser,
                 success = {
                     if (it.code() == 200) {
-                        iStatementInteractorOutput.resultStatements(it.body())
+                        val statement = it.body()
+                        if (statement.notNull()) {
+                            if (statement.error.code == 0) {
+                                iStatementInteractorOutput.resultStatements(statement)
+                            } else {
+                                iStatementInteractorOutput.errorMensage(statement.error.message)
+                            }
+                        } else {
+                            iStatementInteractorOutput.failNetWork()
+                        }
                     } else {
                         iStatementInteractorOutput.failResquest(it.code())
                     }
@@ -56,7 +66,6 @@ class StatementInteractor(
         } else {
             iStatementInteractorOutput.failNetWork()
         }
-    }
 
     override fun deletaAccount() {
         val user = iUserRepository.findDesc()

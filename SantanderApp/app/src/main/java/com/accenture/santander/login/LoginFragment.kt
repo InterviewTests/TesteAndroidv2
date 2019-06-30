@@ -33,7 +33,7 @@ class LoginFragment : Fragment(), LoginContracts.LoginPresenterOutput {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-         binding = FragmentLoginBinding.inflate(layoutInflater)
+        binding = FragmentLoginBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -56,7 +56,8 @@ class LoginFragment : Fragment(), LoginContracts.LoginPresenterOutput {
 
             iLoginPresenterInput.statusBarColor(activity!!)
 
-            userViewModel = activity?.run { ViewModelProviders.of(this).get(UserViewModel::class.java) } ?: UserViewModel()
+            userViewModel =
+                activity?.run { ViewModelProviders.of(this).get(UserViewModel::class.java) } ?: UserViewModel()
             binding.user = userViewModel.user
 
             iLoginPresenterInput.searchLogo(activity!!)
@@ -69,9 +70,8 @@ class LoginFragment : Fragment(), LoginContracts.LoginPresenterOutput {
         }
     }
 
-    override fun loadLogo(drawable: Drawable) {
-        binding.loginImgLogo.setImageDrawable(drawable)
-    }
+    override fun loadLogo(drawable: Drawable) = binding.loginImgLogo.setImageDrawable(drawable)
+
 
     override fun invalidePassword() {
         binding.loginEditPassword.error = activity?.getString(R.string.invalide_password)
@@ -99,24 +99,22 @@ class LoginFragment : Fragment(), LoginContracts.LoginPresenterOutput {
         activity?.let { iLoginPresenterInput.onDestroyStatusBarColor(it) }
     }
 
-    override fun errorLogin() {
+    override fun errorLogin() =
         Snackbar.make(binding.root, R.string.fail_connection, Snackbar.LENGTH_LONG).show()
-    }
 
-    override fun errorService(mensage: String?) {
+    override fun errorService(mensage: String?) =
         Snackbar.make(binding.root, mensage ?: activity!!.getText(R.string.fail_result_request), Snackbar.LENGTH_LONG)
             .show()
-    }
 
-    override fun failRequest() {
+    override fun failRequest() =
         Snackbar.make(binding.root, R.string.fail_request, Snackbar.LENGTH_LONG).show()
-    }
 
-    override fun failNetWork() {
+
+    override fun failNetWork() =
         Snackbar.make(binding.root, R.string.fail_connection, Snackbar.LENGTH_LONG).show()
-    }
 
-    override fun failLoadImage() {
+
+    override fun failLoadImage() =
         Toast.makeText(activity, R.string.fail_load_image, Toast.LENGTH_LONG).show()
-    }
+
 }

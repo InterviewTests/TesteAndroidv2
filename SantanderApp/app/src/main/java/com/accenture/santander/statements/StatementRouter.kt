@@ -5,8 +5,6 @@ import androidx.navigation.findNavController
 
 class StatementRouter(private val view: View) {
 
-    fun popBackStack() {
-        view.findNavController().popBackStack()
-    }
+    fun popBackStack() = view.findNavController().popBackStack()
 
 }

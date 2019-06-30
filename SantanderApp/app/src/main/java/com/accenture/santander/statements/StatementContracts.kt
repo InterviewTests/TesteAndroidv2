@@ -30,10 +30,11 @@ interface StatementContracts {
 
     interface StatementInteractorOutput {
         fun resultData(user: UserEntity?)
-        fun resultStatements(listStatement: ListStatement?)
+        fun resultStatements(listStatement: ListStatement)
         fun errorStatements(throwable: Throwable)
         fun failNetWork()
         fun failResquest(code: Int)
+        fun errorMensage(mensage: String?)
     }
 
     interface StatementPresenterOutput {

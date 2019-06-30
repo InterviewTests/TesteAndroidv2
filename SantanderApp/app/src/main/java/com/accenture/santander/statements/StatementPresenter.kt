@@ -74,26 +74,27 @@ class StatementPresenter(
         iStatementInteractorInput.searchIdUserStatements()
     }
 
-    override fun resultStatements(listStatement: ListStatement?) {
+    override fun resultStatements(listStatement: ListStatement) {
 
-        if (listStatement?.error?.code != 0) {
-            iStatementPresenterOutput.errorService(listStatement?.error?.message)
-            return
-        }
-
-        val statementsMap = listStatement.statementList.map {
-            com.accenture.santander.viewmodel.Statement().mapper(it)
-        }.sortedByDescending {
-            DateTime.conversor(it.date)
-        }.toMutableList()
+        val statementsMap = listStatement.statementList
+            .sortedByDescending {
+                DateTime.conversor(it.date)
+            }.map {
+                com.accenture.santander.viewmodel.Statement().mapper(it)
+            }.toMutableList()
 
         iStatementPresenterOutput.apresentationStatements(statementsMap)
         iStatementPresenterOutput.goneRefrash()
     }
 
     override fun failResquest(code: Int) {
-        iStatementPresenterOutput.goneRefrash()
-        iStatementPresenterOutput.failRequest()
+        when(val codeResult = code){
+            403 -> logout()
+            else -> {
+                iStatementPresenterOutput.goneRefrash()
+                iStatementPresenterOutput.failRequest()
+            }
+        }
     }
 
     override fun errorStatements(throwable: Throwable) {
@@ -123,5 +124,9 @@ class StatementPresenter(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             activity.window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         }
+    }
+
+    override fun errorMensage(mensage: String?) {
+        iStatementPresenterOutput.errorService(mensage)
     }
 }

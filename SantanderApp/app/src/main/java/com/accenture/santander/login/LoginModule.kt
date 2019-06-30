@@ -28,24 +28,16 @@ class LoginModule(
 ) {
 
     @Provides
-    fun provideIUserRepository(): IUserRepository {
-        return UserRepository(context!!)
-    }
+    fun provideIUserRepository(): IUserRepository = UserRepository(context!!)
 
     @Provides
-    fun provideIStoragManager(): IStoragManager {
-        return StoragManager(context!!)
-    }
+    fun provideIStoragManager(): IStoragManager = StoragManager(context!!)
 
     @Provides
-    fun provideIServiceLogin(): IServiceLogin {
-        return ServiceLogin()
-    }
+    fun provideIServiceLogin(): IServiceLogin = ServiceLogin()
 
     @Provides
-    fun provideLoginRouter(): LoginRouter {
-        return LoginRouter(view!!)
-    }
+    fun provideLoginRouter(): LoginRouter = LoginRouter(view!!)
 
     @Provides
     fun provideLoginPresenterInput(): LoginContracts.LoginPresenterInput {
@@ -53,12 +45,10 @@ class LoginModule(
     }
 
     @Provides
-    fun provideLoginInteractorInput(): LoginContracts.LoginInteractorInput {
-        return LoginInteractor(context!!, loginPresenter!!, ServiceLogin())
-    }
+    fun provideLoginInteractorInput(): LoginContracts.LoginInteractorInput =
+        LoginInteractor(context!!, loginPresenter!!, ServiceLogin())
 
     @Provides
-    fun provideConnect(): IConnect {
-        return Connect(context!!)
-    }
+    fun provideConnect(): IConnect = Connect(context!!)
+
 }

@@ -29,14 +29,13 @@ import javax.inject.Inject
 
 class StatementFragment : Fragment(), StatementContracts.StatementPresenterOutput {
 
+    @Inject
+    lateinit var iStatementPresenterInput: StatementContracts.StatementPresenterInput
+
     private lateinit var binding: FragmentStatementBinding
     private lateinit var accounViewModel: AccountViewModel
     private lateinit var statements: StatementViewModel
     private lateinit var statementAdapter: StatementAdapter
-
-    @Inject
-    lateinit var iStatementPresenterInput: StatementContracts.StatementPresenterInput
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -114,17 +113,15 @@ class StatementFragment : Fragment(), StatementContracts.StatementPresenterOutpu
         accounViewModel.accountLiveData.value = user
     }
 
-    override fun loadLogout(drawable: Drawable) {
-        binding.statementImgLogout.setImageDrawable(drawable)
-    }
-
     override fun apresentationStatements(statements: MutableList<Statement>) {
         this.statements.statementLiveData.value = statements
     }
 
-    override fun getStatements(): MutableList<Statement> {
-        return this.statementAdapter.getStatements()
-    }
+    override fun loadLogout(drawable: Drawable) =
+        binding.statementImgLogout.setImageDrawable(drawable)
+
+    override fun getStatements(): MutableList<Statement> =
+        this.statementAdapter.itens
 
     override fun cleanData() {
         iStatementPresenterInput.cleanStatements()
@@ -136,28 +133,23 @@ class StatementFragment : Fragment(), StatementContracts.StatementPresenterOutpu
         activity?.let { iStatementPresenterInput.onDestroyStatusBarColor(it) }
     }
 
-    override fun mensageLogout() {
+    override fun mensageLogout() =
         Toast.makeText(activity!!, R.string.logout_mensage, Toast.LENGTH_LONG).show()
-    }
 
-    override fun errorStatements() {
+    override fun errorStatements() =
         Snackbar.make(binding.root, R.string.fail_connection, Snackbar.LENGTH_LONG).show()
-    }
 
-    override fun errorService(mensage: String?) {
+    override fun errorService(mensage: String?) =
         Snackbar.make(binding.root, mensage ?: activity!!.getText(R.string.fail_result_request), Snackbar.LENGTH_LONG)
             .show()
-    }
 
-    override fun failRequest() {
+    override fun failRequest() =
         Snackbar.make(binding.root, R.string.fail_request, Snackbar.LENGTH_LONG).show()
-    }
 
-    override fun failNetWork() {
+    override fun failNetWork() =
         Snackbar.make(binding.root, R.string.fail_connection, Snackbar.LENGTH_LONG).show()
-    }
 
-    override fun failImageLogout() {
+    override fun failImageLogout() =
         Toast.makeText(activity, R.string.fail_load_image, Toast.LENGTH_LONG).show()
-    }
+
 }

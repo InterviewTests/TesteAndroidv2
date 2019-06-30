@@ -6,8 +6,6 @@
 
     <data>
         <variable name="statement" type="com.accenture.santander.viewmodel.Statement"/>
-        <import type="com.accenture.santander.utils.DateTime"/>
-        <import type="com.accenture.santander.utils.MoneyFormact"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,7 +47,7 @@
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:text="@{DateTime.mask(statement.date)}"
+                          android:text="@{statement.date}"
                           android:textColor="@color/colorHintText"
                           android:textSize="12dp"
                           android:layout_marginEnd="22dp"
@@ -81,7 +79,7 @@
 
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:text="@{MoneyFormact.mask(statement.value)}"
+                          android:text="@{statement.value}"
                           android:textColor="@color/colorHintTextDark"
                           android:textSize="20dp"
                           android:layout_marginEnd="22dp"

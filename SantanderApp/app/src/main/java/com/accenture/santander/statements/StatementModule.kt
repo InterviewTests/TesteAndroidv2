@@ -24,37 +24,26 @@ class StatementModule(
 ) {
 
     @Provides
-    fun provideIUserRepository(): IUserRepository {
-        return UserRepository(context!!)
-    }
+    fun provideIUserRepository(): IUserRepository = UserRepository(context!!)
 
     @Provides
-    fun provideIStoragManager(): IStoragManager {
-        return StoragManager(context!!)
-    }
+    fun provideIStoragManager(): IStoragManager = StoragManager(context!!)
 
     @Provides
-    fun provideIServiceStatement(): IServiceStatement {
-        return ServiceStatement()
-    }
+    fun provideIServiceStatement(): IServiceStatement = ServiceStatement()
 
     @Provides
-    fun provideStatementRouter(): StatementRouter {
-        return StatementRouter(view!!)
-    }
+    fun provideStatementRouter(): StatementRouter = StatementRouter(view!!)
 
     @Provides
-    fun provideStatementInteractorInput(): StatementContracts.StatementInteractorInput {
-        return StatementInteractor(context!!, statementPresenter!!, ServiceStatement())
-    }
+    fun provideStatementInteractorInput(): StatementContracts.StatementInteractorInput =
+        StatementInteractor(context!!, statementPresenter!!, ServiceStatement())
 
     @Provides
-    fun provideStatementPresenterInput(): StatementContracts.StatementPresenterInput {
-        return StatementPresenter(context!!, view!!, statementFragment!!)
-    }
+    fun provideStatementPresenterInput(): StatementContracts.StatementPresenterInput =
+        StatementPresenter(context!!, view!!, statementFragment!!)
 
     @Provides
-    fun provideConnect(): IConnect {
-        return Connect(context!!)
-    }
+    fun provideConnect(): IConnect = Connect(context!!)
+
 }

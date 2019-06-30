@@ -5,8 +5,6 @@
 
     <data>
         <variable name="account" type="com.accenture.santander.viewmodel.Account"/>
-        <import type="com.accenture.santander.utils.MoneyFormact"/>
-        <import type="com.accenture.santander.utils.MaskAgency"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -70,7 +68,7 @@
                       android:textSize="25dp"
                       android:maxLines="1"
                       android:singleLine="true"
-                      android:text="@{account.bankAccount + ' ' + '/' + ' ' + MaskAgency.mask(account.agency)}"
+                      android:text="@{account.bankAccount + ' ' + '/' + ' ' + account.agency}"
                       android:textColor="@android:color/white"/>
 
 
@@ -92,7 +90,7 @@
                       android:textSize="25dp"
                       android:maxLines="1"
                       android:singleLine="true"
-                      android:text="@{MoneyFormact.mask(account.balance)}"
+                      android:text="@{account.balance}"
                       android:textColor="@android:color/white"/>
 
         </LinearLayout>

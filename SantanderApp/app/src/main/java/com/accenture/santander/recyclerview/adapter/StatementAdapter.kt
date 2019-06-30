@@ -20,16 +20,12 @@ import kotlin.collections.ArrayList
  */
 
 class StatementAdapter(
-    private val _itens: MutableList<Statement> = ArrayList()
+    val itens: MutableList<Statement> = ArrayList()
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object {
         private val HEADER_VIEW = 0
         private val TYPE_ITEM = 1
-    }
-
-    fun getStatements(): MutableList<Statement> {
-        return _itens
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -58,17 +54,13 @@ class StatementAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is StatementViewHolder) {
-            holder.binding.statement = _itens[position - 1]
+            holder.binding.statement = itens[position - 1]
         }
     }
 
-    override fun getItemCount(): Int {
-        return _itens.size + 1
-    }
+    override fun getItemCount(): Int = itens.size + 1
 
-    private fun isPositionHeader(position: Int): Boolean {
-        return position == 0
-    }
+    private fun isPositionHeader(position: Int): Boolean = position == 0
 
     override fun getItemViewType(position: Int): Int {
         return if (isPositionHeader(position)) HEADER_VIEW else TYPE_ITEM

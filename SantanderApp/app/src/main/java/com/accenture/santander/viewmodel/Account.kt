@@ -5,6 +5,8 @@ import androidx.databinding.Bindable
 import com.accenture.santander.BR
 import com.accenture.santander.entity.UserAccount
 import com.accenture.santander.interector.dataManager.entity.UserEntity
+import com.accenture.santander.utils.MaskAgency
+import com.accenture.santander.utils.MoneyFormact
 
 class Account : BaseObservable() {
 
@@ -30,7 +32,7 @@ class Account : BaseObservable() {
         }
 
     @Bindable
-    var balance: Double = 0.0
+    var balance: String = ""
         set(value) {
             field = value
             notifyPropertyChanged(BR.balance)
@@ -39,16 +41,16 @@ class Account : BaseObservable() {
     fun mapper(user: UserEntity): Account {
         this.name = user.name
         this.bankAccount = user.bankAccount
-        this.agency = user.agency
-        this.balance = user.balance
+        this.agency = MaskAgency.mask(user.agency)
+        this.balance = MoneyFormact.mask(user.balance)
         return this
     }
 
     fun mapper(user: UserAccount): Account {
         this.name = user.name
         this.bankAccount = user.bankAccount
-        this.agency = user.agency
-        this.balance = user.balance
+        this.agency = MaskAgency.mask(user.agency)
+        this.balance = MoneyFormact.mask(user.balance)
         return this
     }
 }

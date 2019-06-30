@@ -1,6 +1,7 @@
 package com.accenture.santander.login
 
 import android.app.Activity
+import com.accenture.santander.components.notNull
 import com.accenture.santander.viewmodel.User
 import com.accenture.santander.interector.dataManager.storag.StoragManager
 import com.accenture.santander.interector.dataManager.entity.UserEntity
@@ -35,21 +36,21 @@ class LoginInteractor(
             .inject(this)
     }
 
-    override fun login(user: User) {
+    override fun login(user: User) =
         if (iConnect.verifyConnection()) {
             iServiceLogin.login(user = user,
                 success = {
                     if (it.code() == 200) {
                         val auth = it.body()
-                        if (auth == null) {
-                            iLoginInteractorOutput.failNetWork()
-                        } else {
+                        if (auth.notNull()) {
                             if (auth.userAccount.userId > 0) {
                                 registerUser(auth = auth.userAccount, user = user)
                                 iLoginInteractorOutput.sucessLogin()
                             } else {
                                 iLoginInteractorOutput.errorMensage(auth.error.message)
                             }
+                        } else {
+                            iLoginInteractorOutput.failNetWork()
                         }
                     } else {
                         iLoginInteractorOutput.failResquest(it.code())
@@ -61,12 +62,12 @@ class LoginInteractor(
         } else {
             iLoginInteractorOutput.failNetWork()
         }
-    }
+
 
     override fun registerUser(auth: UserAccount, user: User) {
         val userEntity = iUserRepository.findDesc()
 
-        if (userEntity != null) {
+        if (userEntity.notNull()) {
             iUserRepository.update(userEntity.mapper(auth))
         } else {
             iUserRepository.insert(

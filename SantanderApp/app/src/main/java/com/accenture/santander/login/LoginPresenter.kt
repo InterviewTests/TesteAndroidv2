@@ -34,7 +34,7 @@ class LoginPresenter(
             .inject(this)
     }
 
-    override fun searchLogo(context: Activity) {
+    override fun searchLogo(context: Activity) =
         try {
             val ims = context.getAssets()?.open(context.getString(R.string.assets_logo))
             val drawable = Drawable.createFromStream(ims, null)
@@ -43,7 +43,7 @@ class LoginPresenter(
         } catch (ex: IOException) {
             iLoginPresenterOutput.failLoadImage()
         }
-    }
+
 
     override fun login(user: User) {
 
@@ -61,9 +61,8 @@ class LoginPresenter(
         iLoginInteractorInput.login(user)
     }
 
-    override fun sucessLogin() {
-        iLoginPresenterOutput.goneProgress()
-    }
+    override fun sucessLogin() = iLoginPresenterOutput.goneProgress()
+
 
     override fun errorLogin(throwable: Throwable) {
         iLoginPresenterOutput.goneProgress()
@@ -80,17 +79,11 @@ class LoginPresenter(
         iLoginPresenterOutput.failRequest()
     }
 
-    override fun startLogged() {
-        loginRouter.navigationToStatement()
-    }
+    override fun startLogged() = loginRouter.navigationToStatement()
 
-    override fun searchData() {
-        iLoginInteractorInput.searchData()
-    }
+    override fun searchData() = iLoginInteractorInput.searchData()
 
-    override fun resultData(login: String, password: String) {
-        iLoginPresenterOutput.resultData(login, password)
-    }
+    override fun resultData(login: String, password: String) = iLoginPresenterOutput.resultData(login, password)
 
     override fun errorMensage(mensage: String?) {
         iLoginPresenterOutput.goneProgress()
