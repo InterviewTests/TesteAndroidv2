@@ -38,7 +38,8 @@
                           android:maxLines="1"
                           android:singleLine="true"
                           android:textColor="@android:color/white"
-                          android:text="@{account.name}"/>
+                          android:text="@{account.name}"
+                          android:contentDescription="@{@string/acessibility_txt_name_user(account.name)}"/>
 
                 <ImageView
                         android:id="@+id/statement_img_logout"
@@ -47,9 +48,10 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="5dp"
                         android:layout_marginEnd="13dp"
-                        android:contentDescription="@string/statement_image_description"
+                        android:contentDescription="@string/acessibility_image_logout"
                         android:gravity="center"/>
             </LinearLayout>
+
             <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:layout_marginBottom="6dp"
@@ -58,7 +60,8 @@
                       android:layout_marginTop="28dp"
                       android:textSize="12dp"
                       android:textColor="@android:color/white"
-                      android:text="@string/statement_text_hint_account"/>
+                      android:text="@string/statement_text_hint_account"
+                      android:contentDescription="@string/acessibility_txt_account"/>
 
             <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -68,9 +71,9 @@
                       android:textSize="25dp"
                       android:maxLines="1"
                       android:singleLine="true"
-                      android:text="@{account.bankAccount + ' ' + '/' + ' ' + account.agency}"
-                      android:textColor="@android:color/white"/>
-
+                      android:text="@{@string/statement_text_number_bank_and_agency(account.bankAccount,account.agency)}"
+                      android:textColor="@android:color/white"
+                      android:contentDescription="@{@string/acessibility_txt_number_bank_and_agency(account.bankAccount,account.agency)}"/>
 
             <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -79,7 +82,8 @@
                       android:layout_marginEnd="18dp"
                       android:textSize="12dp"
                       android:textColor="@android:color/white"
-                      android:text="@string/statement_text_hint_cash"/>
+                      android:text="@string/statement_text_hint_cash"
+                      android:contentDescription="@string/acessibility_txt_balance"/>
 
 
             <TextView android:layout_width="match_parent"
@@ -91,7 +95,8 @@
                       android:maxLines="1"
                       android:singleLine="true"
                       android:text="@{account.balance}"
-                      android:textColor="@android:color/white"/>
+                      android:textColor="@android:color/white"
+                      android:contentDescription="@{@string/acessibility_txt_money(account.balance)}"/>
 
         </LinearLayout>
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -109,6 +114,7 @@
                     android:id="@+id/statement_list_statement"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="@string/acessibility_list"
             />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
