@@ -1,7 +1,7 @@
 package com.example.androidcodingtest.Login;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,7 +11,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.androidcodingtest.R;
+import com.example.androidcodingtest.Statements.StatementActivity;
 import com.example.androidcodingtest.models.Error;
+import com.example.androidcodingtest.models.UserAccount;
 
 public class LoginActivity extends AppCompatActivity implements LoginInteractor.View{
 
@@ -25,7 +27,7 @@ public class LoginActivity extends AppCompatActivity implements LoginInteractor.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        sharedPreferences = getSharedPreferences("PrefFileBankApp#", 0);
+        sharedPreferences = getSharedPreferences(getString(R.string.prefFile), 0);
 
         setOnClickEvents();
         checkCachedUser();
@@ -59,12 +61,20 @@ public class LoginActivity extends AppCompatActivity implements LoginInteractor.
     }
 
     @Override
-    public void loginSuccess(String user) {
+    public void loginSuccess(String user, UserAccount userAccount) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("loginUser", user);
         editor.commit();
 
         dialog.dismiss();
+        goToStatementActivity(userAccount);
+        finish();
+    }
+
+    private void goToStatementActivity(UserAccount userAccount) {
+        Intent intent = new Intent(this, StatementActivity.class);
+        intent.putExtra("userAccount", userAccount);
+        startActivity(intent);
     }
 
     @Override

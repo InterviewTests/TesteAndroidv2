@@ -3,6 +3,7 @@
     <color name="colorPrimary">#3341eb</color>
     <color name="colorPrimaryDark">#3b49ee</color>
     <color name="colorAccent">#626ded</color>
-    <color name="custom_edittext_border_color">#dddddd</color>
+    <color name="light_gray">#dddddd</color>
+    <color name="gray">#bbbbbb</color>
     <color name="white">#ffffff</color>
 </resources>

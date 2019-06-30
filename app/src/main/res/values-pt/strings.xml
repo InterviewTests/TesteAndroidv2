@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AndroidCodingTest</string>
-    <string name="user">User</string>
-    <string name="password">Password</string>
+    <string name="user">Usuário</string>
+    <string name="password">Senha</string>
     <string name="login">Login</string>
-    <string name="invalid_user">Invalid user.</string>
-    <string name="invalid_password">Invalid password</string>
-    <string name="wait_dialog_message">Loading</string>
-    <string name="default_error">An error occurred.</string>
+    <string name="invalid_user">Usuário inválido.</string>
+    <string name="invalid_password">Senha inválida</string>
+    <string name="wait_dialog_message">Carregando</string>
+    <string name="default_error">Ocorreu um erro.</string>
+    <string name="bank_account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="recent">Recentes</string>
+    <string name="fail_to_load_statements">Erro ao carregar os lançamentos</string>
+    <string name="prefFile">PrefFileBankApp#</string>
 </resources>

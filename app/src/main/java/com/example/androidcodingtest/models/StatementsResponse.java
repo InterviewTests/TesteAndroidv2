@@ -3,11 +3,11 @@ package com.example.androidcodingtest.models;
 import java.util.List;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class StatmentsResponse implements Parcelable
+public class StatementsResponse implements Parcelable
 {
 
     @SerializedName("statementList")
@@ -16,24 +16,24 @@ public class StatmentsResponse implements Parcelable
     @SerializedName("error")
     @Expose
     private Error error;
-    public final static Parcelable.Creator<StatmentsResponse> CREATOR = new Creator<StatmentsResponse>() {
+    public final static Parcelable.Creator<StatementsResponse> CREATOR = new Creator<StatementsResponse>() {
 
 
         @SuppressWarnings({
                 "unchecked"
         })
-        public StatmentsResponse createFromParcel(Parcel in) {
-            return new StatmentsResponse(in);
+        public StatementsResponse createFromParcel(Parcel in) {
+            return new StatementsResponse(in);
         }
 
-        public StatmentsResponse[] newArray(int size) {
-            return (new StatmentsResponse[size]);
+        public StatementsResponse[] newArray(int size) {
+            return (new StatementsResponse[size]);
         }
 
     }
             ;
 
-    protected StatmentsResponse(Parcel in) {
+    protected StatementsResponse(Parcel in) {
         in.readList(this.statementList, (com.example.androidcodingtest.models.Statement.class.getClassLoader()));
         this.error = ((Error) in.readValue((Error.class.getClassLoader())));
     }
@@ -42,7 +42,7 @@ public class StatmentsResponse implements Parcelable
      * No args constructor for use in serialization
      *
      */
-    public StatmentsResponse() {
+    public StatementsResponse() {
     }
 
     /**
@@ -50,7 +50,7 @@ public class StatmentsResponse implements Parcelable
      * @param statementList
      * @param error
      */
-    public StatmentsResponse(List<Statement> statementList, Error error) {
+    public StatementsResponse(List<Statement> statementList, Error error) {
         super();
         this.statementList = statementList;
         this.error = error;

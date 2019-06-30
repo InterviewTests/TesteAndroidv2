@@ -30,6 +30,7 @@
             android:background="@drawable/custom_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:hint="@string/user"
             android:layout_marginBottom="@dimen/default_margin"/>
 
@@ -39,6 +40,7 @@
             android:background="@drawable/custom_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:hint="@string/password"/>
     </LinearLayout>
 

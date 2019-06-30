@@ -53,8 +53,8 @@ public class LoginPresenter implements LoginInteractor.Presenter {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse loginResponse = response.body();
-                if(response.isSuccessful() && loginResponse.getError() == null){
-                    view.loginSuccess(user);
+                if(response.isSuccessful() && loginResponse.getError().getCode() == 0){
+                    view.loginSuccess(user, loginResponse.getUserAccount());
                 }
                 else{
                     view.loginError(loginResponse.getError());
