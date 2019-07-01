@@ -1,4 +1,4 @@
-package com.example.androidcodingtest.Statements;
+package com.example.androidcodingtest.statements;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,8 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.androidcodingtest.R;
@@ -16,7 +14,6 @@ import com.example.androidcodingtest.models.Statement;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

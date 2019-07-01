@@ -1,4 +1,4 @@
-package com.example.androidcodingtest.Connections;
+package com.example.androidcodingtest.connections;
 
 import java.io.IOException;
 

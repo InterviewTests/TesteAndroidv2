@@ -1,7 +1,7 @@
-package com.example.androidcodingtest.Statements;
+package com.example.androidcodingtest.statements;
 
-import com.example.androidcodingtest.Connections.ApiClient;
-import com.example.androidcodingtest.Connections.StatementClient;
+import com.example.androidcodingtest.connections.ApiClient;
+import com.example.androidcodingtest.connections.StatementClient;
 import com.example.androidcodingtest.R;
 import com.example.androidcodingtest.models.StatementsResponse;
 

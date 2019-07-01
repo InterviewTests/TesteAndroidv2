@@ -1,14 +1,12 @@
-package com.example.androidcodingtest.Login;
+package com.example.androidcodingtest.login;
 
-import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Patterns;
 
-import com.example.androidcodingtest.Connections.ApiClient;
-import com.example.androidcodingtest.Connections.LoginClient;
+import com.example.androidcodingtest.connections.ApiClient;
+import com.example.androidcodingtest.connections.LoginClient;
 import com.example.androidcodingtest.R;
 import com.example.androidcodingtest.helpers.CpfValidator;
-import com.example.androidcodingtest.models.Error;
 import com.example.androidcodingtest.models.LoginResponse;
 
 import java.util.HashMap;
@@ -68,7 +66,7 @@ public class LoginPresenter implements LoginInteractor.Presenter {
         });
     }
 
-    private Boolean validateUser(String user) {
+    public Boolean validateUser(String user) {
 
         if(TextUtils.isEmpty(user)){
             return false;
@@ -85,7 +83,7 @@ public class LoginPresenter implements LoginInteractor.Presenter {
         return false;
     }
 
-    private Boolean validatePassword(String password) {
+    public Boolean validatePassword(String password) {
 
         Pattern pattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(password);
@@ -100,5 +98,12 @@ public class LoginPresenter implements LoginInteractor.Presenter {
         }
 
         return false;
+    }
+
+    protected static class Patterns{
+        private static final String EMAIL_PATTERN =
+                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        private static final Pattern EMAIL_ADDRESS=Pattern.compile(EMAIL_PATTERN);
     }
 }

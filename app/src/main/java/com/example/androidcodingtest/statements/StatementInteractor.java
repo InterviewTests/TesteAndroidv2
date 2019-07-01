@@ -1,4 +1,4 @@
-package com.example.androidcodingtest.Statements;
+package com.example.androidcodingtest.statements;
 
 import com.example.androidcodingtest.models.Statement;
 

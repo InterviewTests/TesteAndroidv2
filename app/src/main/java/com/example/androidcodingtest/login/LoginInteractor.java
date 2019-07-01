@@ -1,4 +1,4 @@
-package com.example.androidcodingtest.Login;
+package com.example.androidcodingtest.login;
 
 import com.example.androidcodingtest.models.Error;
 import com.example.androidcodingtest.models.UserAccount;

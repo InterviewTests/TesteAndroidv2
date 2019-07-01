@@ -1,4 +1,4 @@
-package com.example.androidcodingtest.Login;
+package com.example.androidcodingtest.login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.androidcodingtest.R;
-import com.example.androidcodingtest.Statements.StatementActivity;
+import com.example.androidcodingtest.statements.StatementActivity;
 import com.example.androidcodingtest.models.Error;
 import com.example.androidcodingtest.models.UserAccount;
 

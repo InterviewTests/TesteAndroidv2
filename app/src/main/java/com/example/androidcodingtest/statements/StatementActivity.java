@@ -1,4 +1,4 @@
-package com.example.androidcodingtest.Statements;
+package com.example.androidcodingtest.statements;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.androidcodingtest.Login.LoginActivity;
+import com.example.androidcodingtest.login.LoginActivity;
 import com.example.androidcodingtest.R;
 import com.example.androidcodingtest.models.Statement;
 import com.example.androidcodingtest.models.UserAccount;
