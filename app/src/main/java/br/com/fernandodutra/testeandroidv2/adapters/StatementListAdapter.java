@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
+
 import br.com.fernandodutra.testeandroidv2.R;
 import br.com.fernandodutra.testeandroidv2.models.StatementList;
-import br.com.fernandodutra.testeandroidv2.models.StatementListResponse;
-
-import java.text.NumberFormat;
+import br.com.fernandodutra.testeandroidv2.models.StatementListWorker;
 
 /**
  * Created by Fernando Dutra
@@ -22,7 +22,7 @@ import java.text.NumberFormat;
  */
 public class StatementListAdapter extends RecyclerView.Adapter<StatementListAdapter.StatementListHolder> {
 
-    private StatementListResponse statementListsModel = new StatementListResponse();
+    private StatementListWorker statementListWorker = new StatementListWorker();
 
     @NonNull
     @Override
@@ -33,32 +33,24 @@ public class StatementListAdapter extends RecyclerView.Adapter<StatementListAdap
 
     @Override
     public void onBindViewHolder(@NonNull StatementListHolder statementListHolder, int i) {
-        StatementList statementList = statementListsModel.getStatementList().get(i);
-
-        String dataFormated = statementList.getDate().substring(8,10) + "/" +
-                      statementList.getDate().substring(5,7) + "/" +
-                      statementList.getDate().substring(0,4);
-
-        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
-        String valueFormated = numberFormat.format(statementList.getValue());
-
+        StatementList statementList = statementListWorker.getStatementList().get(i);
         statementListHolder.tv_title.setText(statementList.getTitle());
         statementListHolder.tv_desc.setText(statementList.getDesc());
-        statementListHolder.tv_date.setText(dataFormated);
-        statementListHolder.tv_value.setText(valueFormated);
+        statementListHolder.tv_date.setText(statementList.getDate());
+        statementListHolder.tv_value.setText(statementList.getFormatedValue());
     }
 
     @Override
     public int getItemCount() {
-        return statementListsModel.getStatementList().size();
+        return statementListWorker.getStatementList().size();
     }
 
-    public void setStatementListsModel(StatementListResponse statementListsModel) {
-        this.statementListsModel = statementListsModel;
+    public void setStatementListsModel(StatementListWorker statementListWorker) {
+        this.statementListWorker = statementListWorker;
         notifyDataSetChanged();
     }
 
-    class StatementListHolder extends RecyclerView.ViewHolder {
+    public class StatementListHolder extends RecyclerView.ViewHolder {
         private TextView tv_title;
         private TextView tv_desc;
         private TextView tv_date;

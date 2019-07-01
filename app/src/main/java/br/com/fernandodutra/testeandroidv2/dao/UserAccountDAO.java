@@ -25,6 +25,6 @@ public interface UserAccountDAO<T> {
 
     ArrayList<HMAux> findList() throws SQLException;
 
-    long nextID() throws SQLException;
+    int nextID() throws SQLException;
 
 }

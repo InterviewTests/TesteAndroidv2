@@ -34,4 +34,8 @@ public class Constants {
     public static final String STATEMENT_DATE = "date";
     public static final String STATEMENT_VALUE = "value";
 
+    // LOGIN ACTIVITY
+    public static final String LOGIN_MESSAGE = "login";
+
+
 }

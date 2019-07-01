@@ -1,7 +1,6 @@
-package br.com.fernandodutra.testeandroidv2.activities;
+package br.com.fernandodutra.testeandroidv2.activities.statementList;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,54 +10,76 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.text.NumberFormat;
 
 import br.com.fernandodutra.testeandroidv2.R;
 import br.com.fernandodutra.testeandroidv2.adapters.StatementListAdapter;
-import br.com.fernandodutra.testeandroidv2.models.StatementListResponse;
+import br.com.fernandodutra.testeandroidv2.models.StatementList;
+import br.com.fernandodutra.testeandroidv2.models.StatementListWorker;
 import br.com.fernandodutra.testeandroidv2.models.UserAccount;
 import br.com.fernandodutra.testeandroidv2.utils.Constants;
-
-import java.text.NumberFormat;
 
 /**
  * Created by Fernando Dutra
  * User: Fernando Dutra
- * Date: 19/06/2019
- * Time: 12:29
- * TesteAndroidv2
+ * Date: 27/06/2019
+ * Time: 20:01
+ * TesteAndroidv2_CleanCode
  */
-public class StatementListActivity extends AppCompatActivity implements StatementListContract.View {
+
+interface StatementListActivityInput {
+    void displayLoginMetaData(StatementListViewModel statementListViewModel);
+}
+
+public class StatementListActivity extends AppCompatActivity implements StatementListActivityInput {
 
     private Context context;
     private TextView et_name;
     private TextView et_accountagency;
     private TextView et_balance;
     private Button btn_close;
-
+    //
+    StatementListInteractorInput statementListInteractorInput;
+    StatementListRouter statementListRouter;
+    StatementListWorker statementListWorker;
+    //
     private RecyclerView rv_statement;
     private StatementListAdapter statementListAdapter;
-    private StatementListContract.Presenter statementListPresenter;
-
-    private Integer userId;
+    //
+    private UserAccount userAccount;
+    //
+    public static String TAG = StatementList.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.statementlist_activity);
 
+        StatementListConfigurator.INSTANCE.configure(this);
+
         setupComponents();
         setupActions();
         setupParameters();
+
+        fetchStatementListMetaData();
+    }
+
+    private void fetchStatementListMetaData() {
+        statementListInteractorInput.fetchStatementListMetaData(userAccount.getUserId());
+    }
+
+    private void setupStatementListAdapterView() {
+        statementListAdapter = new StatementListAdapter();
+
+        rv_statement.setLayoutManager(new LinearLayoutManager(this));
+        rv_statement.setHasFixedSize(true);
+        rv_statement.setAdapter(statementListAdapter);
+        statementListAdapter.setStatementListsModel(statementListWorker);
     }
 
     private void setupParameters() {
-        userId = (Integer) getIntent().getSerializableExtra(Constants.USERACCOUNT_USERID);
-
-        statementListPresenter = new StatementListPresenter(this, new StatementListModel(), new UserAccountModel(context));
-        statementListPresenter.getStatementList(userId);
-
-        UserAccount userAccount = statementListPresenter.findUserAccount(userId);
+        userAccount = (UserAccount) getIntent().getSerializableExtra(Constants.USERACCOUNT_USERID);
 
         if (userAccount != null) {
             NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
@@ -74,6 +95,15 @@ public class StatementListActivity extends AppCompatActivity implements Statemen
         btn_close.setOnClickListener(setOnClickListenerClose());
     }
 
+    private View.OnClickListener setOnClickListenerClose() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                returnLogin();
+            }
+        };
+    }
+
     private void setupComponents() {
         context = StatementListActivity.this;
 
@@ -85,44 +115,11 @@ public class StatementListActivity extends AppCompatActivity implements Statemen
         rv_statement = findViewById(R.id.statement_activity_rv_statement);
     }
 
-    private View.OnClickListener setOnClickListenerClose() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                returnLogin();
-            }
-        };
-    }
-
     @Override
-    public void setStatementListResponseToRecyclerView(StatementListResponse statementListResponse) {
-        statementListAdapter = new StatementListAdapter();
+    public void displayLoginMetaData(StatementListViewModel statementListViewModel) {
+        this.statementListWorker = statementListViewModel.statementListWorker;
 
-        rv_statement.setLayoutManager(new LinearLayoutManager(this));
-        rv_statement.setHasFixedSize(true);
-        rv_statement.setAdapter(statementListAdapter);
-        statementListAdapter.setStatementListsModel(statementListResponse);
-    }
-
-    public StatementListAdapter getStatementListAdapter(){
-        return this.statementListAdapter;
-    }
-
-    @Override
-    public void onResponseFailure(Throwable t) {
-        Toast.makeText(this, getString(R.string.communication_error), Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void returnLogin() {
-        Intent intent = new Intent(getBaseContext(), UserAccountActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    @Override
-    public void showMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        setupStatementListAdapterView();
     }
 
     @Override
@@ -139,5 +136,9 @@ public class StatementListActivity extends AppCompatActivity implements Statemen
     @Override
     public void onBackPressed() {
         returnLogin();
+    }
+
+    private void returnLogin() {
+        statementListRouter.loginRouterInput();
     }
 }

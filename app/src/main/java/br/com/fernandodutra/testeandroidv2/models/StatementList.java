@@ -3,6 +3,8 @@ package br.com.fernandodutra.testeandroidv2.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Fernando Dutra
  * User: Fernando Dutra
@@ -10,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
  * Time: 11:32
  * TesteAndroidv2
  */
-public class StatementList {
+public class StatementList implements Serializable {
 
     @SerializedName("title")
     @Expose
@@ -24,12 +26,25 @@ public class StatementList {
     @SerializedName("value")
     @Expose
     private Double value;
+    private String formatedValue;
+
+    public StatementList() {
+
+    }
 
     public StatementList(String title, String desc, String date, Double value) {
         this.title = title;
         this.desc = desc;
         this.date = date;
         this.value = value;
+    }
+
+    public StatementList(String title, String desc, String date, Double value, String formatedValue) {
+        this.title = title;
+        this.desc = desc;
+        this.date = date;
+        this.value = value;
+        this.formatedValue = formatedValue;
     }
 
     public String getTitle() {
@@ -62,5 +77,13 @@ public class StatementList {
 
     public void setValue(Double value) {
         this.value = value;
+    }
+
+    public String getFormatedValue() {
+        return formatedValue;
+    }
+
+    public void setFormatedValue(String formatedValue) {
+        this.formatedValue = formatedValue;
     }
 }

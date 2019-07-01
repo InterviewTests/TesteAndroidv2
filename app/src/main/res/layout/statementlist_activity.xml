@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/statement_activity_ll_layout"
     android:orientation="vertical">
 
     <LinearLayout
@@ -46,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Conta"
+                android:id="@+id/statement_activity_tv_conta"
                 android:textColor="@color/cardview_light_background"
                 android:textSize="12dp" />
 
@@ -105,9 +107,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
-        tools:listitem="@layout/statement_item">
-
-
-    </android.support.v7.widget.RecyclerView>
+        tools:listitem="@layout/statement_item"/>
 
 </LinearLayout>

@@ -12,7 +12,7 @@ import java.io.Serializable;
  * Time: 11:31
  * TesteAndroidv2
  */
-public class UserAccountResponse implements Serializable {
+public class UserAccountWorker implements Serializable {
 
     @SerializedName("userAccount")
     @Expose

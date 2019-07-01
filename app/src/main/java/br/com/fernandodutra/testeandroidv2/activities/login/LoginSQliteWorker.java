@@ -1,70 +1,59 @@
-package br.com.fernandodutra.testeandroidv2.activities;
+package br.com.fernandodutra.testeandroidv2.activities.login;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
-import br.com.fernandodutra.testeandroidv2.api.ClientAPI;
-import br.com.fernandodutra.testeandroidv2.api.InterfaceAPI;
-import br.com.fernandodutra.testeandroidv2.dao.UserAccountDAO;
-import br.com.fernandodutra.testeandroidv2.dao.UserAccountDAOLiter;
-import br.com.fernandodutra.testeandroidv2.models.Login;
-import br.com.fernandodutra.testeandroidv2.models.UserAccount;
-import br.com.fernandodutra.testeandroidv2.models.UserAccountResponse;
-
 import java.sql.SQLException;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+
+import br.com.fernandodutra.testeandroidv2.dao.UserAccountDAO;
+import br.com.fernandodutra.testeandroidv2.dao.UserAccountDAOLiter;
+
+import br.com.fernandodutra.testeandroidv2.models.UserAccount;
+
 
 /**
  * Created by Fernando Dutra
  * User: Fernando Dutra
- * Date: 23/06/2019
- * Time: 15:23
- * TesteAndroidv2
+ * Date: 27/06/2019
+ * Time: 10:20
+ * TesteAndroidv2_CleanCode
  */
-public class UserAccountModel implements UserAccountContract.Model {
+interface LoginSQliteInput {
+    void insert(UserAccount userAccount);
 
+    void update(UserAccount userAccount);
+
+    void delete(UserAccount userAccount);
+
+    UserAccount findById(int userId);
+
+    int nextID();
+}
+
+public class LoginSQliteWorker implements LoginSQliteInput {
+
+    private Context context;
     private UserAccountDAO<UserAccount> userAccountDAO;
 
-    public UserAccountModel(Context context) {
+    public LoginSQliteWorker(Context context) {
+        this.context = context;
         userAccountDAO = new UserAccountDAOLiter(context);
     }
 
     @Override
-    public void getUserAccount(final OnFinished onFinishedListener, Login login) {
-        InterfaceAPI apiService =
-                ClientAPI.getClient().create(InterfaceAPI.class);
-
-        Call<UserAccountResponse> call = apiService.getUserAccount(login);
-        call.enqueue(new Callback<UserAccountResponse>() {
-            @Override
-            public void onResponse(Call<UserAccountResponse> call, Response<UserAccountResponse> response) {
-                UserAccountResponse userAccountResponse = response.body();
-                onFinishedListener.onFinished(userAccountResponse);
-            }
-
-            @Override
-            public void onFailure(Call<UserAccountResponse> call, Throwable t) {
-                onFinishedListener.onFailure(t);
-            }
-        });
-    }
-
-    @Override
     public void insert(UserAccount userAccount) {
-        new UserAccountModel.InsertUserAccountAsyncTask(userAccountDAO).execute(userAccount);
+        new InsertUserAccountAsyncTask(userAccountDAO).execute(userAccount);
     }
 
     @Override
     public void update(UserAccount userAccount) {
-        new UserAccountModel.UpdateUserAccountAsyncTask(userAccountDAO).execute(userAccount);
+        new UpdateUserAccountAsyncTask(userAccountDAO).execute(userAccount);
     }
 
     @Override
     public void delete(UserAccount userAccount) {
-        new UserAccountModel.DeleteUserAccountAsyncTask(userAccountDAO).execute(userAccount);
+        new DeleteUserAccountAsyncTask(userAccountDAO).execute(userAccount);
     }
 
     @Override
@@ -76,6 +65,17 @@ public class UserAccountModel implements UserAccountContract.Model {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public int nextID() {
+        try {
+            int nextID = userAccountDAO.nextID();
+            return nextID;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     public static class InsertUserAccountAsyncTask extends AsyncTask<UserAccount, Void, Void> {
@@ -144,4 +144,6 @@ public class UserAccountModel implements UserAccountContract.Model {
             return null;
         }
     }
+
+
 }

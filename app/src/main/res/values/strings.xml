@@ -9,4 +9,13 @@
     <string name="login_notfound_code_53">Erro: Login Usuário ou senha incorreta.</string>
     <string name="communication_error">Erro: Falha de comunicação com o servidores.</string>
 
+    // Permissions
+    <string name="permissions_internet">Permissão: Permite que aplicativos abram sockets de rede.</string>
+    <string name="permissions_access_network_state">Permissão: Permite que aplicativos acessem informações sobre redes.</string>
+    <string name="permissions_write_external_storage">Permissão: Acesso a Conexão de Internet.</string>
+    <string name="permissions_read_external_storage">Permissão: Acesso a Conexão de Internet.</string>
+
+    // Activities
+    <string name="text_login_successful">Login Successful</string>
+
 </resources>

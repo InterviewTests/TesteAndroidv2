@@ -12,7 +12,7 @@ import java.util.List;
  * Time: 11:31
  * TesteAndroidv2
  */
-public class StatementListResponse {
+public class StatementListWorker {
 
     @SerializedName("statementList")
     @Expose

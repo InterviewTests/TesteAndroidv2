@@ -3,6 +3,8 @@ package br.com.fernandodutra.testeandroidv2.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Fernando Dutra
  * User: Fernando Dutra
@@ -10,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
  * Time: 11:31
  * TesteAndroidv2
  */
-public class UserAccount {
+public class UserAccount implements Serializable {
 
     @SerializedName("userId")
     @Expose
@@ -27,6 +29,17 @@ public class UserAccount {
     @SerializedName("balance")
     @Expose
     private Double balance;
+
+    public UserAccount() {
+    }
+
+    public UserAccount(Integer userId, String name, String bankAccount, String agency, Double balance) {
+        this.userId = userId;
+        this.name = name;
+        this.bankAccount = bankAccount;
+        this.agency = agency;
+        this.balance = balance;
+    }
 
     public Integer getUserId() {
         return userId;

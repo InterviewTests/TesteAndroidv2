@@ -1,9 +1,8 @@
 package br.com.fernandodutra.testeandroidv2.api;
 
+import br.com.fernandodutra.testeandroidv2.models.StatementListWorker;
+import br.com.fernandodutra.testeandroidv2.models.UserAccountWorker;
 import br.com.fernandodutra.testeandroidv2.models.Login;
-import br.com.fernandodutra.testeandroidv2.models.StatementListResponse;
-import br.com.fernandodutra.testeandroidv2.models.UserAccountResponse;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -20,8 +19,8 @@ import retrofit2.http.Url;
 public interface InterfaceAPI {
 
     @POST("/api/login")
-    Call<UserAccountResponse> getUserAccount(@Body Login login);
+    Call<UserAccountWorker> getUserAccount(@Body Login login);
 
     @GET
-    Call<StatementListResponse> getStatementList(@Url String url);
+    Call<StatementListWorker> getStatementList(@Url String url);
 }

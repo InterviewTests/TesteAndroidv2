@@ -140,8 +140,8 @@ public class UserAccountDAOLiter extends DAO implements UserAccountDAO<UserAccou
     }
 
     @Override
-    public long nextID() throws SQLException {
-        long nextUserId = -1L;
+    public int nextID() throws SQLException {
+        int nextUserId = -1;
         //
         openDataBase();
         //
@@ -153,7 +153,7 @@ public class UserAccountDAOLiter extends DAO implements UserAccountDAO<UserAccou
             cursor = db.rawQuery(sqlQuery, null);
 
             while (cursor.moveToNext()) {
-                nextUserId = cursor.getLong(cursor.getColumnIndex("userId"));
+                nextUserId = cursor.getInt(cursor.getColumnIndex("userId"));
             }
 
             cursor.close();
