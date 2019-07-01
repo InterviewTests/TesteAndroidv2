@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context=".login.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -37,7 +37,8 @@
             android:layout_height="wrap_content"
             android:hint="Email ou CPF"
             android:maxLines="1"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            android:singleLine="true"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -60,7 +61,8 @@
             android:ems="10"
             android:hint="Senha"
             android:inputType="textPassword"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            android:singleLine="true"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
