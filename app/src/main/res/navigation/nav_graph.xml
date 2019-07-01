@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/loginFragment">
+
+    <fragment android:id="@+id/loginFragment"
+              android:name="io.github.maikotrindade.bankapp.login.LoginFragment"
+              android:label="LoginFragment"/>
+
+    <fragment android:id="@+id/statementListFragment"
+              android:name="io.github.maikotrindade.bankapp.statement.ui.StatementListFragment"
+              android:label="StatementListFragment"/>
+
+</navigation>

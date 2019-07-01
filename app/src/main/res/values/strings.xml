@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">BankApp</string>
+    <string name="login_user">User</string>
+    <string name="login_password">Password</string>
+    <string name="login">Login</string>
+    <string name="bank_app_logo">Bank app logo</string>
+
+    <string name="error_invalid_email">Invalid e-mail</string>
+    <string name="error_invalid_password">Invalid password</string>
+    <string name="error_signin">It was not possible to sign in</string>
+
 </resources>
