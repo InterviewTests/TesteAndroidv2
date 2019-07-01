@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">AndroidCodingTest</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="invalid_user">Invalid user.</string>
+    <string name="invalid_password">Invalid password</string>
+    <string name="wait_dialog_message">Loading</string>
+    <string name="default_error">An error occurred.</string>
+    <string name="bank_account">Bank Account</string>
+    <string name="balance">Balance</string>
+    <string name="recent">Recent</string>
+    <string name="fail_to_load_statements">Erro ao carregar os lançamentos</string>
+    <string name="prefFile">PrefFileBankApp#</string>
+</resources>
