@@ -42,7 +42,29 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         });
     }
 
-    //    public void loginUser() {
+    private void loadUI() {
+        editTextUser = findViewById (R.id.edit_text_user);
+        editTextPassword = findViewById (R.id.edit_text_password);
+        buttonLogin = findViewById (R.id.button_login);
+    }
+
+    @Override
+    public void showToast(String s) {
+        Toast.makeText (this, s, Toast.LENGTH_LONG).show ();
+    }
+
+    @Override
+    public void showUserInfo(UserAccountLogin userAccountLogin) {
+        Intent i = new Intent (getApplicationContext (), BankPaymentsActivity.class);
+        i.putExtra ("keyLogin", userAccountLogin);
+        startActivity (i);
+        finish ();
+    }
+
+}
+
+
+//    public void loginUser() {
 //        Retrofit retrofit = new Retrofit.Builder ()
 //                .baseUrl (ApiService.BASE_URL)
 //                .addConverterFactory (GsonConverterFactory.create ())
@@ -77,23 +99,3 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 //            }
 //        });
 //    }
-    private void loadUI() {
-        editTextUser = findViewById (R.id.edit_text_user);
-        editTextPassword = findViewById (R.id.edit_text_password);
-        buttonLogin = findViewById (R.id.button_login);
-    }
-
-    @Override
-    public void showToast(String s) {
-        Toast.makeText (this, s, Toast.LENGTH_LONG).show ();
-    }
-
-    @Override
-    public void showUserInfo(UserAccountLogin userAccountLogin) {
-        Intent i = new Intent (getApplicationContext (), BankPaymentsActivity.class);
-        i.putExtra ("keyLogin", userAccountLogin);
-        startActivity (i);
-        finish ();
-    }
-
-}

@@ -13,15 +13,8 @@ import android.widget.Toast;
 import com.example.santandertestebank.R;
 import com.example.santandertestebank.model.models.ObjectsStatements;
 import com.example.santandertestebank.model.models.UserAccountLogin;
-import com.example.santandertestebank.model.service.ApiService;
 import com.example.santandertestebank.ui.adapter.AdapterBankPayments;
 import com.example.santandertestebank.ui.login.LoginActivity;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BankPaymentsActivity extends AppCompatActivity implements BankPaymentsContract.View {
 
@@ -42,8 +35,14 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
         getSupportActionBar ().hide ();
 
         loadUI ();
-        bringList ();
-        showUserInfos ();
+        presenter = new BankPaymentsPresenter (this);
+//        bringList ();
+
+        UserAccountLogin userAccountLogin =
+                (UserAccountLogin) getIntent ().getSerializableExtra ("keyLogin");
+        presenter.bringStatements (userAccountLogin.getUserId ());
+
+        showUserMainInfos ();
         imageViewLogout.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
@@ -52,7 +51,7 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
         });
     }
 
-    private void showUserInfos() {
+    private void showUserMainInfos() {
         UserAccountLogin userAccount =
                 (UserAccountLogin) getIntent ().getSerializableExtra ("keyLogin");
 
@@ -61,47 +60,7 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
         textViewAccountBalance.setText (String.valueOf (userAccount.getAccountBalance ()));
     }
 
-    public void bringList() {
-        Retrofit retrofit = new Retrofit.Builder ()
-                .baseUrl (ApiService.BASE_URL)
-                .addConverterFactory (GsonConverterFactory.create ())
-                .build ();
-
-        ApiService service = retrofit.create (ApiService.class);
-        final Call<ObjectsStatements> requestStatements = service.bringStatements (3);
-
-        requestStatements.enqueue (new Callback<ObjectsStatements> () {
-            @Override
-            public void onResponse(Call<ObjectsStatements> call, Response<ObjectsStatements> response) {
-                if (!response.isSuccessful ()) {
-                    Toast.makeText (getApplicationContext (), "Erro: " + response.code (),
-                            Toast.LENGTH_LONG).show ();
-                } else {
-
-                    ObjectsStatements statements = response.body ();
-
-                    if (statements != null) {
-                        adapter = new AdapterBankPayments (statements.getPaymentsStatements ());
-
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager
-                                (getApplicationContext ());
-                        recyclerViewPayments.setLayoutManager (layoutManager);
-                        recyclerViewPayments.setHasFixedSize (true);
-                        recyclerViewPayments.setAdapter (adapter);
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ObjectsStatements> call, Throwable t) {
-                Toast.makeText (getApplicationContext (), "Erro: " + t.getMessage (),
-                        Toast.LENGTH_LONG).show ();
-            }
-        });
-
-    }
-
-    private void logoutApp() {
+    public void logoutApp() {
         Intent intent = new Intent (this, LoginActivity.class);
         startActivity (intent);
         finish ();
@@ -115,4 +74,59 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
         recyclerViewPayments = findViewById (R.id.recycler_view_payments);
     }
 
+    @Override
+    public void showToast(String s) {
+        Toast.makeText (this, s, Toast.LENGTH_LONG).show ();
+    }
+
+    @Override
+    public void showUserinfos(ObjectsStatements statements) {
+        adapter = new AdapterBankPayments (statements.getPaymentsStatements ());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager
+                (getApplicationContext ());
+        recyclerViewPayments.setLayoutManager (layoutManager);
+        recyclerViewPayments.setHasFixedSize (true);
+        recyclerViewPayments.setAdapter (adapter);
+    }
+
 }
+
+
+//    public void bringList() {
+//        Retrofit retrofit = new Retrofit.Builder ()
+//                .baseUrl (ApiService.BASE_URL)
+//                .addConverterFactory (GsonConverterFactory.create ())
+//                .build ();
+//
+//        ApiService service = retrofit.create (ApiService.class);
+//        final Call<ObjectsStatements> requestStatements = service.bringStatements (3);
+//
+//        requestStatements.enqueue (new Callback<ObjectsStatements> () {
+//            @Override
+//            public void onResponse(Call<ObjectsStatements> call, Response<ObjectsStatements> response) {
+//                if (!response.isSuccessful ()) {
+//                    Toast.makeText (getApplicationContext (), "Erro: " + response.code (),
+//                            Toast.LENGTH_LONG).show ();
+//                } else {
+//
+//                    ObjectsStatements statements = response.body ();
+//
+//                    if (statements != null) {
+//                        adapter = new AdapterBankPayments (statements.getPaymentsStatements ());
+//
+//                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager
+//                                (getApplicationContext ());
+//                        recyclerViewPayments.setLayoutManager (layoutManager);
+//                        recyclerViewPayments.setHasFixedSize (true);
+//                        recyclerViewPayments.setAdapter (adapter);
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ObjectsStatements> call, Throwable t) {
+//                Toast.makeText (getApplicationContext (), "Erro: " + t.getMessage (),
+//                        Toast.LENGTH_LONG).show ();
+//            }
+//        });
+//
