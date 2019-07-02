@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">testeSantander</string>
     <string name="login">Login</string>
+    <string name="recente">Recentes</string>
     <style name="password">Senha</style>
     <style name="username">Email ou CPF</style>
 </resources>

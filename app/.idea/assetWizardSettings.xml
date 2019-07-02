@@ -101,8 +101,8 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="iconShape" value="NONE" />
-                                      <entry key="imageAsset" value="C:\Users\resource\Documents\testeSantander\TesteAndroidv2\bank_app_layout\assets\Logo.png" />
-                                      <entry key="outputName" value="ic_bank" />
+                                      <entry key="imageAsset" value="C:\Users\resource\Documents\testeSantander\TesteAndroidv2\bank_app_layout\assets\logout 2.png" />
+                                      <entry key="outputName" value="ic_exit" />
                                     </map>
                                   </option>
                                 </PersistentState>

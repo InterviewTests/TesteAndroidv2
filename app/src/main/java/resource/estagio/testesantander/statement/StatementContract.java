@@ -8,12 +8,17 @@ public class StatementContract {
     public interface View{
 
         Context getActivity();
+
         void showList(List<Statement> statementList);
+
+        void navigateToLogin();
 
 
     }
     public interface Presenter{
         void getStatement(long id);
+
+        void showDialogExit();
 
     }
 }

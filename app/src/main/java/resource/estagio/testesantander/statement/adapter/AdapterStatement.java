@@ -1,5 +1,6 @@
 package resource.estagio.testesantander.statement.adapter;
 
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import resource.estagio.testesantander.statement.Statement;
 
 public class AdapterStatement extends RecyclerView.Adapter<AdapterStatement.ViewHolder> {
     List<Statement> list;
+    public static final String Helvetica_Neue_Light = "HelveticaNeue-Light.otf";
 
     public AdapterStatement(List<Statement> list) {
         this.list = list;
@@ -59,10 +61,18 @@ public class AdapterStatement extends RecyclerView.Adapter<AdapterStatement.View
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            Typeface font = Typeface.createFromAsset(itemView.getContext().getAssets(), Helvetica_Neue_Light );
             pagamento = itemView.findViewById(R.id.title);
             conta = itemView.findViewById(R.id.desc);
             data = itemView.findViewById(R.id.date);
             valor = itemView.findViewById(R.id.value);
+
+            pagamento.setTypeface(font);
+            conta.setTypeface(font);
+            data.setTypeface(font);
+            valor.setTypeface(font);
         }
+
     }
+
 }

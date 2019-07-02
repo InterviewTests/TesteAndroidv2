@@ -2,14 +2,14 @@ package resource.estagio.testesantander.login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.util.regex.Matcher;
 
 import resource.estagio.testesantander.R;
 import resource.estagio.testesantander.model.User;
@@ -17,9 +17,14 @@ import resource.estagio.testesantander.statement.StatementActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
-    public static final String Helvetica_Neue_Light = "helvetica_neue_light.otf";
+    public static final String Helvetica_Neue_Light = "HelveticaNeue-Light.otf";
+    public static final String LoginPreferences = "LoginPreferences" ;
+
+
+
     private Button botao;
     private EditText username, password;
+    private TextInputLayout textInputLayout, textInputLayout2;
 
     public LoginContract.Presenter presenter;
     private LoginResponse loginResponse;
@@ -30,11 +35,20 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        textInputLayout = findViewById(R.id.textInputLayout);
+        textInputLayout2 = findViewById(R.id.textInputLayout2);
+
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         botao = findViewById(R.id.buttonSignUp);
         presenter = new LoginPresenter(this);
         setFonts();
+
+        //Shared Preferences
+        final SharedPreferences sharedPreferences = getSharedPreferences(LoginPreferences, Context.MODE_PRIVATE);
+        String strusername = sharedPreferences.getString("username", "");
+        username.setText(strusername);
+
 
         username.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -54,14 +68,17 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         });
 
 
-        //userSign();
-
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (presenter.validPassword(password.getText().toString())) {
                     presenter.login(username.getText().toString(), password.getText().toString());
                 }
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("username", username.getText().toString());
+                editor.commit();
+
+
 
             }
         });
@@ -79,6 +96,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         Intent intent = new Intent(LoginActivity.this, StatementActivity.class);
         intent.putExtra("user", user);
         startActivity(intent);
+        finish();
         //saveLogin(user.getName());
 
     }
@@ -111,6 +129,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         username.setTypeface(font);
         password.setTypeface(font);
         botao.setTypeface(font);
+        textInputLayout.setTypeface(font);
+        textInputLayout2.setTypeface(font);
     }
 
 
