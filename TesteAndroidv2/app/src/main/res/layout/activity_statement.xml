@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/statement_background_color"
+    tools:context=".Statement.View.StatementActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_statement_infos"
+        android:layout_width="match_parent"
+        android:layout_height="232dp"
+        android:background="@color/bank_blue"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_statement_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="18dp"
+            android:fontFamily="@font/helvetica_neue_light"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toStartOf="@+id/ib_statement_logout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Jose da Silva Teste" />
+
+        <ImageButton
+            android:id="@+id/ib_statement_logout"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="13dp"
+            android:background="@drawable/logout"
+            android:contentDescription="@string/logoutButtonDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_statement_account"
+            android:layout_width="47dp"
+            android:layout_height="13dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/helvetica_neue_med"
+            android:text="@string/Account"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_statement_name" />
+
+        <TextView
+            android:id="@+id/tv_statement_account_number"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="18dp"
+            android:fontFamily="@font/helvetica_neue_light"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_statement_account"
+            tools:text="2050 / 01.111222-4" />
+
+        <TextView
+            android:id="@+id/tv_statement_balance"
+            android:layout_width="47dp"
+            android:layout_height="13dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/helvetica_neue_med"
+            android:text="@string/Balance"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_statement_account_number" />
+
+        <TextView
+            android:id="@+id/tv_statement_balance_value"
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="18dp"
+            android:fontFamily="@font/helvetica_neue_light"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_statement_balance"
+            tools:text="R$1.000,00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_statement_recent"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/helvetica_neue_med"
+        android:text="@string/Recents"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_statement_infos" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_statement"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_statement_recent"
+        tools:listitem="@layout/statement_transaction_line" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TesteAndroidv2</string>
+    <string name="User">User</string>
+    <string name="useraccount">useraccount</string>
+    <string name="Login">Login</string>
+    <string name="Password">Password</string>
+    <string name="Account">Conta</string>
+    <string name="Balance">Saldo</string>
+    <string name="Recents">Recentes</string>
+    <string name="mainLogoDescription">Símbolo escrito Bank com fundo azul</string>
+    <string name="logoutButtonDescription">Botão logout</string>
+</resources>

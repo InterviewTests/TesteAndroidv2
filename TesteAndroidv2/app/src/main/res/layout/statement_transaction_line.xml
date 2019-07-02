@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/ic_statement_border">
+
+    <TextView
+        android:id="@+id/tv_transaction_title"
+        android:layout_width="120dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/helvetica_neue_med"
+        android:textColor="@color/text_gray"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Pagamento" />
+
+    <TextView
+        android:id="@+id/tv_transaction_description"
+        android:layout_width="120dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/helvetica_neue_med"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Conta de luz" />
+
+    <TextView
+        android:id="@+id/tv_transaction_date"
+        android:layout_width="117dp"
+        android:layout_height="14dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="14dp"
+        android:fontFamily="@font/helvetica_neue_med"
+        android:textAlignment="textEnd"
+        android:textColor="@color/text_gray"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="12/12/2018" />
+
+    <TextView
+        android:id="@+id/tv_transaction_value"
+        android:layout_width="184dp"
+        android:layout_height="23dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/helvetica_neue_light"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="R$1.000,00" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
