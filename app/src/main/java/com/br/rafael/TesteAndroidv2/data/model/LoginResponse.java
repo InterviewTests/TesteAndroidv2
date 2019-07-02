@@ -53,6 +53,11 @@ public class LoginResponse implements Parcelable {
         return error;
     }
 
+    public void setLogin(Login login) {
+        this.login = login;
+    }
 
-
+    public void setError(Error error) {
+        this.error = error;
+    }
 }

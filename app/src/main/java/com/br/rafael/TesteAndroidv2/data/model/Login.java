@@ -67,6 +67,26 @@ public class Login implements Parcelable {
         return balance;
     }
 
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    public void setAgency(String agency) {
+        this.agency = agency;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
+    }
+
     @Override
     public int describeContents() {
         return 0;

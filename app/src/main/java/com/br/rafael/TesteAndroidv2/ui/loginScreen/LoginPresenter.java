@@ -1,4 +1,4 @@
-package com.br.rafael.TesteAndroidv2.ui.loginScreen;
+package com.br.rafael.TesteAndroidv2.loginScreen;
 
 import com.br.rafael.TesteAndroidv2.data.model.LoginResponse;
 

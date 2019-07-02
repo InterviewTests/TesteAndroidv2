@@ -1,4 +1,4 @@
-package com.br.rafael.TesteAndroidv2.ui.loginScreen;
+package com.br.rafael.TesteAndroidv2.loginScreen;
 
 import java.lang.ref.WeakReference;
 

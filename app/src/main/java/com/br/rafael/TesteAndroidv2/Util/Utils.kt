@@ -27,7 +27,7 @@ class Utils {
         fun formatAgencyAccount(agency: String, bank: String): String {
 
 
-            var bankFormat = bank.substring(0, 2) + "" + bank.substring(2, bank.length - 1) + "-" + bank.substring(bank.length - 1)
+            var bankFormat = bank.substring(0, 2) + "." + bank.substring(2, bank.length - 1) + "-" + bank.substring(bank.length - 1)
 
 
             return "$agency / $bankFormat"

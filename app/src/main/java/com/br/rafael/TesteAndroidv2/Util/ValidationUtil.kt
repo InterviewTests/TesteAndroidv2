@@ -7,10 +7,9 @@ class ValidationUtil {
 
     companion object{
 
-        fun isCPF(CPF: String): Boolean {
-            var CPF = CPF
+        fun isCPF(doc: String): Boolean {
 
-            CPF = removeCaracteresEspeciais(CPF)
+           var CPF = doc.replace(".", "").replace("-", "")
 
             if (CPF == "00000000000" || CPF == "11111111111" || CPF == "22222222222" || CPF == "33333333333" || CPF == "44444444444" || CPF == "55555555555" || CPF == "66666666666" || CPF == "77777777777" || CPF == "88888888888" || CPF == "99999999999" || CPF.length != 11)
                 return false
@@ -66,20 +65,6 @@ class ValidationUtil {
                 return false
             }
 
-        }
-
-        fun removeCaracteresEspeciais(doc: String): String {
-            var doc = doc
-            if (doc.contains("")) {
-                doc = doc.replace("", "")
-            }
-            if (doc.contains("-")) {
-                doc = doc.replace("-", "")
-            }
-            if (doc.contains("/")) {
-                doc = doc.replace("/", "")
-            }
-            return doc
         }
 
         fun isValidEmail(target: CharSequence?): Boolean {
