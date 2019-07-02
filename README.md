@@ -18,5 +18,3 @@
 ### # DESAFIO:
 
 -	Acredito que desafio proposto foi concluído com sucesso, obrigado.                                                                       - Gostei bastante de realizar este teste, espero ter uma oportunidade de poder trabalhar com a família Santander.
-
-
