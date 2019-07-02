@@ -1,4 +1,5 @@
-package com.example.santanderapplication.data.network.model;
+package com.example.santanderapplication.data.model;
+
 
 public class LoginRequestModel {
 

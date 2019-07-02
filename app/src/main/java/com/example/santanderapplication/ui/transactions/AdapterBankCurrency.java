@@ -37,13 +37,13 @@ public class AdapterBankCurrency extends RecyclerView.Adapter<AdapterBankCurrenc
         StatementsModel statementsModel = statementsModelList.get( i );
         holder.textViewDateCurrency.setText(statementsModel.getDate()+"");
         holder.textViewTitleCurrency.setText( statementsModel.getTitle());
-        holder.textViewDescCurrency.setText( statementsModel.getDasc());
+        holder.textViewDescCurrency.setText( statementsModel.getDesc());
         holder.textViewValueCurrency.setText(statementsModel.getValue()+"");
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        return statementsModelList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{

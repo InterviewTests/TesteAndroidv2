@@ -1,7 +1,6 @@
-package com.example.santanderapplication.data.network.model;
+package com.example.santanderapplication.data.model;
 
 import com.example.santanderapplication.data.UserAccount;
-import com.example.santanderapplication.data.network.model.Error;
 
 public class LoginResponseModel {
 

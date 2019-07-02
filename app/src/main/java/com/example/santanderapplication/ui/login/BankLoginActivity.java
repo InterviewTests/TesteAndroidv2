@@ -16,6 +16,9 @@ import com.example.santanderapplication.service.IApiLogin;
 import com.example.santanderapplication.ui.transactions.BankCurrencyActivity;
 import com.example.santanderapplication.service.ServiceRetrofit;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,15 +37,8 @@ public class BankLoginActivity extends AppCompatActivity implements BankLoginCon
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_bank_login );
         loadIU();
+        login();
 
-
-        //SharedPreference
-        savePreferences();
-        SharedPreferences preferences = getSharedPreferences( USER_PREFERENCE, 0 );
-        String user = preferences.getString( "user","");
-        editTextLoginUser.setText( user );
-
-        //Presenter
         presenter = new BankLoginPresenter( this );
 
 
@@ -50,11 +46,26 @@ public class BankLoginActivity extends AppCompatActivity implements BankLoginCon
         @Override
         public void onClick(View v) {
 
+            savePreferences();
+            presenter.validateLogin( editTextLoginUser.getText().toString() ,
+                    editTextLoginPassword.getText().toString() );
+
+            if (!presenter.validatePassword( editTextLoginPassword.getText().toString() ))
+                return;
+            if(!presenter.validateUser( editTextLoginUser.getText().toString() ))
+                return;
+
+
+
             Intent intent = new Intent( BankLoginActivity.this ,
                     BankCurrencyActivity.class );
             startActivity( intent );
         }
     } );
+        SharedPreferences preferences = getSharedPreferences( USER_PREFERENCE, 0 );
+        String user = preferences.getString( "user","");
+        editTextLoginUser.setText( user );
+
 
     }
     public void loadIU(){
@@ -65,9 +76,11 @@ public class BankLoginActivity extends AppCompatActivity implements BankLoginCon
 
 
     //Consumo API
-    private void login (final LoginRequestModel loginRequestModel){
+    private void login (){
         IApiLogin apiLogin = ServiceRetrofit.createService( IApiLogin.class );
-        Call<LoginResponseModel> loginResponseModelCall = apiLogin.postLoginApi( loginRequestModel );
+        Call<LoginResponseModel> loginResponseModelCall = apiLogin.postLoginApi( new LoginRequestModel(
+                editTextLoginUser.getText().toString(), editTextLoginPassword.getText().toString()
+        ) );
         loginResponseModelCall.enqueue( new Callback<LoginResponseModel>() {
             @Override
             public void onResponse(Call<LoginResponseModel> call,
@@ -103,7 +116,7 @@ public class BankLoginActivity extends AppCompatActivity implements BankLoginCon
         } );
     }
 
-    //Método SharedPreference
+
     public void savePreferences(){
         SharedPreferences preferences = getSharedPreferences( USER_PREFERENCE, 0 );
         SharedPreferences.Editor editor = preferences.edit();
@@ -118,6 +131,6 @@ public class BankLoginActivity extends AppCompatActivity implements BankLoginCon
 
     @Override
     public void showMessage(String error) {
-        Toast.makeText( this, "Erro", Toast.LENGTH_SHORT ).show();
+        Toast.makeText( this, error, Toast.LENGTH_SHORT ).show();
     }
 }
