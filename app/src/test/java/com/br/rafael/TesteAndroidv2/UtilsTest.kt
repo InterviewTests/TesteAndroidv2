@@ -26,4 +26,16 @@ class UtilsTest {
 
         Assert.assertEquals(dataOutPut,result)
     }
+
+    @Test
+    fun sucess_formatAgencyAccount() {
+
+        val agency = "012314564"
+        val account = "2050"
+        val agencyAccountFormat = "2050 / 01.231456-4"
+        val result = Utils.formatAgencyAccount(agency,account)
+
+        Assert.assertEquals(result,agencyAccountFormat)
+
+    }
 }
