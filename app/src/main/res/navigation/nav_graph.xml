@@ -9,7 +9,7 @@
               android:label="LoginFragment"/>
 
     <fragment android:id="@+id/statementListFragment"
-              android:name="io.github.maikotrindade.bankapp.statement.ui.StatementListFragment"
+              android:name="io.github.maikotrindade.bankapp.statement.ui.StatementsListFragment"
               android:label="StatementListFragment"/>
 
 </navigation>

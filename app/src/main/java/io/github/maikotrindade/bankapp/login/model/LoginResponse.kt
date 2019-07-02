@@ -2,6 +2,7 @@ package io.github.maikotrindade.bankapp.login.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import io.github.maikotrindade.bankapp.base.network.Error
 
 data class LoginResponse(var userAccount: UserData?, var error: Error?)
 
@@ -38,8 +39,3 @@ data class UserData(
         writeDouble(balance)
     }
 }
-
-data class Error(
-    var code: Int,
-    var message: String
-)

@@ -36,10 +36,11 @@ class LoginWorker(val output: WeakReference<LoginInteractor>) : LoginWorkerInput
     }
 
     fun saveToSharedPreferences(userData: UserData) {
-        SharedPrefsUtil.save("name", userData.name)
-        SharedPrefsUtil.save("agency", userData.agency)
-        SharedPrefsUtil.save("bankAccount", userData.bankAccount)
-        SharedPrefsUtil.save("userid", userData.userId)
+        SharedPrefsUtil.save(SharedPrefsUtil.userId, userData.userId)
+        SharedPrefsUtil.save(SharedPrefsUtil.name, userData.name)
+        SharedPrefsUtil.save(SharedPrefsUtil.agency, userData.agency)
+        SharedPrefsUtil.save(SharedPrefsUtil.bankAccount, userData.bankAccount)
+        SharedPrefsUtil.save(SharedPrefsUtil.balance, userData.balance)
     }
 }
 

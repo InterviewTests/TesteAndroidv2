@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">BankApp</string>
     <string name="login_user">User</string>
     <string name="login_password">Password</string>
@@ -8,5 +9,9 @@
     <string name="error_invalid_email">Invalid e-mail</string>
     <string name="error_invalid_password">Invalid password</string>
     <string name="error_signin">It was not possible to sign in</string>
+    <string name="error_statements">It was not possible to load statements</string>
+    <string name="balance">Balance</string>
+    <string name="account">Account</string>
+    <string name="recent">Recent</string>
 
 </resources>
