@@ -33,6 +33,8 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
     private RecyclerView recyclerViewPayments;
     private AdapterBankPayments adapter;
 
+    private BankPaymentsPresenter presenter;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate (savedInstanceState);
@@ -80,13 +82,13 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
 
                     if (statements != null) {
                         adapter = new AdapterBankPayments (statements.getPaymentsStatements ());
-                    }
-                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager
-                            (getApplicationContext ());
 
-                    recyclerViewPayments.setLayoutManager (layoutManager);
-                    recyclerViewPayments.setHasFixedSize (true);
-                    recyclerViewPayments.setAdapter (adapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager
+                                (getApplicationContext ());
+                        recyclerViewPayments.setLayoutManager (layoutManager);
+                        recyclerViewPayments.setHasFixedSize (true);
+                        recyclerViewPayments.setAdapter (adapter);
+                    }
                 }
             }
 
@@ -96,7 +98,6 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
                         Toast.LENGTH_LONG).show ();
             }
         });
-
 
     }
 
