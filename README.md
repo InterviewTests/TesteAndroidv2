@@ -1,41 +1,21 @@
-# Show me the code
+# Projeto Santander
 
-Esse repositório contem todo o material necessário para realizar o teste: 
-- A especificação do layout está na pasta 'bank_app_layout' abrindo o index.html, utilizar os Styles do Android
+-	Neste projeto usei android4.4, foi utilizado linguagem Java.
+-	Criei um layout conforme solicitado, uma tela de login e uma tela Histórico.
+-	Na minha tela login está exatamente o que foi proposto para fazer o teste, 2 campos, “user” e “password” e o ” batão” para fazer login.
+-	No campo user segue a regra de negócio que foi proposta no desafio, somente aceitar user que conter um email ou um CPF, caso contrário aparece uma mensagem, informando que está incorreto campo user.
+-	No campo password, segue a seguinte regra de negócio, para validar password tem que conter maiúsculo minúsculo, caracteres especiais e números.
+-	Tela histórico criei em duas constraint, coloquei campos textView para mostrar, nome, conta e saldo do cliente.
+-	No lado superior a direita fiz um botão que ao clicar te envia para tela de login, trazendo o último email ou CPF inserido.
+-	Usei um recycleView para trazer as informações da API do cliente.
+-	Criei adapter hisórico, para jogar as informações que irei puxar na API e mostrar no recycleView.
+-	Na minha model, está todas as classes que preciso para consumir a API, que seriam: Error, RequestLogin, StatementList, TransactionList, UserAccount.
+-	No meu pacote service, criei meu RetrofitConfing que é o responsável por direcionar o caminho da API e tenho uma interface UdacityService que pego meu @POST @GET puxados da API.
+-	Para realizar os testes implementei a biblioteca mockito.
 
-- Os dados da Api estão mockados, os exemplos e a especificação dos serviços (login e statements) se encontram no arquivo BankApp.postman_collection.json ( é necessário instalar o postman e importar a colection https://www.getpostman.com/apps)
 
-![Image of Yaktocat](https://github.com/SantanderTecnologia/TesteiOS/blob/new_test/telas.png)
 
 ### # DESAFIO:
 
-Na primeira tela teremos um formulario de login, o campo user deve aceitar email ou cpf,
-o campo password deve validar se a senha tem pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.
-Apos a validação, realizar o login no endpoint https://bank-app-test.herokuapp.com/api/login e exibir os dados de retorno na próxima tela.
-O ultimo usuário logado deve ser salvo de forma segura localmente, e exibido na tela de login se houver algum salvo. 
-
-Na segunda tela será exibido os dados formatados do retorno do login e será necessário fazer um segundo request para obter os lançamentos do usuário, no endpoint https://bank-app-test.herokuapp.com/api/statements/{idUser} que retornará uma lista de lançamentos
-
-### # Avaliação
-
-Você será avaliado pela usabilidade, por respeitar o design e pela arquitetura do app. É esperado que você consiga explicar as decisões que tomou durante o desenvolvimento através de commits.
-
-Obrigatórios:
-
-* Java ou Kotlin
-* Material Design
-* O app deve funcionar a partir do android 4.4
-* Testes unitários, pode usar a ferramenta que você tem mais experiência, só nos explique o que ele tem de bom.
-* Arquitetura a ser utilizada: Android Clean Code (https://github.com/kmmraj/android-clean-code && https://medium.com/@kmmraj/android-clean-code-part-1-c66da6551d1)
-* Uso do git.
-
-### # Observações gerais
-
-Adicione um arquivo [README.md](http://README.md) com os procedimentos para executar o projeto.
-Pedimos que trabalhe sozinho e não divulgue o resultado na internet.
-
-Faça um fork desse desse repositório em seu Github e ao finalizar nos envie um Pull Request com o resultado, por favor informe por qual empresa você esta se candidatando.
-
-# Importante: não há prazo de entrega, faça com qualidade!
-
-# BOA SORTE!
+-	Acredito que desafio proposto foi concluído com sucesso, obrigado.
+- Gostei bastante de realizar este teste, espero ter uma oportunidade de poder trabalhar com a família Santander.
