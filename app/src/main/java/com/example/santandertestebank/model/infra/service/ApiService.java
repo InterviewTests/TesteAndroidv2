@@ -1,4 +1,4 @@
-package com.example.santandertestebank.model.service;
+package com.example.santandertestebank.model.infra.service;
 
 import com.example.santandertestebank.model.models.ObjectsLogin;
 import com.example.santandertestebank.model.models.ObjectsStatements;

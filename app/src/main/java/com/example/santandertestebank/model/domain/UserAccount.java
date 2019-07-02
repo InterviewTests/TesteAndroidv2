@@ -2,6 +2,8 @@ package com.example.santandertestebank.model.domain;
 
 public class UserAccount {
 
+    public UserAccount repository;
+
     private String user;
     private String password;
     private long userId;

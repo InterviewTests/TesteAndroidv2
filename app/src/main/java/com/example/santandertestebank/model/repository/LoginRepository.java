@@ -1,7 +1,7 @@
 package com.example.santandertestebank.model.repository;
 
+import com.example.santandertestebank.model.infra.service.ApiService;
 import com.example.santandertestebank.model.models.ObjectsLogin;
-import com.example.santandertestebank.model.service.ApiService;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -20,7 +20,6 @@ public class LoginRepository implements ILoginRepository {
 
         apiService = retrofit.create (ApiService.class);
         return apiService.loginUSer (username, password);
-
 
     }
 

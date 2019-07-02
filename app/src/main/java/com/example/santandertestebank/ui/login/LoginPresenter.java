@@ -2,7 +2,6 @@ package com.example.santandertestebank.ui.login;
 
 import com.example.santandertestebank.model.models.ObjectsLogin;
 import com.example.santandertestebank.model.repository.LoginRepository;
-import com.example.santandertestebank.model.service.ApiService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
