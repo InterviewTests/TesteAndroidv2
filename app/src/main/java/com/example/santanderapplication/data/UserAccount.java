@@ -1,6 +1,8 @@
 package com.example.santanderapplication.data;
 
-public class UserAccount {
+import java.io.Serializable;
+
+public class UserAccount implements Serializable {
 
     private int id;
     private String name;

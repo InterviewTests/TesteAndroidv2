@@ -16,6 +16,7 @@ import com.example.santanderapplication.service.IApiLogin;
 import com.example.santanderapplication.ui.transactions.BankCurrencyActivity;
 import com.example.santanderapplication.service.ServiceRetrofit;
 
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,7 +38,7 @@ public class BankLoginActivity extends AppCompatActivity implements BankLoginCon
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_bank_login );
         loadIU();
-        login();
+
 
         presenter = new BankLoginPresenter( this );
 
@@ -56,10 +57,7 @@ public class BankLoginActivity extends AppCompatActivity implements BankLoginCon
                 return;
 
 
-
-            Intent intent = new Intent( BankLoginActivity.this ,
-                    BankCurrencyActivity.class );
-            startActivity( intent );
+            login();
         }
     } );
         SharedPreferences preferences = getSharedPreferences( USER_PREFERENCE, 0 );
@@ -96,13 +94,7 @@ public class BankLoginActivity extends AppCompatActivity implements BankLoginCon
 
                     Intent intent = new Intent( BankLoginActivity.this,
                             BankCurrencyActivity.class );
-                    Bundle bundle = new Bundle( );
-                    bundle.putDouble( "Id" , loginResponseModel.getUserAccount().getId());
-                    bundle.putString("Name", loginResponseModel.getUserAccount().getName());
-                    bundle.putString("bankAccount", loginResponseModel.getUserAccount().getBankAccount());
-                    bundle.putDouble("Balance", loginResponseModel.getUserAccount().getBalance());
-                    bundle.putString("Agency", loginResponseModel.getUserAccount().getAgency());
-                    intent.putExtras( bundle );
+                    intent.putExtra( "user",  loginResponseModel.getUserAccount() );
                     startActivity( intent );
                     finish();
                     return;
@@ -125,9 +117,6 @@ public class BankLoginActivity extends AppCompatActivity implements BankLoginCon
         editor.commit();
         editTextLoginUser.setText( user);
     }
-
-
-    //Mensagem de erro vindo da presenter
 
     @Override
     public void showMessage(String error) {

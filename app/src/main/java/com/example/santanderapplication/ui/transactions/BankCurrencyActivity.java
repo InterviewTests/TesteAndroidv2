@@ -5,16 +5,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.santanderapplication.data.UserAccount;
 import com.example.santanderapplication.data.model.StatementsModel;
 import com.example.santanderapplication.data.model.StatementsResponseModel;
 import com.example.santanderapplication.service.IApiCurrency;
 import com.example.santanderapplication.service.ServiceRetrofit;
 import com.example.santanderapplication.ui.login.BankLoginActivity;
 import com.example.santanderapplication.R;
+
+
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +35,7 @@ public class BankCurrencyActivity extends AppCompatActivity implements BankCurre
     private TextView textViewNameBankCurrency;
     private TextView textViewAccountBankCurrency;
     private TextView textViewBalanceBankCurrency;
+    private TextView textViewAgencyBankCurrency;
     private Retrofit retrofit;
 
     @Override
@@ -36,9 +43,16 @@ public class BankCurrencyActivity extends AppCompatActivity implements BankCurre
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_bank_currency );
         LoadIU();
+        UserAccount user = (UserAccount) getIntent().getSerializableExtra( "user" );
+        textViewNameBankCurrency.setText( user.getName() );
+        textViewBalanceBankCurrency.setText( String.valueOf( user.getBalance() ));
+        textViewAccountBankCurrency.setText( user. getBankAccount());
+        textViewAgencyBankCurrency.setText(String.valueOf(user.getAgency()));
+
+
+
         consumeRetrofit( 1 );
         BankCurrencyContract.StatementPresenter presenter = new BankCurrencyPresenter();
-
         retrofit = new Retrofit.Builder()
                 .baseUrl( " https://bank-app-test.herokuapp.com/api/" )
                 .addConverterFactory( GsonConverterFactory.create())
@@ -57,6 +71,7 @@ public class BankCurrencyActivity extends AppCompatActivity implements BankCurre
         textViewAccountBankCurrency=findViewById( R.id.text_account_bank_currency );
         textViewBalanceBankCurrency=findViewById( R.id.text_balance_bank_currency );
         textViewNameBankCurrency=findViewById( R.id.text_name_bank_currency );
+        textViewAgencyBankCurrency=findViewById( R.id.text_agency_bank_currncy );
 
     }
 

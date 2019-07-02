@@ -1,6 +1,8 @@
 package com.example.santanderapplication.data.model;
 
-public class Error {
+import java.io.Serializable;
+
+public class Error implements Serializable {
 
     private int code;
     private  String message;

@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/TextView"
             android:layout_width="47dp"
             android:layout_height="17dp"
             android:layout_marginStart="18dp"
@@ -48,12 +48,11 @@
 
         <TextView
             android:id="@+id/text_account_bank_currency"
-            android:layout_width="0dp"
-            android:layout_height="29dp"
+            android:layout_width="139dp"
+            android:layout_height="34dp"
             android:layout_marginStart="18dp"
             android:layout_marginTop="116dp"
             android:layout_marginEnd="57dp"
-            android:text="250 / 01.111222-4"
             android:textColor="@color/colorWhite"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -103,6 +102,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/ic_logout_bank" />
+
+        <TextView
+            android:id="@+id/text_agency_bank_currncy"
+            android:layout_width="139dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="116dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="25dp"
+            app:layout_constraintStart_toEndOf="@+id/text_account_bank_currency"
+            app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
     <TextView

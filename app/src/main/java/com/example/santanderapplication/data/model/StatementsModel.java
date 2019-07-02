@@ -1,8 +1,9 @@
 package com.example.santanderapplication.data.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class StatementsModel {
+public class StatementsModel implements Serializable {
 
     private String title;
     private String desc;

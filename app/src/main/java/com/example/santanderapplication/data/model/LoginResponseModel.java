@@ -2,7 +2,9 @@ package com.example.santanderapplication.data.model;
 
 import com.example.santanderapplication.data.UserAccount;
 
-public class LoginResponseModel {
+import java.io.Serializable;
+
+public class LoginResponseModel implements Serializable {
 
 private Error error;
 private UserAccount userAccount;
