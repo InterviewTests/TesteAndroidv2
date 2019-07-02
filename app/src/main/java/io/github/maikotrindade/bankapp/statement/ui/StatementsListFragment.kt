@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import io.github.maikotrindade.bankapp.R
 import io.github.maikotrindade.bankapp.base.util.StringsUtil.convertDoubleToCurrency
-import io.github.maikotrindade.bankapp.login.LoginRouter.Companion.navLoginStatements
+import io.github.maikotrindade.bankapp.login.domain.LoginRouter.Companion.navLoginStatements
 import io.github.maikotrindade.bankapp.login.model.UserData
 import io.github.maikotrindade.bankapp.statement.domain.StatementsConfigurator
 import io.github.maikotrindade.bankapp.statement.domain.StatementsInteractor

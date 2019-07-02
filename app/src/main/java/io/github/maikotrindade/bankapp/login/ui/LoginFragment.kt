@@ -1,4 +1,4 @@
-package io.github.maikotrindade.bankapp.login
+package io.github.maikotrindade.bankapp.login.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
 import io.github.maikotrindade.bankapp.R
+import io.github.maikotrindade.bankapp.login.domain.LoginConfigurator
+import io.github.maikotrindade.bankapp.login.domain.LoginInteractor
+import io.github.maikotrindade.bankapp.login.domain.LoginRouter
 import io.github.maikotrindade.bankapp.login.model.Field
 import io.github.maikotrindade.bankapp.login.model.FieldError
 import io.github.maikotrindade.bankapp.login.model.User

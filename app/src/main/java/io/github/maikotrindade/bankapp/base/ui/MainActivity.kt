@@ -6,7 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import io.github.maikotrindade.bankapp.R
-import io.github.maikotrindade.bankapp.login.LoginRouter
+import io.github.maikotrindade.bankapp.login.domain.LoginRouter
 import io.github.maikotrindade.bankapp.login.model.UserData
 
 interface MainActivityInput {

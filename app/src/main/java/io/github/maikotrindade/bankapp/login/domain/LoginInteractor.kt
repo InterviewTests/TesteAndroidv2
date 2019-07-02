@@ -1,4 +1,4 @@
-package io.github.maikotrindade.bankapp.login
+package io.github.maikotrindade.bankapp.login.domain
 
 import io.github.maikotrindade.bankapp.login.model.LoginResponse
 import io.github.maikotrindade.bankapp.login.model.User

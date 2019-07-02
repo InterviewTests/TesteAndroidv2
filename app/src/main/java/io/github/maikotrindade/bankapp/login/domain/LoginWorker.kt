@@ -1,4 +1,4 @@
-package io.github.maikotrindade.bankapp.login
+package io.github.maikotrindade.bankapp.login.domain
 
 import io.github.maikotrindade.bankapp.base.network.BaseNetwork
 import io.github.maikotrindade.bankapp.base.util.SharedPrefsUtil
@@ -16,7 +16,8 @@ interface LoginWorkerInput {
     fun startLogin(user: User)
 }
 
-class LoginWorker(val output: WeakReference<LoginInteractor>) : LoginWorkerInput {
+class LoginWorker(val output: WeakReference<LoginInteractor>) :
+    LoginWorkerInput {
 
     override fun startLogin(user: User) {
         val loginResponseCall = BaseNetwork.get(LoginInterface::class.java).performLogIn(user)

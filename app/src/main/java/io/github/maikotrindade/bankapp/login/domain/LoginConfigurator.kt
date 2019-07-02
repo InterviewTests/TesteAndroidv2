@@ -1,6 +1,7 @@
-package io.github.maikotrindade.bankapp.login
+package io.github.maikotrindade.bankapp.login.domain
 
 import io.github.maikotrindade.bankapp.base.ui.MainActivity
+import io.github.maikotrindade.bankapp.login.ui.LoginFragment
 import java.lang.ref.WeakReference
 
 enum class LoginConfigurator {

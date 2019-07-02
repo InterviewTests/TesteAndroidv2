@@ -1,4 +1,4 @@
-package io.github.maikotrindade.bankapp.login
+package io.github.maikotrindade.bankapp.login.domain
 
 import android.os.Bundle
 import androidx.navigation.NavOptions

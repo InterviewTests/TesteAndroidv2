@@ -2,8 +2,8 @@ package io.github.maikotrindade.bankapp
 
 import io.github.maikotrindade.bankapp.base.network.BaseNetwork
 import io.github.maikotrindade.bankapp.base.ui.MainActivity
-import io.github.maikotrindade.bankapp.login.LoginFragment
-import io.github.maikotrindade.bankapp.login.LoginInterface
+import io.github.maikotrindade.bankapp.login.ui.LoginFragment
+import io.github.maikotrindade.bankapp.login.domain.LoginInterface
 import io.github.maikotrindade.bankapp.login.model.LoginResponse
 import io.github.maikotrindade.bankapp.login.model.User
 import kotlinx.android.synthetic.main.fragment_login.*

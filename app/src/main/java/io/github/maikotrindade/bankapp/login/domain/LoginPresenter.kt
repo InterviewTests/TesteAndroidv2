@@ -1,7 +1,8 @@
-package io.github.maikotrindade.bankapp.login
+package io.github.maikotrindade.bankapp.login.domain
 
 import android.util.Patterns
 import io.github.maikotrindade.bankapp.R
+import io.github.maikotrindade.bankapp.login.ui.LoginFragmentInput
 import io.github.maikotrindade.bankapp.login.model.Field
 import io.github.maikotrindade.bankapp.login.model.FieldError
 import io.github.maikotrindade.bankapp.login.model.User

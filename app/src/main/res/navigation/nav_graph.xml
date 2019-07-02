@@ -5,7 +5,7 @@
             app:startDestination="@id/loginFragment">
 
     <fragment android:id="@+id/loginFragment"
-              android:name="io.github.maikotrindade.bankapp.login.LoginFragment"
+              android:name="io.github.maikotrindade.bankapp.login.ui.LoginFragment"
               android:label="LoginFragment"/>
 
     <fragment android:id="@+id/statementListFragment"
