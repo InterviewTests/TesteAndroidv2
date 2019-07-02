@@ -1,6 +1,5 @@
 package resource.estagio.testesantander.statement;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +19,7 @@ import java.util.Locale;
 
 import resource.estagio.testesantander.R;
 import resource.estagio.testesantander.login.LoginActivity;
+import resource.estagio.testesantander.model.Statement;
 import resource.estagio.testesantander.model.User;
 import resource.estagio.testesantander.statement.adapter.AdapterStatement;
 

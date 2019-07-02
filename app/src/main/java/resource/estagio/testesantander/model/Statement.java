@@ -1,4 +1,4 @@
-package resource.estagio.testesantander.statement;
+package resource.estagio.testesantander.model;
 
 import java.util.Date;
 

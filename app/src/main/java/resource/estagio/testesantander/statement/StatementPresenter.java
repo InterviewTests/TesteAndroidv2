@@ -1,7 +1,6 @@
 package resource.estagio.testesantander.statement;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -14,7 +13,7 @@ import java.util.List;
 import resource.estagio.testesantander.R;
 import resource.estagio.testesantander.infra.ApiServices;
 import resource.estagio.testesantander.infra.RetrofitClient;
-import resource.estagio.testesantander.login.LoginActivity;
+import resource.estagio.testesantander.model.Statement;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

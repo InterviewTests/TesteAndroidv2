@@ -19,7 +19,7 @@ public class LoginPresenter implements LoginContract.Presenter{
         try{
             user.login(new BaseCallback<LoginResponse>() {
                 @Override
-                public void onSucessful(LoginResponse value) {
+                public void onSuccessful(LoginResponse value) {
                     view.navigateToList(value.getUser());
                 }
 
@@ -68,12 +68,12 @@ public class LoginPresenter implements LoginContract.Presenter{
 
     @Override
     public boolean validPassword(String password) {
-        if (password.matches("^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d](?=.*[!@#$*_%^&+=])(?=\\S+$)(?=\\S+$).{4,}$")) {
+        if (password.matches("^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d](?=.*[!@#$*_%^&+=])(?=\\S+$)(?=\\S+$).{3,}$")) {
 
             return true;
         }
-        view.errorPassword("A senha deve ter 1 carácter maiúsculo," +
-                " 1 carácter especial e 1 número");
+        view.errorPassword("A senha deve no minímo 4 caracteres, 1 caractere maiúsculo," +
+                " 1 caractere especial e 1 número");
 
         return false;
     }

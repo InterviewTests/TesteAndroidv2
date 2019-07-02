@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Locale;
 
 import resource.estagio.testesantander.R;
-import resource.estagio.testesantander.statement.Statement;
+import resource.estagio.testesantander.model.Statement;
 
 public class AdapterStatement extends RecyclerView.Adapter<AdapterStatement.ViewHolder> {
     List<Statement> list;

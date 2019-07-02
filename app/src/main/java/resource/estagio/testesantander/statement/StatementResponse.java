@@ -2,6 +2,8 @@ package resource.estagio.testesantander.statement;
 
 import java.util.List;
 
+import resource.estagio.testesantander.model.Statement;
+
 public class StatementResponse {private List<Statement> statementList;
 
     private Error error;

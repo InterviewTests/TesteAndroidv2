@@ -53,7 +53,7 @@ public class User implements Serializable {
 
     public void login(final BaseCallback<LoginResponse> onResult) throws Exception{
 
-        if(repository == null) throw new Exception("Repositorio nulo");
+        if(repository == null) throw new Exception("Repository null");
 
         if(username == null || username.isEmpty())
             throw new Exception("username is null or empty");
@@ -63,8 +63,8 @@ public class User implements Serializable {
         repository.login(username, password, new BaseCallback<LoginResponse>() {
 
             @Override
-            public void onSucessful(LoginResponse value) {
-                onResult.onSucessful(value);
+            public void onSuccessful(LoginResponse value) {
+                onResult.onSuccessful(value);
             }
 
             @Override

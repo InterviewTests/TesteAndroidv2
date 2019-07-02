@@ -4,6 +4,8 @@ import android.content.Context;
 
 import java.util.List;
 
+import resource.estagio.testesantander.model.Statement;
+
 public class StatementContract {
     public interface View{
 

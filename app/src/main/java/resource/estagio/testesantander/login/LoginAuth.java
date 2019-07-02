@@ -20,7 +20,7 @@ public class LoginAuth implements UserContract.IUserRepository{
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if(response.isSuccessful() && response.body() != null){
                     LoginResponse loginResponse = response.body();
-                   onResult.onSucessful(loginResponse);
+                   onResult.onSuccessful(loginResponse);
                 }
             }
 
