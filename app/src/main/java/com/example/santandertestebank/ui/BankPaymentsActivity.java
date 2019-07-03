@@ -17,6 +17,8 @@ import com.example.santandertestebank.model.models.UserAccountLogin;
 import com.example.santandertestebank.ui.adapter.AdapterBankPayments;
 import com.example.santandertestebank.ui.login.LoginActivity;
 
+import java.text.NumberFormat;
+
 public class BankPaymentsActivity extends AppCompatActivity implements BankPaymentsContract.View {
 
     private TextView textViewName;
@@ -37,7 +39,6 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
 
         loadUI ();
         presenter = new BankPaymentsPresenter (this);
-//        bringList ();
 
         UserAccountLogin userAccountLogin =
                 (UserAccountLogin) getIntent ().getSerializableExtra ("keyLogin");
@@ -57,8 +58,9 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
                 (UserAccountLogin) getIntent ().getSerializableExtra ("keyLogin");
 
         textViewName.setText (userAccount.getName ());
-        textViewBankAccount.setText (userAccount.getBankAccount ());
-        textViewAccountBalance.setText (String.valueOf (userAccount.getAccountBalance ()));
+        textViewBankAccount.setText (userAccount.getBankAccount () + " / " + userAccount.getAgency ());
+        textViewAccountBalance.setText (NumberFormat.getCurrencyInstance ().format
+                (Double.valueOf (userAccount.getAccountBalance ())));
     }
 
     public void logoutApp() {
@@ -96,7 +98,6 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
     }
 
 }
-
 
 //    public void bringList() {
 //        Retrofit retrofit = new Retrofit.Builder ()

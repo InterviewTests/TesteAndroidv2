@@ -1,5 +1,7 @@
 package com.example.santandertestebank.ui.login;
 
+import android.util.Patterns;
+
 import com.example.santandertestebank.R;
 import com.example.santandertestebank.model.models.ObjectsLogin;
 import com.example.santandertestebank.model.repository.LoginRepository;
@@ -46,7 +48,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     public void validatePassword(String password) throws Exception {
-        if (password.isEmpty ()) {
+        if (password.trim ().isEmpty () || password.isEmpty ()) {
             throw new Exception (view.getContext ().getString (R.string.type_password_to_login));
 
         } else if (!password.matches ("^((?=.[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!*?])(?=\\S+$).{3,})$")) {
@@ -56,13 +58,15 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void validateLogin(String username) throws Exception {
-        if (username.isEmpty ()) {
+        if (username.trim ().isEmpty () || username.isEmpty ()) {
             throw new Exception (view.getContext ().getString (R.string.type_to_login));
 
-        } else if (!username.matches ("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@" +
-                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+"))
-//            || (!user.matches ()) FALTA VALIDAR O CPF;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher (username).matches ()) {
+//                ("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@" +
+//                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+")
+//                || !username.matches () { FAZER A VALIDAÇÃO DE CPF!!!!!!!!!!!!!
             throw new Exception (view.getContext ().getString (R.string.type_valid_username));
+        }
     }
 
 }

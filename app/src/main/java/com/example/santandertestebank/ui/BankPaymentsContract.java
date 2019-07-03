@@ -15,7 +15,6 @@ public class BankPaymentsContract {
         void showUserinfos(ObjectsStatements objectsStatements);
 
         void logoutApp();
-
     }
 
     public interface Presenter {

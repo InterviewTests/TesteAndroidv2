@@ -35,7 +35,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         buttonLogin.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
-//                loginUser ();
                 presenter.loginUser (
                         editTextUser.getText ().toString (),
                         editTextPassword.getText ().toString ());
@@ -68,7 +67,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
 }
-
 
 //    public void loginUser() {
 //        Retrofit retrofit = new Retrofit.Builder ()

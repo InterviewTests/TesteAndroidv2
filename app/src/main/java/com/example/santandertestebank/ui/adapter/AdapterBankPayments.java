@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.santandertestebank.R;
 import com.example.santandertestebank.model.models.PaymentsStatements;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 public class AdapterBankPayments extends RecyclerView.Adapter<AdapterBankPayments.MyViewHolder> {
@@ -37,8 +38,12 @@ public class AdapterBankPayments extends RecyclerView.Adapter<AdapterBankPayment
 
         myViewHolder.textViewPaymentTitle.setText (payment.getTitle ());
         myViewHolder.textViewPaymentDescription.setText (payment.getDescription ());
-        myViewHolder.textViewPaymentDate.setText (payment.getDate ());
-        myViewHolder.textViewPaymentValue.setText (String.valueOf (payment.getValue ()));
+        myViewHolder.textViewPaymentDate.setText (
+                payment.getDate ().substring (8, 10) + "/" +
+                        payment.getDate ().substring (5, 7) + "/" +
+                        payment.getDate ().substring (0, 4));
+        myViewHolder.textViewPaymentValue.setText (NumberFormat.getCurrencyInstance ().format
+                (Double.valueOf (payment.getValue ())));
     }
 
     @Override
