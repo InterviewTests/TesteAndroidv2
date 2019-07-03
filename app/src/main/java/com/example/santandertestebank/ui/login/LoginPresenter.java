@@ -1,5 +1,6 @@
 package com.example.santandertestebank.ui.login;
 
+import com.example.santandertestebank.R;
 import com.example.santandertestebank.model.models.ObjectsLogin;
 import com.example.santandertestebank.model.repository.LoginRepository;
 
@@ -16,7 +17,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void loginUser(String username, String password) {
+    public void loginUser(final String username, final String password) {
         LoginRepository loginRepository = new LoginRepository ();
         final Call<ObjectsLogin> requestLogin = loginRepository.loginUser (username, password);
         requestLogin.enqueue (new Callback<ObjectsLogin> () {
@@ -25,8 +26,15 @@ public class LoginPresenter implements LoginContract.Presenter {
                 if (!response.isSuccessful ()) {
                     view.showToast (response.body ().getErrorLogin ().getMessage ());
                 } else {
-                    ObjectsLogin login = response.body ();
-                    view.showUserInfo (login.getUserAccountLogin ());
+                    try {
+                        validateLogin (username);
+                        validatePassword (password);
+                        ObjectsLogin login = response.body ();
+                        view.showUserInfo (login.getUserAccountLogin ());
+
+                    } catch (Exception e) {
+                        view.showToast (e.getMessage ());
+                    }
                 }
             }
 
@@ -35,7 +43,26 @@ public class LoginPresenter implements LoginContract.Presenter {
                 view.showToast (t.getMessage ());
             }
         });
+    }
 
+    public void validatePassword(String password) throws Exception {
+        if (password.isEmpty ()) {
+            throw new Exception (view.getContext ().getString (R.string.type_password_to_login));
+
+        } else if (!password.matches ("^((?=.[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!*?])(?=\\S+$).{3,})$")) {
+            throw new Exception (view.getContext ().getString (R.string.password_validation_message));
+        }
+    }
+
+    @Override
+    public void validateLogin(String username) throws Exception {
+        if (username.isEmpty ()) {
+            throw new Exception (view.getContext ().getString (R.string.type_to_login));
+
+        } else if (!username.matches ("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@" +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+"))
+//            || (!user.matches ()) FALTA VALIDAR O CPF;
+            throw new Exception (view.getContext ().getString (R.string.type_valid_username));
     }
 
 }

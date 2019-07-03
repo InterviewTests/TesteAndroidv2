@@ -1,5 +1,6 @@
 package com.example.santandertestebank.ui.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +47,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         editTextUser = findViewById (R.id.edit_text_user);
         editTextPassword = findViewById (R.id.edit_text_password);
         buttonLogin = findViewById (R.id.button_login);
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
     @Override

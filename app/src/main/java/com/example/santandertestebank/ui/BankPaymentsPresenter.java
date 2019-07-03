@@ -1,5 +1,6 @@
 package com.example.santandertestebank.ui;
 
+import com.example.santandertestebank.R;
 import com.example.santandertestebank.model.models.ObjectsStatements;
 import com.example.santandertestebank.model.repository.BankPaymentsRepository;
 
@@ -16,7 +17,7 @@ public class BankPaymentsPresenter implements BankPaymentsContract.Presenter {
     }
 
     @Override
-    public void bringStatements(long id) {
+    public void bringStatements(final long id) {
 
         BankPaymentsRepository bankPaymentsRepository = new BankPaymentsRepository ();
         final Call<ObjectsStatements> requestStatements = bankPaymentsRepository.bringStatements (id);
@@ -27,6 +28,12 @@ public class BankPaymentsPresenter implements BankPaymentsContract.Presenter {
                     view.showToast (response.body ().getErrorStatement ().getMessage ());
                 } else {
 
+                    try {
+                        validateId (id);
+
+                    } catch (Exception e) {
+                        view.showToast (e.getMessage ());
+                    }
                     ObjectsStatements statements = response.body ();
 
                     if (statements != null) {
@@ -40,7 +47,11 @@ public class BankPaymentsPresenter implements BankPaymentsContract.Presenter {
                 view.showToast (t.getMessage ());
             }
         });
+    }
 
+    @Override
+    public void validateId(long id) throws Exception {
+        if (id < 1) throw new Exception (view.getContext ().getString (R.string.invalid_userId));
     }
 
 }

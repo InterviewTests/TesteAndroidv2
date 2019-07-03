@@ -1,5 +1,6 @@
 package com.example.santandertestebank.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -72,6 +73,11 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
         textViewAccountBalance = findViewById (R.id.text_view_account_balance);
         imageViewLogout = findViewById (R.id.image_view_logout);
         recyclerViewPayments = findViewById (R.id.recycler_view_payments);
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
     @Override
