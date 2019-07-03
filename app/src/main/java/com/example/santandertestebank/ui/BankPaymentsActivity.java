@@ -96,9 +96,7 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
         recyclerViewPayments.setHasFixedSize (true);
         recyclerViewPayments.setAdapter (adapter);
     }
-
 }
-
 //    public void bringList() {
 //        Retrofit retrofit = new Retrofit.Builder ()
 //                .baseUrl (ApiService.BASE_URL)

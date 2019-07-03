@@ -22,6 +22,5 @@ public class BankPaymentsContract {
         void bringStatements(long id);
 
         void validateId(long id) throws Exception;
-
     }
 }

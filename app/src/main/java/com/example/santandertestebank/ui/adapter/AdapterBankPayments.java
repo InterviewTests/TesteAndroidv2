@@ -62,7 +62,6 @@ public class AdapterBankPayments extends RecyclerView.Adapter<AdapterBankPayment
         private TextView textViewPaymentDate;
         private TextView textViewPaymentValue;
 
-
         public MyViewHolder(@NonNull View itemView) {
             super (itemView);
 
@@ -72,5 +71,4 @@ public class AdapterBankPayments extends RecyclerView.Adapter<AdapterBankPayment
             textViewPaymentValue = itemView.findViewById (R.id.text_view_payment_value);
         }
     }
-
 }

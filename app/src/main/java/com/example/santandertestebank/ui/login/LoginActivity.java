@@ -65,7 +65,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         startActivity (i);
         finish ();
     }
-
 }
 
 //    public void loginUser() {

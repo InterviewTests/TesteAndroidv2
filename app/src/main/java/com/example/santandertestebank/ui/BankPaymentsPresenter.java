@@ -53,5 +53,4 @@ public class BankPaymentsPresenter implements BankPaymentsContract.Presenter {
     public void validateId(long id) throws Exception {
         if (id < 1) throw new Exception (view.getContext ().getString (R.string.invalid_userId));
     }
-
 }

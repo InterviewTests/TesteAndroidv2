@@ -68,5 +68,4 @@ public class LoginPresenter implements LoginContract.Presenter {
             throw new Exception (view.getContext ().getString (R.string.type_valid_username));
         }
     }
-
 }
