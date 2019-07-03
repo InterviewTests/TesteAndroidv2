@@ -1,5 +1,7 @@
 package resource.estagio.testesantander.login;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import resource.estagio.testesantander.R;
 import resource.estagio.testesantander.model.User;
@@ -20,11 +23,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public static final String Helvetica_Neue_Light = "HelveticaNeue-Light.otf";
     public static final String LoginPreferences = "LoginPreferences" ;
 
-
-
     private Button botao;
     private EditText username, password;
     private TextInputLayout textInputLayout, textInputLayout2;
+    private ProgressBar progressBar;
 
     public LoginContract.Presenter presenter;
     private LoginResponse loginResponse;
@@ -41,6 +43,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         botao = findViewById(R.id.buttonSignUp);
+        progressBar = findViewById(R.id.progressLogin);
         presenter = new LoginPresenter(this);
         setFonts();
 
@@ -85,11 +88,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     }
 
-
-    //  "(?=.*[a-z])" +         //pelo menos 1 letra minuscula
-    // "(?=.*[A-Z])" +   //pelo menos 1 letra maiuscula
-
-
     @Override
     public void navigateToList(User user) {
 
@@ -97,7 +95,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         intent.putExtra("user", user);
         startActivity(intent);
         finish();
-        //saveLogin(user.getName());
 
     }
 
@@ -122,6 +119,30 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void errorUsername(String s) {
         username.setError(s);
+    }
+
+    @Override
+    public void showProgress(final boolean show) {
+        int shortAnimTime = getResources ().getInteger (android.R.integer.config_shortAnimTime);
+
+        botao.setVisibility (show ? View.INVISIBLE : View.VISIBLE);
+        botao.animate ().setDuration (shortAnimTime).alpha (
+                show ? 0 : 1).setListener (new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                botao.setVisibility (show ? View.INVISIBLE : View.VISIBLE);
+            }
+        });
+
+        progressBar.setVisibility (show ? View.VISIBLE : View.GONE);
+        progressBar.animate ().setDuration (shortAnimTime).alpha (
+                show ? 1 : 0).setListener (new AnimatorListenerAdapter () {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                progressBar.setVisibility (show ? View.VISIBLE : View.GONE);
+            }
+        });
+
     }
 
     public void setFonts(){

@@ -17,14 +17,17 @@ public class LoginPresenter implements LoginContract.Presenter{
         final User user= new User(username, password);
         user.repository = new LoginAuth();
         try{
+            view.showProgress(true);
             user.login(new BaseCallback<LoginResponse>() {
                 @Override
                 public void onSuccessful(LoginResponse value) {
                     view.navigateToList(value.getUser());
+                    view.showProgress(false);
                 }
 
                 @Override
                 public void onUnsucessful(String error) {
+                    view.showProgress(false);
                     Toast.makeText(view.getActivity(), "Sem conexão", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -32,6 +35,7 @@ public class LoginPresenter implements LoginContract.Presenter{
 
 
         }catch (Exception e){
+            view.showProgress(false);
             e.printStackTrace();
         }
     }

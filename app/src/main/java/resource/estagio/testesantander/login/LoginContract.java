@@ -19,6 +19,8 @@ public class LoginContract {
 
         void errorUsername(String s);
 
+        void showProgress(final boolean show);
+
 
     }
     public interface Presenter{
