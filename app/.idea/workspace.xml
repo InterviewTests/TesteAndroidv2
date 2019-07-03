@@ -10,26 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51f1da98-b8b1-4089-8d70-fb4a73895ae2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginAuth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginContract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/model/UserContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/domain/contract/UserContract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/statement/StatementActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/statement/StatementActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/statement/StatementPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/statement/StatementPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/statement/StatementResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/statement/StatementResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_login.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_statement.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_statement.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/adapter_statement.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/adapter_statement.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/dialog_exit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/dialog_exit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +29,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-460">
+              <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/statement/StatementActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="118">
+              <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_statement.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/domain/User.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -60,11 +76,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/domain/contract/UserContract.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
               <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/resource/estagio/testesantander/TesteLogin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="42" column="57" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -133,11 +161,11 @@
         <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginResponse.java" />
         <option value="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/statement/StatementResponse.java" />
-        <option value="$PROJECT_DIR$/src/main/res/layout/activity_statement.xml" />
         <option value="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/statement/StatementPresenter.java" />
         <option value="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/statement/StatementActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginActivity.java" />
         <option value="$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/domain/User.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_statement.xml" />
       </list>
     </option>
   </component>
@@ -257,7 +285,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="device.picker.selection" value="0032363057" />
+    <property name="device.picker.selection" value="JCAXB600J7516KB" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ProjetoAPPDefinitivo/TodaChuvaEPassageira/workload" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
@@ -485,9 +513,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.17549168" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.17549168" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -511,7 +540,7 @@
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.4160363" />
+      <window_info active="true" anchor="right" id="Preview" order="5" visible="true" weight="0.4160363" />
     </layout>
     <layout-to-restore>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -799,62 +828,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="43" column="47" lean-forward="true" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/statement/StatementPresenter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="38" column="108" selection-start-line="38" selection-start-column="108" selection-end-line="38" selection-end-column="108" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/resource/estagio/testesantander/TesteLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="42" column="57" lean-forward="true" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/statement/StatementActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="53" column="49" lean-forward="true" selection-start-line="53" selection-start-column="49" selection-end-line="53" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_statement.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/domain/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1799#1800#0" expanded="true" />
-            <element signature="e#1859#1860#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -868,6 +847,56 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/resource/estagio/testesantander/TesteLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="42" column="57" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/domain/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1799#1800#0" expanded="true" />
+            <element signature="e#1859#1860#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/login/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-460">
+          <caret line="43" column="47" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/resource/estagio/testesantander/statement/StatementActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_statement.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
   </component>
   <component name="masterDetails">
