@@ -1,4 +1,4 @@
-package resource.estagio.testesantander.model;
+package resource.estagio.testesantander.domain.contract;
 
 import resource.estagio.testesantander.infra.BaseCallback;
 import resource.estagio.testesantander.login.LoginResponse;

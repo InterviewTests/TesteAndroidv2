@@ -1,9 +1,10 @@
-package resource.estagio.testesantander.model;
+package resource.estagio.testesantander.domain;
 
 import java.io.Serializable;
 
 import resource.estagio.testesantander.infra.BaseCallback;
 import resource.estagio.testesantander.login.LoginResponse;
+import resource.estagio.testesantander.domain.contract.UserContract;
 
 public class User implements Serializable {
 

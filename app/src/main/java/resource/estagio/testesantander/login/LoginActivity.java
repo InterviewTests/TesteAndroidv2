@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import resource.estagio.testesantander.R;
-import resource.estagio.testesantander.model.User;
+import resource.estagio.testesantander.domain.User;
 import resource.estagio.testesantander.statement.StatementActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
@@ -44,13 +44,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         password = findViewById(R.id.password);
         botao = findViewById(R.id.buttonSignUp);
         progressBar = findViewById(R.id.progressLogin);
-        presenter = new LoginPresenter(this);
-        setFonts();
+
+        presenter = new LoginPresenter(this);//inicializa a presenter
+        setFonts(); // implementa a fonte externa implementada na pasta "Assets"
 
         //Shared Preferences
         final SharedPreferences sharedPreferences = getSharedPreferences(LoginPreferences, Context.MODE_PRIVATE);
         String strusername = sharedPreferences.getString("username", "");
-        username.setText(strusername);
+        username.setText(strusername);//se tiver algum login salvo, o "username" salvo é mostrado no EditText
 
 
         username.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -78,8 +79,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                     presenter.login(username.getText().toString(), password.getText().toString());
                 }
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("username", username.getText().toString());
-                editor.commit();
+                editor.putString("username", username.getText().toString());//insere o "username" inserido na tela de Login
+                editor.commit();//salva o dado "username"
 
 
 
@@ -89,7 +90,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
-    public void navigateToList(User user) {
+    public void navigateToList(User user) {//intent para a tela de Statement
 
         Intent intent = new Intent(LoginActivity.this, StatementActivity.class);
         intent.putExtra("user", user);
@@ -100,11 +101,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     public Context getContext() {
         return this;
-    }
+    }//pega o contexto da activity
 
     public Context getActivity() {
         return this;
-    }
+    }//pega o contexto da activity
 
     @Override
     public void enableButton(boolean b) {
@@ -122,7 +123,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
-    public void showProgress(final boolean show) {
+    public void showProgress(final boolean show) { // metodo do progress bar da tela de Login
         int shortAnimTime = getResources ().getInteger (android.R.integer.config_shortAnimTime);
 
         botao.setVisibility (show ? View.INVISIBLE : View.VISIBLE);

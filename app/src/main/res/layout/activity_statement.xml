@@ -8,13 +8,13 @@
 
     <TextView
         android:id="@+id/textRecentes"
-        android:layout_width="wrap_content"
-        android:layout_height="39dp"
+        android:layout_width="98dp"
+        android:layout_height="26dp"
         android:layout_marginLeft="10dp"
-        android:textColor="@color/grey_dark"
-        android:textSize="17sp"
         android:layout_marginTop="4dp"
         android:text="@string/recente"
+        android:textColor="@color/grey_dark"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,6 @@
             android:layout_marginStart="18dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="209dp"
-            android:text="Nome do Fulano"
             android:textColor="@color/white"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +52,6 @@
             android:layout_marginTop="21dp"
             android:textColor="@color/white"
             android:textSize="12sp"
-            android:text="Saldo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameBankAccount" />
 
@@ -66,7 +64,6 @@
             android:layout_marginBottom="17dp"
             android:textColor="@color/white"
             android:textSize="25sp"
-            android:text="R$ Dinheiro"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameSaldo" />
@@ -77,7 +74,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="28dp"
-            android:text="Conta"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +87,6 @@
             android:textColor="@color/white"
             android:textSize="25sp"
             android:layout_marginTop="6dp"
-            android:text="Agencia/Conta"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nameCount" />
 
@@ -116,8 +111,8 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewStatements"
-        android:layout_width="373dp"
-        android:layout_height="303dp"
+        android:layout_width="389dp"
+        android:layout_height="448dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -126,6 +121,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textRecentes"
-        app:layout_constraintVertical_bias="0.817" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

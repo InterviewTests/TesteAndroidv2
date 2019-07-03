@@ -2,7 +2,8 @@ package resource.estagio.testesantander.login;
 
 import com.google.gson.annotations.SerializedName;
 
-import resource.estagio.testesantander.model.User;
+import resource.estagio.testesantander.model.Error;
+import resource.estagio.testesantander.domain.User;
 
 public class LoginResponse {
     private Error error;

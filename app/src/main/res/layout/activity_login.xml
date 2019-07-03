@@ -35,10 +35,9 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:hint="Email ou CPF"
+            android:hint="@string/username"
             android:maxLines="1"
-            android:singleLine="true"
-            tools:ignore="HardcodedText" />
+            android:singleLine="true" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -59,10 +58,9 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:ems="10"
-            android:hint="Senha"
+            android:hint="@string/password"
             android:inputType="textPassword"
-            android:singleLine="true"
-            tools:ignore="HardcodedText" />
+            android:singleLine="true" />
     </android.support.design.widget.TextInputLayout>
 
     <Button

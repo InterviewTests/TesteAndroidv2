@@ -29,7 +29,7 @@ public class StatementPresenter implements StatementContract.Presenter {
     @Override
     public void getStatement(long id) {
         Call<StatementResponse> call = RetrofitClient.getInstance()
-                .createService(ApiServices.class).getStatementList(id);
+                .createService(ApiServices.class).getStatementList(id);//instancia o Retrofit e faz o serviço da API para pegar a lista
 
 
         call.enqueue(new Callback<StatementResponse>() {
@@ -49,7 +49,7 @@ public class StatementPresenter implements StatementContract.Presenter {
     }
 
     @Override
-    public void showDialogExit() {
+    public void showDialogExit() {//dialog que da a opção de saida do aplicativo
         final Dialog dialog = new Dialog(view.getActivity(), R.style.CustomDialog);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_exit);

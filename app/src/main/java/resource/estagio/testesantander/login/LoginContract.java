@@ -2,7 +2,7 @@ package resource.estagio.testesantander.login;
 
 import android.content.Context;
 
-import resource.estagio.testesantander.model.User;
+import resource.estagio.testesantander.domain.User;
 
 public class LoginContract {
     public interface View{
