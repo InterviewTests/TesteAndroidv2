@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Santander Application</string>
+    <string name="recentes">Recentes</string>
+    <string name="saldo">Saldo</string>
+    <string name="conta">Conta</string>
+</resources>
