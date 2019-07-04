@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".ui.ui.BankLoginActivity">
+    android:visibility="visible">
 
     <ImageView
         android:id="@+id/imageView"
@@ -15,6 +15,7 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="124dp"
         android:layout_marginBottom="541dp"
+        android:scaleType="centerCrop"
         android:src="@mipmap/ic_logo_bank"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,4 +81,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_login_bank"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="97dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="104dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/button_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

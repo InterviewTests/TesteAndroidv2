@@ -1,18 +1,25 @@
 package com.example.santanderapplication.ui.login;
 
-import com.example.santanderapplication.data.model.LoginRequestModel;
-import com.example.santanderapplication.service.IApiLogin;
+import com.example.santanderapplication.data.model.LoginResponseModel;
 
 public class BankLoginContract {
-    interface View{
+    interface View {
         void showMessage(String error);
+
+        void showActivity(LoginResponseModel loginResponseModel);
+
+        void showProgress(boolean b);
+
 
     }
 
-    interface Presenter{
-        void validateLogin(String user , String password);
+    interface Presenter {
+        void validateLogin(String user, String password);
+
         boolean validatePassword(String password);
+
         boolean validateUser(String user);
-        void validateIApi();
+
+        void eatinglogin(String user, String password);
     }
 }

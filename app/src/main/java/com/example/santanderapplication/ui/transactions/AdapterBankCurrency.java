@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.santanderapplication.R;
 import com.example.santanderapplication.data.model.StatementsModel;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 public class AdapterBankCurrency extends RecyclerView.Adapter<AdapterBankCurrency.MyViewHolder> {
@@ -18,16 +19,17 @@ public class AdapterBankCurrency extends RecyclerView.Adapter<AdapterBankCurrenc
     private Context context;
     private List<StatementsModel> statementsModelList;
 
-    public AdapterBankCurrency (Context context, List<StatementsModel> statementsModelList){
+    public AdapterBankCurrency(Context context, List<StatementsModel> statementsModelList) {
         this.context = context;
-        this.statementsModelList=statementsModelList;
+        this.statementsModelList = statementsModelList;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View itemList = LayoutInflater.from( parent.getContext() ).
-                inflate( R.layout.card_adapter_bank_currency,parent,false );
+                inflate( R.layout.card_adapter_bank_currency, parent, false );
+
 
         return new MyViewHolder( itemList );
     }
@@ -35,10 +37,14 @@ public class AdapterBankCurrency extends RecyclerView.Adapter<AdapterBankCurrenc
     @Override
     public void onBindViewHolder(MyViewHolder holder, int i) {
         StatementsModel statementsModel = statementsModelList.get( i );
-        holder.textViewDateCurrency.setText(statementsModel.getDate()+"");
-        holder.textViewTitleCurrency.setText( statementsModel.getTitle());
-        holder.textViewDescCurrency.setText( statementsModel.getDesc());
-        holder.textViewValueCurrency.setText(statementsModel.getValue()+"");
+        holder.textViewDateCurrency.setText( statementsModel.getDate() + "" );
+        holder.textViewTitleCurrency.setText( statementsModel.getTitle() );
+        holder.textViewDescCurrency.setText( statementsModel.getDesc() );
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        String format = nf.format( i );
+        holder.textViewValueCurrency.setText( format );
+
+
     }
 
     @Override
@@ -46,7 +52,7 @@ public class AdapterBankCurrency extends RecyclerView.Adapter<AdapterBankCurrenc
         return statementsModelList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView textViewTitleCurrency;
         private TextView textViewDateCurrency;

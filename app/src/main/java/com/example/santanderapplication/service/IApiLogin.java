@@ -10,5 +10,5 @@ import retrofit2.http.POST;
 public interface IApiLogin {
 
     @POST("login")
-    Call<LoginResponseModel>postLoginApi(@Body LoginRequestModel loginRequestModel);
+    Call<LoginResponseModel> postLoginApi(@Body LoginRequestModel loginRequestModel);
 }

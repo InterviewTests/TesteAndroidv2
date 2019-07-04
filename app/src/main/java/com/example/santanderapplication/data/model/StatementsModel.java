@@ -1,6 +1,7 @@
 package com.example.santanderapplication.data.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class StatementsModel implements Serializable {
@@ -26,8 +27,9 @@ public class StatementsModel implements Serializable {
         this.desc = desc;
     }
 
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        return dateFormat.format(date);
     }
 
     public void setDate(Date date) {
