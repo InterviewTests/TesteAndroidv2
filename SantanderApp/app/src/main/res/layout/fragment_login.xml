@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".login.LoginFragment">
+
+    <data>
+        <variable name="user" type="com.accenture.santander.viewmodel.User"/>
+    </data>
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@android:color/white">
+
+            <ImageView
+                    android:id="@+id/login_img_logo"
+                    android:layout_width="125dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="56dp"
+                    android:layout_marginStart="126dp"
+                    android:layout_marginEnd="124dp"
+                    android:layout_marginBottom="541dp"
+                    android:contentDescription="@string/acessibility_logo_bank"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <EditText
+                    android:id="@+id/login_edit_login"
+                    android:layout_width="342dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/background_edittext_default"
+                    android:hint="@string/login_edit_hint_login"
+                    android:textColorHint="@color/colorHintText"
+                    android:text="@{user.login}"
+                    android:afterTextChanged="@{(text) -> user.setLogin(text.toString())}"
+                    android:inputType="textEmailAddress"
+                    android:contentDescription="@string/acessibility_edt_login"
+                    android:paddingTop="12dp"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:paddingBottom="15dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="231dp"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="386dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+            <EditText
+                    android:id="@+id/login_edit_password"
+                    android:layout_width="342dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/background_edittext_default"
+                    android:hint="@string/login_edit_hint_passowrd"
+                    android:textColorHint="@color/colorHintText"
+                    android:text="@{user.password}"
+                    android:afterTextChanged="@{(text) -> user.setPassword(text.toString())}"
+                    android:inputType="textPassword"
+                    android:contentDescription="@string/acessibility_edt_password"
+                    android:paddingTop="12dp"
+                    android:paddingStart="13dp"
+                    android:paddingEnd="13dp"
+                    android:paddingBottom="15dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="302dp"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="315dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <Button
+                    android:id="@+id/login_btn_login"
+                    android:layout_width="202dp"
+                    android:layout_height="62dp"
+                    android:background="@drawable/background_button_default"
+                    android:hint="@string/login_btn_hint_login"
+                    android:textColorHint="@android:color/white"
+                    android:textSize="16sp"
+                    android:contentDescription="@string/acessibility_btn_login"
+                    android:layout_marginStart="87dp"
+                    android:layout_marginEnd="86dp"
+                    android:layout_marginBottom="33dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/login_edit_login"
+                    app:layout_constraintHorizontal_bias="0.472"
+                    app:layout_constraintVertical_bias="0.958"/>
+
+            <ProgressBar
+                    android:id="@+id/login_progress_circular_login"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/login_btn_login"
+                    app:layout_constraintVertical_bias="0.0"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

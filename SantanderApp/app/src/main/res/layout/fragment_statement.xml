@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+>
+
+    <data>
+        <variable name="account" type="com.accenture.santander.viewmodel.Account"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundStatement"
+            tools:context=".statements.StatementFragment">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:id="@+id/linearLayout">
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="horizontal"
+                          android:layout_marginTop="22.5dp">
+
+                <TextView android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:textSize="25dp"
+                          android:layout_marginStart="18dp"
+                          android:layout_marginEnd="5dp"
+                          android:maxLines="1"
+                          android:singleLine="true"
+                          android:textColor="@android:color/white"
+                          android:text="@{account.name}"
+                          android:contentDescription="@{@string/acessibility_txt_name_user(account.name)}"/>
+
+                <ImageView
+                        android:id="@+id/statement_img_logout"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="13dp"
+                        android:contentDescription="@string/acessibility_image_logout"
+                        android:gravity="center"/>
+            </LinearLayout>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginBottom="6dp"
+                      android:layout_marginStart="18dp"
+                      android:layout_marginEnd="18dp"
+                      android:layout_marginTop="28dp"
+                      android:textSize="12dp"
+                      android:textColor="@android:color/white"
+                      android:text="@string/statement_text_hint_account"
+                      android:contentDescription="@string/acessibility_txt_account"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginBottom="21dp"
+                      android:layout_marginStart="18dp"
+                      android:layout_marginEnd="18dp"
+                      android:textSize="25dp"
+                      android:maxLines="1"
+                      android:singleLine="true"
+                      android:text="@{@string/statement_text_number_bank_and_agency(account.bankAccount,account.agency)}"
+                      android:textColor="@android:color/white"
+                      android:contentDescription="@{@string/acessibility_txt_number_bank_and_agency(account.bankAccount,account.agency)}"/>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginBottom="6dp"
+                      android:layout_marginStart="18dp"
+                      android:layout_marginEnd="18dp"
+                      android:textSize="12dp"
+                      android:textColor="@android:color/white"
+                      android:text="@string/statement_text_hint_cash"
+                      android:contentDescription="@string/acessibility_txt_balance"/>
+
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginStart="18dp"
+                      android:layout_marginEnd="18dp"
+                      android:layout_marginBottom="17dp"
+                      android:textSize="25dp"
+                      android:maxLines="1"
+                      android:singleLine="true"
+                      android:text="@{account.balance}"
+                      android:textColor="@android:color/white"
+                      android:contentDescription="@{@string/acessibility_txt_money(account.balance)}"/>
+
+        </LinearLayout>
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/statement_refrash_statements"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintVertical_bias="0.0">
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/statement_list_statement"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/acessibility_list"
+            />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

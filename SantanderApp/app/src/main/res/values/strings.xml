@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Santander</string>
+
+    <string name="assets_logo">Logo.png</string>
+    <string name="assets_logout">logout 2.png</string>
+
+    <string name="login_edit_hint_login">User</string>
+    <string name="login_edit_hint_passowrd">Password</string>
+    <string name="login_btn_hint_login">Login</string>
+
+    <string name="statement_text_hint_account">Conta</string>
+    <string name="statement_text_hint_cash">Saldo</string>
+    <string name="statement_text_number_bank_and_agency">%1$s / %2$s</string>
+
+    <string name="item_statement_header_text_hint_recents">Recentes</string>
+
+    <string name="fail_connection">Falha na conexão</string>
+    <string name="fail_load_image">Falha ao carregar a imagem</string>
+    <string name="fail_request">serviço fora do ar</string>
+    <string name="fail_result_request">Falha na resposta do servidor</string>
+    <string name="logout_mensage">Loggof realizado com sucesso</string>
+
+    <string name="invalide_login">O login deve ser o e-mail ou o cpf valido</string>
+    <string name="invalide_password">O password deve contrar um numero, um caracter especial e uma letra maiuscula
+    </string>
+
+    <string name="acessibility_logo_bank">Logo do aplicativo</string>
+    <string name="acessibility_edt_login">Textfield de login</string>
+    <string name="acessibility_edt_password">Textfield de senha</string>
+    <string name="acessibility_btn_login">Botão de login</string>
+
+    <string name="acessibility_txt_name_user">Nome do usuario %s</string>
+    <string name="acessibility_txt_account">Conta</string>
+    <string name="acessibility_txt_number_bank_and_agency">Numero da conta %1$s Agencia %2$s</string>
+    <string name="acessibility_txt_balance">Saldo</string>
+    <string name="acessibility_txt_money">Dinheiro %s</string>
+    <string name="acessibility_image_logout">Logout</string>
+    <string name="acessibility_list">Lista</string>
+
+
+    <string name="acessibility_txt_title">Titulo %s</string>
+    <string name="acessibility_txt_date">Data %s</string>
+    <string name="acessibility_txt_describe">Descrição %s</string>
+
+    <string name="acessibility_txt_recents">Recentes</string>
+</resources>
