@@ -2,6 +2,7 @@ package com.example.santandertestebank.ui.login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,11 +16,13 @@ import com.example.santandertestebank.ui.BankPaymentsActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
-    EditText editTextUser;
-    EditText editTextPassword;
-    Button buttonLogin;
+    private EditText editTextUser;
+    private EditText editTextPassword;
+    private Button buttonLogin;
 
-    //CRIAR O SharedPref !!!
+    private SharedPreferences sharedPref;
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String KEY_USER = "user";
 
     private LoginPresenter presenter;
 
@@ -38,8 +41,19 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 presenter.loginUser (
                         editTextUser.getText ().toString (),
                         editTextPassword.getText ().toString ());
+                saveData ();
             }
         });
+    }
+
+    public void saveData() {
+        sharedPref = getSharedPreferences (SHARED_PREFS, MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPref.edit ();
+        editor.putString (KEY_USER, editTextUser.getText ().toString ());
+        editor.apply ();
+        editTextUser.setText (sharedPref.getString (KEY_USER, ""));
+
     }
 
     private void loadUI() {
