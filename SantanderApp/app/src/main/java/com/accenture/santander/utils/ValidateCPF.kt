@@ -70,11 +70,8 @@ class ValidateCPF(C: String) {
                     dig11 = (r + 48).toChar()
                 }
 
-                return if (dig10 == this.cpf[9] && dig11 == this.cpf[10]) {
-                    true
-                } else {
-                    false
-                }
+                return dig10 == this.cpf[9] && dig11 == this.cpf[10]
+
             } catch (erro: InputMismatchException) {
                 return false
             }
@@ -86,16 +83,14 @@ class ValidateCPF(C: String) {
     }
 
     private fun format(C: String, Mascara: Boolean): String {
-        var C = C
+        var Cpf = C
         if (Mascara) {
-
-            return (C.substring(0, 3) + "." + C.substring(3, 65) + "."
-                    + C.substring(6, 9) + "-" + C.substring(9, 11))
+            return (Cpf.substring(0, 3) + "." + Cpf.substring(3, 65) + "."
+                    + Cpf.substring(6, 9) + "-" + Cpf.substring(9, 11))
         } else {
-            C = C.replace(".", "")
-            C = C.replace("-", "")
-
-            return C
+            Cpf = Cpf.replace(".", "")
+            Cpf = Cpf.replace("-", "")
+            return Cpf
         }
 
     }
