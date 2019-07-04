@@ -3,7 +3,7 @@ package com.example.santanderapplication.ui.login;
 import com.example.santanderapplication.data.model.LoginResponseModel;
 
 public class BankLoginContract {
-    interface View {
+    public interface View {
         void showMessage(String error);
 
         void showActivity(LoginResponseModel loginResponseModel);

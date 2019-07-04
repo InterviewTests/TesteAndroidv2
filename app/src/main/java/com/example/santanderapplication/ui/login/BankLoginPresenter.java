@@ -1,13 +1,12 @@
 package com.example.santanderapplication.ui.login;
 
+
 import com.example.santanderapplication.data.model.LoginRequestModel;
 import com.example.santanderapplication.data.model.LoginResponseModel;
 import com.example.santanderapplication.service.IApiLogin;
 import com.example.santanderapplication.service.ServiceRetrofit;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,7 +51,7 @@ public class BankLoginPresenter implements BankLoginContract.Presenter {
         pattern = Pattern.compile( PASSWORD_PATTERN );
         matcher = pattern.matcher( password );
         if (password.matches( PASSWORD_PATTERN )) {
-            view.showProgress( false );
+            view.showProgress( true );
             return true;
         } else {
             view.showMessage( "senha invalida" );
@@ -65,18 +64,24 @@ public class BankLoginPresenter implements BankLoginContract.Presenter {
     @Override
     public boolean validateUser(String user) {
 
-        final String USER_CPF_REGEX = "[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\-?[0-9]{2}";
-        String regex = "^(.+)@(.+)$|[0-9]";
+        final String USER_CPF_REGEX = "[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}\\.?[0-9]{2}";
+        String USER_EMAIL_REGEX = "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                "\\@" +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                "(" +
+                "\\." +
+                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                ")+";
         pattern = Pattern.compile( USER_CPF_REGEX );
         matcher = pattern.matcher( user );
-        if (user.matches( regex ) || user.matches( USER_CPF_REGEX )) {
+        if (user.matches( USER_EMAIL_REGEX ) || user.matches( USER_CPF_REGEX )) {
             return true;
 
         } else {
-            view.showMessage( "usuário invalido" );
+           view.showMessage( "usuário invalido" );
         }
 
-        return user.matches( regex ) || user.matches( USER_CPF_REGEX );
+        return user.matches( USER_EMAIL_REGEX ) || user.matches( USER_CPF_REGEX );
 
     }
 
