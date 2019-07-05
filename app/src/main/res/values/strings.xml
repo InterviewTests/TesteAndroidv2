@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">SantanderTesteBank</string>
+    <string name="error">Erro: </string>
+    <string name="type_to_login">Digite um email ou CPF para logar</string>
+    <string name="type_valid_username">Digite um email ou CPF válido</string>
+    <string name="type_password_to_login">Digite sua senha para logar</string>
+    <string name="password_validation_message">A senha precisa ter pelo menos 1 letra maiúscula,
+        1 caractere especial e um cacactere alfanumérico</string>
+    <string name="invalid_userId">O id do usuário é inválido</string>
+
+    <!--Strings do Layout:-->
+    <string name="login">Login</string>
+    <string name="password">Senha</string>
+    <string name="user">Usuário</string>
+    <string name="title_fixed">Pagamento</string>
+    <string name="description_fixed">Conta de Luz</string>
+    <string name="date">12/12/2018</string>
+    <string name="value_fixed">R$1.000,00</string>
+    <string name="name">José da Silva Teste</string>
+    <string name="bank_account">Conta</string>
+    <string name="bank_account_fixed">2050 / 01.111222-4</string>
+    <string name="account_balance">Saldo</string>
+    <string name="account_balance_fixed">R$ 1.000,00</string>
+    <string name="recent">Recentes</string>
+
+</resources>
