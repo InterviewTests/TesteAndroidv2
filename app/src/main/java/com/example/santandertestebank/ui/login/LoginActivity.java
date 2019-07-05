@@ -53,7 +53,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         editor.putString (KEY_USER, editTextUser.getText ().toString ());
         editor.apply ();
         editTextUser.setText (sharedPref.getString (KEY_USER, ""));
-
     }
 
     private void loadUI() {

@@ -37,7 +37,6 @@ public class LoginPresenter implements LoginContract.Presenter {
                         validatePassword (password);
                         ObjectsLogin login = response.body ();
                         view.showUserInfo (login.getUserAccountLogin ());
-
                     } catch (Exception e) {
                         view.showToast (e.getMessage ());
                     }
@@ -53,18 +52,13 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void validateLogin(String username) throws Exception {
-        if (!username.matches (USERNAME_EMAIL)) {
+        if (!(username.matches (USERNAME_EMAIL) || username.matches (USERNAME_CPF_REGEX))) {
             throw new Exception (view.getContext ().getString (R.string.type_valid_username));
-//        } else
-//            if (!username.matches (USERNAME_CPF_REGEX)) {
-//            throw new Exception (view.getContext ().getString (R.string.type_valid_username));
         }
     }
 
     @Override
     public void validatePassword(String password) throws Exception {
-//        if (password.trim ().isEmpty () || password.isEmpty ()) {
-//            throw new Exception (view.getContext ().getString (R.string.type_password_to_login));
         if (!password.matches (PASSWORD_REGEX)) {
             throw new Exception (view.getContext ().getString (R.string.password_validation_message));
         }

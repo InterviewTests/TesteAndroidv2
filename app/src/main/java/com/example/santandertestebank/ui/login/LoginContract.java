@@ -23,12 +23,6 @@ public class LoginContract {
 
         void validatePassword(String password) throws Exception;
 
-//        void validateEmptyLogin(String password);
-//
-//        void validateCpfLogin(String username);
-//
-//        void validateEmailLogin(String username);
-
         void validateLogin(String username) throws Exception;
     }
 }
