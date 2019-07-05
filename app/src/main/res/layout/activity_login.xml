@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/login_background"
+    tools:context=".screen.login.LoginActivity">
+
+    <ImageView
+        android:id="@+id/screen_login_img_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/login_brand_margin_top"
+        android:src="@drawable/img_login_screen_brand"
+        android:contentDescription="@string/login_description_brand"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/screen_login_edit_text_user"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edit_text_layout_height"
+        android:layout_marginTop="@dimen/login_edit_text_user_margin_top"
+        android:layout_marginStart="@dimen/login_edit_text_margin_start"
+        android:layout_marginEnd="@dimen/login_edit_text_margin_end"
+        android:paddingStart="@dimen/login_edit_text_padding_start"
+        android:paddingEnd="@dimen/login_edit_text_padding_end"
+        android:background="@drawable/style_shape_edit_text"
+        android:inputType="text"
+        android:hint="@string/login_edit_text_hint_user"
+        android:textSize="@dimen/login_edit_text_hint_size"
+        android:textColorHint="@color/login_edit_text_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/screen_login_img_brand" />
+
+    <EditText
+        android:id="@+id/screen_login_edit_text_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_edit_text_layout_height"
+        android:layout_marginTop="@dimen/login_edit_text_password_margin_top"
+        android:layout_marginStart="@dimen/login_edit_text_margin_start"
+        android:layout_marginEnd="@dimen/login_edit_text_margin_end"
+        android:paddingStart="@dimen/login_edit_text_padding_start"
+        android:paddingEnd="@dimen/login_edit_text_padding_end"
+        android:background="@drawable/style_shape_edit_text"
+        android:inputType="textPassword"
+        android:hint="@string/login_edit_text_hint_password"
+        android:textColorHint="@color/login_edit_text_color"
+        android:textSize="@dimen/login_edit_text_hint_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/screen_login_edit_text_user" />
+
+    <Button
+        android:id="@+id/screen_login_btn"
+        android:layout_width="@dimen/login_btn_layout_width"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/login_btn_layout_margin_bottom"
+        android:background="@drawable/style_shape_btn_login"
+        android:text="@string/login_btn_label"
+        android:textSize="@dimen/login_btn_text_size"
+        android:textAllCaps="false"
+        android:textColor="@color/login_btn_text_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

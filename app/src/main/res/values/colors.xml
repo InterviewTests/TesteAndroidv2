@@ -3,4 +3,16 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="color_status_bar">#FFFFFFFF</color>
+    
+    <!-- Login Screen -->
+    <color name="login_background">#FFFFFFFF</color>
+    <color name="login_accent">#FF3B48EE</color>
+    <color name="login_edit_text_border">#FFDCE2EE</color>
+    <color name="login_edit_text_background">#FFFFFFFF</color>
+    <color name="login_edit_text_color">#FFA8B4C4</color>
+
+    <color name="login_btn_background">#FF3B48EE</color>
+    <color name="login_btn_shadow">#4C3B48EE</color>
+    <color name="login_btn_text_color">#FFFFFFFF</color>
 </resources>

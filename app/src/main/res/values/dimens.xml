@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Login Screen -->
+    <dimen name="login_brand_margin_top">36dp</dimen>
+
+    <dimen name="login_edit_text_user_margin_top">105dp</dimen>
+    <dimen name="login_edit_text_password_margin_top">21dp</dimen>
+    <dimen name="login_edit_text_layout_height">50dp</dimen>
+    <dimen name="login_edit_text_margin_start">17dp</dimen>
+    <dimen name="login_edit_text_margin_end">16dp</dimen>
+    <dimen name="login_edit_text_padding_start">13dp</dimen>
+    <dimen name="login_edit_text_padding_end">13dp</dimen>
+    <dimen name="login_edit_text_hint_size">15sp</dimen>
+
+    <dimen name="login_btn_layout_width">200dp</dimen>
+    <dimen name="login_btn_layout_height">62dp</dimen>
+    <dimen name="login_btn_layout_margin_bottom">33dp</dimen>
+    <dimen name="login_btn_text_size">16sp</dimen>
+</resources>

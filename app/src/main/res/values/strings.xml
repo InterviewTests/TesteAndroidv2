@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">TesteAndroidv2</string>
+    <string name="app_name">Bank</string>
+
+    <!-- Login Screen -->
+    <string name="login_description_brand">Logomarca do aplicativo Bank</string>
+    <string name="login_edit_text_hint_user">User</string>
+    <string name="login_edit_text_hint_password">Password</string>
+    <string name="login_btn_label">Login</string>
 </resources>
