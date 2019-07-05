@@ -21,11 +21,13 @@ public class BankPaymentsPresenter implements BankPaymentsContract.Presenter {
 
         BankPaymentsRepository bankPaymentsRepository = new BankPaymentsRepository ();
         final Call<ObjectsStatements> requestStatements = bankPaymentsRepository.bringStatements (id);
+        view.showProgressBar (false);
         requestStatements.enqueue (new Callback<ObjectsStatements> () {
             @Override
             public void onResponse(Call<ObjectsStatements> call, Response<ObjectsStatements> response) {
                 if (!response.isSuccessful ()) {
                     view.showToast (response.body ().getErrorStatement ().getMessage ());
+                    view.showProgressBar (true);
                 } else {
 
                     try {
@@ -33,11 +35,13 @@ public class BankPaymentsPresenter implements BankPaymentsContract.Presenter {
 
                     } catch (Exception e) {
                         view.showToast (e.getMessage ());
+                        view.showProgressBar (true);
                     }
                     ObjectsStatements statements = response.body ();
 
                     if (statements != null) {
                         view.showUserinfos (statements);
+                        view.showProgressBar (true);
                     }
                 }
             }
@@ -45,6 +49,7 @@ public class BankPaymentsPresenter implements BankPaymentsContract.Presenter {
             @Override
             public void onFailure(Call<ObjectsStatements> call, Throwable t) {
                 view.showToast (t.getMessage ());
+                view.showProgressBar (true);
             }
         });
     }

@@ -1,5 +1,7 @@
 package com.example.santandertestebank.ui.login;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.santandertestebank.R;
@@ -19,10 +22,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     private EditText editTextUser;
     private EditText editTextPassword;
     private Button buttonLogin;
+    private ProgressBar loginProgressBar;
 
     private SharedPreferences sharedPref;
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String KEY_USER = "user";
+    public static final String KEY_PASSWORD = "password";
 
     private LoginPresenter presenter;
 
@@ -33,32 +38,36 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         getSupportActionBar ().hide ();
 
         loadUI ();
+        sharedPref = getSharedPreferences (SHARED_PREFS, Context.MODE_PRIVATE);
+
+        this.editTextUser.setText (sharedPref.getString (KEY_USER, ""));
+        this.editTextPassword.setText (sharedPref.getString (KEY_PASSWORD, ""));
         presenter = new LoginPresenter (this);
 
-        buttonLogin.setOnClickListener (new View.OnClickListener () {
+        this.buttonLogin.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View v) {
                 presenter.loginUser (
                         editTextUser.getText ().toString (),
                         editTextPassword.getText ().toString ());
-                saveData ();
+                saveData (KEY_USER, KEY_PASSWORD);
             }
         });
     }
 
-    public void saveData() {
-        sharedPref = getSharedPreferences (SHARED_PREFS, MODE_PRIVATE);
-
+    public void saveData(String KEY_USER, String KEY_PASSWORD) {
         SharedPreferences.Editor editor = sharedPref.edit ();
         editor.putString (KEY_USER, editTextUser.getText ().toString ());
+        editor.putString (KEY_PASSWORD, editTextPassword.getText ().toString ());
         editor.apply ();
-        editTextUser.setText (sharedPref.getString (KEY_USER, ""));
     }
 
     private void loadUI() {
         editTextUser = findViewById (R.id.edit_text_user);
         editTextPassword = findViewById (R.id.edit_text_password);
         buttonLogin = findViewById (R.id.button_login);
+        loginProgressBar = findViewById (R.id.login_progress);
+        sharedPref = getSharedPreferences (SHARED_PREFS, Context.MODE_PRIVATE);
     }
 
     @Override
@@ -78,40 +87,28 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         startActivity (i);
         finish ();
     }
-}
 
-//    public void loginUser() {
-//        Retrofit retrofit = new Retrofit.Builder ()
-//                .baseUrl (ApiService.BASE_URL)
-//                .addConverterFactory (GsonConverterFactory.create ())
-//                .build ();
-//
-//        ApiService service = retrofit.create (ApiService.class);
-//        final Call<ObjectsLogin> requestLogin = service.loginUSer ("tesetei2", "Test@1");
-//
-//        requestLogin.enqueue (new Callback<ObjectsLogin> () {
-//            @Override
-//            public void onResponse(Call<ObjectsLogin> call, Response<ObjectsLogin> response) {
-//
-//                if (!response.isSuccessful ()) {
-//                    Toast.makeText (getApplicationContext (), "Erro: " + response.code (),
-//                            Toast.LENGTH_LONG).show ();
-//                } else {
-//
-//                    ObjectsLogin login = response.body ();
-//                    login.getUserAccountLogin ().getUserId ();
-//
-//                    Intent i = new Intent (getApplicationContext (), BankPaymentsActivity.class);
-//                    i.putExtra ("keyLogin", login.getUserAccountLogin ());
-//                    startActivity (i);
-//                    finish ();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ObjectsLogin> call, Throwable t) {
-//                Toast.makeText (getApplicationContext (), "Erro: " + t, Toast.LENGTH_LONG).show ();
-//
-//            }
-//        });
-//    }
+    @Override
+    public void showProgressBar(final boolean show) {
+        int shortAnimTime = getResources ().getInteger (android.R.integer.config_shortAnimTime);
+
+        buttonLogin.setVisibility (show ? View.INVISIBLE : View.VISIBLE);
+        buttonLogin.animate ().setDuration (shortAnimTime).alpha (show ? 0 : 1).setListener (
+                new AnimatorListenerAdapter () {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        buttonLogin.setVisibility (show ? View.INVISIBLE : View.VISIBLE);
+                    }
+                });
+
+        loginProgressBar.setVisibility (show ? View.INVISIBLE : View.VISIBLE);
+        loginProgressBar.animate ().setDuration (shortAnimTime).alpha (show ? 0 : 1).setListener (
+                new AnimatorListenerAdapter () {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        loginProgressBar.setVisibility (show ? View.INVISIBLE : View.VISIBLE);
+                    }
+                });
+    }
+
+}

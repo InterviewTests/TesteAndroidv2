@@ -14,7 +14,7 @@ public class LoginContract {
 
         void showUserInfo(UserAccountLogin userAccountLogin);
 
-//        void showProgressBar();
+        void showProgressBar(final boolean show);
     }
 
     public interface Presenter {

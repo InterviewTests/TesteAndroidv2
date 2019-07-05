@@ -15,6 +15,8 @@ public class BankPaymentsContract {
         void showUserinfos(ObjectsStatements objectsStatements);
 
         void logoutApp();
+
+        void showProgressBar(final boolean show);
     }
 
     public interface Presenter {

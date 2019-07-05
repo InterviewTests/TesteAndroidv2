@@ -1,5 +1,7 @@
 package com.example.santandertestebank.ui;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +31,7 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
 
     private RecyclerView recyclerViewPayments;
     private AdapterBankPayments adapter;
+    private ProgressBar paymentsProgressBar;
 
     private BankPaymentsPresenter presenter;
 
@@ -69,12 +73,27 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
         finish ();
     }
 
+    @Override
+    public void showProgressBar(final boolean show) {
+        final int shortAnimTime = getResources ().getInteger (android.R.integer.config_shortAnimTime);
+
+        paymentsProgressBar.setVisibility (show ? View.VISIBLE : View.GONE);
+        paymentsProgressBar.animate ().setDuration (shortAnimTime).alpha (show? 0:1).setListener (
+                new AnimatorListenerAdapter () {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                paymentsProgressBar.setVisibility (show? View.INVISIBLE: View.VISIBLE);
+            }
+        });
+    }
+
     private void loadUI() {
         textViewName = findViewById (R.id.text_view_name);
         textViewBankAccount = findViewById (R.id.text_view_bank_account);
         textViewAccountBalance = findViewById (R.id.text_view_account_balance);
         imageViewLogout = findViewById (R.id.image_view_logout);
         recyclerViewPayments = findViewById (R.id.recycler_view_payments);
+        paymentsProgressBar = findViewById (R.id.payments_progress);
     }
 
     @Override
@@ -97,41 +116,3 @@ public class BankPaymentsActivity extends AppCompatActivity implements BankPayme
         recyclerViewPayments.setAdapter (adapter);
     }
 }
-//    public void bringList() {
-//        Retrofit retrofit = new Retrofit.Builder ()
-//                .baseUrl (ApiService.BASE_URL)
-//                .addConverterFactory (GsonConverterFactory.create ())
-//                .build ();
-//
-//        ApiService service = retrofit.create (ApiService.class);
-//        final Call<ObjectsStatements> requestStatements = service.bringStatements (3);
-//
-//        requestStatements.enqueue (new Callback<ObjectsStatements> () {
-//            @Override
-//            public void onResponse(Call<ObjectsStatements> call, Response<ObjectsStatements> response) {
-//                if (!response.isSuccessful ()) {
-//                    Toast.makeText (getApplicationContext (), "Erro: " + response.code (),
-//                            Toast.LENGTH_LONG).show ();
-//                } else {
-//
-//                    ObjectsStatements statements = response.body ();
-//
-//                    if (statements != null) {
-//                        adapter = new AdapterBankPayments (statements.getPaymentsStatements ());
-//
-//                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager
-//                                (getApplicationContext ());
-//                        recyclerViewPayments.setLayoutManager (layoutManager);
-//                        recyclerViewPayments.setHasFixedSize (true);
-//                        recyclerViewPayments.setAdapter (adapter);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ObjectsStatements> call, Throwable t) {
-//                Toast.makeText (getApplicationContext (), "Erro: " + t.getMessage (),
-//                        Toast.LENGTH_LONG).show ();
-//            }
-//        });
-//
