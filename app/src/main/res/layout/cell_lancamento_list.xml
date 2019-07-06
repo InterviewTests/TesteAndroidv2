@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:descendantFocusability="blocksDescendants">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView"
+        tools:ignore="MissingConstraints">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tituloTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Pagamento"
+            android:textColor="#A8B4C4"
+            android:textSize="20dp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/dataTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="right"
+            android:text="12/12/2018"
+            android:textColor="#A8B4C4"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/descricaoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="15dp"
+            android:text="Conta de luz"
+            android:textColor="#485465"
+            android:textSize="20dp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/valorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="right"
+            android:text="R$ 1.000,00"
+            android:textColor="#485465"
+            android:textSize="20dp" />
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>
