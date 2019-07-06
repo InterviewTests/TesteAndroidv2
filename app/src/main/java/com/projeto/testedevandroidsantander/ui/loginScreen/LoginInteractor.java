@@ -1,8 +1,8 @@
 package com.projeto.testedevandroidsantander.ui.loginScreen;
 
 
-import com.projeto.santander.model.UsuarioDTO;
-import com.projeto.santander.util.Uteis;
+import com.projeto.testedevandroidsantander.model.UsuarioDTO;
+import com.projeto.testedevandroidsantander.util.Uteis;
 
 interface LoginInteractorInput {
     void fetchLoginMetaData(LoginRequest request);

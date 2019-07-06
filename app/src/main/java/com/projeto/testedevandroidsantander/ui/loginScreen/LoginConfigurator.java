@@ -1,8 +1,5 @@
 package com.projeto.testedevandroidsantander.ui.loginScreen;
 
-import com.projeto.santander.ui.mainScreen.LancamentoWorker;
-import com.projeto.santander.ui.mainScreen.MainActivity;
-
 import java.lang.ref.WeakReference;
 
 public enum LoginConfigurator {

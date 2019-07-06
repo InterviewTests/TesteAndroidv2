@@ -1,8 +1,8 @@
 package com.projeto.testedevandroidsantander.ui.loginScreen;
 
-import com.projeto.santander.api.RetrofitClient;
-import com.projeto.santander.model.UsuarioDTO;
-import com.projeto.santander.util.SharedPrefManager;
+import com.projeto.testedevandroidsantander.api.RetrofitClient;
+import com.projeto.testedevandroidsantander.model.UsuarioDTO;
+import com.projeto.testedevandroidsantander.util.SharedPrefManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;

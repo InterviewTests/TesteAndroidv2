@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 
-import com.projeto.testedevandroidsantander.R;
+import com.projeto.santander.R;
 
 
 
