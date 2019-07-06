@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TesteDevAndroidSantander</string>
+
+    <string name="message_login_senha_invalido">Login ou Senha inválidos!</string>
+    <string name="message_cpf_email_invalido">CPF ou E-mail inválidos!</string>
+    <string name="message_senha_invalida">A senha tem que ter no mínimo uma letra maiúscula, uma minúscula, um número e um caracter especial!</string>
 </resources>
