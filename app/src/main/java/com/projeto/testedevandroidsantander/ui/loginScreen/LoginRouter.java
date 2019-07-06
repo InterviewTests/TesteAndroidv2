@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.projeto.santander.ui.mainScreen.MainActivity;
-import com.projeto.santander.util.Constants;
+import com.projeto.testedevandroidsantander.ui.mainScreen.MainActivity;
+import com.projeto.testedevandroidsantander.util.Constants;
 
 import java.lang.ref.WeakReference;
 

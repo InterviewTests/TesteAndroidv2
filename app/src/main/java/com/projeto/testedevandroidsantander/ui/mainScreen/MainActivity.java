@@ -13,14 +13,11 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.projeto.santander.R;
-import com.projeto.santander.model.LancamentoViewModel;
-import com.projeto.santander.model.UsuarioModel;
-import com.projeto.santander.util.Constants;
-import com.projeto.santander.util.Uteis;
 import com.projeto.testedevandroidsantander.R;
 import com.projeto.testedevandroidsantander.model.LancamentoViewModel;
 import com.projeto.testedevandroidsantander.model.UsuarioModel;
+import com.projeto.testedevandroidsantander.util.Constants;
+import com.projeto.testedevandroidsantander.util.Uteis;
 
 import java.util.List;
 

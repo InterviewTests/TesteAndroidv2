@@ -1,7 +1,7 @@
 package com.projeto.testedevandroidsantander.ui.mainScreen;
 
 
-import com.projeto.santander.model.LancamentoDTO;
+import com.projeto.testedevandroidsantander.model.LancamentoDTO;
 
 interface MainInteractorInput {
     void fetchMainMetaData(MainRequest request);
