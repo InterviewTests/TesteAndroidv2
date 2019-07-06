@@ -1,7 +1,7 @@
 package com.projeto.testedevandroidsantander.ui.mainScreen;
 
-import com.projeto.santander.api.RetrofitClient;
-import com.projeto.santander.model.LancamentoDTO;
+import com.projeto.testedevandroidsantander.api.RetrofitClient;
+import com.projeto.testedevandroidsantander.model.LancamentoDTO;
 
 import retrofit2.Call;
 import retrofit2.Callback;
