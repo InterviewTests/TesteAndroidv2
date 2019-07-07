@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import ssilvalucas.testeandroidv2.data.model.ErrorMessage;
 import ssilvalucas.testeandroidv2.data.model.LoginRequest;
 import ssilvalucas.testeandroidv2.data.model.LoginResponse;
 import ssilvalucas.testeandroidv2.data.retrofit.Retrofit;
@@ -24,21 +25,17 @@ public class LoginInteractor implements LoginInteractorInput{
     @Override
     public void onLogin(String username, String password) {
         if(username.isEmpty()){
-            output.isEmptyUsername();
-            return;
+            output.throwError(ErrorMessage.MESSAGE_EMPTY_USERNAME);
         } else if(password.isEmpty()){
-            output.isEmptyPassword();
-            return;
+            output.throwError(ErrorMessage.MESSAGE_EMPTY_PASSWORD);
         } else if(!isValidUsername(username)){
-            output.invalidUsername();
-            return;
+            output.throwError(ErrorMessage.MESSAGE_INVALID_USERNAME);
         } else if(!isValidPassword(password)){
-            output.invalidPassword();
-            return;
+            output.throwError(ErrorMessage.MESSAGE_INVALID_PASSWORD);
+        } else{
+            LoginRequest request = new LoginRequest(username, password);
+            doLoginRequest(request);
         }
-
-        LoginRequest request = new LoginRequest(username, password);
-        doLoginRequest(request);
     }
 
     private boolean isValidUsername(String username){
@@ -74,13 +71,12 @@ public class LoginInteractor implements LoginInteractorInput{
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if(response.isSuccessful()){
                     output.onSuccessfulLogin(response.body());
-                    output.setLastLoggedUser();
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                output.showErrorMessage(t.getMessage());
+                output.throwError(t.getMessage());
             }
         });
     }
