@@ -1,5 +1,6 @@
-# TesteAndroidv2 Resource IT
-Teste para candidatos vaga de desenvolver Android v2
+# TesteAndroidv2 
+Teste para candidatos vaga de desenvolver Android v2</br>
+Meu teste é pela empresa </b>RESOURCE IT</b>
 
 # Procedimentos de Instalação
 
