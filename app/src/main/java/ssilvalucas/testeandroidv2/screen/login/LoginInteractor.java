@@ -2,6 +2,14 @@ package ssilvalucas.testeandroidv2.screen.login;
 
 import java.util.regex.Pattern;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import ssilvalucas.testeandroidv2.data.model.LoginRequest;
+import ssilvalucas.testeandroidv2.data.model.LoginResponse;
+import ssilvalucas.testeandroidv2.data.retrofit.Retrofit;
+import ssilvalucas.testeandroidv2.data.api.LoginService;
+
 
 interface LoginInteractorInput {
     void onLogin(String username, String password);
@@ -29,6 +37,8 @@ public class LoginInteractor implements LoginInteractorInput{
             return;
         }
 
+        LoginRequest request = new LoginRequest(username, password);
+        doLoginRequest(request);
     }
 
     private boolean isValidUsername(String username){
@@ -54,5 +64,24 @@ public class LoginInteractor implements LoginInteractorInput{
         /* Deve ter pelo menos uma letra uma letra maiuscula, um caracter especial e um caracter alfanumérico.*/
         String regex = "(?=.*[A-Z])(?=.*[+×÷=/_€£¥₩!@#$%^&*:;,?\\|])(?=.*[0-9a-z])[0-9a-zA-Z+×÷=/_€£¥₩!@#$%^&*:;,?\\|]+";
         return Pattern.matches(regex, password);
+    }
+
+    private void doLoginRequest(LoginRequest request){
+        LoginService loginService = Retrofit.getInstance().create(LoginService.class);
+
+        loginService.onLogin(request.getUsername(), request.getPassword()).enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                if(response.isSuccessful()){
+                    output.onSuccessfulLogin(response.body());
+                    output.setLastLoggedUser();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                output.showErrorMessage(t.getMessage());
+            }
+        });
     }
 }
