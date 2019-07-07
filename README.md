@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
@@ -39,3 +40,19 @@ Faça um fork desse desse repositório em seu Github e ao finalizar nos envie um
 # Importante: não há prazo de entrega, faça com qualidade!
 
 # BOA SORTE!
+=======
+# TesteAndroidv2 Resource IT
+Teste para candidatos vaga de desenvolver Android v2
+
+# Procedimentos de Instalação
+
+1 - Clonar o projeto;
+2 - Abrir o projeto pelo android studio;
+3 - Executar;
+
+# Prints do aplicativo solicitado;
+
+<img style="display: inline; margin: 0 10px;" src="https://github.com/daylonsc/filmesfamosos/blob/master/Screenshot_1558137623.png"/>
+
+<img  style="display: inline; margin: 0 10px;" src="https://github.com/daylonsc/filmesfamosos/blob/master/Screenshot_1558137648.png"/>
+>>>>>>> 0ffa08f... Create README.md
