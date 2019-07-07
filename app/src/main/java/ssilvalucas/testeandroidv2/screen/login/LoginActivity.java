@@ -33,11 +33,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
         btnLogin.setOnClickListener(getOnClickListenerBtnLogin());
 
         LoginConfigurator.INSTANCE.configure(this);
-        fetchMetaData();
-    }
-
-    public void fetchMetaData(){
-        output.fetchLoginMetaData();
     }
 
     private View.OnClickListener getOnClickListenerBtnLogin(){

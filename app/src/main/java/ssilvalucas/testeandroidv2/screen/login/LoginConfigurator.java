@@ -8,7 +8,7 @@ public enum LoginConfigurator {
     public void configure(LoginActivity activity){
 
         LoginRouter router = new LoginRouter();
-        router.acticity = new WeakReference<>(activity);
+        router.activity = new WeakReference<>(activity);
 
         LoginInteractor interactor = new LoginInteractor();
 

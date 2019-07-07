@@ -6,5 +6,5 @@ public class LoginRouter {
 
     public static final String TAG = LoginRouter.class.getSimpleName();
 
-    public WeakReference<LoginActivity> acticity;
+    public WeakReference<LoginActivity> activity;
 }
