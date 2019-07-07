@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Santander</string>
+    <string name="hint_field_user">User</string>
+    <string name="hint_field_password">Password</string>
+    <string name="text_button_login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="label_conta">Conta</string>
+    <string name="label_saldo">Saldo</string>
+    <string name="label_recente">Recentes</string>
+    <string name="message_login_senha_invalido">Login ou Senha inválidos!</string>
+    <string name="message_cpf_email_invalido">CPF ou E-mail inválidos!</string>
+    <string name="message_senha_invalida">A senha tem que ter no mínimo uma letra maiúscula, uma minúscula, um número e um caracter especial!</string>
+</resources>
