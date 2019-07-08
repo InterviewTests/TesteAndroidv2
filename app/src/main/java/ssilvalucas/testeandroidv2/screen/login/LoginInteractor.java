@@ -1,5 +1,7 @@
 package ssilvalucas.testeandroidv2.screen.login;
 
+import android.content.Context;
+
 import java.util.regex.Pattern;
 
 import retrofit2.Call;
@@ -10,6 +12,7 @@ import ssilvalucas.testeandroidv2.data.model.LoginRequest;
 import ssilvalucas.testeandroidv2.data.model.LoginResponse;
 import ssilvalucas.testeandroidv2.data.retrofit.Retrofit;
 import ssilvalucas.testeandroidv2.data.api.LoginService;
+import ssilvalucas.testeandroidv2.data.storage.UserDataStorage;
 
 
 interface LoginInteractorInput {
@@ -19,6 +22,7 @@ interface LoginInteractorInput {
 public class LoginInteractor implements LoginInteractorInput{
 
     public static String TAG = LoginInteractor.class.getSimpleName();
+    public Context context;
 
     public LoginPresenterInput output;
 
@@ -63,7 +67,7 @@ public class LoginInteractor implements LoginInteractorInput{
         return Pattern.matches(regex, password);
     }
 
-    private void doLoginRequest(LoginRequest request){
+    private void doLoginRequest(final LoginRequest request){
         LoginService loginService = Retrofit.getInstance().create(LoginService.class);
 
         loginService.onLogin(request.getUsername(), request.getPassword()).enqueue(new Callback<LoginResponse>() {
@@ -71,6 +75,7 @@ public class LoginInteractor implements LoginInteractorInput{
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if(response.isSuccessful()){
                     output.onSuccessfulLogin(response.body());
+                    UserDataStorage.writeUsername(request.getUsername(), context);
                 }
             }
 

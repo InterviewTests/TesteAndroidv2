@@ -15,6 +15,7 @@ public enum LoginConfigurator {
 
         LoginInteractor interactor = new LoginInteractor();
         interactor.output = presenter;
+        interactor.context = activity.getApplicationContext();
 
         if (activity.output == null){
             activity.output = interactor;

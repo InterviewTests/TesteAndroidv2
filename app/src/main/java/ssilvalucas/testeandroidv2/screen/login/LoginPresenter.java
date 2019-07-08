@@ -22,6 +22,7 @@ public class LoginPresenter implements LoginPresenterInput{
 
     @Override
     public void onSuccessfulLogin(LoginResponse response) {
+        output.get().onSuccessfulLogin(response.getUserAccount());
         Log.i("TESTE ", response.getUserAccount().getAgency() + " - " + response.getUserAccount().getBalance() + " - " + response.getUserAccount().getBankAccount() + " - " + response.getUserAccount().getName() + " - " + response.getUserAccount().getUserId());
     }
 }

@@ -8,9 +8,12 @@ import android.widget.EditText;
 
 import ssilvalucas.testeandroidv2.R;
 import ssilvalucas.testeandroidv2.data.model.ErrorMessage;
+import ssilvalucas.testeandroidv2.data.model.UserAccount;
+import ssilvalucas.testeandroidv2.data.storage.UserDataStorage;
 
 interface LoginActivityInput{
     void showErrorMessage(String message);
+    void onSuccessfulLogin(UserAccount userAccount);
 }
 
 public class LoginActivity extends AppCompatActivity implements LoginActivityInput {
@@ -30,11 +33,16 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
 
         LoginConfigurator.INSTANCE.configure(this);
 
-        editTextUsername = findViewById(R.id.screen_login_edit_text_user);
-        editTextPassword = findViewById(R.id.screen_login_edit_text_password);
+        setDefaultViews();
 
-        btnLogin = findViewById(R.id.screen_login_btn);
         btnLogin.setOnClickListener(getOnClickListenerBtnLogin());
+    }
+
+    private void setDefaultViews(){
+        editTextUsername = findViewById(R.id.screen_login_edit_text_user);
+        editTextUsername.setText(UserDataStorage.readLastUser(getApplicationContext()));
+        editTextPassword = findViewById(R.id.screen_login_edit_text_password);
+        btnLogin = findViewById(R.id.screen_login_btn);
     }
 
     private View.OnClickListener getOnClickListenerBtnLogin(){
@@ -58,5 +66,10 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
         } else{
 
         }
+    }
+
+    @Override
+    public void onSuccessfulLogin(UserAccount userAccount) {
+        router.startHomeActivity(userAccount);
     }
 }
