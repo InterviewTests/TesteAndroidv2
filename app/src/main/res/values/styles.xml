@@ -15,4 +15,10 @@
         <item name="colorPrimary">@color/login_accent</item>
     </style>
 
+    <style name="AppTheme.HomeScreen">
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/home_accent</item>
+        <item name="colorAccent">@color/home_accent</item>
+        <item name="colorPrimary">@color/home_accent</item>
+    </style>
+
 </resources>

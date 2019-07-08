@@ -16,4 +16,13 @@
     <color name="login_btn_background">#FF3B48EE</color>
     <color name="login_btn_shadow">#4C3B48EE</color>
     <color name="login_btn_text_color">#FFFFFFFF</color>
+
+    <!-- Home Screen -->
+    <color name="home_accent">#FF3B49EE</color>
+    <color name="home_background">#FFFFFFFF</color>
+
+    <color name="home_header_background">#FF3B49EE</color>
+    <color name="home_header_text_color">#FFFFFFFF</color>
+
+    <color name="home_label_list_text_color">#485465</color>
 </resources>

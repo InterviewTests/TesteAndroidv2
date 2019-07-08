@@ -1,9 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".screen.home.HomeActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_header_height"
+        android:background="@color/home_header_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/screen_home_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/home_header_margin_start"
+            android:layout_marginTop="@dimen/home_header_margin_top"
+            android:textColor="@color/home_header_text_color"
+            android:textSize="@dimen/home_header_title_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/screen_home_btn_logout"
+            android:layout_width="@dimen/home_btn_logout_width"
+            android:layout_height="@dimen/home_btn_logout_height"
+            android:layout_marginTop="@dimen/home_btn_logout_margin_top"
+            android:layout_marginEnd="@dimen/home_btn_logout_margin_end"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_btn_logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/screen_home_label_bank_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/home_header_margin_start"
+            android:layout_marginTop="@dimen/home_label_margin_top"
+            android:layout_marginBottom="@dimen/home_label_margin_bottom"
+            android:text="@string/home_label_bank_account"
+            android:textColor="@color/home_header_text_color"
+            android:textSize="@dimen/home_label_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/screen_home_user_name" />
+
+        <TextView
+            android:id="@+id/screen_home_bank_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/home_header_margin_start"
+            android:textColor="@color/home_header_text_color"
+            android:textSize="@dimen/home_header_title_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/screen_home_label_bank_account" />
+
+        <TextView
+            android:id="@+id/screen_home_label_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/home_header_margin_start"
+            android:layout_marginTop="@dimen/home_label_margin_top"
+            android:layout_marginBottom="@dimen/home_label_margin_bottom"
+            android:text="@string/home_label_balance"
+            android:textColor="@color/home_header_text_color"
+            android:textSize="@dimen/home_label_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/screen_home_bank_account" />
+
+        <TextView
+            android:id="@+id/screen_home_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/home_header_margin_start"
+            android:textColor="@color/home_header_text_color"
+            android:textSize="@dimen/home_header_title_text_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/screen_home_label_balance" />
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/screen_home_label_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/home_header_margin_start"
+        android:layout_marginTop="@dimen/home_label_list_margin_top"
+        android:textColor="@color/home_label_list_text_color"
+        android:textSize="@dimen/home_label_list_text_size"
+        android:text="@string/home_label_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/screen_home_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/home_list_margin"
+        android:layout_marginTop="@dimen/home_list_margin"
+        android:layout_marginEnd="@dimen/home_list_margin"
+        android:layout_marginBottom="@dimen/home_list_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/screen_home_label_list" />
 
 </android.support.constraint.ConstraintLayout>

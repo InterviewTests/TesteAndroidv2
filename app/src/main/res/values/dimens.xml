@@ -17,4 +17,25 @@
     <dimen name="login_btn_layout_height">62dp</dimen>
     <dimen name="login_btn_layout_margin_bottom">33dp</dimen>
     <dimen name="login_btn_text_size">16sp</dimen>
+
+    <!-- Home Screen -->
+    <dimen name="home_header_height">210dp</dimen>
+    <dimen name="home_header_margin_start">18dp</dimen>
+    <dimen name="home_header_margin_top">20dp</dimen>
+    <dimen name="home_header_title_text_size">25sp</dimen>
+
+    <dimen name="home_btn_logout_width">25dp</dimen>
+    <dimen name="home_btn_logout_height">25dp</dimen>
+    <dimen name="home_btn_logout_margin_top">20dp</dimen>
+    <dimen name="home_btn_logout_margin_end">13dp</dimen>
+
+    <dimen name="home_label_text_size">12sp</dimen>
+    <dimen name="home_label_margin_top">18dp</dimen>
+    <dimen name="home_label_margin_bottom">6dp</dimen>
+
+    <dimen name="home_label_list_margin_top">14dp</dimen>
+    <dimen name="home_label_list_text_size">17sp</dimen>
+
+    <dimen name="home_list_margin">8dp</dimen>
+
 </resources>
