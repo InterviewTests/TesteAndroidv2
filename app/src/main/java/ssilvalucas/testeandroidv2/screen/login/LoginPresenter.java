@@ -1,7 +1,5 @@
 package ssilvalucas.testeandroidv2.screen.login;
 
-import android.util.Log;
-
 import java.lang.ref.WeakReference;
 
 import ssilvalucas.testeandroidv2.data.model.LoginResponse;
@@ -23,6 +21,5 @@ public class LoginPresenter implements LoginPresenterInput{
     @Override
     public void onSuccessfulLogin(LoginResponse response) {
         output.get().onSuccessfulLogin(response.getUserAccount());
-        Log.i("TESTE ", response.getUserAccount().getAgency() + " - " + response.getUserAccount().getBalance() + " - " + response.getUserAccount().getBankAccount() + " - " + response.getUserAccount().getName() + " - " + response.getUserAccount().getUserId());
     }
 }

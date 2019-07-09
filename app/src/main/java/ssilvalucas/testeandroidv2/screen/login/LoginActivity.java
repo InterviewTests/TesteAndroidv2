@@ -33,12 +33,12 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
 
         LoginConfigurator.INSTANCE.configure(this);
 
-        setDefaultViews();
+        initViews();
 
         btnLogin.setOnClickListener(getOnClickListenerBtnLogin());
     }
 
-    private void setDefaultViews(){
+    private void initViews(){
         editTextUsername = findViewById(R.id.screen_login_edit_text_user);
         editTextUsername.setText(UserDataStorage.readLastUser(getApplicationContext()));
         editTextPassword = findViewById(R.id.screen_login_edit_text_password);

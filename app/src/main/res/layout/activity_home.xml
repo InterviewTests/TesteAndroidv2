@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/home_header_margin_start"
-            android:layout_marginTop="@dimen/home_label_margin_top"
+            android:layout_marginTop="@dimen/home_first_label_margin_top"
             android:layout_marginBottom="@dimen/home_label_margin_bottom"
             android:text="@string/home_label_bank_account"
             android:textColor="@color/home_header_text_color"

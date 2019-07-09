@@ -1,6 +1,6 @@
-package ssilvalucas.testeandroidv2.utils;
+package ssilvalucas.testeandroidv2.util;
 
-public final class ValidationUtils {
+public final class ValidationUtil {
 
     public static boolean isValidCpf(String cpf){
         cpf.replaceAll("[\\.-]", "");

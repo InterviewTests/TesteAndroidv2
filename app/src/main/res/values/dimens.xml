@@ -19,7 +19,7 @@
     <dimen name="login_btn_text_size">16sp</dimen>
 
     <!-- Home Screen -->
-    <dimen name="home_header_height">210dp</dimen>
+    <dimen name="home_header_height">220dp</dimen>
     <dimen name="home_header_margin_start">18dp</dimen>
     <dimen name="home_header_margin_top">20dp</dimen>
     <dimen name="home_header_title_text_size">25sp</dimen>
@@ -29,6 +29,7 @@
     <dimen name="home_btn_logout_margin_top">20dp</dimen>
     <dimen name="home_btn_logout_margin_end">13dp</dimen>
 
+    <dimen name="home_first_label_margin_top">28dp</dimen>
     <dimen name="home_label_text_size">12sp</dimen>
     <dimen name="home_label_margin_top">18dp</dimen>
     <dimen name="home_label_margin_bottom">6dp</dimen>

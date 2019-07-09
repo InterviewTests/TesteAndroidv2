@@ -55,7 +55,7 @@ public class LoginInteractor implements LoginInteractorInput{
              * Caso torne-se necessário fazer o calculo do cpf, deve-se implementar a função comentada a seguir.
              * Nesta situação, não há necessidade, visto que a entrada será comparada com um cpf já cadastrado.
             */
-            //ValidationUtils.isValidCpf(username);
+            //ValidationUtil.isValidCpf(username);
             return true;
         }
         return false;

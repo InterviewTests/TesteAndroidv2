@@ -16,14 +16,14 @@ public class UserAccount implements Parcelable {
     @SerializedName("agency")
     private String agency;
     @SerializedName("balance")
-    private String balance;
+    private double balance;
 
     protected UserAccount(Parcel parcel) {
         this.userId      = parcel.readLong();
         this.name        = parcel.readString();
         this.bankAccount = parcel.readString();
         this.agency      = parcel.readString();
-        this.balance     = parcel.readString();
+        this.balance     = parcel.readDouble();
     }
 
     @Override
@@ -37,7 +37,7 @@ public class UserAccount implements Parcelable {
         dest.writeString(name);
         dest.writeString(bankAccount);
         dest.writeString(agency);
-        dest.writeString(balance);
+        dest.writeDouble(balance);
     }
 
     public static final Creator<UserAccount> CREATOR = new Creator<UserAccount>() {
@@ -68,7 +68,7 @@ public class UserAccount implements Parcelable {
         return agency;
     }
 
-    public String getBalance() {
+    public double getBalance() {
         return balance;
     }
 }
