@@ -24,5 +24,8 @@
     <color name="home_header_background">#FF3B49EE</color>
     <color name="home_header_text_color">#FFFFFFFF</color>
 
-    <color name="home_label_list_text_color">#485465</color>
+    <color name="home_label_list_text_bottom_color">#485465</color>
+    <color name="home_item_list_background">#FFFFFFFF</color>
+    <color name="home_label_list_text_top_color">#A8B4C4</color>
+    <color name="home_card_border">#DBDFE3</color>
 </resources>

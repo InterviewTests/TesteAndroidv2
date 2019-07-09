@@ -2,6 +2,7 @@ package ssilvalucas.testeandroidv2.screen.home;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
@@ -11,13 +12,13 @@ import java.util.ArrayList;
 
 import ssilvalucas.testeandroidv2.R;
 import ssilvalucas.testeandroidv2.data.model.StatementHome;
-import ssilvalucas.testeandroidv2.data.model.StatementsResponse;
 import ssilvalucas.testeandroidv2.data.model.UserAccount;
+import ssilvalucas.testeandroidv2.screen.home.adapter.StatementsAdapter;
 import ssilvalucas.testeandroidv2.util.FormatUtil;
 
 interface HomeActivityInput {
     void showErrorMessage(String errorMessage);
-    void responseStatements(StatementsResponse response);
+    void showStatementsList(ArrayList<StatementHome> statementsList);
 }
 
 
@@ -27,7 +28,7 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityInput
     private RecyclerView recyclerViewStatements;
     private ImageButton btnLogout;
     private UserAccount userAccount;
-    private ArrayList<StatementHome> statementsList;
+    private StatementsAdapter statementsAdapter;
 
     protected HomeInteractorInput output;
     protected HomeRouter router;
@@ -68,18 +69,20 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityInput
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                router.doLogout();
             }
         };
     }
 
     @Override
-    public void showErrorMessage(String errorMessage) {
-
+    public void showStatementsList(ArrayList<StatementHome> statementsList) {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerViewStatements.setLayoutManager(layoutManager);
+        statementsAdapter = new StatementsAdapter(statementsList, this);
+        recyclerViewStatements.setAdapter(statementsAdapter);
     }
 
     @Override
-    public void responseStatements(StatementsResponse response) {
-        statementsList = response.getStatementArrayList();
+    public void showErrorMessage(String errorMessage) {
     }
 }

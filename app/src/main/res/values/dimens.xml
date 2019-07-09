@@ -38,5 +38,12 @@
     <dimen name="home_label_list_text_size">17sp</dimen>
 
     <dimen name="home_list_margin">8dp</dimen>
+    <dimen name="home_list_card_height">80dp</dimen>
+    <dimen name="home_list_card_margin">18dp</dimen>
+    <dimen name="home_list_text_vertical_margin">12dp</dimen>
+    <dimen name="home_list_text_horizontal_margin">18dp</dimen>
+    <dimen name="home_list_text_font_size">16sp</dimen>
+    <dimen name="home_list_date_font_size">12sp</dimen>
+    <dimen name="home_list_value_font_size">20sp</dimen>
 
 </resources>

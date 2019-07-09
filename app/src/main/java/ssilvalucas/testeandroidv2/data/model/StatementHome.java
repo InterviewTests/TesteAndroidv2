@@ -17,13 +17,16 @@ public class StatementHome implements Parcelable {
     private String date;
 
     @SerializedName("value")
-    private String value;
+    private double value;
+
+    private String formatedValue;
+    private String formatedDate;
 
     protected StatementHome(Parcel parcel){
         title = parcel.readString();
         desc  = parcel.readString();
         date  = parcel.readString();
-        value = parcel.readString();
+        value = parcel.readDouble();
     }
 
     @Override
@@ -31,7 +34,7 @@ public class StatementHome implements Parcelable {
         dest.writeString(title);
         dest.writeString(desc);
         dest.writeString(date);
-        dest.writeString(value);
+        dest.writeDouble(value);
     }
 
     @Override
@@ -63,7 +66,23 @@ public class StatementHome implements Parcelable {
         return date;
     }
 
-    public String getValue() {
+    public double getValue() {
         return value;
+    }
+
+    public String getFormatedValue() {
+        return formatedValue;
+    }
+
+    public String getFormatedDate() {
+        return formatedDate;
+    }
+
+    public void setFormatedValue(String formatedValue) {
+        this.formatedValue = formatedValue;
+    }
+
+    public void setFormatedDate(String formatedDate) {
+        this.formatedDate = formatedDate;
     }
 }
