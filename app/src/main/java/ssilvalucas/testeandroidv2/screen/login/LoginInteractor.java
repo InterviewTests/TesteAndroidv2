@@ -42,7 +42,7 @@ public class LoginInteractor implements LoginInteractorInput{
         }
     }
 
-    private boolean isValidUsername(String username){
+    public boolean isValidUsername(String username){
         /* Regex de validação do email */
         String emailRegex = "^[a-z](?:[0-9a-z\\.\\-_])*?@[0-9a-z][0-9a-z-_]*(?:\\.[0-9a-z-_]+)*(?:\\.[0-9a-z]+)+$";
         /* Regex de validação do CPF */
@@ -61,9 +61,9 @@ public class LoginInteractor implements LoginInteractorInput{
         return false;
     }
 
-    private boolean isValidPassword(String password){
+    public boolean isValidPassword(String password){
         /* Deve ter pelo menos uma letra uma letra maiuscula, um caracter especial e um caracter alfanumérico.*/
-        String regex = "(?=.*[A-Z])(?=.*[+×÷=/_€£¥₩!@#$%^&*:;,?\\|])(?=.*[0-9a-z])[0-9a-zA-Z+×÷=/_€£¥₩!@#$%^&*:;,?\\|]+";
+        String regex = "(?=.*[A-Z])(?=.*[0-9])(?=.*[+×÷=/_€£¥₩!@#$%^&*:;,?\\|])(?=.*[0-9a-z])[0-9a-zA-Z+×÷=/_€£¥₩!@#$%^&*:;,?\\|]+";
         return Pattern.matches(regex, password);
     }
 
