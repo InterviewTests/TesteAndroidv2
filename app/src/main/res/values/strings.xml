@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">LearnCleanArchitecture</string>
+    <!-- region InputLayout - Password -->
+    <string name="text_input_layout_hint_password">Senha</string>
+    <string name="text_input_layout_hint_confirm_password">Confirmar senha</string>
+    <string name="text_input_layout_warning_password_repeated">A senha não pode ter números repetidos</string>
+    <string name="text_input_layout_warning_password_sequence">A senha não pode ter números sequenciais</string>
+    <string name="text_input_layout_warning_password_sequence_inverted">A senha não pode ter números sequenciais invertidos</string>
+    <string name="text_input_layout_warning_password_cpf">A senha não pode ter números sequenciais do CPF</string>
+    <string name="text_input_layout_warning_password_cpf_inverted">A senha não pode ter números sequenciais invertidos do CPF</string>
+    <string name="text_input_layout_warning_passwords_not_equal">Senhas diferentes</string>
+    <string name="text_input_layout_warning_password_not_valid">Senha inválida</string>
+    <!-- endregion -->
+</resources>
