@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Teste Android V2</string>
+    <string name="valid_access">valid_access</string>
+    <string name="username_required">Erro: Login deve ser um E-mail ou CPF válido.</string>
+    <string name="password_required">Erro: Senha deve conter um caracter especial, um maiúsculo e um alfanúmerico.</string>
+    <string name="credential_invalid">Erro: Credenciais inválidas.</string>
+
+    <string name="login_notfound">Erro: Login não encontrado em nossa base de dados.</string>
+    <string name="login_notfound_code_53">Erro: Login Usuário ou senha incorreta.</string>
+    <string name="communication_error">Erro: Falha de comunicação com o servidores.</string>
+
+    // Permissions
+    <string name="permissions_internet">Permissão: Permite que aplicativos abram sockets de rede.</string>
+    <string name="permissions_access_network_state">Permissão: Permite que aplicativos acessem informações sobre redes.</string>
+    <string name="permissions_write_external_storage">Permissão: Acesso a Conexão de Internet.</string>
+    <string name="permissions_read_external_storage">Permissão: Acesso a Conexão de Internet.</string>
+
+    // Activities
+    <string name="text_login_successful">Login Successful</string>
+
+</resources>
