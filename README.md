@@ -8,3 +8,9 @@ UTILIZAÇÃO
 -Ao instalar o aplicativo, utilize seu CPF ou e-mail para realizar o login e consultar seu saldo e transações.
 -Para realizar o logoff, pressione o botão "back" do celular na tela de transações.
 
+**************************************************************************************************************
+
+
+								TESTE REALIZADO PARA A EMPRESA: IBM
+								
+**************************************************************************************************************
