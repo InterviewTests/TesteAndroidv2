@@ -4,4 +4,10 @@
     <string name="db_name">db_teste_santander</string>
     <string name="txt_not_found">Informações não encontradas</string>
 
+    <string name="url_principal">https://bank-app-test.herokuapp.com</string>
+    <string name="url_login">https://bank-app-test.herokuapp.com/api/login</string>
+    <string name="url_dados">https://bank-app-test.herokuapp.com/api/statements/%s</string>
+    <string name="ok">OK</string>
+    <string name="cancelar">Cancelar</string>
+
 </resources>
