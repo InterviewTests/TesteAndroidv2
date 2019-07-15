@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="br.com.projetoaccenturebank.login">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+        <activity android:name="br.com.projetoaccenturebank.view.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- ACTIVITY NOVA VERSAO -->
+        <activity
+                android:name="br.com.projetoaccenturebank.view.ActivityPrincipal"
+                android:configChanges="orientation"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme"
+                android:windowSoftInputMode="adjustPan|adjustResize">
+        </activity>
+
+        <activity
+                android:name="br.com.projetoaccenturebank.util.Loading"
+                android:label=""
+                android:theme="@style/ShadowTheme">
+        </activity>
+    </application>
+
+</manifest>
