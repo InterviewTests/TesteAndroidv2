@@ -30,5 +30,9 @@
     <string name="conta">Conta</string>
     <string name="saldo">Saldo</string>
     <string name="password">Password</string>
+    <string name="titulo">Título</string>
+    <string name="data">Data</string>
+    <string name="valor">valor</string>
+    <string name="descricao">Descrição</string>
 
 </resources>

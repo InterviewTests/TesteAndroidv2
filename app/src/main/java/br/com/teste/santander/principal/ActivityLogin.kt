@@ -16,10 +16,7 @@ class ActivityLogin : AppCompatActivity(), OnCallback,View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        controles()
-    }
 
-    fun controles() {
         btn_login.setOnClickListener(this)
 
 
