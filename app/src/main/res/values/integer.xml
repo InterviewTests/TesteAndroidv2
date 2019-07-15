@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="versao_db">1</integer>
+    <integer name="slide_from_right">1</integer>
+    <integer name="slide_from_left">0</integer>
+    <integer name="slide_animation_duration">300</integer>
+</resources>

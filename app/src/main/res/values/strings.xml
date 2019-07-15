@@ -1,0 +1,41 @@
+﻿<resources>
+   
+<string name="app_name">Teste Santander</string>
+    <string name="db_name">db_teste_santander</string>
+    <string name="txt_not_found">Informações não encontradas</string>
+
+    <string name="url_principal">https://bank-app-test.herokuapp.com</string>
+    <string name="url_login">https://bank-app-test.herokuapp.com/api/login</string>
+    <string name="url_dados">https://bank-app-test.herokuapp.com/api/statements/%s</string>
+    <string name="ok">OK</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="erro">Erro</string>
+    <string name="atencao">Atenção</string>
+    <string name="valida_us">Favor, preencha o usuário.</string>
+    <string name="valida_senha">Favor, preencha a senha</string>
+    <string name="valida_senha_format">Preencha corretamente o formato de senha</string>
+
+    <!-- ERROS -->
+    <string name="erro_dados">Erro ao obter os dados.</string>
+    <string name="erro_400">Erro 400: Falha na comunicação com servidor.</string>
+    <string name="erro_401">Erro 401: Falha de autenticação.</string>
+    <string name="erro_403">Erro 403: Acesso não autorizado.</string>
+    <string name="erro_404">Erro 404: Arquivo de acesso não encontrado.</string>
+    <string name="erro_500">Erro 500: Servidor não responde.</string>
+    <string name="erro_502">Erro 502: Falha no Gateway.</string>
+    <string name="erro_503">Erro 503: Serviço não disponível.</string>
+    <string name="erro_504">Erro 504: Servidor sem resposta.</string>
+    <string name="erro_default">Erro _CODE: Erro desconhecido.</string>
+    <string name="us">User</string>
+    <string name="conta">Conta</string>
+    <string name="saldo">Saldo</string>
+    <string name="password">Password</string>
+    <string name="titulo">Título</string>
+    <string name="data">Data</string>
+    <string name="valor">valor</string>
+    <string name="descricao">Descrição</string>
+    <string name="loading">Loading...</string>
+    <string name="validando">Validando login, aguarde!!</string>
+    <string name="preencha_cpf_email">Favor, digite CPF ou e-mail valido!</string>
+
+</resources>

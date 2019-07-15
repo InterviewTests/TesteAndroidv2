@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- COLOR PROJETO -->
+    <color  name="projeto">#3B49EE</color>
+
+    <!-- BOTOES -->
+    <color name="fab">@color/projeto</color>
+
+    <!-- CORES ALTERNATIVAS -->
+    <color name="branco">#FFFFFF</color>
+    <color name="preto">#000000</color>
+    <color name="vermelho">#FF0000</color>
+    <color name="verde">#4ca200</color>
+    <color name="azul_claro">#00FFFF</color>
+    <color name="azul">#0099ff</color>
+    <color name="cinza_claro">#C5C5C5</color>
+    <color name="amarelo">#FFFF00</color>
+    <color name="laranja">#FFA500</color>
+    <color name="projeto_claro">#D81B60</color>
+
+    <!-- TOOLBAR E STATUS BAR -->
+    <color name="toolbar">@color/projeto</color>
+    <color name="statusbar">@color/projeto</color>
+    <!-- TOOLBAR E STATUS BAR -->
+
+    <!-- TEXT NOT FOUND -->
+    <color name="txt_not_found">@color/projeto</color>
+
+    <!-- PROGRESSWELL -->
+    <color name="progressweel">@color/projeto</color>
+</resources>

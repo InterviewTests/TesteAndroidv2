@@ -1,0 +1,188 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!-- TODO background da applicação toda -->
+        <item name="android:dialogTheme">@style/AppThemeApp.Dialog</item>
+        <item name="colorControlNormal">@color/cinza_claro</item>
+        <item name="colorControlActivated">@color/projeto</item>
+        <item name="colorControlHighlight">@color/cinza_claro</item>
+        <item name="colorPrimaryDark">@color/statusbar</item>
+        <item name="colorSwitchThumbNormal">@color/projeto</item>
+
+        <item name="android:windowBackground">@color/branco</item>
+
+        <item name="toolbarStyle">@style/MyToolBarStyle</item>
+        <item name="drawerArrowStyle">@style/DrawerIcon</item>
+    </style>
+
+    <style name="EditStyle_1" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/branco</item>
+        <item name="colorControlNormal">@color/branco</item>
+        <item name="colorPrimaryDark">@color/branco</item>
+        <item name="colorSwitchThumbNormal">@color/branco</item>
+    </style>
+
+    <style name="MyToolBarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="titleTextAppearance">@style/MyTitleTextAppearance</item>
+        <item name="subtitleTextAppearance">@style/MySubTitleTextAppearance</item>
+    </style>
+    <style name="MyTitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+    <style name="MySubTitleTextAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/branco</item>
+    </style>
+
+    <style name="NavigationTheme" parent="AppTheme">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginBottom">02dp</item>
+    </style>
+
+    <style name="EditStyle" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/projeto</item>
+        <item name="colorControlNormal">@color/branco</item>
+        <item name="colorPrimaryDark">@color/branco</item>
+        <item name="colorSwitchThumbNormal">@color/branco</item>
+    </style>
+
+    <style name="AppAlertTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/toolbar</item>
+        <item name="colorAccent">@color/toolbar</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="MyAlertDialogStyleDialog_2" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/projeto</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">@android:color/transparent</item>
+        <!-- Used for the background -->
+        <item name="android:background">@color/branco</item>
+
+        <item name="android:windowAnimationStyle">@style/DialogAnimation_2</item>
+
+        <item name="android:windowNoTitle">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+    </style>
+
+    <style name="AppThemeApp.Dialog" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowSoftInputMode">adjustResize|adjustPan</item>
+    </style>
+
+    <!-- Style do texto quando não é encontrado -->
+    <style name="AppTheme.TextViewNotFound">
+        <item name="android:text">@string/txt_not_found</item>
+        <item name="android:textColor">@color/txt_not_found</item>
+        <item name="android:textSize">22dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!-- Style do texto quando não é encontrado -->
+    <style name="AppTheme.TextViewNotRegistered">
+        <item name="android:text">@string/txt_not_found</item>
+        <item name="android:textColor">@color/txt_not_found</item>
+        <item name="android:textSize">22dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="ShadowTheme" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="MyAlertDialogStyleDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/projeto</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">@android:color/transparent</item>
+        <!-- Used for the background -->
+        <item name="android:background">@android:color/transparent</item>
+
+        <item name="android:windowAnimationStyle">@style/DialogAnimation_2</item>
+
+        <item name="android:windowNoTitle">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+    </style>
+
+    <style name="DialogAnimation_2">
+        <item name="android:windowEnterAnimation">@anim/slide_in_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_to_bottom</item>
+    </style>
+
+
+    <style name="MyAlertDialogStyle_FragmentoDialogo" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/projeto</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">@color/projeto</item>
+        <item name="android:editTextColor">@color/preto</item>
+        <!-- Used for the background -->
+        <item name="android:background">@color/branco</item>
+
+        <item name="android:windowAnimationStyle">@style/DialogAnimation_2</item>
+    </style>
+
+    <style name="MyAlertDialogStyle_FragmentoDialogo_2" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/projeto</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">@color/projeto</item>
+        <!-- Used for the background -->
+        <item name="android:background">@color/branco</item>
+
+        <item name="android:windowAnimationStyle">@style/DialogAnimation_2</item>
+    </style>
+
+    <style name="SCBSwitch" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/verde</item>
+
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">@color/projeto</item>
+
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">#42221f1f</item>
+    </style>
+
+    <style name="mProgress" parent="Widget.AppCompat.ProgressBar.Horizontal">
+
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+
+</resources>
