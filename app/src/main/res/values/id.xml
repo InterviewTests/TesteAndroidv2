@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="menu_produto" type="id" />
+    <item name="menu_share" type="id" />
+    <item name="menu_formulario" type="id" />
+    <item name="menu_ponto_extra" type="id" />
+    <item name="menu_foto_execucao" type="id" />
+    <item name="id_foto_formulario" type="id" />
+</resources>

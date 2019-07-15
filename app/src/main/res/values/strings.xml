@@ -1,0 +1,7 @@
+﻿<resources>
+   
+<string name="app_name">Teste Santander</string>
+    <string name="db_name">db_teste_santander</string>
+    <string name="txt_not_found">Informações não encontradas</string>
+
+</resources>
