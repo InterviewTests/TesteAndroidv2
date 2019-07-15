@@ -34,5 +34,8 @@
     <string name="data">Data</string>
     <string name="valor">valor</string>
     <string name="descricao">Descrição</string>
+    <string name="loading">Loading...</string>
+    <string name="validando">Validando login, aguarde!!</string>
+    <string name="preencha_cpf_email">Favor, digite CPF ou e-mail valido!</string>
 
 </resources>

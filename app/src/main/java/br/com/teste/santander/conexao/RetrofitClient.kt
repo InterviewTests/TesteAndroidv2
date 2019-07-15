@@ -1,4 +1,4 @@
-package br.com.spotpromo.tigre_promotor.util.webclient.retrofit
+package br.com.teste.santander.conexao
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

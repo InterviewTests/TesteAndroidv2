@@ -17,6 +17,17 @@ object Util {
             edt.error = context.resources.getString(R.string.valida_us)
             return false
         }
+        val regexNumber = "^[0-9]+\$"
+
+        if((regexNumber.toRegex().matches(edt.text.toString())
+                        && edt.text.toString().length == 11)){
+            return true
+        }
+
+        if(!android.util.Patterns.EMAIL_ADDRESS.matcher(edt.text.toString()).matches()) {
+            edt.error = context.resources.getString(R.string.preencha_cpf_email)
+            return false
+        }
 
         return true
     }
@@ -32,7 +43,7 @@ object Util {
 
         val expSenha = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%]).{6,20})" //FORMATAÇÃO
 
-        if(expSenha.toRegex().matches(edt.text.toString())) {
+        if(!expSenha.toRegex().matches(edt.text.toString())) {
             edt.error = context.resources.getString(R.string.valida_senha_format)
             return false
         }
@@ -56,5 +67,24 @@ object Util {
             }
         }
         return mHash
+    }
+
+    fun validaPreenchimento(dados: String, tipo: Int): Boolean {
+
+        if (tipo == 1)
+            if (dados.isEmpty())
+                return false
+
+
+        if (tipo == 2) {
+            if(dados.isEmpty())
+                return false
+
+            val expSenha = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%]).{6,20})"
+
+            return expSenha.toRegex().matches(dados)
+        }
+
+        return true
     }
 }

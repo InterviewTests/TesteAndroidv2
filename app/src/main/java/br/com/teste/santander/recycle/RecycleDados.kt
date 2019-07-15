@@ -9,7 +9,6 @@ import br.com.teste.santander.R
 import br.com.teste.santander.model.Dados
 import br.com.teste.santander.util.FormataData
 import java.lang.Exception
-import java.sql.Statement
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,17 +19,10 @@ class RecycleDados(private val lista: ArrayList<Dados>) :
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
-        internal var title: TextView
-        internal var desc: TextView
-        internal var date: TextView
-        internal var value: TextView
-
-        init {
-            title = v.findViewById(R.id.title) as TextView
-            desc = v.findViewById(R.id.desc) as TextView
-            date = v.findViewById(R.id.date) as TextView
-            value = v.findViewById(R.id.value) as TextView
-        }
+        internal var title: TextView = v.findViewById(R.id.title) as TextView
+        internal var desc: TextView = v.findViewById(R.id.desc) as TextView
+        internal var date: TextView = v.findViewById(R.id.date) as TextView
+        internal var value: TextView = v.findViewById(R.id.value) as TextView
 
     }
 

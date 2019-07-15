@@ -4,9 +4,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Html
 import android.view.View
-import br.com.projetoaccenturebank.client.retrofit.OnCallback
 import br.com.teste.santander.R
+import br.com.teste.santander.conexao.OnCallback
 import br.com.teste.santander.model.Login
+import br.com.teste.santander.tasks.TaskLogin
 import br.com.teste.santander.util.Alert
 import br.com.teste.santander.util.SendIntent
 import br.com.teste.santander.util.Util

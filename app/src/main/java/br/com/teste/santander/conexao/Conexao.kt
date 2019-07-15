@@ -1,7 +1,6 @@
-package br.com.spotpromo.tigre_promotor.util.webclient.retrofit
+package br.com.teste.santander.conexao
 
 import android.content.Context
-import br.com.spotpromo.tigre_promotor.util.webclient.retrofit.interface_client.MobileInferface
 import br.com.teste.santander.R
 import br.com.teste.santander.model.Json
 import retrofit2.Call

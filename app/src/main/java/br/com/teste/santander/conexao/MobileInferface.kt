@@ -1,4 +1,4 @@
-package br.com.spotpromo.tigre_promotor.util.webclient.retrofit.interface_client
+package br.com.teste.santander.conexao
 
 import br.com.teste.santander.model.Json
 import retrofit2.Call

@@ -6,11 +6,12 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.Html
-import br.com.projetoaccenturebank.client.retrofit.OnCallback
 import br.com.teste.santander.R
+import br.com.teste.santander.conexao.OnCallback
 import br.com.teste.santander.model.Dados
 import br.com.teste.santander.model.Login
 import br.com.teste.santander.recycle.RecycleDados
+import br.com.teste.santander.tasks.TaskCarregaDados
 import br.com.teste.santander.util.Alert
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.Exception

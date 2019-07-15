@@ -7,8 +7,8 @@ import java.io.Serializable
 import java.lang.Exception
 
 class Dados : Serializable{
-    var PREFS_STATEMENT: String = "prefs_statement"
-    var PREFS_STATEMENT_DADOS: String = "prefs_statement_dados"
+    var PREFS_DADOS: String = "prefs_dados"
+    var PREFS_BUSCA_DADOS: String = "prefs_busca_dados"
 
 
     var title : String? = null
@@ -18,9 +18,9 @@ class Dados : Serializable{
 
 
     fun getDados(context: Context): ArrayList<Dados>? {
-        val prefs = context.getSharedPreferences(PREFS_STATEMENT, Context.MODE_PRIVATE)
+        val prefs = context.getSharedPreferences(PREFS_DADOS, Context.MODE_PRIVATE)
 
-        val json = prefs.getString(PREFS_STATEMENT_DADOS, "")
+        val json = prefs.getString(PREFS_BUSCA_DADOS, "")
         val listType = object : TypeToken<ArrayList<Dados>>() {
 
         }.type
@@ -30,8 +30,8 @@ class Dados : Serializable{
 
     @Throws(Exception::class)
     fun init(context: Context, lista: ArrayList<Dados>) {
-        val prefs = context.getSharedPreferences(PREFS_STATEMENT, Context.MODE_PRIVATE)
-        val json = prefs.getString(PREFS_STATEMENT_DADOS, "")
+        val prefs = context.getSharedPreferences(PREFS_DADOS, Context.MODE_PRIVATE)
+        val json = prefs.getString(PREFS_BUSCA_DADOS, "")
 
         val listType = object : TypeToken<ArrayList<Dados>>() {
 
@@ -42,7 +42,7 @@ class Dados : Serializable{
             prefs.edit().clear().apply()
 
         val editor = prefs.edit()
-        editor.putString(PREFS_STATEMENT_DADOS, Gson().toJson(lista))
+        editor.putString(PREFS_BUSCA_DADOS, Gson().toJson(lista))
         editor.apply()
 
     }
