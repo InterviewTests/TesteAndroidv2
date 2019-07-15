@@ -9,5 +9,26 @@
     <string name="url_dados">https://bank-app-test.herokuapp.com/api/statements/%s</string>
     <string name="ok">OK</string>
     <string name="cancelar">Cancelar</string>
+    <string name="erro">Erro</string>
+    <string name="atencao">Atenção</string>
+    <string name="valida_us">Favor, preencha o usuário.</string>
+    <string name="valida_senha">Favor, preencha a senha</string>
+    <string name="valida_senha_format">Preencha corretamente o formato de senha</string>
+
+    <!-- ERROS -->
+    <string name="erro_dados">Erro ao obter os dados.</string>
+    <string name="erro_400">Erro 400: Falha na comunicação com servidor.</string>
+    <string name="erro_401">Erro 401: Falha de autenticação.</string>
+    <string name="erro_403">Erro 403: Acesso não autorizado.</string>
+    <string name="erro_404">Erro 404: Arquivo de acesso não encontrado.</string>
+    <string name="erro_500">Erro 500: Servidor não responde.</string>
+    <string name="erro_502">Erro 502: Falha no Gateway.</string>
+    <string name="erro_503">Erro 503: Serviço não disponível.</string>
+    <string name="erro_504">Erro 504: Servidor sem resposta.</string>
+    <string name="erro_default">Erro _CODE: Erro desconhecido.</string>
+    <string name="us">User</string>
+    <string name="conta">Conta</string>
+    <string name="saldo">Saldo</string>
+    <string name="password">Password</string>
 
 </resources>

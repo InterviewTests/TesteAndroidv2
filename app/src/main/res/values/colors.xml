@@ -5,7 +5,7 @@
     <color name="colorAccent">#D81B60</color>
 
     <!-- COLOR PROJETO -->
-    <color  name="projeto">#616264</color>
+    <color  name="projeto">#3B49EE</color>
 
     <!-- BOTOES -->
     <color name="fab">@color/projeto</color>

@@ -25,7 +25,7 @@ class Login : Serializable {
      * RETORAR LOGIN GRAVADO
      */
 
-    fun retornar(context: Context): Login? {
+    fun returnLogin(context: Context): Login? {
         val prefs = context.getSharedPreferences(LOGIN, Context.MODE_PRIVATE)
 
         val json = prefs.getString(PREFS_LOGIN_DADOS, "")
@@ -34,7 +34,7 @@ class Login : Serializable {
     }
 
     @Throws(Exception::class)
-    fun iniciar(context: Context, login: Login, direcionar: Boolean) {
+    fun init(context: Context, login: Login, direcionar: Boolean) {
         val prefs = context.getSharedPreferences(LOGIN, Context.MODE_PRIVATE)
         val json = prefs.getString(PREFS_LOGIN_DADOS, "")
         val loginJson = Gson().fromJson(json, Login::class.java)
@@ -55,7 +55,7 @@ class Login : Serializable {
     }
 
     @Throws(Exception::class)
-    fun deslogar(context: Context, redirecionar: Boolean) {
+    fun logout(context: Context, redirecionar: Boolean) {
         val prefs = context.getSharedPreferences(LOGIN, Context.MODE_PRIVATE)
         prefs.edit().clear().apply()
 

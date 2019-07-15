@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".principal.ActivityLogin">
+
+
+    <LinearLayout
+            android:id="@+id/ll_container_fields"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="10dp">
+
+        <ImageView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/logo"
+                android:textSize="30dp"
+                android:text="Bank"
+                android:padding="10dp"
+                android:layout_marginBottom="60dp"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+
+        />
+
+        <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/projeto"
+                app:passwordToggleTint="@color/projeto"
+                android:theme="@style/EditStyle_1">
+
+            <EditText
+                    android:id="@+id/edt_login"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_height="50dp"
+                    android:hint="@string/us"
+                    android:background="@drawable/edit_text_style"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/projeto"
+            />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleDrawable="@drawable/select_password_eyes"
+                app:passwordToggleEnabled="true"
+                android:textColorHint="@color/projeto"
+                app:passwordToggleTint="@color/projeto"
+                android:theme="@style/EditStyle_1">
+
+
+            <EditText
+                    android:id="@+id/edt_senha"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="@string/password"
+                    android:background="@drawable/edit_text_style"
+                    android:inputType="textPassword"
+                    android:textColor="@color/projeto"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+                android:id="@+id/btn_login"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_radius"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Login"
+                android:layout_gravity="center|bottom"
+                android:textColor="@color/branco"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"/>
+
+    </LinearLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>
