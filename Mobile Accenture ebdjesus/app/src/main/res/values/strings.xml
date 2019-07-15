@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Bank</string>
+
+    <string name="url">https://bank-app-test.herokuapp.com</string>
+    <string name="url_login">https://bank-app-test.herokuapp.com/api/login</string>
+    <string name="url_statement">https://bank-app-test.herokuapp.com/api/statements/%s</string>
+
+    <!-- ERROS -->
+    <string name="erro_dados">Erro ao obter os dados.</string>
+    <string name="erro_400">Erro 400: Falha na comunicação com servidor.</string>
+    <string name="erro_401">Erro 401: Falha de autenticação.</string>
+    <string name="erro_403">Erro 403: Acesso não autorizado.</string>
+    <string name="erro_404">Erro 404: Arquivo de acesso não encontrado.</string>
+    <string name="erro_500">Erro 500: Servidor não responde.</string>
+    <string name="erro_502">Erro 502: Falha no Gateway.</string>
+    <string name="erro_503">Erro 503: Serviço não disponível.</string>
+    <string name="erro_504">Erro 504: Servidor sem resposta.</string>
+    <string name="erro_default">Erro _CODE: Erro desconhecido.</string>
+
+    <!-- BOTOES -->
+    <string name="btn_ok">OK</string>
+    <string name="btn_fechar">Fechar</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_limpar">Limpar</string>
+</resources>
