@@ -19,35 +19,30 @@ public class ExampleUnitTest {
     private void updateControlador(){
         controlador = new ControleLogin(user);
     }
+    private void testaValidacao(String login, String senha, Boolean resultado){
+        user = new Usuario(login, senha);
+        controlador = new ControleLogin(user);
+        assertEquals(resultado, controlador.validaUsuario());
+    }
 
     @Test
     public void validacao_cpf() {
         // CPF com letras -> false
-        user = new Usuario("43125csca","435");
-        updateControlador();
-        assertEquals(false, controlador.validaUsuario());
+        testaValidacao("43125csca","435", false);
 
         // CPF sem 11 numeros -> false
-        user = new Usuario("43","435");
-        updateControlador();
-        assertEquals(false, controlador.validaUsuario());
+        testaValidacao("43","435", false);
     }
 
     @Test
     public void nao_autentica_campos_em_branco(){
         // Login em branco
-        user = new Usuario("","435");
-        updateControlador();
-        assertEquals(false, controlador.validaUsuario());
+        testaValidacao("","435", false);
 
         // Senha em branco
-        user = new Usuario("15szc","");
-        updateControlador();
-        assertEquals(false, controlador.validaUsuario());
+        testaValidacao("43125csca","", false);
 
         // Ambos campos em branco
-        user = new Usuario("","");
-        updateControlador();
-        assertEquals(false, controlador.validaUsuario());
+        testaValidacao("","", false);
     }
 }
