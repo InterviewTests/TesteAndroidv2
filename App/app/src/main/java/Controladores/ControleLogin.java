@@ -1,7 +1,7 @@
 package Controladores;
 
+import Modelos.CPF;
 import Modelos.Usuario;
-import Padrões.ValoresPadrao;
 
 public class ControleLogin {
     private Usuario user;
@@ -23,11 +23,8 @@ public class ControleLogin {
     }
 
     private boolean testaCPF() {
-        String cpf = user.getLogin()
-                .replace("-","")
-                .replace(".", "");
-        if (cpf.matches("[0-9]{" + ValoresPadrao.TAMANHO_CPF +
-                "," + ValoresPadrao.TAMANHO_CPF + "}"))
+        String cpf = user.getLogin();
+        if (CPF.checkCPF(cpf))
             return true;
         return false;
     }

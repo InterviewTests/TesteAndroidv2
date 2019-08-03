@@ -7,11 +7,6 @@ import Modelos.Usuario;
 
 import static org.junit.Assert.*;
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 public class ControleLoginTest {
     private Usuario user;
     private ControleLogin controlador;
@@ -32,6 +27,13 @@ public class ControleLoginTest {
 
         // CPF sem 11 numeros -> false
         testaValidacao("43","435", false);
+
+        // CPF com numeracao invalida -> false
+        testaValidacao("529.982.247-32", "efs", false);
+
+        // CPF válido -> true
+        testaValidacao("529.982.247-25", "efs", true);
+        testaValidacao("52998224725", "efs", true);
     }
 
     @Test
