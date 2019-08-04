@@ -19,6 +19,7 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:background="@drawable/et_shape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,12 +34,18 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/bt_login_shape"
+        android:backgroundTint="@color/azul"
+        android:shadowColor="#00221D1D"
+        android:shadowDx="200"
+        android:shadowDy="800"
         android:text="Login"
+        android:textColor="@color/branco"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintVertical_bias="0.88" />
 
     <EditText
         android:id="@+id/etUser"
@@ -50,6 +57,7 @@
         android:ems="10"
         android:hint="User"
         android:inputType="textPersonName"
+        android:background="@drawable/et_shape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +65,7 @@
         app:layout_constraintVertical_bias="0.41000003" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ivBank"
         android:layout_width="172dp"
         android:layout_height="155dp"
         android:layout_marginStart="8dp"
