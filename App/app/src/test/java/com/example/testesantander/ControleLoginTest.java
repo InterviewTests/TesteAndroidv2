@@ -37,6 +37,26 @@ public class ControleLoginTest {
     }
 
     @Test
+    public void validacao_email(){
+        // Verifica ausencia de letras maiusculas
+        testaValidacao("usuario_1@mail.com", "21da", false);
+
+        // Verifica ausencia de numeros
+        testaValidacao("Usuario_@mail.com", "21da", false);
+
+        // Verifica ausencia de caracteres especiais
+        testaValidacao("Usuario1@mail.com", "21da", false);
+
+        // Verifica excesso de @
+        testaValidacao("usu@ri@_1@mail.com", "21da", false);
+
+        // Email válido
+        testaValidacao("Usuario_1@mail.com", "21da", true);
+        testaValidacao("Usuario.1.Enge@mail.com", "21da", true);
+        testaValidacao("UsuAri0_1@mail.com", "21da", true);
+    }
+
+    @Test
     public void nao_autentica_campos_em_branco(){
         // Login em branco
         testaValidacao("","435", false);

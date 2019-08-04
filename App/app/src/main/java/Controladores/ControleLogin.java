@@ -1,6 +1,7 @@
 package Controladores;
 
 import Modelos.CPF;
+import Modelos.Email;
 import Modelos.Usuario;
 
 public class ControleLogin {
@@ -30,6 +31,6 @@ public class ControleLogin {
     }
 
     private boolean testaEmail() {
-        return true;
+        return Email.checkEmail(user.getLogin());
     }
 }
