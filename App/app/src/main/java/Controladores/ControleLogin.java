@@ -1,11 +1,14 @@
 package Controladores;
 
+import Interadores.LoginRequest;
 import Modelos.CPF;
 import Modelos.Email;
+import Modelos.Senha;
 import Modelos.Usuario;
 
 public class ControleLogin {
     private Usuario user;
+    private LoginRequest request;
 
     public ControleLogin(Usuario user) {
         this.user = user;
@@ -20,7 +23,7 @@ public class ControleLogin {
         else
             resposta = testaCPF();
 
-        return resposta;
+        return resposta && testaSenha();
     }
 
     private boolean testaCPF() {
@@ -30,7 +33,15 @@ public class ControleLogin {
         return false;
     }
 
-    private boolean testaEmail() {
+    private boolean testaEmail() { //mudar verificacao para senha
         return Email.checkEmail(user.getLogin());
+    }
+
+    private boolean testaSenha() {
+        return Senha.checkSenha(user.getSenha());
+    }
+
+    public void logar(){
+
     }
 }

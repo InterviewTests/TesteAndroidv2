@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import Controladores.ControleLogin;
+import Interadores.AdaptadorUsuarioViewModel;
 import Modelos.Usuario;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,10 +27,13 @@ public class MainActivity extends AppCompatActivity {
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Usuario user = new Usuario(etUser.getText().toString(),
-                        etPassword.getText().toString());
+                Usuario user = AdaptadorUsuarioViewModel.createUserFromEdittext(etUser, etPassword);
                 controlador = new ControleLogin(user);
-                Toast.makeText(view.getContext(), ""+controlador.validaUsuario(), Toast.LENGTH_SHORT).show();
+                if (!controlador.validaUsuario())
+                    Toast.makeText(view.getContext(), "Usuário e/ou Senha inválido", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(view.getContext(), "", Toast.LENGTH_SHORT).show();
+                ;
             }
         });
     }

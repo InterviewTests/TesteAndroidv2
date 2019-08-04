@@ -23,37 +23,45 @@ public class ControleLoginTest {
     @Test
     public void validacao_cpf() {
         // CPF com letras -> false
-        testaValidacao("43125csca","435", false);
+        testaValidacao("43125csca","Senha_123", false);
 
         // CPF sem 11 numeros -> false
-        testaValidacao("43","435", false);
+        testaValidacao("43","Senha_123", false);
 
         // CPF com numeracao invalida -> false
-        testaValidacao("529.982.247-32", "efs", false);
+        testaValidacao("529.982.247-32", "Senha_123", false);
 
         // CPF válido -> true
-        testaValidacao("529.982.247-25", "efs", true);
-        testaValidacao("52998224725", "efs", true);
+        testaValidacao("529.982.247-25", "Senha_123", true);
+        testaValidacao("52998224725", "Senha_123", true);
     }
 
     @Test
     public void validacao_email(){
-        // Verifica ausencia de letras maiusculas
-        testaValidacao("usuario_1@mail.com", "21da", false);
-
-        // Verifica ausencia de numeros
-        testaValidacao("Usuario_@mail.com", "21da", false);
-
-        // Verifica ausencia de caracteres especiais
-        testaValidacao("Usuario1@mail.com", "21da", false);
-
-        // Verifica excesso de @
-        testaValidacao("usu@ri@_1@mail.com", "21da", false);
+        // Email invalido
+        testaValidacao("@mail.com", "Senha_123", false);
+        testaValidacao("UsuAri0_1@.com", "Senha_123", false);
 
         // Email válido
-        testaValidacao("Usuario_1@mail.com", "21da", true);
-        testaValidacao("Usuario.1.Enge@mail.com", "21da", true);
-        testaValidacao("UsuAri0_1@mail.com", "21da", true);
+        testaValidacao("Usuario_1@mail.com", "Senha_123", true);
+        testaValidacao("Usuario.1.Enge@mail.com", "Senha_123", true);
+        testaValidacao("UsuAri0_1@mail.com", "Senha_123", true);
+        testaValidacao("usuario@mail.com", "Senha_123", true);
+    }
+
+    @Test
+    public void validacao_senha(){
+        // Senha sem letras maiusculas
+        testaValidacao("usuario@mail.com", "senha_123", false);
+
+        // Senha sem caracteres especiais
+        testaValidacao("usuario@mail.com", "Senha123", false);
+
+        // Senha sem números
+        testaValidacao("usuario@mail.com", "Senha", false);
+
+        // Senha válida
+        testaValidacao("usuario@mail.com", "Senha_123", true);
     }
 
     @Test
