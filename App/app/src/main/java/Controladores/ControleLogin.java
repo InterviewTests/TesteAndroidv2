@@ -1,6 +1,9 @@
 package Controladores;
 
-import Interadores.LoginRequest;
+import android.content.Context;
+
+import Helpers.LoginTask;
+import Helpers.UsuarioJSON;
 import Modelos.CPF;
 import Modelos.Email;
 import Modelos.Senha;
@@ -8,7 +11,6 @@ import Modelos.Usuario;
 
 public class ControleLogin {
     private Usuario user;
-    private LoginRequest request;
 
     public ControleLogin(Usuario user) {
         this.user = user;
@@ -33,7 +35,7 @@ public class ControleLogin {
         return false;
     }
 
-    private boolean testaEmail() { //mudar verificacao para senha
+    private boolean testaEmail() {
         return Email.checkEmail(user.getLogin());
     }
 
@@ -41,7 +43,10 @@ public class ControleLogin {
         return Senha.checkSenha(user.getSenha());
     }
 
-    public void logar(){
-
+    public void logar(Context ctx){
+        String json = UsuarioJSON.converteParaJSON(user);
+        LoginTask lt = new LoginTask(json);
+        lt.setContext(ctx);
+        lt.execute();
     }
 }

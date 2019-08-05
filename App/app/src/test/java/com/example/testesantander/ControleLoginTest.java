@@ -11,9 +11,6 @@ public class ControleLoginTest {
     private Usuario user;
     private ControleLogin controlador;
 
-    private void updateControlador(){
-        controlador = new ControleLogin(user);
-    }
     private void testaValidacao(String login, String senha, Boolean resultado){
         user = new Usuario(login, senha);
         controlador = new ControleLogin(user);
