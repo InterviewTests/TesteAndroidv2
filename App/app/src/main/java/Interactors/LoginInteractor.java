@@ -15,7 +15,7 @@ public class LoginInteractor {
     private Usuario usuario;
 
     public LoginInteractor(EditText etLogin, EditText etSenha){
-        int tipo = Usuario.verificaTipoIdentificacac(etLogin.getText().toString());
+        int tipo = Usuario.verificaTipoIdentificacao(etLogin.getText().toString());
         criaUsuario(etLogin, etSenha, tipo);
     }
 

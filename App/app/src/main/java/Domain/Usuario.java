@@ -29,12 +29,12 @@ public class Usuario {
 
     public boolean ehValido(){
         if (tipo == ValoresPadrao.CPF)
-            return cpf.ehValida() && senha.ehValida();
+            return cpf.ehValido() && senha.ehValida();
         else
             return email.ehValido() && senha.ehValida();
     }
 
-    public static int verificaTipoIdentificacac(String login){
+    public static int verificaTipoIdentificacao(String login){
         if (login.contains("@"))
             return 1;
         else

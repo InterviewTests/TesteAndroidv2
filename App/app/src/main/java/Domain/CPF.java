@@ -18,7 +18,7 @@ public class CPF {
 		return array;
 	}
 	
-	public boolean ehValida() {
+	public boolean ehValido() {
 		return testCPF(getCpf());
 	}
 	
@@ -35,7 +35,8 @@ public class CPF {
 		firstDigit = cpfArray.get(cpfArray.size()-2);
 		secondDigit = cpfArray.get(cpfArray.size()-1);
 		Collections.reverse(cpfArray);
-		return checkFirstDigit(cpfArray, firstDigit) && checkSecondDigit(cpfArray, secondDigit);
+		return checkFirstDigit(cpfArray, firstDigit) && checkSecondDigit(cpfArray, secondDigit) &&
+				haNumerosDiferentes(cpfArray);
 	}
 	
 	private static boolean checkFirstDigit(ArrayList<Integer> list, int digit) {
@@ -62,6 +63,19 @@ public class CPF {
 			return true;
 		else
 			return false;
+	}
+
+	private static boolean haNumerosDiferentes(ArrayList<Integer> cpfArray){
+		int firstNumber = cpfArray.get(0);
+		int cont = 0;
+		for (int number:cpfArray) {
+			if (number == firstNumber)
+				cont++;
+		}
+		if (cont == 11)
+			return false;
+		else
+			return true;
 	}
 	
 	public static boolean checkCPF(String cpf) {
