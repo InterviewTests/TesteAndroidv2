@@ -38,6 +38,10 @@ public class LoginInteractor {
         return usuario.ehValido();
     }
 
+    public String getJsonMessage(){
+        return usuario.getJson();
+    }
+
     public void logar(Context ctx){
         String json = usuario.getJson();
         LoginTask lt = new LoginTask(json);
