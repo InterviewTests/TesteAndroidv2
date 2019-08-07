@@ -1,4 +1,4 @@
-package Modelos;
+package Domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,11 +18,13 @@ public class CPF {
 		return array;
 	}
 	
-	public boolean isValid() {
-		return testCPF(this.cpf);
+	public boolean ehValida() {
+		return testCPF(getCpf());
 	}
 	
 	private static boolean testCPF(String cpf) {
+		if (cpf.isEmpty())
+			return false;
 		if (cpf.matches("/[0-9]{11,11}")) 
 			return false;
 		ArrayList<Integer> cpfArray = convertStringToArray(cpf);
@@ -65,5 +67,9 @@ public class CPF {
 	public static boolean checkCPF(String cpf) {
 		cpf = cpf.replace(".", "").replace("-", "");
 		return testCPF(cpf);
+	}
+
+	public String getCpf() {
+		return cpf;
 	}
 }

@@ -1,10 +1,22 @@
-package Modelos;
+package Domain;
 
 import Padrões.ValoresPadrao;
 
 public class Senha {
-    public static boolean checkSenha(String email){
-        byte[] caracteres = email.getBytes();
+    private String senha;
+
+    public Senha(String senha){
+        this.senha = senha;
+    }
+
+    public boolean ehValida(){
+        return checkSenha(getSenha());
+    }
+
+    public static boolean checkSenha(String senha){
+        if (senha.isEmpty())
+            return false;
+        byte[] caracteres = senha.getBytes();
         return verificaAlgarismos(caracteres) && verificaMaiusculas(caracteres) &&
                 verificaCaracteresEspeciais(caracteres);
     }
@@ -33,5 +45,9 @@ public class Senha {
                 if (caracteres[i] == ValoresPadrao.CARACTERES_ESPECIAIS[j])
                     resultado = true;
         return resultado;
+    }
+
+    public String getSenha() {
+        return senha;
     }
 }

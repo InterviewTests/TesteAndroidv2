@@ -2,6 +2,7 @@ package Helpers;
 
 import android.content.Context;
 import android.os.AsyncTask;
+
 import android.widget.Toast;
 
 public class LoginTask extends AsyncTask {
@@ -25,6 +26,6 @@ public class LoginTask extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        Toast.makeText(ctx, ""+resposta, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ctx, resposta, Toast.LENGTH_SHORT).show();
     }
 }
