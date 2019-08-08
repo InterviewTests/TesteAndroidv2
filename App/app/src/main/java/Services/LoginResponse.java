@@ -1,7 +1,4 @@
-package Helpers;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+package Services;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -10,11 +7,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
-import Domain.UserAccount;
 import Padrões.ValoresPadrao;
 
-public class WebClient {
-    private UserAccount userAccount;
+public class LoginResponse {
     public String get(String userJson){
         try {
             URL url = new URL(ValoresPadrao.URL_LOGIN);
@@ -37,21 +32,4 @@ public class WebClient {
         }
         return null;
     }
-
-    public UserAccount createUserAccount(JSONObject userAccount){
-        this.userAccount = new UserAccount();
-        try {
-            this.userAccount.setUserId(userAccount.getInt("userId"));
-            this.userAccount.setName(userAccount.getString("name"));
-            this.userAccount.setAgency(userAccount.getString("agency"));
-            this.userAccount.setBankAccount(userAccount.getString("bankAccount"));
-            this.userAccount.setBalance(userAccount.getDouble("balance"));
-            System.out.println(this.userAccount.getBalance());
-            return this.userAccount;
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
 }

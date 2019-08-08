@@ -1,25 +1,26 @@
 package Interactors;
 
-import android.content.Context;
 import android.widget.EditText;
 
 import Domain.CPF;
 import Domain.Email;
 import Domain.Senha;
 import Domain.Usuario;
-import Helpers.LoginTask;
+import Presenters.LoginPresenterInput;
+import Services.LoginTask;
 
 import static Padrões.ValoresPadrao.*;
 
 public class LoginInteractor {
-    private Usuario usuario;
+    public Usuario usuario;
+    private LoginPresenterInput presenter;
 
-    public LoginInteractor(EditText etLogin, EditText etSenha){
-        int tipo = Usuario.verificaTipoIdentificacao(etLogin.getText().toString());
-        criaUsuario(etLogin, etSenha, tipo);
+    public LoginInteractor(LoginPresenterInput presenter){
+        this.presenter = presenter;
     }
 
-    private void criaUsuario(EditText etLogin, EditText etSenha, int tipo) {
+    public void criaUsuario(EditText etLogin, EditText etSenha) {
+        int tipo = Usuario.verificaTipoIdentificacao(etLogin.getText().toString());
         String login = etLogin.getText().toString();
         Senha senha = new Senha(etSenha.getText().toString());
         switch (tipo){
@@ -38,14 +39,10 @@ public class LoginInteractor {
         return usuario.ehValido();
     }
 
-    public String getJsonMessage(){
-        return usuario.getJson();
-    }
-
-    public void logar(Context ctx){
+    public void logar(){
         String json = usuario.getJson();
-        LoginTask lt = new LoginTask(json);
-        lt.setContext(ctx);
+        LoginTask lt = new LoginTask(presenter);
+        lt.setParametros(json);
         lt.execute();
     }
 }
