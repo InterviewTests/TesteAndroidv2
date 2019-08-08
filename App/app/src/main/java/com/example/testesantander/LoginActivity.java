@@ -2,12 +2,14 @@ package com.example.testesantander;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import Domain.UserAccount;
 import Interactors.LoginInteractor;
 import Presenters.LoginPresenter;
 
@@ -22,11 +24,16 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etUser = (EditText) findViewById(R.id.etUser);
-        etPassword = (EditText) findViewById(R.id.etPassword);
-        Button btLogin = (Button) findViewById(R.id.btLogin);
+        etUser = findViewById(R.id.etUser);
+        etPassword = findViewById(R.id.etPassword);
+        Button btLogin = findViewById(R.id.btLogin);
         presenter = new LoginPresenter(this);
         interactor = new LoginInteractor(presenter);
+
+        SharedPreferences prefs = getSharedPreferences("login_data", MODE_PRIVATE);
+        if (!prefs.getString("usuario", "").isEmpty()){
+            etUser.setText(prefs.getString("usuario", ""));
+        }
 
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,5 +51,18 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
     @Override
     public void injetarDependencia(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void iniciarDetailActivity(UserAccount userAccount) {
+        Toast.makeText(this, "Bem-vindo " + userAccount.getName(), Toast.LENGTH_SHORT).show();
+        SharedPreferences prefs = getSharedPreferences("login_data", MODE_PRIVATE);
+        if (!prefs.getString("usuario", "").equals(interactor.getUsuario().getLoginString())){
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("usuario", interactor.getUsuario().getLoginString());
+            editor.putString("senha", interactor.getUsuario().getSenhaString());
+            editor.apply();
+            Toast.makeText(this, "Salvei", Toast.LENGTH_SHORT).show();
+        }
     }
 }

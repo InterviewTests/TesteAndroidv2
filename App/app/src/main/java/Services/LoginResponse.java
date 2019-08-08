@@ -24,6 +24,7 @@ public class LoginResponse {
             while (scanner.hasNext()){
                 resposta += scanner.next();
             }
+            scanner.close();
             return resposta;
         } catch (MalformedURLException e) {
             e.printStackTrace();

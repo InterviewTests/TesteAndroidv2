@@ -1,11 +1,26 @@
 package Domain;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class UserAccount {
     private int userId;
     private String name;
     private String bankAccount;
     private String agency;
     private double balance;
+
+    public UserAccount(JSONObject object){
+        try {
+            setUserId(object.getInt("userId"));
+            setName(object.getString("name"));
+            setBankAccount(object.getString("bankAccount"));
+            setAgency(object.getString("agency"));
+            setBalance(object.getDouble("balance"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
     public int getUserId() {
         return userId;

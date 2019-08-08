@@ -1,5 +1,10 @@
 package com.example.testesantander;
 
+import org.json.JSONObject;
+
+import Domain.UserAccount;
+
 public interface LoginActivityInput{
-    public void injetarDependencia(String message);
+    void injetarDependencia(String message);
+    void iniciarDetailActivity(UserAccount userAccount);
 }

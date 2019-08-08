@@ -12,7 +12,7 @@ import Services.LoginTask;
 import static Padrões.ValoresPadrao.*;
 
 public class LoginInteractor {
-    public Usuario usuario;
+    private Usuario usuario;
     private LoginPresenterInput presenter;
 
     public LoginInteractor(LoginPresenterInput presenter){
@@ -33,6 +33,13 @@ public class LoginInteractor {
                 this.usuario = new Usuario(email, senha);
                 break;
         }
+    }
+
+    public Usuario getUsuario(){
+        if (usuario != null)
+            return usuario;
+        else
+            return null;
     }
 
     public boolean validaUsuario() {

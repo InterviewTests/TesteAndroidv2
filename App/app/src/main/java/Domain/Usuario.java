@@ -41,11 +41,15 @@ public class Usuario {
             return 0;
     }
 
-    private String getLoginString(){
+    public String getLoginString(){
         if (tipo == ValoresPadrao.CPF)
             return cpf.getCpf();
         else
             return email.getEmail();
+    }
+
+    public String getSenhaString(){
+        return senha.getSenha();
     }
 
     public String getJson() {
@@ -54,7 +58,7 @@ public class Usuario {
         try {
             js.object().
                     key("user").value(getLoginString()).
-                    key("password").value(senha.getSenha()).
+                    key("password").value(getSenhaString()).
                     endObject();
             return js.toString();
         } catch (JSONException e) {
