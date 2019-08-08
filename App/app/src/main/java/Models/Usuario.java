@@ -1,4 +1,4 @@
-package Domain;
+package Models;
 
 import org.json.JSONException;
 import org.json.JSONStringer;

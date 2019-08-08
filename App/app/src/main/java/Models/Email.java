@@ -1,4 +1,4 @@
-package Domain;
+package Models;
 
 public class Email {
     private String email;

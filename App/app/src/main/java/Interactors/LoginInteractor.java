@@ -1,11 +1,9 @@
 package Interactors;
 
-import android.widget.EditText;
-
-import Domain.CPF;
-import Domain.Email;
-import Domain.Senha;
-import Domain.Usuario;
+import Models.CPF;
+import Models.Email;
+import Models.Senha;
+import Models.Usuario;
 import Presenters.LoginPresenterInput;
 import Services.LoginTask;
 
@@ -19,10 +17,10 @@ public class LoginInteractor {
         this.presenter = presenter;
     }
 
-    public void criaUsuario(EditText etLogin, EditText etSenha) {
-        int tipo = Usuario.verificaTipoIdentificacao(etLogin.getText().toString());
-        String login = etLogin.getText().toString();
-        Senha senha = new Senha(etSenha.getText().toString());
+    public void criaUsuario(String etLogin, String etSenha) {
+        int tipo = Usuario.verificaTipoIdentificacao(etLogin);
+        String login = etLogin;
+        Senha senha = new Senha(etSenha);
         switch (tipo){
             case CPF:
                 CPF cpf = new CPF(login);

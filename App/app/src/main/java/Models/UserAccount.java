@@ -1,9 +1,11 @@
-package Domain;
+package Models;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class UserAccount {
+import java.io.Serializable;
+
+public class UserAccount implements Serializable {
     private int userId;
     private String name;
     private String bankAccount;

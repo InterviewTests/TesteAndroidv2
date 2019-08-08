@@ -2,7 +2,7 @@ package com.example.testesantander.test;
 
 import org.junit.Test;
 
-import Domain.Email;
+import Models.Email;
 
 import static org.junit.Assert.*;
 

@@ -2,10 +2,10 @@ package com.example.testesantander.test;
 
 import org.junit.Test;
 
-import Domain.CPF;
-import Domain.Email;
-import Domain.Senha;
-import Domain.Usuario;
+import Models.CPF;
+import Models.Email;
+import Models.Senha;
+import Models.Usuario;
 import Padrões.ValoresPadrao;
 
 import static org.junit.Assert.*;

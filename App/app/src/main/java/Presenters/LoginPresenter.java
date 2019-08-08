@@ -5,7 +5,7 @@ import com.example.testesantander.LoginActivityInput;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import Domain.UserAccount;
+import Models.UserAccount;
 
 
 public class LoginPresenter implements LoginPresenterInput {
@@ -16,6 +16,7 @@ public class LoginPresenter implements LoginPresenterInput {
     }
 
     public void setUserAccount(String resposta) {
+        activity.stopLoadingBar();
         try {
             JSONObject userAccount = new JSONObject(resposta).getJSONObject("userAccount");
             JSONObject error = new JSONObject(resposta).getJSONObject("error");

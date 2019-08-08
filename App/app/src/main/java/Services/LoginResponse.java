@@ -20,9 +20,9 @@ public class LoginResponse {
             OutputStream output = connection.getOutputStream();
             output.write(userJson.getBytes());
             Scanner scanner = new Scanner(connection.getInputStream());
-            String resposta = scanner.next();
+            String resposta = scanner.nextLine();
             while (scanner.hasNext()){
-                resposta += scanner.next();
+                resposta += scanner.nextLine();
             }
             scanner.close();
             return resposta;
