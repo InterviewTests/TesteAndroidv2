@@ -7,7 +7,4 @@
         <item name="android:windowLightStatusBar">@color/preto</item>
     </style>
 
-    <style name="ProgressBar" parent="Theme.AppCompat.Light">
-        <item name="colorAccent">@color/azul</item>
-    </style>
 </resources>

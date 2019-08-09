@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
     private LoginPresenter presenter;
     private ProgressBar progressBar;
 
+    // TODO: criar classe só para configurar a activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
