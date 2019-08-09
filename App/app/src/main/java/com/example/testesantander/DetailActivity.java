@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,5 +31,20 @@ public class DetailActivity extends AppCompatActivity {
         tvConta = findViewById(R.id.tvConta);
         tvSaldo.setText(String.format("R$ %.2f", userAccount.getBalance()));
         tvConta.setText(String.format("%s / %s", userAccount.getAgency(), userAccount.getBankAccount()));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.logoff_button, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.logoff) {
+            Intent it = new Intent(this, LoginActivity.class);
+            startActivity(it);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

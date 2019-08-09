@@ -66,13 +66,23 @@
 
     <TextView
         android:id="@+id/tvSaldo"
+        style="@style/BigTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="R$ -"
-        style="@style/BigTextView"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/labelConta"
         app:layout_constraintTop_toBottomOf="@+id/labelSaldo"
         app:layout_constraintVertical_bias="0.32999998" />
+
+    <TextView
+        android:id="@+id/labelRecentes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Recentes"
+        app:layout_constraintStart_toStartOf="@+id/tvSaldo"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
