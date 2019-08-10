@@ -1,9 +1,9 @@
 package Interactors;
 
 import Presenters.DetalhePresenterInput;
+import Services.DetalheTask;
 
 public class DetalheInteractor {
-    private int userId;
     private DetalhePresenterInput presenter;
 
     public DetalheInteractor(DetalhePresenterInput presenter) {
@@ -11,6 +11,8 @@ public class DetalheInteractor {
     }
 
     public void getDetalhes(int userId){
-        presenter.criaListaDetalhes();
+        DetalheTask task = new DetalheTask(presenter);
+        task.setParametros(userId);
+        task.execute();
     }
 }

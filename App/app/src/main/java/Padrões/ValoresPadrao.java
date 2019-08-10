@@ -10,6 +10,7 @@ public class ValoresPadrao {
     public static int CARACTERE_0 = 48;
     public static int CARACTERE_9 = 57;
     public static String URL_LOGIN = "https://bank-app-test.herokuapp.com/api/login";
+    public static String URL_DETALHES = "https://bank-app-test.herokuapp.com/api/statements/";
 
     public static final int CPF = 0;
     public static final int EMAIL = 1;

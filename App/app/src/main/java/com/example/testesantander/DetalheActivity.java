@@ -10,8 +10,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import Interactors.DetalheInteractor;
@@ -20,7 +20,10 @@ import Models.UserAccount;
 import Presenters.DetalhePresenter;
 import Services.ListaDetalhesAdapter;
 
-// TODO: criar classe só para configurar a activity
+/* TODO:
+* criar classe só para configurar a activity
+* Incluir progressBar
+* */
 public class DetalheActivity extends AppCompatActivity implements DetalheActivityInput {
     private TextView tvSaldo;
     private TextView tvConta;
@@ -48,21 +51,6 @@ public class DetalheActivity extends AppCompatActivity implements DetalheActivit
         presenter = new DetalhePresenter(this);
         interactor = new DetalheInteractor(presenter);
         interactor.getDetalhes(userAccount.getUserId());
-        // mock
-//        ArrayList<Detalhe> det = new ArrayList<Detalhe>();
-//
-//        det.add(new Detalhe("Pagamento", "Conta Vivo", "09/08/2019", 49.99));
-//        det.add(new Detalhe("Pagamento1", "Conta Vivo", "09/08/2019", 49.99));
-//        det.add(new Detalhe("Pagamento3", "Conta Vivo", "09/08/2019", 49.99));
-//        det.add(new Detalhe("Pagamento2", "Conta Vivo", "09/08/2019", 49.99));
-//        det.add(new Detalhe("Pagamento4", "Conta Vivo", "09/08/2019", 49.99));
-//        det.add(new Detalhe("Pagamento5", "Conta Vivo", "09/08/2019", 49.99));
-//        det.add(new Detalhe("Pagamento3", "Conta Vivo", "09/08/2019", 49.99));
-//        det.add(new Detalhe("Pagamento2", "Conta Vivo", "09/08/2019", 49.99));
-//        det.add(new Detalhe("Pagamento4", "Conta Vivo", "09/08/2019", 49.99));
-//        det.add(new Detalhe("Pagamento5", "Conta Vivo", "09/08/2019", 49.99));
-//        List<Detalhe> lista = (List<Detalhe>) det;
-
     }
 
     @Override
@@ -85,5 +73,10 @@ public class DetalheActivity extends AppCompatActivity implements DetalheActivit
         listaDetalhes.setAdapter(new ListaDetalhesAdapter(this, lista));
         LinearLayoutManager manager = new LinearLayoutManager(this);
         listaDetalhes.setLayoutManager(manager);
+    }
+
+    @Override
+    public void sendMessage(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

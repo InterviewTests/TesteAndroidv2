@@ -21,7 +21,7 @@ public class LoginTask extends AsyncTask {
     @Override
     protected String doInBackground(Object[] objects) {
         client = new LoginWebClient();
-        resposta = client.get(json);
+        resposta = client.post(json);
         return resposta;
     }
 

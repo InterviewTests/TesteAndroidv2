@@ -35,7 +35,6 @@ public class ListaDetalhesAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Detalhe detalhe = lista.get(position);
-        // Montando elementos
         TextView tvTitle = holder.itemView.findViewById(R.id.tvTitle);
         TextView tvDesc = holder.itemView.findViewById(R.id.tvDesc);
         TextView tvDate = holder.itemView.findViewById(R.id.tvDate);

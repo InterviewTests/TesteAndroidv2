@@ -1,5 +1,5 @@
 package Presenters;
 
 public interface DetalhePresenterInput {
-    void criaListaDetalhes();
+    void setResposta(String resposta);
 }

@@ -10,7 +10,7 @@ import java.util.Scanner;
 import Padrões.ValoresPadrao;
 
 public class LoginWebClient {
-    public String get(String userJson){
+    public String post(String userJson){
         try {
             URL url = new URL(ValoresPadrao.URL_LOGIN);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
