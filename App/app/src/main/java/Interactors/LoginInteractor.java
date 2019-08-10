@@ -10,7 +10,7 @@ import Services.LoginTask;
 import static Padrões.ValoresPadrao.*;
 
 public class LoginInteractor {
-    private Usuario usuario;
+    private Usuario usuario = null;
     private LoginPresenterInput presenter;
 
     public LoginInteractor(LoginPresenterInput presenter){
@@ -34,10 +34,7 @@ public class LoginInteractor {
     }
 
     public Usuario getUsuario(){
-        if (usuario != null)
-            return usuario;
-        else
-            return null;
+        return usuario;
     }
 
     public boolean validaUsuario() {

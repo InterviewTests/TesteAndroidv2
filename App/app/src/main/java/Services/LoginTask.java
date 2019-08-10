@@ -7,7 +7,7 @@ import Presenters.LoginPresenterInput;
 public class LoginTask extends AsyncTask {
     private String json;
     private String resposta;
-    private LoginResponse client;
+    private LoginWebClient client;
     private LoginPresenterInput presenter;
 
     public LoginTask(LoginPresenterInput presenter){
@@ -20,7 +20,7 @@ public class LoginTask extends AsyncTask {
 
     @Override
     protected String doInBackground(Object[] objects) {
-        client = new LoginResponse();
+        client = new LoginWebClient();
         resposta = client.get(json);
         return resposta;
     }

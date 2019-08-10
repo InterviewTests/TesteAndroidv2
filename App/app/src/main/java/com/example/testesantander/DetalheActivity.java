@@ -14,15 +14,20 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import Interactors.DetalheInteractor;
 import Models.Detalhe;
 import Models.UserAccount;
+import Presenters.DetalhePresenter;
 import Services.ListaDetalhesAdapter;
 
 // TODO: criar classe só para configurar a activity
-public class DetailActivity extends AppCompatActivity {
+public class DetalheActivity extends AppCompatActivity implements DetalheActivityInput {
     private TextView tvSaldo;
     private TextView tvConta;
     private RecyclerView listaDetalhes;
+    private DetalheInteractor interactor;
+    private DetalhePresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,23 +45,24 @@ public class DetailActivity extends AppCompatActivity {
         tvSaldo.setText(String.format("R$%.2f", userAccount.getBalance()));
         tvConta.setText(String.format("%s / %s", userAccount.getAgency(), userAccount.getBankAccount()));
 
+        presenter = new DetalhePresenter(this);
+        interactor = new DetalheInteractor(presenter);
+        interactor.getDetalhes(userAccount.getUserId());
         // mock
-        ArrayList<Detalhe> det = new ArrayList<Detalhe>();
+//        ArrayList<Detalhe> det = new ArrayList<Detalhe>();
+//
+//        det.add(new Detalhe("Pagamento", "Conta Vivo", "09/08/2019", 49.99));
+//        det.add(new Detalhe("Pagamento1", "Conta Vivo", "09/08/2019", 49.99));
+//        det.add(new Detalhe("Pagamento3", "Conta Vivo", "09/08/2019", 49.99));
+//        det.add(new Detalhe("Pagamento2", "Conta Vivo", "09/08/2019", 49.99));
+//        det.add(new Detalhe("Pagamento4", "Conta Vivo", "09/08/2019", 49.99));
+//        det.add(new Detalhe("Pagamento5", "Conta Vivo", "09/08/2019", 49.99));
+//        det.add(new Detalhe("Pagamento3", "Conta Vivo", "09/08/2019", 49.99));
+//        det.add(new Detalhe("Pagamento2", "Conta Vivo", "09/08/2019", 49.99));
+//        det.add(new Detalhe("Pagamento4", "Conta Vivo", "09/08/2019", 49.99));
+//        det.add(new Detalhe("Pagamento5", "Conta Vivo", "09/08/2019", 49.99));
+//        List<Detalhe> lista = (List<Detalhe>) det;
 
-        det.add(new Detalhe("Pagamento", "Conta Vivo", "09/08/2019", 49.99));
-        det.add(new Detalhe("Pagamento1", "Conta Vivo", "09/08/2019", 49.99));
-        det.add(new Detalhe("Pagamento3", "Conta Vivo", "09/08/2019", 49.99));
-        det.add(new Detalhe("Pagamento2", "Conta Vivo", "09/08/2019", 49.99));
-        det.add(new Detalhe("Pagamento4", "Conta Vivo", "09/08/2019", 49.99));
-        det.add(new Detalhe("Pagamento5", "Conta Vivo", "09/08/2019", 49.99));
-        det.add(new Detalhe("Pagamento3", "Conta Vivo", "09/08/2019", 49.99));
-        det.add(new Detalhe("Pagamento2", "Conta Vivo", "09/08/2019", 49.99));
-        det.add(new Detalhe("Pagamento4", "Conta Vivo", "09/08/2019", 49.99));
-        det.add(new Detalhe("Pagamento5", "Conta Vivo", "09/08/2019", 49.99));
-        List<Detalhe> lista = (List<Detalhe>) det;
-        listaDetalhes.setAdapter(new ListaDetalhesAdapter(this, lista));
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        listaDetalhes.setLayoutManager(manager);
     }
 
     @Override
@@ -72,5 +78,12 @@ public class DetailActivity extends AppCompatActivity {
             startActivity(it);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void injetarDependencia(List<Detalhe> lista) {
+        listaDetalhes.setAdapter(new ListaDetalhesAdapter(this, lista));
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        listaDetalhes.setLayoutManager(manager);
     }
 }

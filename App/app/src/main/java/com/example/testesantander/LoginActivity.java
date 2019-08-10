@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityInp
             editor.putString("senha", interactor.getUsuario().getSenhaString());
             editor.apply();
         }
-        Intent intent = new Intent(this, DetailActivity.class);
+        Intent intent = new Intent(this, DetalheActivity.class);
         intent.putExtra("userAccount", userAccount);
         startActivity(intent);
         Toast.makeText(this, "Bem-vindo " + userAccount.getName(), Toast.LENGTH_SHORT).show();

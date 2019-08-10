@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 import Padrões.ValoresPadrao;
 
-public class LoginResponse {
+public class LoginWebClient {
     public String get(String userJson){
         try {
             URL url = new URL(ValoresPadrao.URL_LOGIN);
