@@ -5,13 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +45,10 @@ public class DetailActivity extends AppCompatActivity {
 
         det.add(new Detalhe("Pagamento", "Conta Vivo", "09/08/2019", 49.99));
         det.add(new Detalhe("Pagamento1", "Conta Vivo", "09/08/2019", 49.99));
+        det.add(new Detalhe("Pagamento3", "Conta Vivo", "09/08/2019", 49.99));
+        det.add(new Detalhe("Pagamento2", "Conta Vivo", "09/08/2019", 49.99));
+        det.add(new Detalhe("Pagamento4", "Conta Vivo", "09/08/2019", 49.99));
+        det.add(new Detalhe("Pagamento5", "Conta Vivo", "09/08/2019", 49.99));
         det.add(new Detalhe("Pagamento3", "Conta Vivo", "09/08/2019", 49.99));
         det.add(new Detalhe("Pagamento2", "Conta Vivo", "09/08/2019", 49.99));
         det.add(new Detalhe("Pagamento4", "Conta Vivo", "09/08/2019", 49.99));
