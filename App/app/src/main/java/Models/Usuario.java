@@ -9,7 +9,7 @@ public class Usuario {
     private int tipo;
     private Email email;
     private Senha senha;
-    private CPF cpf;
+    private CPF cpf = null;
 
     private Usuario(Senha senha){
         this.senha = senha;
@@ -65,5 +65,10 @@ public class Usuario {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Tipo: %s\nUsuario: %s", tipo, this.getLoginString());
     }
 }
