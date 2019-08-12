@@ -1,7 +1,6 @@
 package Padrões;
 
 public class ValoresPadrao {
-    public static int TAMANHO_CPF = 11;
     public static int[] CARACTERES_ESPECIAIS =
             {35,36,37,38,42,43,45,95,64,46};
 //          {#, $, %, &, *, +, -, _, @, .}
