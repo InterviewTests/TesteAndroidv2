@@ -10,7 +10,7 @@ import org.junit.Test
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class LoginTest {
+class TelaLoginTest {
     /**
       testes da tela de login campos (usuario, senha)
      */
