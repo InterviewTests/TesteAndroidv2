@@ -12,7 +12,7 @@ import org.junit.Test
  */
 class LoginTest {
     /**
-     testes pra validar o login do usuáriogi
+      testes da tela de login campos (usuario, senha)
      */
     @Test
     fun validarSenhaLetraMaiuscula() {
