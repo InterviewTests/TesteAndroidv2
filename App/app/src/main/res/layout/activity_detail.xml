@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/azul"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/labelConta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/branco"
+                android:layout_margin="5dp"
+                android:text="Conta" />
+
+            <TextView
+                android:id="@+id/tvConta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/BigTextView"
+                android:text="- / -" />
+
+            <TextView
+                android:id="@+id/labelSaldo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/branco"
+                android:layout_margin="5dp"
+                android:text="Saldo" />
+
+            <TextView
+                android:id="@+id/tvSaldo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/BigTextView"
+                android:text="R$ -" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/labelRecentes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/labelRecenteStyle"
+                android:text="Recentes" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDetalhes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/azul</item>
+        <item name="colorPrimaryDark">@color/branco</item>
+        <item name="colorAccent">@color/azul</item>
+        <item name="android:windowLightStatusBar">@color/preto</item>
+    </style>
+
+</resources>

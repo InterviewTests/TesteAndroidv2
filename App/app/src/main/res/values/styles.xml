@@ -1,0 +1,70 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/azul</item>
+        <item name="colorPrimaryDark">@color/azul</item>
+        <item name="colorAccent">@color/azul</item>
+    </style>
+
+    <style name="BigTextView">
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="labelRecenteStyle">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+    <style name="CardViewStyle" parent="CardView">
+        <item name="cardBackgroundColor">@color/branco</item>
+        <item name="cardCornerRadius">6dp</item>
+    </style>
+
+    <style name="tvTitle">
+        <item name="android:textColor">@color/cinza</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:text">Title</item>
+    </style>
+
+    <style name="tvDate">
+        <item name="android:textColor">@color/cinza</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:text">Date</item>
+    </style>
+
+    <style name="tvDesc">
+        <item name="android:textColor">@color/preto</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:text">Desc</item>
+    </style>
+
+    <style name="tvValue">
+        <item name="android:textColor">@color/preto</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:text">Value</item>
+    </style>
+</resources>
