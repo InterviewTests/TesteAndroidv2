@@ -64,7 +64,7 @@ class LoginFragment : Fragment(), LoginContrato.View {
 
 
     override fun mostrarUsuarioLogado(usuario: Usuario) {
-        til_usuario_autenticacao.editText!!.text =  Editable.Factory.getInstance().newEditable(usuario.user)
+        til_usuario_autenticacao.editText!!.text = Editable.Factory.getInstance().newEditable(usuario.user)
         til_senha_autenticacao.editText!!.text = Editable.Factory.getInstance().newEditable(usuario.password)
     }
 
@@ -80,14 +80,14 @@ class LoginFragment : Fragment(), LoginContrato.View {
     }
 
 
-    override fun vaiParaHome(dados : userAccount) {
+    override fun vaiParaHome(dados: userAccount) {
         activity?.let {
             val homeIntent = Intent(context, HomeActivity::class.java)
-            homeIntent.putExtra("name",dados.name)
-            homeIntent.putExtra("userId",dados.userId)
-            homeIntent.putExtra("bankAccount",dados.bankAccount)
-            homeIntent.putExtra("balance",dados.balance)
-            homeIntent.putExtra("agency",dados.agency)
+            homeIntent.putExtra("name", dados.name)
+            homeIntent.putExtra("userId", dados.userId)
+            homeIntent.putExtra("bankAccount", dados.bankAccount)
+            homeIntent.putExtra("balance", dados.balance)
+            homeIntent.putExtra("agency", dados.agency)
             startActivity(homeIntent)
             it.finish()
         }
@@ -106,7 +106,7 @@ class LoginFragment : Fragment(), LoginContrato.View {
     }
 
     override fun exibeProgressBar() {
-        with(root){
+        with(root) {
             logino_layout_botao_avancar.isClickable = false
             btn_login.visibility = View.GONE
             login_progress_bar.visibility = View.VISIBLE
@@ -114,7 +114,7 @@ class LoginFragment : Fragment(), LoginContrato.View {
     }
 
     override fun escondeProgressBar() {
-        with(root){
+        with(root) {
             logino_layout_botao_avancar.isClickable = true
             btn_login.visibility = View.VISIBLE
             login_progress_bar.visibility = View.GONE

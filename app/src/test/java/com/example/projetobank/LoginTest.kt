@@ -11,7 +11,9 @@ import org.junit.Test
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class LoginTest {
-
+    /**
+     testes pra validar o login do usuáriogi
+     */
     @Test
     fun validarSenhaLetraMaiuscula() {
         val usuario = Usuario("frann", "testeA")
