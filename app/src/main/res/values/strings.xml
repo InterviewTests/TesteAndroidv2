@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ProjetoBank</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="login_msg_erro_usuario">Campo vazio! Por favor, informe seu usuario ou email</string>
+     <string name="login_msg_erro_senha">"A senha precisa conter pelo menos  uma letra maiuscula, um caracter especial e um caracter alfanumérico</string>
+    <string name="ok">OK</string>
+    <string name="aviso">Aviso</string>
+</resources>
