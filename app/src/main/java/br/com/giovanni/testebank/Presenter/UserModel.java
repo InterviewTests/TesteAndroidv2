@@ -14,6 +14,7 @@ package br.com.giovanni.testebank.Presenter;
 //}
 
 public class UserModel {
+
     public final UserAccount usuario ;
 
     public UserModel (){
@@ -23,6 +24,7 @@ public class UserModel {
     public UserAccount getUsuario() {
         return usuario;
     }
+
 }
 
 
@@ -73,6 +75,18 @@ class UserAccount {
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
+    @Override
+    public String toString() {
+        return "userAccount:  "
+                + "\nuserId: " + getUserId()
+                + "\nname: " + getName()
+                + "\nbankAccount: " + getBankAccount()
+                + "\nagency:" + getAgency()
+                + "\nbalance: " + getBalance();
+    }
+
+
 }
 
 //{
