@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public EditText getUser;
     public EditText getPassword;
     public Button btnLogin;
+    public TextView textViewJson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +36,14 @@ public class MainActivity extends AppCompatActivity {
         getUser = findViewById(R.id.editTextUserId);
         getPassword = findViewById(R.id.editTextPasswordId);
         btnLogin = findViewById(R.id.buttonLoginId);
+        textViewJson = findViewById(R.id.textViewJson);
 
         btnLoginOnClick();
 
     }
 
     String getUserConvert = getUser.getText().toString();
-    String getPasswordConvert = getPassword.getText().toString().trim();
+    String getPasswordConvert = getPassword.getText().toString().trim(); // verificar se tem como jogar para o model
 
 
     public void btnLoginOnClick (){
@@ -60,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
             setJs.getUser(getUserConvert);
             setJs.getPassword(getPasswordConvert);
 
-            WebClient webClient = new WebClient().post(); // deveria passar aqui correto ??
+//            WebClient webClient = new WebClient().post();
+//            webClient.textViewJsonWebClient(textViewJson);
 
 
             if (loginControlValidation.loginControlValidation() == true){
