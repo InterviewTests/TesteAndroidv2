@@ -10,9 +10,8 @@ import android.widget.TextView;
 import java.util.concurrent.ExecutionException;
 
 import br.com.giovanni.testebank.Interactor.LoginControlValidation;
-import br.com.giovanni.testebank.Interactor.PasswordControl;
-import br.com.giovanni.testebank.Interactor.UserControl;
 import br.com.giovanni.testebank.Model.SetLoginJson;
+import br.com.giovanni.testebank.Presenter.LoginTask;
 import br.com.giovanni.testebank.Presenter.UserModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -56,15 +55,14 @@ public class MainActivity extends AppCompatActivity {
             setJs.getUser(getUserConvert);
             setJs.getPassword(getPasswordConvert);
 
-            if (loginControlValidation.loginControlValidation() ){
+            if (loginControlValidation.loginControlValidation()){
                 getPassword.setError(null);
-                System.out.println("Retornou no if");
+
                 try {
-                    UserModel retorno = new WebService(getUserConvert).execute().get();
-                    textViewJson.setText(retorno.toString());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
+                    LoginTask task = new LoginTask();
+                    task.setParametros(setJs.setLoginJson());
+                    task.execute();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {

@@ -8,6 +8,7 @@ public class SetLoginJson {
     public String user;
     public String password;
 
+
     public void getUser (String getUserConvert){
         user = getUserConvert;
     }
@@ -15,7 +16,6 @@ public class SetLoginJson {
     public void getPassword (String getPasswordConvert){
         password = getPasswordConvert;
     }
-
 
     public String setLoginJson(){
 
@@ -32,6 +32,5 @@ public class SetLoginJson {
         }
         return null;
     }
-
 
 }
