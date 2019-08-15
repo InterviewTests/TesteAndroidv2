@@ -1,6 +1,5 @@
 package br.com.giovanni.testebank;
 
-
 import android.os.AsyncTask;
 
 import com.google.gson.Gson;
@@ -20,7 +19,6 @@ public class WebService extends AsyncTask <Void, Void, UserModel> {
     public WebService(String getUser) {
         this.user = getUser;
     }
-
 
     @Override
     protected UserModel doInBackground(Void... voids) {

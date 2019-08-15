@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.concurrent.ExecutionException;
 
 import br.com.giovanni.testebank.Interactor.LoginControlValidation;
+import br.com.giovanni.testebank.Interactor.PasswordControl;
 import br.com.giovanni.testebank.Interactor.UserControl;
 import br.com.giovanni.testebank.Model.SetLoginJson;
 import br.com.giovanni.testebank.Presenter.UserModel;
@@ -36,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
-
     public void btnLoginOnClick (){
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,19 +49,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     public void getLoginAcces (){
 
-        System.out.println("getUserCOnvert " + getUserConvert);
             LoginControlValidation loginControlValidation = new LoginControlValidation(getUserConvert, getPasswordConvert);
-            UserControl userControl = new UserControl(getUserConvert);
             SetLoginJson setJs = new SetLoginJson();
             setJs.getUser(getUserConvert);
             setJs.getPassword(getPasswordConvert);
 
-            if (loginControlValidation.loginControlValidation() == true){
+            if (loginControlValidation.loginControlValidation() ){
                 getPassword.setError(null);
-
+                System.out.println("Retornou no if");
                 try {
                     UserModel retorno = new WebService(getUserConvert).execute().get();
                     textViewJson.setText(retorno.toString());
@@ -74,10 +69,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             } else {
                 getPassword.setError("Senha Inválida");
+                System.out.println("Retornou no else");
             }
 
-
     }
-
 
 }

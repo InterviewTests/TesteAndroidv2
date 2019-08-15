@@ -1,18 +1,5 @@
 package br.com.giovanni.testebank.Presenter;
 
-//interface IUserAccount {
-//    int getUserId();
-//    int setUserId();
-//
-//    String getName();
-//    String setName();
-//
-//    int getBankAccount();
-//    int setBankAccount();
-//    int getAgency ();
-//    double getBalance();
-//}
-
 public class UserModel {
 
     public final UserAccount usuario ;
@@ -26,7 +13,6 @@ public class UserModel {
     }
 
 }
-
 
 class UserAccount {
     private int userId;
@@ -86,16 +72,4 @@ class UserAccount {
                 + "\nbalance: " + getBalance();
     }
 
-
 }
-
-//{
-////        "userAccount": {
-////        "userId": 1,
-////        "name": "Jose da Silva Teste",
-////        "bankAccount": "2050",
-////        "agency": "012314564",
-////        "balance": 3.3445
-////        },
-////        "error": {}
-////        }
