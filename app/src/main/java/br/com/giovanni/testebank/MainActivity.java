@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.concurrent.ExecutionException;
 
 import br.com.giovanni.testebank.Interactor.LoginControlValidation;
+import br.com.giovanni.testebank.Interactor.UserControl;
 import br.com.giovanni.testebank.Model.SetLoginJson;
 import br.com.giovanni.testebank.Presenter.UserModel;
 
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     public EditText getPassword;
     public Button btnLogin;
     public TextView textViewJson;
+    private String getUserConvert;
+    private String getPasswordConvert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getUserConvert = getUser.getText().toString();
+                getPasswordConvert = getPassword.getText().toString().trim();
                     getLoginAcces();
 
             }
@@ -48,14 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void getLoginAcces (){
-        String getUserConvert = getUser.getText().toString();
-        String getPasswordConvert = getPassword.getText().toString().trim();
+
+        System.out.println("getUserCOnvert " + getUserConvert);
             LoginControlValidation loginControlValidation = new LoginControlValidation(getUserConvert, getPasswordConvert);
+            UserControl userControl = new UserControl(getUserConvert);
             SetLoginJson setJs = new SetLoginJson();
             setJs.getUser(getUserConvert);
             setJs.getPassword(getPasswordConvert);
-            WebService webService = new WebService(getUserConvert);
-
 
             if (loginControlValidation.loginControlValidation() == true){
                 getPassword.setError(null);

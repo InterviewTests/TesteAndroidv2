@@ -12,6 +12,8 @@ public class LoginControlValidation {
     public boolean loginControlValidation (){
         UserControl userControl = new UserControl(getUser);
         PasswordControl passwordControl = new PasswordControl(getPassword);
+        System.out.println(userControl.emailValidation());
+        System.out.println(passwordControl.passwordValidation());
 
         if (userControl.emailValidation() && passwordControl.passwordValidation() == true){
             return true;

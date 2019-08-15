@@ -7,7 +7,7 @@ public class SetLoginJson {
 
     public String user;
     public String password;
-    public String setJsonLogin = setLoginJson();
+//    public String setJsonLogin = setLoginJson();
 
     public void getUser (String getUserConvert){
         user = getUserConvert;
