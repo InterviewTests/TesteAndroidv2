@@ -3,7 +3,6 @@ package br.com.giovanni.testebank.Presenter;
 import android.os.AsyncTask;
 
 import br.com.giovanni.testebank.LoginWebService;
-import br.com.giovanni.testebank.Model.SetLoginJson;
 
 public class LoginTask extends AsyncTask {
 

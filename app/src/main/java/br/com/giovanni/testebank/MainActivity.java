@@ -7,12 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import android.widget.TextView;
-import java.util.concurrent.ExecutionException;
 
 import br.com.giovanni.testebank.Interactor.LoginControlValidation;
 import br.com.giovanni.testebank.Model.SetLoginJson;
 import br.com.giovanni.testebank.Presenter.LoginTask;
-import br.com.giovanni.testebank.Presenter.UserModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         getUser = findViewById(R.id.editTextUserId);
         getPassword = findViewById(R.id.editTextPasswordId);
         btnLogin = findViewById(R.id.buttonLoginId);
-        textViewJson = findViewById(R.id.textViewJson);
+        textViewJson = findViewById(R.id.txtNameId);
 
         btnLoginOnClick();
 
