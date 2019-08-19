@@ -1,5 +1,5 @@
 package br.com.giovanni.testebank;
 
 public interface SetItentPrincipal {
- void intentPrincipal();
+ void changeScreen(UserAccount userAccount);
 }

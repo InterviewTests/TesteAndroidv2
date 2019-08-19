@@ -56,9 +56,10 @@ public class MainActivity extends AppCompatActivity implements SetItentPrincipal
 
 
     @Override
-    public void intentPrincipal (){
+    public void changeScreen (UserAccount userAccount){
         Intent setIntent = new Intent(this, DetailActivity.class);
         System.out.println("Parou no intent");
+        setIntent.putExtra("userAccount_key" , userAccount);
         startActivity(setIntent);
     }
 

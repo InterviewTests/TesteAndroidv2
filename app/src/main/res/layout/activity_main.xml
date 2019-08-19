@@ -37,10 +37,10 @@
 
                 <ImageView
                     android:id="@+id/imageView4"
-                    android:layout_width="120dp"
-                    android:layout_height="37dp"
-                    android:layout_marginLeft="120dp"
+                    android:layout_width="45dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="120dp"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/ic_action_logout" />
 
@@ -87,7 +87,7 @@
                 android:textSize="14sp"/>
 
             <TextView
-                android:id="@+id/txtCoins"
+                android:id="@+id/txtBalanceId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"

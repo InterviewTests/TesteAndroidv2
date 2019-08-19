@@ -29,7 +29,7 @@ public class LoginTask extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        presenterLoginImput.presenterLogin();
+        presenterLoginImput.presenterLogin(resposta);
         System.out.println(resposta);
     }
 
