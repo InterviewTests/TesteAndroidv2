@@ -9,6 +9,12 @@ public class LoginTask extends AsyncTask {
     public LoginWebService client;
     private String json;
     private String resposta;
+    public PresenterLoginImput presenterLoginImput;
+
+
+    public LoginTask (PresenterLoginImput presenterLoginImput){
+        this.presenterLoginImput = presenterLoginImput;
+    }
 
     public void setParametros(String json){
         this.json = json;
@@ -23,6 +29,9 @@ public class LoginTask extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
+        presenterLoginImput.presenterLogin();
         System.out.println(resposta);
     }
+
+
 }

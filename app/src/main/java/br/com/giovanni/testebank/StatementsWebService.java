@@ -8,19 +8,14 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class StatementsWebService {
-    public String post(String userJson){
+    public String get(int idUser){
 
         try {
-            URL url = new URL("https://bank-app-test.herokuapp.com/api/statements/1");
+            URL url = new URL("https://bank-app-test.herokuapp.com/api/statements/" + idUser);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("POST");
+            connection.setRequestMethod("GET");
             connection.setDoInput(true);
-            connection.setDoOutput(true);
-            connection.setRequestProperty("Content-type","application/json");
-            connection.setConnectTimeout(5000);
 
-            OutputStream outputStream = connection.getOutputStream();
-            outputStream.write(userJson.getBytes());
 
             Scanner scanner = new Scanner(connection.getInputStream());
             String resposta = scanner.nextLine();

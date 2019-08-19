@@ -1,6 +1,8 @@
 package br.com.giovanni.testebank;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,11 +10,11 @@ import android.widget.EditText;
 
 import android.widget.TextView;
 
-import br.com.giovanni.testebank.Interactor.LoginControlValidation;
-import br.com.giovanni.testebank.Model.SetLoginJson;
-import br.com.giovanni.testebank.Presenter.LoginTask;
+import br.com.giovanni.testebank.Presenter.DetailActivity;
+import br.com.giovanni.testebank.Presenter.LoginInteractor;
+import br.com.giovanni.testebank.Presenter.PresenterLogin;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SetItentPrincipal {
 
     public EditText getUser;
     public EditText getPassword;
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     public TextView textViewJson;
     private String getUserConvert;
     private String getPasswordConvert;
+    private LoginInteractor loginInteractor;
+    private PresenterLogin presenterLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         getPassword = findViewById(R.id.editTextPasswordId);
         btnLogin = findViewById(R.id.buttonLoginId);
         textViewJson = findViewById(R.id.txtNameId);
+        presenterLogin = new PresenterLogin(this);
+        loginInteractor = new LoginInteractor(presenterLogin);
 
         btnLoginOnClick();
 
@@ -38,36 +44,24 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 getUserConvert = getUser.getText().toString();
                 getPasswordConvert = getPassword.getText().toString().trim();
-                    getLoginAcces();
+
+                loginInteractor.getLoginAcces(getUserConvert,getPasswordConvert);
 
             }
         });
     }
 
-    public void getLoginAcces (){
 
-            LoginControlValidation loginControlValidation = new LoginControlValidation(getUserConvert, getPasswordConvert);
-            SetLoginJson setJs = new SetLoginJson();
-            setJs.getUser(getUserConvert);
-            setJs.getPassword(getPasswordConvert);
-
-            if (loginControlValidation.loginControlValidation()){
-                getPassword.setError(null);
-
-                try {
-                    LoginTask task = new LoginTask();
-                    task.setParametros(setJs.setLoginJson());
-                    task.execute();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else {
-                getPassword.setError("Senha Inválida");
-                System.out.println("Retornou no else");
-            }
-
+    @Override
+    public void intentPrincipal (){
+        Intent setIntent = new Intent(this, DetailActivity.class);
+        System.out.println("Parou no intent");
+        startActivity(setIntent);
     }
+
+
 
 }
