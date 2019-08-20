@@ -10,7 +10,6 @@ import android.widget.EditText;
 
 import android.widget.TextView;
 
-import br.com.giovanni.testebank.Presenter.DetailActivity;
 import br.com.giovanni.testebank.Presenter.LoginInteractor;
 import br.com.giovanni.testebank.Presenter.PresenterLogin;
 
