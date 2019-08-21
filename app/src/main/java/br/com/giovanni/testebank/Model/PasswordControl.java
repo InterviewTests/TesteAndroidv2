@@ -1,4 +1,4 @@
-package br.com.giovanni.testebank.Interactor;
+package br.com.giovanni.testebank.Model;
 
 import java.util.regex.Pattern;
 

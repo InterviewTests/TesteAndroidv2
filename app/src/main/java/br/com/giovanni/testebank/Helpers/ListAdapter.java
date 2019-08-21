@@ -1,4 +1,4 @@
-package br.com.giovanni.testebank.Presenter;
+package br.com.giovanni.testebank.Helpers;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,14 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import br.com.giovanni.testebank.Model.Transacao;
 import br.com.giovanni.testebank.R;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
-    private List<ListExamples> listExamples;
+    private List<Transacao> listExamples;
     private Context context;
 
-    public ListAdapter(List<ListExamples> listExamples, Context context) {
+    public ListAdapter(List<Transacao> listExamples, Context context) {
         this.listExamples = listExamples;
         this.context = context;
     }
@@ -34,11 +35,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ListExamples list = listExamples.get(position);
+        Transacao list = listExamples.get(position);
 
         holder.txtTitle.setText(list.getTitle());
         holder.txtDescricao.setText(list.getDescricao());
-        holder.txtValue.setText(list.getDate());
+        holder.txtValue.setText(String.format("R$ %.2f",list.getValue()));
+        holder.txtDate.setText(list.getDate());
         // value error, transform to string
     }
 

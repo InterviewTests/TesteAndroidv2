@@ -1,18 +1,19 @@
-package br.com.giovanni.testebank.Presenter;
+package br.com.giovanni.testebank.Helpers;
 
 import android.os.AsyncTask;
 
-import br.com.giovanni.testebank.LoginWebService;
+import br.com.giovanni.testebank.Services.LoginWebService;
+import br.com.giovanni.testebank.Presenter.IPresenterLogin;
 
 public class LoginTask extends AsyncTask {
 
     public LoginWebService client;
     private String json;
     private String resposta;
-    public PresenterLoginImput presenterLoginImput;
+    public IPresenterLogin presenterLoginImput;
 
 
-    public LoginTask (PresenterLoginImput presenterLoginImput){
+    public LoginTask (IPresenterLogin presenterLoginImput){
         this.presenterLoginImput = presenterLoginImput;
     }
 

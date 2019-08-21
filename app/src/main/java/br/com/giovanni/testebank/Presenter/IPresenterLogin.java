@@ -1,5 +1,5 @@
 package br.com.giovanni.testebank.Presenter;
 
-public interface PresenterLoginImput {
+public interface IPresenterLogin {
     void presenterLogin (String resposta);
 }

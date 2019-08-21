@@ -1,4 +1,4 @@
-package br.com.giovanni.testebank;
+package br.com.giovanni.testebank.Model;
 
 import org.json.JSONException;
 import org.json.JSONObject;

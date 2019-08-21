@@ -1,4 +1,4 @@
-package br.com.giovanni.testebank.Interactor;
+package br.com.giovanni.testebank.Model;
 
 public class LoginControlValidation {
     public String getUser;
@@ -12,7 +12,7 @@ public class LoginControlValidation {
     public boolean loginControlValidation (){
         UserControl userControl = new UserControl(getUser);
         PasswordControl passwordControl = new PasswordControl(getPassword);
-        if (userControl.emailValidation() && passwordControl.PATTERN_FULL()){
+        if (userControl.isValid() && passwordControl.PATTERN_FULL()){
 
             return true;
         } else {

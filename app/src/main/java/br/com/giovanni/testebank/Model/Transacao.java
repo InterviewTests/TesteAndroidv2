@@ -1,13 +1,15 @@
-package br.com.giovanni.testebank.Presenter;
+package br.com.giovanni.testebank.Model;
 
-public class ListExamples {
+public class Transacao {
+
+    //nomear talvez para detalhes
 
     private String title;
     private String descricao;
     private double value;
     private String date;
 
-    public ListExamples (String title, String descricao, double value, String date){
+    public Transacao (String title, String descricao, double value, String date){
         this.title = title;
         this.descricao = descricao;
         this.value = value;
@@ -30,9 +32,7 @@ public class ListExamples {
         this.descricao = descricao;
     }
 
-    public double getValue() {
-        return value;
-    }
+    public double getValue() { return value;}
 
     public void setValue(double value) {
         this.value = value;

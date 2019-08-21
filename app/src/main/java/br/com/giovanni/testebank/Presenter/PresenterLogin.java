@@ -3,14 +3,14 @@ package br.com.giovanni.testebank.Presenter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import br.com.giovanni.testebank.SetItentPrincipal;
-import br.com.giovanni.testebank.UserAccount;
+import br.com.giovanni.testebank.Activity.IItentLogin;
+import br.com.giovanni.testebank.Model.UserAccount;
 
-public class PresenterLogin implements PresenterLoginImput {
+public class PresenterLogin implements IPresenterLogin {
 
-    public SetItentPrincipal activity;
+    public IItentLogin activity;
 
-    public PresenterLogin (SetItentPrincipal activity){
+    public PresenterLogin (IItentLogin activity){
         this.activity = activity;
     }
 

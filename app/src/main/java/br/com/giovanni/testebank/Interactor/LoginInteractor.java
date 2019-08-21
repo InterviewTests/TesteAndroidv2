@@ -1,14 +1,16 @@
-package br.com.giovanni.testebank.Presenter;
+package br.com.giovanni.testebank.Interactor;
 
 
-import br.com.giovanni.testebank.Interactor.LoginControlValidation;
+import br.com.giovanni.testebank.Model.LoginControlValidation;
 import br.com.giovanni.testebank.Model.SetLoginJson;
+import br.com.giovanni.testebank.Helpers.LoginTask;
+import br.com.giovanni.testebank.Presenter.IPresenterLogin;
 
 public class LoginInteractor {
 
-    public PresenterLoginImput presenterLoginImput;
+    public IPresenterLogin presenterLoginImput;
 
-    public LoginInteractor (PresenterLoginImput presenterLoginImput){
+    public LoginInteractor (IPresenterLogin presenterLoginImput){
         this.presenterLoginImput = presenterLoginImput;
     }
 

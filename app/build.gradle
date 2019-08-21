@@ -28,7 +28,10 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    compile 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.android.volley:volley:1.1.1' // apagar
+
+
+    implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 

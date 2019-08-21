@@ -69,7 +69,7 @@
         android:layout_marginRight="87dp"
         android:layout_marginBottom="36dp"
         android:background="@drawable/border_around"
-        android:backgroundTint="@color/btnColorLogin"
+        android:backgroundTint="@color/colorBlue"
         android:text="@string/btn_login"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/colorPrimary"
