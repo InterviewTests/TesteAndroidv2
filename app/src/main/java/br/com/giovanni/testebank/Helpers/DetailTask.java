@@ -17,7 +17,7 @@ public class DetailTask extends AsyncTask {
         this.iDetailPresenter = iDetailPresenter;
     }
 
-    public void setUserId (int idUser){
+    public void setUserId(int idUser) {
         this.userId = idUser;
 
     }
@@ -26,8 +26,6 @@ public class DetailTask extends AsyncTask {
     protected String doInBackground(Object[] objects) {
         client = new StatementsWebService();
         resposta = client.get(userId);
-
-
 
         return resposta;
     }

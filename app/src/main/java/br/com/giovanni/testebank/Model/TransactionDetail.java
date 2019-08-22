@@ -1,15 +1,13 @@
 package br.com.giovanni.testebank.Model;
 
-public class Transacao {
-
-    //nomear talvez para detalhes
+public class TransactionDetail {
 
     private String title;
     private String descricao;
     private double value;
     private String date;
 
-    public Transacao (String title, String descricao, double value, String date){
+    public TransactionDetail(String title, String descricao, double value, String date) {
         this.title = title;
         this.descricao = descricao;
         this.value = value;
@@ -32,7 +30,9 @@ public class Transacao {
         this.descricao = descricao;
     }
 
-    public double getValue() { return value;}
+    public double getValue() {
+        return value;
+    }
 
     public void setValue(double value) {
         this.value = value;

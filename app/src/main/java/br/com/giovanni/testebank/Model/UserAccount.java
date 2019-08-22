@@ -13,7 +13,7 @@ public class UserAccount implements Serializable {
     private String bankAccount;
     private double balance;
 
-    public UserAccount(int id, String name, String agency, String bankAccount, double balance){
+    public UserAccount(int id, String name, String agency, String bankAccount, double balance) {
         this.id = id;
         this.name = name;
         this.agency = agency;

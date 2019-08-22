@@ -8,26 +8,25 @@ public class SetLoginJson {
     public String user;
     public String password;
 
-
-    public void getUser (String getUserConvert){
+    public void getUser(String getUserConvert) {
         user = getUserConvert;
     }
 
-    public void getPassword (String getPasswordConvert){
+    public void getPassword(String getPasswordConvert) {
         password = getPasswordConvert;
     }
 
-    public String setLoginJson(){
+    public String setLoginJson() {
 
         JSONStringer js = new JSONStringer();
 
-        try{
+        try {
             js.object().
                     key("user").value(user).
                     key("password").value(password).
                     endObject();
             return js.toString();
-        } catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return null;

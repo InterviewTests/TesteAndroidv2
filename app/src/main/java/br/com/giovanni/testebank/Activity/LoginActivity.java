@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import br.com.giovanni.testebank.Interactor.LoginInteractor;
@@ -37,16 +38,16 @@ public class LoginActivity extends AppCompatActivity implements IItentLogin {
         textViewJson = findViewById(R.id.txtNameId);
         presenterLogin = new PresenterLogin(this);
         loginInteractor = new LoginInteractor(presenterLogin);
-        SharedPreferences sharedPreferences = getSharedPreferences("login_data",MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("login_data", MODE_PRIVATE);
 
-        if(sharedPreferences.contains("usuario")){
-            getUser.setText(sharedPreferences.getString("usuario",""));
+        if (sharedPreferences.contains("usuario")) {
+            getUser.setText(sharedPreferences.getString("usuario", ""));
         }
         btnLoginOnClick();
 
     }
 
-    public void btnLoginOnClick (){
+    public void btnLoginOnClick() {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +55,7 @@ public class LoginActivity extends AppCompatActivity implements IItentLogin {
                 getUserConvert = getUser.getText().toString();
                 getPasswordConvert = getPassword.getText().toString().trim();
 
-                loginInteractor.getLoginAcces(getUserConvert,getPasswordConvert);
+                loginInteractor.getLoginAcces(getUserConvert, getPasswordConvert);
 
             }
         });
@@ -67,20 +68,18 @@ public class LoginActivity extends AppCompatActivity implements IItentLogin {
     }
 
     @Override
-    public void changeScreen (UserAccount userAccount){
+    public void changeScreen(UserAccount userAccount) {
 
-        SharedPreferences prefs = getSharedPreferences("login_data",MODE_PRIVATE);
-        if(!prefs.getString("usuario", "").equals(getUserConvert)) {
+        SharedPreferences prefs = getSharedPreferences("login_data", MODE_PRIVATE);
+        if (!prefs.getString("usuario", "").equals(getUserConvert)) {
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString("usuario", getUserConvert);
             editor.apply();
         }
         Intent setIntent = new Intent(this, DetailActivity.class);
         System.out.println("Parou no intent");
-        setIntent.putExtra("userAccount_key" , userAccount);
+        setIntent.putExtra("userAccount_key", userAccount);
         startActivity(setIntent);
     }
-
-
 
 }

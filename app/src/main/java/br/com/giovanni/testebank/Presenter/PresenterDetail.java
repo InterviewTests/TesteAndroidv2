@@ -8,13 +8,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import br.com.giovanni.testebank.Activity.IPresenterActivity;
-import br.com.giovanni.testebank.Model.Transacao;
+import br.com.giovanni.testebank.Model.TransactionDetail;
 
 
 public class PresenterDetail implements IDetailPresenter {
 
     private IPresenterActivity iPresenterActivity;
-    private ArrayList<Transacao> newTransacao = new ArrayList<>();
+    private ArrayList<TransactionDetail> newTransacao = new ArrayList<>();
 
     public void newList(String response) {
         try {
@@ -22,10 +22,10 @@ public class PresenterDetail implements IDetailPresenter {
             JSONArray array = jsonObject.getJSONArray("statementList");
             JSONObject jsonObjectError = new JSONObject(response).getJSONObject("error");
 
-            if (jsonObjectError.toString().contentEquals("{}") ){
+            if (jsonObjectError.toString().contentEquals("{}")) {
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject object = array.getJSONObject(i);
-                    Transacao item = new Transacao(
+                    TransactionDetail item = new TransactionDetail(
                             object.getString("title"),
                             object.getString("desc"),
                             object.getDouble("value"),
@@ -41,7 +41,6 @@ public class PresenterDetail implements IDetailPresenter {
             e.printStackTrace();
         }
     }
-
 
     public PresenterDetail(IPresenterActivity activity) {
         this.iPresenterActivity = activity;

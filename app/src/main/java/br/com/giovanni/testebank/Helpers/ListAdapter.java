@@ -11,15 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import br.com.giovanni.testebank.Model.Transacao;
+import br.com.giovanni.testebank.Model.TransactionDetail;
 import br.com.giovanni.testebank.R;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
-    private List<Transacao> listExamples;
+    private List<TransactionDetail> listExamples;
     private Context context;
 
-    public ListAdapter(List<Transacao> listExamples, Context context) {
+    public ListAdapter(List<TransactionDetail> listExamples, Context context) {
         this.listExamples = listExamples;
         this.context = context;
     }
@@ -35,13 +35,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Transacao list = listExamples.get(position);
+        TransactionDetail list = listExamples.get(position);
 
         holder.txtTitle.setText(list.getTitle());
         holder.txtDescricao.setText(list.getDescricao());
-        holder.txtValue.setText(String.format("R$ %.2f",list.getValue()));
+        holder.txtValue.setText(String.format("R$ %.2f", list.getValue()));
         holder.txtDate.setText(list.getDate());
-        // value error, transform to string
     }
 
     @Override
@@ -49,7 +48,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return listExamples.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView txtTitle;
         public TextView txtDescricao;

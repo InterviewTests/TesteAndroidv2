@@ -2,9 +2,9 @@ package br.com.giovanni.testebank.Activity;
 
 import java.util.List;
 
-import br.com.giovanni.testebank.Model.Transacao;
+import br.com.giovanni.testebank.Model.TransactionDetail;
 
 public interface IPresenterActivity {
 
-    void getResponse (List<Transacao> getList);
+    void getResponse(List<TransactionDetail> getList);
 }

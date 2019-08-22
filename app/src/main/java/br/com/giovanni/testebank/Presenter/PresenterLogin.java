@@ -30,6 +30,5 @@ public class PresenterLogin implements IPresenterLogin {
             e.printStackTrace();
         }
 
-
     }
 }

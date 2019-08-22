@@ -6,7 +6,7 @@ import java.util.Collections;
 public class CPFValid {
     private String cpf;
 
-    public CPFValid (String cpf) {
+    public CPFValid(String cpf) {
         this.cpf = cpf.replace(".", "").replace("-", "");
     }
 
@@ -30,19 +30,19 @@ public class CPFValid {
             return false;
 
         int firstDigit, secondDigit;
-        firstDigit = cpfArray.get(cpfArray.size()-2);
-        secondDigit = cpfArray.get(cpfArray.size()-1);
+        firstDigit = cpfArray.get(cpfArray.size() - 2);
+        secondDigit = cpfArray.get(cpfArray.size() - 1);
         Collections.reverse(cpfArray);
         return checkFirstDigit(cpfArray, firstDigit) && checkSecondDigit(cpfArray, secondDigit);
     }
 
     private static boolean checkFirstDigit(ArrayList<Integer> list, int digit) {
         int sum = 0;
-        for(int i = 10; i > 1; i--) {
+        for (int i = 10; i > 1; i--) {
             sum += list.get(i) * i;
         }
         int result = (sum * 10) % 11;
-        result = (result == 10)?0:result;
+        result = (result == 10) ? 0 : result;
         if (result == digit)
             return true;
         else
@@ -51,11 +51,11 @@ public class CPFValid {
 
     private static boolean checkSecondDigit(ArrayList<Integer> list, int digit) {
         int sum = 0;
-        for(int i = 11; i > 1; i--) {
-            sum += list.get(i-1) * i;
+        for (int i = 11; i > 1; i--) {
+            sum += list.get(i - 1) * i;
         }
         int result = (sum * 10) % 11;
-        result = (result == 10)?0:result;
+        result = (result == 10) ? 0 : result;
         if (result == digit)
             return true;
         else
@@ -66,4 +66,5 @@ public class CPFValid {
         cpf = cpf.replace(".", "").replace("-", "");
         return testCPF(cpf);
     }
+
 }

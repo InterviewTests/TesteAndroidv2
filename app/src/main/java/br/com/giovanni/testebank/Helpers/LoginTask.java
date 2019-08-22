@@ -12,7 +12,6 @@ public class LoginTask extends AsyncTask {
     private String resposta;
     public IPresenterLogin presenterLoginImput;
 
-
     public LoginTask (IPresenterLogin presenterLoginImput){
         this.presenterLoginImput = presenterLoginImput;
     }
@@ -33,6 +32,5 @@ public class LoginTask extends AsyncTask {
         presenterLoginImput.presenterLogin(resposta);
         System.out.println(resposta);
     }
-
 
 }

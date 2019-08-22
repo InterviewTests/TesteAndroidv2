@@ -16,7 +16,7 @@ public class PasswordControl {
     public static final Pattern PATTERN_4 = Pattern.compile("[@#$%^&+=_]{1,}");
 
     public boolean PATTERN_FULL() {
-        return  PATTERN_1.matcher(getPassword).find() &&
+        return PATTERN_1.matcher(getPassword).find() &&
                 PATTERN_2.matcher(getPassword).find() &&
                 PATTERN_3.matcher(getPassword).find() &&
                 PATTERN_4.matcher(getPassword).find();

@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class StatementsWebService {
 
-
     public String get(int idUser) {
 
         try {
@@ -37,67 +36,5 @@ public class StatementsWebService {
 
         return null;
 
-
     }
 }
-
-
-
-
-
-
-//    private RecyclerView.Adapter adapter;
-//    private List<ListExamples> listExamples;
-//
-//    DetailActivity detailActivity = new DetailActivity();
-//
-//
-//    private static final String URL_DATA = "https://bank-app-test.herokuapp.com/api/statements/1";
-//
-//    public void loadRecyclerViewData (){
-//
-
-//        final ProgressDialog progressDialog = new ProgressDialog(detailActivity.this);
-//        progressDialog.setMessage("Loading data...");
-//        progressDialog.show();
-
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_DATA,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-////                        progressDialog.dismiss();
-//                        try {
-//                            JSONObject jsonObject = new JSONObject(response);
-//                            JSONArray array = jsonObject.getJSONArray("statementList");
-//
-//                            for (int i = 0; i<array.length(); i++){
-//                                JSONObject object = array.getJSONObject(i);
-//                                ListExamples item = new ListExamples(
-//                                        object.getString("title"),
-//                                        object.getString("desc"),
-//                                        object.getString("date"),
-//                                        object.getString("value")
-//                                );
-//                                listExamples.add(item);
-//                            }
-//
-//                            adapter = new ListAdapter(listExamples, detailActivity.getApplicationContext());
-//                            detailActivity.recyclerView.setAdapter(adapter);
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-////                        progressDialog.dismiss();
-//                        Toast.makeText(detailActivity.getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-//                    }
-//                });
-//
-//        RequestQueue requestQueue = Volley.newRequestQueue(detailActivity);
-//        requestQueue.add(stringRequest);
-//
-//    }
