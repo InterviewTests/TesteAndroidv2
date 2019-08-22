@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Currency"
+    android:background="#FFFEFEFE">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="232dp"
+        android:background="#3B49EE">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="13dp"
+            app:srcCompat="@drawable/logout2"
+            android:clickable="true"
+            android:onClick="goBack"
+            />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:layout_alignBottom="@+id/imageView5"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/helveticaneuelight"
+            android:text="Jose da Silva Testee"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="77dp"
+            android:fontFamily="@font/helveticaneue"
+            android:text="conta"
+            android:textColor="#FFFFFF"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="96dp"
+            android:fontFamily="@font/helveticaneuelight"
+            android:text="2050 / 01.111222-4"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="146dp"
+            android:fontFamily="@font/helveticaneue"
+            android:text="saldo"
+            android:textColor="#FFFFFF"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="166dp"
+            android:fontFamily="@font/helveticaneuelight"
+            android:text="R$1.000,00"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_cyclic"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity = "center"
+            android:layout_weight="1"
+            android:minWidth="60dp"
+            android:minHeight="60dp"
+            android:visibility="gone"
+            android:layout_marginStart="157dp"
+            android:layout_marginTop="170dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="33dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/helveticaneue"
+        android:lineSpacingExtra="20sp"
+        android:text="Recentes"
+        android:textColor="#FF485465"
+        android:textSize="17dp" />
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="4dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingStart="12dp"
+        android:paddingBottom="10dp"
+        android:divider="@null"
+
+        android:dividerHeight="9.0sp"
+        android:id="@+id/lv"/>
+
+</LinearLayout>
