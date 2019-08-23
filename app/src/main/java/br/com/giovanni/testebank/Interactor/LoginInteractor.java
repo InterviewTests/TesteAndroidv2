@@ -13,15 +13,16 @@ public class LoginInteractor {
         this.presenterLoginImput = presenterLoginImput;
     }
 
-    public void getLoginAcces(String getUserConvert, String getPasswordConvert) {
-
+    public boolean getLoginAcces(String getUserConvert, String getPasswordConvert) {
+        boolean aux = false;
 
         LoginControlValidation loginControlValidation = new LoginControlValidation(getUserConvert, getPasswordConvert);
         SetLoginJson setJs = new SetLoginJson();
         setJs.getUser(getUserConvert);
         setJs.getPassword(getPasswordConvert);
 
-        if (loginControlValidation.loginControlValidation()) {
+        aux = loginControlValidation.loginControlValidation();
+        if (aux) {
 
             try {
                 LoginTask task = new LoginTask(presenterLoginImput);
@@ -32,6 +33,6 @@ public class LoginInteractor {
                 e.printStackTrace();
             }
         }
-
+        return aux;
     }
 }

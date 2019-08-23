@@ -18,31 +18,16 @@ public class TransactionDetail {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDescricao() {
         return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public double getValue() {
         return value;
     }
 
-    public void setValue(double value) {
-        this.value = value;
-    }
-
     public String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
 }

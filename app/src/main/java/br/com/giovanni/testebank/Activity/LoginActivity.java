@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import br.com.giovanni.testebank.Interactor.LoginInteractor;
 import br.com.giovanni.testebank.Presenter.PresenterLogin;
@@ -22,11 +23,13 @@ public class LoginActivity extends AppCompatActivity implements IItentLogin {
     public EditText getUser;
     public EditText getPassword;
     public Button btnLogin;
+    public ProgressBar progressBar;
     public TextView textViewJson;
     private String getUserConvert;
     private String getPasswordConvert;
     private LoginInteractor loginInteractor;
     private PresenterLogin presenterLogin;
+    private boolean buttonFlag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements IItentLogin {
         getUser = findViewById(R.id.editTextUserId);
         getPassword = findViewById(R.id.editTextPasswordId);
         btnLogin = findViewById(R.id.buttonLoginId);
+        progressBar = findViewById(R.id.progressBarId);
         textViewJson = findViewById(R.id.txtNameId);
         presenterLogin = new PresenterLogin(this);
         loginInteractor = new LoginInteractor(presenterLogin);
@@ -44,32 +48,43 @@ public class LoginActivity extends AppCompatActivity implements IItentLogin {
             getUser.setText(sharedPreferences.getString("usuario", ""));
         }
         btnLoginOnClick();
-
     }
 
     public void btnLoginOnClick() {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!buttonFlag){
 
-                getUserConvert = getUser.getText().toString();
-                getPasswordConvert = getPassword.getText().toString().trim();
+                    buttonFlag = true;
+                    boolean aux;
 
-                loginInteractor.getLoginAcces(getUserConvert, getPasswordConvert);
+                    getUserConvert = getUser.getText().toString();
+                    getPasswordConvert = getPassword.getText().toString().trim();
 
+                    aux = loginInteractor.getLoginAcces(getUserConvert, getPasswordConvert);
+
+                    if (aux){
+                        progressBar.setVisibility(View.VISIBLE);
+                    } else {
+                        buttonFlag = false;
+                        Toast.makeText(getApplicationContext(), "Login Invalid", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
     }
 
     @Override
     protected void onResume() {
+        buttonFlag = false;
         super.onResume();
         getPassword.setText("");
+        progressBar.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void changeScreen(UserAccount userAccount) {
-
         SharedPreferences prefs = getSharedPreferences("login_data", MODE_PRIVATE);
         if (!prefs.getString("usuario", "").equals(getUserConvert)) {
             SharedPreferences.Editor editor = prefs.edit();
@@ -80,6 +95,11 @@ public class LoginActivity extends AppCompatActivity implements IItentLogin {
         Intent setIntent = new Intent(this, DetailActivity.class);
         setIntent.putExtra("userAccount_key", userAccount);
         startActivity(setIntent);
+    }
+
+    @Override
+    public void setMessage(String setMessageString) {
+        Toast.makeText(this, setMessageString, Toast.LENGTH_LONG).show();
     }
 
 }
