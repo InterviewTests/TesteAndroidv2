@@ -33,7 +33,6 @@ public class DetailTask extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
-        System.out.println(resposta);
 
         iDetailPresenter.intentDetail(resposta);
     }

@@ -76,8 +76,8 @@ public class LoginActivity extends AppCompatActivity implements IItentLogin {
             editor.putString("usuario", getUserConvert);
             editor.apply();
         }
+
         Intent setIntent = new Intent(this, DetailActivity.class);
-        System.out.println("Parou no intent");
         setIntent.putExtra("userAccount_key", userAccount);
         startActivity(setIntent);
     }
