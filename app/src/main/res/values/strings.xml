@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AppTesteBanco</string>
+    <string name="btn_login">Login</string>
+    <string name="app_count">Conta</string>
+    <string name="app_balance">Saldo</string>
+    <string name="app_recent">Recentes</string>
+    <string name="app_coin">R$</string>
+
+</resources>
