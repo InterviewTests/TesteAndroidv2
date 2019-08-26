@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SantanderTestValber</string>
+    <string name="title_domain">domain</string>
+    <string name="title_dynamicfeature">Module Title</string>
+    <string name="user_text">User</string>
+    <string name="password_text">Password</string>
+    <string name="logar_btn">Login</string>
+    <string name="contar_user">Conta</string>
+    <string name="saldo_user">Saldo</string>
+    <string name="retry">Tentar novamente</string>
+    <string name="error">Erro inesperado</string>
+    <string name="recentes_text">Recentes</string>
+</resources>
