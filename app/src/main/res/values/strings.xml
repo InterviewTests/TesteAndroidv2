@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Zupp_Bank</string>
+    <string name="hint_user">User</string>
+    <string name="hint_pass">Password</string>
+    <string name="login_btn">Login</string>
 </resources>
