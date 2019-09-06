@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Teste v2</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_lancamentos">Lançamentos</string>
+    <string name="login_placeHolderLogin">User</string>
+    <string name="login_placeHolderSenha">Password</string>
+</resources>
