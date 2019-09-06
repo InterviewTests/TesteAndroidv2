@@ -6,6 +6,7 @@
 
     <color name="cinza_borda_edittext">#E4E9F2</color>
     <color name="cinza_texto_hint">#A8B4C4</color>
+    <color name="txt_principal">#485465</color>
 
     <color name="btn_color">#3B48EE</color>
 </resources>

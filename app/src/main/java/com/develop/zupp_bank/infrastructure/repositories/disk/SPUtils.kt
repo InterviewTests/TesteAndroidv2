@@ -37,4 +37,12 @@ class SPUtils {
         val settings = context.getSharedPreferences(Constants.PREFS_NAME, 0)
         return settings?.getString(PASS, "") ?: ""
     }
+
+    fun logoff() {
+        val settings = context.getSharedPreferences(Constants.PREFS_NAME, 0)
+        val editor = settings.edit()
+        editor.putString(USER, "")
+        editor.putString(PASS, "")
+        editor.apply()
+    }
 }

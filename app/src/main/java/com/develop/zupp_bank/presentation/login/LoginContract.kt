@@ -5,6 +5,7 @@ class LoginContract {
         fun showMessage(msg: String)
         fun setUser(us: String)
         fun setPass(ps: String)
+        fun navigate()
     }
     interface Presenter {
         fun callLogin(user: String, pass: String)

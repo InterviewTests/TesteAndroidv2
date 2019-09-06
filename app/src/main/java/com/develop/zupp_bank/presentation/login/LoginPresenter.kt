@@ -3,6 +3,7 @@ package com.develop.zupp_bank.presentation.login
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.develop.zupp_bank.domain.interfaces.UserRepository
 import com.develop.zupp_bank.domain.models.UserAccount
 import com.develop.zupp_bank.infrastructure.repositories.disk.SPUtils
@@ -25,10 +26,14 @@ class LoginPresenter(var view: LoginView): LoginContract.Presenter {
     var validation: MutableLiveData<Resource<UserAccount>>
     var usuario: String = ""
     var password: String = ""
+    private var registrationData: RegistrationData
 
 
     init {
+
         ZupApplication.instance.componentApplication.inject(this)
+
+        registrationData = ViewModelProviders.of(view.getActivityView()).get(RegistrationData::class.java)
 
         validation = MutableLiveData()
         if (!validation.hasObservers()) {
@@ -42,8 +47,13 @@ class LoginPresenter(var view: LoginView): LoginContract.Presenter {
 
                         if (it.userAccount!!.name != null){
 
-
-                            view.showMessage(it.userAccount!!.name)
+                            registrationData.userId = it.userAccount!!.userId
+                            registrationData.name = it.userAccount!!.name
+                            registrationData.bankAccount = it.userAccount!!.bankAccount
+                            registrationData.agency = it.userAccount!!.agency
+                            registrationData.balance = it.userAccount!!.balance
+                            view.navigate()
+                            //view.showMessage(it.userAccount!!.name)
 
                         }else{
                             view.showMessage("Usuário ou senha incorretos!")

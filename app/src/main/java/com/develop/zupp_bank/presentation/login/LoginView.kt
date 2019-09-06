@@ -53,4 +53,8 @@ class LoginView: ZuppBaseFragment<ZuppBaseActivity<*>>(), LoginContract.View{
         edPass.setText(ps)
     }
 
+    override fun navigate() {
+        activity.navigate(R.id.nav_data)
+    }
+
 }
