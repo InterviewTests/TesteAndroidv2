@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3640EA</color>
+    <color name="colorPrimaryDark">#3640EA</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="bg_btn_login">#3640EA</color>
+</resources>
