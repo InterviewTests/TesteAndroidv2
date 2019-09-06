@@ -8,9 +8,10 @@ class LoginContract {
         fun navigate()
     }
     interface Presenter {
-        fun callLogin(user: String, pass: String)
+        //fun callLogin(user: String, pass: String)
         fun processMsg(msg: String)
         fun checkLogin(): String
         fun checkPass(): String
+        fun processLogin(user: String, pass: String)
     }
 }

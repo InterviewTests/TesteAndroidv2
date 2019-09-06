@@ -1,4 +1,4 @@
-package com.develop.zupp_bank.infrastructure.base
+package com.develop.zupp_bank.framework.base
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

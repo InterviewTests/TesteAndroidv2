@@ -2,17 +2,15 @@ package com.develop.zupp_bank.presentation.data
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.develop.zupp_bank.R
 import com.develop.zupp_bank.domain.models.StatementList
 import com.develop.zupp_bank.framework.extension.formatMask
-import com.develop.zupp_bank.infrastructure.base.ZuppBaseActivity
-import com.develop.zupp_bank.infrastructure.base.ZuppBaseFragment
+import com.develop.zupp_bank.framework.base.ZuppBaseActivity
+import com.develop.zupp_bank.framework.base.ZuppBaseFragment
 import com.develop.zupp_bank.presentation.login.NavigationRegistration
 import com.develop.zupp_bank.presentation.main.ZupApplication
 import kotlinx.android.synthetic.main.fragment_datas.*

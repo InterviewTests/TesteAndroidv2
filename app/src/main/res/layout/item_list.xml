@@ -6,6 +6,8 @@
               android:layout_height="90dp">
 
     <androidx.cardview.widget.CardView
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:layout_width="match_parent"
             android:layout_height="80dp" android:id="@+id/cardView">
         <RelativeLayout
@@ -14,6 +16,7 @@
 
             <TextView
                     android:id="@+id/tvPagamento"
+                    android:fontFamily="@font/helvetica_neue_light"
                     android:text="@string/card_pagamento"
                     android:textSize="16sp"
                     android:textColor="@color/cinza_texto_hint"
@@ -25,6 +28,7 @@
             <TextView
                     android:id="@+id/tvNameConta"
                     android:text="Conta de luz"
+                    android:fontFamily="@font/helvetica_neue_light"
                     android:textSize="16sp"
                     android:textColor="@color/txt_principal"
                     android:layout_marginLeft="8dp"
@@ -36,6 +40,7 @@
             <TextView
                     android:id="@+id/tvData"
                     android:text="12/12/2018"
+                    android:fontFamily="@font/helvetica_neue_light"
                     android:textSize="16sp"
                     android:textColor="@color/cinza_texto_hint"
                     android:layout_marginTop="8dp"
@@ -47,6 +52,7 @@
             <TextView
                     android:id="@+id/tvValor"
                     android:text="R$ 1.000,00"
+                    android:fontFamily="@font/helvetica_neue_light"
                     android:textSize="20sp"
                     android:textColor="@color/txt_principal"
                     android:layout_alignParentBottom="true"

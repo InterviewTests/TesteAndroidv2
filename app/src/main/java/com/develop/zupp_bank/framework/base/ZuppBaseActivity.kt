@@ -1,8 +1,9 @@
-package com.develop.zupp_bank.infrastructure.base
+package com.develop.zupp_bank.framework.base
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar

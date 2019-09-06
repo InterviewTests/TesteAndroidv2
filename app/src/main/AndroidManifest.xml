@@ -8,12 +8,12 @@
     <application
             android:name=".presentation.main.ZupApplication"
             android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/ico_app"
             android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
+            android:roundIcon="@drawable/ico_app"
             android:supportsRtl="true"
             android:theme="@style/AppTheme.NoActionBarStatusBar">
-        <activity android:name=".presentation.login.NavigationRegistration">
+        <activity android:name=".presentation.login.NavigationRegistration" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

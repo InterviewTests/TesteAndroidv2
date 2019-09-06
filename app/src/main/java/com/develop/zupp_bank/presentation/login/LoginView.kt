@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import com.develop.zupp_bank.R
-import com.develop.zupp_bank.infrastructure.base.ZuppBaseActivity
-import com.develop.zupp_bank.infrastructure.base.ZuppBaseFragment
+import com.develop.zupp_bank.framework.base.ZuppBaseActivity
+import com.develop.zupp_bank.framework.base.ZuppBaseFragment
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginView: ZuppBaseFragment<ZuppBaseActivity<*>>(), LoginContract.View{
@@ -29,9 +29,8 @@ class LoginView: ZuppBaseFragment<ZuppBaseActivity<*>>(), LoginContract.View{
         activity.findViewById<EditText>(R.id.edPass).setText(presenter.checkPass())
 
         btnLogin.setOnClickListener {
-            presenter.callLogin(edUser.text.toString(),edPass.text.toString())
-            //presenter.processMsg("Clicou")
-            //edUser.setText("Denis")
+            //presenter.callLogin(edUser.text.toString(),edPass.text.toString())
+            presenter.processLogin(edUser.text.toString(),edPass.text.toString())
         }
     }
 

@@ -6,6 +6,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.develop.zupp_bank.domain.interfaces.UserRepository
 import com.develop.zupp_bank.domain.models.UserAccount
+import com.develop.zupp_bank.framework.Tools.isCPF
+import com.develop.zupp_bank.framework.Tools.isEmailValid
+import com.develop.zupp_bank.framework.Tools.isPasswordValidate
 import com.develop.zupp_bank.infrastructure.repositories.disk.SPUtils
 import com.develop.zupp_bank.infrastructure.utils.Resource
 import com.develop.zupp_bank.infrastructure.utils.ResourceCallback
@@ -83,8 +86,28 @@ class LoginPresenter(var view: LoginView): LoginContract.Presenter {
 
     }
 
+    override fun processLogin(user: String, pass: String) {
 
-    override fun callLogin(user: String, pass: String) {
+        if (isEmailValid(user) or isCPF(user)){
+
+            if (isPasswordValidate(pass)){
+                callLogin(user,pass)
+            }
+            else{
+                view.showMessage("A senha deve conter, uma letra minúscula, uma letra maiúscula, um caracter numérico e um caracter especial!")
+                return
+            }
+
+        }
+        else{
+            view.showMessage("Usúario informado não é um email ou um CPF!")
+            return
+        }
+
+    }
+
+
+    private fun callLogin(user: String, pass: String) {
         usuario = user
         password = pass
         userRepository.login(user, pass, object : ResourceCallback<Resource<UserAccount>>{
