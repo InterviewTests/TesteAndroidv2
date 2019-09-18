@@ -5,13 +5,13 @@
 
     <fragment android:id="@+id/nav_login_home"
               tools:layout="@layout/fragment_login"
-              android:name="com.develop.zupp_bank.presentation.login.LoginView"
+              android:name="com.develop.tcs_bank.presentation.login.LoginView"
               android:label="LoginView">
         <action android:id="@+id/action_nav_login_home_to_nav_data" app:destination="@id/nav_data"/>
     </fragment>
 
     <fragment android:id="@+id/nav_data"
               tools:layout="@layout/fragment_datas"
-              android:name="com.develop.zupp_bank.presentation.data.DataView"
+              android:name="com.develop.tcs_bank.presentation.data.DataView"
               android:label="DataView"/>
 </navigation>
