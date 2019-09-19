@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.DetailActivity"
+    android:background="@color/blueDefault"
+    >
+
+    <RelativeLayout
+        android:id="@+id/headerDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="10dp"
+        >
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_exit_to_app_black_24dp"
+            android:layout_alignParentRight="true"
+            >
+
+        </ImageView>
+
+    <TextView
+        android:id="@+id/labelFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome completo"
+        android:textSize="@dimen/sizeFontTitle"
+        android:textColor="@color/fontColorDefault"
+        >
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/labelAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conta"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_below="@+id/labelFullName"
+        android:textSize="@dimen/sizeFontDefault"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/fontColorDefault"
+        >
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/accountNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0000/00.000000-00"
+        android:layout_below="@+id/labelAccount"
+        android:textSize="@dimen/sizeFontTitle"
+        android:textColor="@color/fontColorDefault"
+        >
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/labelBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saldo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_below="@+id/accountNumber"
+        android:textSize="@dimen/sizeFontDefault"
+        android:textColor="@color/fontColorDefault"
+        android:layout_marginTop="30dp"
+        >
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RS 1.000,00"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_below="@+id/labelBalance"
+        android:textSize="@dimen/sizeFontTitle"
+        android:textColor="@color/fontColorDefault"
+        >
+    </TextView>
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/headerDetail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#fff"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

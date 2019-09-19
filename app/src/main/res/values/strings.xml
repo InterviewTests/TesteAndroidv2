@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SantanderTestev2</string>
+    <string name="hint_loginfield">E-mail ou CPF</string>
+    <string name="hint_loginpassword">Senha</string>
+    <string name="txt_btnlogin">Login</string>
+    <string name="labelBank">Bank</string>
 </resources>
