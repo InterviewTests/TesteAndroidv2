@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:font="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:id="@+id/rootLay"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/btn_color" tools:ignore="MissingConstraints">
+
+        <ImageView
+                android:id="@+id/imgLogout"
+                android:src="@drawable/logout_2"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="36dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView android:id="@+id/tvNome"
+                  android:text="José da Silva teste"
+                  android:fontFamily="@font/helvetica_neue_light"
+                  android:textSize="25sp"
+                  android:layout_marginTop="36dp"
+                  android:layout_marginLeft="16dp"
+                  android:textColor="@android:color/white"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/tvContaTitle"
+                android:text="@string/data_conta_title"
+                android:textSize="12sp"
+                android:fontFamily="@font/helvetica_neue_light"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="16dp"
+                android:layout_below="@+id/tvNome"
+                android:layout_marginTop="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView android:id="@+id/tvConta"
+                  android:text="2050 / 01.111222-4"
+                  android:textSize="25sp"
+                  android:layout_marginTop="8dp"
+                  android:fontFamily="@font/helvetica_neue_light"
+                  android:layout_below="@+id/tvContaTitle"
+                  android:layout_marginLeft="16dp"
+                  android:textColor="@android:color/white"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/tvSaldoTitle"
+                android:text="@string/data_saldo"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="16dp"
+                android:layout_below="@+id/tvConta"
+                android:fontFamily="@font/helvetica_neue_light"
+                android:layout_marginTop="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView android:id="@+id/tvSaldo"
+                  android:text="R$ 1.000,00"
+                  android:textSize="25sp"
+                  android:layout_marginTop="8dp"
+                  android:layout_below="@+id/tvSaldoTitle"
+                  android:layout_marginLeft="16dp"
+                  android:fontFamily="@font/helvetica_neue_light"
+                  android:textColor="@android:color/white"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <TextView
+            android:id="@+id/tvRecentes"
+            android:text="Recentes"
+            android:textSize="17sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helvetica_neue_light"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/rootLay"
+            android:layout_marginTop="16dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRecentes"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            tools:listitem="@layout/item_list"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

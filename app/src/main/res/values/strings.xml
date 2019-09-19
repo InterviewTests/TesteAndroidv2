@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Zup Bank</string>
+    <string name="hint_user">User</string>
+    <string name="hint_pass">Password</string>
+    <string name="login_btn">Login</string>
+    <string name="data_conta_title">Conta</string>
+    <string name="data_saldo">Saldo</string>
+    <string name="card_pagamento">Pagamento</string>
+</resources>

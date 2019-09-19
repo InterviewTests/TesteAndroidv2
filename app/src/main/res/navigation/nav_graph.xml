@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph" app:startDestination="@id/nav_login_home">
+
+    <fragment android:id="@+id/nav_login_home"
+              tools:layout="@layout/fragment_login"
+              android:name="com.develop.tcs_bank.presentation.login.LoginView"
+              android:label="LoginView">
+        <action android:id="@+id/action_nav_login_home_to_nav_data" app:destination="@id/nav_data"/>
+    </fragment>
+
+    <fragment android:id="@+id/nav_data"
+              tools:layout="@layout/fragment_datas"
+              android:name="com.develop.tcs_bank.presentation.data.DataView"
+              android:label="DataView"/>
+</navigation>
