@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">testeSantander</string>
+    <string name="login">Login</string>
+    <string name="recente">Recentes</string>
+    <string name="username">Email ou CPF</string>
+    <string name="password">Senha</string>
+    <string name="yes">Sim</string>
+    <string name="no">Nao</string>
+    <string name="deseja_sair">Deseja sair?</string>
+
+</resources>
