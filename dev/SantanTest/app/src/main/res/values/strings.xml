@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SantanTest</string>
+
+    <string name="app_title">Bank</string>
+
+    <string name="label_user">User</string>
+    <string name="label_password">Password</string>
+
+</resources>

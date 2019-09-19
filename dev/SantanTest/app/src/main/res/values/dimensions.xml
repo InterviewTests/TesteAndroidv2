@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- General Usage -->
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+
+    <!-- Logo -->
+    <dimen name="logo_font_size">60sp</dimen>
+    <dimen name="logo_padding">10dp</dimen>
+
+
+
+</resources>
