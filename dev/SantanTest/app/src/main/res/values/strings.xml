@@ -6,4 +6,5 @@
     <string name="label_user">User</string>
     <string name="label_password">Password</string>
 
+    <string name="bt_login">Login</string>
 </resources>
