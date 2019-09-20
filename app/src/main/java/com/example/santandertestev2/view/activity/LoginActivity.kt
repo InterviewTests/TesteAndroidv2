@@ -6,8 +6,13 @@ import com.example.santandertestev2.R
 
 class LoginActivity : AppCompatActivity() {
 
+    val baseUrl = "https://bank-app-test.herokuapp.com/api/"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+
+
     }
 }

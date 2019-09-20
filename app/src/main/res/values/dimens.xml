@@ -2,5 +2,5 @@
 <resources>
     <dimen name="sizeFontTitle">30sp</dimen>
     <dimen name="sizeFontDefault">15sp</dimen>
-    <dimen name="sizeFontMini">18sp</dimen>
+    <dimen name="sizeFontMini">10sp</dimen>
 </resources>

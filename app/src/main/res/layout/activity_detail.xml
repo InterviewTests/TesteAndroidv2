@@ -88,12 +88,14 @@
         >
     </TextView>
     </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/headerDetail"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="#fff"
+        tools:listitem="@layout/item_list"
         >
 
     </androidx.recyclerview.widget.RecyclerView>
