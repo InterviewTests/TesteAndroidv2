@@ -8,6 +8,7 @@
     <dimen name="logo_font_size">60sp</dimen>
     <dimen name="logo_padding">10dp</dimen>
 
-
+    <!-- User Info -->
+    <dimen name="user_info_padding">20dp</dimen>
 
 </resources>

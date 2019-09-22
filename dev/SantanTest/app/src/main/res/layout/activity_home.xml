@@ -8,20 +8,121 @@
         tools:context=".HomeActivity"
         >
 
-
-
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@color/blue"
-            >
+            android:paddingLeft="@dimen/margin_medium"
+            android:paddingTop="@dimen/user_info_padding"
+            android:paddingRight="@dimen/margin_medium"
+            android:paddingBottom="@dimen/user_info_padding"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".HomeActivity">
 
+        <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Jose da Silva Teste"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                app:layout_constraintEnd_toStartOf="@+id/btLogout"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+                android:id="@+id/btLogout"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@mipmap/ic_logout"
+                app:layout_constraintBottom_toBottomOf="@+id/tvUserName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvUserName" />
 
-    </RelativeLayout>
+        <TextView
+                android:id="@+id/tvUserAccountLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Conta"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvUserAccount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
 
+        <TextView
+                android:id="@+id/tvUserAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-light"
+                android:text="2050 / 01.111222-4"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tvUserAccountLabel"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserAccountLabel" />
 
+        <TextView
+                android:id="@+id/tvUserBalanceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Saldo"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvUserBalance"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserAccount" />
 
+        <TextView
+                android:id="@+id/tvUserBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-light"
+                android:text="R$ 2000,00"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                app:layout_constraintStart_toStartOf="@+id/tvUserBalanceLabel"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserBalanceLabel" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+            android:id="@+id/tvRecent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white_low_bright"
+            android:paddingLeft="@dimen/margin_medium"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingBottom="@dimen/margin_small"
+            android:paddingRight="@dimen/margin_medium"
+            android:text="Recentes"
+            android:textColor="@color/darker_gray"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTransactions"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/gray"
+            android:padding="@dimen/margin_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRecent"
+            tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
