@@ -3,6 +3,7 @@ package com.gustavo.bankandroid.statements.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.gustavo.bankandroid.base.BaseViewModel
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserStatementItem
 import com.gustavo.bankandroid.statements.usecase.StatementUseCases
@@ -13,9 +14,9 @@ import io.reactivex.schedulers.Schedulers
 class StatementViewModel(
     private val fetchStatementUseCase: StatementUseCases.FetchStatementUseCase,
     private val getLoggedUserInfoUseCase: StatementUseCases.GetLoggedUserInfoUseCase
-) : ViewModel() {
+) : BaseViewModel() {
 
-    private val compositeDisposable = CompositeDisposable()
+    override val compositeDisposable = CompositeDisposable()
 
     private val _showErrorLiveData = MutableLiveData<Boolean>()
     val showErrorLiveData:LiveData<Boolean>
@@ -52,11 +53,6 @@ class StatementViewModel(
                 showError()
             })
         compositeDisposable.add(disposable)
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.clear()
     }
 
     private fun showError() {
