@@ -33,12 +33,13 @@ dependencies {
 
     implementation appDependencies.gson
     implementation appDependencies.lifecycleExtensions
-    implementation appDependencies.lifecycleCommon
+    implementation appDependencies.lifecycleViewModel
     implementation appDependencies.rxJava
     implementation appDependencies.rxAndroid
     implementation appDependencies.retrofit
     implementation appDependencies.retrofitRxJava2Adapter
     implementation appDependencies.retrofitGsonConverter
+    implementation appDependencies.materialDesign
 
     implementation kotlinLibs.anko
     implementation kotlinLibs.ankoSdk

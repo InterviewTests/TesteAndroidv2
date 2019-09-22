@@ -3,6 +3,7 @@ ext{
     //app dependencies
     gsonVersion = '2.8.5'
     lifecycleVersion = '2.0.0'
+    materialVersion = '1.0.0'
 
     //Test dependencies
     junitVersion = '4.12'
@@ -26,12 +27,13 @@ ext{
     appDependencies = [
             gson                  : "com.google.code.gson:gson:$gsonVersion",
             lifecycleExtensions   : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
-            lifecycleCommon       : "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion",
+            lifecycleViewModel       : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
             rxJava                : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
             rxAndroid             : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
             retrofit              : "com.squareup.retrofit2:retrofit:$retrofit2Version",
             retrofitRxJava2Adapter: "com.squareup.retrofit2:adapter-rxjava2:$retrofit2Version",
             retrofitGsonConverter : "com.squareup.retrofit2:converter-gson:$retrofit2Version",
+            materialDesign        : "com.google.android.material:material:$materialVersion"
     ]
 
     kotlinLibs = [
