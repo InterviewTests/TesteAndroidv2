@@ -1,6 +1,6 @@
-package com.gustavo.bankandroid.data.mapper
+package com.gustavo.bankandroid.statements.data.mapper
 
-import com.gustavo.bankandroid.data.gson.StatementResponse
+import com.gustavo.bankandroid.statements.data.gson.StatementResponse
 import com.gustavo.bankandroid.entity.UserStatementItem
 
 class StatementMapper {

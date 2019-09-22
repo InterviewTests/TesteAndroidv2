@@ -1,6 +1,6 @@
-package com.gustavo.bankandroid.repository
+package com.gustavo.bankandroid.statements.repository
 
-import com.gustavo.bankandroid.data.gson.StatementResponse
+import com.gustavo.bankandroid.statements.data.gson.StatementResponse
 import io.reactivex.Single
 
 interface DataRepository {

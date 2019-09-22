@@ -1,15 +1,14 @@
-package com.gustavo.bankandroid.usecase
+package com.gustavo.bankandroid.statements.usecase
 
-import com.gustavo.bankandroid.data.gson.StatementList
-import com.gustavo.bankandroid.data.gson.StatementResponse
-import com.gustavo.bankandroid.data.mapper.StatementMapper
+import com.gustavo.bankandroid.statements.data.gson.StatementList
+import com.gustavo.bankandroid.statements.data.gson.StatementResponse
+import com.gustavo.bankandroid.statements.data.mapper.StatementMapper
 import com.gustavo.bankandroid.entity.UserStatementItem
-import com.gustavo.bankandroid.repository.DataRepository
+import com.gustavo.bankandroid.statements.repository.DataRepository
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
 import io.reactivex.Single
-import io.reactivex.SingleObserver
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.observers.TestObserver
 import io.reactivex.plugins.RxJavaPlugins
@@ -51,7 +50,6 @@ class FetchStatementUseCaseImplTest {
         val testSingleObserver = TestObserver<List<UserStatementItem>>()
         val result = useCase.execute(4, "123")
         result.subscribe(testSingleObserver)
-
 
         assertEquals(testSingleObserver.valueCount(), 1)
         assertEquals(testSingleObserver.values()[0].size, statementResponse.statementList.size)

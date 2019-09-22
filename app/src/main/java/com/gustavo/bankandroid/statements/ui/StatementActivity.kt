@@ -1,12 +1,13 @@
-package com.gustavo.bankandroid
+package com.gustavo.bankandroid.statements.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gustavo.bankandroid.R
 
-class MainActivity : AppCompatActivity() {
+class StatementActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_statement)
     }
 }

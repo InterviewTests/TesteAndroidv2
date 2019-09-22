@@ -1,15 +1,15 @@
-package com.gustavo.bankandroid.usecase
+package com.gustavo.bankandroid.statements.usecase
 
-import com.gustavo.bankandroid.data.gson.StatementResponse
-import com.gustavo.bankandroid.data.mapper.StatementMapper
+import com.gustavo.bankandroid.statements.data.gson.StatementResponse
+import com.gustavo.bankandroid.statements.data.mapper.StatementMapper
 import com.gustavo.bankandroid.entity.UserStatementItem
-import com.gustavo.bankandroid.repository.DataRepository
+import com.gustavo.bankandroid.statements.repository.DataRepository
 import io.reactivex.Single
 
 class FetchStatementUseCaseImpl(
     private val repository: DataRepository,
     private val mapper: StatementMapper
-) : FetchStatementUseCase {
+) : StatementUseCases.FetchStatementUseCase {
 
     override fun execute(id: Int, password: String): Single<List<UserStatementItem>> {
         return repository.getUserStatementList(id, password)

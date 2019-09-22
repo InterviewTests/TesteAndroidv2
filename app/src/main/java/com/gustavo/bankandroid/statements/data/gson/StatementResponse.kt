@@ -1,4 +1,4 @@
-package com.gustavo.bankandroid.data.gson
+package com.gustavo.bankandroid.statements.data.gson
 
 import com.google.gson.annotations.SerializedName
 
