@@ -17,10 +17,20 @@ ext{
     constraintLayoutVersion = '1.1.3'
     coreKtxVersion = '1.0.2'
 
+    //trusted libraries
+    retrofit2Version = '2.4.0'
+    rxJavaVersion = '2.2.2'
+    rxAndroidVersion = '2.1.0'
+
     appDependencies = [
             gson                  : "com.google.code.gson:gson:$gsonVersion",
             lifecycleExtensions   : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
-            lifecycleCommon       : "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+            lifecycleCommon       : "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion",
+            rxJava                : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
+            rxAndroid             : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+            retrofit              : "com.squareup.retrofit2:retrofit:$retrofit2Version",
+            retrofitRxJava2Adapter: "com.squareup.retrofit2:adapter-rxjava2:$retrofit2Version",
+            retrofitGsonConverter : "com.squareup.retrofit2:converter-gson:$retrofit2Version",
     ]
 
     kotlinLibs = [
