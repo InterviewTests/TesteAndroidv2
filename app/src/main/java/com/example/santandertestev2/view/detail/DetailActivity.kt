@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,7 @@ class DetailActivity : AppCompatActivity(),
     private lateinit var labelBalance: TextView
     private lateinit var labelBankAccount: TextView
     private lateinit var btnLogout: ImageView
+    private lateinit var load : ProgressBar
     private var user : UserAccount? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +39,7 @@ class DetailActivity : AppCompatActivity(),
         this.user = intent.getSerializableExtra("user") as UserAccount
         val controller = DetailController(this)
 
+        this.load = findViewById(R.id.invoiceload)
         this.labelUserName = findViewById(R.id.labelFullName)
         this.labelBankAccount = findViewById(R.id.accountNumber)
         this.labelBalance = findViewById(R.id.balance)
@@ -55,6 +58,7 @@ class DetailActivity : AppCompatActivity(),
     override fun onInvoiceLoad(itens: List<InvoiceItem>) {
 
         viewAdapter = InvoiceAdapter(itens)
+        load.visibility = View.GONE
         recyclerView.apply {
 
             setHasFixedSize(true)

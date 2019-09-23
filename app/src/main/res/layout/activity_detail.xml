@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:padding="10dp"
+        android:paddingLeft="16dp"
         android:background="@color/blueDefault"
         >
 
@@ -98,7 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/headerDetail"
         app:layout_constraintLeft_toLeftOf="parent"
         android:textSize="@dimen/sizeFontDefault"
-        android:padding="10dp"
+        android:padding="16dp"
         ></TextView>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -108,9 +108,20 @@
         android:background="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/labelrecents"
-        android:padding="12dp"
+        android:padding="16dp"
         tools:listitem="@layout/item_list">
 
     </androidx.recyclerview.widget.RecyclerView>
+    <ProgressBar
+        android:id="@+id/invoiceload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerviewInvoice"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+    </ProgressBar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
