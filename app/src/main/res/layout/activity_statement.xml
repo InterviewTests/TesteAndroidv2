@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".statements.ui.StatementActivity">
+    tools:context="com.gustavo.bankandroid.features.statements.ui.StatementActivity">
 
     <RelativeLayout
         android:id="@+id/headerLayout"

@@ -2,8 +2,8 @@ package com.gustavo.bankandroid.mock
 
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserStatementItem
-import com.gustavo.bankandroid.statements.data.gson.StatementList
-import com.gustavo.bankandroid.statements.data.gson.StatementResponse
+import com.gustavo.bankandroid.features.statements.data.gson.StatementList
+import com.gustavo.bankandroid.features.statements.data.gson.StatementResponse
 
 object MockData {
     fun mockUserInfo() = UserInfo(1, "username", "1234", "name", "account", 1000)

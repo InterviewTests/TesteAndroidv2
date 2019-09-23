@@ -1,7 +1,7 @@
 package com.gustavo.bankandroid.api
 
 import com.google.gson.Gson
-import com.gustavo.bankandroid.statements.data.gson.StatementResponse
+import com.gustavo.bankandroid.features.statements.data.gson.StatementResponse
 import io.reactivex.Single
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

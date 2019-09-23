@@ -1,4 +1,4 @@
-ext{
+ext {
 
     //app dependencies
     gsonVersion = '2.8.5'
@@ -19,6 +19,7 @@ ext{
     coreKtxVersion = '1.0.2'
     archVersion = '2.0.1'
     roomVersion = "2.1.0"
+    multiDexVersion = "2.0.1"
 
     //trusted libraries
     retrofit2Version = '2.4.0'
@@ -28,7 +29,7 @@ ext{
     appDependencies = [
             gson                  : "com.google.code.gson:gson:$gsonVersion",
             lifecycleExtensions   : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
-            lifecycleViewModel       : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            lifecycleViewModel    : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
             rxJava                : "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
             rxAndroid             : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
             retrofit              : "com.squareup.retrofit2:retrofit:$retrofit2Version",
@@ -40,32 +41,34 @@ ext{
     ]
 
     roomLibs = [
-            roomRuntime           : "androidx.room:room-runtime:$roomVersion",
-            roomRxJava            : "androidx.room:room-rxjava2:$roomVersion",
-            roomGuava             : "androidx.room:room-guava:$roomVersion",
+            roomRuntime            : "androidx.room:room-runtime:$roomVersion",
+            roomRxJava             : "androidx.room:room-rxjava2:$roomVersion",
+            roomGuava              : "androidx.room:room-guava:$roomVersion",
             roomAnnotationProcessor: "androidx.room:room-compiler:$roomVersion",
-            roomCompiler          : "android.arch.persistence.room:compiler:$roomVersion"
+            roomCompiler           : "android.arch.persistence.room:compiler:$roomVersion"
     ]
 
     kotlinLibs = [
-            anko:                     [group: 'org.jetbrains.anko', name: 'anko-commons', version: ankoVersion],
-            ankoSdk:                  [group: 'org.jetbrains.anko', name: 'anko-sdk27', version: ankoVersion],
-            ankoSdkListeners:         [group: 'org.jetbrains.anko', name: 'anko-sdk27-listeners', version: ankoVersion],
-            stdlib:                   [group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: kotlinVersion],
-            stdlibJDK7:               [group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk7', version: kotlinVersion]
+            anko            : [group: 'org.jetbrains.anko', name: 'anko-commons', version: ankoVersion],
+            ankoSdk         : [group: 'org.jetbrains.anko', name: 'anko-sdk27', version: ankoVersion],
+            ankoSdkListeners: [group: 'org.jetbrains.anko', name: 'anko-sdk27-listeners', version: ankoVersion],
+            stdlib          : [group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib', version: kotlinVersion],
+            stdlibJDK7      : [group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk7', version: kotlinVersion]
     ]
 
     testDependencies = [
-            junit:                    [group: 'junit', name: 'junit', version: junitVersion],
-            mockito:                  [group: 'org.mockito', name: 'mockito-inline', version: mockitoCoreVersion],
-            mockitoKotlin:            [group: 'com.nhaarman.mockitokotlin2', name: 'mockito-kotlin', version: mockitoKotlinVersion],
-            archTesting:              [group: 'androidx.arch.core', name: 'core-testing', version: archVersion]
+            junit        : [group: 'junit', name: 'junit', version: junitVersion],
+            mockito      : [group: 'org.mockito', name: 'mockito-inline', version: mockitoCoreVersion],
+            mockitoKotlin: [group: 'com.nhaarman.mockitokotlin2', name: 'mockito-kotlin', version: mockitoKotlinVersion],
+            archTesting  : [group: 'androidx.arch.core', name: 'core-testing', version: archVersion]
     ]
 
     androidXLibs = [
-            appCompatV7:              [group: 'androidx.appcompat', name: 'appcompat', version: appCompatV7Version],
-            coreKtx:                  [group: 'androidx.core', name: 'core-ktx', version: coreKtxVersion],
-            constraintLayout:         [group: 'androidx.constraintlayout', name: 'constraintlayout', version: constraintLayoutVersion]
+            appCompatV7     : [group: 'androidx.appcompat', name: 'appcompat', version: appCompatV7Version],
+            coreKtx         : [group: 'androidx.core', name: 'core-ktx', version: coreKtxVersion],
+            constraintLayout: [group: 'androidx.constraintlayout', name: 'constraintlayout', version: constraintLayoutVersion],
+            multiDex        : [group: 'androidx.multidex', name: 'multidex', version: multiDexVersion]
+
     ]
 
 

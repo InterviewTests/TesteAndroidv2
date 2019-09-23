@@ -4,10 +4,13 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.gustavo.bankandroid"
         minSdkVersion 19
         targetSdkVersion 29
@@ -20,6 +23,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "4g"
     }
 }
 
@@ -42,9 +49,10 @@ dependencies {
     implementation appDependencies.materialDesign
 
     implementation roomLibs.roomRuntime
-    implementation roomLibs.roomRuntime
-    implementation roomLibs.roomRuntime
+    implementation roomLibs.roomRxJava
+    implementation roomLibs.roomGuava
     annotationProcessor roomLibs.roomAnnotationProcessor
+    kapt roomLibs.roomCompiler
 
     implementation kotlinLibs.anko
     implementation kotlinLibs.ankoSdk
@@ -55,10 +63,12 @@ dependencies {
     implementation androidXLibs.appCompatV7
     implementation androidXLibs.coreKtx
     implementation androidXLibs.constraintLayout
+    implementation androidXLibs.multiDex
 
     testImplementation testDependencies.archTesting
     testImplementation testDependencies.junit
     testImplementation testDependencies.mockito
     testImplementation testDependencies.mockitoKotlin
+
 
 }
