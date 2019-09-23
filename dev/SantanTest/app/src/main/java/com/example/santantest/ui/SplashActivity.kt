@@ -1,9 +1,10 @@
-package com.example.santantest
+package com.example.santantest.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.santantest.R
 
 class SplashActivity : AppCompatActivity() {
 

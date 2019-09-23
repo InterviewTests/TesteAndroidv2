@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".HomeActivity"
+        tools:context=".ui.HomeActivity"
         >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,7 @@
             android:paddingRight="@dimen/margin_medium"
             android:paddingBottom="@dimen/user_info_padding"
             app:layout_constraintTop_toTopOf="parent"
-            tools:context=".HomeActivity">
+            tools:context=".ui.HomeActivity">
 
         <TextView
                 android:id="@+id/tvUserName"
