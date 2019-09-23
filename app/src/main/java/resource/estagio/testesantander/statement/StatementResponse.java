@@ -5,7 +5,8 @@ import java.util.List;
 import resource.estagio.testesantander.model.Error;
 import resource.estagio.testesantander.model.Statement;
 
-public class StatementResponse {private List<Statement> statementList;
+public class StatementResponse {
+    private List<Statement> statementList;
 
     private Error error;
 
