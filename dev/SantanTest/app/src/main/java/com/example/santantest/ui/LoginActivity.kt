@@ -3,9 +3,16 @@ package com.example.santantest.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.santantest.R
+import com.example.santantest.domain.interactor.LoginInteractor
+import com.example.santantest.domain.interactor.LoginInteractorListener
+import com.example.santantest.domain.presenter.LoginPresenter
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
+
+    val interactor = LoginInteractor()
+    val presenter = LoginPresenter(this@LoginActivity,this)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,16 +23,14 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun setEvents(){
-
-
-
-
         btLogin.setOnClickListener {
-
-            var user = etUser.text.toString()
-            var pwd = etPassword.text.toString()
-
-
+            if (presenter.validateForm()){
+                interactor.doLogin(
+                    etUser.text.toString(),
+                    etPassword.text.toString(),
+                    presenter
+                )
+            }
 
         }
 

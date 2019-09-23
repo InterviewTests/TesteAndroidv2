@@ -9,5 +9,8 @@
     <string name="bt_login">Login</string>
 
 
+    <string name="invalid_login">Login inválido</string>
+    <string name="invalid_password">Senha inválida</string>
+    <string name="login_error_message">Não foi possível realizar o Login, teste novamente.</string>
 
 </resources>

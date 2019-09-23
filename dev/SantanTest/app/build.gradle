@@ -16,7 +16,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+
+        debug {
+            buildConfigField("String","BASE_SERVICE_URL","\"https://bank-app-test.herokuapp.com\"")
+
+        }
+
         release {
+            buildConfigField("String","BASE_SERVICE_URL","\"https://bank-app-test.herokuapp.com\"")
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -35,7 +43,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
     // Retrofit - Retrofit GSON Converter
-    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 
 }
