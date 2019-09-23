@@ -1,9 +1,9 @@
 package com.gustavo.bankandroid.statements.usecase
 
+import com.gustavo.bankandroid.entity.UserStatementItem
 import com.gustavo.bankandroid.statements.data.gson.StatementList
 import com.gustavo.bankandroid.statements.data.gson.StatementResponse
 import com.gustavo.bankandroid.statements.data.mapper.StatementMapper
-import com.gustavo.bankandroid.entity.UserStatementItem
 import com.gustavo.bankandroid.statements.repository.DataRepository
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
@@ -13,10 +13,9 @@ import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.observers.TestObserver
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
-import org.junit.Test
-
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
+import org.junit.Test
 
 class FetchStatementUseCaseImplTest {
 
@@ -70,9 +69,9 @@ class FetchStatementUseCaseImplTest {
     private fun mockStatementResponse(): StatementResponse {
         return StatementResponse(
             listOf(
-                StatementList("title1", "desc1", "date", 100),
-                StatementList("title2", "desc2", "date", 200),
-                StatementList("title3", "desc3", "date", 3300)
+                StatementList("title1", "desc1", "date", 100f),
+                StatementList("title2", "desc2", "date", 200f),
+                StatementList("title3", "desc3", "date", 3300f)
             ),
             Error()
         )

@@ -5,5 +5,5 @@ data class UserStatementItem (
 	val title : String,
 	val desc : String,
 	val date : String,
-	val value : Int
+	val value : Float
 )

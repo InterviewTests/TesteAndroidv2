@@ -5,8 +5,8 @@ import com.google.gson.annotations.SerializedName
 
 data class StatementList(
 
-    @SerializedName("title") val title: String,
-    @SerializedName("desc") val desc: String,
-    @SerializedName("date") val date: String,
-    @SerializedName("value") val value: Int
+    @field:SerializedName("title") val title: String,
+    @field:SerializedName("desc") val desc: String,
+    @field:SerializedName("date") val date: String,
+    @field:SerializedName("value") val value: Float
 )

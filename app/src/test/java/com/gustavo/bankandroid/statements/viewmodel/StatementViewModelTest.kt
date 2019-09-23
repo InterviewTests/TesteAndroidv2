@@ -3,26 +3,20 @@ package com.gustavo.bankandroid.statements.viewmodel
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserStatementItem
-import com.gustavo.bankandroid.statements.data.gson.StatementList
 import com.gustavo.bankandroid.statements.usecase.StatementUseCases
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
-import io.reactivex.observers.TestObserver
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
-import org.junit.After
-import org.junit.Test
-
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
+import org.junit.Test
 import org.junit.rules.TestRule
-import org.mockito.MockitoAnnotations
 
 class StatementViewModelTest {
 
@@ -55,9 +49,9 @@ class StatementViewModelTest {
         whenever(getUserInfoUseCase.execute()).thenReturn(Single.just(userInfo))
 
         statementList = listOf(
-            UserStatementItem("title1", "desc1", "date", 100),
-            UserStatementItem("title2", "desc2", "date", 200),
-            UserStatementItem("title3", "desc3", "date", 3300)
+            UserStatementItem("title1", "desc1", "date", 100f),
+            UserStatementItem("title2", "desc2", "date", 200f),
+            UserStatementItem("title3", "desc3", "date", 3300f)
         )
         whenever(
             fetchStatementUseCases.execute(

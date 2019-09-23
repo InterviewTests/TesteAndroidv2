@@ -11,7 +11,8 @@ import com.gustavo.bankandroid.extensions.verticalLinearLayout
 import com.gustavo.bankandroid.statements.data.mapper.StatementMapper
 import com.gustavo.bankandroid.statements.injection.StatementInjection
 import com.gustavo.bankandroid.statements.repository.DataRepository
-import com.gustavo.bankandroid.statements.repository.DataRepositoryMock
+import com.gustavo.bankandroid.statements.repository.DataRepositoryImpl
+import com.gustavo.bankandroid.statements.repository.api.ServerIterator
 import com.gustavo.bankandroid.statements.ui.adapter.StatementAdapter
 import com.gustavo.bankandroid.statements.usecase.FetchStatementUseCaseImpl
 import com.gustavo.bankandroid.statements.usecase.GetLoggedUserInfoUseCaseMock
@@ -67,6 +68,6 @@ class StatementActivity : AppCompatActivity(), StatementInjection {
         GetLoggedUserInfoUseCaseMock()
     }
     override val dataRepository: DataRepository by lazy {
-        DataRepositoryMock()
+        DataRepositoryImpl(ServerIterator())
     }
 }

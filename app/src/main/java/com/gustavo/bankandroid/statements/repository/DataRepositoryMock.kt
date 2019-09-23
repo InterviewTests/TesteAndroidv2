@@ -12,9 +12,9 @@ class DataRepositoryMock : DataRepository {
     private fun mockStatementResponse(): StatementResponse {
         return StatementResponse(
             listOf(
-                StatementList("title1", "desc1", "date", 100),
-                StatementList("title2", "desc2", "date", 200),
-                StatementList("title3", "desc3", "date", 3300)
+                StatementList("title1", "desc1", "date", 100f),
+                StatementList("title2", "desc2", "date", 200f),
+                StatementList("title3", "desc3", "date", 3300f)
             ),
             Error()
         )
