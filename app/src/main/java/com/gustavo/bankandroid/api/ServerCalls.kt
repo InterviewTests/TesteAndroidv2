@@ -1,4 +1,4 @@
-package com.gustavo.bankandroid.statements.repository.api
+package com.gustavo.bankandroid.api
 
 import com.gustavo.bankandroid.statements.data.gson.StatementResponse
 import io.reactivex.Single

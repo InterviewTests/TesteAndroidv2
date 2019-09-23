@@ -41,6 +41,11 @@ dependencies {
     implementation appDependencies.retrofitGsonConverter
     implementation appDependencies.materialDesign
 
+    implementation roomLibs.roomRuntime
+    implementation roomLibs.roomRuntime
+    implementation roomLibs.roomRuntime
+    annotationProcessor roomLibs.roomAnnotationProcessor
+
     implementation kotlinLibs.anko
     implementation kotlinLibs.ankoSdk
     implementation kotlinLibs.ankoSdkListeners

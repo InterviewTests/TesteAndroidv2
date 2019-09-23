@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.gustavo.bankandroid.R
+import com.gustavo.bankandroid.api.ServerIterator
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserStatementItem
 import com.gustavo.bankandroid.extensions.verticalLinearLayout
@@ -12,7 +13,6 @@ import com.gustavo.bankandroid.statements.data.mapper.StatementMapper
 import com.gustavo.bankandroid.statements.injection.StatementInjection
 import com.gustavo.bankandroid.statements.repository.DataRepository
 import com.gustavo.bankandroid.statements.repository.DataRepositoryImpl
-import com.gustavo.bankandroid.statements.repository.api.ServerIterator
 import com.gustavo.bankandroid.statements.ui.adapter.StatementAdapter
 import com.gustavo.bankandroid.statements.usecase.FetchStatementUseCaseImpl
 import com.gustavo.bankandroid.statements.usecase.GetLoggedUserInfoUseCaseMock

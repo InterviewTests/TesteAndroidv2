@@ -1,7 +1,7 @@
 package com.gustavo.bankandroid.statements.repository
 
+import com.gustavo.bankandroid.api.ServerIterator
 import com.gustavo.bankandroid.statements.data.gson.StatementResponse
-import com.gustavo.bankandroid.statements.repository.api.ServerIterator
 import io.reactivex.Single
 
 class DataRepositoryImpl(private val serverIterator: ServerIterator) : DataRepository {
