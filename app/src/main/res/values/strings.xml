@@ -4,4 +4,8 @@
     <string name="hint_loginpassword">Senha</string>
     <string name="txt_btnlogin">Login</string>
     <string name="labelBank">Bank</string>
+    <string name="labelrecents">Recentes</string>
+    <string name="errorLoginInvalid">E-mail ou cpf inválidos</string>
+    <string name="errorPasswordInvalid">A senha deve conter letra pelo menos uma letra maiúscula, um caracter especial e um caracter alfanumérico</string>
+
 </resources>
