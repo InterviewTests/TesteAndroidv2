@@ -6,14 +6,6 @@ import org.junit.Test
 
 class AppUtilTest {
 
-    /*@Test
-    fun email_pattern_bad_formatted(){
-
-        var email = "teste@teste.com"
-        val result = AppUtil.validateEmail(email)
-        Assert.assertTrue(result)
-    }*/
-
     @Test
     fun password_regex_is_wrong_should_be_uppercase_lowercase_number_alphanumeric(){
 
