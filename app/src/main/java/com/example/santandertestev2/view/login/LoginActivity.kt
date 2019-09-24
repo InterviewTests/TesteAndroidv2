@@ -15,15 +15,6 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 
 class LoginActivity : AppCompatActivity(), ILoginPresenter {
-    override fun onLoginSuccessfull(intent: Intent) {
-        startActivity(intent)
-        this.finish()
-    }
-
-    override fun onLoginError(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
-        this.load.visibility = View.GONE
-    }
 
     private lateinit var fieldLogin: TextInputLayout
     private lateinit var fieldPassword: TextInputLayout
@@ -61,6 +52,16 @@ class LoginActivity : AppCompatActivity(), ILoginPresenter {
             }
         }
 
+    }
+
+    override fun onLoginSuccessfull(intent: Intent) {
+        startActivity(intent)
+        this.finish()
+    }
+
+    override fun onLoginError(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+        this.load.visibility = View.GONE
     }
 
 }
