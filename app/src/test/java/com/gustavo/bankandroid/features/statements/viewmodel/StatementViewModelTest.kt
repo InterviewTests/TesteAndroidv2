@@ -52,11 +52,7 @@ class StatementViewModelTest {
         userInfo = MockData.mockUserInfo()
         whenever(getUserInfoUseCase.execute()).thenReturn(Single.just(userInfo))
 
-        statementList = listOf(
-            UserStatementItem("title1", "desc1", "date", 100f),
-            UserStatementItem("title2", "desc2", "date", 200f),
-            UserStatementItem("title3", "desc3", "date", 3300f)
-        )
+        statementList = MockData.mockStatementList()
         whenever(
             fetchStatementUseCases.execute(
                 any()
