@@ -5,4 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="blueDefault">#3B49EE</color>
     <color name="fontColorDefault">#ffffff</color>
+    <color name="lightone">#A8B4C4</color>
+    <color name="lightTwo">#485465</color>
+    <color name="backdetail">#fefefe</color>
 </resources>

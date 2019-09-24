@@ -32,8 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nome completo"
-        android:textSize="@dimen/sizeFontDefault"
-        android:textColor="@color/fontColorDefault"
+        style="@style/FontHeaderNormal"
         >
 
     </TextView>
@@ -45,8 +44,8 @@
         android:text="Conta"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_below="@+id/labelFullName"
-        android:textSize="@dimen/sizeFontNormal"
         android:layout_marginTop="24dp"
+        style="@style/FontHeaderMini"
         android:textColor="@color/fontColorDefault"
         >
 
@@ -58,8 +57,7 @@
         android:layout_height="wrap_content"
         android:text="0000 / 00.000000-00"
         android:layout_below="@+id/labelAccount"
-        android:textSize="@dimen/sizeFontDefault"
-        android:textColor="@color/fontColorDefault"
+        style="@style/FontHeaderNormal"
         >
 
     </TextView>
@@ -71,8 +69,8 @@
         android:text="Saldo"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_below="@+id/accountNumber"
-        android:textSize="@dimen/sizeFontNormal"
         android:textColor="@color/fontColorDefault"
+        style="@style/FontHeaderMini"
         android:layout_marginTop="24dp"
         >
 
@@ -85,8 +83,7 @@
         android:text="RS 1.000,00"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_below="@+id/labelBalance"
-        android:textSize="@dimen/sizeFontDefault"
-        android:textColor="@color/fontColorDefault"
+        style="@style/FontHeaderNormal"
         >
     </TextView>
     </RelativeLayout>
@@ -106,10 +103,11 @@
         android:id="@+id/recyclerviewInvoice"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/labelrecents"
         android:padding="16dp"
+        android:backgroundTint="@color/backdetail"
+        android:background="@color/backdetail"
         tools:listitem="@layout/item_list">
 
     </androidx.recyclerview.widget.RecyclerView>

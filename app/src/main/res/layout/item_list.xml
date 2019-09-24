@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="85dp"
+    android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:text="Tipo do item"
                 android:textSize="@dimen/sizeFontNormal"
+                android:textColor="@color/lightone"
                 ></TextView>
 
             <TextView
@@ -33,14 +34,15 @@
                 android:layout_alignParentBottom="true"
                 android:text="Descrição"
                 android:textSize="@dimen/sizeFontNormal"
-                android:textColor="#414141"></TextView>
+                android:textColor="@color/lightTwo"></TextView>
 
             <TextView
                 android:id="@+id/itemDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="00/00/0000"
-                android:textSize="@dimen/sizeFontMini"
+                style="@style/FontHeaderMini"
+                android:textColor="@color/lightone"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 ></TextView>
@@ -53,8 +55,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:text="R$ 0.000,00"
-                android:textColor="#414141"
-                android:textSize="@dimen/sizeFontNormal"></TextView>
+                android:textColor="@color/lightTwo"
+                android:textSize="18sp"></TextView>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

@@ -4,4 +4,5 @@
     <dimen name="sizeFontDefault">22sp</dimen>
     <dimen name="sizeFontMini">10sp</dimen>
     <dimen name="sizeFontNormal">15sp</dimen>
+    <dimen name="sizeFontMid">18sp</dimen>
 </resources>
