@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.gustavo.bankandroid.features.login.ui.LoginActivity">
 
     <ImageView
@@ -27,8 +28,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/userEditText"
             android:layout_width="match_parent"
-            android:lines="1"
+            android:maxLines="1"
             android:text="test_user"
+            android:inputType="text"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"/>
 
@@ -43,15 +45,17 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="@dimen/margimHorizontal"
         android:layout_marginEnd="@dimen/margimHorizontal"
+        app:errorEnabled="true"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:hint="@string/password">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"
-            android:lines="1"
+            android:maxLines="1"
             android:text="Test@1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:imeOptions="actionDone"/>
 
     </com.google.android.material.textfield.TextInputLayout>

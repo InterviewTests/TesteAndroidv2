@@ -5,9 +5,7 @@ import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserLoginResponse
 import com.gustavo.bankandroid.features.login.usecase.LoginUseCases
 import com.gustavo.bankandroid.mock.MockData
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import com.nhaarman.mockitokotlin2.*
 import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins
@@ -50,7 +48,7 @@ class LoginViewModelTest {
     fun `login successful`() {
         whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(userInfo)))
 
-        viewModel.login("", "")
+        viewModel.login("", "Test@1")
 
         val loginSuccess = viewModel.loginSuccessLiveData.value as Boolean
         assertTrue(loginSuccess)
@@ -60,9 +58,28 @@ class LoginViewModelTest {
     fun `login error`() {
         whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Error))
 
-        viewModel.login("", "")
+        viewModel.login("", "Test@1")
 
         val loginSuccess = viewModel.loginSuccessLiveData.value as Boolean
         assertFalse(loginSuccess)
+    }
+
+    @Test
+    fun `do not match password`(){
+        viewModel.login("", "aaaa")
+
+        verify(authenticateUserUseCase, never()).execute(any(), any())
+        val value = viewModel.validPasswordLiveData.value as Boolean
+        assertFalse(value)
+    }
+
+    @Test
+    fun `match password`(){
+        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(userInfo)))
+        viewModel.login("", "T@1")
+
+        verify(authenticateUserUseCase).execute(any(), any())
+        val value = viewModel.validPasswordLiveData.value as Boolean
+        assertTrue(value)
     }
 }

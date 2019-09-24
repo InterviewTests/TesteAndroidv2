@@ -42,6 +42,13 @@ class LoginActivity : AppCompatActivity(), LoginInjection {
                 showError()
             }
         })
+        viewModel.validPasswordLiveData.observe(this, Observer {
+            if(it){
+                passwordEditText.error = null
+            }else{
+                passwordEditText.error = "Invalid password"
+            }
+        })
     }
 
     private fun showError() {

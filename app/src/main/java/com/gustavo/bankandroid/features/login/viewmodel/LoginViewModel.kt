@@ -22,21 +22,35 @@ class LoginViewModel(
     val loginSuccessLiveData: LiveData<Boolean>
         get() = _loginSuccessLiveData
 
+    private val _validPasswordLiveData = MutableLiveData<Boolean>()
+    val validPasswordLiveData: LiveData<Boolean>
+        get() = _validPasswordLiveData
+
+
     fun login(username: String, password: String) {
-        val disposable = authenticateUserUseCase.execute(username, password)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                if (it is UserLoginResponse.Success) {
-                    storeUser(it.userInfo)
-                    _loginSuccessLiveData.value = true
-                } else {
+        if (checkValidPassword(password)) {
+            val disposable = authenticateUserUseCase.execute(username, password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    if (it is UserLoginResponse.Success) {
+                        storeUser(it.userInfo)
+                        _loginSuccessLiveData.value = true
+                    } else {
+                        _loginSuccessLiveData.value = false
+                    }
+                }, {
                     _loginSuccessLiveData.value = false
-                }
-            }, {
-                _loginSuccessLiveData.value = false
-            })
-        compositeDisposable.add(disposable)
+                })
+            compositeDisposable.add(disposable)
+        }
+    }
+
+    private fun checkValidPassword(password: String): Boolean {
+        val regex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\\$%\\^&\\*]).+\$".toRegex()
+        val match = password.matches(regex)
+        _validPasswordLiveData.value = match
+        return match
     }
 
     private fun storeUser(userInfo: UserInfo) {
