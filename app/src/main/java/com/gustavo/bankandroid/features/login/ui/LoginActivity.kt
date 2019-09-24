@@ -46,7 +46,14 @@ class LoginActivity : AppCompatActivity(), LoginInjection {
             if(it){
                 passwordEditText.error = null
             }else{
-                passwordEditText.error = "Invalid password"
+                passwordEditText.error = getString(R.string.invalid_password_error)
+            }
+        })
+        viewModel.validUsernameLiveData.observe(this, Observer {
+            if(it){
+                userEditText.error = null
+            }else{
+                userEditText.error = getString(R.string.invalid_username_error)
             }
         })
     }

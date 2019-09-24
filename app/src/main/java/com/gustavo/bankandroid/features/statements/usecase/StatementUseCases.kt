@@ -13,4 +13,8 @@ interface StatementUseCases {
     interface GetLoggedUserInfoUseCase {
         fun execute(): Single<UserInfo>
     }
+
+    interface ClearUserInfoUseCase {
+        fun execute()
+    }
 }

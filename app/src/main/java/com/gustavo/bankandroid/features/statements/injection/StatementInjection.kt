@@ -9,6 +9,7 @@ import com.gustavo.bankandroid.features.statements.usecase.StatementUseCases
 interface StatementInjection {
     val fetchStatementUseCase: StatementUseCases.FetchStatementUseCase
     val getLoggedUserInfoUseCase: StatementUseCases.GetLoggedUserInfoUseCase
+    val clearUserInfoUseCase:StatementUseCases.ClearUserInfoUseCase
     val dataRepository: DataRepository
     val userRepository: UserRepository
     val database: UserDatabase

@@ -15,6 +15,7 @@ class UserRepositoryImpl(
     private val userInfoMapper: UserInfoMapper = UserInfoMapper(),
     private val loginResponseMapper: LoginResponseMapper = LoginResponseMapper()
 ) : UserRepository {
+
     override fun saveUser(userInfo: UserInfo) {
         userDatabase.userDao.insertUserInfo(
             userInfoMapper.toDto(userInfo)
@@ -30,5 +31,9 @@ class UserRepositoryImpl(
         return serverIterator.loginUser(UserLogin(username, password)).map {
             loginResponseMapper.fromServer(it)
         }
+    }
+
+    override fun clearUsers() {
+        userDatabase.userDao.deleteAll()
     }
 }

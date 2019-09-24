@@ -8,4 +8,5 @@ interface UserRepository {
     fun authenticateUser(username: String, password: String): Single<UserLoginResponse>
     fun saveUser(userInfo: UserInfo)
     fun getSavedUser(): Single<UserInfo>
+    fun clearUsers()
 }

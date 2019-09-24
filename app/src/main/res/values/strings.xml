@@ -3,4 +3,7 @@
     <string name="login">Login</string>
     <string name="user">User</string>
     <string name="password">Password</string>
+    <string name="recentes">Recentes</string>
+    <string name="invalid_password_error">Invalid password type</string>
+    <string name="invalid_username_error">Username must be cpf or e-mail</string>
 </resources>

@@ -3,6 +3,7 @@ package com.gustavo.bankandroid.features.login.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.gustavo.bankandroid.base.BaseViewModel
+import com.gustavo.bankandroid.contants.Constants
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserLoginResponse
 import com.gustavo.bankandroid.features.login.usecase.LoginUseCases
@@ -22,13 +23,16 @@ class LoginViewModel(
     val loginSuccessLiveData: LiveData<Boolean>
         get() = _loginSuccessLiveData
 
+    private val _validUsernameLiveData = MutableLiveData<Boolean>()
+    val validUsernameLiveData: LiveData<Boolean>
+        get() = _validUsernameLiveData
+
     private val _validPasswordLiveData = MutableLiveData<Boolean>()
     val validPasswordLiveData: LiveData<Boolean>
         get() = _validPasswordLiveData
 
-
     fun login(username: String, password: String) {
-        if (checkValidPassword(password)) {
+        if (checkValidUserName(username) && checkValidPassword(password)) {
             val disposable = authenticateUserUseCase.execute(username, password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -46,9 +50,16 @@ class LoginViewModel(
         }
     }
 
+    private fun checkValidUserName(username: String): Boolean {
+        val matchCpf = username.matches(Constants.cpfRegex.toRegex())
+        val matchEmail= username.matches(Constants.emailRegex.toRegex())
+        val match = (matchCpf || matchEmail)
+        _validUsernameLiveData.value = match
+        return match
+    }
+
     private fun checkValidPassword(password: String): Boolean {
-        val regex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\\$%\\^&\\*]).+\$".toRegex()
-        val match = password.matches(regex)
+        val match = password.matches(Constants.strongPasswordRegex.toRegex())
         _validPasswordLiveData.value = match
         return match
     }

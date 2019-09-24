@@ -48,7 +48,7 @@ class LoginViewModelTest {
     fun `login successful`() {
         whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(userInfo)))
 
-        viewModel.login("", "Test@1")
+        viewModel.login("test@test.com", "Test@1")
 
         val loginSuccess = viewModel.loginSuccessLiveData.value as Boolean
         assertTrue(loginSuccess)
@@ -58,7 +58,7 @@ class LoginViewModelTest {
     fun `login error`() {
         whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Error))
 
-        viewModel.login("", "Test@1")
+        viewModel.login("test@test.com", "Test@1")
 
         val loginSuccess = viewModel.loginSuccessLiveData.value as Boolean
         assertFalse(loginSuccess)
@@ -66,7 +66,7 @@ class LoginViewModelTest {
 
     @Test
     fun `do not match password`(){
-        viewModel.login("", "aaaa")
+        viewModel.login("test@test.com", "aaaa")
 
         verify(authenticateUserUseCase, never()).execute(any(), any())
         val value = viewModel.validPasswordLiveData.value as Boolean
@@ -76,10 +76,40 @@ class LoginViewModelTest {
     @Test
     fun `match password`(){
         whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(userInfo)))
-        viewModel.login("", "T@1")
+        viewModel.login("test@test.com", "T@1")
 
         verify(authenticateUserUseCase).execute(any(), any())
         val value = viewModel.validPasswordLiveData.value as Boolean
         assertTrue(value)
+    }
+
+    @Test
+    fun `accepts if username is email`(){
+        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(userInfo)))
+        viewModel.login("test@test.com", "T@1")
+
+        verify(authenticateUserUseCase).execute(any(), any())
+        val value = viewModel.validUsernameLiveData.value as Boolean
+        assertTrue(value)
+    }
+
+    @Test
+    fun `accepts if username is cpf`(){
+        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(userInfo)))
+        viewModel.login("000.000.000-00", "T@1")
+
+        verify(authenticateUserUseCase).execute(any(), any())
+        val value = viewModel.validUsernameLiveData.value as Boolean
+        assertTrue(value)
+    }
+
+    @Test
+    fun `refuse if username is net e-mail or cpf`(){
+        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(userInfo)))
+        viewModel.login("00kdkd_ee", "T@1")
+
+        verify(authenticateUserUseCase, never()).execute(any(), any())
+        val value = viewModel.validUsernameLiveData.value as Boolean
+        assertFalse(value)
     }
 }

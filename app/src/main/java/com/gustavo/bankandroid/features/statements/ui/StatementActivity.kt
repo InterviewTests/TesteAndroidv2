@@ -18,15 +18,16 @@ import com.gustavo.bankandroid.features.statements.injection.StatementInjection
 import com.gustavo.bankandroid.features.statements.repository.DataRepository
 import com.gustavo.bankandroid.features.statements.repository.DataRepositoryImpl
 import com.gustavo.bankandroid.features.statements.ui.adapter.StatementAdapter
+import com.gustavo.bankandroid.features.statements.usecase.ClearUserInfoUseCaseImpl
 import com.gustavo.bankandroid.features.statements.usecase.FetchStatementUseCaseImpl
 import com.gustavo.bankandroid.features.statements.usecase.GetLoggedUserInfoUseCaseImpl
 import com.gustavo.bankandroid.features.statements.usecase.StatementUseCases
 import com.gustavo.bankandroid.features.statements.viewmodel.StatementViewModel
 import com.gustavo.bankandroid.features.statements.viewmodel.StatementViewModelFactory
 import kotlinx.android.synthetic.main.activity_statement.*
+import org.jetbrains.anko.sdk27.listeners.onClick
 
 class StatementActivity : AppCompatActivity(), StatementInjection {
-
     private lateinit var viewModel: StatementViewModel
     private var adapter = StatementAdapter()
 
@@ -35,7 +36,14 @@ class StatementActivity : AppCompatActivity(), StatementInjection {
         setContentView(R.layout.activity_statement)
         viewModel = getViewModel()
         setObservers()
+        setListeners()
         viewModel.fetchData()
+    }
+
+    private fun setListeners() {
+        loggoutButton.onClick {
+            viewModel.loggout()
+        }
     }
 
     private fun setObservers() {
@@ -44,6 +52,9 @@ class StatementActivity : AppCompatActivity(), StatementInjection {
         })
         viewModel.statementListLiveData.observe(this, Observer {
             setStatementList(it)
+        })
+        viewModel.userLoggedOutLiveData.observe(this, Observer {
+            if(it)finish()
         })
     }
 
@@ -73,6 +84,10 @@ class StatementActivity : AppCompatActivity(), StatementInjection {
     override val getLoggedUserInfoUseCase: StatementUseCases.GetLoggedUserInfoUseCase by lazy {
         GetLoggedUserInfoUseCaseImpl(userRepository)
     }
+    override val clearUserInfoUseCase: StatementUseCases.ClearUserInfoUseCase by lazy {
+        ClearUserInfoUseCaseImpl(userRepository)
+    }
+
     override val userRepository: UserRepository by lazy {
         UserRepositoryImpl(database, serverIterator)
     }

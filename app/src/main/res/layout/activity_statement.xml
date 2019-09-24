@@ -11,9 +11,22 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
 
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/loggoutButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="13dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_logout"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/loggoutButton"
             android:orientation="vertical">
 
             <TextView
@@ -70,7 +83,7 @@
         android:id="@+id/recentesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recentes"
+        android:text="@string/recentes"
         android:layout_below="@+id/headerLayout"
         android:textColor="@color/textDarkGrey"
         android:layout_marginTop="14dp"

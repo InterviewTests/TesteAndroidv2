@@ -14,6 +14,7 @@ import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -26,6 +27,7 @@ class StatementViewModelTest {
 
     private val fetchStatementUseCases: StatementUseCases.FetchStatementUseCase = mock()
     private val getUserInfoUseCase: StatementUseCases.GetLoggedUserInfoUseCase = mock()
+    private val clearUserInfoUseCase: StatementUseCases.ClearUserInfoUseCase = mock()
 
     private lateinit var viewModel: StatementViewModel
 
@@ -44,7 +46,8 @@ class StatementViewModelTest {
 
     @Before
     fun setUpMocks() {
-        viewModel = StatementViewModel(fetchStatementUseCases, getUserInfoUseCase)
+        viewModel =
+            StatementViewModel(fetchStatementUseCases, getUserInfoUseCase, clearUserInfoUseCase)
 
         userInfo = MockData.mockUserInfo()
         whenever(getUserInfoUseCase.execute()).thenReturn(Single.just(userInfo))
@@ -83,5 +86,14 @@ class StatementViewModelTest {
 
         val statementListValue = viewModel.statementListLiveData.value as List<UserStatementItem>
         assertEquals(statementListValue.size, statementList.size)
+    }
+
+    @Test
+    fun `if loggout view gets response`(){
+        viewModel.loggout()
+
+        verify(clearUserInfoUseCase).execute()
+        val loggout = viewModel.userLoggedOutLiveData.value as Boolean
+        assertTrue(loggout)
     }
 }

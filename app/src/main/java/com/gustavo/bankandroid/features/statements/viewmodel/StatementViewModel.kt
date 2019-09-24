@@ -6,13 +6,15 @@ import com.gustavo.bankandroid.base.BaseViewModel
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserStatementItem
 import com.gustavo.bankandroid.features.statements.usecase.StatementUseCases
+import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class StatementViewModel(
     private val fetchStatementUseCase: StatementUseCases.FetchStatementUseCase,
-    private val getLoggedUserInfoUseCase: StatementUseCases.GetLoggedUserInfoUseCase
+    private val getLoggedUserInfoUseCase: StatementUseCases.GetLoggedUserInfoUseCase,
+    private val clearUserInfoUseCase: StatementUseCases.ClearUserInfoUseCase
 ) : BaseViewModel() {
 
     override val compositeDisposable = CompositeDisposable()
@@ -29,6 +31,10 @@ class StatementViewModel(
     val userInfo: LiveData<UserInfo>
         get() = _userInfoLiveData
 
+    private val _userLoggedOutLiveData = MutableLiveData<Boolean>()
+    val userLoggedOutLiveData: LiveData<Boolean>
+        get() = _userLoggedOutLiveData
+
     fun fetchData(){
         val disposable = getLoggedUserInfoUseCase.execute()
             .subscribeOn(Schedulers.io())
@@ -39,6 +45,16 @@ class StatementViewModel(
             },{
                 showError()
             })
+        compositeDisposable.add(disposable)
+    }
+
+    fun loggout(){
+        val disposable = Completable.create { clearUserInfoUseCase.execute() }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                _userLoggedOutLiveData.value = true
+            }
         compositeDisposable.add(disposable)
     }
 

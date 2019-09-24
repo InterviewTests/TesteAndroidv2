@@ -15,4 +15,7 @@ interface UserDao {
 
     @Query("SELECT * FROM user")
     fun getUserInfo(): Single<UserInfoDto>
+
+    @Query("DELETE FROM user")
+    fun deleteAll()
 }

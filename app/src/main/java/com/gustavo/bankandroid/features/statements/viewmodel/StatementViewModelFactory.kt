@@ -11,7 +11,8 @@ class StatementViewModelFactory(private val context: Context) : ViewModelProvide
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return StatementViewModel(
             fetchStatementUseCase,
-            getLoggedUserInfoUseCase
+            getLoggedUserInfoUseCase,
+            clearUserInfoUseCase
         ) as T
     }
 
@@ -19,4 +20,6 @@ class StatementViewModelFactory(private val context: Context) : ViewModelProvide
         get() = (context as StatementInjection).fetchStatementUseCase
     private val getLoggedUserInfoUseCase
         get() = (context as StatementInjection).getLoggedUserInfoUseCase
+    private val clearUserInfoUseCase
+        get() = (context as StatementInjection).clearUserInfoUseCase
 }
