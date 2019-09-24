@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="20dp"
-                tools:text="Conta"
+                android:text="@string/conta"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="20dp"
-                tools:text="Saldo"
+                android:text="@string/saldo"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 

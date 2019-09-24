@@ -10,6 +10,7 @@ import com.gustavo.bankandroid.api.ServerIterator
 import com.gustavo.bankandroid.contants.Constants
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserStatementItem
+import com.gustavo.bankandroid.extensions.toRealCurrency
 import com.gustavo.bankandroid.extensions.verticalLinearLayout
 import com.gustavo.bankandroid.features.login.data.UserDatabase
 import com.gustavo.bankandroid.features.login.repository.UserRepository
@@ -66,8 +67,8 @@ class StatementActivity : AppCompatActivity(), StatementInjection {
 
     private fun setUserInfo(userInfo: UserInfo) {
         nameTextView.text = userInfo.name
-        accountTextView.text = userInfo.bankAccount.toString()
-        valueTextView.text = userInfo.balance.toString()
+        accountTextView.text = getString(R.string.statement_screen_account, userInfo.bankAccount.toString(), userInfo.agency.toString())
+        valueTextView.text = userInfo.balance.toRealCurrency()
     }
 
     private fun getViewModel() =

@@ -8,5 +8,5 @@ data class StatementList(
     @field:SerializedName("title") val title: String,
     @field:SerializedName("desc") val desc: String,
     @field:SerializedName("date") val date: String,
-    @field:SerializedName("value") val value: Float
+    @field:SerializedName("value") val value: Double
 )
