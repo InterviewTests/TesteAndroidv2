@@ -10,7 +10,7 @@ class DataRepositoryImpl(
     private val serverIterator: ServerIterator,
     private val mapper: StatementMapper = StatementMapper()
 ) : DataRepository {
-    override fun getUserStatementList(id: Int, password: String): Single<List<UserStatementItem>> {
+    override fun getUserStatementList(id: Int): Single<List<UserStatementItem>> {
         return serverIterator.fetchStatements(id).map { response: StatementResponse ->
             mapper.gsonToEntity(response)
         }

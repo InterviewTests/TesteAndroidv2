@@ -55,7 +55,7 @@ class StatementActivity : AppCompatActivity(), StatementInjection {
 
     private fun setUserInfo(userInfo: UserInfo) {
         nameTextView.text = userInfo.name
-        accountTextView.text = userInfo.account
+        accountTextView.text = userInfo.bankAccount.toString()
         valueTextView.text = userInfo.balance.toString()
     }
 

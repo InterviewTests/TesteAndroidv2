@@ -8,8 +8,8 @@ class FetchStatementUseCaseImpl(
     private val repository: DataRepository
 ) : StatementUseCases.FetchStatementUseCase {
 
-    override fun execute(id: Int, password: String): Single<List<UserStatementItem>> {
-        return repository.getUserStatementList(id, password)
+    override fun execute(id: Int): Single<List<UserStatementItem>> {
+        return repository.getUserStatementList(id)
 
     }
 

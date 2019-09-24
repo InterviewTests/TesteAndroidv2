@@ -5,7 +5,7 @@ import com.gustavo.bankandroid.mock.MockData
 import io.reactivex.Single
 
 class DataRepositoryMock : DataRepository {
-    override fun getUserStatementList(id: Int, password: String): Single<List<UserStatementItem>> {
+    override fun getUserStatementList(id: Int): Single<List<UserStatementItem>> {
         return Single.just(MockData.mockStatementList())
     }
 }

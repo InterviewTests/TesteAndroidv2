@@ -13,7 +13,7 @@ import com.gustavo.bankandroid.features.login.data.UserDatabase
 import com.gustavo.bankandroid.features.login.injection.LoginInjection
 import com.gustavo.bankandroid.features.login.repository.UserRepository
 import com.gustavo.bankandroid.features.login.repository.UserRepositoryImpl
-import com.gustavo.bankandroid.features.login.usecase.AuthenticateUserUseCaseMock
+import com.gustavo.bankandroid.features.login.usecase.AuthenticateUserUseCaseImpl
 import com.gustavo.bankandroid.features.login.usecase.LoginUseCases
 import com.gustavo.bankandroid.features.login.usecase.StoreUserInfoUseCaseImpl
 import com.gustavo.bankandroid.features.login.viewmodel.LoginViewModel
@@ -45,7 +45,6 @@ class LoginActivity : AppCompatActivity(), LoginInjection {
     }
 
     private fun showError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     private fun setListeners() {
@@ -58,7 +57,7 @@ class LoginActivity : AppCompatActivity(), LoginInjection {
         ViewModelProviders.of(this, LoginViewModelFactory(this)).get(LoginViewModel::class.java)
 
     override val authenticateUserUseCase: LoginUseCases.AuthenticateUserUseCase by lazy {
-        AuthenticateUserUseCaseMock()
+        AuthenticateUserUseCaseImpl(userRepository)
     }
     override val storeUserInfoUseCase: LoginUseCases.StoreUserInfoUseCase by lazy {
         StoreUserInfoUseCaseImpl(userRepository)

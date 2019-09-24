@@ -1,9 +1,10 @@
 package com.gustavo.bankandroid.features.login.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.gustavo.bankandroid.entity.LoginResponse
 import com.gustavo.bankandroid.entity.UserInfo
+import com.gustavo.bankandroid.entity.UserLoginResponse
 import com.gustavo.bankandroid.features.login.usecase.LoginUseCases
+import com.gustavo.bankandroid.mock.MockData
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
@@ -41,13 +42,13 @@ class LoginViewModelTest {
     @Before
     fun setupMocks(){
         viewModel = LoginViewModel(authenticateUserUseCase, storeUserInfoUseCase)
-        userInfo = UserInfo(1, "username", "1234", "name", "account", 1000)
+        userInfo = MockData.mockUserInfo()
 
     }
 
     @Test
     fun `login successful`() {
-        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(LoginResponse.Success(userInfo)))
+        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(userInfo)))
 
         viewModel.login("", "")
 
@@ -57,7 +58,7 @@ class LoginViewModelTest {
 
     @Test
     fun `login error`() {
-        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(LoginResponse.Error))
+        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Error))
 
         viewModel.login("", "")
 

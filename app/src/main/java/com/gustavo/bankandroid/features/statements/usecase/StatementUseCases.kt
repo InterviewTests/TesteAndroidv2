@@ -7,7 +7,7 @@ import io.reactivex.Single
 interface StatementUseCases {
 
     interface FetchStatementUseCase {
-        fun execute(id: Int, password: String): Single<List<UserStatementItem>>
+        fun execute(id: Int): Single<List<UserStatementItem>>
     }
 
     interface GetLoggedUserInfoUseCase {

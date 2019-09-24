@@ -3,8 +3,8 @@ package com.gustavo.bankandroid.features.login.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.gustavo.bankandroid.base.BaseViewModel
-import com.gustavo.bankandroid.entity.LoginResponse
 import com.gustavo.bankandroid.entity.UserInfo
+import com.gustavo.bankandroid.entity.UserLoginResponse
 import com.gustavo.bankandroid.features.login.usecase.LoginUseCases
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -27,7 +27,7 @@ class LoginViewModel(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                if (it is LoginResponse.Success) {
+                if (it is UserLoginResponse.Success) {
                     storeUser(it.userInfo)
                     _loginSuccessLiveData.value = true
                 } else {

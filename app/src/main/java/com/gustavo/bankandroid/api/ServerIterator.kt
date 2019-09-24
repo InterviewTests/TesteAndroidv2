@@ -1,6 +1,8 @@
 package com.gustavo.bankandroid.api
 
 import com.google.gson.Gson
+import com.gustavo.bankandroid.features.login.data.gson.ServerLoginResponse
+import com.gustavo.bankandroid.features.login.data.gson.UserLogin
 import com.gustavo.bankandroid.features.statements.data.gson.StatementResponse
 import io.reactivex.Single
 import okhttp3.OkHttpClient
@@ -31,6 +33,10 @@ class ServerIterator {
 
     fun fetchStatements(id: Int): Single<StatementResponse> {
         return serverCalls.fetchStatements(id)
+    }
+
+    fun loginUser(userLogin: UserLogin): Single<ServerLoginResponse> {
+        return serverCalls.loginUser(userLogin)
     }
 
 }

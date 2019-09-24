@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserStatementItem
 import com.gustavo.bankandroid.features.statements.usecase.StatementUseCases
+import com.gustavo.bankandroid.mock.MockData
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -45,7 +46,7 @@ class StatementViewModelTest {
     fun setUpMocks() {
         viewModel = StatementViewModel(fetchStatementUseCases, getUserInfoUseCase)
 
-        userInfo = UserInfo(1, "username", "1234", "name", "account", 1000)
+        userInfo = MockData.mockUserInfo()
         whenever(getUserInfoUseCase.execute()).thenReturn(Single.just(userInfo))
 
         statementList = listOf(
@@ -55,7 +56,6 @@ class StatementViewModelTest {
         )
         whenever(
             fetchStatementUseCases.execute(
-                any(),
                 any()
             )
         ).thenReturn(Single.just(statementList))
@@ -66,7 +66,7 @@ class StatementViewModelTest {
         viewModel.fetchData()
 
         verify(getUserInfoUseCase).execute()
-        verify(fetchStatementUseCases).execute(any(), any())
+        verify(fetchStatementUseCases).execute(any())
     }
 
     @Test
@@ -74,7 +74,7 @@ class StatementViewModelTest {
         viewModel.fetchData()
 
         val userInfoValue = viewModel.userInfo.value as UserInfo
-        assertEquals(userInfoValue.id, userInfo.id)
+        assertEquals(userInfoValue.userId, userInfo.userId)
     }
 
     @Test

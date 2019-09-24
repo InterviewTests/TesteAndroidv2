@@ -35,7 +35,7 @@ class FetchStatementUseCaseImplTest {
 
     private fun setupMocks() {
         repositoryList = MockData.mockStatementList()
-        whenever(repository.getUserStatementList(any(), any()))
+        whenever(repository.getUserStatementList(any()))
             .thenReturn(Single.just(MockData.mockStatementList()))
 
         useCase = FetchStatementUseCaseImpl(repository)
@@ -44,7 +44,7 @@ class FetchStatementUseCaseImplTest {
     @Test
     fun `if repository returns response, usecase return the equivalent list`() {
         val testSingleObserver = TestObserver<List<UserStatementItem>>()
-        val result = useCase.execute(4, "123")
+        val result = useCase.execute(4)
         result.subscribe(testSingleObserver)
 
         assertEquals(testSingleObserver.valueCount(), 1)
@@ -54,7 +54,7 @@ class FetchStatementUseCaseImplTest {
     @Test
     fun `usecase preserves repository list order`() {
         val testSingleObserver = TestObserver<List<UserStatementItem>>()
-        val result = useCase.execute(4, "123")
+        val result = useCase.execute(4)
         result.subscribe(testSingleObserver)
 
         val list = testSingleObserver.values()[0]

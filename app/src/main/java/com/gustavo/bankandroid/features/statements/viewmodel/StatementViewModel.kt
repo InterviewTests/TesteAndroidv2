@@ -43,7 +43,7 @@ class StatementViewModel(
     }
 
     private fun fetchStatements(userInfo:UserInfo) {
-        val disposable = fetchStatementUseCase.execute(userInfo.id, userInfo.password)
+        val disposable = fetchStatementUseCase.execute(userInfo.userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

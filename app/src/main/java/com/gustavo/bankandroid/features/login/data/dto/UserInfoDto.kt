@@ -6,12 +6,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "user")
 data class UserInfoDto(
-    val id: Int,
-    val username: String,
-    val password: String,
-    val name: String,
-    val account: String,
-    val balance: Long,
+    val userId : Int,
+    val name : String,
+    val bankAccount : Int,
+    val agency : Int,
+    val balance : Double,
     @PrimaryKey
     val primaryKey: Int = 1
 )

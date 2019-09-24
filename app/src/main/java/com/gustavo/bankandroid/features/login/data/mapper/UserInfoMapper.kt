@@ -6,21 +6,19 @@ import com.gustavo.bankandroid.features.login.data.dto.UserInfoDto
 class UserInfoMapper {
     fun toDto(userInfo: UserInfo) =
         UserInfoDto(
-            userInfo.id,
-            userInfo.username,
-            userInfo.password,
+            userInfo.userId,
             userInfo.name,
-            userInfo.account,
+            userInfo.bankAccount,
+            userInfo.agency,
             userInfo.balance
         )
 
     fun toUserInfo(userInfoDto: UserInfoDto)=
         UserInfo(
-            userInfoDto.id,
-            userInfoDto.username,
-            userInfoDto.password,
+            userInfoDto.userId,
             userInfoDto.name,
-            userInfoDto.account,
+            userInfoDto.bankAccount,
+            userInfoDto.agency,
             userInfoDto.balance
         )
 }

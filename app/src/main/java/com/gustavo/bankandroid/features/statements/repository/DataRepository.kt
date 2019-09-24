@@ -4,5 +4,5 @@ import com.gustavo.bankandroid.entity.UserStatementItem
 import io.reactivex.Single
 
 interface DataRepository {
-    fun getUserStatementList(id:Int, password:String): Single<List<UserStatementItem>>
+    fun getUserStatementList(id:Int): Single<List<UserStatementItem>>
 }

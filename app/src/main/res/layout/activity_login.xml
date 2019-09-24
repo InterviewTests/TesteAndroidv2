@@ -28,6 +28,7 @@
             android:id="@+id/userEditText"
             android:layout_width="match_parent"
             android:lines="1"
+            android:text="test_user"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"/>
 
@@ -48,6 +49,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"
             android:lines="1"
+            android:text="Test@1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"/>

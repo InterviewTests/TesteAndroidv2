@@ -1,6 +1,6 @@
 package com.gustavo.bankandroid.features.login.usecase
 
-import com.gustavo.bankandroid.entity.LoginResponse
+import com.gustavo.bankandroid.entity.UserLoginResponse
 import com.gustavo.bankandroid.features.login.repository.UserRepository
 import com.gustavo.bankandroid.mock.MockData
 import com.nhaarman.mockitokotlin2.any
@@ -20,14 +20,14 @@ class AuthenticateUserUseCaseImplTest {
         val authenticateUserUseCase = AuthenticateUserUseCaseImpl(userRepository)
 
         val user = MockData.mockUserInfo()
-        whenever(userRepository.authenticateUser(any(), any())).thenReturn(Single.just(LoginResponse.Success(user)))
+        whenever(userRepository.authenticateUser(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(user)))
 
-        val testSingleObserver = TestObserver<LoginResponse>()
+        val testSingleObserver = TestObserver<UserLoginResponse>()
 
-        val result =  authenticateUserUseCase.execute(user.username, user.password)
+        val result =  authenticateUserUseCase.execute("test", "1")
         result.subscribe(testSingleObserver)
 
-        assertTrue( (testSingleObserver.values()[0] is LoginResponse.Success ))
+        assertTrue( (testSingleObserver.values()[0] is UserLoginResponse.Success ))
     }
 
     @Test
@@ -35,13 +35,13 @@ class AuthenticateUserUseCaseImplTest {
         val authenticateUserUseCase = AuthenticateUserUseCaseImpl(userRepository)
 
         val user = MockData.mockUserInfo()
-        whenever(userRepository.authenticateUser(any(), any())).thenReturn(Single.just(LoginResponse.Error))
+        whenever(userRepository.authenticateUser(any(), any())).thenReturn(Single.just(UserLoginResponse.Error))
 
-        val testSingleObserver = TestObserver<LoginResponse>()
+        val testSingleObserver = TestObserver<UserLoginResponse>()
 
-        val result =  authenticateUserUseCase.execute(user.username, user.password)
+        val result =  authenticateUserUseCase.execute("test", "1")
         result.subscribe(testSingleObserver)
 
-        assertTrue( (testSingleObserver.values()[0] is LoginResponse.Error ))
+        assertTrue( (testSingleObserver.values()[0] is UserLoginResponse.Error ))
     }
 }
