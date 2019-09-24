@@ -11,16 +11,16 @@ class PreferenceData(private val context : Context) {
         pref = this.context.getSharedPreferences("MyApp", Context.MODE_PRIVATE)
     }
 
-fun saveLogged(user : UserAccount){
+    fun saveLogged(user : UserAccount){
 
-    pref.edit().apply {
-        putInt("agency", user.agency ?: 0 )
-        putString("name", user.name)
-        putLong("balance", user.balance?.toLong() ?: 0 )
-        putInt("bankAccount", user.bankAccount ?: 0)
-        commit()
+        pref.edit().apply {
+            putInt("agency", user.agency ?: 0 )
+            putString("name", user.name)
+            putLong("balance", user.balance?.toLong() ?: 0 )
+            putInt("bankAccount", user.bankAccount ?: 0)
+            apply()
+        }
     }
-}
 
     fun getUser() : UserAccount?{
         pref.getString("name",null)?.let {
@@ -37,7 +37,7 @@ fun saveLogged(user : UserAccount){
     }
 
     fun clearData(){
-        this.pref.edit().clear().commit()
+        this.pref.edit().clear().apply()
     }
 
 }

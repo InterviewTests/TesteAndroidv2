@@ -12,16 +12,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingLeft="16dp"
+        android:padding="16dp"
         android:background="@color/blueDefault"
         >
 
         <ImageView
             android:id="@+id/btnLogout"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/ic_exit_to_app_black_24dp"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             >
 
         </ImageView>
@@ -31,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nome completo"
-        android:textSize="@dimen/sizeFontTitle"
+        android:textSize="@dimen/sizeFontDefault"
         android:textColor="@color/fontColorDefault"
         >
 
@@ -44,8 +45,8 @@
         android:text="Conta"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_below="@+id/labelFullName"
-        android:textSize="@dimen/sizeFontDefault"
-        android:layout_marginTop="30dp"
+        android:textSize="@dimen/sizeFontNormal"
+        android:layout_marginTop="24dp"
         android:textColor="@color/fontColorDefault"
         >
 
@@ -57,7 +58,7 @@
         android:layout_height="wrap_content"
         android:text="0000 / 00.000000-00"
         android:layout_below="@+id/labelAccount"
-        android:textSize="@dimen/sizeFontTitle"
+        android:textSize="@dimen/sizeFontDefault"
         android:textColor="@color/fontColorDefault"
         >
 
@@ -70,9 +71,9 @@
         android:text="Saldo"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_below="@+id/accountNumber"
-        android:textSize="@dimen/sizeFontDefault"
+        android:textSize="@dimen/sizeFontNormal"
         android:textColor="@color/fontColorDefault"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="24dp"
         >
 
     </TextView>
@@ -84,7 +85,7 @@
         android:text="RS 1.000,00"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_below="@+id/labelBalance"
-        android:textSize="@dimen/sizeFontTitle"
+        android:textSize="@dimen/sizeFontDefault"
         android:textColor="@color/fontColorDefault"
         >
     </TextView>
@@ -121,7 +122,6 @@
         app:layout_constraintTop_toTopOf="@+id/recyclerviewInvoice"
         app:layout_constraintBottom_toBottomOf="parent"
         >
-
     </ProgressBar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

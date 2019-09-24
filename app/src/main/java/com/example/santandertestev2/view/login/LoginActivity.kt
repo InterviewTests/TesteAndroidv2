@@ -5,18 +5,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.Toast
 import com.example.santandertestev2.R
 import com.example.santandertestev2.domain.Util.AppUtil
-import com.example.santandertestev2.domain.model.controller.UserAccount
-import com.example.santandertestev2.domain.controller.login.ILogin
 import com.example.santandertestev2.domain.controller.login.LoginController
-import com.example.santandertestev2.view.detail.DetailActivity
+import com.example.santandertestev2.domain.presenter.ILoginPresenter
+import com.example.santandertestev2.domain.presenter.LoginPresenter
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 
-class LoginActivity : AppCompatActivity(),
-    ILogin {
+class LoginActivity : AppCompatActivity(), ILoginPresenter {
+    override fun onLoginSuccessfull(intent: Intent) {
+        startActivity(intent)
+        this.finish()
+    }
 
+    override fun onLoginError(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+        this.load.visibility = View.GONE
+    }
 
     private lateinit var fieldLogin: TextInputLayout
     private lateinit var fieldPassword: TextInputLayout
@@ -27,7 +34,8 @@ class LoginActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val loginController = LoginController(this)
+        val presenter = LoginPresenter(this)
+        val loginController = LoginController(this, presenter)
         loginController.autoLogin()
 
         this.fieldLogin = findViewById(R.id.fieldlogin)
@@ -53,20 +61,6 @@ class LoginActivity : AppCompatActivity(),
             }
         }
 
-    }
-
-    override fun onLoginSuccessfull(user : UserAccount) {
-        var detailscreen = Intent(this, DetailActivity::class.java)
-        var b = Bundle().apply {
-            this.putSerializable("user", user)
-        }
-        detailscreen.putExtras(b)
-        startActivity(detailscreen)
-        this.finish()
-    }
-
-    override fun onLoginError() {
-        load.visibility = View.GONE
     }
 
 }

@@ -30,9 +30,11 @@ class InvoiceAdapter(private val myDataset: List<InvoiceItem>): RecyclerView.Ada
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.labelType.text = myDataset[position].title
         holder.labeldescription.text =  myDataset[position].desc
-        holder.labelDate.text =  myDataset[position].date
+        myDataset[position].date?.let {
+              holder.labelDate.text = AppUtil.formatDateToBr(it)
+        }
         myDataset[position].value?.let {
-            holder.labelValue.text =  "R$" + AppUtil.formatMoneyBr(it)
+            holder.labelValue.text =  "R$ " + AppUtil.formatMoneyBr(it)
         }
     }
 

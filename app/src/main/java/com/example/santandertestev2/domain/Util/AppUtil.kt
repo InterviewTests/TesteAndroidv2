@@ -20,8 +20,8 @@ class AppUtil {
                 return false
             }
             //continue
-            var dvCurrent10 = cpfClean.substring(9,10).toInt()
-            var dvCurrent11= cpfClean.substring(10,11).toInt()
+            val dvCurrent10 = cpfClean.substring(9,10).toInt()
+            val dvCurrent11= cpfClean.substring(10,11).toInt()
 
             //the sum of the nine first digits determines the tenth digit
             val cpfNineFirst = IntArray(9)
@@ -31,7 +31,7 @@ class AppUtil {
                 i--
             }
             //multiple the nine digits for your weights: 10,9..2
-            var sumProductNine = IntArray(9)
+            val sumProductNine = IntArray(9)
             var weight = 10
             var position = 0
             while (weight >= 2){
@@ -48,10 +48,10 @@ class AppUtil {
                 return false
 
             //### verify tenth digit
-            var cpfTenFirst = cpfNineFirst.copyOf(10)
+            val cpfTenFirst = cpfNineFirst.copyOf(10)
             cpfTenFirst[9] = dvCurrent10
             //multiple the nine digits for your weights: 10,9..2
-            var sumProductTen = IntArray(10)
+            val sumProductTen = IntArray(10)
             var w = 11
             var p = 0
             while (w >= 2){
@@ -71,11 +71,11 @@ class AppUtil {
         }
 
         fun validateEmail(email:String): Boolean {
-            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
         }
 
         fun validatePassword(pass:String):Boolean{
-            val passRegex = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[_@#%!*:;?$\\.,%]).{4,20})"
+            val passRegex = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[_@#!*:;?$\\.,%]).{4,20})"
             val pattern = Pattern.compile(passRegex)
             val matcherPass = pattern.matcher(pass)
             return matcherPass.matches()
@@ -85,7 +85,7 @@ class AppUtil {
             val numberFormat = NumberFormat.getCurrencyInstance(
                 Locale("pt", "BR")
             )
-            val symbol = numberFormat.currency.symbol
+            val symbol = numberFormat.currency?.symbol ?: "R$"
             if (!showSymbol){
                 return numberFormat.format(number).replace(symbol, "")
             }else{
@@ -101,6 +101,14 @@ class AppUtil {
                     .toString()
             }
             return str
+        }
+
+        fun formatDateToBr(date : String) : String?{
+            if (date.length < 10)
+                return null
+            val arr = date.split("-")
+            val novaData = arr[2] + "/" + arr[1] + "/" + arr[0]
+            return novaData
         }
     }
 }

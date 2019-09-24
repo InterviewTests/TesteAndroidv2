@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="95dp"
+    android:layout_height="85dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="85dp"
-        app:cardElevation="7dp"
-        android:elevation="7dp"
+        android:layout_height="80dp"
+        app:cardElevation="3dp"
         app:cardCornerRadius="3dp"
       >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="7dp"
-            android:paddingBottom="7dp"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
+            android:padding="10dp"
             >
 
             <TextView
@@ -27,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tipo do item"
-                android:textSize="@dimen/sizeFontDefault"
+                android:textSize="@dimen/sizeFontNormal"
                 ></TextView>
 
             <TextView
@@ -36,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:text="Descrição"
-                android:textSize="@dimen/sizeFontDefault"
+                android:textSize="@dimen/sizeFontNormal"
                 android:textColor="#414141"></TextView>
 
             <TextView
@@ -44,19 +40,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="00/00/0000"
-                android:textSize="@dimen/sizeFontNormal"
+                android:textSize="@dimen/sizeFontMini"
                 android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 ></TextView>
 
             <TextView
                 android:id="@+id/itemValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:text="R$ 0.000,00"
                 android:textColor="#414141"
-                android:textSize="@dimen/sizeFontDefault"></TextView>
+                android:textSize="@dimen/sizeFontNormal"></TextView>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
