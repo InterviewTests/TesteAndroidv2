@@ -9,4 +9,8 @@
     <string name="statement_screen_account">%s1 / %s2</string>
     <string name="conta">Conta</string>
     <string name="saldo">Saldo</string>
+    <string name="statement_dialog_error_message">Error downloading statements</string>
+    <string name="statement_dialog_error_title">Error</string>
+    <string name="login_dialog_error_title">Error</string>
+    <string name="login_dialog_error_message">Error to login</string>
 </resources>

@@ -1,34 +1,30 @@
 package com.gustavo.bankandroid.features.statements.ui
 
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.room.Room
 import com.gustavo.bankandroid.R
-import com.gustavo.bankandroid.api.ServerIterator
-import com.gustavo.bankandroid.contants.Constants
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserStatementItem
 import com.gustavo.bankandroid.extensions.toRealCurrency
 import com.gustavo.bankandroid.extensions.verticalLinearLayout
-import com.gustavo.bankandroid.features.login.data.UserDatabase
-import com.gustavo.bankandroid.features.login.repository.UserRepository
-import com.gustavo.bankandroid.features.login.repository.UserRepositoryImpl
 import com.gustavo.bankandroid.features.statements.injection.StatementInjection
-import com.gustavo.bankandroid.features.statements.repository.DataRepository
-import com.gustavo.bankandroid.features.statements.repository.DataRepositoryImpl
+import com.gustavo.bankandroid.features.statements.injection.StatementModule
+import com.gustavo.bankandroid.features.statements.injection.StatementModuleImpl
 import com.gustavo.bankandroid.features.statements.ui.adapter.StatementAdapter
-import com.gustavo.bankandroid.features.statements.usecase.ClearUserInfoUseCaseImpl
-import com.gustavo.bankandroid.features.statements.usecase.FetchStatementUseCaseImpl
-import com.gustavo.bankandroid.features.statements.usecase.GetLoggedUserInfoUseCaseImpl
-import com.gustavo.bankandroid.features.statements.usecase.StatementUseCases
 import com.gustavo.bankandroid.features.statements.viewmodel.StatementViewModel
 import com.gustavo.bankandroid.features.statements.viewmodel.StatementViewModelFactory
 import kotlinx.android.synthetic.main.activity_statement.*
 import org.jetbrains.anko.sdk27.listeners.onClick
 
 class StatementActivity : AppCompatActivity(), StatementInjection {
+
+    override val statementModule: StatementModule by lazy {
+        StatementModuleImpl(this)
+    }
+
     private lateinit var viewModel: StatementViewModel
     private var adapter = StatementAdapter()
 
@@ -43,7 +39,7 @@ class StatementActivity : AppCompatActivity(), StatementInjection {
 
     private fun setListeners() {
         loggoutButton.onClick {
-            viewModel.loggout()
+            viewModel.logout()
         }
     }
 
@@ -57,6 +53,17 @@ class StatementActivity : AppCompatActivity(), StatementInjection {
         viewModel.userLoggedOutLiveData.observe(this, Observer {
             if(it)finish()
         })
+        viewModel.showErrorLiveData.observe(this, Observer {
+            showError()
+        })
+    }
+
+    private fun showError() {
+        val dialog = AlertDialog.Builder(this)
+            .create()
+        dialog.setTitle(getString(R.string.statement_dialog_error_title))
+        dialog.setMessage(getString(R.string.statement_dialog_error_message))
+        dialog.show()
     }
 
     private fun setStatementList(list: List<UserStatementItem>) {
@@ -77,29 +84,4 @@ class StatementActivity : AppCompatActivity(), StatementInjection {
             StatementViewModelFactory(this)
         ).get(StatementViewModel::class.java)
 
-    override val serverIterator = ServerIterator()
-
-    override val fetchStatementUseCase: StatementUseCases.FetchStatementUseCase by lazy {
-        FetchStatementUseCaseImpl(dataRepository)
-    }
-    override val getLoggedUserInfoUseCase: StatementUseCases.GetLoggedUserInfoUseCase by lazy {
-        GetLoggedUserInfoUseCaseImpl(userRepository)
-    }
-    override val clearUserInfoUseCase: StatementUseCases.ClearUserInfoUseCase by lazy {
-        ClearUserInfoUseCaseImpl(userRepository)
-    }
-
-    override val userRepository: UserRepository by lazy {
-        UserRepositoryImpl(database, serverIterator)
-    }
-    override val database: UserDatabase by lazy {
-        Room.databaseBuilder(
-            this,
-            UserDatabase::class.java,
-            Constants.USER_DATABASE
-        ).build()
-    }
-    override val dataRepository: DataRepository by lazy {
-        DataRepositoryImpl(serverIterator)
-    }
 }

@@ -48,13 +48,11 @@ class StatementViewModel(
         compositeDisposable.add(disposable)
     }
 
-    fun loggout(){
-        val disposable = Completable.create { clearUserInfoUseCase.execute() }
+    fun logout(){
+        val disposable = Completable.fromAction { clearUserInfoUseCase.execute() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                _userLoggedOutLiveData.value = true
-            }
+            .subscribe { _userLoggedOutLiveData.value = true }
         compositeDisposable.add(disposable)
     }
 

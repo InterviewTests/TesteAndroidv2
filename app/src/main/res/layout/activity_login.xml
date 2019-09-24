@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:src="@drawable/ic_logo"/>
+        android:src="@drawable/ic_logo"
+        tools:ignore="ContentDescription" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameTextInput"
@@ -29,7 +30,6 @@
             android:id="@+id/userEditText"
             android:layout_width="match_parent"
             android:maxLines="1"
-            android:text="test_user"
             android:inputType="text"
             android:layout_height="wrap_content"
             android:imeOptions="actionNext"/>
@@ -52,7 +52,6 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"
             android:maxLines="1"
-            android:text="Test@1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"

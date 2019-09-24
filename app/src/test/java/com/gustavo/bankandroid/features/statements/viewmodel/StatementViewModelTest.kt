@@ -90,7 +90,7 @@ class StatementViewModelTest {
 
     @Test
     fun `if loggout view gets response`(){
-        viewModel.loggout()
+        viewModel.logout()
 
         verify(clearUserInfoUseCase).execute()
         val loggout = viewModel.userLoggedOutLiveData.value as Boolean
