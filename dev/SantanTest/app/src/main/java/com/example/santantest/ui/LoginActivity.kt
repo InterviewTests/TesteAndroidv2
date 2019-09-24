@@ -3,8 +3,7 @@ package com.example.santantest.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.santantest.R
-import com.example.santantest.domain.interactor.LoginInteractor
-import com.example.santantest.domain.interactor.LoginInteractorListener
+import com.example.santantest.domain.interactor.login.LoginInteractor
 import com.example.santantest.domain.presenter.LoginPresenter
 import kotlinx.android.synthetic.main.activity_login.*
 

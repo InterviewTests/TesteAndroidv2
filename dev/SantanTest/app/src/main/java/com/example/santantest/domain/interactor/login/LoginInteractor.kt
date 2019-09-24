@@ -1,4 +1,4 @@
-package com.example.santantest.domain.interactor
+package com.example.santantest.domain.interactor.login
 
 import android.util.Log
 import com.example.santantest.data.AccountService
@@ -8,7 +8,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginInteractor(){
+class LoginInteractor {
 
     fun doLogin(login:String, password: String, callback: LoginInteractorListener){
 

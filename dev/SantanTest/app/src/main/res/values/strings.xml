@@ -11,6 +11,7 @@
 
     <string name="invalid_login">Login inválido</string>
     <string name="invalid_password">Senha inválida</string>
-    <string name="login_error_message">Não foi possível realizar o Login, teste novamente.</string>
+    <string name="login_error_message">Não foi possível realizar o Login, tente novamente.</string>
+    <string name="home_error_message">Não foi possível carregar as movimentações, tente novamente.</string>
 
 </resources>

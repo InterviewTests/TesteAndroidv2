@@ -1,4 +1,4 @@
-package com.example.santantest.domain.interactor
+package com.example.santantest.domain.interactor.login
 
 import com.example.santantest.domain.model.UserAccount
 

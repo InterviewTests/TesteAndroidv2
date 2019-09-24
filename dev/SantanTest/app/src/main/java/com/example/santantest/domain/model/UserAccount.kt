@@ -3,7 +3,7 @@ package com.example.santantest.domain.model
 import java.io.Serializable
 
 class UserAccount: Serializable {
-    var userID: Int? = null
+    var userId: Int? = null
 
     var name: String? = null
     var bankAccount: String? = null
