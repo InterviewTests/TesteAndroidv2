@@ -50,7 +50,6 @@ class DetailController(private val context: Context, private val presenter : Det
         this.preferenceData.clearData()
         val intent = Intent(context, LoginActivity::class.java)
         presenter.logout(intent)
-        //detailActivity.finish()
     }
 
 
