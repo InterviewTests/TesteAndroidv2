@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">bankApp</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="recentes">Recentes</string>
+    <string name="saldo">Saldo</string>
+    <string name="conta">Conta</string>
+    <string name="logout">Logout</string>
+    <string name="deseja_deslogar">Deseja deslogar?</string>
+    <string name="sim">sim</string>
+    <string name="nao">não</string>
+    <string name="fechar_aplicacao">Deseja fechar a aplicação?</string>
+</resources>
