@@ -4,10 +4,13 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.gustavo.bankandroid"
         minSdkVersion 19
         targetSdkVersion 29
@@ -21,15 +24,51 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "4g"
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation appDependencies.gson
+    implementation appDependencies.lifecycleExtensions
+    implementation appDependencies.lifecycleViewModel
+    implementation appDependencies.rxJava
+    implementation appDependencies.rxAndroid
+    implementation appDependencies.retrofit
+    implementation appDependencies.retrofitRxJava2Adapter
+    implementation appDependencies.retrofitGsonConverter
+    implementation appDependencies.materialDesign
+
+    implementation roomLibs.roomRuntime
+    implementation roomLibs.roomRxJava
+    implementation roomLibs.roomGuava
+    annotationProcessor roomLibs.roomAnnotationProcessor
+    kapt roomLibs.roomCompiler
+
+    implementation kotlinLibs.anko
+    implementation kotlinLibs.ankoSdk
+    implementation kotlinLibs.ankoSdkListeners
+    implementation kotlinLibs.stdlib
+    implementation kotlinLibs.stdlibJDK7
+
+    implementation androidXLibs.appCompatV7
+    implementation androidXLibs.coreKtx
+    implementation androidXLibs.constraintLayout
+    implementation androidXLibs.multiDex
+
+    testImplementation testDependencies.archTesting
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.mockito
+    testImplementation testDependencies.mockitoKotlin
+
+
 }
