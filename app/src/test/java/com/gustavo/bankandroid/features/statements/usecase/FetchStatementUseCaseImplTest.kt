@@ -1,8 +1,8 @@
 package com.gustavo.bankandroid.features.statements.usecase
 
+import com.gustavo.bankandroid.common.mock.MockData
+import com.gustavo.bankandroid.domain.contracts.RepositoriesContract
 import com.gustavo.bankandroid.entity.UserStatementItem
-import com.gustavo.bankandroid.features.statements.repository.DataRepository
-import com.gustavo.bankandroid.mock.MockData
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
@@ -17,7 +17,7 @@ import org.junit.Test
 
 class FetchStatementUseCaseImplTest {
 
-    private val repository = mock<DataRepository>()
+    private val repository = mock<RepositoriesContract.DataRepository>()
 
     private lateinit var useCase: FetchStatementUseCaseImpl
 

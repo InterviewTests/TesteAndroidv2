@@ -1,13 +1,14 @@
 package com.gustavo.bankandroid.features.login.repository
 
-import com.gustavo.bankandroid.api.ServerIterator
+import com.gustavo.bankandroid.common.mock.MockData
+import com.gustavo.bankandroid.datasource.api.ServerIterator
+import com.gustavo.bankandroid.datasource.data.user.mapper.LoginResponseMapper
+import com.gustavo.bankandroid.datasource.data.user.mapper.UserInfoMapper
+import com.gustavo.bankandroid.datasource.database.UserDao
+import com.gustavo.bankandroid.datasource.database.UserDatabase
+import com.gustavo.bankandroid.datasource.repository.UserRepositoryImpl
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserLoginResponse
-import com.gustavo.bankandroid.features.login.data.UserDao
-import com.gustavo.bankandroid.features.login.data.UserDatabase
-import com.gustavo.bankandroid.features.login.data.mapper.LoginResponseMapper
-import com.gustavo.bankandroid.features.login.data.mapper.UserInfoMapper
-import com.gustavo.bankandroid.mock.MockData
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -48,7 +49,12 @@ class UserRepositoryImplTest {
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
 
         repository =
-            UserRepositoryImpl(userDatabase, serverIterator, userInfoMapper, loginResponseMapper)
+            UserRepositoryImpl(
+                userDatabase,
+                serverIterator,
+                userInfoMapper,
+                loginResponseMapper
+            )
         whenever(userDatabase.userDao).thenReturn(userDao)
     }
 

@@ -1,8 +1,8 @@
 package com.gustavo.bankandroid.features.login.usecase
 
+import com.gustavo.bankandroid.common.mock.MockData
+import com.gustavo.bankandroid.domain.contracts.RepositoriesContract
 import com.gustavo.bankandroid.entity.UserLoginResponse
-import com.gustavo.bankandroid.features.login.repository.UserRepository
-import com.gustavo.bankandroid.mock.MockData
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
@@ -13,7 +13,7 @@ import org.junit.Test
 
 class AuthenticateUserUseCaseImplTest {
 
-    private val userRepository: UserRepository = mock()
+    private val userRepository: RepositoriesContract.UserRepository = mock()
 
     @Test
     fun `execute success`() {

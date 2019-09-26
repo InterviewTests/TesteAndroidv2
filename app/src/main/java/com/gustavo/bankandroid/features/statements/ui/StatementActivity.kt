@@ -3,13 +3,14 @@ package com.gustavo.bankandroid.features.statements.ui
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.gustavo.bankandroid.R
+import com.gustavo.bankandroid.common.extensions.toRealCurrency
+import com.gustavo.bankandroid.common.extensions.verticalLinearLayout
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserStatementItem
-import com.gustavo.bankandroid.extensions.toRealCurrency
-import com.gustavo.bankandroid.extensions.verticalLinearLayout
 import com.gustavo.bankandroid.features.statements.injection.StatementInjection
 import com.gustavo.bankandroid.features.statements.injection.StatementModule
 import com.gustavo.bankandroid.features.statements.injection.StatementModuleImpl
@@ -55,6 +56,9 @@ class StatementActivity : AppCompatActivity(), StatementInjection {
         })
         viewModel.showErrorLiveData.observe(this, Observer {
             showError()
+        })
+        viewModel.isLoadingLiveData.observe(this, Observer {
+            progressCircular.isVisible = it
         })
     }
 

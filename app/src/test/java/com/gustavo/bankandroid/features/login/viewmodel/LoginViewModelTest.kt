@@ -1,10 +1,10 @@
 package com.gustavo.bankandroid.features.login.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.gustavo.bankandroid.common.mock.MockData
+import com.gustavo.bankandroid.domain.contracts.LoginUseCases
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserLoginResponse
-import com.gustavo.bankandroid.features.login.usecase.LoginUseCases
-import com.gustavo.bankandroid.mock.MockData
 import com.nhaarman.mockitokotlin2.*
 import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
@@ -24,6 +24,8 @@ class LoginViewModelTest {
 
     private val authenticateUserUseCase: LoginUseCases.AuthenticateUserUseCase = mock()
     private val storeUserInfoUseCase: LoginUseCases.StoreUserInfoUseCase = mock()
+    private val validateUserName: LoginUseCases.ValidateUserName = mock()
+    private val validatePassword: LoginUseCases.ValidatePassword = mock()
 
     private lateinit var viewModel: LoginViewModel
 
@@ -38,15 +40,20 @@ class LoginViewModelTest {
     }
 
     @Before
-    fun setupMocks(){
-        viewModel = LoginViewModel(authenticateUserUseCase, storeUserInfoUseCase)
+    fun setupMocks() {
+        viewModel = LoginViewModel(authenticateUserUseCase, storeUserInfoUseCase, validateUserName, validatePassword)
         userInfo = MockData.mockUserInfo()
-
+        whenever(validateUserName.invoke(any())).thenReturn(true)
+        whenever(validatePassword.invoke(any())).thenReturn(true)
     }
 
     @Test
     fun `login successful`() {
-        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(userInfo)))
+        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(
+            Single.just(
+                UserLoginResponse.Success(userInfo)
+            )
+        )
 
         viewModel.login("test@test.com", "Test@1")
 
@@ -56,7 +63,11 @@ class LoginViewModelTest {
 
     @Test
     fun `login error`() {
-        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Error))
+        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(
+            Single.just(
+                UserLoginResponse.Error
+            )
+        )
 
         viewModel.login("test@test.com", "Test@1")
 
@@ -65,7 +76,8 @@ class LoginViewModelTest {
     }
 
     @Test
-    fun `do not match password`(){
+    fun `do not match password, never calls authenticate`() {
+        whenever(validatePassword.invoke(any())).thenReturn(false)
         viewModel.login("test@test.com", "aaaa")
 
         verify(authenticateUserUseCase, never()).execute(any(), any())
@@ -74,8 +86,12 @@ class LoginViewModelTest {
     }
 
     @Test
-    fun `match password`(){
-        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(userInfo)))
+    fun `match password, calls authenticate usecase`() {
+        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(
+            Single.just(
+                UserLoginResponse.Success(userInfo)
+            )
+        )
         viewModel.login("test@test.com", "T@1")
 
         verify(authenticateUserUseCase).execute(any(), any())
@@ -84,8 +100,12 @@ class LoginViewModelTest {
     }
 
     @Test
-    fun `accepts if username is email`(){
-        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(userInfo)))
+    fun `match username, calls authenticate usecase`() {
+        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(
+            Single.just(
+                UserLoginResponse.Success(userInfo)
+            )
+        )
         viewModel.login("test@test.com", "T@1")
 
         verify(authenticateUserUseCase).execute(any(), any())
@@ -94,18 +114,13 @@ class LoginViewModelTest {
     }
 
     @Test
-    fun `accepts if username is cpf`(){
-        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(userInfo)))
-        viewModel.login("000.000.000-00", "T@1")
-
-        verify(authenticateUserUseCase).execute(any(), any())
-        val value = viewModel.validUsernameLiveData.value as Boolean
-        assertTrue(value)
-    }
-
-    @Test
-    fun `refuse if username is net e-mail or cpf`(){
-        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(Single.just(UserLoginResponse.Success(userInfo)))
+    fun `refuse if username, never calls authenticate`() {
+        whenever(validateUserName.invoke(any())).thenReturn(false)
+        whenever(authenticateUserUseCase.execute(any(), any())).thenReturn(
+            Single.just(
+                UserLoginResponse.Success(userInfo)
+            )
+        )
         viewModel.login("00kdkd_ee", "T@1")
 
         verify(authenticateUserUseCase, never()).execute(any(), any())
