@@ -11,7 +11,9 @@ class LoginViewModelFactory(private val context: Context) : ViewModelProvider.Fa
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return LoginViewModel(
             module.authenticateUserUseCase,
-            module.storeUserInfoUseCase
+            module.storeUserInfoUseCase,
+            module.validateUserName,
+            module.validatePassword
         ) as T
     }
 

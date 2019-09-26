@@ -1,10 +1,10 @@
 package com.gustavo.bankandroid.features.statements.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.gustavo.bankandroid.common.mock.MockData
+import com.gustavo.bankandroid.domain.contracts.StatementUseCases
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserStatementItem
-import com.gustavo.bankandroid.features.statements.usecase.StatementUseCases
-import com.gustavo.bankandroid.mock.MockData
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify

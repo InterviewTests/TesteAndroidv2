@@ -1,14 +1,14 @@
 package com.gustavo.bankandroid.features.login.usecase
 
-import com.gustavo.bankandroid.features.login.repository.UserRepository
-import com.gustavo.bankandroid.mock.MockData
+import com.gustavo.bankandroid.common.mock.MockData
+import com.gustavo.bankandroid.domain.contracts.RepositoriesContract
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Test
 
 class StoreUserInfoUseCaseImplTest {
 
-    private val userRepository: UserRepository = mock()
+    private val userRepository: RepositoriesContract.UserRepository = mock()
 
     @Test
     fun execute() {

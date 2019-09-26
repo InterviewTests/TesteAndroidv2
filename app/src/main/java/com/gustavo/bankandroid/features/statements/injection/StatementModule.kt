@@ -1,17 +1,16 @@
 package com.gustavo.bankandroid.features.statements.injection
 
-import com.gustavo.bankandroid.api.ServerIterator
-import com.gustavo.bankandroid.features.login.data.UserDatabase
-import com.gustavo.bankandroid.features.login.repository.UserRepository
-import com.gustavo.bankandroid.features.statements.repository.DataRepository
-import com.gustavo.bankandroid.features.statements.usecase.StatementUseCases
+import com.gustavo.bankandroid.datasource.api.ServerIterator
+import com.gustavo.bankandroid.datasource.database.UserDatabase
+import com.gustavo.bankandroid.domain.contracts.RepositoriesContract
+import com.gustavo.bankandroid.domain.contracts.StatementUseCases
 
 interface StatementModule {
     val fetchStatementUseCase: StatementUseCases.FetchStatementUseCase
     val getLoggedUserInfoUseCase: StatementUseCases.GetLoggedUserInfoUseCase
     val clearUserInfoUseCase: StatementUseCases.ClearUserInfoUseCase
-    val dataRepository: DataRepository
-    val userRepository: UserRepository
+    val dataRepository: RepositoriesContract.DataRepository
+    val userRepository: RepositoriesContract.UserRepository
     val database: UserDatabase
     val serverIterator: ServerIterator
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.gustavo.bankandroid.R
@@ -52,6 +53,10 @@ class LoginActivity : AppCompatActivity(), LoginInjection {
             } else {
                 userEditText.error = getString(R.string.invalid_username_error)
             }
+        })
+        viewModel.isLoadingLiveData.observe(this, Observer {
+            progressCircular.isVisible = it
+            loginButton.isClickable = !it
         })
     }
 

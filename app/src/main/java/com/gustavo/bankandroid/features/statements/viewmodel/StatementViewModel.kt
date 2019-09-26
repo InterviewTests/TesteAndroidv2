@@ -2,10 +2,10 @@ package com.gustavo.bankandroid.features.statements.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.gustavo.bankandroid.base.BaseViewModel
+import com.gustavo.bankandroid.common.base.BaseViewModel
+import com.gustavo.bankandroid.domain.contracts.StatementUseCases
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserStatementItem
-import com.gustavo.bankandroid.features.statements.usecase.StatementUseCases
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -35,6 +35,10 @@ class StatementViewModel(
     val userLoggedOutLiveData: LiveData<Boolean>
         get() = _userLoggedOutLiveData
 
+    private val _isLoadingLiveData = MutableLiveData<Boolean>()
+    val isLoadingLiveData: LiveData<Boolean>
+        get() = _isLoadingLiveData
+
     fun fetchData(){
         val disposable = getLoggedUserInfoUseCase.execute()
             .subscribeOn(Schedulers.io())
@@ -52,18 +56,21 @@ class StatementViewModel(
         val disposable = Completable.fromAction { clearUserInfoUseCase.execute() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { _userLoggedOutLiveData.value = true }
+            .subscribe ({ _userLoggedOutLiveData.value = true },{})
         compositeDisposable.add(disposable)
     }
 
     private fun fetchStatements(userInfo:UserInfo) {
+        _isLoadingLiveData.value = true
         val disposable = fetchStatementUseCase.execute(userInfo.userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 _statementListLiveData.postValue(it)
+                _isLoadingLiveData.value = false
             },{
                 showError()
+                _isLoadingLiveData.value = false
             })
         compositeDisposable.add(disposable)
     }

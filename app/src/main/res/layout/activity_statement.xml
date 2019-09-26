@@ -98,4 +98,14 @@
         android:layout_marginTop="8dp"
         android:layout_below="@+id/recentesTextView"/>
 
+    <ProgressBar
+        android:id="@+id/progressCircular"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_below="@+id/recentesTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </ProgressBar>
+
 </RelativeLayout>

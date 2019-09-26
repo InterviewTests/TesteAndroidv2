@@ -39,6 +39,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/usernameTextInput"
@@ -58,6 +59,17 @@
             android:imeOptions="actionDone"/>
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ProgressBar
+        android:id="@+id/progressCircular"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_below="@+id/passwordTextInputLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+    </ProgressBar>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"

@@ -3,10 +3,10 @@ package com.gustavo.bankandroid.features.statements.ui.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gustavo.bankandroid.R
+import com.gustavo.bankandroid.common.extensions.inflate
+import com.gustavo.bankandroid.common.extensions.toDisplayDateFormat
+import com.gustavo.bankandroid.common.extensions.toRealCurrency
 import com.gustavo.bankandroid.entity.UserStatementItem
-import com.gustavo.bankandroid.extensions.inflate
-import com.gustavo.bankandroid.extensions.toDisplayDateFormat
-import com.gustavo.bankandroid.extensions.toRealCurrency
 import kotlinx.android.synthetic.main.item_statement.view.*
 
 class StatementViewHolder(parent: ViewGroup) :

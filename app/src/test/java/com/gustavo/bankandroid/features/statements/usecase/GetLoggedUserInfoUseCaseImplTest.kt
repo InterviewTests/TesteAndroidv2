@@ -1,8 +1,8 @@
 package com.gustavo.bankandroid.features.statements.usecase
 
+import com.gustavo.bankandroid.common.mock.MockData
+import com.gustavo.bankandroid.domain.contracts.RepositoriesContract
 import com.gustavo.bankandroid.entity.UserInfo
-import com.gustavo.bankandroid.features.login.repository.UserRepository
-import com.gustavo.bankandroid.mock.MockData
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
@@ -17,7 +17,7 @@ import org.junit.Test
 
 class GetLoggedUserInfoUseCaseImplTest {
 
-    private val userRepository: UserRepository = mock()
+    private val userRepository: RepositoriesContract.UserRepository = mock()
     private val userCase = GetLoggedUserInfoUseCaseImpl(userRepository)
 
     private val userInfo: UserInfo = MockData.mockUserInfo()

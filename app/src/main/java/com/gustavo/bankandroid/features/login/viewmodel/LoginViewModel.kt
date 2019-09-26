@@ -2,11 +2,10 @@ package com.gustavo.bankandroid.features.login.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.gustavo.bankandroid.base.BaseViewModel
-import com.gustavo.bankandroid.contants.Constants
+import com.gustavo.bankandroid.common.base.BaseViewModel
+import com.gustavo.bankandroid.domain.contracts.LoginUseCases
 import com.gustavo.bankandroid.entity.UserInfo
 import com.gustavo.bankandroid.entity.UserLoginResponse
-import com.gustavo.bankandroid.features.login.usecase.LoginUseCases
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -14,7 +13,9 @@ import io.reactivex.schedulers.Schedulers
 
 class LoginViewModel(
     private val authenticateUserUseCase: LoginUseCases.AuthenticateUserUseCase,
-    private val storeUserInfoUseCase: LoginUseCases.StoreUserInfoUseCase
+    private val storeUserInfoUseCase: LoginUseCases.StoreUserInfoUseCase,
+    private val validateUserName: LoginUseCases.ValidateUserName,
+    private val validatePassword: LoginUseCases.ValidatePassword
 ) : BaseViewModel() {
 
     override val compositeDisposable = CompositeDisposable()
@@ -31,8 +32,13 @@ class LoginViewModel(
     val validPasswordLiveData: LiveData<Boolean>
         get() = _validPasswordLiveData
 
+    private val _isLoadingLiveData = MutableLiveData<Boolean>()
+    val isLoadingLiveData: LiveData<Boolean>
+        get() = _isLoadingLiveData
+
     fun login(username: String, password: String) {
         if (checkValidUserName(username) && checkValidPassword(password)) {
+            _isLoadingLiveData.value = true
             val disposable = authenticateUserUseCase.execute(username, password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -40,8 +46,10 @@ class LoginViewModel(
                     if (it is UserLoginResponse.Success) {
                         storeUser(it.userInfo)
                         _loginSuccessLiveData.value = true
+                        _isLoadingLiveData.value = false
                     } else {
                         _loginSuccessLiveData.value = false
+                        _isLoadingLiveData.value = false
                     }
                 }, {
                     _loginSuccessLiveData.value = false
@@ -51,15 +59,13 @@ class LoginViewModel(
     }
 
     private fun checkValidUserName(username: String): Boolean {
-        val matchCpf = username.matches(Constants.cpfRegex.toRegex())
-        val matchEmail= username.matches(Constants.emailRegex.toRegex())
-        val match = (matchCpf || matchEmail)
+        val match = validateUserName(username)
         _validUsernameLiveData.value = match
         return match
     }
 
     private fun checkValidPassword(password: String): Boolean {
-        val match = password.matches(Constants.strongPasswordRegex.toRegex())
+        val match = validatePassword(password)
         _validPasswordLiveData.value = match
         return match
     }
@@ -68,7 +74,7 @@ class LoginViewModel(
         val disposable = Completable.create { storeUserInfoUseCase.execute(userInfo) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe()
+            .subscribe({}, {})
         compositeDisposable.add(disposable)
     }
 
