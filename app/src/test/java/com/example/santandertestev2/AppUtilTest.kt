@@ -41,4 +41,30 @@ class AppUtilTest {
         Assert.assertTrue(result2)
     }
 
+    @Test
+    fun email_invalid_was_accepted(){
+        val email = "asdasd.com"
+        val result = AppUtil.validateEmail(email)
+        Assert.assertFalse(result)
+    }
+
+    @Test
+    fun email_valid_was_rejected(){
+        var email = "test@test.com"
+        Assert.assertTrue(AppUtil.validateEmail(email))
+
+        email = "test@test.com.br"
+        Assert.assertTrue(AppUtil.validateEmail(email))
+
+        email = "test@test.en"
+        Assert.assertTrue(AppUtil.validateEmail(email))
+    }
+
+    @Test
+    fun instance_should_not_be_null(){
+        val instance = AppUtil()
+        Assert.assertNotNull(instance)
+    }
+
+
 }
