@@ -71,7 +71,9 @@ class AppUtil {
         }
 
         fun validateEmail(email:String): Boolean {
-            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+            val emailregex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+(\\.[a-z]{1,3})?$"
+            val pattern = Pattern.compile(emailregex)
+            return pattern.matcher(email).matches()
         }
 
         fun validatePassword(pass:String):Boolean{
