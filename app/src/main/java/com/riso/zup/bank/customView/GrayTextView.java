@@ -1,4 +1,4 @@
-package com.riso.zup.bank.CustomView;
+package com.riso.zup.bank.customView;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,20 +7,17 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.riso.zup.bank.R;
 
-public class WhiteTextView extends AppCompatTextView {
-    public WhiteTextView(Context context) {
+public class GrayTextView extends AppCompatTextView {
+    public GrayTextView(Context context) {
         super(context);
         setInit();
     }
 
-    public WhiteTextView(Context context, AttributeSet attrs) {
+    public GrayTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setInit();
     }
-
     private void setInit(){
-        this.setTextColor(getResources().getColor(R.color.white));
+        this.setTextColor(getResources().getColor(R.color.gray));
     }
-
-
 }
