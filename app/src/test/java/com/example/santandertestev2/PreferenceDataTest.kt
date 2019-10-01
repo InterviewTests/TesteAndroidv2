@@ -3,7 +3,7 @@ package com.example.santandertestev2
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.santandertestev2.data.PreferenceData
-import com.example.santandertestev2.domain.model.controller.UserAccount
+import com.example.santandertestev2.domain.model.UserAccount
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test

@@ -2,7 +2,7 @@ package com.example.santandertestev2.data
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.santandertestev2.domain.model.controller.UserAccount
+import com.example.santandertestev2.domain.model.UserAccount
 
 class PreferenceData(private val context : Context) {
 

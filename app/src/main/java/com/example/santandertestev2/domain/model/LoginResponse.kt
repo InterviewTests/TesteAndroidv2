@@ -1,4 +1,4 @@
-package com.example.santandertestev2.domain.model.controller
+package com.example.santandertestev2.domain.model
 
 class LoginResponse {
 

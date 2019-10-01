@@ -1,6 +1,5 @@
-package com.example.santandertestev2.domain.model.controller
+package com.example.santandertestev2.domain.model
 
-import java.util.*
 
 class InvoiceItem {
 
