@@ -3,16 +3,13 @@ package com.example.santandertestev2.domain.controller.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import com.example.santandertestev2.data.AccountService
 import com.example.santandertestev2.data.PreferenceData
 import com.example.santandertestev2.data.Rest
-import com.example.santandertestev2.domain.model.controller.LoginResponse
-import com.example.santandertestev2.domain.model.controller.UserAccount
-import com.example.santandertestev2.domain.presenter.ILoginPresenter
+import com.example.santandertestev2.domain.model.LoginResponse
+import com.example.santandertestev2.domain.model.UserAccount
 import com.example.santandertestev2.domain.presenter.LoginPresenter
 import com.example.santandertestev2.view.detail.DetailActivity
-import com.example.santandertestev2.view.login.LoginActivity
 import retrofit2.*
 
 class LoginController(private val loginscreen: Context, private val loginPresenter : LoginPresenter) {

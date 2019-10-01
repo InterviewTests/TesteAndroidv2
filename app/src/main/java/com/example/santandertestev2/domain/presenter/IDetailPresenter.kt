@@ -1,8 +1,8 @@
 package com.example.santandertestev2.domain.presenter
 
 import android.content.Intent
-import com.example.santandertestev2.domain.model.controller.InvoiceItem
-import com.example.santandertestev2.domain.model.controller.UserAccount
+import com.example.santandertestev2.domain.model.InvoiceItem
+import com.example.santandertestev2.domain.model.UserAccount
 
 interface IDetailPresenter {
 

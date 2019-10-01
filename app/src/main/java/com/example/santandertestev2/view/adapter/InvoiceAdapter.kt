@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.santandertestev2.R
 import com.example.santandertestev2.domain.Util.AppUtil
-import com.example.santandertestev2.domain.model.controller.InvoiceItem
+import com.example.santandertestev2.domain.model.InvoiceItem
 
 class InvoiceAdapter(private val myDataset: List<InvoiceItem>): RecyclerView.Adapter<InvoiceAdapter.ItemViewHolder>() {
 

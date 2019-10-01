@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.santandertestev2.R
 import com.example.santandertestev2.domain.Util.AppUtil
 import com.example.santandertestev2.domain.controller.detail.DetailController
-import com.example.santandertestev2.domain.model.controller.InvoiceItem
-import com.example.santandertestev2.domain.model.controller.UserAccount
+import com.example.santandertestev2.domain.model.InvoiceItem
+import com.example.santandertestev2.domain.model.UserAccount
 import com.example.santandertestev2.domain.presenter.DetailPresenter
 import com.example.santandertestev2.domain.presenter.IDetailPresenter
 import com.example.santandertestev2.view.adapter.InvoiceAdapter
