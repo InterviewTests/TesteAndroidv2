@@ -50,4 +50,10 @@ dependencies {
 
     /*Convert*/
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
+
+    /*Retrofit*/
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+
+    /*OkHttp*/
+    implementation 'com.squareup.okhttp3:okhttp:4.1.0'
 }
