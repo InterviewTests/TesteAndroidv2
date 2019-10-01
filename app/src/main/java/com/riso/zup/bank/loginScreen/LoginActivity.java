@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements
         ButterKnife.bind(this);
         ct = this;
 
-        retrieveDataUserCache();
+        //retrieveDataUserCache();
 
         initControl();
     }
@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity implements
         String user = edtUser.getText().toString();
         String password = edtPassword.getText().toString();
 
-        utils.showProgressDialog(ct, loadingMessage);
+//        utils.showProgressDialog(ct, loadingMessage);
 
         presenter.login(user, password);
     }
