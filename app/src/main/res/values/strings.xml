@@ -7,4 +7,13 @@
     <string name="btn_login">Login</string>
     <string name="loading_message">Loading...</string>
     <string name="error_message">Error</string>
+
+    <!--SharedPreferences-->
+    <string name="pref_file_bank">infoCacheUserBank</string>
+    <string name="pref_key_user">userInfo</string>
+
+    <!--Login-->
+    <string name="error_user_login">Error user</string>
+    <string name="error_password_login">Error password</string>
+
 </resources>

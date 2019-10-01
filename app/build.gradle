@@ -19,6 +19,10 @@ android {
         }
     }
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
     // Butterknife requires Java 8.
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -34,10 +38,16 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    /*MockitoTest*/
+    testImplementation "org.mockito:mockito-core:2.+"
+
     /*Material Desing*/
     implementation 'com.google.android.material:material:1.1.0-alpha04'
 
     /*ButterKnife*/
     implementation 'com.jakewharton:butterknife:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+
+    /*Convert*/
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
 }
