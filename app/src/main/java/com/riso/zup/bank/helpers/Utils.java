@@ -3,31 +3,26 @@ package com.riso.zup.bank.helpers;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.riso.zup.bank.R;
-
-public class Utils extends AppCompatActivity {
+public class Utils {
 
     ProgressDialog mProgressDialog;
 
-    public String retrieveStringCache(int path, int key){
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(path), 0);
-        String user = sharedPreferences.getString(getString(key), null);
+    public String retrieveStringCache(Context context, String path, String key){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(path, 0);
+        String user = sharedPreferences.getString(key, null);
         if(user != null)
             return user;
         else
             return null;
     }
 
-    public void saveStringCache(int path, int key, String user){
-        SharedPreferences sharedPreferences = getSharedPreferences(getString(path), 0);
+    public void saveStringCache(Context context, String path, String key, String user){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(path, 0);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(getString(R.string.pref_key_user), user);
+        editor.putString(path, user);
         editor.commit();
     }
 

@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.riso.zup.bank.R;
+import com.riso.zup.bank.helpers.GlobalValues;
 import com.riso.zup.bank.helpers.Utils;
 import com.riso.zup.bank.models.UserInfo;
 
@@ -39,9 +41,9 @@ public class LoginActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        ct = this;
+        ct = LoginActivity.this;
 
-        //retrieveDataUserCache();
+        retrieveDataUserCache();
 
         initControl();
     }
@@ -59,7 +61,7 @@ public class LoginActivity extends AppCompatActivity implements
     }
 
     private void retrieveDataUserCache() {
-        String user = utils.retrieveStringCache(R.string.pref_file_bank, R.string.pref_key_user);
+        String user = utils.retrieveStringCache(ct,GlobalValues.PREF_FILE_BANK, GlobalValues.PREF_KEY_USER);
         if(user!= null)
             edtUser.setText(user);
     }
@@ -68,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements
         String user = edtUser.getText().toString();
         String password = edtPassword.getText().toString();
 
-//        utils.showProgressDialog(ct, loadingMessage);
+        utils.showProgressDialog(ct, loadingMessage);
 
         presenter.login(user, password);
     }
@@ -83,8 +85,9 @@ public class LoginActivity extends AppCompatActivity implements
     public void loginOK(String user, UserInfo userInfo) {
 
         utils.saveStringCache(
-                R.string.pref_file_bank,
-                R.string.pref_key_user,
+                ct,
+                GlobalValues.PREF_FILE_BANK,
+                GlobalValues.PREF_KEY_USER,
                 user);
 
         utils.hideProgressDialog();
