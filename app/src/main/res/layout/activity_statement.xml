@@ -81,7 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp"
-            tools:listitem="@layout/item_extract_list">
+            tools:listitem="@layout/item_statement_list">
 
         </androidx.recyclerview.widget.RecyclerView>
 

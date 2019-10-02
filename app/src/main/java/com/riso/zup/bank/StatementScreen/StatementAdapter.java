@@ -33,7 +33,7 @@ public class StatementAdapter extends RecyclerView.Adapter{
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(ct).inflate(R.layout.item_extract_list, parent, false);
+        View view = LayoutInflater.from(ct).inflate(R.layout.item_statement_list, parent, false);
 
         ViewHolder holder = new ViewHolder(view);
 
