@@ -2,7 +2,13 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config />
+      <config>
+        <device id="pixel" />
+        <device id="3.2in HVGA slider (ADP1)" />
+        <device id="3.3in WQVGA" />
+        <device id="3.7in WVGA (Nexus One)" />
+        <device id="4in WVGA (Nexus S)" />
+      </config>
     </shared>
   </component>
   <component name="AndroidLogFilters">
@@ -25,38 +31,7 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/loginScreen/LoginActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="79" column="33" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="33" />
-              <folding>
-                <element signature="method#loginOK#0;class#LoginActivity#0" />
-                <element signature="method#loginError#0;class#LoginActivity#0" />
-                <element signature="method#loginError#1;class#LoginActivity#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/helpers/Utils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-              <folding>
-                <element signature="method#saveStringCache#0;class#Utils#0" />
-                <element signature="method#showToast#0;class#Utils#0" />
-                <element signature="method#showProgressDialog#0;class#Utils#0" />
-                <element signature="method#hideProgressDialog#0;class#Utils#0" />
-                <element signature="method#showErrorDialog#0;class#Utils#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -70,7 +45,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/style_edittext.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/style_item_statement.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/CustomView/WhiteTextView.java" />
@@ -90,44 +64,82 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/network/OkHttp.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/network/ApiConfig.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/network/Login.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/models/ResponseLoginUser.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/loginScreen/LoginPresenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/helpers/GlobalValues.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/models/ResponseError.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/loginScreen/LoginPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/models/ResponseLoginUser.java" />
+        <option value="$PROJECT_DIR$/app/src/test/java/com/riso/zup/bank/LoginPresenterUnitTest.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/extract_list_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_extract.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login_novo.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/models/Extract.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/extractScreen/ExtractInteractor.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/models/RespondeExtract.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/models/ResponseExtract.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/network/Extract.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/extractScreen/ExtractPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/loginScreen/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/extractScreen/ExtractAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/extractScreen/ExtractActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/StatementScreen/ExtractActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/helpers/Utils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_statement.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_extract_list_novo.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_extract_list.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/StatementScreen/StatementAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/StatementScreen/StatementPresenter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/StatementScreen/StatementActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/StatementScreen/StatementInteractor.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="191" />
-    <option name="y" value="175" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="29" />
+    <option name="y" value="64" />
     <option name="width" value="910" />
     <option name="height" value="476" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <flattenPackages ProjectPane="false" />
-      <hideEmptyPackages AndroidView="false" />
+      <hideEmptyPackages AndroidView="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
               <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="bank" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TesteAndroidv2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -139,13 +151,16 @@
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
+      <recent name="com.riso.zup.bank.extractScreen" />
       <recent name="com.riso.zup.bank.loginScreen" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.riso.zup.bank.models" />
       <recent name="com.riso.zup.bank" />
       <recent name="com.riso.zup.bank.CustomView" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
   </component>
@@ -162,7 +177,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Android App.app">
-    <configuration name="LoginValidatorTest" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginPresenterUnitTest" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
@@ -171,14 +186,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.riso.zup.bank" />
-      <option name="MAIN_CLASS_NAME" value="com.riso.zup.bank.LoginValidatorTest" />
+      <option name="MAIN_CLASS_NAME" value="com.riso.zup.bank.LoginPresenterUnitTest" />
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginValidatorTest.WhenErrorInvalidPasswordLoginFail" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginPresenterUnitTest.WhenErrorInvalidPasswordLoginFail" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
@@ -187,7 +202,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.riso.zup.bank" />
-      <option name="MAIN_CLASS_NAME" value="com.riso.zup.bank.LoginValidatorTest" />
+      <option name="MAIN_CLASS_NAME" value="com.riso.zup.bank.LoginPresenterUnitTest" />
       <option name="METHOD_NAME" value="WhenErrorInvalidPasswordLoginFail" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -195,7 +210,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginValidatorTest.WhenLoginIsSuccess" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginPresenterUnitTest.WhenLoginIsSuccess" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
@@ -204,7 +219,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.riso.zup.bank" />
-      <option name="MAIN_CLASS_NAME" value="com.riso.zup.bank.LoginValidatorTest" />
+      <option name="MAIN_CLASS_NAME" value="com.riso.zup.bank.LoginPresenterUnitTest" />
       <option name="METHOD_NAME" value="WhenLoginIsSuccess" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -212,7 +227,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginValidatorTest.errorEmptyPasswordLoginFail" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginPresenterUnitTest.errorEmptyPasswordLoginFail" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
@@ -221,7 +236,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.riso.zup.bank" />
-      <option name="MAIN_CLASS_NAME" value="com.riso.zup.bank.LoginValidatorTest" />
+      <option name="MAIN_CLASS_NAME" value="com.riso.zup.bank.LoginPresenterUnitTest" />
       <option name="METHOD_NAME" value="errorEmptyPasswordLoginFail" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -229,7 +244,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginValidatorTest.errorEmptyUserLoginFail" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginPresenterUnitTest.errorEmptyUserLoginFail" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <extension name="coverage">
         <pattern>
@@ -238,7 +253,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.riso.zup.bank" />
-      <option name="MAIN_CLASS_NAME" value="com.riso.zup.bank.LoginValidatorTest" />
+      <option name="MAIN_CLASS_NAME" value="com.riso.zup.bank.LoginPresenterUnitTest" />
       <option name="METHOD_NAME" value="errorEmptyUserLoginFail" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -306,11 +321,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Android JUnit.LoginValidatorTest" />
-        <item itemvalue="Android JUnit.LoginValidatorTest.errorEmptyPasswordLoginFail" />
-        <item itemvalue="Android JUnit.LoginValidatorTest.errorEmptyUserLoginFail" />
-        <item itemvalue="Android JUnit.LoginValidatorTest.WhenLoginIsSuccess" />
-        <item itemvalue="Android JUnit.LoginValidatorTest.WhenErrorInvalidPasswordLoginFail" />
+        <item itemvalue="Android JUnit.LoginPresenterUnitTest" />
+        <item itemvalue="Android JUnit.LoginPresenterUnitTest.errorEmptyPasswordLoginFail" />
+        <item itemvalue="Android JUnit.LoginPresenterUnitTest.errorEmptyUserLoginFail" />
+        <item itemvalue="Android JUnit.LoginPresenterUnitTest.WhenLoginIsSuccess" />
+        <item itemvalue="Android JUnit.LoginPresenterUnitTest.WhenErrorInvalidPasswordLoginFail" />
       </list>
     </recent_temporary>
   </component>
@@ -360,11 +375,10 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1368" height="715" extended-state="7" />
-    <editor active="true" />
+    <frame x="-1" y="0" width="1368" height="715" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2219697" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2439394" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -372,55 +386,26 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Build Variants" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="TODO" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="2" />
-      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="4" visible="true" weight="0.54576856" />
-      <window_info anchor="bottom" id="Run" order="5" weight="0.30051813" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="6" visible="true" weight="0.32124352" />
-      <window_info anchor="bottom" id="Android Profiler" order="7" />
-      <window_info anchor="bottom" id="Debug" order="8" weight="0.40069085" />
-      <window_info anchor="bottom" id="Build" order="9" weight="0.39032814" />
+      <window_info anchor="bottom" id="Find" order="0" weight="0.3298791" />
+      <window_info anchor="bottom" id="Version Control" order="1" />
+      <window_info anchor="bottom" id="TODO" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Messages" order="5" visible="true" weight="0.54576856" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.30051813" />
+      <window_info anchor="bottom" id="Logcat" order="7" weight="0.3385147" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.47668394" />
+      <window_info anchor="bottom" id="Build" order="10" weight="0.39032814" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Theme Preview" order="1" />
       <window_info anchor="right" id="Palette&#9;" order="2" />
       <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
       <window_info anchor="right" id="Gradle" order="4" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.3719697" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.43939394" />
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/telas.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Bank_App.postman_collection.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1191" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bank_app_layout/assets/Logo.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bank_app_layout/assets/logout 2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bank_app_layout/CCA3949D-B416-466A-8949-425E5DCD35B5/4F2CC5EF-170E-45CA-94D1-9BCD2FA4A805@0.5x.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bank_app_layout/E822A087-B20C-42DD-8665-FE03A4AA8211/CDEBC6CD-73C4-47CB-B879-8A426D8163E1@0.5x.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bank_app_layout/E822A087-B20C-42DD-8665-FE03A4AA8211/artboard.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/bank_app_layout/links/page-1-currency.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -457,13 +442,6 @@
           <folding>
             <element signature="e#271#304#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -541,33 +519,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/models/UserInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#238:499" />
-            <element signature="e#330#331#0" expanded="true" />
-            <element signature="e#377#378#0" expanded="true" />
-            <element signature="e#443#444#0" expanded="true" />
-            <element signature="e#492#493#0" expanded="true" />
-            <element signature="e#187#188#0" expanded="true" />
-            <element signature="e#211#212#0" expanded="true" />
-            <element signature="e#1823#1824#0" expanded="true" />
-            <element signature="e#1852#1853#0" expanded="true" />
-            <element signature="e#1883#1884#0" expanded="true" />
-            <element signature="e#1910#1911#0" expanded="true" />
-            <element signature="e#1948#1949#0" expanded="true" />
-            <element signature="e#1982#1983#0" expanded="true" />
-            <element signature="e#2015#2016#0" expanded="true" />
-            <element signature="e#2044#2045#0" expanded="true" />
-            <element signature="e#2078#2079#0" expanded="true" />
-            <element signature="e#2108#2109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/test/java/com/riso/zup/bank/ExampleUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -579,17 +530,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/helpers/Validator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="38" column="88" selection-start-line="38" selection-start-column="88" selection-end-line="38" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#cpfValidator#0;class#Validator#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/riso/zup/bank/ExampleInstrumentedTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
@@ -597,55 +537,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/java/com/riso/zup/bank/LoginValidatorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="60" column="42" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="57" column="54" lean-forward="true" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/network/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="62" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/network/OkHttp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="19" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-          <folding>
-            <element signature="e#1578#1597#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/loginScreen/LoginPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -662,21 +557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="66" selection-start-line="4" selection-start-column="66" selection-end-line="4" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/loginScreen/LoginInteractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/network/ApiConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -689,33 +569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/models/ResponseLoginUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#264:570" />
-            <element signature="e#374#375#0" expanded="true" />
-            <element signature="e#430#431#0" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
-            <element signature="e#563#564#0" expanded="true" />
-            <element signature="e#195#196#0" expanded="true" />
-            <element signature="e#219#220#0" expanded="true" />
-            <element signature="e#1427#1428#0" expanded="true" />
-            <element signature="e#1458#1459#0" expanded="true" />
-            <element signature="e#1486#1487#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="3" selection-end-line="12" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/helpers/GlobalValues.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -723,29 +576,308 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/helpers/Utils.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/models/ResponseError.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        <state relative-caret-position="816">
+          <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
           <folding>
-            <element signature="method#saveStringCache#0;class#Utils#0" />
-            <element signature="method#showToast#0;class#Utils#0" />
-            <element signature="method#showProgressDialog#0;class#Utils#0" />
-            <element signature="method#hideProgressDialog#0;class#Utils#0" />
-            <element signature="method#showErrorDialog#0;class#Utils#0" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1360#1361#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/models/UserInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1986#1987#0" expanded="true" />
+            <element signature="e#2015#2016#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/network/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/models/ResponseLoginUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/java/com/riso/zup/bank/LoginPresenterUnitTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/com/riso/zup/bank/StatementScreen/ExtractActivity_ViewBinding.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/helpers/Validator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="38" column="88" selection-start-line="38" selection-start-column="88" selection-end-line="38" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#cpfValidator#0;class#Validator#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login_novo.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="18" selection-end-line="93" selection-end-column="54" />
+          <folding>
+            <element signature="e#907#930#0" expanded="true" />
+            <element signature="e#1353#1377#0" expanded="true" />
+            <element signature="e#1671#1690#0" expanded="true" />
+            <element signature="e#2445#2468#0" expanded="true" />
+            <element signature="e#3475#3498#0" expanded="true" />
+            <element signature="e#3568#3587#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/models/Statement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
+            <element signature="e#435#436#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#185#186#0" expanded="true" />
+            <element signature="e#209#210#0" expanded="true" />
+            <element signature="e#1579#1580#0" expanded="true" />
+            <element signature="e#1607#1608#0" expanded="true" />
+            <element signature="e#1638#1639#0" expanded="true" />
+            <element signature="e#1665#1666#0" expanded="true" />
+            <element signature="e#1696#1697#0" expanded="true" />
+            <element signature="e#1723#1724#0" expanded="true" />
+            <element signature="e#1755#1756#0" expanded="true" />
+            <element signature="e#1783#1784#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/models/ResponseStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="61" column="21" lean-forward="true" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#364#365#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
+            <element signature="e#491#492#0" expanded="true" />
+            <element signature="e#547#548#0" expanded="true" />
+            <element signature="e#193#194#0" expanded="true" />
+            <element signature="e#217#218#0" expanded="true" />
+            <element signature="e#1394#1395#0" expanded="true" />
+            <element signature="e#1428#1429#0" expanded="true" />
+            <element signature="e#1459#1460#0" expanded="true" />
+            <element signature="e#1487#1488#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/network/Statement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/loginScreen/LoginInteractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/loginScreen/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="79" column="33" selection-start-line="79" selection-start-column="25" selection-end-line="79" selection-end-column="33" />
+        <state relative-caret-position="269">
+          <caret line="118" selection-start-line="118" selection-end-line="118" />
           <folding>
             <element signature="method#loginOK#0;class#LoginActivity#0" />
             <element signature="method#loginError#0;class#LoginActivity#0" />
-            <element signature="method#loginError#1;class#LoginActivity#0" />
+            <element signature="method#onStart#0;class#LoginActivity#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0-alpha01/85a9b166be3ab77744c81dc0fb8a041cae221c1a/recyclerview-1.1.0-alpha01-sources.jar!/androidx/recyclerview/widget/RecyclerView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1151" selection-start-line="1151" selection-end-line="1151" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="54" lean-forward="true" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/loginScreen/LoginPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#513#514#0" expanded="true" />
+            <element signature="e#545#546#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="47" lean-forward="true" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/helpers/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+          <folding>
+            <element signature="method#retrieveStringCache#0;class#Utils#0" />
+            <element signature="method#saveStringCache#0;class#Utils#0" />
+            <element signature="method#showProgressDialog#0;class#Utils#0" />
+            <element signature="method#hideProgressDialog#0;class#Utils#0" />
+            <element signature="method#showErrorDialog#0;class#Utils#0" />
+            <element signature="method#formatNumberAgency#0;class#Utils#0" />
+            <element signature="method#formatValue#0;class#Utils#0" />
+            <element signature="e#2733#2784#0" expanded="true" />
+            <element signature="method#formatDate#0;class#Utils#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="38" lean-forward="true" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_statement.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-550">
+          <caret line="39" column="56" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_extract_list_novo.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+          <folding>
+            <element signature="e#1535#1561#0" expanded="true" />
+            <element signature="e#1962#1987#0" expanded="true" />
+            <element signature="e#2559#2585#0" expanded="true" />
+            <element signature="e#3048#3075#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_extract_list.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="73" column="42" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
+          <folding>
+            <element signature="e#444#467#0" expanded="true" />
+            <element signature="e#1020#1044#0" expanded="true" />
+            <element signature="e#1535#1561#0" expanded="true" />
+            <element signature="e#1962#1987#0" expanded="true" />
+            <element signature="e#2589#2615#0" expanded="true" />
+            <element signature="e#3018#3045#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="56" column="14" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/StatementScreen/StatementAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="73" column="39" selection-start-line="73" selection-start-column="39" selection-end-line="73" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/StatementScreen/StatementPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/StatementScreen/StatementInteractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/riso/zup/bank/StatementScreen/StatementActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="958">
+          <caret line="93" column="34" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
         </state>
       </provider>
     </entry>

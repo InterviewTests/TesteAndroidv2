@@ -6,8 +6,6 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import kotlin.UseExperimental;
-
 public class ResponseLoginUser implements Parcelable {
 
     @SerializedName("userAccount")
@@ -16,11 +14,11 @@ public class ResponseLoginUser implements Parcelable {
 
     @SerializedName("error")
     @Expose
-    private Error error;
+    private ResponseError error;
 
     protected ResponseLoginUser(Parcel in) {
         this.userInfo = ((UserInfo) in.readValue((UserInfo.class.getClassLoader())));
-        this.error = ((Error) in.readValue((Error.class.getClassLoader())));
+        this.error = ((ResponseError) in.readValue((Error.class.getClassLoader())));
     }
 
     public static final Creator<ResponseLoginUser> CREATOR = new Creator<ResponseLoginUser>() {
@@ -47,7 +45,7 @@ public class ResponseLoginUser implements Parcelable {
 
     public ResponseLoginUser(){}
 
-    public ResponseLoginUser(UserInfo userInfo, Error error){
+    public ResponseLoginUser(UserInfo userInfo, ResponseError error){
         super();
         this.userInfo = userInfo;
         this.error = error;
@@ -57,7 +55,7 @@ public class ResponseLoginUser implements Parcelable {
         return userInfo;
     }
 
-    public Error getError() {
+    public ResponseError getError() {
         return error;
     }
 

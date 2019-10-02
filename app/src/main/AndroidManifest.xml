@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".StatementScreen.StatementActivity"
+            android:theme="@style/AppThemeNoActionBar"/>
+
+        <activity
             android:name=".loginScreen.LoginActivity"
             android:theme="@style/AppThemeNoActionBar">
             <intent-filter>

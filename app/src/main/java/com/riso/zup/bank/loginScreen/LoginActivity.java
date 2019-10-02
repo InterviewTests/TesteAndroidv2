@@ -4,13 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.riso.zup.bank.R;
+import com.riso.zup.bank.StatementScreen.StatementActivity;
 import com.riso.zup.bank.helpers.GlobalValues;
 import com.riso.zup.bank.helpers.Utils;
 import com.riso.zup.bank.models.UserInfo;
@@ -23,16 +23,21 @@ public class LoginActivity extends AppCompatActivity implements
         View.OnClickListener,
         LoginInteractor.View{
 
-    @BindView(R.id.btn_login) Button btnLogin;
+    @BindView(R.id.btn_login)
+    Button btnLogin;
 
-    @BindView(R.id.edt_user) TextInputEditText edtUser;
-    @BindView(R.id.edt_password) TextInputEditText edtPassword;
+    @BindView(R.id.edt_user)
+    TextInputEditText edtUser;
+    @BindView(R.id.edt_password)
+    TextInputEditText edtPassword;
 
-    @BindString(R.string.loading_message) String loadingMessage;
-    @BindString(R.string.error_message) String erroMessage;
+    @BindString(R.string.loading_message)
+    String loadingMessage;
+    @BindString(R.string.error_message)
+    String erroMessage;
 
-    Utils utils = new Utils();
-    Context ct;
+    private Utils utils = new Utils();
+    private Context ct;
 
     LoginPresenter presenter = new LoginPresenter(this);
 
@@ -42,8 +47,6 @@ public class LoginActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         ct = LoginActivity.this;
-
-        retrieveDataUserCache();
 
         initControl();
     }
@@ -60,7 +63,7 @@ public class LoginActivity extends AppCompatActivity implements
         }
     }
 
-    private void retrieveDataUserCache() {
+    private void retrieveDataUserFromCache() {
         String user = utils.retrieveStringCache(ct,GlobalValues.PREF_FILE_BANK, GlobalValues.PREF_KEY_USER);
         if(user!= null)
             edtUser.setText(user);
@@ -75,8 +78,8 @@ public class LoginActivity extends AppCompatActivity implements
         presenter.login(user, password);
     }
 
-    private void callHomeActivity(UserInfo userInfo) {
-        Intent intent = new Intent(this, LoginActivity.class);
+    private void callExtractScreen(UserInfo userInfo) {
+        Intent intent = new Intent(this, StatementActivity.class);
         intent.putExtra("userInfo", userInfo);
         startActivity(intent);
     }
@@ -92,7 +95,7 @@ public class LoginActivity extends AppCompatActivity implements
 
         utils.hideProgressDialog();
 
-        callHomeActivity(userInfo);
+        callExtractScreen(userInfo);
 
         finish();
     }
@@ -112,5 +115,12 @@ public class LoginActivity extends AppCompatActivity implements
     public void loginError(int error) {
         utils.showErrorDialog(ct, getString(error));
         utils.hideProgressDialog();
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+
+        retrieveDataUserFromCache();
     }
 }

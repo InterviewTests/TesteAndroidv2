@@ -36,21 +36,21 @@ public class LoginPresenter implements LoginInteractor.Presenter {
         }
         else{
             //Call conection to DataBase
-            HashMap loginObject = new HashMap();
-            loginObject.put("user", user);
-            loginObject.put("password", password);
+            HashMap loginDataObject = new HashMap();
+            loginDataObject.put("user", user);
+            loginDataObject.put("password", password);
 
             Login loginClient = ApiConfig.create(Login.class);
-            Call<ResponseLoginUser> call = loginClient.login(loginObject);
+            Call<ResponseLoginUser> call = loginClient.login(loginDataObject);
             call.enqueue(new Callback<ResponseLoginUser>() {
                 @Override
                 public void onResponse(Call<ResponseLoginUser> call, Response<ResponseLoginUser> response) {
                     ResponseLoginUser ResponseLogin = response.body();
-                    if(response.isSuccessful()){
+                    if(response.isSuccessful() && ResponseLogin.getError().getCode() == 0){
                         view.loginOK(user, ResponseLogin.getUserInfo());
                     }
                     else{
-                        view.loginError(ResponseLogin.getError());
+                        view.loginError(ResponseLogin.getError().getCode());
                     }
                 }
 
