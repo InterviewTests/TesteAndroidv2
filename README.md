@@ -4,7 +4,7 @@ Este projeto foi desenvolvido conforme as instruções do teste https://github.c
 
 ## This Project
 
-No deste projeto utilizou-se:
+No desenvolvimento deste projeto utilizou-se:
 
 * Java
 * Arquitetura MVP
@@ -25,7 +25,7 @@ No deste projeto utilizou-se:
 
 ### Observações
 
-Autor: Antonio Risonaldo Moura
-Email: antoniorisonaldo@gmail.com
-Empresa solicitante: Zup Innovation and Technology
+* Autor: Antonio Risonaldo Moura
+* Email: antoniorisonaldo@gmail.com
+* Empresa solicitante: Zup Innovation and Technology
 
