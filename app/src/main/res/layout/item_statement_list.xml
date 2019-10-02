@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/style_item_statement"
+    android:layout_height="80dp"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:elevation="1dp"
+    app:cardCornerRadius="5dp"
+    android:layout_marginBottom="@dimen/default_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/view_type_transaction"
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/default_padding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.riso.zup.bank.customView.GrayLightTextView
+                    android:id="@+id/tv_title_extract"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/text_size_xnormal"
+                    android:gravity="start"
+                    android:ellipsize="end"
+                    android:text="Title"/>
+
+                <com.riso.zup.bank.customView.GrayLightTextView
+                    android:id="@+id/tv_date_extract"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text="Date"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+
+                <com.riso.zup.bank.customView.GrayTextView
+                    android:id="@+id/tv_desc_extract"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/text_size_xnormal"
+                    android:gravity="start"
+                    android:ellipsize="end"
+                    android:text="Description"/>
+
+                <com.riso.zup.bank.customView.GrayTextView
+                    android:id="@+id/tv_value_extract"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_xxnormal"
+                    android:text="Value"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

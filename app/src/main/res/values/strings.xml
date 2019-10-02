@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">TestAndroidV2Riso</string>
+
+    <!--UI-->
+    <string name="hint_user">User</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="loading_message">Loading...</string>
+    <string name="error_message">Error</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="recent">Recentes</string>
+    <string name="currency">R$</string>
+
+    <!--Login-->
+    <string name="error_user_login">Error user</string>
+    <string name="error_password_login">Error password</string>
+
+    <!--Statement-->
+    <string name="error_load_statement">Error load statements</string>
+    <string name="error_list_statement">empty statement list</string>
+
+</resources>
