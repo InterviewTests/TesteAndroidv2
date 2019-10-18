@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity(), ILoginPresenter {
         btnLogin.setOnClickListener {
             val login = fieldLogin.editText?.text.toString()
             val pass = fieldPassword.editText?.text.toString()
-            if ( AppUtil.validateEmail(login) || AppUtil.validateCPF(login)){
+            if ( AppUtil.isEmailValid(login) || AppUtil.isCPFvalid(login)){
                 this.fieldLogin.error = null
             }else{
                 this.fieldLogin.error = getString(R.string.errorLoginInvalid)

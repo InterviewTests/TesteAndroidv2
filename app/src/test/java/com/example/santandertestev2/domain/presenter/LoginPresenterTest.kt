@@ -1,8 +1,7 @@
-package com.example.santandertestev2
+package com.example.santandertestev2.domain.presenter
 
 import android.content.Context
 import android.content.Intent
-import com.example.santandertestev2.domain.presenter.LoginPresenter
 import com.example.santandertestev2.view.login.LoginActivity
 import org.junit.Assert
 import org.junit.Before

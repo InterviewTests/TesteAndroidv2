@@ -28,36 +28,36 @@ class AppUtilTest {
 
     @Test
     fun an_invalid_cpf_was_accept(){
-        val result = AppUtil.validateCPF("645.376.456-37")
+        val result = AppUtil.isCPFvalid("645.376.456-37")
         Assert.assertFalse(result)
     }
 
     @Test
     fun an_valid_cpf_is_rejected(){
-        val result1 = AppUtil.validateCPF("097.852.780-18")
+        val result1 = AppUtil.isCPFvalid("097.852.780-18")
         Assert.assertTrue(result1)
 
-        val result2 = AppUtil.validateCPF("56927543040")
+        val result2 = AppUtil.isCPFvalid("56927543040")
         Assert.assertTrue(result2)
     }
 
     @Test
     fun email_invalid_was_accepted(){
         val email = "asdasd.com"
-        val result = AppUtil.validateEmail(email)
+        val result = AppUtil.isEmailValid(email)
         Assert.assertFalse(result)
     }
 
     @Test
     fun email_valid_was_rejected(){
         var email = "test@test.com"
-        Assert.assertTrue(AppUtil.validateEmail(email))
+        Assert.assertTrue(AppUtil.isEmailValid(email))
 
         email = "test@test.com.br"
-        Assert.assertTrue(AppUtil.validateEmail(email))
+        Assert.assertTrue(AppUtil.isEmailValid(email))
 
         email = "test@test.en"
-        Assert.assertTrue(AppUtil.validateEmail(email))
+        Assert.assertTrue(AppUtil.isEmailValid(email))
     }
 
     @Test
@@ -65,6 +65,5 @@ class AppUtilTest {
         val instance = AppUtil()
         Assert.assertNotNull(instance)
     }
-
 
 }

@@ -31,7 +31,7 @@ class InvoiceAdapter(private val myDataset: List<InvoiceItem>): RecyclerView.Ada
         holder.labelType.text = myDataset[position].title
         holder.labeldescription.text =  myDataset[position].desc
         myDataset[position].date?.let {
-              holder.labelDate.text = AppUtil.formatDateToBr(it)
+              holder.labelDate.text = AppUtil.formatDateUSAToBrasil(it)
         }
         myDataset[position].value?.let {
             holder.labelValue.text =  "R$ " + AppUtil.formatMoneyBr(it)

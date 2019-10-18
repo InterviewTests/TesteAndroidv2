@@ -3,12 +3,15 @@ package com.example.santandertestev2.domain.Util
 import java.text.NumberFormat
 import java.util.*
 import java.util.regex.Pattern
+import java.text.ParseException
+import java.text.SimpleDateFormat
+
 
 class AppUtil {
 
     companion object {
 
-        fun validateCPF(cpf : String) : Boolean{
+        fun isCPFvalid(cpf : String) : Boolean{
             val cpfClean = cpf.replace(".", "").replace("-", "")
 
             if (cpfClean.length != 11)
@@ -70,7 +73,7 @@ class AppUtil {
             return true
         }
 
-        fun validateEmail(email:String): Boolean {
+        fun isEmailValid(email:String): Boolean {
             val emailregex = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+(\\.[a-z]{1,3})?$"
             val pattern = Pattern.compile(emailregex)
             return pattern.matcher(email).matches()
@@ -105,12 +108,41 @@ class AppUtil {
             return str
         }
 
-        fun formatDateToBr(date : String) : String?{
-            if (date.length < 10)
+        fun formatDateUSAToBrasil(date : String) : String?{
+
+            var clearDate = date.substring(0, 10)
+            var brDate : String? = null
+            val BRformat = SimpleDateFormat("dd/MM/yyyy")
+            val USAformat = SimpleDateFormat("yyyy-MM-dd")
+            USAformat.setLenient(false)
+            try {
+                val newDate = USAformat.parse(clearDate)
+                brDate = BRformat.format(newDate)
+            } catch (ex: ParseException) {
+                ex.printStackTrace()
                 return null
-            val arr = date.split("-")
-            val novaData = arr[2] + "/" + arr[1] + "/" + arr[0]
-            return novaData
+            }
+
+            return brDate
+
+        }
+
+        fun formatDateBrasilToUSA(date : String) : String?{
+
+            var clearDate = date.substring(0, 10)
+            var usaDate : String? = null
+            val BRformat = SimpleDateFormat("dd/MM/yyyy")
+            val USAformat = SimpleDateFormat("yyyy-MM-dd")
+            BRformat.setLenient(false)
+            try {
+                val newDate = BRformat.parse(clearDate)
+                usaDate = USAformat.format(newDate)
+            } catch (ex: ParseException) {
+                ex.printStackTrace()
+                return null
+            }
+            return usaDate
+
         }
     }
 }
