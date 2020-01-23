@@ -56,13 +56,14 @@
         <Button
             android:id="@+id/idButtonLogin"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="48dp"
-            android:paddingEnd="48dp"
-            android:background="@color/backgroundButton"
+            android:layout_height="64dp"
+            android:background="@drawable/button_background"
+            android:paddingStart="100dp"
+            android:paddingEnd="100dp"
             android:text="@string/login"
+            android:textAllCaps="false"
             android:textColor="@color/colorAccent"
-            android:textSize="18sp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 
