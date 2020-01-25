@@ -62,7 +62,7 @@
             android:paddingEnd="100dp"
             android:text="@string/login"
             android:textAllCaps="false"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/textButtonColor"
             android:textSize="20sp" />
 
     </LinearLayout>
