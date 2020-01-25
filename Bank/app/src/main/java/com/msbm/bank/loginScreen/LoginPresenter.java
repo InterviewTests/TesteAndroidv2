@@ -1,5 +1,7 @@
 package com.msbm.bank.loginScreen;
 
+import android.util.Log;
+
 import java.lang.ref.WeakReference;
 
 interface LoginPresenterInput {
@@ -14,6 +16,8 @@ public class LoginPresenter implements LoginPresenterInput {
 
     @Override
     public void handleLogin(LoginResponse loginResponse) {
-        // TODO: build presenter to activity logic
+        if (loginResponse != null) {
+            Log.d(TAG, loginResponse.toString());
+        }
     }
 }
