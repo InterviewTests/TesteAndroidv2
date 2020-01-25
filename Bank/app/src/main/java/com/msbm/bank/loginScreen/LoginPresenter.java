@@ -1,11 +1,15 @@
 package com.msbm.bank.loginScreen;
 
-import android.util.Log;
-
 import java.lang.ref.WeakReference;
 
 interface LoginPresenterInput {
     void handleLogin(LoginResponse loginResponse);
+
+    void emptyUsername();
+    void emptyPassword();
+    void invalidUsername();
+    void invalidPassword();
+    void invalidCredentials();
 }
 
 public class LoginPresenter implements LoginPresenterInput {
@@ -20,5 +24,30 @@ public class LoginPresenter implements LoginPresenterInput {
             loginActivity.get().saveUserAccountSharedPreferences(loginResponse.userAccount);
             loginActivity.get().nextScreen();
         }
+    }
+
+    @Override
+    public void emptyUsername() {
+        loginActivity.get().emptyUsername();
+    }
+
+    @Override
+    public void emptyPassword() {
+        loginActivity.get().emptyPassword();
+    }
+
+    @Override
+    public void invalidUsername() {
+        loginActivity.get().invalidUsername();
+    }
+
+    @Override
+    public void invalidPassword() {
+        loginActivity.get().invalidPassword();
+    }
+
+    @Override
+    public void invalidCredentials() {
+        loginActivity.get().invalidCredentials();
     }
 }

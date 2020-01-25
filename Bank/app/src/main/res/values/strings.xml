@@ -14,4 +14,10 @@
     <!-- Loading -->
     <string name="loading_title">Loading</string>
     <string name="loading_message">Please wait...</string>
+    <string name="alert_title_warning">Warning</string>
+    <string name="empty_username">Username is empty</string>
+    <string name="empty_password">Password is empty</string>
+    <string name="invalid_username">Username is invalid. Must be an email or CPF</string>
+    <string name="invalid_password">Password is invalid. At least one upper character</string>
+    <string name="invalid_credentials">Username or password is wrong</string>
 </resources>

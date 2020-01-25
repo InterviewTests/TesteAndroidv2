@@ -19,6 +19,12 @@ import com.msbm.bank.entities.UserAccount;
 interface LoginActivityInput {
     void saveUserAccountSharedPreferences(UserAccount userAccount);
     void nextScreen();
+
+    void emptyUsername();
+    void emptyPassword();
+    void invalidUsername();
+    void invalidPassword();
+    void invalidCredentials();
 }
 
 public class LoginActivity extends BaseActivity implements LoginActivityInput {
@@ -43,7 +49,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityInput {
 
     private void bindViews() {
         edtUsername = findViewById(R.id.idUsername);
-        edtUsername.setText("test_user");
+        edtUsername.setText("test_user@gmail.com");
         edtPassword = findViewById(R.id.idPassword);
         edtPassword.setText("Test@1");
 
@@ -86,5 +92,35 @@ public class LoginActivity extends BaseActivity implements LoginActivityInput {
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void emptyUsername() {
+        dismissProgress();
+        showAlert(getString(R.string.alert_title_warning), getString(R.string.empty_username));
+    }
+
+    @Override
+    public void emptyPassword() {
+        dismissProgress();
+        showAlert(getString(R.string.alert_title_warning), getString(R.string.empty_password));
+    }
+
+    @Override
+    public void invalidUsername() {
+        dismissProgress();
+        showAlert(getString(R.string.alert_title_warning), getString(R.string.invalid_username));
+    }
+
+    @Override
+    public void invalidPassword() {
+        dismissProgress();
+        showAlert(getString(R.string.alert_title_warning), getString(R.string.invalid_password));
+    }
+
+    @Override
+    public void invalidCredentials() {
+        dismissProgress();
+        showAlert(getString(R.string.alert_title_warning), getString(R.string.invalid_credentials));
     }
 }

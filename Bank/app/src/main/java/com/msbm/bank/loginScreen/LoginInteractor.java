@@ -1,6 +1,10 @@
 package com.msbm.bank.loginScreen;
 
+import android.util.Patterns;
+
 import com.msbm.bank.utils.Constants;
+import com.msbm.bank.utils.DocumentUtil;
+import com.msbm.bank.utils.StringUtil;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,43 +25,72 @@ public class LoginInteractor implements LoginInteractorInput {
     @Override
     public void doLogin(LoginRequest loginRequest) {
 
+        boolean isEmail = loginRequest.user.getUsername().contains("@");
+
         if (loginRequest.user.getUsername() == null || loginRequest.user.getUsername().length() == 0) {
-            // LoginPresenter empty username
+            loginPresenterInput.emptyUsername();
+            return;
         }
 
         if (loginRequest.user.getPassword() == null || loginRequest.user.getPassword().length() == 0) {
-            // LoginPresenter empty password
+            loginPresenterInput.emptyPassword();
+            return;
         }
 
-        if (validateEmail(loginRequest.user.getUsername()) || validateDocument(loginRequest.user.getUsername())) {
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(Constants.API_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-
-            LoginApi loginApi = retrofit.create(LoginApi.class);
-            Call<LoginResponse> call = loginApi.login(loginRequest.user.getUsername(), loginRequest.user.getPassword());
-            call.enqueue(new Callback<LoginResponse>() {
-                @Override
-                public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                    loginPresenterInput.handleLogin(response.body());
-                }
-
-                @Override
-                public void onFailure(Call<LoginResponse> call, Throwable t) {
-                    // LoginPresenter invalid credentials
-                }
-            });
-        } else {
-            // LoginPresenter invalid email or document
+        if (isEmail && !validateEmail(loginRequest.user.getUsername())) {
+            loginPresenterInput.invalidUsername();
+            return;
         }
+
+        if (!isEmail) {
+            if(loginRequest.user.getUsername().matches("[0-9]+") && loginRequest.user.getUsername().length() == 11) {
+                if(!DocumentUtil.isValidCPF(loginRequest.user.getUsername())) {
+                    loginPresenterInput.invalidUsername();
+                    return;
+                }
+            } else {
+                loginPresenterInput.invalidUsername();
+                return;
+            }
+        }
+
+        if (!StringUtil.hasUpperCharacter(loginRequest.user.getPassword())) {
+            loginPresenterInput.invalidPassword();
+            return;
+        }
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constants.API_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        LoginApi loginApi = retrofit.create(LoginApi.class);
+        Call<LoginResponse> call = loginApi.login(loginRequest.user.getUsername(), loginRequest.user.getPassword());
+        call.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                loginPresenterInput.handleLogin(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                loginPresenterInput.invalidCredentials();
+            }
+        });
     }
 
     private boolean validateEmail(String email) {
-        return true;
+        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            return true;
+        }
+        return false;
     }
 
     private boolean validateDocument(String document) {
-        return true;
+        if(DocumentUtil.isValidCPF(document)) {
+            return true;
+        }
+
+        return false;
     }
 }
