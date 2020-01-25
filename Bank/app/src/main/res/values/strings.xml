@@ -3,4 +3,15 @@
     <string name="username">User</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+
+    <!-- UserAccount Shared Preferences -->
+    <string name="user_account_id">user_account_id</string>
+    <string name="user_account_name">user_account_name</string>
+    <string name="user_account_bank_account">user_account_bank_account</string>
+    <string name="user_account_agency">user_account_agency</string>
+    <string name="user_account_balance">user_account_balance</string>
+
+    <!-- Loading -->
+    <string name="loading_title">Loading</string>
+    <string name="loading_message">Please wait...</string>
 </resources>

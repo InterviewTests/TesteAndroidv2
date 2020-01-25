@@ -12,12 +12,13 @@ public class LoginPresenter implements LoginPresenterInput {
 
     public static String TAG = LoginPresenter.class.getSimpleName();
 
-    public WeakReference<LoginActivity> loginActivity;
+    public WeakReference<LoginActivityInput> loginActivity;
 
     @Override
     public void handleLogin(LoginResponse loginResponse) {
         if (loginResponse != null) {
-            Log.d(TAG, loginResponse.toString());
+            loginActivity.get().saveUserAccountSharedPreferences(loginResponse.userAccount);
+            loginActivity.get().nextScreen();
         }
     }
 }

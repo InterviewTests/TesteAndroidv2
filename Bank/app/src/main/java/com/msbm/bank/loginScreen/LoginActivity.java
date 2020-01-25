@@ -2,15 +2,26 @@ package com.msbm.bank.loginScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.msbm.bank.BaseActivity;
 import com.msbm.bank.R;
+import com.msbm.bank.accountDetailScreen.AccountDetailActivity;
 import com.msbm.bank.entities.User;
+import com.msbm.bank.entities.UserAccount;
 
-public class LoginActivity extends AppCompatActivity implements LoginInteractorInput {
+interface LoginActivityInput {
+    void saveUserAccountSharedPreferences(UserAccount userAccount);
+    void nextScreen();
+}
+
+public class LoginActivity extends BaseActivity implements LoginActivityInput {
 
     public static String TAG = LoginActivity.class.getSimpleName();
 
@@ -40,6 +51,8 @@ public class LoginActivity extends AppCompatActivity implements LoginInteractorI
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showProgress(getString(R.string.loading_title), getString(R.string.loading_message));
+
                 User user = new User();
                 user.setUsername(edtUsername.getText().toString());
                 user.setPassword(edtPassword.getText().toString());
@@ -47,13 +60,31 @@ public class LoginActivity extends AppCompatActivity implements LoginInteractorI
                 LoginRequest request = new LoginRequest();
                 request.user = user;
 
-                doLogin(request);
+                loginInteractor.doLogin(request);
             }
         });
     }
 
     @Override
-    public void doLogin(LoginRequest loginRequest) {
-        this.loginInteractor.doLogin(loginRequest);
+    public void saveUserAccountSharedPreferences(UserAccount userAccount) {
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(getString(R.string.user_account_id), userAccount.getUserId());
+        editor.putString(getString(R.string.user_account_id), userAccount.getName());
+        editor.putString(getString(R.string.user_account_id), userAccount.getBankAccount());
+        editor.putString(getString(R.string.user_account_id), userAccount.getAgency());
+        editor.putString(getString(R.string.user_account_id), userAccount.getBalance());
+        editor.commit();
+    }
+
+    @Override
+    public void nextScreen() {
+        dismissProgress();
+
+        Intent intent = new Intent(this, AccountDetailActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+        finish();
     }
 }
