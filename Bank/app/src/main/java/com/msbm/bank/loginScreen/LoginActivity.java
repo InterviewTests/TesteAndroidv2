@@ -1,7 +1,5 @@
 package com.msbm.bank.loginScreen;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -45,30 +43,6 @@ public class LoginActivity extends BaseActivity implements LoginActivityInput {
         bindViews();
 
         LoginConfigurator.INSTANCE.configure(this);
-    }
-
-    private void bindViews() {
-        edtUsername = findViewById(R.id.idUsername);
-        edtUsername.setText("test_user@gmail.com");
-        edtPassword = findViewById(R.id.idPassword);
-        edtPassword.setText("Test@1");
-
-        btnLogin = findViewById(R.id.idButtonLogin);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showProgress(getString(R.string.loading_title), getString(R.string.loading_message));
-
-                User user = new User();
-                user.setUsername(edtUsername.getText().toString());
-                user.setPassword(edtPassword.getText().toString());
-
-                LoginRequest request = new LoginRequest();
-                request.user = user;
-
-                loginInteractor.doLogin(request);
-            }
-        });
     }
 
     @Override
@@ -122,5 +96,29 @@ public class LoginActivity extends BaseActivity implements LoginActivityInput {
     public void invalidCredentials() {
         dismissProgress();
         showAlert(getString(R.string.alert_title_warning), getString(R.string.invalid_credentials));
+    }
+
+    private void bindViews() {
+        edtUsername = findViewById(R.id.idUsername);
+        edtUsername.setText("test_user@gmail.com");
+        edtPassword = findViewById(R.id.idPassword);
+        edtPassword.setText("Test@1");
+
+        btnLogin = findViewById(R.id.idButtonLogin);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showProgress(getString(R.string.loading_title), getString(R.string.loading_message));
+
+                User user = new User();
+                user.setUsername(edtUsername.getText().toString());
+                user.setPassword(edtPassword.getText().toString());
+
+                LoginRequest request = new LoginRequest();
+                request.user = user;
+
+                loginInteractor.doLogin(request);
+            }
+        });
     }
 }
