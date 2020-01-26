@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/idItemStatement"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:id="@+id/idPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pagamento"
+            android:textColor="@color/colorCardHeaders"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/idDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="12/12/2018"
+            android:textColor="@color/colorCardHeaders"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/idDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Conta de Luz"
+            android:textColor="@color/colorCardDescriptions"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/idValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:text="R$1.000,00"
+            android:textColor="@color/colorCardDescriptions"
+            android:textSize="26sp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

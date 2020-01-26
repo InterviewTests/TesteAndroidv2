@@ -7,4 +7,8 @@
     <color name="textButtonColor">#FFFFFF</color>
     <color name="borderColor">#DCE2EE</color>
     <color name="backgroundButton">#3B48EE</color>
+
+    <color name="colorCardHeaders">#FFA8B4C4</color>
+    <color name="colorCardDescriptions">#FF485465</color>
+
 </resources>
