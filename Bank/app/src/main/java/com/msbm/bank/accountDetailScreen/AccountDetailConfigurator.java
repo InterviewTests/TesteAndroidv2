@@ -11,8 +11,8 @@ public enum AccountDetailConfigurator {
         AccountDetailInteractor accountDetailInteractor = new AccountDetailInteractor();
         accountDetailInteractor.accountDetailPresenterInput = accountDetailPresenter;
 
-        if (accountDetailActivity.accountDetailInteractor == null) {
-            accountDetailActivity.accountDetailInteractor = accountDetailInteractor;
+        if (accountDetailActivity.accountDetailInteractorInput == null) {
+            accountDetailActivity.accountDetailInteractorInput = accountDetailInteractor;
         }
     }
 }

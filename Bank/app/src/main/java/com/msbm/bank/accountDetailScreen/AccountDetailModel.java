@@ -16,5 +16,5 @@ class StatementRequest {
 }
 
 class StatementResponse {
-    List<Statement> statements;
+    List<Statement> statementList;
 }
