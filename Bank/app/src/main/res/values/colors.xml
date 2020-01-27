@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3B48EE</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#3B48EE</color>
+
+    <color name="textButtonColor">#FFFFFF</color>
+    <color name="borderColor">#DCE2EE</color>
+    <color name="backgroundButton">#3B48EE</color>
+
+    <color name="colorCardHeaders">#FFA8B4C4</color>
+    <color name="colorCardDescriptions">#FF485465</color>
+
+    <color name="colorRed">#B80000</color>
+    <color name="colorGreen">#169700</color>
+</resources>
