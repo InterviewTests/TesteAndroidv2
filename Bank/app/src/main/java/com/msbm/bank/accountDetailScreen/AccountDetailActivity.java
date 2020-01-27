@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.msbm.bank.BaseActivity;
 import com.msbm.bank.R;
 import com.msbm.bank.entities.Statement;
+import com.msbm.bank.utils.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +95,12 @@ public class AccountDetailActivity extends BaseActivity implements AccountDetail
             holder.txvTitle.setText(statements.get(position).getTitle());
             holder.txvDate.setText(statements.get(position).getDate());
             holder.txvDescription.setText(statements.get(position).getDesc());
-            holder.txvValue.setText(Double.toString(statements.get(position).getValue()));
+            holder.txvValue.setText(StringUtil.getCurrencyValue("R$", statements.get(position).getValue()));
+            if (statements.get(position).getValue() >= 0) {
+                holder.txvValue.setTextColor(getResources().getColor(R.color.colorGreen));
+            } else {
+                holder.txvValue.setTextColor(getResources().getColor(R.color.colorRed));
+            }
         }
 
         @Override

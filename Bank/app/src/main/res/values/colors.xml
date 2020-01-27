@@ -11,4 +11,6 @@
     <color name="colorCardHeaders">#FFA8B4C4</color>
     <color name="colorCardDescriptions">#FF485465</color>
 
+    <color name="colorRed">#B80000</color>
+    <color name="colorGreen">#169700</color>
 </resources>

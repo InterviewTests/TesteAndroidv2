@@ -1,6 +1,9 @@
 package com.msbm.bank.utils;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class StringUtil {
@@ -42,11 +45,36 @@ public class StringUtil {
         char[] charArray = text.toCharArray();
 
         for (char character : charArray) {
-            if(upperCase.containsValue(String.valueOf(character))) {
+            if (upperCase.containsValue(String.valueOf(character))) {
                 return true;
             }
         }
 
         return false;
+    }
+
+    public static String getCurrencyValue(String currencySymbol, double value) {
+        DecimalFormat df = new DecimalFormat("##,###,###,##0.00", new DecimalFormatSymbols(new Locale("pt", "BR")));
+        df.setMinimumFractionDigits(2);
+        df.setParseBigDecimal(true);
+
+        String formattedValue = df.format(value);
+
+        if (value < 0) {
+            String formattedNegative = "";
+            char[] chars = formattedValue.toCharArray();
+
+            for (int i = 0; i < chars.length; i++) {
+                if (i != 0) {
+                    formattedNegative = formattedNegative + chars[i];
+                }
+            }
+
+            formattedValue = "- " + currencySymbol + formattedNegative;
+        } else {
+            formattedValue = currencySymbol + formattedValue;
+        }
+
+        return formattedValue;
     }
 }

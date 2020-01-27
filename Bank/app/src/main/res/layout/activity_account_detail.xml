@@ -13,6 +13,12 @@
         android:paddingEnd="16dp"
         android:paddingBottom="16dp">
 
+        <ImageView
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:src="@drawable/logout"
+            android:layout_alignParentRight="true"/>
+
         <TextView
             android:id="@+id/idName"
             android:layout_width="wrap_content"
