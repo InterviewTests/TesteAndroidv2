@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:paddingStart="16dp"
+        android:paddingTop="32dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp">
+
+        <ImageView
+            android:id="@+id/logout"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:src="@drawable/logout"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/idName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textButtonColor"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/labelConta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idName"
+            android:layout_marginTop="24dp"
+            android:text="Conta"
+            android:textColor="@color/textButtonColor"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/idAccountNumberAgency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/labelConta"
+            android:textColor="@color/textButtonColor"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/labelSaldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idAccountNumberAgency"
+            android:layout_marginTop="24dp"
+            android:text="Saldo"
+            android:textColor="@color/textButtonColor"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/idTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/labelSaldo"
+            android:textColor="@color/textButtonColor"
+            android:textSize="25sp" />
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvwStatement"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

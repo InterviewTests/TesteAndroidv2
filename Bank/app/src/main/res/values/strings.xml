@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Bank</string>
+    <string name="username">User</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+
+    <!-- UserAccount Shared Preferences -->
+    <string name="bank_preferences">bank_preferences</string>
+    <string name="user_account_id">user_account_id</string>
+    <string name="user_account_name">user_account_name</string>
+    <string name="user_account_bank_account">user_account_bank_account</string>
+    <string name="user_account_agency">user_account_agency</string>
+    <string name="user_account_balance">user_account_balance</string>
+    <string name="user_login">user_login</string>
+
+    <!-- Loading -->
+    <string name="loading_title">Loading</string>
+    <string name="loading_message">Please wait...</string>
+    <string name="alert_title_warning">Warning</string>
+    <string name="empty_username">Username is empty</string>
+    <string name="empty_password">Password is empty</string>
+    <string name="invalid_username">Username is invalid. Must be an email or CPF</string>
+    <string name="invalid_password">Password is invalid. At least one upper character</string>
+    <string name="invalid_credentials">Username or password is wrong</string>
+</resources>
