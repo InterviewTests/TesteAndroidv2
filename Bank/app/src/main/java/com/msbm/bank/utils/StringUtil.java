@@ -1,5 +1,7 @@
 package com.msbm.bank.utils;
 
+import android.util.Patterns;
+
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.HashMap;
@@ -99,5 +101,13 @@ public class StringUtil {
         }
 
         return formattedValue;
+    }
+
+    public static boolean validateEmail(String email) {
+        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            return true;
+        }
+
+        return false;
     }
 }

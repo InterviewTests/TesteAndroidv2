@@ -37,7 +37,7 @@ public class LoginInteractor implements LoginInteractorInput {
             return;
         }
 
-        if (isEmail && !validateEmail(loginRequest.user.getUsername())) {
+        if (isEmail && !StringUtil.validateEmail(loginRequest.user.getUsername())) {
             loginPresenterInput.invalidUsername();
             return;
         }
@@ -77,20 +77,5 @@ public class LoginInteractor implements LoginInteractorInput {
                 loginPresenterInput.invalidCredentials();
             }
         });
-    }
-
-    private boolean validateEmail(String email) {
-        if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean validateDocument(String document) {
-        if(DocumentUtil.isValidCPF(document)) {
-            return true;
-        }
-
-        return false;
     }
 }
