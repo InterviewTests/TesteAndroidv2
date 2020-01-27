@@ -1,6 +1,7 @@
 package com.msbm.bank.accountDetailScreen;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.msbm.bank.BaseActivity;
 import com.msbm.bank.R;
 import com.msbm.bank.entities.Statement;
+import com.msbm.bank.utils.DateUtil;
 import com.msbm.bank.utils.StringUtil;
 
 import java.util.ArrayList;
@@ -29,6 +31,8 @@ public class AccountDetailActivity extends BaseActivity implements AccountDetail
 
     protected AccountDetailInteractorInput accountDetailInteractorInput;
 
+    SharedPreferences sharedPref;
+
     private TextView txvName;
     private TextView txvAccountAgency;
     private TextView txvTotal;
@@ -41,6 +45,7 @@ public class AccountDetailActivity extends BaseActivity implements AccountDetail
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_detail);
         getSupportActionBar().hide();
+        sharedPref = this.getSharedPreferences(getString(R.string.bank_preferences), 0);
         bindViews();
 
         AccountDetailConfigurator.INSTANCE.configure(this);
@@ -61,9 +66,19 @@ public class AccountDetailActivity extends BaseActivity implements AccountDetail
     }
 
     private void bindViews() {
+        String name = sharedPref.getString(getString(R.string.user_account_name), "");
+        String agency = sharedPref.getString(getString(R.string.user_account_agency), "");
+        String bankAccount = sharedPref.getString(getString(R.string.user_account_bank_account), "");
+        String balance = sharedPref.getString(getString(R.string.user_account_balance), "0");
+
         txvName = findViewById(R.id.idName);
+        txvName.setText(name);
+
         txvAccountAgency = findViewById(R.id.idAccountNumberAgency);
+        txvAccountAgency.setText(bankAccount +  " / " + StringUtil.formatAccountNumber(agency));
+
         txvTotal = findViewById(R.id.idTotal);
+        txvTotal.setText(StringUtil.getCurrencyValue("R$", Double.parseDouble(balance)));
 
         rvwStatement = findViewById(R.id.rvwStatement);
         adapter = new StatementAdapter();
@@ -93,7 +108,7 @@ public class AccountDetailActivity extends BaseActivity implements AccountDetail
         @Override
         public void onBindViewHolder(@NonNull StatementVH holder, int position) {
             holder.txvTitle.setText(statements.get(position).getTitle());
-            holder.txvDate.setText(statements.get(position).getDate());
+            holder.txvDate.setText(DateUtil.formatDate("dd/MM/yyyy", statements.get(position).getDate()));
             holder.txvDescription.setText(statements.get(position).getDesc());
             holder.txvValue.setText(StringUtil.getCurrencyValue("R$", statements.get(position).getValue()));
             if (statements.get(position).getValue() >= 0) {

@@ -35,11 +35,14 @@ public class LoginActivity extends BaseActivity implements LoginActivityInput {
     private EditText edtPassword;
     private Button btnLogin;
 
+    SharedPreferences sharedPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
+        sharedPref = this.getSharedPreferences(getString(R.string.bank_preferences), 0);
         bindViews();
 
         LoginConfigurator.INSTANCE.configure(this);
@@ -47,15 +50,14 @@ public class LoginActivity extends BaseActivity implements LoginActivityInput {
 
     @Override
     public void saveUserAccountSharedPreferences(UserAccount userAccount) {
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(getString(R.string.user_account_id), userAccount.getUserId());
-        editor.putString(getString(R.string.user_account_id), userAccount.getName());
-        editor.putString(getString(R.string.user_account_id), userAccount.getBankAccount());
-        editor.putString(getString(R.string.user_account_id), userAccount.getAgency());
-        editor.putString(getString(R.string.user_account_id), userAccount.getBalance());
-        editor.commit();
+        editor.putString(getString(R.string.user_account_name), userAccount.getName());
+        editor.putString(getString(R.string.user_account_bank_account), userAccount.getBankAccount());
+        editor.putString(getString(R.string.user_account_agency), userAccount.getAgency());
+        editor.putString(getString(R.string.user_account_balance), userAccount.getBalance());
+
+        editor.apply();
     }
 
     @Override
@@ -99,10 +101,11 @@ public class LoginActivity extends BaseActivity implements LoginActivityInput {
     }
 
     private void bindViews() {
+        String username = sharedPref.getString(getString(R.string.user_login), "");
+
         edtUsername = findViewById(R.id.idUsername);
-        edtUsername.setText("test_user@gmail.com");
+        edtUsername.setText(username);
         edtPassword = findViewById(R.id.idPassword);
-        edtPassword.setText("Test@1");
 
         btnLogin = findViewById(R.id.idButtonLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +116,10 @@ public class LoginActivity extends BaseActivity implements LoginActivityInput {
                 User user = new User();
                 user.setUsername(edtUsername.getText().toString());
                 user.setPassword(edtPassword.getText().toString());
+
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString(getString(R.string.user_login), user.getUsername());
+                editor.apply();
 
                 LoginRequest request = new LoginRequest();
                 request.user = user;

@@ -14,6 +14,7 @@
         android:paddingBottom="16dp">
 
         <ImageView
+            android:id="@+id/logout"
             android:layout_width="27dp"
             android:layout_height="27dp"
             android:src="@drawable/logout"
@@ -23,7 +24,6 @@
             android:id="@+id/idName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jose da Silva Teste"
             android:textColor="@color/textButtonColor"
             android:textSize="25sp" />
 
@@ -42,7 +42,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/labelConta"
-            android:text="2050 / 01.111222-4"
             android:textColor="@color/textButtonColor"
             android:textSize="25sp" />
 
@@ -61,7 +60,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/labelSaldo"
-            android:text="R$1.000,00"
             android:textColor="@color/textButtonColor"
             android:textSize="25sp" />
 

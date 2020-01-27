@@ -77,4 +77,27 @@ public class StringUtil {
 
         return formattedValue;
     }
+
+    public static String formatAccountNumber(String value) {
+        String formattedValue = "";
+
+        if (value.length() == 9) {
+            char[] chars = value.toCharArray();
+
+            for (int i = 0; i < chars.length ; i++) {
+                formattedValue = formattedValue + chars[i];
+                if(i == 1) {
+                    formattedValue = formattedValue + ".";
+                }
+
+                if(i == 7) {
+                    formattedValue = formattedValue + "-";
+                }
+            }
+        } else {
+            formattedValue = value;
+        }
+
+        return formattedValue;
+    }
 }
