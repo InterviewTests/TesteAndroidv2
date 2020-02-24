@@ -3,6 +3,7 @@ package br.com.flaviokreis.santanderv2.di.components
 import br.com.flaviokreis.santanderv2.BankApplication
 import br.com.flaviokreis.santanderv2.di.modules.ActivityModule
 import br.com.flaviokreis.santanderv2.di.modules.AppModule
+import br.com.flaviokreis.santanderv2.di.modules.NetworkModule
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
@@ -12,7 +13,8 @@ import javax.inject.Singleton
     modules = [
         AndroidInjectionModule::class,
         AppModule::class,
-        ActivityModule::class
+        ActivityModule::class,
+        NetworkModule::class
     ]
 )
 interface AppComponent {

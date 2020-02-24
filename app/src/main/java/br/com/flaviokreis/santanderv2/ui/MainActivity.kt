@@ -1,7 +1,7 @@
 package br.com.flaviokreis.santanderv2.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import br.com.flaviokreis.santanderv2.R
 import dagger.android.DispatchingAndroidInjector
