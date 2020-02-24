@@ -1,7 +1,12 @@
 <resources>
-    <string name="app_name">santanderv2</string>
+    <string name="app_name">SantanderV2</string>
+
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="recent">Recentes</string>
 
     <string name="user">Usuário</string>
     <string name="password">Senha</string>
     <string name="login">Acessar</string>
+    <string name="logout">Sair</string>
 </resources>

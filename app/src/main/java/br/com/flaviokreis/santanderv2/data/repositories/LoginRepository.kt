@@ -1,21 +1,20 @@
 package br.com.flaviokreis.santanderv2.data.repositories
 
-import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
+import br.com.flaviokreis.santanderv2.data.model.UserAccount
 import br.com.flaviokreis.santanderv2.data.network.BankService
+import br.com.flaviokreis.santanderv2.data.preferences.LoginPreference
 import br.com.flaviokreis.santanderv2.data.response.LoginResponse
-import com.google.gson.Gson
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class LoginRepository @Inject constructor(
-    private val preferences: SharedPreferences,
+    private val loginPreference: LoginPreference,
     private val bankService: BankService
 ) {
-
-    private val userAccountKey = "user_account"
 
     fun login(user: String, password: String): LiveData<LoginResponse> {
         val result = MediatorLiveData<LoginResponse>()
@@ -31,14 +30,29 @@ class LoginRepository @Inject constructor(
         return result
     }
 
-    private fun saveUserAccount(response: LoginResponse) {
-        if (response.error == null || response.error.code == 0) {
-            val json = Gson().toJson(response.userAccount)
-
-            preferences.edit()
-                .putString(userAccountKey, json)
-                .apply()
-        }
+    fun logout() {
+        loginPreference.clear()
     }
 
+    fun hasUserAccount(): LiveData<Boolean> {
+        val userLiveData = MutableLiveData<Boolean>()
+
+        userLiveData.value = loginPreference.hasUserAccount()
+
+        return userLiveData
+    }
+
+    fun getUserAccount(): LiveData<UserAccount> {
+        val userLiveData = MutableLiveData<UserAccount>()
+
+        userLiveData.value = loginPreference.getUserAccount()
+
+        return userLiveData
+    }
+
+    private fun saveUserAccount(response: LoginResponse) {
+        if (response.error == null || response.error.code == 0) {
+            loginPreference.saveUserAccount(response.userAccount)
+        }
+    }
 }

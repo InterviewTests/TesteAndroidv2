@@ -10,6 +10,10 @@
     <dimen name="button_width">200dp</dimen>
     <dimen name="button_height">60dp</dimen>
 
+    <dimen name="statement_item_height">80dp</dimen>
+    <dimen name="statement_item_radius">4dp</dimen>
+    <dimen name="statement_item_elevation">6dp</dimen>
+
     <dimen name="default_text_size">16sp</dimen>
     <dimen name="hint_text_size">12sp</dimen>
     <dimen name="large_text_size">20sp</dimen>
