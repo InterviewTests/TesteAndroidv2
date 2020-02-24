@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">santanderv2</string>
+
+    <string name="user">Usuário</string>
+    <string name="password">Senha</string>
+    <string name="login">Acessar</string>
 </resources>
