@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/statements_fragment">
+
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="br.com.flaviokreis.santanderv2.ui.fragments.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/login_fragment">
+        <action
+            android:id="@+id/action_login_fragment_to_statements_fragment"
+            app:destination="@id/statements_fragment"
+            app:popUpTo="@id/login_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/statements_fragment"
+        android:name="br.com.flaviokreis.santanderv2.ui.fragments.StatementsFragment"
+        android:label="Statements"
+        tools:layout="@layout/fragment_statement_list">
+        <action
+            android:id="@+id/action_statements_fragment_to_login_fragment"
+            app:destination="@id/login_fragment"
+            app:popUpTo="@id/statements_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>
