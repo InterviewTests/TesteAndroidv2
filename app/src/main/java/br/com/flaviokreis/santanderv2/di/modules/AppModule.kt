@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import br.com.flaviokreis.santanderv2.BankApplication
+import br.com.flaviokreis.santanderv2.data.preferences.LoginPreference
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -21,6 +22,12 @@ class AppModule(private val app: BankApplication) {
     @Singleton
     fun providePreferences(): SharedPreferences {
         return app.getSharedPreferences("bank_account", Context.MODE_PRIVATE)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLoginPreference(preferences: SharedPreferences): LoginPreference {
+        return LoginPreference(preferences)
     }
 
     @Provides

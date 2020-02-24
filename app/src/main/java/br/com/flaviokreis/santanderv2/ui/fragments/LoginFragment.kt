@@ -20,7 +20,8 @@ class LoginFragment : BaseFragment<LoginFragmentBinding>(), Injectable {
         binding.viewModel = viewModel
 
         viewModel.onLoginResponse.observe(viewLifecycleOwner, Observer {
-            // TODO going to statements screen
+            it?.let { findNavController().navigate(
+                LoginFragmentDirections.actionLoginFragmentToStatementsFragment()) }
         })
 
         viewModel.onLoginInProgress.observe(viewLifecycleOwner, Observer {

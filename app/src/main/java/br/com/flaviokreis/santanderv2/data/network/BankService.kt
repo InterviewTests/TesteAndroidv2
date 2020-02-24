@@ -20,6 +20,6 @@ interface BankService {
 
     @GET("statements/{userId}")
     fun statements(
-        @Path("userId") userId: Int
+        @Path("userId") userId: Long
     ): LiveData<ApiResponse<StatementsResponse>>
 }
