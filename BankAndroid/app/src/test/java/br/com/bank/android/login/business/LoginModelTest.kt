@@ -17,7 +17,6 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnit
 
-
 @ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
 class LoginModelTest {

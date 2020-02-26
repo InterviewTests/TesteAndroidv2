@@ -1,6 +1,6 @@
 package br.com.bank.android.home.business
 
-import br.com.bank.android.home.presentation.data.HomeData
+import br.com.bank.android.core.retrofit.stataments.IBankStatamentsService
 
-class HomeModel : HomeData {
+class HomeModel(private val bankStatamentsService: IBankStatamentsService) : HomeBusiness {
 }

@@ -1,6 +1,7 @@
 package br.com.bank.android.core.retrofit
 
 import br.com.bank.android.core.retrofit.auth.BankAuth
+import br.com.bank.android.core.retrofit.stataments.BankStataments
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -28,5 +29,9 @@ object CoreRetrofit {
 
     fun getBankAuth() = getRetrofit().create(
         BankAuth::class.java
+    )
+
+    fun getBankStataments() = getRetrofit().create(
+        BankStataments::class.java
     )
 }
