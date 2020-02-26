@@ -59,6 +59,9 @@ class LoginActivity : BaseActivity(), LoginHandler {
     }
 
     override fun logged(userAccount: UserAccount) {
+        BankPreferences.writePreference(Constants.USER, vieModel.user.get())
+        BankPreferences.writePreference(Constants.PASSWORD, vieModel.password.get())
+
         val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra(UserAccount::class.java.simpleName, userAccount)
         startActivity(intent)

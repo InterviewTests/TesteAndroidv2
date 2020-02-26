@@ -26,7 +26,7 @@ object BankPreferences {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
     }
 
-    fun writePreference(key: String, value: String) {
+    fun writePreference(key: String, value: String?) {
         sharedPreferences?.edit()?.putString(key, value)?.apply()
     }
 

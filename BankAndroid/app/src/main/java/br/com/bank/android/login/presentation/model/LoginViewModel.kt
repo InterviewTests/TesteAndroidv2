@@ -3,8 +3,6 @@ package br.com.bank.android.login.presentation.model
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import br.com.bank.android.exceptions.BusinessError
-import br.com.bank.android.infra.BankPreferences
-import br.com.bank.android.infra.Constants
 import br.com.bank.android.login.business.LoginBusiness
 import br.com.bank.android.login.handler.LoginHandler
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +22,6 @@ class LoginViewModel(
         val password = password.get()?.trim()
 
         try {
-
             loginBusiness.validateUser(user)
             loginBusiness.validatePassword(password)
 
@@ -32,9 +29,6 @@ class LoginViewModel(
 
             loginHandler.setLoading(true)
             val userAccount = loginBusiness.onLogin(user, password)
-
-            BankPreferences.writePreference(Constants.USER, user)
-            BankPreferences.writePreference(Constants.PASSWORD, password)
 
             loginHandler.logged(userAccount)
         } catch (error: BusinessError) {
