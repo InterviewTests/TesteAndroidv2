@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">BankAndroid</string>
+    <string name="app_name">Bank</string>
+    <string name="user">User</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="user_invalid">Usuário inválido</string>
+    <string name="password_invalid">Senha inválida</string>
+    <string name="error_connection">Verifique sua conexão e tente novamente</string>
+    <string name="error_undefined">Ops, tente novamente em instantes</string>
 </resources>

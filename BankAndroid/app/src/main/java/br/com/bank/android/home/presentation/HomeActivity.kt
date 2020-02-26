@@ -22,7 +22,7 @@ class HomeActivity : BaseActivity(), HomeHandler {
         factory = HomeViewModelFactory(HomeModel(), this)
         val homeViewModel =
             ViewModelProvider(this, factory).get(HomeViewModel::class.java)
-        binding.model = homeViewModel
+        binding.viewModel = homeViewModel
     }
 
     override fun onDisconnected() {
