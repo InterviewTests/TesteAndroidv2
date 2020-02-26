@@ -1,6 +1,6 @@
 package br.com.bank.android.login.business
 
-import android.util.Patterns
+import androidx.core.util.PatternsCompat
 import br.com.bank.android.core.retrofit.auth.IBankAuthService
 import br.com.bank.android.exceptions.PasswordInvalid
 import br.com.bank.android.exceptions.UserInvalid
@@ -15,7 +15,7 @@ class LoginModel(private val bankAuthService: IBankAuthService) : LoginBusiness 
         if (user == null) throw UserInvalid()
 
         val isValidCpf = CpfUtil.isValidCpf(user)
-        val isValidEmail = Patterns.EMAIL_ADDRESS.matcher(user).matches()
+        val isValidEmail = PatternsCompat.EMAIL_ADDRESS.matcher(user).matches()
 
         if (!isValidCpf && !isValidEmail) {
             throw UserInvalid()
