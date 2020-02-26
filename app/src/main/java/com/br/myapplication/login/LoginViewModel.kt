@@ -24,6 +24,13 @@ class LoginViewModel(private val loginUserCase: LoginUserCase,
         }
     }
 
+    fun getUser() : UserAccount? {
+        val userString = sharedPreferencesManager.retrieveUser()
+        return userString?.let {
+            return AppHelper.convertStringToObj(it, UserAccount::class.java)
+        }
+    }
+
     fun saveUserPreferences(userAccount: UserAccount) {
         sharedPreferencesManager.saveUser(AppHelper.convertObjToString(userAccount))
     }
@@ -36,7 +43,6 @@ class LoginViewModel(private val loginUserCase: LoginUserCase,
         return matcher.matches()
     }
 
-    // TODO add unit test
     internal  fun checkValidEmail(et: String) = PatternsCompat.EMAIL_ADDRESS.matcher(et).matches()
     internal fun checkCpf(cpf: String): Boolean{
         val cpfClean = cpf.replace(".", "").replace("-", "")

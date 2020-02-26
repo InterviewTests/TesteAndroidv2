@@ -28,6 +28,13 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setupViews()
         observerLoginResponse()
+        checkHasUser()
+    }
+
+    private fun checkHasUser() {
+       viewModel.getUser()?.let {
+           setupHomeActivity()
+       }
     }
 
     private fun observerLoginResponse() {
