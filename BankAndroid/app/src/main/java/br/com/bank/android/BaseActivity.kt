@@ -37,7 +37,8 @@ abstract class BaseActivity : AppCompatActivity() {
 
     fun showErrorDialog(error: BusinessError) {
         val message = error.getMessage(this)
-        MaterialAlertDialogBuilder(this).setMessage(message).show()
+        MaterialAlertDialogBuilder(this).setMessage(message)
+            .setPositiveButton(android.R.string.ok, null).show()
     }
 
     fun showError(textInputLayout: TextInputLayout, message: String) {

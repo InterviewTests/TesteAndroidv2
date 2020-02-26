@@ -7,13 +7,13 @@ import br.com.bank.android.exceptions.UndefinedException
 
 class BankStatamentsService : BaseService(), IBankStatamentsService {
 
-    override suspend fun getStataments(idUser: String): List<StatamentsResponse> {
+    override suspend fun getStataments(idUser: Int): List<StatamentsResponse> {
         try {
             val response = verifyResponse(
                 CoreRetrofit.getBankStataments()
                     .onStatements(idUser)
             )
-            return response ?: throw UndefinedException()
+            return response?.statementList ?: throw UndefinedException()
         } catch (error: Exception) {
             throw onError(error)
         }

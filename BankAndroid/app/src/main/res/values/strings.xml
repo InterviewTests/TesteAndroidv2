@@ -7,4 +7,6 @@
     <string name="password_invalid">Senha inválida</string>
     <string name="error_connection">Verifique sua conexão e tente novamente</string>
     <string name="error_undefined">Ops, tente novamente em instantes</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
 </resources>
