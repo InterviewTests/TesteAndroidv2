@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    app:cardCornerRadius="6dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    app:cardUseCompatPadding="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtTitle"
+            tools:text="Pagamento"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="18dp"
+            android:layout_marginStart="9dp"
+            android:textSize="16sp"
+            android:textColor="@color/color_A8B4C4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtPayment"
+            tools:text="12/12/2018"
+            android:textSize="12sp"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/color_A8B4C4"
+            app:layout_constraintBottom_toBottomOf="@+id/txtTitle"
+            app:layout_constraintTop_toTopOf="@+id/txtTitle"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtDesc"
+            android:layout_marginTop="15dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:paddingBottom="8dp"
+            app:layout_constraintStart_toStartOf="@+id/txtTitle"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle"
+            tools:text="Conta da luz" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtAccount"
+            tools:text="R$ 1.000,00"
+            app:layout_constraintBottom_toBottomOf="@+id/txtDesc"
+            app:layout_constraintTop_toTopOf="@+id/txtDesc"
+            app:layout_constraintEnd_toEndOf="@+id/txtPayment"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="txtLogin">Login</string>
+    <string name="txtPassword">Password</string>
+    <string name="txtUser">User</string>
+    <string name="txtRecents">Recentes</string>
+    <string name="txtBalance">Saldo</string>
+    <string name="txtAccount">Conta</string>
+    <string name="txtInvalidUser">Usuário inválido</string>
+    <string name="txtInvalidPassword">Senha inválida</string>
+</resources>
