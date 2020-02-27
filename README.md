@@ -9,7 +9,6 @@ Avaliação para o Santander, via Accenture
 * Kotlin
 * Junit4
 * Mockito
-* Picasso
 * ViewModel
 * Retrofit 2
 * ConstraintLayout
