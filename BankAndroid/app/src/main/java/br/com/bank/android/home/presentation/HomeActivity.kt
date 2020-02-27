@@ -9,6 +9,7 @@ import br.com.bank.android.R
 import br.com.bank.android.core.retrofit.stataments.BankStatamentsService
 import br.com.bank.android.databinding.ActivityHomeBinding
 import br.com.bank.android.exceptions.BusinessError
+import br.com.bank.android.home.adapter.ListStatamanetsAdapter
 import br.com.bank.android.home.business.HomeBusiness
 import br.com.bank.android.home.business.HomeModel
 import br.com.bank.android.home.presentation.data.Stataments
@@ -59,6 +60,6 @@ class HomeActivity : BaseActivity(), HomeHandler {
     }
 
     override fun onStataments(stataments: List<Stataments>) {
-
+        binding.rvStataments.adapter = ListStatamanetsAdapter(stataments)
     }
 }
