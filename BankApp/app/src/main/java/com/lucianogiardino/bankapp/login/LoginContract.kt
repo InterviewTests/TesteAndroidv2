@@ -11,17 +11,19 @@ interface LoginContract {
 
     interface Presenter{
 
-        fun validate(username: String,password: String)
-
-        interface OnValidateResponse{
-            fun onValidateResponseSuccess(username: String, password: String)
-            fun onValidateResponseFailed(msg: String)
+        fun validateUser(username: String, password: String)
+        interface OnValidateUserResponse{
+            fun onValidateUserResponseSuccess(username: String, password: String)
+            fun onValidateUserResponseFailed(msg: String)
         }
+
         fun login(username: String,password: String)
         interface OnLoginResponse{
             fun onLoginResponseSuccess(userAccount: UserAccount)
             fun onLoginResponseFailed(msg: String)
         }
+
+        fun hasLoggedUser()
 
     }
 }

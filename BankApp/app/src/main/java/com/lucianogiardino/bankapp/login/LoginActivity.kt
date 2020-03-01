@@ -2,25 +2,24 @@ package com.lucianogiardino.bankapp.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.lucianogiardino.bankapp.R
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
-import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
 
-    private val loginPresenter: LoginContract.Presenter by inject { parametersOf(this, applicationContext) }
-
+    private val loginPresenter: LoginContract.Presenter by inject { parametersOf(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        loginPresenter.hasLoggedUser()
+
         btnLogin.setOnClickListener {
-            loginPresenter.validate(etUsername.text.toString(),etPassword.text.toString())
+            loginPresenter.validateUser(etUsername.text.toString(),etPassword.text.toString())
         }
     }
 
@@ -29,7 +28,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun goToStatement() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(this,"LOGOU",Toast.LENGTH_LONG).show()
     }
 }
 

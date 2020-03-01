@@ -1,35 +1,40 @@
 package com.lucianogiardino.bankapp.login
 
-import android.content.Context
-import android.widget.Toast
 import com.lucianogiardino.bankapp.login.domain.model.UserAccount
+import com.lucianogiardino.bankapp.login.domain.usecase.HasLoggedUserUseCase
 import com.lucianogiardino.bankapp.login.domain.usecase.LoginUseCase
-import com.lucianogiardino.bankapp.login.domain.usecase.ValidateUseCase
+import com.lucianogiardino.bankapp.login.domain.usecase.SaveLoggedUserUseCase
+import com.lucianogiardino.bankapp.login.domain.usecase.ValidateUserUseCase
 
 class LoginPresenter(
     view: LoginContract.View,
-    validateUseCase: ValidateUseCase,
+    validateUserUseCase: ValidateUserUseCase,
     loginUseCase: LoginUseCase,
-    applicationContext: Context
-) :
+    hasLoggedUserUseCase: HasLoggedUserUseCase,
+    saveLoggedUserUseCase: SaveLoggedUserUseCase) :
     LoginContract.Presenter, LoginContract.Presenter.OnLoginResponse,
-    LoginContract.Presenter.OnValidateResponse {
+    LoginContract.Presenter.OnValidateUserResponse {
 
     private var view: LoginContract.View = view
-    private var validateUseCase = validateUseCase
+    private var validateUseCase = validateUserUseCase
     private var loginUseCase = loginUseCase
-    private var applicationContext = applicationContext
+    private var hasLoggedUserUseCase = hasLoggedUserUseCase
+    private var saveLoggedUserUseCase = saveLoggedUserUseCase
 
 
-    override fun validate(username: String, password: String) {
+    override fun hasLoggedUser() {
+        var hasUser = hasLoggedUserUseCase.execute();
+        if(hasUser) view.goToStatement()
+    }
+    override fun validateUser(username: String, password: String) {
         validateUseCase.execute(this, username, password)
     }
 
-    override fun onValidateResponseSuccess(username: String, password: String) {
+    override fun onValidateUserResponseSuccess(username: String, password: String) {
         login(username, password)
     }
 
-    override fun onValidateResponseFailed(msg: String) {
+    override fun onValidateUserResponseFailed(msg: String) {
         view.showError(msg)
     }
 
@@ -38,7 +43,8 @@ class LoginPresenter(
     }
 
     override fun onLoginResponseSuccess(userAccount: UserAccount) {
-        Toast.makeText(applicationContext,userAccount.name,Toast.LENGTH_LONG).show()
+        saveLoggedUserUseCase.execute(userAccount)
+        view.goToStatement()
     }
 
     override fun onLoginResponseFailed(msg: String) {
