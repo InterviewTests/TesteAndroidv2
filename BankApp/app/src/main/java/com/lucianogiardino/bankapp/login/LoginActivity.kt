@@ -6,20 +6,21 @@ import android.util.Log
 import android.widget.Toast
 import com.lucianogiardino.bankapp.R
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
 
-    private lateinit var loginPresenter: LoginPresenter
+    private val loginPresenter: LoginContract.Presenter by inject { parametersOf(this, applicationContext) }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        loginPresenter = LoginPresenter(this)
-
         btnLogin.setOnClickListener {
-            loginPresenter.validatePassword(etPassword.text.toString())
+            loginPresenter.validate(etUsername.text.toString(),etPassword.text.toString())
         }
     }
 
@@ -31,3 +32,4 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
+

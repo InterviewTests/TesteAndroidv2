@@ -8,7 +8,7 @@ import retrofit2.http.POST
 
 interface BankApi {
     @FormUrlEncoded
-    @POST("/login")
+    @POST("login")
     fun login(
         @Field("user") user:String,
         @Field("password")  password:String

@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    private const val BASE_URL = "https://bank-app-test.herokuapp.com/api"
+    private const val BASE_URL = "https://bank-app-test.herokuapp.com/api/"
 
     val instance: BankApi by lazy {
         val retrofit = Retrofit.Builder()

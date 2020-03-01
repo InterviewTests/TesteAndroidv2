@@ -1,31 +1,49 @@
 package com.lucianogiardino.bankapp.login
 
-import android.util.Log
+import android.content.Context
+import android.widget.Toast
+import com.lucianogiardino.bankapp.login.domain.model.UserAccount
+import com.lucianogiardino.bankapp.login.domain.usecase.LoginUseCase
+import com.lucianogiardino.bankapp.login.domain.usecase.ValidateUseCase
 
-class LoginPresenter(view: LoginContract.View): LoginContract.Presenter, LoginContract.Presenter.OnLoginResponse{
+class LoginPresenter(
+    view: LoginContract.View,
+    validateUseCase: ValidateUseCase,
+    loginUseCase: LoginUseCase,
+    applicationContext: Context
+) :
+    LoginContract.Presenter, LoginContract.Presenter.OnLoginResponse,
+    LoginContract.Presenter.OnValidateResponse {
 
     private var view: LoginContract.View = view
+    private var validateUseCase = validateUseCase
+    private var loginUseCase = loginUseCase
+    private var applicationContext = applicationContext
 
-    override fun validatePassword(password: String) {
 
-        var regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%!\\-_?&])(?=\\S+$).{1,}".toRegex()
-
-        if(regex.matches(password)){
-            login()
-        }else{
-            view.showError("Formato de senha inválido")
-        }
-
+    override fun validate(username: String, password: String) {
+        validateUseCase.execute(this, username, password)
     }
 
-    override fun login() {
+    override fun onValidateResponseSuccess(username: String, password: String) {
+        login(username, password)
     }
 
-    override fun onLoginResponseSuccess() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onValidateResponseFailed(msg: String) {
+        view.showError(msg)
     }
 
-    override fun onLoginResponseFailed() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun login(username: String, password: String) {
+        loginUseCase.execute(this,username,password)
     }
+
+    override fun onLoginResponseSuccess(userAccount: UserAccount) {
+        Toast.makeText(applicationContext,userAccount.name,Toast.LENGTH_LONG).show()
+    }
+
+    override fun onLoginResponseFailed(msg: String) {
+        view.showError(msg)
+    }
+
+
 }

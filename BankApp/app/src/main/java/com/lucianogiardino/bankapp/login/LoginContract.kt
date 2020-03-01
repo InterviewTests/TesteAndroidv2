@@ -1,5 +1,7 @@
 package com.lucianogiardino.bankapp.login
 
+import com.lucianogiardino.bankapp.login.domain.model.UserAccount
+
 interface LoginContract {
 
     interface View{
@@ -9,12 +11,16 @@ interface LoginContract {
 
     interface Presenter{
 
-        fun validatePassword(password: String)
-        fun login()
+        fun validate(username: String,password: String)
 
+        interface OnValidateResponse{
+            fun onValidateResponseSuccess(username: String, password: String)
+            fun onValidateResponseFailed(msg: String)
+        }
+        fun login(username: String,password: String)
         interface OnLoginResponse{
-            fun onLoginResponseSuccess()
-            fun onLoginResponseFailed()
+            fun onLoginResponseSuccess(userAccount: UserAccount)
+            fun onLoginResponseFailed(msg: String)
         }
 
     }
