@@ -3,6 +3,7 @@ package com.lucianogiardino.bankapp
 import com.lucianogiardino.bankapp.di.appModule
 import com.lucianogiardino.bankapp.domain.model.Statement
 import com.lucianogiardino.bankapp.domain.usecase.FetchStatementUseCase
+import com.lucianogiardino.bankapp.domain.usecase.LogoutUseCase
 import com.lucianogiardino.bankapp.ui.statement.StatementContract
 import com.lucianogiardino.bankapp.ui.statement.StatementPresenter
 import org.junit.After
@@ -24,13 +25,16 @@ class StatementPresenterTest {
     @Mock
     lateinit var fetchStatementUseCase: StatementContract.UseCase.FetchStatement
 
+    @Mock
+    lateinit var logoutUseCase: StatementContract.UseCase.Logout
+
     private lateinit var presenter: StatementPresenter
 
     @Before
     fun setup() {
         startKoin { modules(appModule) }
         MockitoAnnotations.initMocks(this)
-        presenter = StatementPresenter(view, fetchStatementUseCase)
+        presenter = StatementPresenter(view, fetchStatementUseCase,logoutUseCase)
     }
 
     @After

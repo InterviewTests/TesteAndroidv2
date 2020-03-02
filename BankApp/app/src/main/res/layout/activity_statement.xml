@@ -30,6 +30,7 @@
         tools:text="teste" />
     
     <ImageView
+        android:id="@+id/ivLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_logout"

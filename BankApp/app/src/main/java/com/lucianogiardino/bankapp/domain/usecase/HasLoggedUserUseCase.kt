@@ -6,9 +6,7 @@ import com.google.gson.Gson
 import com.lucianogiardino.bankapp.domain.model.User
 import com.lucianogiardino.bankapp.domain.model.UserAccount
 
-class HasLoggedUserUseCase(context: Context) {
-
-    private val context:Context = context
+class HasLoggedUserUseCase(private val context: Context) {
 
     fun execute(): Boolean{
         var privateMode = 0

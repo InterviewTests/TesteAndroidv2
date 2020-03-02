@@ -23,6 +23,7 @@ val appModule = module{
     factory<StatementContract.Presenter> { (view: StatementContract.View) ->
         StatementPresenter(
             view,
+            get(),
             get()
         )
     }
@@ -32,6 +33,11 @@ val appModule = module{
     single<StatementContract.UseCase.FetchStatement> { FetchStatementUseCase() }
     single {
         HasLoggedUserUseCase(
+            androidContext()
+        )
+    }
+    single<StatementContract.UseCase.Logout>{
+        LogoutUseCase(
             androidContext()
         )
     }

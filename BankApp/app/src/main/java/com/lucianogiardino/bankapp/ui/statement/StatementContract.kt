@@ -7,6 +7,7 @@ interface StatementContract {
         fun showError(msg: String)
         fun setupUserData()
         fun setupStatementList(statementList: ArrayList<Statement>)
+        fun goToLogin()
     }
 
     interface Presenter {
@@ -16,11 +17,16 @@ interface StatementContract {
             fun onFetchStatementResponseSuccess(statementList: ArrayList<Statement>)
             fun onFetchStatementResponseFailed(msg: String)
         }
+
+        fun logout()
     }
 
     interface UseCase{
         interface FetchStatement{
             fun execute(listener: StatementContract.Presenter.OnFetchStatementResponse)
+        }
+        interface Logout{
+            fun execute()
         }
 
     }

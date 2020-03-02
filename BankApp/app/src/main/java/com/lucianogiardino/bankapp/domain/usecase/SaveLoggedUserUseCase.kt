@@ -6,9 +6,7 @@ import com.google.gson.Gson
 import com.lucianogiardino.bankapp.domain.model.User
 import com.lucianogiardino.bankapp.domain.model.UserAccount
 
-class SaveLoggedUserUseCase(context: Context) {
-
-    private val context = context
+class SaveLoggedUserUseCase(private val context: Context) {
 
     fun execute(userAccount: UserAccount){
         var privateMode = 0
