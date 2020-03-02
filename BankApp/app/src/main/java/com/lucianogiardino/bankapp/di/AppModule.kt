@@ -29,7 +29,7 @@ val appModule = module{
 
     single { ValidateUserUseCase() }
     single { LoginUseCase() }
-    single { FetchStatementUseCase() }
+    single<StatementContract.UseCase.FetchStatement> { FetchStatementUseCase() }
     single {
         HasLoggedUserUseCase(
             androidContext()

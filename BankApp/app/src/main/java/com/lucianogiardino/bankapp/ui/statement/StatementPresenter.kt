@@ -1,11 +1,12 @@
 package com.lucianogiardino.bankapp.ui.statement
 
+import android.util.Log
 import com.lucianogiardino.bankapp.domain.model.Statement
 import com.lucianogiardino.bankapp.domain.usecase.FetchStatementUseCase
 
 class StatementPresenter(
     private var view: StatementContract.View,
-    private var fetchStatementUseCase: FetchStatementUseCase
+    private var fetchStatementUseCase: StatementContract.UseCase.FetchStatement
 ) : StatementContract.Presenter, StatementContract.Presenter.OnFetchStatementResponse {
 
     override fun fetchStatement() {
@@ -13,7 +14,7 @@ class StatementPresenter(
     }
 
     override fun onFetchStatementResponseSuccess(statementList: ArrayList<Statement>) {
-        statementList.get(0).title
+        view.setupStatementList(statementList)
     }
 
     override fun onFetchStatementResponseFailed(msg: String) {

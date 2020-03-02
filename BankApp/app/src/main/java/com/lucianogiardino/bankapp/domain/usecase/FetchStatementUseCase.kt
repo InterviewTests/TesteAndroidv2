@@ -8,8 +8,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FetchStatementUseCase {
-    fun execute(listener: StatementContract.Presenter.OnFetchStatementResponse){
+class FetchStatementUseCase : StatementContract.UseCase.FetchStatement{
+    override fun execute(listener: StatementContract.Presenter.OnFetchStatementResponse){
         RetrofitClient.instance.fetchStatement(User.userId).enqueue(
             object: Callback<StatementResponse> {
                 override fun onFailure(call: Call<StatementResponse>, t: Throwable) {

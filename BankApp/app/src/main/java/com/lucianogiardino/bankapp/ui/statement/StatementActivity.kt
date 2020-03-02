@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.lucianogiardino.bankapp.R
+import com.lucianogiardino.bankapp.domain.model.Statement
 import com.lucianogiardino.bankapp.domain.model.User
 import kotlinx.android.synthetic.main.activity_statement.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 import java.text.NumberFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class StatementActivity : AppCompatActivity(),
     StatementContract.View {
@@ -31,6 +33,10 @@ class StatementActivity : AppCompatActivity(),
         tvName.text = User.name
         tvAccount.text = accountText
         tvBalance.text = balanceFormated
+    }
+
+    override fun setupStatementList(statementList: ArrayList<Statement>) {
+        Toast.makeText(this,"JAJA RODA", Toast.LENGTH_LONG).show()
     }
 
     override fun showError(msg: String) {
