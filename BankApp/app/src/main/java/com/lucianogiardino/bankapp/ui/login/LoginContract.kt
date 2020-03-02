@@ -26,4 +26,23 @@ interface LoginContract {
         fun hasLoggedUser()
 
     }
+
+    interface UseCase{
+
+        interface ValidateUser{
+            fun execute(listener: Presenter.OnValidateUserResponse, username:String, password: String)
+        }
+
+        interface HasLoggedUser{
+            fun execute(): Boolean
+        }
+
+        interface LoginUser{
+            fun execute(listener: Presenter.OnLoginResponse, username: String, password: String)
+        }
+
+        interface SaveLoggedUser{
+            fun execute(userAccount: UserAccount)
+        }
+    }
 }

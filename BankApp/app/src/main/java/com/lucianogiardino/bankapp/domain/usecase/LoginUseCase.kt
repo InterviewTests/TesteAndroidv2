@@ -7,9 +7,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LoginUseCase {
+class LoginUseCase: LoginContract.UseCase.LoginUser {
 
-    fun execute(listener: LoginContract.Presenter.OnLoginResponse, username: String, password: String){
+    override fun execute(listener: LoginContract.Presenter.OnLoginResponse, username: String, password: String){
 
         RetrofitClient.instance.login(username,password).enqueue(
             object: Callback<LoginResponse>{

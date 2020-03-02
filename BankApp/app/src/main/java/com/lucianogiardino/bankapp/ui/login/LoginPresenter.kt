@@ -8,18 +8,15 @@ import com.lucianogiardino.bankapp.domain.usecase.ValidateUserUseCase
 
 class LoginPresenter(
     private var view: LoginContract.View,
-    private var validateUserUseCase: ValidateUserUseCase,
-    private var loginUseCase: LoginUseCase,
-    private var hasLoggedUserUseCase: HasLoggedUserUseCase,
-    private var saveLoggedUserUseCase: SaveLoggedUserUseCase
+    private var validateUserUseCase: LoginContract.UseCase.ValidateUser,
+    private var loginUseCase: LoginContract.UseCase.LoginUser,
+    private var hasLoggedUserUseCase: LoginContract.UseCase.HasLoggedUser,
+    private var saveLoggedUserUseCase: LoginContract.UseCase.SaveLoggedUser
 ) :
     LoginContract.Presenter, LoginContract.Presenter.OnLoginResponse,
     LoginContract.Presenter.OnValidateUserResponse {
 
-    override fun hasLoggedUser() {
-        var hasUser = hasLoggedUserUseCase.execute();
-        if(hasUser) view.goToStatement()
-    }
+
     override fun validateUser(username: String, password: String) {
         validateUserUseCase.execute(this, username, password)
     }
@@ -43,6 +40,11 @@ class LoginPresenter(
 
     override fun onLoginResponseFailed(msg: String) {
         view.showError(msg)
+    }
+
+    override fun hasLoggedUser() {
+        var hasUser = hasLoggedUserUseCase.execute();
+        if(hasUser) view.goToStatement()
     }
 
 

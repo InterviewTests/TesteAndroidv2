@@ -5,10 +5,11 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.lucianogiardino.bankapp.domain.model.User
 import com.lucianogiardino.bankapp.domain.model.UserAccount
+import com.lucianogiardino.bankapp.ui.login.LoginContract
 
-class SaveLoggedUserUseCase(private val context: Context) {
+class SaveLoggedUserUseCase(private val context: Context): LoginContract.UseCase.SaveLoggedUser {
 
-    fun execute(userAccount: UserAccount){
+    override fun execute(userAccount: UserAccount){
         var privateMode = 0
         val prefName = "user"
         val sharedPref: SharedPreferences = context.getSharedPreferences(prefName, privateMode)

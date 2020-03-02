@@ -28,21 +28,25 @@ val appModule = module{
         )
     }
 
-    single { ValidateUserUseCase() }
-    single { LoginUseCase() }
+    single<LoginContract.UseCase.ValidateUser> { ValidateUserUseCase() }
+    single<LoginContract.UseCase.LoginUser> { LoginUseCase() }
+
     single<StatementContract.UseCase.FetchStatement> { FetchStatementUseCase() }
-    single {
+
+    single<LoginContract.UseCase.HasLoggedUser> {
         HasLoggedUserUseCase(
             androidContext()
         )
     }
-    single<StatementContract.UseCase.Logout>{
-        LogoutUseCase(
+
+    single<LoginContract.UseCase.SaveLoggedUser> {
+        SaveLoggedUserUseCase(
             androidContext()
         )
     }
-    single {
-        SaveLoggedUserUseCase(
+
+    single<StatementContract.UseCase.Logout>{
+        LogoutUseCase(
             androidContext()
         )
     }

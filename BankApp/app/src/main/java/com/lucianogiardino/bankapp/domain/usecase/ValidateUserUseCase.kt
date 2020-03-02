@@ -2,9 +2,9 @@ package com.lucianogiardino.bankapp.domain.usecase
 
 import com.lucianogiardino.bankapp.ui.login.LoginContract
 
-class ValidateUserUseCase {
+class ValidateUserUseCase : LoginContract.UseCase.ValidateUser{
 
-    fun execute(listener: LoginContract.Presenter.OnValidateUserResponse, username:String, password: String) {
+    override fun execute(listener: LoginContract.Presenter.OnValidateUserResponse, username:String, password: String) {
 
         var regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#\$%!\\-_?&])(?=\\S+$).{1,}".toRegex()
 
