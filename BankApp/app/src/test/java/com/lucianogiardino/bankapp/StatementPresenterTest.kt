@@ -66,4 +66,13 @@ class StatementPresenterTest {
 
     }
 
+    @Test
+    fun logoutTest() {
+
+        presenter.logout()
+        Mockito.verify(logoutUseCase).execute()
+        Mockito.verify(view).goToLogin()
+
+    }
+
 }
