@@ -3,6 +3,8 @@ package com.lucianogiardino.bankapp.ui.statement
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.lucianogiardino.bankapp.R
 import com.lucianogiardino.bankapp.domain.model.Statement
 import com.lucianogiardino.bankapp.domain.model.User
@@ -36,7 +38,10 @@ class StatementActivity : AppCompatActivity(),
     }
 
     override fun setupStatementList(statementList: ArrayList<Statement>) {
-        Toast.makeText(this,"JAJA RODA", Toast.LENGTH_LONG).show()
+        var recyclerView:RecyclerView = rvStatement
+        recyclerView.adapter = StatementAdapter(statementList, this)
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
+        recyclerView.layoutManager = layoutManager
     }
 
     override fun showError(msg: String) {

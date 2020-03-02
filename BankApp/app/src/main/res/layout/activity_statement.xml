@@ -27,7 +27,7 @@
         android:layout_marginTop="@dimen/content_padding"
         app:layout_constraintTop_toTopOf="@+id/vBackground"
         app:layout_constraintStart_toStartOf="@+id/vBackground"
-        android:text="teste" />
+        tools:text="teste" />
     
     <ImageView
         android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
         android:textColor="@android:color/white"
         app:layout_constraintTop_toBottomOf="@+id/tvLabelAccount"
         app:layout_constraintStart_toStartOf="@+id/tvName"
-        android:text="2050 / 01.111222-4" />
+        tools:text="2050 / 01.111222-4" />
 
 
     <TextView
@@ -79,7 +79,7 @@
         android:textColor="@android:color/white"
         app:layout_constraintTop_toBottomOf="@+id/tvLabelBalance"
         app:layout_constraintStart_toStartOf="@+id/tvName"
-        android:text="R$ 1.000,00" />
+        tools:text="R$ 1.000,00" />
 
 
     <View
@@ -90,6 +90,27 @@
         app:layout_constraintTop_toBottomOf="@id/tvBalance"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="@dimen/content_padding"/>
+
+    <TextView
+        android:id="@+id/tvRecents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/greyDark"
+        android:layout_marginTop="@dimen/content_padding"
+        android:layout_marginStart="@dimen/content_padding"
+        android:layout_marginBottom="@dimen/content_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vSpace"
+        android:text="@string/recents" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvStatement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvRecents"
+        app:layout_constraintStart_toStartOf="parent"
+       />
 
 
 
