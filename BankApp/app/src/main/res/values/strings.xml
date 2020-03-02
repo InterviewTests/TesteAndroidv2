@@ -3,4 +3,6 @@
     <string name="account">Conta</string>
     <string name="balance">Saldo</string>
     <string name="recents">Recentes</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>
