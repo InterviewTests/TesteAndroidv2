@@ -1,8 +1,8 @@
-package com.lucianogiardino.bankapp.login.domain.usecase
+package com.lucianogiardino.bankapp.domain.usecase
 
 import com.lucianogiardino.bankapp.data.RetrofitClient
-import com.lucianogiardino.bankapp.login.LoginContract
-import com.lucianogiardino.bankapp.login.domain.model.LoginResponse
+import com.lucianogiardino.bankapp.ui.login.LoginContract
+import com.lucianogiardino.bankapp.domain.model.LoginResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

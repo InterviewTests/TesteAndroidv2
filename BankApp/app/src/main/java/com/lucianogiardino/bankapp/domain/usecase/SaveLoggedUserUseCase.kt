@@ -1,10 +1,10 @@
-package com.lucianogiardino.bankapp.login.domain.usecase
+package com.lucianogiardino.bankapp.domain.usecase
 
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
-import com.lucianogiardino.bankapp.login.domain.model.User
-import com.lucianogiardino.bankapp.login.domain.model.UserAccount
+import com.lucianogiardino.bankapp.domain.model.User
+import com.lucianogiardino.bankapp.domain.model.UserAccount
 
 class SaveLoggedUserUseCase(context: Context) {
 

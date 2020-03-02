@@ -1,25 +1,45 @@
 package com.lucianogiardino.bankapp.di
 
-import android.content.SharedPreferences
-import com.lucianogiardino.bankapp.login.LoginContract
-import com.lucianogiardino.bankapp.login.LoginPresenter
-import com.lucianogiardino.bankapp.login.domain.usecase.HasLoggedUserUseCase
-import com.lucianogiardino.bankapp.login.domain.usecase.LoginUseCase
-import com.lucianogiardino.bankapp.login.domain.usecase.SaveLoggedUserUseCase
-import com.lucianogiardino.bankapp.login.domain.usecase.ValidateUserUseCase
+import com.lucianogiardino.bankapp.domain.usecase.*
+import com.lucianogiardino.bankapp.ui.login.LoginContract
+import com.lucianogiardino.bankapp.ui.login.LoginPresenter
+import com.lucianogiardino.bankapp.ui.statement.StatementContract
+import com.lucianogiardino.bankapp.ui.statement.StatementPresenter
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 val appModule = module{
 
     factory<LoginContract.Presenter> { (view: LoginContract.View) ->
-        LoginPresenter(view, get(), get(),get(),get())
+        LoginPresenter(
+            view,
+            get(),
+            get(),
+            get(),
+            get()
+        )
      }
+
+    factory<StatementContract.Presenter> { (view: StatementContract.View) ->
+        StatementPresenter(
+            view,
+            get()
+        )
+    }
 
     single { ValidateUserUseCase() }
     single { LoginUseCase() }
-    single {HasLoggedUserUseCase(androidContext())}
-    single {SaveLoggedUserUseCase(androidContext())}
+    single { FetchStatementUseCase() }
+    single {
+        HasLoggedUserUseCase(
+            androidContext()
+        )
+    }
+    single {
+        SaveLoggedUserUseCase(
+            androidContext()
+        )
+    }
 
 
 

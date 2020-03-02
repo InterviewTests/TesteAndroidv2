@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/content_padding"
-        tools:context=".login.LoginActivity">
+        tools:context=".ui.login.LoginActivity">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivLogo"

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BankApp</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
 </resources>

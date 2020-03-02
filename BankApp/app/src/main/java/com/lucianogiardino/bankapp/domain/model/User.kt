@@ -1,4 +1,4 @@
-package com.lucianogiardino.bankapp.login.domain.model
+package com.lucianogiardino.bankapp.domain.model
 
 import com.google.gson.annotations.SerializedName
 

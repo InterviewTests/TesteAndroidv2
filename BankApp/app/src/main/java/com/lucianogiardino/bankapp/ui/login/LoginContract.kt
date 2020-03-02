@@ -1,6 +1,6 @@
-package com.lucianogiardino.bankapp.login
+package com.lucianogiardino.bankapp.ui.login
 
-import com.lucianogiardino.bankapp.login.domain.model.UserAccount
+import com.lucianogiardino.bankapp.domain.model.UserAccount
 
 interface LoginContract {
 

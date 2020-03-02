@@ -1,4 +1,4 @@
-package com.lucianogiardino.bankapp.login.domain.model
+package com.lucianogiardino.bankapp.domain.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -10,10 +10,10 @@ data class UserAccount (
     @SerializedName("name")
     val name : String,
 
-    @SerializedName("bankAccount")
+    @SerializedName("agency")
     val bankAccount : Int,
 
-    @SerializedName("agency")
+    @SerializedName("bankAccount")
     val agency : Int,
 
     @SerializedName("balance")

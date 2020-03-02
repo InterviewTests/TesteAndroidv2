@@ -1,6 +1,6 @@
-package com.lucianogiardino.bankapp.login.domain.usecase
+package com.lucianogiardino.bankapp.domain.usecase
 
-import com.lucianogiardino.bankapp.login.LoginContract
+import com.lucianogiardino.bankapp.ui.login.LoginContract
 
 class ValidateUserUseCase {
 
