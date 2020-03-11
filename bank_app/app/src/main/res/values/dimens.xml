@@ -6,5 +6,7 @@
 
     <dimen name="vertical_toolbar_margin">28dp</dimen>
     <dimen name="details_toolbar_textSize_big">25sp</dimen>
-
+    <dimen name="statement_vertical_space">8dp</dimen>
+    <dimen name="statement_text_small">12sp</dimen>
+    <dimen name="statement_text_big">20sp</dimen>
 </resources>

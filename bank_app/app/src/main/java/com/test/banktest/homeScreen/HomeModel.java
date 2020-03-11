@@ -1,17 +1,16 @@
 package com.test.banktest.homeScreen;
 
+import com.test.banktest.model.StatementViewModel;
+import com.test.banktest.model.UserModel;
+import com.test.banktest.model.UserViewModel;
+
+import java.util.ArrayList;
+
 public class HomeModel {
 }
 
 class HomeViewModel {
-    //filter to have only the needed data
-
+    public UserViewModel user;
+    public ArrayList<StatementViewModel> statementList;
 }
 
-class HomeRequest {
-
-}
-
-class HomeResponse {
-
-}

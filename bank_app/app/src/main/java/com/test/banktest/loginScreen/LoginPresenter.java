@@ -5,7 +5,6 @@ import java.lang.ref.WeakReference;
 
 interface LoginPresenterInput {
     public void presentLoginData(LoginResponse response);
-
     public void presentLastUser(LoginResponse response);
 }
 

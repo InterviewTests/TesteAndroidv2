@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity
     private TextInputEditText edtUser;
     private TextInputLayout inputPassword;
     private TextInputEditText edtPassword;
-    private AppCompatButton btLogin;
+    private Button btLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

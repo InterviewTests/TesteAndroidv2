@@ -33,13 +33,16 @@ public class ServiceWorker implements ServiceWorkerInput{
                if(response.isSuccessful()){
                    listener.onSuccess(response.body());
                } else {
-                  listener.onFailure(response.body(),new Exception(""));
+                  listener.onFailure(response.body());
                }
            }
 
            @Override
            public void onFailure(Call<LoginResponse> call, Throwable t) {
-               listener.onFailure(new LoginResponse(),new Exception(""));
+               LoginResponse response = new LoginResponse();
+               response.error = new ServiceError();
+               response.error.message = t.getMessage();
+               listener.onFailure(response);
            }
        });
     }
@@ -52,13 +55,16 @@ public class ServiceWorker implements ServiceWorkerInput{
                 if(response.isSuccessful()){
                     listener.onSuccess(response.body());
                 } else {
-                    listener.onFailure(response.body(),new Exception(""));
+                    listener.onFailure(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<HomeResponse> call, Throwable t) {
-                listener.onFailure(new HomeResponse(),new Exception(""));
+                HomeResponse response = new HomeResponse();
+                response.error = new ServiceError();
+                response.error.message = t.getMessage();
+                listener.onFailure(response);
             }
         });
     }

@@ -51,7 +51,7 @@ public class LoginInteractor implements LoginInteractorInput {
                 }
 
                 @Override
-                public void onFailure(LoginResponse response, Throwable t) {
+                public void onFailure(LoginResponse response) {
                     output.presentLoginData(response);
                 }
             });
