@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".loginScreen.LoginActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <ImageView
         android:id="@+id/appCompatImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,6 +31,7 @@
         app:layout_constraintVertical_bias="0.40">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -49,12 +50,13 @@
         app:layout_constraintTop_toBottomOf="@id/inputUser">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/containedButton"
+        android:id="@+id/btLogin"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
