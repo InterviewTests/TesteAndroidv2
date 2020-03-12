@@ -1,5 +1,6 @@
 package com.test.banktest.homeScreen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -85,6 +86,8 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public void logout() {
+        Intent intent = this.router.navigateToLogin();
+        this.startActivity(intent);
         this.finish();
     }
 
@@ -97,12 +100,14 @@ public class HomeActivity extends AppCompatActivity
             public TextView txtDate;
             public TextView txtDesc;
             public TextView txtValue;
-            public MyViewHolder(ViewGroup vg) {
+            public MyViewHolder(View vg, int viewType) {
                 super(vg);
-                txtTitle = vg.findViewById(R.id.txtTitle);
-                txtDate = vg.findViewById(R.id.txtDate);
-                txtDesc = vg.findViewById(R.id.txtDesc);
-                txtValue = vg.findViewById(R.id.txtValue);
+                if(viewType == 1) {
+                    txtTitle = vg.findViewById(R.id.txtTitle);
+                    txtDate = vg.findViewById(R.id.txtDate);
+                    txtDesc = vg.findViewById(R.id.txtDesc);
+                    txtValue = vg.findViewById(R.id.txtValue);
+                }
             }
         }
 
@@ -110,28 +115,41 @@ public class HomeActivity extends AppCompatActivity
             this.list = statementList;
         }
 
+        @Override
+        public int getItemViewType(int position) {
+            return position == 0 ? 0 : 1;
+        }
+
         @NonNull
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            ViewGroup v = (ViewGroup) LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_statement, parent, false);
-            MyViewHolder vh = new MyViewHolder(v);
+            View v = null;
+            if(viewType == 0){
+                v = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.item_statement_recentes, parent, false);
+            } else {
+                v = LayoutInflater.from(parent.getContext())
+                        .inflate(R.layout.item_statement, parent, false);
+            }
+            MyViewHolder vh = new MyViewHolder(v,viewType);
             return vh;
         }
 
 
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-            StatementViewModel st = list.get(position);
-            MyViewHolder myHolder = (MyViewHolder) holder;
-            myHolder.txtTitle.setText(st.title);
-            myHolder.txtDate.setText(st.date);
-            myHolder.txtDesc.setText(st.desc);
-            myHolder.txtValue.setText(st.value);
+            if(getItemViewType(position) == 1){
+                StatementViewModel st = list.get(position-1);
+                MyViewHolder myHolder = (MyViewHolder) holder;
+                myHolder.txtTitle.setText(st.title);
+                myHolder.txtDate.setText(st.date);
+                myHolder.txtDesc.setText(st.desc);
+                myHolder.txtValue.setText(st.value);
+            }
         }
 
         @Override
         public int getItemCount() {
-            return this.list.size();
+            return this.list.size() + 1;
         }
     }
 }

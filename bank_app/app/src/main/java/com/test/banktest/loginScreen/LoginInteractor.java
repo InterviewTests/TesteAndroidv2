@@ -37,6 +37,10 @@ public class LoginInteractor implements LoginInteractorInput {
         return aPreferenceWorker;
     }
 
+    public void setServiceWorker(ServiceWorkerInput aServiceWorker) {
+        this.aServiceWorker = aServiceWorker;
+    }
+
     @Override
     public void login(LoginRequest request) {
         aLoginWorkerInput = getLoginWorkerInput();
@@ -52,6 +56,8 @@ public class LoginInteractor implements LoginInteractorInput {
 
                 @Override
                 public void onFailure(LoginResponse response) {
+                    response.isPasswordValid = true;
+                    response.isUserValid = true;
                     output.presentLoginData(response);
                 }
             });

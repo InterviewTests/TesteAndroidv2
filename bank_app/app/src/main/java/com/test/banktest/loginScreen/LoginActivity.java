@@ -2,7 +2,7 @@ package com.test.banktest.loginScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.test.banktest.R;
+import com.test.banktest.util.TextUtils;
 
 
 interface LoginActivityInput {
@@ -26,11 +27,11 @@ public class LoginActivity extends AppCompatActivity
     LoginInteractorInput output;
     LoginRouter router;
 
-    private TextInputLayout inputUser;
-    private TextInputEditText edtUser;
-    private TextInputLayout inputPassword;
-    private TextInputEditText edtPassword;
-    private Button btLogin;
+    TextInputLayout inputUser;
+    TextInputEditText edtUser;
+    TextInputLayout inputPassword;
+    TextInputEditText edtPassword;
+    Button btLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +60,19 @@ public class LoginActivity extends AppCompatActivity
                 request.context = LoginActivity.this;
                 request.user = LoginActivity.this.edtUser.getText().toString();
                 request.password = LoginActivity.this.edtPassword.getText().toString();
+
+                setFormEnabled(false);
+
                 output.login(request);
             }
         });
+    }
+
+    public void setFormEnabled(boolean enabled){
+        edtPassword.setEnabled(enabled);
+        edtUser.setEnabled(enabled);
+        btLogin.setEnabled(enabled);
+        btLogin.setText(enabled ? R.string.login : R.string.pleaseWait);
     }
 
     @Override
@@ -76,15 +87,19 @@ public class LoginActivity extends AppCompatActivity
 
         if(viewModel.userAccount != null){
             edtPassword.setText(null);
+            setFormEnabled(true);
             Intent intent = router.navigateToSomeWhere(0);
             router.passUserToNextScene(viewModel.userAccount,intent);
             this.startActivity(intent);
+            this.finish();
         } else {
             inputUser.setError(viewModel.userError);
             inputUser.setErrorEnabled(!TextUtils.isEmpty(viewModel.userError));
 
             inputPassword.setError(viewModel.passwordError);
             inputPassword.setErrorEnabled(!TextUtils.isEmpty(viewModel.passwordError));
+
+            setFormEnabled(true);
         }
     }
 }

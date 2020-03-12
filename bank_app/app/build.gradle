@@ -12,11 +12,10 @@ android {
     defaultConfig {
         applicationId "com.test.banktest"
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -26,7 +25,13 @@ android {
         }
     }
 
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -37,6 +42,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-jackson:2.7.2'
     implementation 'com.google.android.material:material:1.1.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation 'org.robolectric:robolectric:4.0'
+    androidTestImplementation 'junit:junit:4.12'
 }

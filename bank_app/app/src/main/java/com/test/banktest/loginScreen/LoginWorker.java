@@ -1,6 +1,7 @@
 package com.test.banktest.loginScreen;
 
-import android.text.TextUtils;
+
+import com.test.banktest.util.TextUtils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

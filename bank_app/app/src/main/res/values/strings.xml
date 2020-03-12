@@ -5,4 +5,6 @@
     <string name="password">Password</string>
     <string name="balance">Saldo</string>
     <string name="account">Conta</string>
+    <string name="pleaseWait">Aguarde...</string>
+    <string name="recentes">Recentes</string>
 </resources>
