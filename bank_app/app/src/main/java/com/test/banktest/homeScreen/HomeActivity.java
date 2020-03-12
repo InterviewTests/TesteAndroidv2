@@ -2,11 +2,9 @@ package com.test.banktest.homeScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -75,7 +73,6 @@ public class HomeActivity extends AppCompatActivity
         });
     }
 
-
     @Override
     public void displayHomeData(HomeViewModel viewModel) {
         this.txtName.setText(viewModel.user.name);
@@ -126,7 +123,7 @@ public class HomeActivity extends AppCompatActivity
             View v = null;
             if(viewType == 0){
                 v = LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.item_statement_recentes, parent, false);
+                        .inflate(R.layout.item_statement_recents, parent, false);
             } else {
                 v = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.item_statement, parent, false);
