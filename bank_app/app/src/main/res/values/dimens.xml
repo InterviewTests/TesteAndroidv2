@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="vertical_margin">16dp</dimen>
+    <dimen name="horizontal_margin">16dp</dimen>
+    <dimen name="toolbar_height">200dp</dimen>
+
+    <dimen name="vertical_toolbar_margin">28dp</dimen>
+    <dimen name="details_toolbar_textSize_big">25sp</dimen>
+    <dimen name="statement_vertical_space">8dp</dimen>
+    <dimen name="statement_text_small">12sp</dimen>
+    <dimen name="statement_text_big">20sp</dimen>
+</resources>
