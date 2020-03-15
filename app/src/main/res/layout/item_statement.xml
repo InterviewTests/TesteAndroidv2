@@ -6,12 +6,12 @@
     android:layout_margin="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:padding="12dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="12dp">
 
         <TextView
-            android:id="@+id/tipo_movimentacao"
+            android:id="@+id/statementTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pagamento"
@@ -20,34 +20,34 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/descricao_movimentacao"
-            android:layout_marginTop="8dp"
+            android:id="@+id/statementDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="Conta de luz"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/valor_movimentacao" />
+            app:layout_constraintBottom_toBottomOf="@+id/statementValue"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/data_movimentacao"
+            android:id="@+id/statementDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12/12/2019"
             android:textSize="10sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/tipo_movimentacao" />
+            app:layout_constraintBottom_toBottomOf="@+id/statementTitle"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/valor_movimentacao"
-            android:layout_marginTop="8dp"
+            android:id="@+id/statementValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="R$1.000,00"
             android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tipo_movimentacao"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/statementTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

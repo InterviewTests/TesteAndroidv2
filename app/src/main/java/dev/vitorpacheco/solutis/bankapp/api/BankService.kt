@@ -1,5 +1,6 @@
 package dev.vitorpacheco.solutis.bankapp.api
 
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,9 +19,12 @@ class BankService {
                 .addInterceptor(logging)
                 .build()
 
+            val gson = GsonBuilder()
+                .create()
+
             val retrofit = Retrofit.Builder()
                 .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl("https://bank-app-test.herokuapp.com/api/")
                 .build()
 

@@ -1,8 +1,10 @@
 package dev.vitorpacheco.solutis.bankapp.api
 
 import dev.vitorpacheco.solutis.bankapp.loginScreen.LoginResponse
+import dev.vitorpacheco.solutis.bankapp.statementsScreen.StatementsResponse
 import retrofit2.Call
 import retrofit2.http.*
+
 
 interface BankApi {
 
@@ -10,8 +12,8 @@ interface BankApi {
     @POST("login")
     fun login(@Field("user") user: String, @Field("password") password: String): Call<LoginResponse>
 
-    @FormUrlEncoded
     @GET("statements/{userId}")
-    fun listStatements(@Path("userId") userId: Int): Call<Any>
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    fun listStatements(@Path("userId") userId: Int): Call<StatementsResponse>
 
 }

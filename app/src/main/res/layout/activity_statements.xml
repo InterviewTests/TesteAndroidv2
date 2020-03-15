@@ -3,9 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/statements"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".statementsScreen.StatementsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -28,7 +29,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/titulo_conta"
+                    android:id="@+id/accountTitle"
                     android:layout_margin="32dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -38,33 +39,33 @@
                     android:textColor="#fff"/>
 
                 <TextView
-                    android:id="@+id/valor_conta"
+                    android:id="@+id/accountValue"
                     android:layout_marginTop="6dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/titulo_conta"
-                    app:layout_constraintStart_toStartOf="@+id/titulo_conta"
+                    app:layout_constraintTop_toBottomOf="@+id/accountTitle"
+                    app:layout_constraintStart_toStartOf="@+id/accountTitle"
                     android:text="2050 / 01.111222-4"
                     android:textSize="20sp"
                     android:textColor="#fff"/>
 
                 <TextView
-                    android:id="@+id/titulo_saldo"
+                    android:id="@+id/balanceTitle"
                     android:layout_marginTop="16dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/valor_conta"
-                    app:layout_constraintStart_toStartOf="@+id/titulo_conta"
+                    app:layout_constraintTop_toBottomOf="@+id/accountValue"
+                    app:layout_constraintStart_toStartOf="@+id/accountTitle"
                     android:text="@string/saldo"
                     android:textColor="#fff"/>
 
                 <TextView
-                    android:id="@+id/valor_saldo"
+                    android:id="@+id/balanceValue"
                     android:layout_marginTop="6dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/titulo_saldo"
-                    app:layout_constraintStart_toStartOf="@+id/titulo_conta"
+                    app:layout_constraintTop_toBottomOf="@+id/balanceTitle"
+                    app:layout_constraintStart_toStartOf="@+id/accountTitle"
                     android:text="R$1.000,00"
                     android:textSize="20sp"
                     android:textColor="#fff"/>
@@ -93,7 +94,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lista_movimentacoes"
+        android:id="@+id/statementsList"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
