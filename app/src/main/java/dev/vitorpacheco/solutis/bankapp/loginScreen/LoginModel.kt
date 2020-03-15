@@ -3,8 +3,6 @@ package dev.vitorpacheco.solutis.bankapp.loginScreen
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
-data class LoginModel(val user: String? = null, val password: String? = null)
-
 @Parcelize
 data class LoginViewModel(
     val user: String? = null,

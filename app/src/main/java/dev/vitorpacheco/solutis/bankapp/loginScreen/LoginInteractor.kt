@@ -17,17 +17,21 @@ class LoginInteractor : LoginInteractorInput {
     override fun doLogin(request: LoginRequest) {
         loginWorkerInput = LoginWorker()
 
-        BankService.create().login(request.user, request.password).enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                response.body()?.let {
-                    output?.presentLoginData(it)
+        BankService.create().login(request.user, request.password)
+            .enqueue(object : Callback<LoginResponse> {
+                override fun onResponse(
+                    call: Call<LoginResponse>,
+                    response: Response<LoginResponse>
+                ) {
+                    response.body()?.let {
+                        output?.presentLoginData(it)
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                output?.presentLoginData(LoginResponse(error = UserError(t.message)))
-            }
-        })
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    output?.presentLoginData(LoginResponse(error = UserError(t.message)))
+                }
+            })
     }
 
     companion object {
