@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class BankService {
 
     companion object {
-        fun create(): BankApi {
+        fun createService(): BankApi {
             val logging = HttpLoggingInterceptor()
             logging.level = HttpLoggingInterceptor.Level.BODY
             logging.redactHeader("Authorization")

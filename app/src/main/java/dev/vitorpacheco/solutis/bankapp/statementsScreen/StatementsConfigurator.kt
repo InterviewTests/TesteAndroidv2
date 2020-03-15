@@ -1,5 +1,6 @@
 package dev.vitorpacheco.solutis.bankapp.statementsScreen
 
+import dev.vitorpacheco.solutis.bankapp.api.BankService.Companion.createService
 import java.lang.ref.WeakReference
 
 enum class StatementsConfigurator {
@@ -15,6 +16,7 @@ enum class StatementsConfigurator {
 
         val interactor = StatementsInteractor()
         interactor.output = presenter
+        interactor.service = createService()
 
         if (activity.output == null) {
             activity.output = interactor

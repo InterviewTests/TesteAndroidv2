@@ -1,6 +1,6 @@
 package dev.vitorpacheco.solutis.bankapp.statementsScreen
 
-import dev.vitorpacheco.solutis.bankapp.api.BankService
+import dev.vitorpacheco.solutis.bankapp.api.BankApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -11,6 +11,7 @@ interface StatementsInteractorInput {
 
 class StatementsInteractor : StatementsInteractorInput {
 
+    lateinit var service: BankApi
     var output: StatementsPresenterInput? = null
     private var statementsWorkerInput: StatementsWorkerInput? = null
 
@@ -18,7 +19,7 @@ class StatementsInteractor : StatementsInteractorInput {
         statementsWorkerInput = StatementsWorker()
 
         request.userId?.let {
-            BankService.create().listStatements(request.userId)
+            service.listStatements(request.userId)
                 .enqueue(object : Callback<StatementsResponse> {
                     override fun onResponse(
                         call: Call<StatementsResponse>,

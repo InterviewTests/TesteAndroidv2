@@ -40,8 +40,16 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
 
     override fun displayLoginData(viewModel: LoginViewModel) {
         if (viewModel.errorMessage != null) {
-            userFieldLayout.error = viewModel.errorMessage
-            userFieldLayout.isErrorEnabled = !Strings.isNullOrEmpty(viewModel.errorMessage)
+            when (viewModel.errorField) {
+                UserFormFields.PASSWORD -> {
+                    passwordFieldLayout.error = viewModel.errorMessage
+                    passwordFieldLayout.isErrorEnabled = !Strings.isNullOrEmpty(viewModel.errorMessage)
+                }
+                else -> {
+                    userFieldLayout.error = viewModel.errorMessage
+                    userFieldLayout.isErrorEnabled = !Strings.isNullOrEmpty(viewModel.errorMessage)
+                }
+            }
 
             return
         }
