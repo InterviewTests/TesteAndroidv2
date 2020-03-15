@@ -12,8 +12,6 @@ class LoginPresenterUnitTest {
         val loginPresenter = LoginPresenter()
         val loginResponse = LoginResponse()
 
-//        loginResponse.listOfFlights = FlightWorker().futureFlights()
-
         val loginPresenterOutputSpy = LoginPresenterOutputSpy()
         loginPresenter.output = WeakReference(loginPresenterOutputSpy)
 
@@ -23,16 +21,13 @@ class LoginPresenterUnitTest {
     }
 
     @Test
-    fun `presentLoginData com valores válidos o método displayLoginData não deve ser chamado`() {
+    fun `presentLoginData com valores inválidos o método displayLoginData não deve ser chamado`() {
         val loginPresenter = LoginPresenter()
-        val loginResponse = LoginResponse()
-
-//        loginResponse.listOfFlights = null
 
         val loginPresenterOutputSpy = LoginPresenterOutputSpy()
         loginPresenter.output = WeakReference(loginPresenterOutputSpy)
 
-        loginPresenter.presentLoginData(loginResponse)
+        loginPresenter.presentLoginData(null)
 
         assertFalse(loginPresenterOutputSpy.isdisplayLoginMetaDataCalled)
     }

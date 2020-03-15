@@ -1,6 +1,6 @@
 package dev.vitorpacheco.solutis.bankapp.loginScreen
 
-import androidx.test.core.app.ActivityScenario
+import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -15,7 +15,7 @@ class LoginActivityTest {
 
     @Test
     fun test_isActivityInVIew() {
-        val activityScenario = ActivityScenario.launch(LoginActivity::class.java)
+        val activityScenario = launch(LoginActivity::class.java)
 
         onView(withId(R.id.login)).check(matches(isDisplayed()))
     }
