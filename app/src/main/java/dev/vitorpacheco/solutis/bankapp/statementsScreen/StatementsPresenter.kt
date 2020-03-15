@@ -17,7 +17,7 @@ class StatementsPresenter : StatementsPresenterInput {
                 StatementViewModel(
                     title = it.title,
                     desc = it.desc,
-                    date = it.date?.format(),
+                    date = it.date.format(),
                     value = it.value?.format()
                 )
             }
