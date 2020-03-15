@@ -1,5 +1,7 @@
 package dev.vitorpacheco.solutis.bankapp.loginScreen
 
+import com.google.common.base.Strings
+
 interface LoginInteractorInput {
     fun doLogin(request: LoginRequest)
 }
@@ -10,7 +12,7 @@ class LoginInteractor : LoginInteractorInput {
     var worker = LoginWorker()
 
     override fun doLogin(request: LoginRequest) {
-        if (request.user == null) {
+        if (Strings.isNullOrEmpty(request.user)) {
             output?.presentLoginData(
                 LoginResponse(
                     error = UserError(
@@ -22,7 +24,7 @@ class LoginInteractor : LoginInteractorInput {
             return
         }
 
-        if (request.password == null) {
+        if (Strings.isNullOrEmpty(request.password)) {
             output?.presentLoginData(
                 LoginResponse(
                     error = UserError(

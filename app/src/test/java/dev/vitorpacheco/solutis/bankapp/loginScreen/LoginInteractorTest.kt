@@ -39,12 +39,50 @@ class LoginInteractorTest {
     }
 
     @Test
+    fun `test doLogin with empty values`() {
+        val interactor = LoginInteractor()
+        interactor.output = output
+        interactor.worker = worker
+
+        interactor.doLogin(LoginRequest("", ""))
+
+        val expectedResponse = LoginResponse(
+            error = UserError("Campo obrigatório", UserFormFields.USER)
+        )
+
+        verify {
+            output.presentLoginData(expectedResponse)
+        }
+
+        confirmVerified(output)
+    }
+
+    @Test
     fun `test doLogin with null user`() {
         val interactor = LoginInteractor()
         interactor.output = output
         interactor.worker = worker
 
         interactor.doLogin(LoginRequest(null, "123456"))
+
+        val expectedResponse = LoginResponse(
+            error = UserError("Campo obrigatório", UserFormFields.USER)
+        )
+
+        verify {
+            output.presentLoginData(expectedResponse)
+        }
+
+        confirmVerified(output)
+    }
+
+    @Test
+    fun `test doLogin with empty user`() {
+        val interactor = LoginInteractor()
+        interactor.output = output
+        interactor.worker = worker
+
+        interactor.doLogin(LoginRequest("", "123456"))
 
         val expectedResponse = LoginResponse(
             error = UserError("Campo obrigatório", UserFormFields.USER)
@@ -77,16 +115,31 @@ class LoginInteractorTest {
     }
 
     @Test
+    fun `test doLogin with empty password`() {
+        val interactor = LoginInteractor()
+        interactor.output = output
+        interactor.worker = worker
+
+        interactor.doLogin(LoginRequest("test_user", ""))
+
+        val expectedResponse = LoginResponse(
+            error = UserError("Campo obrigatório", UserFormFields.PASSWORD)
+        )
+
+        verify {
+            output.presentLoginData(expectedResponse)
+        }
+
+        confirmVerified(output)
+    }
+
+    @Test
     fun `test doLogin with valid user and password`() {
         val interactor = LoginInteractor()
         interactor.output = output
         interactor.worker = worker
 
         interactor.doLogin(LoginRequest("test_user", "123456"))
-
-//        verify {
-//            output.presentLoginData(any())
-//        }
 
         verify {
             worker.login(LoginRequest("test_user", "123456"), any())
