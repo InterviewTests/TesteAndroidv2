@@ -5,4 +5,5 @@
     <string name="login">Login</string>
     <string name="conta">Conta</string>
     <string name="saldo">Saldo</string>
+    <string name="agencia_conta">%1$s / %2$s</string>
 </resources>

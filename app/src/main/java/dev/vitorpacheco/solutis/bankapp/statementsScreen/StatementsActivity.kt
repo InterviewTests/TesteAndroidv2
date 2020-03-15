@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.idling.CountingIdlingResource
 import com.google.android.material.card.MaterialCardView
 import dev.vitorpacheco.solutis.bankapp.R
+import dev.vitorpacheco.solutis.bankapp.extensions.format
 import dev.vitorpacheco.solutis.bankapp.loginScreen.UserAccount
+import kotlinx.android.synthetic.main.activity_statements.*
 import kotlinx.android.synthetic.main.item_statement.view.*
 
 interface StatementsActivityInput {
@@ -48,6 +50,9 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
         StatementsConfigurator.INSTANCE.configure(this)
 
         userAccount?.userId?.let {
+            accountValue.text = getString(R.string.agencia_conta, userAccount?.bankAccount, userAccount?.agency)
+            balanceValue.text = userAccount?.balance?.format()
+
             val statementsRequest = StatementsRequest(it)
             output?.fetchStatementsData(statementsRequest)
         }
@@ -63,12 +68,12 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
         var TAG = StatementsActivity::class.java.simpleName
     }
 
-    class StatementAdapter(var dataSet: ArrayList<Statement>) :
+    class StatementAdapter(var dataSet: ArrayList<StatementViewModel>) :
         RecyclerView.Adapter<StatementAdapter.StatementViewHolder>() {
 
         class StatementViewHolder(itemView: MaterialCardView) : RecyclerView.ViewHolder(itemView)
 
-        fun updateDataSet(newDataset: ArrayList<Statement>) {
+        fun updateDataSet(newDataset: ArrayList<StatementViewModel>) {
             dataSet = newDataset
             notifyDataSetChanged()
         }
@@ -88,8 +93,8 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
 
             holder.itemView.statementTitle.text = statement.title
             holder.itemView.statementDesc.text = statement.desc
-            holder.itemView.statementDate.text = statement.date.toString()
-            holder.itemView.statementValue.text = statement.value.toString()
+            holder.itemView.statementDate.text = statement.date
+            holder.itemView.statementValue.text = statement.value
         }
 
     }

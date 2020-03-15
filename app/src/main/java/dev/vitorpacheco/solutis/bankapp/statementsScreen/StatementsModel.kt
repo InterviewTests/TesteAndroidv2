@@ -6,8 +6,16 @@ import java.math.BigDecimal
 import java.util.*
 
 @Parcelize
+data class StatementViewModel(
+    val title: String? = null,
+    val desc: String? = null,
+    val date: String? = null,
+    val value: String? = null
+) : Parcelable
+
+@Parcelize
 data class StatementsViewModel(
-    val statements: List<Statement>? = arrayListOf(),
+    val statements: List<StatementViewModel>? = arrayListOf(),
     val errorMessage: String? = null
 ) : Parcelable
 

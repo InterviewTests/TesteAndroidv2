@@ -2,6 +2,7 @@ package dev.vitorpacheco.solutis.bankapp.loginScreen
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
+import java.math.BigDecimal
 
 @Parcelize
 data class LoginViewModel(
@@ -18,7 +19,7 @@ data class UserAccount(
     val name: String?,
     val bankAccount: String?,
     val agency: String?,
-    val balance: String?
+    val balance: BigDecimal?
 ) : Parcelable
 
 @Parcelize

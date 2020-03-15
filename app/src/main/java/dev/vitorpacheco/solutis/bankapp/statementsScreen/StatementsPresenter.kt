@@ -1,5 +1,6 @@
 package dev.vitorpacheco.solutis.bankapp.statementsScreen
 
+import dev.vitorpacheco.solutis.bankapp.extensions.format
 import java.lang.ref.WeakReference
 
 interface StatementsPresenterInput {
@@ -12,7 +13,17 @@ class StatementsPresenter : StatementsPresenterInput {
 
     override fun presentStatementsData(response: StatementsResponse?) {
         response?.let {
-            output?.get()?.displayStatementsData(StatementsViewModel(response.statementList, response.error?.message))
+            val statements = response.statementList?.map {
+                StatementViewModel(
+                    title = it.title,
+                    desc = it.desc,
+                    date = it.date?.format(),
+                    value = it.value?.format()
+                )
+            }
+
+            output?.get()
+                ?.displayStatementsData(StatementsViewModel(statements, response.error?.message))
         }
     }
 
@@ -21,3 +32,4 @@ class StatementsPresenter : StatementsPresenterInput {
     }
 
 }
+
