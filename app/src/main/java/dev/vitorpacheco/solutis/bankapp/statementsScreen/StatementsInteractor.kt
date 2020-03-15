@@ -1,50 +1,18 @@
 package dev.vitorpacheco.solutis.bankapp.statementsScreen
 
-import dev.vitorpacheco.solutis.bankapp.api.BankApi
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
 interface StatementsInteractorInput {
     fun fetchStatementsData(request: StatementsRequest)
 }
 
 class StatementsInteractor : StatementsInteractorInput {
 
-    lateinit var service: BankApi
     var output: StatementsPresenterInput? = null
-    private var statementsWorkerInput: StatementsWorkerInput? = null
+    var worker = StatementsWorker()
 
     override fun fetchStatementsData(request: StatementsRequest) {
-        statementsWorkerInput = StatementsWorker()
-
         request.userId?.let {
-            service.listStatements(request.userId)
-                .enqueue(object : Callback<StatementsResponse> {
-                    override fun onResponse(
-                        call: Call<StatementsResponse>,
-                        response: Response<StatementsResponse>
-                    ) {
-                        response.body()?.let {
-                            output?.presentStatementsData(it)
-                        }
-                    }
-
-                    override fun onFailure(call: Call<StatementsResponse>, t: Throwable) {
-                        output?.presentStatementsData(
-                            StatementsResponse(
-                                statementList = null,
-                                error = StatementError(
-                                    message = t.message
-                                )
-                            )
-                        )
-                    }
-                })
+            worker.listStatements(request) { output?.presentStatementsData(it) }
         }
-
-        val response = StatementsResponse()
-
     }
 
     companion object {

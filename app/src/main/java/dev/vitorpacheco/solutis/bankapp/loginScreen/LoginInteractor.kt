@@ -36,9 +36,7 @@ class LoginInteractor : LoginInteractorInput {
             return
         }
 
-        worker.login(request) { response: LoginResponse ->
-            output?.presentLoginData(response)
-        }
+        worker.login(request) { output?.presentLoginData(it) }
     }
 
     companion object {

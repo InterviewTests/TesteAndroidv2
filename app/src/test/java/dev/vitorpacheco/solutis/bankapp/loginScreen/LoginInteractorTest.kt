@@ -1,5 +1,6 @@
 package dev.vitorpacheco.solutis.bankapp.loginScreen
 
+import io.mockk.Called
 import io.mockk.MockKAnnotations
 import io.mockk.confirmVerified
 import io.mockk.impl.annotations.MockK
@@ -31,11 +32,10 @@ class LoginInteractorTest {
             error = UserError("Campo obrigatório", UserFormFields.USER)
         )
 
-        verify {
-            output.presentLoginData(expectedResponse)
-        }
+        verify { output.presentLoginData(expectedResponse) }
+        verify { worker wasNot Called }
 
-        confirmVerified(output)
+        confirmVerified(output, worker)
     }
 
     @Test
@@ -50,11 +50,10 @@ class LoginInteractorTest {
             error = UserError("Campo obrigatório", UserFormFields.USER)
         )
 
-        verify {
-            output.presentLoginData(expectedResponse)
-        }
+        verify { output.presentLoginData(expectedResponse) }
+        verify { worker wasNot Called }
 
-        confirmVerified(output)
+        confirmVerified(output, worker)
     }
 
     @Test
@@ -69,11 +68,10 @@ class LoginInteractorTest {
             error = UserError("Campo obrigatório", UserFormFields.USER)
         )
 
-        verify {
-            output.presentLoginData(expectedResponse)
-        }
+        verify { output.presentLoginData(expectedResponse) }
+        verify { worker wasNot Called }
 
-        confirmVerified(output)
+        confirmVerified(output, worker)
     }
 
     @Test
@@ -88,11 +86,10 @@ class LoginInteractorTest {
             error = UserError("Campo obrigatório", UserFormFields.USER)
         )
 
-        verify {
-            output.presentLoginData(expectedResponse)
-        }
+        verify { output.presentLoginData(expectedResponse) }
+        verify { worker wasNot Called }
 
-        confirmVerified(output)
+        confirmVerified(output, worker)
     }
 
     @Test
@@ -107,11 +104,10 @@ class LoginInteractorTest {
             error = UserError("Campo obrigatório", UserFormFields.PASSWORD)
         )
 
-        verify {
-            output.presentLoginData(expectedResponse)
-        }
+        verify { output.presentLoginData(expectedResponse) }
+        verify { worker wasNot Called }
 
-        confirmVerified(output)
+        confirmVerified(output, worker)
     }
 
     @Test
@@ -126,11 +122,10 @@ class LoginInteractorTest {
             error = UserError("Campo obrigatório", UserFormFields.PASSWORD)
         )
 
-        verify {
-            output.presentLoginData(expectedResponse)
-        }
+        verify { output.presentLoginData(expectedResponse) }
+        verify { worker wasNot Called }
 
-        confirmVerified(output)
+        confirmVerified(output, worker)
     }
 
     @Test
@@ -141,11 +136,8 @@ class LoginInteractorTest {
 
         interactor.doLogin(LoginRequest("test_user", "123456"))
 
-        verify {
-            worker.login(LoginRequest("test_user", "123456"), any())
-        }
+        verify { worker.login(LoginRequest("test_user", "123456"), any()) }
 
-        confirmVerified(output)
         confirmVerified(worker)
     }
 

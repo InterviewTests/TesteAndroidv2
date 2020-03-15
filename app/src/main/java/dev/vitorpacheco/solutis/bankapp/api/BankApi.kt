@@ -17,6 +17,6 @@ interface BankApi {
 
     @GET("statements/{userId}")
     @Headers("Content-Type: application/x-www-form-urlencoded")
-    fun listStatements(@Path("userId") userId: Int): Call<StatementsResponse>
+    fun listStatements(@Path("userId") userId: Int?): Call<StatementsResponse>
 
 }

@@ -16,7 +16,6 @@ enum class StatementsConfigurator {
 
         val interactor = StatementsInteractor()
         interactor.output = presenter
-        interactor.service = createService()
 
         if (activity.output == null) {
             activity.output = interactor
