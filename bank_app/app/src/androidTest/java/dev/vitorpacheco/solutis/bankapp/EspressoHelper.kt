@@ -3,6 +3,7 @@ package dev.vitorpacheco.solutis.bankapp
 import android.app.Activity
 import android.app.KeyguardManager
 import android.content.Context
+import android.os.Build
 import android.view.View
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry
@@ -40,6 +41,8 @@ object EspressoHelper {
     }
 
     fun dismissKeyguard() {
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) return
+
         InstrumentationRegistry.getInstrumentation().runOnMainSync {
             run {
                 val currentActivity = ActivityLifecycleMonitorRegistry.getInstance()

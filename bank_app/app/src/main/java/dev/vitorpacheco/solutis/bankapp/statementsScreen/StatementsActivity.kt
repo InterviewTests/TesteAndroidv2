@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.idling.CountingIdlingResource
 import com.google.android.material.card.MaterialCardView
+import dev.vitorpacheco.solutis.bankapp.BankApp
 import dev.vitorpacheco.solutis.bankapp.R
 import dev.vitorpacheco.solutis.bankapp.extensions.format
 import dev.vitorpacheco.solutis.bankapp.loginScreen.UserAccount
@@ -35,7 +36,7 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_statements)
 
-        userAccount = intent.getParcelableExtra("account")
+        userAccount = intent.getParcelableExtra(BankApp.APP_INTENT_ACCOUNT_EXTRA)
 
         viewManager = LinearLayoutManager(this)
         viewAdapter = StatementAdapter(arrayListOf())
@@ -50,7 +51,8 @@ class StatementsActivity : AppCompatActivity(), StatementsActivityInput {
         StatementsConfigurator.INSTANCE.configure(this)
 
         userAccount?.userId?.let {
-            accountValue.text = getString(R.string.agencia_conta, userAccount?.bankAccount, userAccount?.agency)
+            accountValue.text =
+                getString(R.string.agencia_conta, userAccount?.bankAccount, userAccount?.agency)
             balanceValue.text = userAccount?.balance?.format()
 
             val statementsRequest = StatementsRequest(it)

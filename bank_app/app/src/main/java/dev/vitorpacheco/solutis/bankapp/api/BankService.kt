@@ -1,6 +1,8 @@
 package dev.vitorpacheco.solutis.bankapp.api
 
 import com.google.gson.GsonBuilder
+import dev.vitorpacheco.solutis.bankapp.BankApp
+import dev.vitorpacheco.solutis.bankapp.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -11,7 +13,7 @@ class BankService {
     companion object {
         fun createService(): BankApi {
             val logging = HttpLoggingInterceptor()
-            logging.level = HttpLoggingInterceptor.Level.BODY
+            logging.level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
             logging.redactHeader("Authorization")
             logging.redactHeader("Cookie")
 
@@ -25,7 +27,7 @@ class BankService {
             val retrofit = Retrofit.Builder()
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .baseUrl("https://bank-app-test.herokuapp.com/api/")
+                .baseUrl(BankApp.API_BASE_URL)
                 .build()
 
             return retrofit.create(BankApi::class.java)

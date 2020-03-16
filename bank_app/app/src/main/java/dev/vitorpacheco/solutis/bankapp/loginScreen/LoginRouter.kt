@@ -1,6 +1,7 @@
 package dev.vitorpacheco.solutis.bankapp.loginScreen
 
 import android.content.Intent
+import dev.vitorpacheco.solutis.bankapp.BankApp
 import dev.vitorpacheco.solutis.bankapp.statementsScreen.StatementsActivity
 import java.lang.ref.WeakReference
 
@@ -14,7 +15,7 @@ class LoginRouter : LoginRouterInput {
 
     override fun navigateToStatements(account: UserAccount): Intent {
         val intent = Intent(activity.get(), StatementsActivity::class.java)
-        intent.putExtra("account", account)
+        intent.putExtra(BankApp.APP_INTENT_ACCOUNT_EXTRA, account)
 
         return intent
     }
