@@ -1,6 +1,5 @@
 package dev.vitorpacheco.solutis.bankapp.statementsScreen
 
-import dev.vitorpacheco.solutis.bankapp.api.BankService.Companion.createService
 import java.lang.ref.WeakReference
 
 enum class StatementsConfigurator {
