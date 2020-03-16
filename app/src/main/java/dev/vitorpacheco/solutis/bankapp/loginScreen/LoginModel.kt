@@ -1,5 +1,6 @@
 package dev.vitorpacheco.solutis.bankapp.loginScreen
 
+import android.content.Context
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import java.math.BigDecimal
@@ -12,7 +13,7 @@ data class LoginViewModel(
     val errorField: UserFormFields? = null
 ) : Parcelable
 
-data class LoginRequest(var user: String?, var password: String?)
+data class LoginRequest(var user: String?, var password: String?, var context: Context? = null)
 
 @Parcelize
 data class UserAccount(
@@ -32,7 +33,8 @@ data class UserError(
 @Parcelize
 data class LoginResponse(
     val userAccount: UserAccount? = null,
-    val error: UserError? = null
+    val error: UserError? = null,
+    val user: String? = null
 ) : Parcelable
 
 enum class UserFormFields {

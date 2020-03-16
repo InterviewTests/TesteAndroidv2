@@ -6,4 +6,5 @@
     <string name="conta">Conta</string>
     <string name="saldo">Saldo</string>
     <string name="agencia_conta">%1$s / %2$s</string>
+    <string name="loading">Loading…</string>
 </resources>

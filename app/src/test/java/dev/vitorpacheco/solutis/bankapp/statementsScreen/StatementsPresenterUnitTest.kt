@@ -16,7 +16,7 @@ class StatementsPresenterUnitTest {
 
         statementsPresenter.presentStatementsData(statementsResponse)
 
-        assertTrue(statementsPresenterOutputSpy.isdisplayLoginMetaDataCalled)
+        assertTrue(statementsPresenterOutputSpy.isDisplayLoginMetaDataCalled)
     }
 
     @Test
@@ -28,16 +28,16 @@ class StatementsPresenterUnitTest {
 
         statementsPresenter.presentStatementsData(null)
 
-        assertFalse(statementsPresenterOutputSpy.isdisplayLoginMetaDataCalled)
+        assertFalse(statementsPresenterOutputSpy.isDisplayLoginMetaDataCalled)
     }
 
     private class StatementsPresenterOutputSpy : StatementsActivityInput {
 
-        var isdisplayLoginMetaDataCalled = false
+        var isDisplayLoginMetaDataCalled = false
         var loginViewModelCopy: StatementsViewModel? = null
 
         override fun displayStatementsData(viewModel: StatementsViewModel?) {
-            isdisplayLoginMetaDataCalled = true
+            isDisplayLoginMetaDataCalled = true
             loginViewModelCopy = viewModel
         }
 

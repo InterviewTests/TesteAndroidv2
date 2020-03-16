@@ -24,7 +24,7 @@ class LoginInteractorTest {
     fun `test doLogin with null values`() {
         val interactor = LoginInteractor()
         interactor.output = output
-        interactor.worker = worker
+        interactor.loginWorker = worker
 
         interactor.doLogin(LoginRequest(null, null))
 
@@ -42,7 +42,7 @@ class LoginInteractorTest {
     fun `test doLogin with empty values`() {
         val interactor = LoginInteractor()
         interactor.output = output
-        interactor.worker = worker
+        interactor.loginWorker = worker
 
         interactor.doLogin(LoginRequest("", ""))
 
@@ -60,7 +60,7 @@ class LoginInteractorTest {
     fun `test doLogin with null user`() {
         val interactor = LoginInteractor()
         interactor.output = output
-        interactor.worker = worker
+        interactor.loginWorker = worker
 
         interactor.doLogin(LoginRequest(null, "123456"))
 
@@ -78,7 +78,7 @@ class LoginInteractorTest {
     fun `test doLogin with empty user`() {
         val interactor = LoginInteractor()
         interactor.output = output
-        interactor.worker = worker
+        interactor.loginWorker = worker
 
         interactor.doLogin(LoginRequest("", "123456"))
 
@@ -96,7 +96,7 @@ class LoginInteractorTest {
     fun `test doLogin with null password`() {
         val interactor = LoginInteractor()
         interactor.output = output
-        interactor.worker = worker
+        interactor.loginWorker = worker
 
         interactor.doLogin(LoginRequest("test_user", null))
 
@@ -114,7 +114,7 @@ class LoginInteractorTest {
     fun `test doLogin with empty password`() {
         val interactor = LoginInteractor()
         interactor.output = output
-        interactor.worker = worker
+        interactor.loginWorker = worker
 
         interactor.doLogin(LoginRequest("test_user", ""))
 
@@ -132,7 +132,7 @@ class LoginInteractorTest {
     fun `test doLogin with valid user and password`() {
         val interactor = LoginInteractor()
         interactor.output = output
-        interactor.worker = worker
+        interactor.loginWorker = worker
 
         interactor.doLogin(LoginRequest("test_user", "123456"))
 

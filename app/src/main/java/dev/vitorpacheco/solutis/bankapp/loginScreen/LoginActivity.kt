@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.test.espresso.idling.CountingIdlingResource
 import com.google.common.base.Strings
+import dev.vitorpacheco.solutis.bankapp.BankApp.Companion.LAST_LOGGED_USER_KEY
 import dev.vitorpacheco.solutis.bankapp.R
+import dev.vitorpacheco.solutis.bankapp.workers.SharedPreferencesRequest
 import kotlinx.android.synthetic.main.activity_login.*
 
 interface LoginActivityInput {
@@ -29,17 +31,27 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         idlingResource.increment()
 
         loginButton.setOnClickListener {
+            toggleForm(true)
+
             val loginRequest = LoginRequest(
                 userField.text.toString(),
-                passwordField.text.toString()
+                passwordField.text.toString(),
+                this
             )
 
             output?.doLogin(loginRequest)
         }
+
+        output?.getLastLoggedUser(SharedPreferencesRequest(this, LAST_LOGGED_USER_KEY))
     }
 
     override fun displayLoginData(viewModel: LoginViewModel) {
+        userFieldLayout.error = null
+        passwordFieldLayout.error = null
+
         if (viewModel.errorMessage != null) {
+            toggleForm(false)
+
             when (viewModel.errorField) {
                 UserFormFields.PASSWORD -> {
                     passwordFieldLayout.error = viewModel.errorMessage
@@ -64,6 +76,18 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
 
             idlingResource.decrement()
         }
+
+        viewModel.user?.let {
+            userField.setText(it)
+            userFieldLayout.error = null
+        }
+    }
+
+    private fun toggleForm(loading: Boolean) {
+        userFieldLayout.isEnabled = !loading
+        passwordFieldLayout.isEnabled = !loading
+        loginButton.isEnabled = !loading
+        loginButton.setText(if (!loading) R.string.login else R.string.loading)
     }
 
     companion object {

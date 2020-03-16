@@ -13,7 +13,7 @@ class LoginPresenter : LoginPresenterInput {
     override fun presentLoginData(response: LoginResponse?) {
         response?.let {
             output?.get()?.displayLoginData(LoginViewModel(
-                null,
+                response.user,
                 response.userAccount,
                 it.error?.message,
                 it.error?.field
