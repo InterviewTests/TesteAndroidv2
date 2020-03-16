@@ -9,4 +9,5 @@
     <string name="loading">Loading…</string>
     <string name="error_invalid_user">Invalid user</string>
     <string name="error_invalid_password">Invalid password</string>
+    <string name="recentes">Recentes</string>
 </resources>
