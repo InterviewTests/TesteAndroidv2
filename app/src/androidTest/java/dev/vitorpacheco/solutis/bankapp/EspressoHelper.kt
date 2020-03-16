@@ -1,6 +1,7 @@
 package dev.vitorpacheco.solutis.bankapp
 
 import android.app.Activity
+import android.app.KeyguardManager
 import android.content.Context
 import android.view.View
 import androidx.test.platform.app.InstrumentationRegistry
@@ -34,6 +35,20 @@ object EspressoHelper {
 
                 currentActivity?.getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
                     ?.edit()?.clear()?.commit()
+            }
+        }
+    }
+
+    fun dismissKeyguard() {
+        InstrumentationRegistry.getInstrumentation().runOnMainSync {
+            run {
+                val currentActivity = ActivityLifecycleMonitorRegistry.getInstance()
+                    .getActivitiesInStage(Stage.RESUMED).elementAtOrNull(0)
+
+                currentActivity?.let {
+                    val keyguard = (it.application.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager)
+                    keyguard.requestDismissKeyguard(it, null)
+                }
             }
         }
     }

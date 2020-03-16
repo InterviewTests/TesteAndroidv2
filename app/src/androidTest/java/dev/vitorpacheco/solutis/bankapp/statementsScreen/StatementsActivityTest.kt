@@ -9,6 +9,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import dev.vitorpacheco.solutis.bankapp.EspressoHelper
+import dev.vitorpacheco.solutis.bankapp.EspressoHelper.dismissKeyguard
 import dev.vitorpacheco.solutis.bankapp.R
 import dev.vitorpacheco.solutis.bankapp.loginScreen.LoginActivity
 import org.junit.Test
@@ -34,6 +35,8 @@ class StatementsActivityTest {
         )
 
         onView(withId(R.id.loginButton)).perform(click())
+
+        dismissKeyguard()
 
         IdlingRegistry.getInstance().register(activity.idlingResource)
 

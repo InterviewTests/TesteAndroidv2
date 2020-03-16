@@ -7,8 +7,8 @@ import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import dev.vitorpacheco.solutis.bankapp.EspressoHelper
 import dev.vitorpacheco.solutis.bankapp.EspressoHelper.clearSharedPreferences
+import dev.vitorpacheco.solutis.bankapp.EspressoHelper.dismissKeyguard
 import dev.vitorpacheco.solutis.bankapp.EspressoHelper.getCurrentActivity
 import dev.vitorpacheco.solutis.bankapp.EspressoHelper.hasTextInputLayoutErrorText
 import dev.vitorpacheco.solutis.bankapp.R
@@ -39,6 +39,7 @@ class LoginActivityTest {
         )
         onView(withId(R.id.passwordField)).perform(
             clearText(),
+            typeText("Test@1"),
             closeSoftKeyboard()
         )
 
@@ -51,6 +52,42 @@ class LoginActivityTest {
                 )
             )
         )
+
+        onView(withId(R.id.userField)).perform(
+            clearText(),
+            typeText("test_user"),
+            closeSoftKeyboard()
+        )
+
+        onView(withId(R.id.loginButton)).perform(click())
+
+        onView(withId(R.id.userFieldLayout)).check(
+            matches(
+                hasTextInputLayoutErrorText(
+                    getCurrentActivity()?.getString(R.string.error_invalid_user)
+                )
+            )
+        )
+
+        onView(withId(R.id.userField)).perform(
+            clearText(),
+            typeText("47043374051"),
+            closeSoftKeyboard()
+        )
+
+        onView(withId(R.id.loginButton)).perform(click())
+
+        onView(withId(R.id.userFieldLayout)).check(
+            matches(
+                hasTextInputLayoutErrorText(
+                    getCurrentActivity()?.getString(R.string.error_invalid_user)
+                )
+            )
+        )
+
+        onView(withId(R.id.userFieldLayout)).check(matches(isEnabled()))
+        onView(withId(R.id.passwordFieldLayout)).check(matches(isEnabled()))
+        onView(withId(R.id.loginButton)).check(matches(isEnabled()))
     }
 
     @Test
@@ -80,12 +117,64 @@ class LoginActivityTest {
                 )
             )
         )
+
+        onView(withId(R.id.passwordField)).perform(
+            clearText(),
+            typeText("12331"),
+            closeSoftKeyboard()
+        )
+
+        onView(withId(R.id.loginButton)).perform(click())
+
+        onView(withId(R.id.passwordFieldLayout)).check(
+            matches(
+                hasTextInputLayoutErrorText(
+                    getCurrentActivity()?.getString(R.string.error_invalid_password)
+                )
+            )
+        )
+
+        onView(withId(R.id.passwordField)).perform(
+            clearText(),
+            typeText("123asd31"),
+            closeSoftKeyboard()
+        )
+
+        onView(withId(R.id.loginButton)).perform(click())
+
+        onView(withId(R.id.passwordFieldLayout)).check(
+            matches(
+                hasTextInputLayoutErrorText(
+                    getCurrentActivity()?.getString(R.string.error_invalid_password)
+                )
+            )
+        )
+
+        onView(withId(R.id.passwordField)).perform(
+            clearText(),
+            typeText("@#asd"),
+            closeSoftKeyboard()
+        )
+
+        onView(withId(R.id.loginButton)).perform(click())
+
+        onView(withId(R.id.passwordFieldLayout)).check(
+            matches(
+                hasTextInputLayoutErrorText(
+                    getCurrentActivity()?.getString(R.string.error_invalid_password)
+                )
+            )
+        )
+
+        onView(withId(R.id.userFieldLayout)).check(matches(isEnabled()))
+        onView(withId(R.id.passwordFieldLayout)).check(matches(isEnabled()))
+        onView(withId(R.id.loginButton)).check(matches(isEnabled()))
     }
 
     @Test
     fun test_validUserAndPassword() {
         launch(LoginActivity::class.java)
-        val activity = EspressoHelper.getCurrentActivity() as LoginActivity
+        val activity = getCurrentActivity() as LoginActivity
 
         clearSharedPreferences()
 
@@ -103,6 +192,8 @@ class LoginActivityTest {
         )
 
         onView(withId(R.id.loginButton)).perform(click())
+
+        dismissKeyguard()
 
         IdlingRegistry.getInstance().register(activity.idlingResource)
 
@@ -114,7 +205,7 @@ class LoginActivityTest {
     @Test
     fun test_recoverLastLoggedUser() {
         launch(LoginActivity::class.java)
-        val activity = EspressoHelper.getCurrentActivity() as LoginActivity
+        val activity = getCurrentActivity() as LoginActivity
 
         clearSharedPreferences()
 
@@ -132,6 +223,8 @@ class LoginActivityTest {
         )
 
         onView(withId(R.id.loginButton)).perform(click())
+
+        dismissKeyguard()
 
         IdlingRegistry.getInstance().register(activity.idlingResource)
 
