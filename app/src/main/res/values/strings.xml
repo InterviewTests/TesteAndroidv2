@@ -7,4 +7,6 @@
     <string name="saldo">Saldo</string>
     <string name="agencia_conta">%1$s / %2$s</string>
     <string name="loading">Loading…</string>
+    <string name="error_invalid_user">Invalid user</string>
+    <string name="error_invalid_password">Invalid password</string>
 </resources>

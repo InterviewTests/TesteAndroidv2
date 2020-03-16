@@ -16,7 +16,8 @@ class LoginPresenter : LoginPresenterInput {
                 response.user,
                 response.userAccount,
                 it.error?.message,
-                it.error?.field
+                it.invalidUser,
+                it.invalidPassword
             ))
         }
     }

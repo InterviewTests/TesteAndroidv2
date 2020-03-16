@@ -10,7 +10,8 @@ data class LoginViewModel(
     val user: String? = null,
     val account: UserAccount? = null,
     val errorMessage: String? = null,
-    val errorField: UserFormFields? = null
+    val invalidUser: Boolean? = null,
+    val invalidPassword: Boolean? = null
 ) : Parcelable
 
 data class LoginRequest(var user: String?, var password: String?, var context: Context? = null)
@@ -26,17 +27,14 @@ data class UserAccount(
 
 @Parcelize
 data class UserError(
-    val message: String? = null,
-    val field: UserFormFields? = null
+    val message: String? = null
 ) : Parcelable
 
 @Parcelize
 data class LoginResponse(
     val userAccount: UserAccount? = null,
     val error: UserError? = null,
-    val user: String? = null
+    val user: String? = null,
+    val invalidUser: Boolean? = null,
+    val invalidPassword: Boolean? = null
 ) : Parcelable
-
-enum class UserFormFields {
-    USER, PASSWORD
-}

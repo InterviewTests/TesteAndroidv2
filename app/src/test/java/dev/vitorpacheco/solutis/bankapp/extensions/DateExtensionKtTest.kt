@@ -14,7 +14,7 @@ class DateExtensionKtTest {
     }
 
     @Test
-    fun `test format with values greather than 0`() {
+    fun `test format with valid values`() {
         val calendar = Calendar.getInstance()
 
         calendar.set(2000, 2, 3)

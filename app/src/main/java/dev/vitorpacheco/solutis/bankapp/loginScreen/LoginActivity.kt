@@ -52,16 +52,8 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         if (viewModel.errorMessage != null) {
             toggleForm(false)
 
-            when (viewModel.errorField) {
-                UserFormFields.PASSWORD -> {
-                    passwordFieldLayout.error = viewModel.errorMessage
-                    passwordFieldLayout.isErrorEnabled = !Strings.isNullOrEmpty(viewModel.errorMessage)
-                }
-                else -> {
-                    userFieldLayout.error = viewModel.errorMessage
-                    userFieldLayout.isErrorEnabled = !Strings.isNullOrEmpty(viewModel.errorMessage)
-                }
-            }
+            userFieldLayout.error = viewModel.errorMessage
+            userFieldLayout.isErrorEnabled = !Strings.isNullOrEmpty(viewModel.errorMessage)
 
             return
         }
@@ -80,6 +72,15 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         viewModel.user?.let {
             userField.setText(it)
             userFieldLayout.error = null
+        }
+
+
+        if (viewModel.invalidUser == true) {
+            userFieldLayout.error = getString(R.string.error_invalid_user)
+        }
+
+        if (viewModel.invalidPassword == true) {
+            passwordFieldLayout.error = getString(R.string.error_invalid_password)
         }
     }
 

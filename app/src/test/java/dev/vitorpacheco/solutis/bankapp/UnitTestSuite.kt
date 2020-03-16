@@ -2,6 +2,7 @@ package dev.vitorpacheco.solutis.bankapp
 
 import dev.vitorpacheco.solutis.bankapp.extensions.BigDecimalExtensionKtTest
 import dev.vitorpacheco.solutis.bankapp.extensions.DateExtensionKtTest
+import dev.vitorpacheco.solutis.bankapp.extensions.StringExtensionsKtTest
 import dev.vitorpacheco.solutis.bankapp.loginScreen.LoginInteractorTest
 import dev.vitorpacheco.solutis.bankapp.loginScreen.LoginPresenterUnitTest
 import dev.vitorpacheco.solutis.bankapp.statementsScreen.StatementsInteractorTest
@@ -18,6 +19,7 @@ import org.junit.runners.Suite
     StatementsInteractorTest::class,
 
     BigDecimalExtensionKtTest::class,
-    DateExtensionKtTest::class
+    DateExtensionKtTest::class,
+    StringExtensionsKtTest::class
 )
 class UnitTestSuite

@@ -3,9 +3,7 @@ package dev.vitorpacheco.solutis.bankapp.statementsScreen
 import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -21,12 +19,17 @@ class StatementsActivityTest {
 
     @Test
     fun test_isActivityInVIew() {
-        val activityScenario = launch(LoginActivity::class.java)
+        launch(LoginActivity::class.java)
         val activity = EspressoHelper.getCurrentActivity() as LoginActivity
 
-        onView(withId(R.id.userField)).perform(ViewActions.typeText("test_user"))
+        onView(withId(R.id.userField)).perform(
+            clearText(),
+            typeText("test_user@example.com"),
+            closeSoftKeyboard()
+        )
         onView(withId(R.id.passwordField)).perform(
-            ViewActions.typeText("Test@1"),
+            clearText(),
+            typeText("Test@1"),
             closeSoftKeyboard()
         )
 

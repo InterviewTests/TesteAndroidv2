@@ -2,12 +2,17 @@ package dev.vitorpacheco.solutis.bankapp.loginScreen
 
 import dev.vitorpacheco.solutis.bankapp.api.BankApi
 import dev.vitorpacheco.solutis.bankapp.api.BankService.Companion.createService
+import dev.vitorpacheco.solutis.bankapp.extensions.isValidCpf
+import dev.vitorpacheco.solutis.bankapp.extensions.isValidEmail
+import dev.vitorpacheco.solutis.bankapp.extensions.isValidPassword
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 interface LoginWorkerInput {
     fun login(request: LoginRequest, listener: (LoginResponse) -> Unit)
+    fun validateUser(user: String): Boolean
+    fun validatePassword(user: String): Boolean
 }
 
 class LoginWorker : LoginWorkerInput {
@@ -31,5 +36,9 @@ class LoginWorker : LoginWorkerInput {
                 }
             })
     }
+
+    override fun validateUser(user: String) = (user.isValidCpf() || user.isValidEmail())
+
+    override fun validatePassword(user: String) = user.isValidPassword()
 
 }

@@ -28,9 +28,7 @@ class LoginInteractorTest {
 
         interactor.doLogin(LoginRequest(null, null))
 
-        val expectedResponse = LoginResponse(
-            error = UserError("Campo obrigatório", UserFormFields.USER)
-        )
+        val expectedResponse = LoginResponse(invalidUser = true)
 
         verify { output.presentLoginData(expectedResponse) }
         verify { worker wasNot Called }
@@ -46,9 +44,7 @@ class LoginInteractorTest {
 
         interactor.doLogin(LoginRequest("", ""))
 
-        val expectedResponse = LoginResponse(
-            error = UserError("Campo obrigatório", UserFormFields.USER)
-        )
+        val expectedResponse = LoginResponse(invalidUser = true)
 
         verify { output.presentLoginData(expectedResponse) }
         verify { worker wasNot Called }
@@ -64,9 +60,7 @@ class LoginInteractorTest {
 
         interactor.doLogin(LoginRequest(null, "123456"))
 
-        val expectedResponse = LoginResponse(
-            error = UserError("Campo obrigatório", UserFormFields.USER)
-        )
+        val expectedResponse = LoginResponse(invalidUser = true)
 
         verify { output.presentLoginData(expectedResponse) }
         verify { worker wasNot Called }
@@ -82,9 +76,7 @@ class LoginInteractorTest {
 
         interactor.doLogin(LoginRequest("", "123456"))
 
-        val expectedResponse = LoginResponse(
-            error = UserError("Campo obrigatório", UserFormFields.USER)
-        )
+        val expectedResponse = LoginResponse(invalidUser = true)
 
         verify { output.presentLoginData(expectedResponse) }
         verify { worker wasNot Called }
@@ -98,11 +90,9 @@ class LoginInteractorTest {
         interactor.output = output
         interactor.loginWorker = worker
 
-        interactor.doLogin(LoginRequest("test_user", null))
+        interactor.doLogin(LoginRequest("test_user@example.com", null))
 
-        val expectedResponse = LoginResponse(
-            error = UserError("Campo obrigatório", UserFormFields.PASSWORD)
-        )
+        val expectedResponse = LoginResponse(invalidPassword = true)
 
         verify { output.presentLoginData(expectedResponse) }
         verify { worker wasNot Called }
@@ -116,11 +106,9 @@ class LoginInteractorTest {
         interactor.output = output
         interactor.loginWorker = worker
 
-        interactor.doLogin(LoginRequest("test_user", ""))
+        interactor.doLogin(LoginRequest("test_user@example.com", ""))
 
-        val expectedResponse = LoginResponse(
-            error = UserError("Campo obrigatório", UserFormFields.PASSWORD)
-        )
+        val expectedResponse = LoginResponse(invalidPassword = true)
 
         verify { output.presentLoginData(expectedResponse) }
         verify { worker wasNot Called }
@@ -134,9 +122,9 @@ class LoginInteractorTest {
         interactor.output = output
         interactor.loginWorker = worker
 
-        interactor.doLogin(LoginRequest("test_user", "123456"))
+        interactor.doLogin(LoginRequest("test_user@example.com", "Test@3"))
 
-        verify { worker.login(LoginRequest("test_user", "123456"), any()) }
+        verify { worker.login(LoginRequest("test_user@example.com", "Test@3"), any()) }
 
         confirmVerified(worker)
     }

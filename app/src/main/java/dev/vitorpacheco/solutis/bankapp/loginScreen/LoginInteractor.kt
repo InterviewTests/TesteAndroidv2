@@ -1,7 +1,9 @@
 package dev.vitorpacheco.solutis.bankapp.loginScreen
 
-import com.google.common.base.Strings
 import dev.vitorpacheco.solutis.bankapp.BankApp.Companion.LAST_LOGGED_USER_KEY
+import dev.vitorpacheco.solutis.bankapp.extensions.isValidCpf
+import dev.vitorpacheco.solutis.bankapp.extensions.isValidEmail
+import dev.vitorpacheco.solutis.bankapp.extensions.isValidPassword
 import dev.vitorpacheco.solutis.bankapp.workers.SharedPreferencesRequest
 import dev.vitorpacheco.solutis.bankapp.workers.SharedPreferencesWorker
 
@@ -17,33 +19,25 @@ class LoginInteractor : LoginInteractorInput {
     var sharedPreferencesWorker = SharedPreferencesWorker()
 
     override fun doLogin(request: LoginRequest) {
-        if (Strings.isNullOrEmpty(request.user)) {
-            output?.presentLoginData(
-                LoginResponse(
-                    error = UserError(
-                        "Campo obrigatório",
-                        UserFormFields.USER
-                    )
-                )
-            )
+        if (!request.user.isValidEmail() && !request.user.isValidCpf()) {
+            output?.presentLoginData(LoginResponse(invalidUser = true))
             return
         }
 
-        if (Strings.isNullOrEmpty(request.password)) {
-            output?.presentLoginData(
-                LoginResponse(
-                    error = UserError(
-                        "Campo obrigatório",
-                        UserFormFields.PASSWORD
-                    )
-                )
-            )
+        if (!request.password.isValidPassword()) {
+            output?.presentLoginData(LoginResponse(invalidPassword = true))
             return
         }
 
         loginWorker.login(request) { response ->
             request.context?.let { context ->
-                sharedPreferencesWorker.save(SharedPreferencesRequest(context, LAST_LOGGED_USER_KEY, request.user))
+                sharedPreferencesWorker.save(
+                    SharedPreferencesRequest(
+                        context,
+                        LAST_LOGGED_USER_KEY,
+                        request.user
+                    )
+                )
             }
 
             output?.presentLoginData(response)
