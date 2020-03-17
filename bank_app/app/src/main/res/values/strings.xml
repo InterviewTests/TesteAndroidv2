@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Bank App</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="conta">Conta</string>
+    <string name="saldo">Saldo</string>
+    <string name="agencia_conta">%1$s / %2$s</string>
+    <string name="loading">Loading…</string>
+    <string name="error_invalid_user">Invalid user</string>
+    <string name="error_invalid_password">Invalid password</string>
+    <string name="recentes">Recentes</string>
+</resources>

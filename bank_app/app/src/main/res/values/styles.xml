@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TextAppearance.Design.CollapsingToolbar.Expanded" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:textColor">#FFF</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextAppearance.AppCompat.Title" parent="Base.TextAppearance.AppCompat.Title">
+        <item name="android:textColor">#FFF</item>
+    </style>
+
+</resources>
