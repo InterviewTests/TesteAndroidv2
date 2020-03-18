@@ -17,4 +17,16 @@ data class Result<out T>(
             return Result(ResultType.ERROR, error = error)
         }
     }
+
+    /**
+     * Returns `true` if this instance represents a successful outcome.
+     * In this case [isFailure] returns `false`.
+     */
+    val isSuccess: Boolean get() = resultType == ResultType.SUCCESS
+
+    /**
+     * Returns `true` if this instance represents a failed outcome.
+     * In this case [isSuccess] returns `false`.
+     */
+    val isFailure: Boolean get() = resultType  == ResultType.ERROR
 }
