@@ -17,7 +17,7 @@ class GetLoogedUserTest {
         //Given
         val mockUserRepository = mockk<UserRepository>()
         val getLoggedUser = GetLoggedUser(mockUserRepository)
-        val user = User(id=1,bankAccount = "0",balance = "0",agency = "0",name = "test")
+        val user = User(id = 1, bankAccount = "0", balance = 0.0, agency = "0", name = "test")
 
         every {
             mockUserRepository.GetSavedUser()
@@ -26,7 +26,7 @@ class GetLoogedUserTest {
         //When
         val result = getLoggedUser()
 
-        Assert.assertEquals( Result.success(user), result)
+        Assert.assertEquals(Result.success(user), result)
 
         verify {
             mockUserRepository.GetSavedUser()

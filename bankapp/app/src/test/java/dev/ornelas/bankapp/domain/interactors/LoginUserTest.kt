@@ -46,7 +46,7 @@ class LoginUserTest {
                     id = 1,
                     name = "teste",
                     agency = "0000",
-                    balance = "100",
+                    balance = 100.00,
                     bankAccount = "00001"
                 )
             )
