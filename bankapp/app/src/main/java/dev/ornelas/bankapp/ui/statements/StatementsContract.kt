@@ -7,8 +7,13 @@ interface StatementsContract {
     }
 
     interface Presenter {
-        fun onViewCreated()
+        fun onLoadStatments(userId: Int)
         fun onLogout()
+    }
+
+    interface Router {
+        fun navigateToLogin()
+
     }
 
 }

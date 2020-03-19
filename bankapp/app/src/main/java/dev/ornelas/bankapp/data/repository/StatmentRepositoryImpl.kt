@@ -9,7 +9,7 @@ import dev.ornelas.bankapp.data.datasource.api.retrofit.exceptions.statementApiE
 class StatmentRepositoryImpl(private val bankApiService: BankApiService) : StatementRepository {
 
 
-    override suspend fun GetStatements(idUser: Int): Result<List<Statement>>? {
+    override suspend fun GetStatements(idUser: Int): Result<List<Statement>> {
 
         try {
             val statementResponse = bankApiService.getStatements(idUser.toString())

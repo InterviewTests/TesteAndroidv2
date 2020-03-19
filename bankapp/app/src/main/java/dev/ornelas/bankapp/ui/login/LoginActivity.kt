@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import dev.ornelas.bankapp.R
+import dev.ornelas.bankapp.ui.statements.adapter.StatementsAdapter
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -59,7 +60,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
             showLoginFailed(result.error)
             return
         }
-        
+
         result.success?.let {
             router.navigateToStatements(it)
         }

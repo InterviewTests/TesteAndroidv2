@@ -95,14 +95,23 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <TextView
         android:id="@+id/latestTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="@string/recentes"
+        android:textColor="#485465"
+        android:layout_margin="16dp"
+        android:textSize="16dp"
+        android:text="@string/latest"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <include layout="@layout/content_statements" />
 
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

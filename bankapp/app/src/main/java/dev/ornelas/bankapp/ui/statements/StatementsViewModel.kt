@@ -14,6 +14,6 @@ data class StatementViewModel(
 @Parcelize
 data class StatementsViewModel(
     val statements: List<StatementViewModel>? = arrayListOf(),
-    val errorMessage: String? = null,
+    val errorMessage: Int? = null,
     val logedOut: Boolean = false
 ) : Parcelable

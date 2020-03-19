@@ -28,5 +28,6 @@ object LoginConfigurator {
         activity.presenter = presenter
 
         activity.router = LoginRouter(WeakReference(activity))
+
     }
 }

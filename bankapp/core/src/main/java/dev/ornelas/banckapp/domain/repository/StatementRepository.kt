@@ -6,5 +6,5 @@ import dev.ornelas.banckapp.domain.model.datatype.Result
 
 interface StatementRepository {
 
-    suspend fun  GetStatements(idUser: Int) : Result<List<Statement>>?
+    suspend fun  GetStatements(idUser: Int) : Result<List<Statement>>
 }
