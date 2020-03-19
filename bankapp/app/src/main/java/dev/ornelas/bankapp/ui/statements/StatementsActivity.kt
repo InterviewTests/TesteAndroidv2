@@ -19,7 +19,6 @@ class StatementsActivity : AppCompatActivity(), StatementsContract.View {
     lateinit var presenter: StatementsContract.Presenter
     lateinit var router: StatementsContract.Router
     lateinit var statementsAdapter: StatementsAdapter
-//    lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,10 +37,9 @@ class StatementsActivity : AppCompatActivity(), StatementsContract.View {
             presenter.onLoadStatments(it.id)
         }
 
-//        fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-//        }
+        logoutButton.setOnClickListener {
+            presenter.onLogout()
+        }
 
     }
 
@@ -66,6 +64,12 @@ class StatementsActivity : AppCompatActivity(), StatementsContract.View {
     override fun displayStatements(statementsViewModel: StatementsViewModel) {
 
         showSpinner(false)
+
+        if (statementsViewModel.logedOut) {
+            router.navigateToLogin()
+            return
+        }
+
         if (statementsViewModel.errorMessage != null) {
             showError(statementsViewModel.errorMessage)
         } else {

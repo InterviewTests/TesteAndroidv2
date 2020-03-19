@@ -13,9 +13,12 @@ object StatementsConfigurator {
 
         val getStatements = GetStatements(appContainer.dataComponent.statementRepository)
 
+        val removeLoggedUser = RemoveLoggedUser(appContainer.dataComponent.userRepository)
+
         val presenter = StatementsPresenter(
             activity,
-            getStatements
+            getStatements,
+            removeLoggedUser
         )
 
         activity.presenter = presenter
@@ -23,5 +26,6 @@ object StatementsConfigurator {
         activity.router = StatementsRouter(WeakReference(activity))
 
         activity.statementsAdapter = StatementsAdapter()
+
     }
 }

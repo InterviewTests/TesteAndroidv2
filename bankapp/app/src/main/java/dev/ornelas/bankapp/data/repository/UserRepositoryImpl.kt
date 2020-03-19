@@ -31,4 +31,8 @@ class UserRepositoryImpl(
     override fun GetSavedUser(): Result<User> {
         return Result.success(sharedPreferenceDataSource.get<User>("user"))
     }
+
+    override fun RemoveSavedUser() {
+        sharedPreferenceDataSource.put(null, "user")
+    }
 }
