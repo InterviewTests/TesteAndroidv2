@@ -10,7 +10,7 @@ class LoginRouter(val activity: WeakReference<LoginActivity>) : LoginContract.Ro
         const val APP_USER_INTENT = "APP_USER_INTENT"
     }
 
-    override fun navigateToStatements(user: LoggedInUserView) {
+    override fun navigateToStatements(user: UserViewModel) {
         val intent = Intent(activity.get(), StatementsActivity::class.java)
         intent.putExtra(APP_USER_INTENT, user)
 

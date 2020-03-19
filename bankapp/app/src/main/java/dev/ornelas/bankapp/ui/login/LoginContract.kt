@@ -1,7 +1,5 @@
 package dev.ornelas.bankapp.ui.login
 
-import android.content.Intent
-
 interface LoginContract {
     interface View {
         fun displayLoginResult(result: LoginViewModel)
@@ -13,7 +11,7 @@ interface LoginContract {
     }
 
     interface Router {
-        fun navigateToStatements(user: LoggedInUserView)
+        fun navigateToStatements(user: UserViewModel)
     }
 
 }
