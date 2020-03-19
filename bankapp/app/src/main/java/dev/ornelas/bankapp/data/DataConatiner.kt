@@ -1,6 +1,8 @@
 package dev.ornelas.bankapp.data
 
 import android.content.Context
+import dev.ornelas.banckapp.domain.repository.StatementRepository
+import dev.ornelas.banckapp.domain.repository.UserRepository
 import dev.ornelas.bankapp.data.datasource.api.retrofit.BankApiService
 import dev.ornelas.bankapp.data.datasource.local.SharedPreferenceDataSource
 import dev.ornelas.bankapp.data.repository.StatmentRepositoryImpl
@@ -9,8 +11,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 interface DataComponent {
-    val userRepository: UserRepositoryImpl
-    val statementRepository: StatmentRepositoryImpl
+    val userRepository: UserRepository
+    val statementRepository: StatementRepository
 }
 
 class DataContainer(context: Context) : DataComponent {

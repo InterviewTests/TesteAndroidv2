@@ -1,10 +1,12 @@
 package dev.ornelas.bankapp
 
-import android.annotation.SuppressLint
 import android.app.Application
+import dev.ornelas.bankapp.data.DataComponent
+import dev.ornelas.bankapp.data.DataContainer
 
-@SuppressLint("Registered")
-class BankApplication : Application() {
+class BankApplication : Application(), AppContainer {
 
-//    val dataContainer = DataContainer(context = this)
+    override val dataComponent: DataComponent
+        get() = DataContainer(context = this)
+
 }

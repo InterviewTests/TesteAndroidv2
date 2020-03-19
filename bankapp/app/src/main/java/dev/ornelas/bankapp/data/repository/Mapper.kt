@@ -13,9 +13,9 @@ import java.text.SimpleDateFormat
 var simpleDateFormat: SimpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
 
 object ApiToUserModel : Mapper<LoginResponseApi, User> {
-    override fun map(type: LoginResponseApi): User {
+    override fun map(type: LoginResponseApi?): User {
         return User(
-            id = type.userAccount.userId,
+            id = type!!.userAccount.userId,
             name = type.userAccount.name,
             agency = type.userAccount.agency.toString(),
             balance = type.userAccount.balance,
@@ -27,13 +27,11 @@ object ApiToUserModel : Mapper<LoginResponseApi, User> {
 fun LoginResponseApi.toUserModel() = ApiToUserModel.map(this)
 
 object ApiToStatementModel : Mapper<StatementApi, Statement> {
-    override fun map(type: StatementApi): Statement {
-        val date = simpleDateFormat.parse(type.date)
-
+    override fun map(type: StatementApi?): Statement {
         return Statement(
-            title = type.title,
+            title = type!!.title,
             desc = type.desc,
-            date = date,
+            date =  simpleDateFormat.parse(type.date),
             value = type.value
         )
 
