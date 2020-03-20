@@ -3,7 +3,7 @@ package dev.ornelas.bankapp.ui.login
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
-class LoginViewModel(
+data class LoginViewModel(
     val success: UserViewModel? = null,
     val error: Int? = null,
     val usernameError: Int? = null,

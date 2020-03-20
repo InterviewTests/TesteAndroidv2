@@ -14,7 +14,7 @@ fun userApiErrorFromCodeException(erro: ErrorApi): Exception {
 
 fun statementApiErrorFromCodeException(erro: ErrorApi): Exception {
     return if (erro.code == 53) {
-        InvalidUserNamePasswordException(erro.message)
+        UserNotFoundException(erro.message)
     } else {
         GenericApiException(erro.message)
     }
