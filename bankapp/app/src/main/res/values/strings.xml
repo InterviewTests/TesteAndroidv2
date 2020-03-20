@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">BankApp</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">User</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Login</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">O login deve ser um  email ou cpf válido</string>
+    <string name="invalid_password">Senha deve conter letra maiúscula, um carácter especial e um caracter alfanumérico</string>
+    <string name="login_failed">Não foi possível realizar a autenticação</string>
+    <string name="statements_failed">Não foi possível obter o extrato</string>
+    <string name="logo">logo</string>
+    <string name="title_activity_statements">StatementsActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="logoutDescription">logout</string>
+    <string name="account">conta</string>
+    <string name="balance">saldo</string>
+    <string name="sampleAccountValue">2050 / 01.111222-4</string>
+    <string name="sampleBalanceValue">R$1.000,00</string>
+    <string name="latest">recentes</string>
+    <string name="agency_account">%1$s / %2$s</string>
+</resources>
