@@ -1,11 +1,50 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ButtonPrimary" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@color/colorAccent</item>
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>"
+        <item name="cornerFamilyTopRight">cut</item>
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="cornerRadius">@dimen/radius_xxxs</item>
+        <item name="android:textSize">@dimen/text_m</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="InputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="colorOnError">@color/danger</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_s</item>
+        <item name="android:layout_marginStart">@dimen/spacing_s</item>
+        <item name="android:layout_width">342dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="errorTextColor">@color/danger</item>
+        <item name="hintTextColor">@color/colorAccent</item>
+        <item name="boxStrokeColor">@color/text_input_box_stroke</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_xxxs</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_xxxs</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_xxxs</item>
+        <item name="boxCornerRadiusTopStart">@dimen/radius_xxxs</item>
+        <item name="android:textCursorDrawable">@color/colorAccent</item>
+        <item name="android:textColorHint">@color/grayLight</item>
+    </style>
+
+    <style name="InputEdit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_l</item>
+        <item name="android:textColorHint">@color/grayLight</item>
+        <item name="android:textCursorDrawable">@color/colorAccent</item>'
     </style>
 
 </resources>

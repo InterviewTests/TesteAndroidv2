@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">IBM_TEST</string>
+    <string name="text_to_login_btn">Login</string>
+    <string name="text_to_login_user">User</string>
+    <string name="text_to_login_password">Password</string>
+    <string name="alert_to_field_empty">Este campo está vazio! Por favor preencha para se logar.</string>
 </resources>
