@@ -12,5 +12,5 @@ data class UserInfoData (
     @SerializedName("name") val name: String,
     @SerializedName("bankAccount") val bankAccount: String,
     @SerializedName("agency") val agency: String,
-    @SerializedName("balance") val balance: Float
+    @SerializedName("balance") val balance: Double
 ) : Serializable
