@@ -1,7 +1,7 @@
 package com.bankapp.api;
 
-import com.santander.loginScreen.LoginResponse;
-import com.santander.statementScreen.StatementResponse;
+import com.bankapp.loginScreen.LoginResponse;
+import com.bankapp.statementScreen.StatementResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
