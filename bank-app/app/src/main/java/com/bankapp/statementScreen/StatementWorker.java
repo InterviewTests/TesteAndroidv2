@@ -20,14 +20,30 @@ interface StatementWorkerInput {
 
 public class StatementWorker implements StatementWorkerInput {
 
-
+    ApiModule service = Service.createService(ApiModule.class);
+    SecurePreferences preferences;
 
     @Override
     public void getStatements(StatementRequest statementRequest, RequestListener<StatementResponse> responseListener){
-
+        service.getStatemets(statementRequest.userId).enqueue(new Callback<StatementResponse>() {
+            @Override
+            public void onResponse(Call<StatementResponse> call, Response<StatementResponse> response) {
+                if(response.isSuccessful()) {
+                    responseListener.onSuccess(response.body());
+                } else {
+                    responseListener.onFailure(response.body());
+                }
+            }
+            @Override
+            public void onFailure(Call<StatementResponse> call, Throwable t) {
+                responseListener.onFailure(new ErrorResponse("Ops! Não conseguimos carregar alguns dados."));
+            }
+        });
     }
     @Override
     public void removeUserFromSharedPreferences(Context context) {
-
+        preferences = new SecurePreferences(context, ConstantsHelper.BASE_PREFERENCES, ConstantsHelper.SECRETE_KEY, true);
+        preferences.removeValue(ConstantsHelper.USER_PREF);
+        preferences.removeValue(ConstantsHelper.PASS_PREF);
     }
 }
