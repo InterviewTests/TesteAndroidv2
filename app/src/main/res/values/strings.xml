@@ -4,4 +4,5 @@
     <string name="text_to_login_user">User</string>
     <string name="text_to_login_password">Password</string>
     <string name="alert_to_field_empty">Este campo está vazio! Por favor preencha para se logar.</string>
+    <string name="missing_upper_case">Senha não contém letra maiúscula.</string>
 </resources>

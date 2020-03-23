@@ -22,12 +22,10 @@
     </style>
 
     <style name="InputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="colorOnError">@color/danger</item>
         <item name="android:layout_marginEnd">@dimen/spacing_s</item>
         <item name="android:layout_marginStart">@dimen/spacing_s</item>
         <item name="android:layout_width">342dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="errorTextColor">@color/danger</item>
         <item name="hintTextColor">@color/colorAccent</item>
         <item name="boxStrokeColor">@color/text_input_box_stroke</item>
         <item name="boxStrokeWidth">1dp</item>
@@ -37,6 +35,12 @@
         <item name="boxCornerRadiusTopStart">@dimen/radius_xxxs</item>
         <item name="android:textCursorDrawable">@color/colorAccent</item>
         <item name="android:textColorHint">@color/grayLight</item>
+        <item name="errorTextAppearance">@style/styleErrorAppearance</item>
+    </style>
+
+    <style name="styleErrorAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/danger</item>
+        <item name="android:textSize">@dimen/text_s</item>
     </style>
 
     <style name="InputEdit">

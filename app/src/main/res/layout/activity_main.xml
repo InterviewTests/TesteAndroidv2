@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".clean_code.login.ui.MainActivity">
 
     <ImageView
         android:id="@+id/logo_login"
@@ -19,7 +19,7 @@
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_user"
+        android:id="@+id/input_layout_user"
         app:layout_constraintTop_toBottomOf="@+id/logo_login"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -29,14 +29,15 @@
         style="@style/InputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_edit_user"
             android:hint="@string/text_to_login_user"
             style="@style/InputEdit"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_password"
-        app:layout_constraintTop_toBottomOf="@+id/input_user"
+        android:id="@+id/input_layout_password"
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_user"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="@dimen/spacing_m"
@@ -44,13 +45,14 @@
         style="@style/InputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_edit_password"
             android:hint="@string/text_to_login_password"
             android:inputType="textPassword"
             style="@style/InputEdit"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/btn_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
