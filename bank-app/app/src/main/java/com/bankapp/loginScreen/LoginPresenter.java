@@ -19,21 +19,31 @@ public class LoginPresenter implements LoginPresenterInput {
 
     @Override
     public void responseLogin(LoginResponse response) {
-       //TODO: response login
+        LoginViewModel loginViewModel = new LoginViewModel();
+        loginViewModel.userAccount = response.userAccount;
+        output.get().signIn(loginViewModel);
     }
 
     @Override
     public void responseErrorLogin(ErrorResponse error) {
-        //TODO:
+        LoginViewModel loginViewModel = new LoginViewModel();
+        loginViewModel.error = error;
+        output.get().errorSignIn(loginViewModel);
     }
 
     @Override
     public void responseErrorInvalidFields(LoginResponse response) {
-        //TODO:
+        LoginViewModel loginViewModel = new LoginViewModel();
+        loginViewModel.wrongPassword = response.wrongPassword;
+        loginViewModel.wrongUser = response.wrongUser;
+        output.get().errorUserOrPasswordInvalid(loginViewModel);
     }
 
     @Override
     public void responseSavedUser(LoginResponse response) {
-        //TODO:
+        LoginViewModel loginViewModel = new LoginViewModel();
+        LoginModel loginModel = new LoginModel(response.loginModel.user !=null ? response.loginModel.user : "", response.loginModel.password !=null ? response.loginModel.password : "");
+        loginViewModel.loginModel = loginModel;
+        output.get().bindLoginFields(loginViewModel);
     }
 }

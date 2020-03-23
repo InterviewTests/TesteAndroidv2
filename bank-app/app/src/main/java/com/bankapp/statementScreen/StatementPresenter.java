@@ -17,11 +17,13 @@ public class StatementPresenter implements StatementPresenterInput {
 
     @Override
     public void presentStatementData(StatementResponse response) {
-
+        StatementViewModel viewModel = new StatementViewModel();
+        viewModel.listStatementModel = response.statementList;
+        output.get().displayStatementData(viewModel);
     }
 
     @Override
     public void presentErrorStatementData(ErrorResponse error) {
-
+        output.get().displayErrorStatementData(error);
     }
 }
