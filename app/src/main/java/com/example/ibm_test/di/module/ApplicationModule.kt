@@ -1,6 +1,5 @@
 package com.example.ibm_test.di.module
 
-
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
@@ -17,6 +16,10 @@ class ApplicationModule(private val application: Application) {
 
     @Provides
     @Singleton
+    fun provideContext(): Context = application.applicationContext
+
+    @Provides
+    @Singleton
     fun provideApplication(): Application = application
 
     @Provides
@@ -25,8 +28,9 @@ class ApplicationModule(private val application: Application) {
 
     @Provides
     @Singleton
-    fun provideConnectivityManager() : ConnectivityContract {
-        val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    fun provideConnectivityManager(): ConnectivityContract {
+        val connectivityManager =
+            application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         return Connectivity(connectivityManager = connectivityManager)
     }
 

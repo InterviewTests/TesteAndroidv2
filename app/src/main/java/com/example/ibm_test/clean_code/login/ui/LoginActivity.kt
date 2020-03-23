@@ -4,15 +4,28 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ibm_test.MainApplication
 import com.example.ibm_test.R
-import com.example.ibm_test.utils.hasOneUpperCase
+import com.example.ibm_test.clean_code.login.interactor.LoginInteractorInput
+import com.example.ibm_test.clean_code.login.presenter.LoginPresenterInput
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class LoginActivity : AppCompatActivity(), LoginActivityInput, TextWatcher {
+
+    @Inject
+    lateinit var loginPresenterInput: LoginPresenterInput
+
+    @Inject
+    lateinit var loginInteractorInput: LoginInteractorInput
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        (application as? MainApplication)?.applicationComponent?.inject(this)
+
+        loginPresenterInput.attachLoginInput(this)
 
         btn_login.setOnClickListener {
             onClickLogin()
@@ -33,31 +46,18 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput, TextWatcher {
 
 
     private fun onClickLogin() {
-        val getTextUser = input_edit_user?.text
-        val getTextPassword = input_edit_password?.text
+        val getTextUser = input_edit_user?.text.toString()
+        val getTextPassword = input_edit_password?.text.toString()
 
-        when {
-            getTextUser?.trim().isNullOrEmpty() -> {
-                input_layout_user.isErrorEnabled = true
-                input_layout_user.error = getString(R.string.alert_to_field_empty)
-            }
-            getTextPassword?.trim().isNullOrEmpty() -> {
-                input_layout_password.isErrorEnabled = true
-                input_layout_password.error = getString(R.string.alert_to_field_empty)
-            }
-            getTextPassword.toString().hasOneUpperCase() -> {
-                input_layout_password.isErrorEnabled = true
-                input_layout_password.error = getString(R.string.missing_upper_case)
-            }
-        }
+        loginInteractorInput.validateCredentials(user = getTextUser, password = getTextPassword)
     }
 
-    fun setupErrorToFieldPassword(text: String){
+    override fun setupErrorToFieldPassword(text: String){
         input_layout_password.isErrorEnabled = true
         input_layout_password.error = text
     }
 
-    fun setupErrorToFieldUser(text: String){
+    override fun setupErrorToFieldUser(text: String){
         input_layout_user.isErrorEnabled = true
         input_layout_user.error = text
     }
