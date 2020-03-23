@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ibm_test">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-sdk android:minSdkVersion="23"
+        android:maxSdkVersion="28" tools:overrideLibrary="androidx.security"/>
 
     <application
         android:name=".MainApplication"
@@ -15,8 +19,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".clean_code.home.HomeActivity"></activity>
-        <activity android:name=".clean_code.login.ui.LoginActivity">
+
+        <activity android:name=".clean_code.login.ui.LoginActivity"
+            android:screenOrientation="fullSensor"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

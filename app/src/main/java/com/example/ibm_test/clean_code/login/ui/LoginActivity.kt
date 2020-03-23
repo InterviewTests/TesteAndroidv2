@@ -15,6 +15,7 @@ import com.example.ibm_test.data.UserInfoData
 import com.example.ibm_test.utils.gone
 import com.example.ibm_test.utils.show
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import javax.inject.Inject
 
 class LoginActivity : AppCompatActivity(R.layout.activity_main), LoginActivityInput, TextWatcher {
@@ -35,6 +36,7 @@ class LoginActivity : AppCompatActivity(R.layout.activity_main), LoginActivityIn
         (application as? MainApplication)?.applicationComponent?.inject(this)
 
         loginPresenterInput.attachLoginInput(this)
+        loginInteractorInput.startApp()
 
         btn_login.setOnClickListener {
             onClickLogin()
@@ -57,17 +59,20 @@ class LoginActivity : AppCompatActivity(R.layout.activity_main), LoginActivityIn
         val getTextUser = input_edit_user?.text.toString()
         val getTextPassword = input_edit_password?.text.toString()
         progress_bar_login.show()
+        btn_login.gone()
         loginInteractorInput.validateCredentials(user = getTextUser, password = getTextPassword)
     }
 
     override fun setupErrorToFieldPassword(text: String){
         progress_bar_login.gone()
+        btn_login.show()
         input_layout_password.isErrorEnabled = true
         input_layout_password.error = text
     }
 
     override fun setupErrorToFieldUser(text: String){
         progress_bar_login.gone()
+        btn_login.show()
         input_layout_user.isErrorEnabled = true
         input_layout_user.error = text
     }
@@ -78,6 +83,8 @@ class LoginActivity : AppCompatActivity(R.layout.activity_main), LoginActivityIn
 
     override fun messageError(message: String) {
         progress_bar_login.gone()
+        loading_data_to_home.gone()
+        btn_login.show()
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
@@ -86,5 +93,10 @@ class LoginActivity : AppCompatActivity(R.layout.activity_main), LoginActivityIn
         val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra("user_info", USER_INFO_DATA_TO_INTENT)
         startActivity(intent)
+    }
+
+    override fun loadingUserFromStorage(user: String, password: String) {
+        loading_data_to_home.show()
+        loginInteractorInput.executeLogin(user, password)
     }
 }

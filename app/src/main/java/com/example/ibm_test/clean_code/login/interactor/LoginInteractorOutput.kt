@@ -19,7 +19,8 @@ class LoginInteractorOutput @Inject constructor(
     }
 
     override fun startApp() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val userLogin = userStorage.getString(USER_LOGIN)
+        val userPassword = userStorage.getString(USER_PASSWORD)
     }
 
     override fun executeLogin(user: String, password: String) {

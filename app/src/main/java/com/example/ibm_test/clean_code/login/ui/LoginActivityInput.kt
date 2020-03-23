@@ -8,4 +8,5 @@ interface LoginActivityInput {
     fun loadingLogin(user: String, password: String)
     fun messageError(message: String)
     fun startActivityHome(userInfoData: UserInfoData)
+    fun loadingUserFromStorage(user: String, password: String)
 }

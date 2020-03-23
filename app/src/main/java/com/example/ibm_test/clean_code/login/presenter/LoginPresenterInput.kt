@@ -8,4 +8,5 @@ interface LoginPresenterInput{
     fun setDataCredentials(user: String, password: String)
     fun onSuccess(userInfoData: UserInfoData)
     fun onError(error: Throwable)
+    fun setDataUserFromStorage(user: String, password: String)
 }

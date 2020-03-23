@@ -18,6 +18,9 @@ class LoginPresenterOutput constructor(private val context: Context) : LoginPres
         weakReference = WeakReference(loginActivityInput)
     }
 
+    override fun setDataUserFromStorage(user: String, password: String) {
+
+    }
     override fun setDataCredentials(user: String, password: String) {
         when {
             user.trim().isEmpty() -> {
