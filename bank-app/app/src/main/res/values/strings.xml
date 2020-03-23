@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Santander</string>
+    <string name="app_name">Bank App</string>
 
     <!--LOGIN-->
     <string name="hint_user">User</string>
