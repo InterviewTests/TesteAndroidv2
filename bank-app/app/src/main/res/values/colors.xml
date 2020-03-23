@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="colorBtnLoginText">#FFF</color>
+    <color name="colorShadowBtn">#4D3B48EE</color>
+    <color name="colorBtnLoginBG">#3B48EE </color>
+    <color name="colorHint">#A8B4C4 </color>
+    <color name="colorLine">#DCE2EE</color>
+    <color name="colorStatementBG">#FEFEFE</color>
+    <color name="colorAppBarBG">#3B49EE</color>
+    <color name="colorFontStatement">#485465</color>
+    <color name="colorFontItemStatement">#A8B4C4</color>
+    <color name="colorBG">#FFF</color>
+</resources>
