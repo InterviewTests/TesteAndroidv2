@@ -1,6 +1,7 @@
 package com.example.ibm_test.data
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import java.util.*
 
 data class UserItemData(

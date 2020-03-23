@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".clean_code.login.ui.MainActivity">
+    tools:context=".clean_code.login.ui.LoginActivity">
 
     <ImageView
         android:id="@+id/logo_login"
@@ -62,5 +62,38 @@
         android:layout_width="190dp"
         style="@style/ButtonPrimary"/>
 
+    <ProgressBar
+        android:id="@+id/progress_bar_login"
+        android:visibility="gone"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginBottom="@dimen/spacing_xl" />
+
+    <FrameLayout
+        android:id="@+id/loading_data_to_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@color/background_transparent_to_gray">
+
+        <ProgressBar
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/colorPrimary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_l"
+            android:layout_marginTop="@dimen/spacing_xxl"
+            android:text="Entrando ..."/>
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.example.ibm_test.clean_code.login.presenter
 import android.content.Context
 import com.example.ibm_test.R
 import com.example.ibm_test.clean_code.login.ui.LoginActivityInput
+import com.example.ibm_test.data.UserInfoData
 import com.example.ibm_test.utils.hasOneUpperCase
 import java.lang.ref.WeakReference
 
@@ -30,5 +31,13 @@ class LoginPresenterOutput constructor(private val context: Context) : LoginPres
                 input?.setupErrorToFieldPassword(context.getString(R.string.missing_upper_case))
             }
         }
+    }
+
+    override fun onSuccess(userInfoData: UserInfoData) {
+        input?.startActivityHome(userInfoData)
+    }
+
+    override fun onError(error: Throwable) {
+        input?.messageError(error.message.toString())
     }
 }
