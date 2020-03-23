@@ -2,6 +2,8 @@ package com.bankapp.statementScreen;
 
 import android.content.Context;
 
+import com.bankapp.ErrorResponse;
+import com.bankapp.api.RequestListener;
 
 
 interface StatementInteractorInput {
@@ -22,12 +24,27 @@ public class StatementInteractor implements StatementInteractorInput {
 
     @Override
     public void getStatements(StatementRequest statementRequest) {
-      //TODO: getStatements
+        aStatementWorkerInput = getStatementWorkerInput();
+        aStatementWorkerInput.getStatements(statementRequest, new RequestListener<StatementResponse>() {
+            @Override
+            public void onSuccess(StatementResponse response) {
+                output.presentStatementData(response);
+            }
+            @Override
+            public void onFailure(StatementResponse response) {
+                output.presentErrorStatementData(response.error);
+            }
+            @Override
+            public void onFailure(ErrorResponse error) {
+                output.presentErrorStatementData(error);
+            }
+        });
     }
 
     @Override
     public void logout(Context context) {
-      //TODO: logout
+        aStatementWorkerInput = getStatementWorkerInput();
+        aStatementWorkerInput.removeUserFromSharedPreferences(context);
 
     }
 }
