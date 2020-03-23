@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">Bank App</string>
+    <string name="app_name">Santander</string>
+
+    <!--LOGIN-->
+    <string name="hint_user">User</string>
+    <string name="hint_pass">Password</string>
+    <string name="error_required_field">Campo obrigatório</string>
+    <string name="error_login">Campo obrigatório</string>
+
+    <string name="loading">Carregando...</string>
+    <string name="login">Login</string>
+
+    <string name="error_wrong_user">Digite um email ou cpf válido para fazer login.</string>
+    <string name="error_wrong_pass">Sua senha deve conter pelo menos uma letra maiúscula, um caracter especial e um caracter alfanumérico.</string>
+
+    <!--STATEMENT-->
+    <string name="label_account">Conta</string>
+    <string name="label_balance">Saldo</string>
+    <string name="label_news">Recentes</string>
+    <string name="label_coin">R$</string>
+
+    <string name="error_loading_user_details">Ops! Não conseguimos carregar algumas informações.</string>
 </resources>
