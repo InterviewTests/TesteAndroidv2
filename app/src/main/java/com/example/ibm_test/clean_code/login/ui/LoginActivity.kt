@@ -91,6 +91,7 @@ class LoginActivity : AppCompatActivity(R.layout.activity_main), LoginActivityIn
     override fun startActivityHome(userInfoData: UserInfoData) {
         progress_bar_login.gone()
         val intent = Intent(this, HomeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.putExtra("user_info", USER_INFO_DATA_TO_INTENT)
         startActivity(intent)
     }

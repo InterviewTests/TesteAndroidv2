@@ -1,6 +1,7 @@
 package com.example.ibm_test.service
 
 import com.example.ibm_test.data.LoginData
+import com.example.ibm_test.data.UserAccount
 import com.example.ibm_test.data.UserItemData
 import com.example.ibm_test.data.UserInfoData
 import io.reactivex.Single
@@ -11,7 +12,7 @@ import retrofit2.http.Path
 
 interface IBMNetwork {
     @POST("login")
-    fun sendInfoToLogin(@Body data: LoginData): Single<UserInfoData>
+    fun sendInfoToLogin(@Body data: LoginData): Single<UserAccount>
 
     @GET("statements/{idUser}")
     fun getUserItemInfo(@Path("idUser") idUser: String): Single<List<UserItemData>>

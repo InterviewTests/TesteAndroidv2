@@ -3,6 +3,10 @@ package com.example.ibm_test.data
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+data class UserAccount(
+    @SerializedName("userAccount") val userAccount: UserInfoData
+) : Serializable
+
 data class UserInfoData (
     @SerializedName("userId") val userId: Int,
     @SerializedName("name") val name: String,

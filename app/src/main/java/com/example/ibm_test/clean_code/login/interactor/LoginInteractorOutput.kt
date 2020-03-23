@@ -21,6 +21,7 @@ class LoginInteractorOutput @Inject constructor(
     override fun startApp() {
         val userLogin = userStorage.getString(USER_LOGIN)
         val userPassword = userStorage.getString(USER_PASSWORD)
+        loginPresenterInput.setDataUserFromStorage(userLogin, userPassword)
     }
 
     override fun executeLogin(user: String, password: String) {
@@ -28,10 +29,10 @@ class LoginInteractorOutput @Inject constructor(
 
         userService.login(loginData,
             onSuccess = {
-                val userId = it.userId
+                val userId = it.userAccount.userId
                 userStorage.setString(USER_LOGIN, user)
                 userStorage.setString(USER_PASSWORD, password)
-                loginPresenterInput.onSuccess(it)
+                loginPresenterInput.onSuccess(it.userAccount)
             },
             onError = {
                 loginPresenterInput.onError(it)

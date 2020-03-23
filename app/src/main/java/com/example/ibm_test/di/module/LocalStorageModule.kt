@@ -9,7 +9,7 @@ import dagger.Module
 import dagger.Provides
 
 
-@Module
+@Module 
 class LocalStorageModule {
     @Provides
     fun provideUserStorage(context: Context) : UserStorage{

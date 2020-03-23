@@ -36,7 +36,7 @@ class NetworkModule{
 
     @Provides
     @Named("IBMApi")
-    fun provideZapGroupAPI(gson: Gson, @Named("CachedOkHttpClient") okHttpClient: OkHttpClient): Retrofit {
+    fun provideIBMAPI(gson: Gson, @Named("CachedOkHttpClient") okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
@@ -46,7 +46,7 @@ class NetworkModule{
     }
 
     @Provides
-    fun provideZapGroupService(@Named("IBMApi") IBMApi: Retrofit): IBMNetwork{
+    fun provideIBMNetwork(@Named("IBMApi") IBMApi: Retrofit): IBMNetwork{
         return IBMApi.create(IBMNetwork::class.java)
     }
 }

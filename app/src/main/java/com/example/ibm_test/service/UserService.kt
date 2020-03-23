@@ -1,17 +1,20 @@
 package com.example.ibm_test.service
 
 import com.example.ibm_test.data.LoginData
+import com.example.ibm_test.data.UserAccount
 import com.example.ibm_test.data.UserInfoData
 import com.example.ibm_test.data.UserItemData
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class UserService @Inject constructor(private val ibmNetwork: IBMNetwork){
-    fun login(loginData: LoginData, onSuccess: (it: UserInfoData) -> Unit, onError: (it: Throwable) -> Unit){
+    fun login(loginData: LoginData, onSuccess: (it: UserAccount) -> Unit, onError: (it: Throwable) -> Unit){
         ibmNetwork.sendInfoToLogin(data = loginData)
             .subscribeOn(Schedulers.io())
-            .doOnSuccess(onSuccess)
             .doOnError(onError)
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSuccess(onSuccess)
             .ignoreElement()
             .onErrorComplete()
             .subscribe()

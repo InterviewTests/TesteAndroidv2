@@ -19,8 +19,10 @@ class LoginPresenterOutput constructor(private val context: Context) : LoginPres
     }
 
     override fun setDataUserFromStorage(user: String, password: String) {
-
+        if(user.isNotEmpty() && password.isNotEmpty())
+            input?.loadingUserFromStorage(user, password)
     }
+
     override fun setDataCredentials(user: String, password: String) {
         when {
             user.trim().isEmpty() -> {
@@ -33,6 +35,7 @@ class LoginPresenterOutput constructor(private val context: Context) : LoginPres
             password.hasOneUpperCase() -> {
                 input?.setupErrorToFieldPassword(context.getString(R.string.missing_upper_case))
             }
+            else -> input?.loadingLogin(user, password)
         }
     }
 
