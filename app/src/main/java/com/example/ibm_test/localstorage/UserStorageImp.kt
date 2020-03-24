@@ -35,7 +35,7 @@ class UserStorageImp(private val sharedPreferences: SharedPreferences) : UserSto
     }
 
     override fun clearData() {
-        sharedPreferences.edit().clear().apply()
+        sharedPreferences.edit().clear().commit()
     }
 }
 
