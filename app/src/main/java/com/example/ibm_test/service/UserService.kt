@@ -13,7 +13,6 @@ class UserService @Inject constructor(private val ibmNetwork: IBMNetwork){
         ibmNetwork.sendInfoToLogin(data = loginData)
             .subscribeOn(Schedulers.io())
             .doOnError(onError)
-            .observeOn(AndroidSchedulers.mainThread())
             .doOnSuccess(onSuccess)
             .ignoreElement()
             .onErrorComplete()

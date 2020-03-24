@@ -29,7 +29,6 @@ class LoginInteractorOutput @Inject constructor(
 
         userService.login(loginData,
             onSuccess = {
-                val userId = it.userAccount.userId
                 userStorage.setString(USER_LOGIN, user)
                 userStorage.setString(USER_PASSWORD, password)
                 loginPresenterInput.onSuccess(it.userAccount)
