@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".clean_code.home.HomeActivity"></activity>
+        <activity android:name=".clean_code.home.ui.HomeActivity"/>
 
         <activity android:name=".clean_code.login.ui.LoginActivity"
             android:screenOrientation="fullSensor"

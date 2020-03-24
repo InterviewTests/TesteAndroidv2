@@ -30,7 +30,6 @@ class LoginPresenterOutput constructor(private val context: Context) : LoginPres
             }
             password.trim().isEmpty() -> {
                 input?.setupErrorToFieldPassword(context.getString(R.string.alert_to_field_empty))
-
             }
             password.hasOneUpperCase() -> {
                 input?.setupErrorToFieldPassword(context.getString(R.string.missing_upper_case))

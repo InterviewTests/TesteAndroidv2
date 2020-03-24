@@ -19,6 +19,7 @@
         <item name="android:textSize">@dimen/text_m</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">50dp</item>
+        <item name="android:textAppearance">@style/DisplayLPrimary</item>
     </style>
 
     <style name="InputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -46,9 +47,79 @@
     <style name="InputEdit">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/text_l</item>
+        <item name="android:textAppearance">@style/DisplayLSecondary</item>
         <item name="android:textColorHint">@color/grayLight</item>
         <item name="android:textCursorDrawable">@color/colorAccent</item>'
+    </style>
+
+    <style name="DisplayXXLPrimary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_xxl</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="DisplayXXLSecondary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_xxl</item>
+        <item name="android:textColor">@color/grayLight</item>
+    </style>
+
+    <style name="DisplayXLPrimary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_xl</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="DisplayXLSecondary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_xl</item>
+        <item name="android:textColor">@color/grayLight</item>
+    </style>
+
+    <style name="DisplayLPrimary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_l</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="DisplayLSecondary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_l</item>
+        <item name="android:textColor">@color/grayLight</item>
+    </style>
+
+    <style name="DisplayLSecondaryDark" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_l</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="DisplaySPrimary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_s</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="DisplaySSecondary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_s</item>
+        <item name="android:textColor">@color/grayLight</item>
+    </style>
+
+    <style name="CustomCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="cardCornerRadius">@dimen/radius_xxs</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_width">match_parent</item>
     </style>
 
 </resources>

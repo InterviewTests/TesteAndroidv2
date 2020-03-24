@@ -9,4 +9,6 @@
     <color name="danger">#dd1212</color>
     <color name="success">#2abe54</color>
     <color name="background_transparent_to_gray">#bf2a2a2a</color>
+    <color name="background_color">#fefefe</color>
+    <color name="shadows_card_view">#80d9e2e9</color>
 </resources>

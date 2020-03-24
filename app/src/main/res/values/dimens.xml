@@ -22,10 +22,11 @@
     <dimen name="radius_l">32.0dp</dimen>
 
     <!--  To text  -->
-    <dimen name="text_s">12.0dp</dimen>
+    <dimen name="text_s">12.0sp</dimen>
     <dimen name="text_m">14.0sp</dimen>
-    <dimen name="text_l">16.0dp</dimen>
-    <dimen name="text_xl">24.0dp</dimen>
+    <dimen name="text_l">16.0sp</dimen>
+    <dimen name="text_xl">20.0sp</dimen>
+    <dimen name="text_xxl">24.0sp</dimen>
 
     <!--  To padding  -->
     <dimen name="padding_xxxs">4.0dp</dimen>
@@ -38,4 +39,6 @@
     <dimen name="padding_xxl">48.0dp</dimen>
     <dimen name="padding_xxxl">56.0dp</dimen>
     <dimen name="padding_xxxxl">64.0dp</dimen>
+
+    <!-- Component -->
 </resources>

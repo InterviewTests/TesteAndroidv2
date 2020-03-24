@@ -13,6 +13,70 @@
         <item name="android:textSize">@dimen/text_m</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">50dp</item>
+        <item name="android:textAppearance">@style/DisplayLPrimary</item>
     </style>
 
+    <style name="DisplayXXLPrimary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_xxl</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="DisplayXXLSecondary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_xxl</item>
+        <item name="android:textColor">@color/grayLight</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="DisplayXLPrimary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_xl</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="DisplayXLSecondary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_xl</item>
+        <item name="android:textColor">@color/grayLight</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="DisplayLPrimary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_l</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="DisplayLSecondary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_l</item>
+        <item name="android:textColor">@color/grayLight</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="DisplaySPrimary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_s</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="DisplaySSecondary" parent="@android:style/TextAppearance">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_s</item>
+        <item name="android:textColor">@color/grayLight</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
 </resources>

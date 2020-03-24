@@ -8,14 +8,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ibm_test.MainApplication
 import com.example.ibm_test.R
-import com.example.ibm_test.clean_code.home.HomeActivity
+import com.example.ibm_test.clean_code.home.ui.HomeActivity
 import com.example.ibm_test.clean_code.login.interactor.LoginInteractorInput
 import com.example.ibm_test.clean_code.login.presenter.LoginPresenterInput
 import com.example.ibm_test.data.UserInfoData
 import com.example.ibm_test.utils.gone
 import com.example.ibm_test.utils.show
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 import javax.inject.Inject
 
 class LoginActivity : AppCompatActivity(R.layout.activity_main), LoginActivityInput, TextWatcher {
@@ -92,7 +91,7 @@ class LoginActivity : AppCompatActivity(R.layout.activity_main), LoginActivityIn
         progress_bar_login.gone()
         val intent = Intent(this, HomeActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-        intent.putExtra("user_info", USER_INFO_DATA_TO_INTENT)
+        intent.putExtra(USER_INFO_DATA_TO_INTENT, userInfoData)
         startActivity(intent)
     }
 

@@ -1,9 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".clean_code.home.HomeActivity">
+    tools:context=".clean_code.home.ui.HomeActivity"
+    android:background="@color/background_color">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_home"
+        android:layout_width="match_parent"
+        android:background="@color/colorAccent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/padding_s"
+      >
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorAccent"
+            app:expandedTitleGravity="top"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_s">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/user_name"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginTop="@dimen/spacing_m"
+                    tools:text="@string/name_to_mock"
+                    style="@style/DisplayXXLPrimary"/>
+
+                <ImageView
+                    android:id="@+id/logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/logout_2"
+                    android:layout_marginTop="@dimen/spacing_m"
+                    android:layout_marginEnd="@dimen/spacing_xs"
+                    app:layout_constraintRight_toRightOf="parent"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/account"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/user_name"
+                    android:layout_marginTop="@dimen/spacing_m"
+                    android:text="@string/text_account"
+                    style="@style/DisplaySPrimary"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/number_account"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/account"
+                    android:layout_marginTop="@dimen/spacing_xxxs"
+                    tools:text="@string/number_account_to_mock"
+                    style="@style/DisplayXXLPrimary"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/balance"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/number_account"
+                    android:layout_marginTop="@dimen/spacing_m"
+                    android:text="@string/text_balance"
+                    style="@style/DisplaySPrimary"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/balance_account"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/balance"
+                    android:layout_marginTop="@dimen/spacing_xxxs"
+                    tools:text="@string/balance_account_to_mock"
+                    style="@style/DisplayXXLPrimary" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/spacing_s">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/recent_items"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/spacing_s"
+            android:text="@string/recent"
+            style="@style/DisplayLSecondaryDark" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xxs"
+            android:layout_marginStart="@dimen/spacing_xl"
+            app:layout_constraintTop_toBottomOf="@+id/recent_items"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

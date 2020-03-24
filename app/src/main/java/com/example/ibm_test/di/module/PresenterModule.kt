@@ -1,6 +1,8 @@
 package com.example.ibm_test.di.module
 
 import android.content.Context
+import com.example.ibm_test.clean_code.home.presenter.HomePresenterInput
+import com.example.ibm_test.clean_code.home.presenter.HomePresenterOutput
 import com.example.ibm_test.clean_code.login.presenter.LoginPresenterInput
 import com.example.ibm_test.clean_code.login.presenter.LoginPresenterOutput
 import dagger.Module
@@ -13,4 +15,10 @@ class PresenterModule{
     @Singleton
     fun provideLoginPresenterInput(context: Context): LoginPresenterInput
             = LoginPresenterOutput(context)
+
+    @Provides
+    @Singleton
+    fun provideHomePresenterInput(context: Context): HomePresenterInput
+            = HomePresenterOutput(context)
+
 }
