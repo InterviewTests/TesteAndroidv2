@@ -14,8 +14,7 @@
         android:layout_width="match_parent"
         android:background="@color/colorAccent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/padding_s"
-      >
+        android:paddingBottom="@dimen/padding_s">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -37,14 +36,16 @@
                     tools:text="@string/name_to_mock"
                     style="@style/DisplayXXLPrimary"/>
 
-                <ImageView
-                    android:id="@+id/logout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <ImageButton
+                    android:id="@+id/btn_logout"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:padding="@dimen/padding_xs"
                     app:layout_constraintTop_toTopOf="parent"
                     android:src="@drawable/logout_2"
-                    android:layout_marginTop="@dimen/spacing_m"
-                    android:layout_marginEnd="@dimen/spacing_xs"
+                    android:background="@null"
+                    android:layout_marginTop="@dimen/spacing_s"
+                    android:layout_marginEnd="@dimen/spacing_xxs"
                     app:layout_constraintRight_toRightOf="parent"/>
 
                 <com.google.android.material.textview.MaterialTextView
@@ -81,25 +82,20 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
-
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/spacing_s">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/recent_items"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="@dimen/spacing_s"
+            android:layout_marginStart="@dimen/spacing_s"
             android:text="@string/recent"
             style="@style/DisplayLSecondaryDark" />
 
@@ -107,9 +103,18 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_xxs"
-            android:layout_marginStart="@dimen/spacing_xl"
-            app:layout_constraintTop_toBottomOf="@+id/recent_items"/>
+            android:paddingTop="@dimen/padding_xxl"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="visible"/>
+
+        <ProgressBar
+            android:id="@+id/progress_bar_home"
+            android:visibility="gone"
+            style="@style/ProgressBarNormal"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recent_items"
+            android:layout_marginTop="@dimen/spacing_xs" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

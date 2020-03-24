@@ -17,6 +17,6 @@ class UserItemViewHolder(view: View) : CustomViewHolder<UserItemData>(view){
         titleItem.text = get()?.title
         dateItem.text = get()?.date?.toShortDate()
         descItem.text = get()?.desc
-        valueItem.text = get()?.value?.toMoney()
+        valueItem.text = get()?.value?.toMoney(context = valueItem.context)
     }
 }

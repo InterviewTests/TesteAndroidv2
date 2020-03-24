@@ -1,18 +1,9 @@
 package com.example.ibm_test.utils
 
-fun Double.toMoney(): String {
-    val value = this.toString()
-    var aux = ""
+import android.content.Context
+import java.text.NumberFormat
 
-    value.reversed().forEachIndexed{ index, char ->
-        aux += if (index > 0 && index % 3 == 0)
-            ".$char"
-        else
-            "$char"
-
-    }
-
-    if(!aux.contains(",00")) aux = aux.reversed().plus(",00")
-
-    return aux
+fun Double.toMoney(context: Context): String {
+    val convert = NumberFormat.getNumberInstance(context.resources.configuration.locale).format(this)
+    return "R$${convert}"
 }

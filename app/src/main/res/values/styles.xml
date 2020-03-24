@@ -118,8 +118,13 @@
     <style name="CustomCardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">?attr/colorSurface</item>
         <item name="cardCornerRadius">@dimen/radius_xxs</item>
-        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="ProgressBarNormal" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_width">48dp</item>
     </style>
 
 </resources>

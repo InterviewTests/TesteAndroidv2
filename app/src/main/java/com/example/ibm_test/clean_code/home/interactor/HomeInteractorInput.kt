@@ -4,4 +4,5 @@ import com.example.ibm_test.data.UserInfoData
 
 interface HomeInteractorInput {
     fun startApp(userInfoData: UserInfoData)
+    fun onLogout()
 }

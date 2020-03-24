@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/CustomCardView"
     android:layout_marginTop="@dimen/spacing_xxs"
-    android:layout_marginBottom="@dimen/spacing_xxs">
+    android:layout_marginBottom="@dimen/spacing_xxs"
+    android:layout_marginStart="@dimen/spacing_xxl"
+    android:layout_marginEnd="@dimen/spacing_xxs"
+    app:cardElevation="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,36 +18,32 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/title_item"
             style="@style/DisplayLSecondary"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            tools:text="Pagamento"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Pagamento" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/date_item"
             style="@style/DisplaySSecondary"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            tools:text="12/12/2016"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="12/12/2016" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/desc_item"
             style="@style/DisplayLSecondaryDark"
             android:layout_marginTop="@dimen/spacing_s"
-            app:layout_constraintTop_toBottomOf="@+id/title_item"
             app:layout_constraintLeft_toLeftOf="parent"
-            tools:text="12/12/2016"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/title_item"
+            tools:text="12/12/2016" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value_item"
             style="@style/DisplayLSecondaryDark"
             android:layout_marginTop="@dimen/spacing_s"
-            app:layout_constraintTop_toBottomOf="@+id/date_item"
             app:layout_constraintRight_toRightOf="parent"
-            tools:text="RS1.000,00"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/date_item"
+            tools:text="RS1.000,00" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

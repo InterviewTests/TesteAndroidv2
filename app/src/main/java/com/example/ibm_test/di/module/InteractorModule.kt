@@ -1,6 +1,8 @@
 package com.example.ibm_test.di.module
 
+import com.example.ibm_test.clean_code.home.interactor.HomeInteractorInput
 import com.example.ibm_test.clean_code.home.interactor.HomeInteractorOutput
+import com.example.ibm_test.clean_code.home.presenter.HomePresenterInput
 import com.example.ibm_test.clean_code.home.presenter.HomePresenterOutput
 import com.example.ibm_test.clean_code.login.interactor.LoginInteractorInput
 import com.example.ibm_test.clean_code.login.interactor.LoginInteractorOutput
@@ -20,6 +22,6 @@ class InteractorModule{
 
     @Provides
     @Singleton
-    fun provideHomeInteractoInput(homePresenterInput: HomePresenterOutput, userService: UserService): HomeInteractorOutput
-            = HomeInteractorOutput(homePresenterInput, userService)
+    fun provideHomeInteractoInput(homePresenterInput: HomePresenterInput, userService: UserService, userStorage: UserStorage): HomeInteractorInput
+            = HomeInteractorOutput(homePresenterInput, userService, userStorage)
 }

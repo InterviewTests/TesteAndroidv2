@@ -11,4 +11,6 @@
     <string name="balance_account_to_mock">R$1.000,00</string>
     <string name="text_balance">Saldo</string>
     <string name="recent">Recentes</string>
+    <string name="loading_sign_up">Entrando ...</string>
+    <string name="empty_list">Lista está vazia</string>
 </resources>

@@ -64,8 +64,7 @@
     <ProgressBar
         android:id="@+id/progress_bar_login"
         android:visibility="gone"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        style="@style/ProgressBarNormal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -91,7 +90,7 @@
             android:layout_gravity="center"
             android:textSize="@dimen/text_l"
             android:layout_marginTop="@dimen/spacing_xxl"
-            android:text="Entrando ..."/>
+            android:text="@string/loading_sign_up"/>
 
     </FrameLayout>
 
