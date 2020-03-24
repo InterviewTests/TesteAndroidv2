@@ -14,12 +14,14 @@ import com.example.ibm_test.localstorage.UserStorageImp
 import com.example.ibm_test.service.IBMNetwork
 import com.example.ibm_test.service.UserService
 import com.nhaarman.mockitokotlin2.verify
+import io.reactivex.Scheduler
 import io.reactivex.Single
+import io.reactivex.android.plugins.RxAndroidPlugins
+import io.reactivex.schedulers.Schedulers
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
-
 
 class LoginUnitTest {
     private var activity = mock(LoginActivityInput::class.java)
@@ -33,6 +35,7 @@ class LoginUnitTest {
 
     @Before
     fun setup() {
+        RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
         userService = UserService(service)
         loginPresenterInput = LoginPresenterOutput(context)
         loginPresenterInput.attachLoginInput(activity)
