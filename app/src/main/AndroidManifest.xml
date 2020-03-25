@@ -8,8 +8,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-sdk android:minSdkVersion="23"
-        android:maxSdkVersion="28" tools:overrideLibrary="androidx.security"/>
+    <uses-sdk tools:overrideLibrary="androidx.security"/>
 
     <application
         android:name=".MainApplication"
@@ -20,10 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".clean_code.home.ui.HomeActivity"/>
+        <activity android:name=".clean_code.home.ui.HomeActivity"
+            android:screenOrientation="portrait"
+            />
 
         <activity android:name=".clean_code.login.ui.LoginActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

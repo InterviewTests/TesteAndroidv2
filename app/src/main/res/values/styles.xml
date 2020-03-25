@@ -3,15 +3,16 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="ButtonPrimary" parent="Widget.MaterialComponents.Button">
         <item name="android:background">@color/colorAccent</item>
+        <item name="colorOnBackground">@color/colorAccent</item>
         <item name="cornerFamilyTopLeft">rounded</item>
-        <item name="cornerFamilyBottomLeft">rounded</item>"
+        <item name="cornerFamilyBottomLeft">rounded</item>
         <item name="cornerFamilyTopRight">cut</item>
         <item name="cornerFamilyBottomRight">cut</item>
         <item name="android:textColor">@color/colorPrimary</item>

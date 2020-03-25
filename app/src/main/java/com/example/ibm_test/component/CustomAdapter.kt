@@ -12,6 +12,7 @@ class CustomAdapter<T>(
     private val viewType: (position: Int) -> Int? = { null }
 ) : RecyclerView.Adapter<CustomViewHolder<T>>() {
 
+    @Suppress("UNCHECKED_CAST")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder<T> {
         val inflater: LayoutInflater = LayoutInflater.from(parent.context)
         return itemsViewHolder(inflater, parent, viewType) as CustomViewHolder<T>

@@ -11,7 +11,7 @@ class CacheInterceptor: Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
 
-        if (request.method != "GET") {
+        if (request.method() != "GET") {
             return chain.proceed(request)
         }
 
