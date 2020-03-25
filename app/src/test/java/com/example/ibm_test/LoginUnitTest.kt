@@ -28,9 +28,9 @@ class LoginUnitTest {
     private var service = mock(IBMNetwork::class.java)
     private var context = mock(Context::class.java)
     private var userStorage = mock(UserStorage::class.java)
-    private  var loginPresenterInput = mock(LoginPresenterInput::class.java)
 
     private lateinit var loginInteractorInput: LoginInteractorInput
+    private lateinit var loginPresenterInput : LoginPresenterInput
     private lateinit var userService: UserService
 
     @Before

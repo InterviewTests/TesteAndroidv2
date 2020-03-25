@@ -19,7 +19,7 @@ class HomePresenterOutput constructor(private val context: Context) : HomePresen
     override fun handlerUserDataInfo(userInfoData: UserInfoData) {
         val userName = userInfoData.name
         val numberAccount = "${userInfoData.bankAccount} / ${userInfoData.agency.toHandlerAgency()}"
-        val balanceAccount = userInfoData.balance.toMoney(context)
+        val balanceAccount = userInfoData.balance.toMoney()
 
         input?.setUserInfo(userName, numberAccount, balanceAccount)
     }
