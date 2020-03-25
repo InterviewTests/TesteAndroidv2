@@ -1,3 +1,16 @@
+# Executar o projeto
+O teste foi salvo a partir na pasta TesteAndroidV2, para executá-lo é necessário seguir esse passos:
+* Precisa exportar o projeto para alguma IDE IntelliJ em formato Android (recomendado usar o Android Studio como IDE),
+* Ao exporta o projeto é esperado baixar algumas dependências,
+* Após, é só gerar um build do APP para algum device ou emulator e começar a testar; e
+* Se quiser poder executar os teste unitário
+
+# Projeto
+* O app foi feito a partir do Clean Code Android, Dagger 2, Retrofit, RxKotlin, Gson, Material Design e Mockito.
+
+# Empresa
+* IBM - Banco Santander
+
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
@@ -37,18 +50,5 @@ Pedimos que trabalhe sozinho e não divulgue o resultado na internet.
 Faça um fork desse desse repositório em seu Github e ao finalizar nos envie um Pull Request com o resultado, por favor informe por qual empresa você esta se candidatando.
 
 # Importante: não há prazo de entrega, faça com qualidade!
-
-O teste foi salvo a partir na pasta TesteAndroidV2, para executá-lo é necessário seguir esse passos:
-* Precisa exportar o projeto para alguma IDE IntelliJ em formato Android (recomendado usar o Android Studio como IDE),
-* Ao exporta o projeto é esperado baixar algumas dependências,
-* Após, é só gerar um build do APP para algum device ou emulator e começar a testar; e
-* Se quiser poder executar os teste unitário
-
-Projeto
-* O app foi feito a partir do Clean Code Android, Dagger 2, Retrofit, RxKotlin, Gson, Material Design e Mockito.
-
-Empresa
-* IBM - Banco Santander
-
 
 # BOA SORTE!
