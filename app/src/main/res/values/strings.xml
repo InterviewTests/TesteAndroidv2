@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">android-selecao-teste</string>
+    <string name="logout">logout</string>
+    <string name="botao_login">Login</string>
+    <string name="edit_password">Password</string>
+    <string name="edit_user">User</string>
+    <string name="abc_conta">Conta</string>
+    <string name="abc_saldo">Saldo</string>
+    <string name="abc_recentes">Recentes</string>
+</resources>

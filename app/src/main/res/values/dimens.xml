@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_statement_padding">8dp</dimen>
+    <dimen name="card_statement_radius">8dp</dimen>
+    <dimen name="card_statement_margin">8dp</dimen>
+    <dimen name="card_statement_height">80dp</dimen>
+</resources>
