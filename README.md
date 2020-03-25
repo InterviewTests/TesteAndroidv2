@@ -40,12 +40,12 @@ Faça um fork desse desse repositório em seu Github e ao finalizar nos envie um
 
 O teste foi salvo a partir na pasta TesteAndroidV2, para executá-lo é necessário seguir esse passos:
 * Precisa exportar o projeto para alguma IDE IntelliJ em formato Android (recomendado usar o Android Studio como IDE),
-* Ao exporta projeto esperado baixar as dependências necessárias,
-* Após isso é só gerar um build do APP para algum device ou emulator e começar a testar; e
+* Ao exporta o projeto é esperado baixar algumas dependências,
+* Após, é só gerar um build do APP para algum device ou emulator e começar a testar; e
 * Se quiser poder executar os teste unitário
 
 Projeto
-* O app foi feito a partir de Clean Code Android, Dagger 2, Retrofit, RxKotlin, Gson, Material Design e Mockito.
+* O app foi feito a partir do Clean Code Android, Dagger 2, Retrofit, RxKotlin, Gson, Material Design e Mockito.
 
 Empresa
 * IBM - Banco Santander
