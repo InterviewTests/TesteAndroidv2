@@ -5,19 +5,26 @@ import com.example.ibm_test.clean_code.home.interactor.HomeInteractorInput
 import com.example.ibm_test.clean_code.home.interactor.HomeInteractorOutput
 import com.example.ibm_test.clean_code.home.presenter.HomePresenterInput
 import com.example.ibm_test.clean_code.home.presenter.HomePresenterOutput
+import com.example.ibm_test.clean_code.home.ui.HomeActivity
 import com.example.ibm_test.clean_code.home.ui.HomeActivityInput
-import com.example.ibm_test.data.*
+import com.example.ibm_test.data.StatementList
+import com.example.ibm_test.data.UserInfoData
+import com.example.ibm_test.data.UserItemData
 import com.example.ibm_test.localstorage.UserStorage
-import com.example.ibm_test.localstorage.UserStorageImp
 import com.example.ibm_test.service.IBMNetwork
 import com.example.ibm_test.service.UserService
+import com.example.ibm_test.utils.toHandlerAgency
+import com.example.ibm_test.utils.toMoney
+import com.nhaarman.mockitokotlin2.verify
 import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.schedulers.Schedulers
 import org.junit.Before
 import org.junit.Test
+import org.mockito.Mockito
 import org.mockito.Mockito.mock
 import java.util.*
+
 
 class HomeUnitTest {
     private var activity = mock(HomeActivityInput::class.java)
@@ -28,6 +35,7 @@ class HomeUnitTest {
     private lateinit var homeInteractorInput: HomeInteractorInput
     private lateinit var homePresenterInput: HomePresenterInput
     private lateinit var userService: UserService
+    private lateinit var homeActivity: HomeActivity
 
     @Before
     fun setup() {
@@ -39,25 +47,62 @@ class HomeUnitTest {
     }
 
     @Test
-    fun test_setupUserDataToView() {
+    fun test_setupDataToView() {
+        val userInfoData = getUserInfoData()
+
+        Mockito.`when`(service.getUserItemInfo(userInfoData.userId.toString())).thenReturn(getOnSuccess())
+
+        homeInteractorInput.startApp(userInfoData)
+
+        val userName = getUserInfoData().name
+        val numberAccount = "${getUserInfoData().bankAccount} / ${getUserInfoData().agency.toHandlerAgency()}"
+        val balanceAccount = getUserInfoData().balance.toMoney()
+
+        verify(activity).setUserInfo(userName = userName, numberAccount = numberAccount, balanceAccount = balanceAccount)
     }
 
     @Test
     fun test_loadingItemsSuccess() {
+        val userInfoData = getUserInfoData()
+
+        Mockito.`when`(service.getUserItemInfo(userInfoData.userId.toString())).thenReturn(getOnSuccess())
+
+        homeInteractorInput.startApp(userInfoData)
+
+        verify(activity).setUserList(getUserItems())
     }
 
     @Test
     fun test_loadingItemsError() {
+        val userInfoData = getUserInfoData()
+        val messageError = "Error 500"
 
+        Mockito.`when`(service.getUserItemInfo(userInfoData.userId.toString())).thenReturn(getOnError(messageError))
+
+        homeInteractorInput.startApp(userInfoData)
+
+        verify(activity).setError(messageError)
     }
 
     @Test
     fun test_loadingItemsEmpty() {
+        val userInfoData = getUserInfoData()
+        val message = "Lista está vazia"
 
+        Mockito.`when`(service.getUserItemInfo(userInfoData.userId.toString())).thenReturn(getOnSuccessEmpty())
+
+        homeInteractorInput.startApp(userInfoData)
+
+        Mockito.`when`(context.getString(R.string.empty_list)).thenReturn(message)
+
+        verify(activity).setError(message)
     }
 
     @Test
     fun test_logout() {
+        homeInteractorInput.onLogout()
+        verify(userStorage).clearData()
+        verify(activity).startActivityLogin()
 
     }
 
@@ -65,7 +110,7 @@ class HomeUnitTest {
         it.onSuccess(getStatementList())
     }
 
-    private fun getOnError(message: String): Single<UserAccount> = Single.create {
+    private fun getOnError(message: String): Single<StatementList> = Single.create {
         it.onError(Throwable(message))
     }
 
@@ -76,8 +121,8 @@ class HomeUnitTest {
     private fun getStatementList() = StatementList(items = getUserItems())
 
     private fun getUserItems(): List<UserItemData> = listOf(
-        UserItemData("Pagament", "Conta de luz", Date("2018-08-15"), -50.0),
-        UserItemData("TED", "Rafael", Date("2017-08-15"), 1000.5)
+        UserItemData("Pagamento", "Conta de luz", Date("2020/08/15"), -50.0),
+        UserItemData("TED", "Rafael",  Date("2020/09/15"), 1000.5)
     )
 
     private fun getUserInfoData() = UserInfoData(

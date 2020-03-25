@@ -17,7 +17,6 @@ class CustomAdapter<T>(
         return itemsViewHolder(inflater, parent, viewType) as CustomViewHolder<T>
     }
 
-
     override fun onBindViewHolder(holder: CustomViewHolder<T>, position: Int) {
         val item = items[position]
 
