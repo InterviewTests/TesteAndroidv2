@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">BankApp</string>
+    <string name="login">Login</string>
+    <string name="password">Senha</string>
+    <string name="name">Nome</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="account_text">Conta</string>
+    <string name="balance_text">Saldo</string>
+    <string name="news">Recentes</string>
+</resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.bankapp.features.details.presentantion.DetailsActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:paddingStart="@dimen/medium"
+        android:paddingTop="@dimen/base"
+        android:paddingEnd="@dimen/medium"
+        android:paddingBottom="@dimen/base">
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/TextCard.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base"
+            android:text="@{viewModel.header.userName}"
+            app:layout_constraintEnd_toStartOf="@id/exit_accout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Um nome qualquer" />
+
+        <ImageView
+            android:id="@+id/exit_accout"
+            android:layout_width="@dimen/exit_button"
+            android:layout_height="@dimen/exit_button"
+            android:layout_marginTop="@dimen/base"
+            android:onClick="@{_ -> viewModel.onRequestToLogoff()}"
+            android:src="@drawable/ic_exit"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/account"
+            style="@style/TextCard.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium"
+            android:text="@string/account"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+
+        <TextView
+            android:id="@+id/user_account"
+            style="@style/TextCard.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.header.bankAccount}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/account"
+            tools:text="123123" />
+
+        <TextView
+            android:id="@+id/balance"
+            style="@style/TextCard.Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium"
+            android:text="@string/balance_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/user_account" />
+
+        <TextView
+            android:id="@+id/saldo_user"
+            style="@style/TextCard.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.header.balance}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balance"
+            tools:text="R$ 1000,00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
