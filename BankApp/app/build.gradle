@@ -57,9 +57,6 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
     implementation 'com.squareup.okhttp3:okhttp:4.2.1'
 
-    //Picasso
-    implementation 'com.squareup.picasso:picasso:2.71828'
-
     //Mockito
     testImplementation "org.mockito:mockito-core:2.27.0"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
@@ -78,10 +75,4 @@ dependencies {
 
     //ViewModel and LiveData
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-
-    //Room
-    implementation "androidx.room:room-runtime:2.2.5"
-    annotationProcessor "androidx.room:room-compiler:2.2.5"
-    implementation "androidx.room:room-rxjava2:2.2.5"
-
 }
