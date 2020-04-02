@@ -7,4 +7,5 @@
     <string name="abc_conta">Conta</string>
     <string name="abc_saldo">Saldo</string>
     <string name="abc_recentes">Recentes</string>
+    <string name="format_date">%1$td/%1$tm/%1$tY</string>
 </resources>

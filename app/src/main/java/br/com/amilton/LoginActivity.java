@@ -1,7 +1,6 @@
 package br.com.amilton;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,16 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         activityLoginBinding.setViewModel(new ViewModelProvider(this).get(LoginViewModel.class));
 
         activityLoginBinding.getViewModel().login.set(getPreferences(MODE_PRIVATE).getString(PREFERENCES_LOGIN,""));
-
-        activityLoginBinding.getViewModel().loading.observe(this, aBoolean -> {
-            if (aBoolean) {
-                activityLoginBinding.progressbar.setVisibility(View.VISIBLE);
-                activityLoginBinding.btnLogin.setVisibility(View.GONE);
-            } else {
-                activityLoginBinding.progressbar.setVisibility(View.GONE);
-                activityLoginBinding.btnLogin.setVisibility(View.VISIBLE);
-            }
-        });
+        activityLoginBinding.getViewModel().password.set("aA1@");
 
         activityLoginBinding.getViewModel().getErrorMessage().observe(this, s -> Toast.makeText(this, s, Toast.LENGTH_SHORT).show());
 
@@ -46,11 +36,5 @@ public class LoginActivity extends AppCompatActivity {
                 finishAffinity();
             }
         });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
     }
 }

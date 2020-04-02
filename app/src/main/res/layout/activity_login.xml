@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="br.com.amilton.viewmodel.LoginViewModel" />
@@ -89,6 +91,7 @@
             android:text="@string/botao_login"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
+            android:visibility="@{viewModel.loading ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -98,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="36dp"
-            android:visibility="gone"
+            android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

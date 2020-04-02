@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.Patterns;
 
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -16,12 +17,13 @@ import br.com.amilton.util.CPFUtils;
 
 public class LoginViewModel extends ViewModel {
 
-    public static final String ERROR_LOGIN = "invalid login!";
-    public static final String ERROR_PASSWORD = "invalid password!";
-    public ObservableField<String> login = new ObservableField<>();
-    public ObservableField<String> password = new ObservableField<>();
+    static final String ERROR_LOGIN = "invalid login!";
+    static final String ERROR_PASSWORD = "invalid password!";
 
-    public MutableLiveData<Boolean> loading = new MutableLiveData<>();
+    public final ObservableField<String> login = new ObservableField<>();
+    public final ObservableField<String> password = new ObservableField<>();
+    public ObservableBoolean loading = new ObservableBoolean();
+
     private MutableLiveData<String> errorMessage = new MutableLiveData<>();
 
     private MutableLiveData<Login> loginMutableLiveData = new MutableLiveData<>();
@@ -57,7 +59,7 @@ public class LoginViewModel extends ViewModel {
     }
 
     public void authenticator() {
-        loading.postValue(true);
+        loading.set(true);
         new AsyncTask<String, Void, Login> () {
 
             @Override
@@ -69,7 +71,7 @@ public class LoginViewModel extends ViewModel {
             protected void onPostExecute(Login login) {
                 super.onPostExecute(login);
                 loginMutableLiveData.postValue(login);
-                loading.postValue(false);
+                loading.set(false);
             }
         }.execute(login.get(), password.get());
     }

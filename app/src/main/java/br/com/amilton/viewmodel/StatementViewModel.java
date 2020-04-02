@@ -11,8 +11,7 @@ import br.com.amilton.model.UserAccount;
 import br.com.amilton.repository.StatementRepository;
 
 public class StatementViewModel extends ViewModel {
-
-    private final MutableLiveData<UserAccount> userAccountMutableLiveData = new MutableLiveData<>();
+    public final MutableLiveData<UserAccount> userAccount = new MutableLiveData<>();
     private final StatementRepository statementRepository;
 
     public StatementViewModel() {
@@ -24,11 +23,11 @@ public class StatementViewModel extends ViewModel {
     }
 
     public MutableLiveData<UserAccount> getUserAccount() {
-        return userAccountMutableLiveData;
+        return userAccount;
     }
 
     public void setUserAccount(UserAccount userAccount) {
-        userAccountMutableLiveData.setValue(userAccount);
+        this.userAccount.setValue(userAccount);
     }
 
 }
