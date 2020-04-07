@@ -5,4 +5,6 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="buttonLogin">#3B48EE</color>
     <color name="topCard">#3B49EE</color>
+    <color name="hintText">#A8B4C4</color>
+    <color name="borderText">#DCE2EE</color>
 </resources>

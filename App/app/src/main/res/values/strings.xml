@@ -3,4 +3,7 @@
     <string name="login_button">Login</string>
     <string name="user">User</string>
     <string name="password">Password</string>
+    <string name="balance">Saldo</string>
+    <string name="account">Conta</string>
+    <string name="currency">R$</string>
 </resources>
