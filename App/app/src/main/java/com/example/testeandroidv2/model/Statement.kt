@@ -13,5 +13,5 @@ data class Statement(
     @Json(name = "title")
     val title: String,
     @Json(name = "value")
-    val value: Int
+    val value: Double
 )

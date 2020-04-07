@@ -3,7 +3,7 @@ package com.example.testeandroidv2.data
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class ApiService {
+object ApiService {
 
     private fun initRetroFit(): Retrofit {
 
