@@ -26,10 +26,10 @@ android {
 }
 
 ext {
-    supportVersion='28.0.0'
-    viewModelProvider='1.1.1'
-    retroFitVersion='2.5.0'
-    moshiVersion='1.8.0'
+    supportVersion = '28.0.0'
+    viewModelProvider = '1.1.1'
+    retroFitVersion = '2.5.0'
+    moshiVersion = '1.8.0'
 }
 
 dependencies {
@@ -48,6 +48,9 @@ dependencies {
 
     // Moshi
     implementation "com.squareup.moshi:moshi:$moshiVersion"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
 
     testImplementation 'junit:junit:4.12'
