@@ -4,9 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.testeandroidv2.R
+import com.example.testeandroidv2.util.currency
 import com.example.testeandroidv2.viewModel.StatementsViewModel
 import kotlinx.android.synthetic.main.activity_statements.*
 
@@ -16,20 +15,28 @@ class StatementsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_statements)
 
+        val bankAccount = intent.getStringExtra("bankAccount")
+        val agency = intent.getStringExtra("agency")
+        val balance = intent.getDoubleExtra("balance", 0.0)
+
+        text_name.text = intent.getStringExtra("name")
+        text_account_value.text = "$bankAccount / $agency"
+        text_balance_value.text = currency(getString(R.string.currency), balance)
+
         val viewModel: StatementsViewModel = ViewModelProviders.of(this).get(StatementsViewModel::class.java)
 
-        viewModel.getStatements()
+        viewModel.getStatements(1)
         viewModel.statementsLiveData.observe(this, Observer {
 
-            it?.let { books ->
-                with(recyclerBooks){
+            it?.let { statements ->
+                with(recyclerStatements){
                     layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
                         this@StatementsActivity,
                         androidx.recyclerview.widget.RecyclerView.VERTICAL,
                         false
                     )
                     setHasFixedSize(true)
-                    adapter = StatementsAdapter(books)
+                    adapter = StatementsAdapter(statements)
                 }
             }
         })
