@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="buttonLogin">#3B48EE</color>
+    <color name="topCard">#3B49EE</color>
 </resources>

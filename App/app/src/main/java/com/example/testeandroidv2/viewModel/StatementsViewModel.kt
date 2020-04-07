@@ -29,7 +29,7 @@ class StatementsViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<StatementsBodyResponse>, t: Throwable) {
-                val x = "a"
+
             }
         })
     }
