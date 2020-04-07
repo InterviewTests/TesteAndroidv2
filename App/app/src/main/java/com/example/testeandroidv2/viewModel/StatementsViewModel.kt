@@ -13,9 +13,9 @@ class StatementsViewModel : ViewModel() {
 
     val statementsLiveData: MutableLiveData<List<Statement>> = MutableLiveData()
 
-    fun getStatements() {
+    fun getStatements(id: Int) {
 
-        ApiService.service.getStatements().enqueue(object: retrofit2.Callback<StatementsBodyResponse>{
+        ApiService.service.getStatements(id).enqueue(object: retrofit2.Callback<StatementsBodyResponse>{
             override fun onResponse(call: Call<StatementsBodyResponse>, response: Response<StatementsBodyResponse>) {
                 if (response.isSuccessful){
                     val bookDetails: MutableList<Statement> = mutableListOf()

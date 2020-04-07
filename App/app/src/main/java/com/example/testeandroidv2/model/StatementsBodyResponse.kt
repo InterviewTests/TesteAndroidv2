@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class StatementsBodyResponse(
     @Json(name = "error")
-    val error: Error,
+    val error: ErrorStatement,
     @Json(name = "statementList")
     val statementList: List<Statement>
 )
