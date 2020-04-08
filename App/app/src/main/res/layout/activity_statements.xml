@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".presentation.StatementsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:text="José da Silva Teste"
+            android:text="nome completo"
             android:textColor="@android:color/white"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +50,7 @@
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_account_label"
-            tools:text="2050 / 01.111222-4" />
+            tools:text="agencia e conta" />
 
         <TextView
             android:id="@+id/text_balance_label"
@@ -72,10 +73,10 @@
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_balance_label"
-            tools:text="R$1.000,00" />
+            tools:text="valor" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imgLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -83,16 +84,31 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logout" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textRecent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/recent"
+        android:textColor="@color/recentText"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_container" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerStatements"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_container"
+        app:layout_constraintTop_toBottomOf="@+id/textRecent"
         tools:listitem="@layout/item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
