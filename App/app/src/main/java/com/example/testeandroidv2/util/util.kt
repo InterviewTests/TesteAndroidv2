@@ -2,15 +2,41 @@ package com.example.testeandroidv2.util
 
 import android.util.Patterns
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 
 
-fun currency(currency: String, value: Double): String {
+fun currency(value: Double): String {
     val format: NumberFormat = NumberFormat.getCurrencyInstance()
     return (format.format(value))
 }
 
-fun checkPassword(pass: String): Boolean{
-    return pass.matches( Regex("^(?=.*\\d)(?=.*[A-Z])(?=.*[\$*&!@#])[0-9a-zA-Z\$*&!@#]$"))
+fun formatAccount(agency: String): String {
+    var teste = String()
+    for ((i, m) in agency.toCharArray().withIndex()) {
+        when(i) {
+            2 -> teste += ".$m"
+            8 -> teste += "-$m"
+            else -> teste += m
+        }
+    }
+    return teste
+}
+
+fun checkPassword(passwordToTest: String) : Boolean {
+
+    val uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    val numbers = "0123456789"
+    val special = "[\$&+,:;=\\?@#|/'<>.^*()%!-_~{}]"
+
+    var result = false
+
+    if(
+        passwordToTest.matches(Regex(".*[$uppercaseLetters].*")) &&
+        passwordToTest.matches( Regex(".*[$numbers].*")) &&
+        passwordToTest.matches( Regex(".*[$special].*"))) {
+        result = true
+    }
+    return result
 }
 
 fun checkUser(value: String): Boolean {
@@ -18,6 +44,13 @@ fun checkUser(value: String): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(value).matches()
     else
         return validateCPF(value)
+}
+
+fun dateFormat(sDate: String): String {
+    val formatter = SimpleDateFormat("yyyy-MM-dd")
+    val x = formatter.parse(sDate)
+
+    return SimpleDateFormat("dd/MM/yyyy").format(x)
 }
 
 
