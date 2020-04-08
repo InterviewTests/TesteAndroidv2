@@ -43,7 +43,7 @@ class LoginRepositoryImplTest {
     }
 
     @Test
-    fun shouldFetchRemoteCarList() {
+    fun shouldLogin() {
         // given
         given(loginRepository.login(loginBody)).willReturn(Single.just(baseJson))
 

@@ -19,7 +19,7 @@ interface StatementsService {
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @GET("statements/{id}")
     fun getStatementsList(
-        @Path("id") id: Int = 0
+        @Path("id") id: Int
     ): Single<StatementsResponse>
 
 }
