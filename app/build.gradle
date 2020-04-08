@@ -74,4 +74,15 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid_version"
 
+    // Test Frameworks
+    testImplementation "junit:junit:$rootProject.junit_version"
+    testImplementation "org.mockito:mockito-core:$rootProject.mockito_version"
+    testImplementation "org.robolectric:robolectric:$rootProject.robolectric_version"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.mockwebserver_version"
+    testImplementation "com.squareup.okhttp3:logging-interceptor:$rootProject.mockwebserver_version"
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.test_ext_junit"
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
 }
