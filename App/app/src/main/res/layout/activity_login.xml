@@ -14,24 +14,26 @@
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/contentImage" />
 
     <EditText
         android:id="@+id/edit_text_user"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/text_style"
         android:ems="10"
         android:hint="@string/user"
         android:inputType="textPersonName"
-        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
         android:textColorHint="@color/hintText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/edit_text_password"
@@ -43,12 +45,13 @@
         android:background="@drawable/text_style"
         android:ems="10"
         android:hint="@string/password"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
+        android:inputType="textPassword"
+        android:paddingStart="20dp"
         android:textColorHint="@color/hintText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text_user" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_user"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/button_login"
