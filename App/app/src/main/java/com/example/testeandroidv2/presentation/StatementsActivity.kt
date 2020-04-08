@@ -1,11 +1,13 @@
 package com.example.testeandroidv2.presentation
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.testeandroidv2.R
 import com.example.testeandroidv2.util.currency
+import com.example.testeandroidv2.util.formatAccount
 import com.example.testeandroidv2.viewModel.StatementsViewModel
 import kotlinx.android.synthetic.main.activity_statements.*
 
@@ -20,8 +22,8 @@ class StatementsActivity : AppCompatActivity() {
         val balance = intent.getDoubleExtra("balance", 0.0)
 
         text_name.text = intent.getStringExtra("name")
-        text_account_value.text = "$bankAccount / $agency"
-        text_balance_value.text = currency(getString(R.string.currency), balance)
+        text_account_value.text = "$bankAccount / ${formatAccount(agency)}"
+        text_balance_value.text = currency(balance)
 
         val viewModel: StatementsViewModel = ViewModelProviders.of(this).get(StatementsViewModel::class.java)
 
@@ -40,5 +42,12 @@ class StatementsActivity : AppCompatActivity() {
                 }
             }
         })
+
+        imgLogout.setOnClickListener {
+            finish()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
