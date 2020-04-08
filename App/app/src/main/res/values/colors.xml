@@ -7,4 +7,9 @@
     <color name="topCard">#3B49EE</color>
     <color name="hintText">#A8B4C4</color>
     <color name="borderText">#DCE2EE</color>
+    <color name="descText">#485465</color>
+    <color name="valueText">#485465</color>
+    <color name="titleText">#A8B4C4</color>
+    <color name="dateText">#A8B4C4</color>
+    <color name="recentText">#485465</color>
 </resources>
