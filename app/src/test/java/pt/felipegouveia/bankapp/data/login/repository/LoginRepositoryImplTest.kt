@@ -11,11 +11,14 @@ import org.junit.runners.JUnit4
 import org.mockito.BDDMockito.given
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
-import pt.felipegouveia.bankapp.Util.createLoginResponseMockSingle
+import pt.felipegouveia.bankapp.Util.createLoginDataMockSingle
+import pt.felipegouveia.bankapp.Util.createLoginDomainMockSingle
 import pt.felipegouveia.bankapp.data.login.api.LoginService
 import pt.felipegouveia.bankapp.data.login.model.LoginBody
-import pt.felipegouveia.bankapp.data.login.model.LoginResponse
+import pt.felipegouveia.bankapp.data.login.model.LoginData
+import pt.felipegouveia.bankapp.data.login.model.LoginMapper
 import pt.felipegouveia.bankapp.domain.LoginRepository
+import pt.felipegouveia.bankapp.domain.model.Login
 
 @RunWith(JUnit4::class)
 class LoginRepositoryImplTest {
@@ -28,31 +31,35 @@ class LoginRepositoryImplTest {
 
     private lateinit var loginBody: LoginBody
     private lateinit var loginRepository: LoginRepository
-    private lateinit var subscriber: TestObserver<LoginResponse>
+    private lateinit var subscriber: TestObserver<Login>
+    private lateinit var loginMapper: LoginMapper
 
-    private lateinit var baseJson: LoginResponse
+    private lateinit var dataResponse: LoginData
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         loginBody = LoginBody("Something","Something")
         subscriber = TestObserver()
+        loginMapper = LoginMapper()
 
-        loginRepository = LoginRepositoryImpl(loginService)
-        baseJson = createLoginResponseMockSingle("api-response/login_response.json")
+        loginRepository = LoginRepositoryImpl(loginService, loginMapper)
+        dataResponse = createLoginDataMockSingle("api-response/login_response.json")
     }
 
     @Test
     fun shouldLogin() {
         // given
-        given(loginRepository.login(loginBody)).willReturn(Single.just(baseJson))
+        given(loginService.login(loginBody)).willReturn(Single.just(dataResponse))
 
         // when
         loginRepository.login(loginBody).subscribe(subscriber)
 
+        val expectedLoginResponseDomain = loginMapper.mapLoginDataEntityToDomainEntity(dataResponse)
+
         // then
         subscriber.assertNoErrors()
         subscriber.assertComplete()
-        subscriber.assertValue(baseJson)
+        subscriber.assertValue(expectedLoginResponseDomain)
     }
 }

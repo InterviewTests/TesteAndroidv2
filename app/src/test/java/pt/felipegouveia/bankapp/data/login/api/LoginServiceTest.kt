@@ -9,10 +9,10 @@ import org.hamcrest.CoreMatchers
 import org.junit.*
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import pt.felipegouveia.bankapp.Util.createLoginResponseMockSingle
+import pt.felipegouveia.bankapp.Util.createLoginDataMockSingle
 import pt.felipegouveia.bankapp.Util.getJson
 import pt.felipegouveia.bankapp.data.login.model.LoginBody
-import pt.felipegouveia.bankapp.data.login.model.LoginResponse
+import pt.felipegouveia.bankapp.data.login.model.LoginData
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -26,7 +26,7 @@ class LoginServiceTest {
 
     private lateinit var service: LoginService
     private lateinit var mockWebServer: MockWebServer
-    private lateinit var loginSubscriber: TestObserver<LoginResponse>
+    private lateinit var loginSubscriber: TestObserver<LoginData>
     private lateinit var loginBody: LoginBody
 
     @Before
@@ -62,7 +62,7 @@ class LoginServiceTest {
         loginSubscriber.assertValueCount(1)
         loginSubscriber.assertNoErrors()
         loginSubscriber.assertComplete()
-        loginSubscriber.assertValue(createLoginResponseMockSingle("api-response/login_response.json"))
+        loginSubscriber.assertValue(createLoginDataMockSingle("api-response/login_response.json"))
     }
 
     private fun enqueueLoginResponse(headers: Map<String, String> = emptyMap()) {

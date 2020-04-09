@@ -2,7 +2,7 @@ package pt.felipegouveia.bankapp.data.login.api
 
 import io.reactivex.Single
 import pt.felipegouveia.bankapp.data.login.model.LoginBody
-import pt.felipegouveia.bankapp.data.login.model.LoginResponse
+import pt.felipegouveia.bankapp.data.login.model.LoginData
 import retrofit2.http.*
 
 /**
@@ -20,5 +20,5 @@ interface LoginService {
     fun login(
         @Body
         loginBody: LoginBody
-    ): Single<LoginResponse>
+    ): Single<LoginData>
 }

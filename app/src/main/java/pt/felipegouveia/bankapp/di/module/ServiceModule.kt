@@ -11,9 +11,9 @@ import javax.inject.Singleton
 class ServiceModule {
 
     /**
-     * Provides the Network service implementation.
+     * Provides the Login Network service implementation.
      * @param retrofit the Retrofit object used to instantiate the service
-     * @return the Network service implementation.
+     * @return the Login Network service implementation.
      */
     @Provides
     @Singleton
@@ -22,9 +22,9 @@ class ServiceModule {
     }
 
     /**
-     * Provides the Network service implementation.
+     * Provides the Statements Network service implementation.
      * @param retrofit the Retrofit object used to instantiate the service
-     * @return the Network service implementation.
+     * @return the Statements Network service implementation.
      */
     @Provides
     @Singleton

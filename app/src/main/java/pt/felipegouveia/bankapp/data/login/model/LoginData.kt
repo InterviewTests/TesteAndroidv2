@@ -2,7 +2,7 @@ package pt.felipegouveia.bankapp.data.login.model
 
 import pt.felipegouveia.bankapp.data.common.Error
 
-data class LoginResponse(
+data class LoginData(
     val userAccount: UserAccount?,
     val error: Error?
 )
