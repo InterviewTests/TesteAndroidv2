@@ -1,5 +1,6 @@
 package pt.felipegouveia.bankapp.data.login.model
 
+import pt.felipegouveia.bankapp.domain.model.Error
 import pt.felipegouveia.bankapp.domain.model.Login
 
 /**
@@ -14,14 +15,6 @@ class LoginMapper {
     fun mapLoginDataEntityToDomainEntity(response: LoginData): Login =
         Login(
             userAccount = response.userAccount,
-            error = response.error
+            error = Error(response.error?.message)
         )
-
-    /**
-     * Map from domain entity to data entity
-     */
-    fun mapLoginDomainEntityToDataEntity(login: Login): LoginData = LoginData(
-        userAccount = login.userAccount,
-        error = login.error
-    )
 }

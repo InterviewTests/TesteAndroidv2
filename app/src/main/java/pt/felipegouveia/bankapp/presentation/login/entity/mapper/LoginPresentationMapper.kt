@@ -2,6 +2,7 @@ package pt.felipegouveia.bankapp.presentation.login.entity.mapper
 
 import pt.felipegouveia.bankapp.domain.common.Mapper
 import pt.felipegouveia.bankapp.domain.model.Login
+import pt.felipegouveia.bankapp.presentation.entity.Error
 import pt.felipegouveia.bankapp.presentation.login.entity.LoginPresentation
 
 /**
@@ -15,6 +16,6 @@ class LoginPresentationMapper : Mapper<Login, LoginPresentation>() {
     private fun mapLoginToPresentation(domain: Login): LoginPresentation =
         LoginPresentation(
             userAccount = domain.userAccount,
-            error = domain.error
+            error = Error(domain.error?.message, domain.error?.stringId)
         )
 }

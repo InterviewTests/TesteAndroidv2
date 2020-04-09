@@ -5,4 +5,4 @@ package pt.felipegouveia.bankapp.presentation.entity
  */
 data class Response<RequestData>(var status: Status, var data: RequestData? = null, var error: Error? = null)
 
-enum class Status { SUCCESSFUL, ERROR }
+enum class Status { SUCCESSFUL, ERROR, BAD_USER, BAD_PASSWORD }

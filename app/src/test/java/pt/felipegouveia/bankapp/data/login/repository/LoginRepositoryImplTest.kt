@@ -11,10 +11,9 @@ import org.junit.runners.JUnit4
 import org.mockito.BDDMockito.given
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
+import pt.felipegouveia.bankapp.Mocks.goodLoginBodyEmail
 import pt.felipegouveia.bankapp.Util.createLoginDataMockSingle
-import pt.felipegouveia.bankapp.Util.createLoginDomainMockSingle
 import pt.felipegouveia.bankapp.data.login.api.LoginService
-import pt.felipegouveia.bankapp.data.login.model.LoginBody
 import pt.felipegouveia.bankapp.data.login.model.LoginData
 import pt.felipegouveia.bankapp.data.login.model.LoginMapper
 import pt.felipegouveia.bankapp.domain.LoginRepository
@@ -29,7 +28,6 @@ class LoginRepositoryImplTest {
     @Mock
     private lateinit var loginService: LoginService
 
-    private lateinit var loginBody: LoginBody
     private lateinit var loginRepository: LoginRepository
     private lateinit var subscriber: TestObserver<Login>
     private lateinit var loginMapper: LoginMapper
@@ -39,7 +37,6 @@ class LoginRepositoryImplTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        loginBody = LoginBody("Something","Something")
         subscriber = TestObserver()
         loginMapper = LoginMapper()
 
@@ -50,10 +47,10 @@ class LoginRepositoryImplTest {
     @Test
     fun shouldLogin() {
         // given
-        given(loginService.login(loginBody)).willReturn(Single.just(dataResponse))
+        given(loginService.login(goodLoginBodyEmail)).willReturn(Single.just(dataResponse))
 
         // when
-        loginRepository.login(loginBody).subscribe(subscriber)
+        loginRepository.login(goodLoginBodyEmail).subscribe(subscriber)
 
         val expectedLoginResponseDomain = loginMapper.mapLoginDataEntityToDomainEntity(dataResponse)
 
