@@ -80,10 +80,11 @@ class LoginViewModelTest {
     @Test
     fun `given login credentials with email are good when login is called then expect presentation response`() {
         // given
+        loginViewModel.mutableLoginBody.value = goodLoginBodyEmail
         given(loginUseCase.login(true, goodLoginBodyEmail)).willReturn(Single.just(successDomainResponse))
 
         // when
-        loginViewModel.login(true, goodLoginBodyEmail)
+        loginViewModel.login(true)
 
         // then
         // Expected data response
@@ -97,10 +98,11 @@ class LoginViewModelTest {
     @Test
     fun `given login credentials with cpf are good when login is called then expect presentation response`() {
         // given
+        loginViewModel.mutableLoginBody.value = goodLoginBodyCpf
         given(loginUseCase.login(true, goodLoginBodyCpf)).willReturn(Single.just(successDomainResponse))
 
         // when
-        loginViewModel.login(true, goodLoginBodyCpf)
+        loginViewModel.login(true)
 
         // then
         // Expected data response
@@ -114,11 +116,12 @@ class LoginViewModelTest {
     @Test
     fun `given user credential is empty when login is called then do nothing`() {
         // given
+        loginViewModel.mutableLoginBody.value = badLoginBodyEmptyUser
         given(loginUseCase.login(true, badLoginBodyEmptyUser))
             .willReturn(Single.just(badUserCredentialResponse))
 
         // when
-        loginViewModel.login(true, badLoginBodyEmptyUser)
+        loginViewModel.login(true)
 
         // then
         then(loginLiveDataObserver).shouldHaveNoMoreInteractions()
@@ -127,11 +130,12 @@ class LoginViewModelTest {
     @Test
     fun `given password credential is empty when login is called then do nothing`() {
         // given
+        loginViewModel.mutableLoginBody.value = badLoginBodyEmptyPassword
         given(loginUseCase.login(true, badLoginBodyEmptyPassword))
             .willReturn(Single.just(badUserCredentialResponse))
 
         // when
-        loginViewModel.login(true, badLoginBodyEmptyPassword)
+        loginViewModel.login(true)
 
         // then
         then(loginLiveDataObserver).shouldHaveNoMoreInteractions()
@@ -140,11 +144,12 @@ class LoginViewModelTest {
     @Test
     fun `given user credential is bad when login is called then expect error message`() {
         // given
+        loginViewModel.mutableLoginBody.value = badUserCredentialBody
         given(loginUseCase.login(true, badUserCredentialBody))
             .willReturn(Single.just(badUserCredentialResponse))
 
         // when
-        loginViewModel.login(true, badUserCredentialBody)
+        loginViewModel.login(true)
 
         // then
         // Expected data response
@@ -156,11 +161,12 @@ class LoginViewModelTest {
     @Test
     fun `given password credential is bad when login is called then expect error message`() {
         // given
+        loginViewModel.mutableLoginBody.value = badPasswordCredentialBody
         given(loginUseCase.login(true, badPasswordCredentialBody))
             .willReturn(Single.just(badPasswordCredentialResponse))
 
         // when
-        loginViewModel.login(true, badPasswordCredentialBody)
+        loginViewModel.login(true)
 
         // then
         // Expected data response
@@ -172,11 +178,12 @@ class LoginViewModelTest {
     @Test
     fun `given request is made when something goes wrong in request then show error message`() {
         // given
+        loginViewModel.mutableLoginBody.value = goodLoginBodyEmail
         val throwable = Throwable()
         given(loginUseCase.login(true, goodLoginBodyEmail)).willReturn(Single.error(throwable))
 
         // when
-        loginViewModel.login(true, goodLoginBodyEmail)
+        loginViewModel.login(true)
 
         // then
         // Expected data response

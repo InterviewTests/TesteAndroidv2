@@ -8,4 +8,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Base Widget -->
+    <style name="Widget.BankApp" parent="@android:style/Widget" />
+
+    <style name="LoginButtonText" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">8sp</item>
+        <item name="android:textColor">@color/loginButtonTextColor</item>
+        <item name="android:lineSpacingExtra">@dimen/login_btn_line_spacing</item>
+    </style>
+
+    <style name="LoginButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:color">@color/loginButtonColor</item>
+        <item name="android:textAppearance">@style/LoginButtonText</item>
+        <item name="android:clickable">true</item>
+    </style>
+
 </resources>

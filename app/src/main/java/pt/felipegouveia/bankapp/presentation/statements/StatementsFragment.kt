@@ -1,4 +1,6 @@
 package pt.felipegouveia.bankapp.presentation.statements
 
-class StatementsFragment {
+import dagger.android.support.DaggerFragment
+
+class StatementsFragment: DaggerFragment() {
 }

@@ -4,18 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.login_fragment.*
 import pt.felipegouveia.bankapp.databinding.LoginFragmentBinding
+import pt.felipegouveia.bankapp.presentation.MainActivity
 import pt.felipegouveia.bankapp.presentation.entity.Status
 import javax.inject.Inject
 
-class LoginFragment: DaggerFragment() {
+class LoginFragment: DaggerFragment(), View.OnClickListener {
 
     lateinit var navController: NavController
 
@@ -38,7 +39,18 @@ class LoginFragment: DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(savedInstanceState != null){
+            login_edt_user.setText(savedInstanceState.get("user").toString())
+            login_edt_user.setText(savedInstanceState.get("password").toString())
+        }
+        login_btn_login.setOnClickListener(this)
         setupUiObservers()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("user", login_edt_user.text.toString())
+        outState.putString("password", login_edt_password.text.toString())
+        super.onSaveInstanceState(outState)
     }
 
     private fun setupUiObservers(){
@@ -61,5 +73,10 @@ class LoginFragment: DaggerFragment() {
                 null -> TODO()
             }
         })
+
+    }
+
+    override fun onClick(v: View?) {
+        viewModel.login((activity as MainActivity).networkAvailable)
     }
 }

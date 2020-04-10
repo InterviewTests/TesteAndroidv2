@@ -1,4 +1,4 @@
-package pt.felipegouveia.bankapp.util
+package pt.felipegouveia.bankapp.util.extension
 
 import android.util.Patterns
 import java.util.regex.Pattern

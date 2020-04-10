@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Bank App</string>
+    <string name="login_btn_text">Login</string>
 </resources>

@@ -2,11 +2,67 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="pt.felipegouveia.bankapp.presentation.login.LoginViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.login.LoginFragment">
 
+        <ImageView
+            android:id="@+id/login_img_bank"
+            android:src="@drawable/bank_logo"
+            android:layout_width="@dimen/login_img_bank_width"
+            android:layout_height="@dimen/login_img_bank_height"
+            android:layout_marginTop="@dimen/login_img_bank_margin_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/login_edt_user"
+            android:text="@={vm.mutableLoginBody.user}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="255dp" />
+
+        <EditText
+            android:id="@+id/login_edt_password"
+            android:text="@={vm.mutableLoginBody.password}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+        <Button
+            android:id="@+id/login_btn_login"
+            style="@style/LoginButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/login_btn_login_margin_bottom"
+            android:layout_marginStart="@dimen/login_btn_login_margin_start"
+            android:layout_marginEnd="@dimen/login_btn_login_margin_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_btn_text"/>
+
+        <ProgressBar
+            android:id="@+id/login_progress"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:mutableVisibility="@{vm.mutableProgressbar}"
+            android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
