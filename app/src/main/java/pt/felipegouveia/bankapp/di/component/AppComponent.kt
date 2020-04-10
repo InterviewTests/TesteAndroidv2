@@ -6,10 +6,7 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import pt.felipegouveia.bankapp.BaseApplication
-import pt.felipegouveia.bankapp.di.module.CoreModule
-import pt.felipegouveia.bankapp.di.module.NetworkModule
-import pt.felipegouveia.bankapp.di.module.SchedulersModule
-import pt.felipegouveia.bankapp.di.module.ServiceModule
+import pt.felipegouveia.bankapp.di.module.*
 import javax.inject.Singleton
 
 @Singleton
@@ -18,7 +15,9 @@ import javax.inject.Singleton
     NetworkModule::class,
     ServiceModule::class,
     SchedulersModule::class,
-    CoreModule::class))
+    CoreModule::class,
+    ViewModelModule::class,
+    FragmentInjectorsModule::class))
 interface AppComponent : AndroidInjector<BaseApplication> {
 
     override fun inject(baseApplication: BaseApplication)

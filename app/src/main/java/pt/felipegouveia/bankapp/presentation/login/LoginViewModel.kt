@@ -15,8 +15,10 @@ import pt.felipegouveia.bankapp.presentation.login.entity.LoginPresentation
 import pt.felipegouveia.bankapp.presentation.login.entity.mapper.LoginPresentationMapper
 import pt.felipegouveia.bankapp.util.isValidPassword
 import pt.felipegouveia.bankapp.util.isValidUser
+import pt.felipegouveia.testing.OpenForTesting
 import javax.inject.Inject
 
+@OpenForTesting
 class LoginViewModel @Inject constructor(
     private val schedulers: BaseSchedulerProvider,
     private val loginUseCase: LoginUseCase,

@@ -2,16 +2,15 @@ package pt.felipegouveia.bankapp
 
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
+import pt.felipegouveia.bankapp.di.component.DaggerAppComponent
 
 class BaseApplication: DaggerApplication() {
 
-    override fun onCreate() {
-        super.onCreate()
-//        Stetho.initializeWithDefaults(this)
-    }
-
+    /**
+     * Injects application context
+     * */
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return DaggerAppComponent.builder().application(this).build()
     }
 
 }

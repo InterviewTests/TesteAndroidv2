@@ -2,6 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "kotlin-allopen"
+
+allOpen {
+    // allows mocking for classes w/o directly opening them for release builds
+    annotation 'pt.felipegouveia.testing.OpenClass'
+}
 
 android {
     compileSdkVersion 29
@@ -31,6 +38,10 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    dataBinding {
+        enabled = true
     }
 
 }
@@ -74,9 +85,21 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid_version"
 
+    // Navigation Component
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigation_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigation_version"
+
+    // Material Design
+    implementation "com.google.android.material:material:$rootProject.material_design_version"
+
+    // RecyclerView
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recycler_view_version"
+
     // Test Frameworks
     testImplementation "junit:junit:$rootProject.junit_version"
+    androidTestImplementation "org.mockito:mockito-android:$rootProject.mockito_version"
     testImplementation "org.mockito:mockito-core:$rootProject.mockito_version"
+    testImplementation "org.mockito:mockito-inline:$rootProject.mockito_version"
     testImplementation "org.robolectric:robolectric:$rootProject.robolectric_version"
     testImplementation "com.squareup.okhttp3:mockwebserver:$rootProject.mockwebserver_version"
     testImplementation "com.squareup.okhttp3:logging-interceptor:$rootProject.mockwebserver_version"
@@ -84,5 +107,9 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation "androidx.test.ext:junit:$rootProject.test_ext_junit"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+    debugImplementation "androidx.fragment:fragment-testing:$rootProject.fragment_version"
+
+
 
 }

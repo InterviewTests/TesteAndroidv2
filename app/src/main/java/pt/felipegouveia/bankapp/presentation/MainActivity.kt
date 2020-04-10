@@ -1,8 +1,9 @@
-package pt.felipegouveia.bankapp
+package pt.felipegouveia.bankapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
+import pt.felipegouveia.bankapp.R
 import pt.felipegouveia.bankapp.util.ConnectionLiveData
 
 class MainActivity : AppCompatActivity() {

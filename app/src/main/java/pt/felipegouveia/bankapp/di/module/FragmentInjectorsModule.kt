@@ -1,4 +1,15 @@
 package pt.felipegouveia.bankapp.di.module
 
-class FragmentInjectorsModule {
+import dagger.Module
+import dagger.android.ContributesAndroidInjector
+import pt.felipegouveia.bankapp.presentation.login.LoginFragment
+
+@Module
+abstract class FragmentInjectorsModule {
+
+    @ContributesAndroidInjector
+    abstract fun bindLoginFragment() : LoginFragment
+
+
+
 }

@@ -62,7 +62,7 @@ fun String.isValidCPF(): Boolean{
 
     //## check if is number
     try {
-        val number  = cpfClean.toLong()
+        val cpfClean  = cpfClean.toLong()
     }catch (e : Exception){
         return false
     }
