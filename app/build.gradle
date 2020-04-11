@@ -116,7 +116,10 @@ dependencies {
     implementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
     debugImplementation "androidx.fragment:fragment-testing:$rootProject.fragment_version"
+}
 
-
-
+project.tasks.whenTaskAdded {
+    if (it.name == "testReleaseUnitTest") {
+        it.enabled = false
+    }
 }
