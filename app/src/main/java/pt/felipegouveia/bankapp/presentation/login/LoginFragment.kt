@@ -4,25 +4,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
-import dagger.android.support.DaggerFragment
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.login_fragment.*
+import pt.felipegouveia.bankapp.R
+import pt.felipegouveia.bankapp.data.login.model.LoginBody
 import pt.felipegouveia.bankapp.databinding.LoginFragmentBinding
-import pt.felipegouveia.bankapp.presentation.MainActivity
+import pt.felipegouveia.bankapp.presentation.base.BaseFragment
 import pt.felipegouveia.bankapp.presentation.entity.Status
+import pt.felipegouveia.bankapp.util.extension.toast
 import javax.inject.Inject
 
-class LoginFragment: DaggerFragment(), View.OnClickListener {
-
-    lateinit var navController: NavController
+class LoginFragment: BaseFragment(), View.OnClickListener {
 
     @Inject
     lateinit var viewModelFactory : ViewModelProvider.Factory
-    private lateinit var viewModel : LoginViewModel
+
+    private val viewModel : LoginViewModel by viewModels { viewModelFactory }
     private lateinit var binding : LoginFragmentBinding
 
     override fun onCreateView(
@@ -31,14 +31,16 @@ class LoginFragment: DaggerFragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         binding = LoginFragmentBinding.inflate(inflater, container, false)
-        val viewModel : LoginViewModel by viewModels { viewModelFactory }
-        this.viewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.apply {
+            this.vm = viewModel
+            this.lifecycleOwner = this@LoginFragment
+        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.setLoginBody(LoginBody())
         if(savedInstanceState != null){
             login_edt_user.setText(savedInstanceState.get("user").toString())
             login_edt_user.setText(savedInstanceState.get("password").toString())
@@ -57,26 +59,31 @@ class LoginFragment: DaggerFragment(), View.OnClickListener {
         viewModel.loginResult.observe(viewLifecycleOwner, Observer {
             when (it?.status) {
                 Status.ERROR -> {
-//                    toastMessage(getString(R.string.error_retrieving_recent_searches), binding.root)
+                    requireActivity().toast(R.string.login_error_message)
                 }
                 Status.SUCCESSFUL -> {
                     it.data?.let { response ->
-                       /* if (response.isNotEmpty()) {
-                            searchedUsersAdapter.update(response)
+                        val userId = response.userAccount?.userId ?: BAD_USER_ID
+                        if(response.userAccount?.userId == BAD_USER_ID){
+                            requireActivity().toast(R.string.login_error_message)
                         } else {
-                            *//*TODO("Show empty list view or retry message")*//*
-                        }*/
+                            val action = LoginFragmentDirections.actionLoginFragmentToStatementsFragment(userId)
+                            findNavController().navigate(action)
+                        }
                     }
                 }
-                Status.BAD_USER -> TODO()
-                Status.BAD_PASSWORD -> TODO()
-                null -> TODO()
+                Status.BAD_USER -> requireActivity().toast(R.string.login_error_bad_user)
+                Status.BAD_PASSWORD -> requireActivity().toast(R.string.login_error_bad_password)
+                null -> requireActivity().toast(R.string.login_error_message)
             }
         })
-
     }
 
     override fun onClick(v: View?) {
-        viewModel.login((activity as MainActivity).networkAvailable)
+        viewModel.verifyShouldLogin(networkAvailable)
+    }
+
+    companion object {
+        const val BAD_USER_ID = -1
     }
 }

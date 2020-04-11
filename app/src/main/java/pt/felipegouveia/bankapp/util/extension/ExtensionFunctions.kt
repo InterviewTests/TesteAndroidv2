@@ -1,6 +1,8 @@
 package pt.felipegouveia.bankapp.util.extension
 
+import android.content.Context
 import android.util.Patterns
+import android.widget.Toast
 import java.util.regex.Pattern
 
 /**
@@ -117,4 +119,11 @@ fun String.isValidCPF(): Boolean{
 
     return true
 }
+
+/**
+ * Displays a message to the user using Toast
+ *
+ */
+fun Context.toast(resourceId: Int) =
+    Toast.makeText(this, this.getString(resourceId), Toast.LENGTH_SHORT).show()
 

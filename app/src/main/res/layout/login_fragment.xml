@@ -26,20 +26,28 @@
 
         <EditText
             android:id="@+id/login_edt_user"
-            android:text="@={vm.mutableLoginBody.user}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="176dp"
+            android:text="@={vm.loginBody.user}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="255dp" />
+            app:layout_constraintTop_toBottomOf="@+id/login_img_bank" />
 
         <EditText
             android:id="@+id/login_edt_password"
-            android:text="@={vm.mutableLoginBody.password}"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        
+            android:layout_height="wrap_content"
+            android:layout_marginTop="88dp"
+            android:text="@={vm.loginBody.password}"
+            app:layout_constraintBottom_toTopOf="@+id/login_btn_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_progress"
+            app:layout_constraintVertical_bias="0.0" />
+
         <Button
             android:id="@+id/login_btn_login"
             style="@style/LoginButton"

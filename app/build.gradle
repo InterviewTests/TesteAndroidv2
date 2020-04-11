@@ -22,6 +22,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -95,9 +96,13 @@ dependencies {
     // RecyclerView
     implementation "androidx.recyclerview:recyclerview:$rootProject.recycler_view_version"
 
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
     // Test Frameworks
     testImplementation "junit:junit:$rootProject.junit_version"
     androidTestImplementation "org.mockito:mockito-android:$rootProject.mockito_version"
+    androidTestImplementation "org.mockito:mockito-core:$rootProject.mockito_version"
     testImplementation "org.mockito:mockito-core:$rootProject.mockito_version"
     testImplementation "org.mockito:mockito-inline:$rootProject.mockito_version"
     testImplementation "org.robolectric:robolectric:$rootProject.robolectric_version"
@@ -107,6 +112,8 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation "androidx.test.ext:junit:$rootProject.test_ext_junit"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test.espresso.idling:idling-concurrent:3.2.0'
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
     debugImplementation "androidx.fragment:fragment-testing:$rootProject.fragment_version"
 

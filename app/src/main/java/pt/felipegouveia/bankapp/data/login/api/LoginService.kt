@@ -15,7 +15,6 @@ interface LoginService {
      *
      * @return RxJava `Single` for the login response.
      */
-    @Headers("Content-Type: application/x-www-form-urlencoded")
     @POST("login")
     fun login(
         @Body

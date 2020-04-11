@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Bank App</string>
     <string name="login_btn_text">Login</string>
+    <string name="login_error_message">Um erro ocorreu ao tentar fazer login.</string>
+    <string name="login_error_bad_user">Usuário no formato inválido</string>
+    <string name="login_error_bad_password">Senha no formato inválido</string>
 </resources>

@@ -12,7 +12,7 @@ open class LoginUseCase @Inject constructor(
     private val loginRepository: LoginRepository
 ) {
 
-    fun login(networkAvailable: Boolean, loginBody: LoginBody): Single<Login> {
+    fun login(loginBody: LoginBody): Single<Login> {
         return loginRepository.login(loginBody)
     }
 }

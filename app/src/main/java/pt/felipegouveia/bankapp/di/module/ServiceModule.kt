@@ -1,9 +1,11 @@
 package pt.felipegouveia.bankapp.di.module
 
+import android.app.Application
 import dagger.Module
 import dagger.Provides
 import pt.felipegouveia.bankapp.data.login.api.LoginService
 import pt.felipegouveia.bankapp.data.statements.api.StatementsService
+import pt.felipegouveia.bankapp.util.ConnectionLiveData
 import retrofit2.Retrofit
 import javax.inject.Singleton
 
@@ -32,4 +34,9 @@ class ServiceModule {
         return retrofit.create(StatementsService::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideLoginService(application: Application): ConnectionLiveData {
+        return ConnectionLiveData(application)
+    }
 }

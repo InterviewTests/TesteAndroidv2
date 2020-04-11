@@ -5,19 +5,19 @@ import androidx.databinding.Bindable
 import pt.felipegouveia.bankapp.BR
 
 class LoginBody(
-    user: String? = "",
-    password: String? = ""
-) : BaseObservable(){
+    user: String = "",
+    password: String = ""
+) : BaseObservable() {
 
     @get:Bindable
-    var user : String? = user
+    var user : String = user
         set(value) {
             field = value
             notifyPropertyChanged(BR.user)
         }
 
     @get:Bindable
-    var password : String? = password
+    var password : String = password
         set(value) {
             field = value
             notifyPropertyChanged(BR.password)

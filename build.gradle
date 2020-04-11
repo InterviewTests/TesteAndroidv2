@@ -45,7 +45,7 @@ ext {
 
     //Testing
     junit_version = '4.12'
-    mockito_version = '3.0.0'
+    mockito_version = '2.25.0'
     robolectric_version = '4.3'
     mockwebserver_version = "4.0.0"
     test_ext_junit = '1.1.0'
