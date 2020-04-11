@@ -51,28 +51,31 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    private fun login(networkAvailable: Boolean): LiveData<Response<LoginPresentation>>{
-        try{
-            val disposable = loginUseCase.login(checkNotNull(loginBody.value))
-                .flatMap { loginPresentationMapper.single(it) }
-                .subscribeOn(schedulers.io())
-                .doOnSubscribe { onLoginStart() }
-                .observeOn(schedulers.ui())
-                .subscribe(
-                    { response ->
-                        onLoginFinished()
-                        _loginResult.value  = Response(status = Status.SUCCESSFUL, data = response)
-                    },
-                    { error ->
-                        onLoginFinished()
-                        _loginResult.value = Response(status = Status.ERROR, error = Error(error.message))
-                    })
+    private fun login(networkAvailable: Boolean) {
+        if(networkAvailable){
+            try{
+                val disposable = loginUseCase.login(checkNotNull(loginBody.value))
+                    .flatMap { loginPresentationMapper.single(it) }
+                    .subscribeOn(schedulers.io())
+                    .doOnSubscribe { onLoginStart() }
+                    .observeOn(schedulers.ui())
+                    .subscribe(
+                        { response ->
+                            onLoginFinished()
+                            _loginResult.value  = Response(status = Status.SUCCESSFUL, data = response)
+                        },
+                        { error ->
+                            onLoginFinished()
+                            _loginResult.value = Response(status = Status.ERROR, error = Error(error.message))
+                        })
 
-            add(disposable)
-        } catch (ex: IllegalStateException){
-            _loginResult.value = Response(status = Status.ERROR, error = Error(ex.message))
+                add(disposable)
+            } catch (ex: IllegalStateException){
+                _loginResult.value = Response(status = Status.ERROR, error = Error(ex.message))
+            }
+        } else {
+            _loginResult.value = Response(status = Status.NO_NETWORK, error = Error("Network unavailable"))
         }
-        return loginResult
     }
 
     private fun onLoginStart(){

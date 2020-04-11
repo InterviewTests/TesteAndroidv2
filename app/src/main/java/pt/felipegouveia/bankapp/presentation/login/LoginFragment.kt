@@ -59,13 +59,13 @@ class LoginFragment: BaseFragment(), View.OnClickListener {
         viewModel.loginResult.observe(viewLifecycleOwner, Observer {
             when (it?.status) {
                 Status.ERROR -> {
-                    requireActivity().toast(R.string.login_error_message)
+                    requireActivity().toast(R.string.login_error_unknown)
                 }
                 Status.SUCCESSFUL -> {
                     it.data?.let { response ->
                         val userId = response.userAccount?.userId ?: BAD_USER_ID
                         if(response.userAccount?.userId == BAD_USER_ID){
-                            requireActivity().toast(R.string.login_error_message)
+                            requireActivity().toast(R.string.login_error_unknown)
                         } else {
                             val action = LoginFragmentDirections.actionLoginFragmentToStatementsFragment(userId)
                             findNavController().navigate(action)
@@ -74,7 +74,8 @@ class LoginFragment: BaseFragment(), View.OnClickListener {
                 }
                 Status.BAD_USER -> requireActivity().toast(R.string.login_error_bad_user)
                 Status.BAD_PASSWORD -> requireActivity().toast(R.string.login_error_bad_password)
-                null -> requireActivity().toast(R.string.login_error_message)
+                Status.NO_NETWORK -> requireActivity().toast(R.string.login_error_network_unavailable)
+                null -> requireActivity().toast(R.string.login_error_unknown)
             }
         })
     }

@@ -21,6 +21,7 @@ import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 import pt.felipegouveia.bankapp.R
 import pt.felipegouveia.bankapp.util.EspressoIdlingResource
+import pt.felipegouveia.bankapp.util.ToastMatcher
 import pt.felipegouveia.bankapp.util.ViewModelUtil
 
 @RunWith(AndroidJUnit4::class)
@@ -86,12 +87,27 @@ class LoginFragmentTest {
     }
 
     @Test
-    fun givenLoginClicked_whenNetworkAvailable_thenNavigateToStatements() {
+    fun givenLoginClicked_whenNetworkAvailableAndValidEmail_thenNavigateToStatements() {
         scenario.onFragment {
             it.networkAvailable = true
         }
-        onView(withId(R.id.login_edt_user)).perform(typeText("felipegouveia3@gmail.com"))
-        onView(withId(R.id.login_edt_password)).perform(typeText("Test@1"))
+        onView(withId(R.id.login_edt_user)).perform(typeText("felipegouveia3@gmail.com"), closeSoftKeyboard())
+        onView(withId(R.id.login_edt_password)).perform(typeText("Test@1"), closeSoftKeyboard())
+        closeSoftKeyboard()
+        onView(withId(R.id.login_btn_login)).perform(click())
+        verify(navController).navigate(
+            LoginFragmentDirections.actionLoginFragmentToStatementsFragment(1)
+        )
+    }
+
+    @Test
+    fun givenLoginClicked_whenNetworkAvailableAndValidCpf_thenNavigateToStatements() {
+        scenario.onFragment {
+            it.networkAvailable = true
+        }
+        onView(withId(R.id.login_edt_user)).perform(typeText("002.169.232-71"), closeSoftKeyboard())
+        onView(withId(R.id.login_edt_password)).perform(typeText("Test@1"), closeSoftKeyboard())
+        closeSoftKeyboard()
         onView(withId(R.id.login_btn_login)).perform(click())
         verify(navController).navigate(
             LoginFragmentDirections.actionLoginFragmentToStatementsFragment(1)
@@ -103,9 +119,32 @@ class LoginFragmentTest {
         scenario.onFragment {
             it.networkAvailable = false
         }
-        onView(withId(R.id.login_edt_user)).perform(typeText("felipegouveia3@gmail.com"))
-        onView(withId(R.id.login_edt_password)).perform(typeText("Test@1"))
+        onView(withId(R.id.login_edt_user)).perform(typeText("felipegouveia3@gmail.com") , closeSoftKeyboard())
+        onView(withId(R.id.login_edt_password)).perform(typeText("Test@1"), closeSoftKeyboard())
         onView(withId(R.id.login_btn_login)).perform(click())
+        onView(withText(R.string.login_error_network_unavailable)).inRoot(ToastMatcher()).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun givenLoginClicked_whenBadUserCredential_thenShowErrorMessage() {
+        scenario.onFragment {
+            it.networkAvailable = false
+        }
+        onView(withId(R.id.login_edt_user)).perform(typeText("felipegouveia3") , closeSoftKeyboard())
+        onView(withId(R.id.login_edt_password)).perform(typeText("Test@1"), closeSoftKeyboard())
+        onView(withId(R.id.login_btn_login)).perform(click())
+        onView(withText(R.string.login_error_bad_user)).inRoot(ToastMatcher()).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun givenLoginClicked_whenBadPasswordCredential_thenShowErrorMessage() {
+        scenario.onFragment {
+            it.networkAvailable = false
+        }
+        onView(withId(R.id.login_edt_user)).perform(typeText("felipegouveia3@gmail.com") , closeSoftKeyboard())
+        onView(withId(R.id.login_edt_password)).perform(typeText("Tes"), closeSoftKeyboard())
+        onView(withId(R.id.login_btn_login)).perform(click())
+        onView(withText(R.string.login_error_bad_password)).inRoot(ToastMatcher()).check(matches(isDisplayed()))
     }
 
     @Test
