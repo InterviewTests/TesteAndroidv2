@@ -37,7 +37,7 @@ class LoginRepositoryImplTest {
         subscriber = TestObserver()
 
         statementsRepository = StatementsRepositoryImpl(statementsService)
-        baseJson = Util.createStatementsResponseMockSingle("api-response/statements_response.json")
+        baseJson = Util.createStatementsDataMockSingle("api-response/statements_response.json")
     }
 
     @Test

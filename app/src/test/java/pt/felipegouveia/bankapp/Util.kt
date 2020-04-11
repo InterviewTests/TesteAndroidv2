@@ -1,19 +1,25 @@
 package pt.felipegouveia.bankapp
 
 import com.google.gson.Gson
-import pt.felipegouveia.bankapp.data.login.model.LoginResponse
+import pt.felipegouveia.bankapp.data.login.model.LoginData
 import pt.felipegouveia.bankapp.data.statements.model.StatementsResponse
+import pt.felipegouveia.bankapp.domain.model.Login
 
 object Util {
 
     private var gson: Gson = Gson()
 
-    fun createLoginResponseMockSingle(path: String): LoginResponse {
+    fun createLoginDataMockSingle(path: String): LoginData {
         return gson.fromJson(
-            getJson(path), LoginResponse::class.java)
+            getJson(path), LoginData::class.java)
     }
 
-    fun createStatementsResponseMockSingle(path: String): StatementsResponse {
+    fun createLoginDomainMockSingle(path: String): Login {
+        return gson.fromJson(
+            getJson(path), Login::class.java)
+    }
+
+    fun createStatementsDataMockSingle(path: String): StatementsResponse {
         return gson.fromJson(
             getJson(path), StatementsResponse::class.java)
     }

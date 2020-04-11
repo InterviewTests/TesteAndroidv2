@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Bank App</string>
+    <string name="login_btn_text">Login</string>
+    <string name="login_error_unknown">Um erro ocorreu ao tentar fazer login.</string>
+    <string name="login_error_bad_user">Usuário no formato inválido</string>
+    <string name="login_error_bad_password">Senha no formato inválido</string>
+    <string name="login_error_network_unavailable">Você não está conectado à Internet</string>
 </resources>

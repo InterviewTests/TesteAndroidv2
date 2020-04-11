@@ -58,7 +58,7 @@ class StatementsServiceTest {
         statementsSubscriber.assertValueCount(1)
         statementsSubscriber.assertNoErrors()
         statementsSubscriber.assertComplete()
-        statementsSubscriber.assertValue(Util.createStatementsResponseMockSingle("api-response/statements_response.json"))
+        statementsSubscriber.assertValue(Util.createStatementsDataMockSingle("api-response/statements_response.json"))
     }
 
     private fun enqueueStatementsResponse(headers: Map<String, String> = emptyMap()) {

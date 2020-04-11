@@ -1,0 +1,7 @@
+{
+    "userAccount": {},
+    "error": {
+        "code": 53,
+        "message": "Usuário ou senha incorreta"
+    }
+}

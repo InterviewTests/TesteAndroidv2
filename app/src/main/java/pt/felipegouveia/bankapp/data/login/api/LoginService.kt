@@ -2,7 +2,7 @@ package pt.felipegouveia.bankapp.data.login.api
 
 import io.reactivex.Single
 import pt.felipegouveia.bankapp.data.login.model.LoginBody
-import pt.felipegouveia.bankapp.data.login.model.LoginResponse
+import pt.felipegouveia.bankapp.data.login.model.LoginData
 import retrofit2.http.*
 
 /**
@@ -15,10 +15,9 @@ interface LoginService {
      *
      * @return RxJava `Single` for the login response.
      */
-    @Headers("Content-Type: application/x-www-form-urlencoded")
     @POST("login")
     fun login(
         @Body
         loginBody: LoginBody
-    ): Single<LoginResponse>
+    ): Single<LoginData>
 }
