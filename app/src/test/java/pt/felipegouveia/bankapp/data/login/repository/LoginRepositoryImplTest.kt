@@ -17,7 +17,7 @@ import pt.felipegouveia.bankapp.data.login.api.LoginService
 import pt.felipegouveia.bankapp.data.login.model.LoginData
 import pt.felipegouveia.bankapp.data.login.model.LoginMapper
 import pt.felipegouveia.bankapp.domain.LoginRepository
-import pt.felipegouveia.bankapp.domain.model.Login
+import pt.felipegouveia.bankapp.domain.model.login.Login
 
 @RunWith(JUnit4::class)
 class LoginRepositoryImplTest {

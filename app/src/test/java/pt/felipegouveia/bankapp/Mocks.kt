@@ -1,8 +1,8 @@
 package pt.felipegouveia.bankapp
 
 import pt.felipegouveia.bankapp.data.login.model.LoginBody
-import pt.felipegouveia.bankapp.domain.model.Error
-import pt.felipegouveia.bankapp.domain.model.Login
+import pt.felipegouveia.bankapp.domain.model.common.Error
+import pt.felipegouveia.bankapp.domain.model.login.Login
 
 object Mocks {
     private const val USER_EMAIL = "felipegouveia3@gmail.com"
@@ -43,14 +43,22 @@ object Mocks {
         password = BAD_PASS
     )
 
-    val badUserCredentialResponse = Login(
-        userAccount = null,
-        error = Error("User in bad format", R.string.app_name)
-    )
+    val badUserCredentialResponse =
+        Login(
+            userAccount = null,
+            error = Error(
+                "User in bad format",
+                R.string.app_name
+            )
+        )
 
-    val badPasswordCredentialResponse = Login(
-        userAccount = null,
-        error = Error("Password in bad format", R.string.app_name)
-    )
+    val badPasswordCredentialResponse =
+        Login(
+            userAccount = null,
+            error = Error(
+                "Password in bad format",
+                R.string.app_name
+            )
+        )
 
 }

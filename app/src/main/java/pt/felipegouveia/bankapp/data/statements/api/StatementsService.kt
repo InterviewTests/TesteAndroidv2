@@ -1,7 +1,7 @@
 package pt.felipegouveia.bankapp.data.statements.api
 
 import io.reactivex.Single
-import pt.felipegouveia.bankapp.data.statements.model.StatementsResponse
+import pt.felipegouveia.bankapp.data.statements.model.StatementsData
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
@@ -18,8 +18,8 @@ interface StatementsService {
      */
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @GET("statements/{id}")
-    fun getStatementsList(
+    fun getStatements(
         @Path("id") id: Int
-    ): Single<StatementsResponse>
+    ): Single<StatementsData>
 
 }

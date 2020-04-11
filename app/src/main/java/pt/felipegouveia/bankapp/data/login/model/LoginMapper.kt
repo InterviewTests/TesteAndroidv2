@@ -1,7 +1,7 @@
 package pt.felipegouveia.bankapp.data.login.model
 
-import pt.felipegouveia.bankapp.domain.model.Error
-import pt.felipegouveia.bankapp.domain.model.Login
+import pt.felipegouveia.bankapp.domain.model.common.Error
+import pt.felipegouveia.bankapp.domain.model.login.Login
 
 /**
  * Map data entity from repository to domain entity and from domain entity
@@ -10,7 +10,7 @@ import pt.felipegouveia.bankapp.domain.model.Login
 class LoginMapper {
 
     /**
-     * Map from data entity to domain entity
+     * Map login from data entity to domain entity
      */
     fun mapLoginDataEntityToDomainEntity(response: LoginData): Login =
         Login(

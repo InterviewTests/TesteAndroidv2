@@ -2,8 +2,9 @@ package pt.felipegouveia.bankapp
 
 import com.google.gson.Gson
 import pt.felipegouveia.bankapp.data.login.model.LoginData
-import pt.felipegouveia.bankapp.data.statements.model.StatementsResponse
-import pt.felipegouveia.bankapp.domain.model.Login
+import pt.felipegouveia.bankapp.data.statements.model.StatementsData
+import pt.felipegouveia.bankapp.domain.model.login.Login
+import pt.felipegouveia.bankapp.domain.model.statements.Statements
 
 object Util {
 
@@ -19,9 +20,14 @@ object Util {
             getJson(path), Login::class.java)
     }
 
-    fun createStatementsDataMockSingle(path: String): StatementsResponse {
+    fun createStatementsDataMockSingle(path: String): StatementsData {
         return gson.fromJson(
-            getJson(path), StatementsResponse::class.java)
+            getJson(path), StatementsData::class.java)
+    }
+
+    fun createStatementsDomainMockSingle(path: String): Statements {
+        return gson.fromJson(
+            getJson(path), Statements::class.java)
     }
 
     fun getJson(path: String): String? {

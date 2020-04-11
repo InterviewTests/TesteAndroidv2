@@ -28,7 +28,7 @@ import pt.felipegouveia.bankapp.R
 import pt.felipegouveia.bankapp.Util.createLoginDomainMockSingle
 import pt.felipegouveia.bankapp.domain.LoginRepository
 import pt.felipegouveia.bankapp.domain.interactors.LoginUseCase
-import pt.felipegouveia.bankapp.domain.model.Login
+import pt.felipegouveia.bankapp.domain.model.login.Login
 import pt.felipegouveia.bankapp.presentation.BaseSchedulerProvider
 import pt.felipegouveia.bankapp.presentation.TrampolineSchedulerProvider
 import pt.felipegouveia.bankapp.presentation.entity.Error

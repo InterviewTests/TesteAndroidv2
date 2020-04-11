@@ -9,7 +9,7 @@ import org.junit.*
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import pt.felipegouveia.bankapp.Util
-import pt.felipegouveia.bankapp.data.statements.model.StatementsResponse
+import pt.felipegouveia.bankapp.data.statements.model.StatementsData
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -23,7 +23,7 @@ class StatementsServiceTest {
 
     private lateinit var service: StatementsService
     private lateinit var mockWebServer: MockWebServer
-    private lateinit var statementsSubscriber: TestObserver<StatementsResponse>
+    private lateinit var statementsSubscriber: TestObserver<StatementsData>
     private val userId: Int = 1
 
     @Before
@@ -50,7 +50,7 @@ class StatementsServiceTest {
         enqueueStatementsResponse()
 
         // when
-        service.getStatementsList(userId).subscribe(statementsSubscriber)
+        service.getStatements(userId).subscribe(statementsSubscriber)
 
         //then
         val request = mockWebServer.takeRequest()
