@@ -15,14 +15,14 @@ import pt.felipegouveia.bankapp.R
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class MainMenuUiTest {
+class MainActivityTest {
 
     @get: Rule
     val activityTestRule: ActivityTestRule<MainActivity> =
         ActivityTestRule(MainActivity::class.java)
 
     @Test
-    fun test() {
+    fun checkNavContainerDisplayed() {
         onView(withId(R.id.main_nav_container)).check(matches(isDisplayed()))
     }
 }
