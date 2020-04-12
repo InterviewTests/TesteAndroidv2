@@ -2,6 +2,7 @@ package pt.felipegouveia.bankapp.data.statements.api
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.reactivex.observers.TestObserver
+import io.reactivex.subscribers.TestSubscriber
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.hamcrest.CoreMatchers
@@ -23,13 +24,13 @@ class StatementsServiceTest {
 
     private lateinit var service: StatementsService
     private lateinit var mockWebServer: MockWebServer
-    private lateinit var statementsSubscriber: TestObserver<StatementsData>
+    private lateinit var statementsSubscriber: TestSubscriber<StatementsData>
     private val userId: Int = 1
 
     @Before
     fun createService() {
         mockWebServer = MockWebServer()
-        statementsSubscriber = TestObserver()
+        statementsSubscriber = TestSubscriber()
 
         service = Retrofit.Builder()
             .baseUrl(mockWebServer.url(""))

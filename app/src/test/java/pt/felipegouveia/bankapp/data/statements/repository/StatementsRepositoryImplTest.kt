@@ -1,8 +1,10 @@
 package pt.felipegouveia.bankapp.data.statements.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.observers.TestObserver
+import io.reactivex.subscribers.TestSubscriber
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -29,7 +31,7 @@ class LoginRepositoryImplTest {
 
     private lateinit var dataResponse: StatementsData
     private lateinit var statementsRepository: StatementsRepository
-    private lateinit var subscriber: TestObserver<Statements>
+    private lateinit var subscriber: TestSubscriber<Statements>
 
     private lateinit var mapper: StatementsMapper
 
@@ -38,7 +40,7 @@ class LoginRepositoryImplTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        subscriber = TestObserver()
+        subscriber = TestSubscriber()
         mapper = StatementsMapper()
 
         statementsRepository = StatementsRepositoryImpl(statementsService, mapper)
@@ -48,7 +50,7 @@ class LoginRepositoryImplTest {
     @Test
     fun shouldFetchStatements() {
         // given
-        BDDMockito.given(statementsService.getStatements(userId)).willReturn(Single.just(dataResponse))
+        BDDMockito.given(statementsService.getStatements(userId)).willReturn(Flowable.just(dataResponse))
 
         // when
         statementsRepository.getStatements(userId).subscribe(subscriber)

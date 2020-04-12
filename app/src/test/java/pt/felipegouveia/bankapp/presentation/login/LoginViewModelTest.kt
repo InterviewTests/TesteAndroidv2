@@ -47,7 +47,7 @@ class LoginViewModelTest {
     @Mock
     private lateinit var loginRepository: LoginRepository
 
-    @InjectMocks
+    @Mock
     private lateinit var loginUseCase: LoginUseCase
 
     private lateinit var schedulerProvider: BaseSchedulerProvider

@@ -1,6 +1,6 @@
 package pt.felipegouveia.bankapp.data.statements.repository
 
-import io.reactivex.Single
+import io.reactivex.Flowable
 import pt.felipegouveia.bankapp.data.statements.api.StatementsService
 import pt.felipegouveia.bankapp.data.statements.model.StatementsMapper
 import pt.felipegouveia.bankapp.domain.StatementsRepository
@@ -14,8 +14,8 @@ class StatementsRepositoryImpl @Inject constructor(
     private val statementsMapper: StatementsMapper
 ): StatementsRepository {
 
-    override fun getStatements(id: Int): Single<Statements> {
-        return statementsService.getStatements(id).map {
+    override fun getStatements(userId: Int): Flowable<Statements> {
+        return statementsService.getStatements(userId).map {
             statementsMapper.mapStatementsDataEntityToDomainEntity(it)
         }
     }

@@ -1,5 +1,8 @@
 package pt.felipegouveia.bankapp.presentation.statements.entity
 
+import pt.felipegouveia.bankapp.presentation.entity.Error
+
 data class StatementsPresentation(
-    val dummy: String? = null
+    val statementList: List<StatementPresentation>?,
+    val error: Error?
 )

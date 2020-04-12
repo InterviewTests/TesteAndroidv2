@@ -1,6 +1,6 @@
 package pt.felipegouveia.bankapp.data.statements.api
 
-import io.reactivex.Single
+import io.reactivex.Flowable
 import pt.felipegouveia.bankapp.data.statements.model.StatementsData
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -16,10 +16,9 @@ interface StatementsService {
      *
      * @return RxJava `Single` for the list of statements.
      */
-    @Headers("Content-Type: application/x-www-form-urlencoded")
     @GET("statements/{id}")
     fun getStatements(
         @Path("id") id: Int
-    ): Single<StatementsData>
+    ): Flowable<StatementsData>
 
 }

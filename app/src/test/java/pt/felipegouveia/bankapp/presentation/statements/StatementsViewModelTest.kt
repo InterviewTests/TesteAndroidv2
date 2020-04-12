@@ -1,40 +1,52 @@
 package pt.felipegouveia.bankapp.presentation.statements
 
 import android.view.View
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import io.reactivex.Flowable
 import io.reactivex.Single
 import org.hamcrest.CoreMatchers.notNullValue
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.BDDMockito
+import org.mockito.BDDMockito.given
+import org.mockito.BDDMockito.then
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 import org.robolectric.RobolectricTestRunner
+import pt.felipegouveia.bankapp.Mocks
 import pt.felipegouveia.bankapp.Util
 import pt.felipegouveia.bankapp.domain.StatementsRepository
 import pt.felipegouveia.bankapp.domain.interactors.StatementsUseCase
 import pt.felipegouveia.bankapp.domain.model.statements.Statements
+import pt.felipegouveia.bankapp.presentation.BaseSchedulerProvider
 import pt.felipegouveia.bankapp.presentation.TrampolineSchedulerProvider
 import pt.felipegouveia.bankapp.presentation.entity.Response
 import pt.felipegouveia.bankapp.presentation.entity.Status
+import pt.felipegouveia.bankapp.presentation.login.LoginViewModel
 import pt.felipegouveia.bankapp.presentation.statements.entity.StatementsPresentation
 import pt.felipegouveia.bankapp.presentation.statements.entity.mapper.StatementsPresentationMapper
 
-@RunWith(JUnit4::class)
+@RunWith(RobolectricTestRunner::class)
 class StatementsViewModelTest {
 
-    private val repository = mock(StatementsRepository::class.java)
-    @InjectMocks
-    private lateinit var useCase: StatementsUseCase
-    private val schedulerProvider = TrampolineSchedulerProvider()
-    private val mapper = StatementsPresentationMapper()
+    @get:Rule
+    val rule = InstantTaskExecutorRule()
 
-    private var statementsViewModel = StatementsViewModel(schedulerProvider, useCase, mapper)
+    @Mock
+    private lateinit var repository: StatementsRepository
+
+    @Mock
+    private lateinit var useCase: StatementsUseCase
+    private lateinit var schedulerProvider: BaseSchedulerProvider
+    private val mapper = StatementsPresentationMapper()
+    private lateinit var statementsViewModel: StatementsViewModel
 
     @Mock
     private lateinit var statementsObserver: Observer<Response<StatementsPresentation>>
@@ -47,8 +59,10 @@ class StatementsViewModelTest {
     @Before
     fun setup(){
         MockitoAnnotations.initMocks(this)
+        schedulerProvider = TrampolineSchedulerProvider()
+        statementsViewModel = StatementsViewModel(schedulerProvider, useCase, mapper)
         successDomainResponse = Util.createStatementsDomainMockSingle("api-response/statements_response.json")
-        errorDomainResponse = Util.createStatementsDomainMockSingle("api-response/login_error_response.json")
+        errorDomainResponse = Util.createStatementsDomainMockSingle("api-response/statements_error_response.json")
         statementsViewModel.mutableProgressbar.observeForever(progressBarObserver)
     }
 
@@ -66,6 +80,7 @@ class StatementsViewModelTest {
 
     @Test
     fun fetchWhenObserved() {
+        `when`(useCase.getStatements(1)).thenReturn(Flowable.just(successDomainResponse))
         statementsViewModel.setUserId(1)
         statementsViewModel.statements.observeForever(statementsObserver)
         verify(useCase).getStatements(1)
@@ -77,18 +92,20 @@ class StatementsViewModelTest {
         verifyNoMoreInteractions(useCase)
         statementsViewModel.setUserId(1)
         verifyNoMoreInteractions(useCase)
+        `when`(useCase.getStatements(1)).thenReturn(Flowable.just(successDomainResponse))
         statementsViewModel.statements.observeForever(statementsObserver)
-        verify(repository).getStatements(1)
-        reset(repository)
+        verify(useCase).getStatements(1)
+        reset(useCase)
+        `when`(useCase.getStatements(1)).thenReturn(Flowable.just(successDomainResponse))
         statementsViewModel.retry()
-        verify(repository).getStatements(1)
+        verify(useCase).getStatements(1)
     }
 
     @Test
     fun fetchStatements() {
         // given
+        `when`(useCase.getStatements(1)).thenReturn(Flowable.just(successDomainResponse))
         statementsViewModel.setUserId(1)
-        BDDMockito.given(useCase.getStatements(1)).willReturn(Single.just(successDomainResponse))
 
         // when
         statementsViewModel.statements.observeForever(statementsObserver)
@@ -97,9 +114,20 @@ class StatementsViewModelTest {
         // Expected data response
         val expected = Response(status = Status.SUCCESSFUL, data = mapper.mapFrom(successDomainResponse))
 
-        BDDMockito.then(progressBarObserver).should().onChanged(View.VISIBLE)
-        BDDMockito.then(progressBarObserver).should().onChanged(View.GONE)
-        BDDMockito.then(statementsObserver).should().onChanged(expected)
+        then(progressBarObserver).should().onChanged(View.VISIBLE)
+        then(progressBarObserver).should().onChanged(View.GONE)
+        then(statementsObserver).should().onChanged(expected)
+    }
+
+    @Test
+    fun fetchStatementsWithError() {
+        `when`(useCase.getStatements(1000)).thenReturn(Flowable.just(errorDomainResponse))
+        statementsViewModel.setUserId(1000)
+        statementsViewModel.statements.observeForever(statementsObserver)
+        val expected = Response(status = Status.SUCCESSFUL, data = mapper.mapFrom(errorDomainResponse))
+        then(progressBarObserver).should().onChanged(View.VISIBLE)
+        then(progressBarObserver).should().onChanged(View.GONE)
+        then(statementsObserver).should().onChanged(expected)
     }
 
 }

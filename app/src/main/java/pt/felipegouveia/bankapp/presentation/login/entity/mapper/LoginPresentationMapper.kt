@@ -16,6 +16,9 @@ class LoginPresentationMapper : Mapper<Login, LoginPresentation>() {
     private fun mapLoginToPresentation(domain: Login): LoginPresentation =
         LoginPresentation(
             userAccount = domain.userAccount,
-            error = Error(domain.error?.message, domain.error?.stringId)
+            error = Error(
+                domain.error?.message,
+                domain.error?.stringId
+            )
         )
 }
