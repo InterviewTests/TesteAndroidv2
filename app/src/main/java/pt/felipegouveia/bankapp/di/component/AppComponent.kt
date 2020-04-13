@@ -17,7 +17,8 @@ import javax.inject.Singleton
     SchedulersModule::class,
     CoreModule::class,
     ViewModelModule::class,
-    FragmentInjectorsModule::class))
+    FragmentInjectorsModule::class,
+    SecurityModule::class))
 interface AppComponent : AndroidInjector<BaseApplication> {
 
     override fun inject(baseApplication: BaseApplication)
