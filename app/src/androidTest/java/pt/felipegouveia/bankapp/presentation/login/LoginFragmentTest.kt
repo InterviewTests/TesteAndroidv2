@@ -1,8 +1,6 @@
 package pt.felipegouveia.bankapp.presentation.login
 
-import android.app.Application
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.navigation.NavController
@@ -20,7 +18,6 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.ArgumentMatchers
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations

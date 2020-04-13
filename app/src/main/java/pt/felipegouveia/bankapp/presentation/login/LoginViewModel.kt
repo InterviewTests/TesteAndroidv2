@@ -18,7 +18,6 @@ import pt.felipegouveia.bankapp.util.EspressoIdlingResource
 import pt.felipegouveia.bankapp.util.extension.isValidPassword
 import pt.felipegouveia.bankapp.util.extension.isValidUser
 import pt.felipegouveia.testing.OpenForTesting
-import java.lang.IllegalStateException
 import javax.inject.Inject
 
 @OpenForTesting

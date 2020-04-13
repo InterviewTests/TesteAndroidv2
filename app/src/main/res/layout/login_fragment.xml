@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.login.LoginFragment">
 
     <data>
         <variable
@@ -11,8 +12,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".presentation.login.LoginFragment">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/login_img_bank"
@@ -62,15 +62,15 @@
 
         <Button
             android:id="@+id/login_btn_login"
-            style="@style/LoginButton"
+            style="@style/Widget.BankApp.Button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="@dimen/login_btn_login_margin_bottom"
             android:layout_marginStart="@dimen/login_btn_login_margin_start"
             android:layout_marginEnd="@dimen/login_btn_login_margin_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="202dp"
+            android:layout_height="62dp"
             android:text="@string/login_btn_text"/>
 
         <ProgressBar

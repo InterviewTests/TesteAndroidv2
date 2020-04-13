@@ -3,6 +3,9 @@ package pt.felipegouveia.bankapp.util.extension
 import android.content.Context
 import android.util.Patterns
 import android.widget.Toast
+import java.math.RoundingMode
+import java.text.NumberFormat
+import java.util.*
 import java.util.regex.Pattern
 
 /**
@@ -126,4 +129,21 @@ fun String.isValidCPF(): Boolean{
  */
 fun Context.toast(resourceId: Int) =
     Toast.makeText(this, this.getString(resourceId), Toast.LENGTH_SHORT).show()
+
+/**
+ * Converts a double into Real currency
+ *
+ */
+fun Double.toReal(): String {
+    val local = Locale("pt", "BR")
+    return NumberFormat.getCurrencyInstance()
+        .currency
+        ?.getSymbol(local)
+        ?.format(
+            this.toBigDecimal()
+                .setScale(1, RoundingMode.CEILING
+                )
+        )?: ""
+}
+
 

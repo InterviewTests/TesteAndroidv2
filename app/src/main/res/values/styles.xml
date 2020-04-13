@@ -11,16 +11,40 @@
     <!-- Base Widget -->
     <style name="Widget.BankApp" parent="@android:style/Widget" />
 
-    <style name="LoginButtonText" parent="@style/TextAppearance.AppCompat.Body1">
-        <item name="android:textSize">8sp</item>
-        <item name="android:textColor">@color/loginButtonTextColor</item>
+    <style name="TextAppearance.BankApp.H2" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+    </style>
+
+    <!-- Statements -->
+    <style name="TextAppearance.BankApp.Fields" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/statementsFieldsTextColor</item>
+        <item name="android:textSize">@dimen/statements_fields_font_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue_light</item>
+    </style>
+
+    <style name="TextAppearance.BankApp.Descriptors" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/statementsDescriptorsTextColor</item>
+        <item name="android:textSize">@dimen/statements_descriptors_font_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+    </style>
+
+
+    <!--  Login  -->
+    <style name="TextAppearance.BankApp.LoginButton" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">@dimen/login_btn_login_text_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue</item>
         <item name="android:lineSpacingExtra">@dimen/login_btn_line_spacing</item>
     </style>
 
-    <style name="LoginButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:color">@color/loginButtonColor</item>
-        <item name="android:textAppearance">@style/LoginButtonText</item>
+    <style name="Widget.BankApp.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:color">@color/bankButtonColor</item>
+        <item name="android:textAppearance">@style/TextAppearance.BankApp.LoginButton</item>
+        <item name="android:textColor">@color/bankButtonTextColor</item>
         <item name="android:clickable">true</item>
+        <item name="android:tint">@color/bankButtonTextColor</item>
     </style>
 
 </resources>

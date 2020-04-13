@@ -37,7 +37,7 @@ class LoginFragment: BaseFragment(), View.OnClickListener {
         binding = LoginFragmentBinding.inflate(inflater, container, false)
         binding.apply {
             this.vm = viewModel
-            this.lifecycleOwner = this@LoginFragment
+            lifecycleOwner = this@LoginFragment
         }
 
         return binding.root
@@ -69,28 +69,27 @@ class LoginFragment: BaseFragment(), View.OnClickListener {
     }
 
     private fun setupUiObservers(){
-        viewModel.loginResult.observe(viewLifecycleOwner, Observer {
-            when (it?.status) {
-                Status.ERROR -> {
-                    requireActivity().toast(R.string.login_error_unknown)
-                }
-                Status.SUCCESSFUL -> {
-                    it.data?.let { response ->
-                        val userId = response.userAccount?.userId ?: BAD_USER_ID
-                        if(response.userAccount?.userId == BAD_USER_ID){
-                            requireActivity().toast(R.string.login_error_unknown)
-                        } else {
-                            sharedPrefs.saveEncryptedString(PREFS_LOGIN_KEY, response.userAccount?.name?: EMPTY_NAME)
-                            val action = LoginFragmentDirections.actionLoginFragmentToStatementsFragment(userId)
-                            findNavController().navigate(action)
+        viewModel.loginResult.observe(viewLifecycleOwner, Observer { it ->
+                when (it?.status) {
+                    Status.ERROR -> {
+                        requireActivity().toast(R.string.login_error_unknown)
+                    }
+                    Status.SUCCESSFUL -> {
+                        it.data?.let { response ->
+                            val userId = response.userAccount?.userId ?: BAD_USER_ID
+                            if(response.userAccount?.userId == BAD_USER_ID){
+                                requireActivity().toast(R.string.login_error_unknown)
+                            } else {
+                                sharedPrefs.saveEncryptedString(PREFS_LOGIN_KEY, response.userAccount?.name?: EMPTY_NAME)
+                                val action = LoginFragmentDirections.actionLoginFragmentToStatementsFragment(response.userAccount)
+                                findNavController().navigate(action)
+                            }
                         }
                     }
+                    Status.BAD_USER -> requireActivity().toast(R.string.login_error_bad_user)
+                    Status.BAD_PASSWORD -> requireActivity().toast(R.string.login_error_bad_password)
+                    Status.NO_NETWORK -> requireActivity().toast(R.string.login_error_network_unavailable)
                 }
-                Status.BAD_USER -> requireActivity().toast(R.string.login_error_bad_user)
-                Status.BAD_PASSWORD -> requireActivity().toast(R.string.login_error_bad_password)
-                Status.NO_NETWORK -> requireActivity().toast(R.string.login_error_network_unavailable)
-                null -> requireActivity().toast(R.string.login_error_unknown)
-            }
         })
     }
 

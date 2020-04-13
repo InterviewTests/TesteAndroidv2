@@ -4,8 +4,17 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
-    <color name="loginButtonColor">#3B48EE</color>
-    <color name="loginButtonTextColor">#FFFFFF</color>
+    <!-- Bases -->
+    <color name="white">#FFFFFF</color>
+
+
+    <!-- BankApp -->
+    <color name="bankButtonColor">#3B48EE</color>
+    <color name="bankButtonTextColor">@color/white</color>
+
+    <!-- Statements -->
+    <color name="statementsDescriptorsTextColor">@color/white</color>
+    <color name="statementsFieldsTextColor">@color/white</color>
 
 
 </resources>

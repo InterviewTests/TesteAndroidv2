@@ -17,13 +17,13 @@
 
     <fragment
         android:id="@+id/statementsFragment"
-        android:name="pt.felipegouveia.bankapp.presentation.login.LoginFragment"
-        android:label="StatementsFragment"
-        tools:layout="@layout/login_fragment">
+        android:name="pt.felipegouveia.bankapp.presentation.statements.StatementsFragment"
+        android:label="StatementsFragment">
         <argument
-            android:name="userId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:name="userAccount"
+            app:argType="pt.felipegouveia.bankapp.presentation.login.entity.UserAccountPresentation"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
 </navigation>

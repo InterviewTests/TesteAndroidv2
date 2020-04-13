@@ -6,4 +6,12 @@
     <string name="login_error_bad_password">Senha no formato inválido</string>
     <string name="login_error_network_unavailable">Você não está conectado à Internet</string>
     <string name="login_last_user">Último usuário: %s</string>
+
+    <!-- Statements  -->
+    <string name="statements_refresh">Atualizar</string>
+    <string name="statements_retry">Tentar novamente</string>
+    <string name="statements_no_statements_found">Você ainda não possui transações</string>
+    <string name="statements_error_occurred">Um erro ocorreu ao buscar suas transações</string>
+    <string name="statements_account_descriptor_account">Conta</string>
+    <string name="statements_account_descriptor_balance">Saldo</string>
 </resources>

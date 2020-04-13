@@ -4,23 +4,17 @@ import android.view.View
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import io.reactivex.Flowable
-import io.reactivex.Single
 import org.hamcrest.CoreMatchers.notNullValue
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runners.JUnit4
-import org.mockito.BDDMockito
-import org.mockito.BDDMockito.given
 import org.mockito.BDDMockito.then
-import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
 import org.robolectric.RobolectricTestRunner
-import pt.felipegouveia.bankapp.Mocks
 import pt.felipegouveia.bankapp.Util
 import pt.felipegouveia.bankapp.domain.StatementsRepository
 import pt.felipegouveia.bankapp.domain.interactors.StatementsUseCase
@@ -29,7 +23,7 @@ import pt.felipegouveia.bankapp.presentation.BaseSchedulerProvider
 import pt.felipegouveia.bankapp.presentation.TrampolineSchedulerProvider
 import pt.felipegouveia.bankapp.presentation.entity.Response
 import pt.felipegouveia.bankapp.presentation.entity.Status
-import pt.felipegouveia.bankapp.presentation.login.LoginViewModel
+import pt.felipegouveia.bankapp.presentation.login.entity.UserAccountPresentation
 import pt.felipegouveia.bankapp.presentation.statements.entity.StatementsPresentation
 import pt.felipegouveia.bankapp.presentation.statements.entity.mapper.StatementsPresentationMapper
 
@@ -74,14 +68,16 @@ class StatementsViewModelTest {
 
     @Test
     fun dontFetchWithoutObservers() {
-        statementsViewModel.setUserId(1)
+        val userAccount = UserAccountPresentation(1)
+        statementsViewModel.setUserAccount(userAccount)
         verify(useCase, never()).getStatements(anyInt())
     }
 
     @Test
     fun fetchWhenObserved() {
         `when`(useCase.getStatements(1)).thenReturn(Flowable.just(successDomainResponse))
-        statementsViewModel.setUserId(1)
+        val userAccount = UserAccountPresentation(1)
+        statementsViewModel.setUserAccount(userAccount)
         statementsViewModel.statements.observeForever(statementsObserver)
         verify(useCase).getStatements(1)
     }
@@ -90,7 +86,8 @@ class StatementsViewModelTest {
     fun retry() {
         statementsViewModel.retry()
         verifyNoMoreInteractions(useCase)
-        statementsViewModel.setUserId(1)
+        val userAccount = UserAccountPresentation(1)
+        statementsViewModel.setUserAccount(userAccount)
         verifyNoMoreInteractions(useCase)
         `when`(useCase.getStatements(1)).thenReturn(Flowable.just(successDomainResponse))
         statementsViewModel.statements.observeForever(statementsObserver)
@@ -105,7 +102,8 @@ class StatementsViewModelTest {
     fun fetchStatements() {
         // given
         `when`(useCase.getStatements(1)).thenReturn(Flowable.just(successDomainResponse))
-        statementsViewModel.setUserId(1)
+        val userAccount = UserAccountPresentation(1)
+        statementsViewModel.setUserAccount(userAccount)
 
         // when
         statementsViewModel.statements.observeForever(statementsObserver)
@@ -122,7 +120,8 @@ class StatementsViewModelTest {
     @Test
     fun fetchStatementsWithError() {
         `when`(useCase.getStatements(1000)).thenReturn(Flowable.just(errorDomainResponse))
-        statementsViewModel.setUserId(1000)
+        val userAccount = UserAccountPresentation(1000)
+        statementsViewModel.setUserAccount(userAccount)
         statementsViewModel.statements.observeForever(statementsObserver)
         val expected = Response(status = Status.SUCCESSFUL, data = mapper.mapFrom(errorDomainResponse))
         then(progressBarObserver).should().onChanged(View.VISIBLE)

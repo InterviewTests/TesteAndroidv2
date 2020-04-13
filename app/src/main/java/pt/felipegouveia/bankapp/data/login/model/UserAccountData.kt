@@ -2,7 +2,7 @@ package pt.felipegouveia.bankapp.data.login.model
 
 import com.google.gson.annotations.SerializedName
 
-data class UserAccount(
+data class UserAccountData(
     @SerializedName("userId")
     val userId: Int? = -1,
     @SerializedName("name")
