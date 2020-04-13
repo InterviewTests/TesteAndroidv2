@@ -60,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
                     intent.putExtra("agency", loginResponse.agency)
                     intent.putExtra("balance", loginResponse.balance)
 
-                    finish()
+                    this.finish()
                     startActivity(intent)
                 }
             })
@@ -74,7 +74,7 @@ class LoginActivity : AppCompatActivity() {
             button_login.text = getString(R.string.login_button)
         }
         else {
-            finish()
+            this.finish()
         }
     }
 

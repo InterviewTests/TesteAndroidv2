@@ -61,7 +61,7 @@ class StatementsActivity : AppCompatActivity() {
         })
 
         imgLogout.setOnClickListener {
-            finish()
+            this.finish()
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
@@ -69,7 +69,7 @@ class StatementsActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        finish()
+        this.finish()
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
