@@ -15,12 +15,16 @@ import pt.felipegouveia.bankapp.databinding.LoginFragmentBinding
 import pt.felipegouveia.bankapp.presentation.base.BaseFragment
 import pt.felipegouveia.bankapp.presentation.entity.Status
 import pt.felipegouveia.bankapp.util.extension.toast
+import pt.felipegouveia.bankapp.util.persistence.BankSharedPreferences
 import javax.inject.Inject
 
 class LoginFragment: BaseFragment(), View.OnClickListener {
 
     @Inject
     lateinit var viewModelFactory : ViewModelProvider.Factory
+
+    @Inject
+    lateinit var sharedPrefs: BankSharedPreferences
 
     private val viewModel : LoginViewModel by viewModels { viewModelFactory }
     private lateinit var binding : LoginFragmentBinding
@@ -35,6 +39,7 @@ class LoginFragment: BaseFragment(), View.OnClickListener {
             this.vm = viewModel
             this.lifecycleOwner = this@LoginFragment
         }
+
         return binding.root
     }
 
@@ -42,16 +47,24 @@ class LoginFragment: BaseFragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         viewModel.setLoginBody(LoginBody())
         if(savedInstanceState != null){
-            login_edt_user.setText(savedInstanceState.get("user").toString())
-            login_edt_user.setText(savedInstanceState.get("password").toString())
+            login_edt_user.setText(savedInstanceState.get(SAVED_INSTANCE_STATE_USER).toString())
+            login_edt_user.setText(savedInstanceState.get(SAVED_INSTANCE_STATE_PASSWORD).toString())
         }
         login_btn_login.setOnClickListener(this)
         setupUiObservers()
+        retrieveLastUser()
+    }
+
+    fun retrieveLastUser() {
+        sharedPrefs.readDecryptedString(PREFS_LOGIN_KEY).let {
+            if (it?.isNotEmpty() == true) login_txt_last_user.text =
+                getString(R.string.login_last_user, it)
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString("user", login_edt_user.text.toString())
-        outState.putString("password", login_edt_password.text.toString())
+        outState.putString(SAVED_INSTANCE_STATE_USER, login_edt_user.text.toString())
+        outState.putString(SAVED_INSTANCE_STATE_PASSWORD, login_edt_password.text.toString())
         super.onSaveInstanceState(outState)
     }
 
@@ -67,6 +80,7 @@ class LoginFragment: BaseFragment(), View.OnClickListener {
                         if(response.userAccount?.userId == BAD_USER_ID){
                             requireActivity().toast(R.string.login_error_unknown)
                         } else {
+                            sharedPrefs.saveEncryptedString(PREFS_LOGIN_KEY, response.userAccount?.name?: EMPTY_NAME)
                             val action = LoginFragmentDirections.actionLoginFragmentToStatementsFragment(userId)
                             findNavController().navigate(action)
                         }
@@ -86,5 +100,9 @@ class LoginFragment: BaseFragment(), View.OnClickListener {
 
     companion object {
         const val BAD_USER_ID = -1
+        const val EMPTY_NAME = ""
+        const val PREFS_LOGIN_KEY = "PREFS_LOGIN_KEY"
+        const val SAVED_INSTANCE_STATE_USER = "user"
+        const val SAVED_INSTANCE_STATE_PASSWORD = "password"
     }
 }
