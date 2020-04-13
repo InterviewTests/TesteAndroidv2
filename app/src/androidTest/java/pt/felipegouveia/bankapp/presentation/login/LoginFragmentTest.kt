@@ -1,5 +1,8 @@
 package pt.felipegouveia.bankapp.presentation.login
 
+import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.navigation.NavController
@@ -10,12 +13,14 @@ import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
+import org.hamcrest.Matchers.isEmptyString
 import org.hamcrest.Matchers.not
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.BDDMockito.given
+import org.mockito.ArgumentMatchers
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
@@ -23,26 +28,49 @@ import pt.felipegouveia.bankapp.R
 import pt.felipegouveia.bankapp.util.EspressoIdlingResource
 import pt.felipegouveia.bankapp.util.ToastMatcher
 import pt.felipegouveia.bankapp.util.ViewModelUtil
+import pt.felipegouveia.bankapp.util.persistence.BankSharedPreferences
+import pt.felipegouveia.bankapp.util.security.CipherWrapper
+import pt.felipegouveia.bankapp.util.security.KeyStoreWrapper
 
 @RunWith(AndroidJUnit4::class)
 class LoginFragmentTest {
 
+    lateinit var context: Context
+
     @Mock
     lateinit var navController: NavController
+
+    private val cipherWrapper = CipherWrapper(CipherWrapper.TRANSFORMATION_ASYMMETRIC)
+
+    lateinit var keyStoreWrapper: KeyStoreWrapper
+
+    private lateinit var sharedPreferences: BankSharedPreferences
 
     private lateinit var viewModel: LoginViewModel
 
     private lateinit var scenario: FragmentScenario<LoginFragment>
 
+    private val instrumentationRegistry = InstrumentationRegistry.getInstrumentation()
+
     @Before
     fun init() {
         MockitoAnnotations.initMocks(this)
+        context = instrumentationRegistry.targetContext
+        keyStoreWrapper = KeyStoreWrapper(context)
+        sharedPreferences = BankSharedPreferences(
+            context,
+            cipherWrapper,
+            keyStoreWrapper
+        )
         viewModel = mock(LoginViewModel::class.java)
+
         scenario = launchFragmentInContainer {
             LoginFragment().apply {
                 viewModelFactory = ViewModelUtil.createFor(viewModel)
             }
         }
+
+        clearSharedPreferences()
 
         scenario.onFragment { fragment ->
             Navigation.setViewNavController(fragment.requireView(), navController)
@@ -54,6 +82,7 @@ class LoginFragmentTest {
     @After
     fun destroy(){
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
+        clearSharedPreferences()
     }
 
     @Test
@@ -115,6 +144,22 @@ class LoginFragmentTest {
     }
 
     @Test
+    fun givenAppOpened_whenLastUserExists_thenShowLastUser() {
+        val lastUser = "José da Silva Teste"
+        sharedPreferences.saveEncryptedString(LoginFragment.PREFS_LOGIN_KEY, lastUser)
+        scenario.onFragment {
+            it.retrieveLastUser()
+        }
+        onView(withId(R.id.login_txt_last_user)).check(matches(withText(context.getString(R.string.login_last_user, lastUser))))
+    }
+
+    @Test
+    fun givenAppOpened_whenLastUserNotExists_thenDontShowLastUser() {
+        onView(withId(R.id.login_txt_last_user)).check(matches(withText(isEmptyString())))
+    }
+
+
+    @Test
     fun givenLoginClicked_whenNetworkUnavailable_thenShowErrorMessage() {
         scenario.onFragment {
             it.networkAvailable = false
@@ -153,4 +198,13 @@ class LoginFragmentTest {
         onView(withId(R.id.login_edt_password)).perform(replaceText(""))
         onView(withId(R.id.login_btn_login)).perform(click())
     }
+
+    private fun clearSharedPreferences(){
+        context
+            .getSharedPreferences(BankSharedPreferences.BANK_PREFERENCES, Context.MODE_PRIVATE)
+            .edit()
+            .clear()
+            .commit()
+    }
+
 }
