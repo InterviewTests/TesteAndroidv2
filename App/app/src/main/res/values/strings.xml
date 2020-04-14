@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TesteAndroidv2</string>
+    <string name="login_button">Login</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="balance">Saldo</string>
+    <string name="account">Conta</string>
+    <string name="recent">Recentes</string>
+    <string name="contentImage">Logo Bank</string>
+    <string name="loading">Carregando...</string>
+
+    <string name="statements_error_400">Ops! Algo deu errado</string>
+    <string name="statements_error_500">Sistema indisponível</string>
+    <string name="login_error_invalid_data">Dados informados inválidos</string>
+
+</resources>
