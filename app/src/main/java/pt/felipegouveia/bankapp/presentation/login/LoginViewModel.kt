@@ -18,7 +18,6 @@ import pt.felipegouveia.bankapp.util.EspressoIdlingResource
 import pt.felipegouveia.bankapp.util.extension.isValidPassword
 import pt.felipegouveia.bankapp.util.extension.isValidUser
 import pt.felipegouveia.testing.OpenForTesting
-import java.lang.IllegalStateException
 import javax.inject.Inject
 
 @OpenForTesting
@@ -31,7 +30,7 @@ class LoginViewModel @Inject constructor(
     private val _loginBody = MutableLiveData<LoginBody>()
     val loginBody: LiveData<LoginBody> = _loginBody
 
-    private val _mutableProgressbar = MutableLiveData<Int>()
+    private val _mutableProgressbar = MutableLiveData<Int>().apply { View.GONE }
     val mutableProgressbar: LiveData<Int> = _mutableProgressbar
 
     private val _loginResult = MutableLiveData<Response<LoginPresentation>>()

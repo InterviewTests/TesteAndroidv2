@@ -9,5 +9,6 @@ abstract class Mapper<in T,E>{
 
     fun single(data: T) = Single.fromCallable { mapFrom(data) }
 
-    fun flowable(data: List<T>) = Flowable.fromCallable { data.map { mapFrom(it) } }
+    fun flowable(data: T) = Flowable.fromCallable { mapFrom(data) }
+
 }

@@ -1,4 +1,4 @@
-package pt.felipegouveia.bankapp.data.statements.model
+package pt.felipegouveia.bankapp.domain.model.statements
 
 import java.util.*
 

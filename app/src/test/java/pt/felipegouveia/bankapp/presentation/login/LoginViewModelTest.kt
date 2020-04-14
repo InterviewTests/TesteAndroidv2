@@ -3,16 +3,15 @@ package pt.felipegouveia.bankapp.presentation.login
 import android.view.View
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import io.reactivex.Single
+import org.hamcrest.CoreMatchers.notNullValue
+import org.junit.Assert.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import io.reactivex.Single
-import org.hamcrest.CoreMatchers.notNullValue
-import org.junit.Assert.assertThat
 import org.mockito.BDDMockito.given
 import org.mockito.BDDMockito.then
-import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 import org.robolectric.RobolectricTestRunner
@@ -28,7 +27,7 @@ import pt.felipegouveia.bankapp.R
 import pt.felipegouveia.bankapp.Util.createLoginDomainMockSingle
 import pt.felipegouveia.bankapp.domain.LoginRepository
 import pt.felipegouveia.bankapp.domain.interactors.LoginUseCase
-import pt.felipegouveia.bankapp.domain.model.Login
+import pt.felipegouveia.bankapp.domain.model.login.Login
 import pt.felipegouveia.bankapp.presentation.BaseSchedulerProvider
 import pt.felipegouveia.bankapp.presentation.TrampolineSchedulerProvider
 import pt.felipegouveia.bankapp.presentation.entity.Error
@@ -47,7 +46,7 @@ class LoginViewModelTest {
     @Mock
     private lateinit var loginRepository: LoginRepository
 
-    @InjectMocks
+    @Mock
     private lateinit var loginUseCase: LoginUseCase
 
     private lateinit var schedulerProvider: BaseSchedulerProvider

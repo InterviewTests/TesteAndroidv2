@@ -1,8 +1,8 @@
 package pt.felipegouveia.bankapp.domain
 
-import io.reactivex.Single
-import pt.felipegouveia.bankapp.data.statements.model.StatementsResponse
+import io.reactivex.Flowable
+import pt.felipegouveia.bankapp.domain.model.statements.Statements
 
 interface StatementsRepository {
-    fun getStatements(id: Int): Single<StatementsResponse>
+    fun getStatements(userId: Int): Flowable<Statements>
 }

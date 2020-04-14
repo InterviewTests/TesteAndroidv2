@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -11,16 +11,90 @@
     <!-- Base Widget -->
     <style name="Widget.BankApp" parent="@android:style/Widget" />
 
-    <style name="LoginButtonText" parent="@style/TextAppearance.AppCompat.Body1">
-        <item name="android:textSize">8sp</item>
-        <item name="android:textColor">@color/loginButtonTextColor</item>
+    <style name="TextAppearance.BankApp.H2" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+    </style>
+
+    <!-- Statements -->
+    <style name="TextAppearance.BankApp.Fields" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/statementsFieldsTextColor</item>
+        <item name="android:textSize">@dimen/statements_fields_font_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue_light</item>
+    </style>
+
+    <style name="TextAppearance.BankApp.StatementTitle" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/statementTitleTextColor</item>
+        <item name="android:textSize">@dimen/statement_title_font_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+    </style>
+
+    <style name="TextAppearance.BankApp.StatementDesc" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/statementDescTextColor</item>
+        <item name="android:textSize">@dimen/statement_desc_font_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+    </style>
+
+    <style name="TextAppearance.BankApp.StatementDate" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/statementDateTextColor</item>
+        <item name="android:textSize">@dimen/statement_date_font_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue_light</item>
+    </style>
+
+    <style name="TextAppearance.BankApp.StatementValue" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/statementValueTextColor</item>
+        <item name="android:textSize">@dimen/statement_value_font_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue_light</item>
+    </style>
+
+    <style name="TextAppearance.BankApp.Descriptors" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/statementsDescriptorsTextColor</item>
+        <item name="android:textSize">@dimen/statements_descriptors_font_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+    </style>
+
+    <style name="TextAppearance.BankApp.StatementRecents" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/statementRecentsTextColor</item>
+        <item name="android:textSize">@dimen/statements_recents_font_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+    </style>
+
+    <!--  Login  -->
+    <style name="TextAppearance.BankApp.Button" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">@dimen/login_btn_login_text_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue</item>
         <item name="android:lineSpacingExtra">@dimen/login_btn_line_spacing</item>
     </style>
 
-    <style name="LoginButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:color">@color/loginButtonColor</item>
-        <item name="android:textAppearance">@style/LoginButtonText</item>
+    <style name="TextAppearance.BankApp.LoginLastUser" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/statementDescTextColor</item>
+        <item name="android:textSize">@dimen/login_last_user_text_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+    </style>
+
+    <style name="Widget.BankApp.TextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_margin">@dimen/margin_small</item>
+    </style>
+
+    <style name="Widget.BankApp.PasswordInputLayout" parent="Widget.BankApp.TextInputLayout">
+        <item name="passwordToggleEnabled">true</item>
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <style name="TextAppearance.BankApp.LoginHint" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">@dimen/login_edt_hint_text_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+        <item name="android:textColor">@color/light_grey</item>
+    </style>
+
+    <style name="Widget.BankApp.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:color">@color/light_grey</item>
+        <item name="android:textAppearance">@style/TextAppearance.BankApp.Button</item>
+        <item name="android:textColor">@color/bankButtonTextColor</item>
         <item name="android:clickable">true</item>
+        <item name="android:tint">@color/bankButtonTextColor</item>
     </style>
 
 </resources>

@@ -1,10 +1,8 @@
 package pt.felipegouveia.bankapp.util.persistence
 
-import android.app.Application
 import android.content.Context
 import pt.felipegouveia.bankapp.util.security.CipherWrapper
 import pt.felipegouveia.bankapp.util.security.KeyStoreWrapper
-import pt.felipegouveia.testing.OpenForTesting
 import java.security.KeyPair
 import javax.inject.Inject
 
@@ -18,7 +16,7 @@ class BankSharedPreferences @Inject constructor(
 
     init {
         prefsKey = keyStoreWrapper.getAndroidKeyStoreAsymmetricKeyPair(KeyStoreWrapper.SHARED_PREFS_KEY)
-        if(prefsKey == null) prefsKey = keyStoreWrapper.getAndroidKeyStoreAsymmetricKeyPair(KeyStoreWrapper.SHARED_PREFS_KEY)
+        if(prefsKey == null) prefsKey = keyStoreWrapper.createAndroidKeyStoreAsymmetricKey(KeyStoreWrapper.SHARED_PREFS_KEY)
     }
 
     override fun readDecryptedString(key: String): String? {
