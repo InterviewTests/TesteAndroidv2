@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3B48EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#3B48EE</color>
+
+    <!-- Bases -->
+    <color name="white">#FFFFFF</color>
+    <color name="light_grey">#A8B4C4</color>
+    <color name="grey">#485465</color>
+
+    <!-- BankApp -->
+    <color name="bankButtonColor">#3B48EE</color>
+    <color name="bankButtonTextColor">@color/white</color>
+
+    <!-- Login -->
+    <color name="loginLastUserTextColor">@color/grey</color>
+    <color name="loginInputLayoutStrokeColor">#DCE2EE</color>
+
+    <!-- Statements -->
+    <color name="statementValueAdded">#FF4CAF50</color>
+    <color name="statementValueRemoved">#FFF44336</color>
+    <color name="statementsAccountBackgroundColor">#3B49EE</color>
+    <color name="statementsDescriptorsTextColor">@color/white</color>
+    <color name="statementsFieldsTextColor">@color/white</color>
+    <color name="statementTitleTextColor">@color/light_grey</color>
+    <color name="statementDateTextColor">@color/light_grey</color>
+    <color name="statementDescTextColor">@color/grey</color>
+    <color name="statementValueTextColor">@color/grey</color>
+    <color name="statementRecentsTextColor">@color/grey</color>
+
+
+</resources>
