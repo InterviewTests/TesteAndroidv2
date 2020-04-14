@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="pt.felipegouveia.bankapp.presentation.statements.StatementsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/statementsAccountBackgroundColor"
+        android:paddingStart="@dimen/statements_account_margin_start"
+        android:paddingTop="@dimen/statements_account_margin_top"
+        android:paddingEnd="@dimen/statements_account_margin_end"
+        android:paddingBottom="@dimen/statements_account_margin_bottom"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/statements_txt_name"
+            style="@style/TextAppearance.BankApp.Fields"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.userAccount.name}"
+            app:layout_constraintEnd_toStartOf="@id/statements_img_logout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Felipe Gouveia" />
+
+        <ImageView
+            android:id="@+id/statements_img_logout"
+            android:layout_width="@dimen/statements_img_logout_width"
+            android:layout_height="@dimen/statements_img_logout_height"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/bank_statements_logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/statements_txt_name"
+            app:layout_constraintTop_toTopOf="@id/statements_txt_name"
+            android:contentDescription="@string/login_password_hint"/>
+
+        <TextView
+            android:id="@+id/statements_txt_descriptor_account"
+            style="@style/TextAppearance.BankApp.Descriptors"
+            android:text="@string/statements_account_descriptor_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            app:layout_constraintTop_toBottomOf="@+id/statements_txt_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/statements_txt_field_account"
+            style="@style/TextAppearance.BankApp.Fields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.userAccount.bankAccount + ` / ` + viewModel.userAccount.agency }"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statements_txt_descriptor_account"
+            tools:text="2050 / 01.111222-4" />
+
+        <TextView
+            android:id="@+id/statements_txt_descriptor_balance"
+            style="@style/TextAppearance.BankApp.Descriptors"
+            android:text="@string/statements_account_descriptor_balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statements_txt_field_account" />
+
+        <TextView
+            android:id="@+id/statements_txt_field_balance"
+            style="@style/TextAppearance.BankApp.Fields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.userAccount.balance}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/statements_txt_descriptor_balance"
+            tools:text="R$ 1000,00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
