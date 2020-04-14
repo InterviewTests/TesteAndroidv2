@@ -118,7 +118,7 @@ class StatementsViewModelTest {
     }
 
     @Test
-    fun fetchStatementsWithError() {
+    fun fetchStatementsWithUserNotFound() {
         `when`(useCase.getStatements(1000)).thenReturn(Flowable.just(errorDomainResponse))
         val userAccount = UserAccountPresentation(1000)
         statementsViewModel.setUserAccount(userAccount)

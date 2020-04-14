@@ -12,4 +12,15 @@ data class UserAccount(
     fun balanceToReal(): String{
         return balance?.toReal()?: "null"
     }
+
+    fun formatAgency(): String? {
+       return if(agency != null){
+           StringBuilder(agency)
+               .insert(8, "-")
+               .insert(2, ".")
+               .toString()
+       } else {
+           agency
+       }
+    }
 }

@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@color/statementsAccountBackgroundColor"
         android:paddingStart="@dimen/statements_account_margin_start"
         android:paddingTop="@dimen/statements_account_margin_top"
         android:paddingEnd="@dimen/statements_account_margin_end"
@@ -35,6 +35,7 @@
             android:layout_width="@dimen/statements_img_logout_width"
             android:layout_height="@dimen/statements_img_logout_height"
             android:clickable="true"
+            android:focusable="true"
             android:src="@drawable/bank_statements_logout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/statements_txt_name"
@@ -56,11 +57,11 @@
             style="@style/TextAppearance.BankApp.Fields"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.userAccount.bankAccount}"
+            android:text="@{viewModel.userAccount.bankAccount + ` / ` + viewModel.userAccount.agency }"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/statements_txt_descriptor_account"
-            tools:text="123123" />
+            tools:text="2050 / 01.111222-4" />
 
         <TextView
             android:id="@+id/statements_txt_descriptor_balance"

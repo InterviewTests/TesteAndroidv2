@@ -5,7 +5,6 @@ import android.util.Patterns
 import android.widget.Toast
 import java.math.RoundingMode
 import java.text.NumberFormat
-import java.util.*
 import java.util.regex.Pattern
 
 /**
@@ -135,15 +134,8 @@ fun Context.toast(resourceId: Int) =
  *
  */
 fun Double.toReal(): String {
-    val local = Locale("pt", "BR")
     return NumberFormat.getCurrencyInstance()
-        .currency
-        ?.getSymbol(local)
-        ?.format(
-            this.toBigDecimal()
-                .setScale(1, RoundingMode.CEILING
-                )
-        )?: ""
+        .format(this.toBigDecimal().setScale(1, RoundingMode.CEILING))
 }
 
 

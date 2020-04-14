@@ -6,15 +6,25 @@
 
     <!-- Bases -->
     <color name="white">#FFFFFF</color>
+    <color name="light_grey">#A8B4C4</color>
+    <color name="grey">#485465</color>
 
 
     <!-- BankApp -->
     <color name="bankButtonColor">#3B48EE</color>
     <color name="bankButtonTextColor">@color/white</color>
+    <color name="statement_value_added">#FF4CAF50</color>
+    <color name="statement_value_removed">#FFF44336</color>
 
     <!-- Statements -->
+    <color name="statementsAccountBackgroundColor">#3B49EE</color>
     <color name="statementsDescriptorsTextColor">@color/white</color>
     <color name="statementsFieldsTextColor">@color/white</color>
+    <color name="statementTitleTextColor">@color/light_grey</color>
+    <color name="statementDateTextColor">@color/light_grey</color>
+    <color name="statementDescTextColor">@color/grey</color>
+    <color name="statementValueTextColor">@color/grey</color>
+    <color name="statementRecentsTextColor">@color/grey</color>
 
 
 </resources>

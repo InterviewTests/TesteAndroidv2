@@ -27,7 +27,7 @@ class LoginPresentationMapper : Mapper<Login, LoginPresentation>() {
     private fun mapUserAccountDomainToPresentation(domain: UserAccount?): UserAccountPresentation =
         UserAccountPresentation(
             userId = domain?.userId,
-            agency = domain?.agency,
+            agency = domain?.formatAgency(),
             balance = domain?.balanceToReal(),
             bankAccount = domain?.bankAccount,
             name = domain?.name

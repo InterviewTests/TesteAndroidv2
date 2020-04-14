@@ -9,8 +9,9 @@
             type="pt.felipegouveia.bankapp.presentation.statements.StatementsViewModel" />
     </data>
 
-    <LinearLayout android:id="@+id/no_results_layout"
-        android:gravity="center"
+    <LinearLayout android:id="@+id/error_layout"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/margin_large"
         android:orientation="vertical"
         android:visibility="gone"
         tools:visibility="visible"
@@ -19,34 +20,34 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottie_no_data"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginBottom="@dimen/margin_large"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginBottom="@dimen/margin_huge"
             android:layout_gravity="center"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="36dp"
             android:fitsSystemWindows="true"
             android:importantForAccessibility="no"
-            app:lottie_rawRes="@raw/empty_list"
+            app:lottie_rawRes="@raw/error_occurred"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"/>
 
         <!--Displays a generic error message-->
         <TextView
             style="@style/TextAppearance.BankApp.H2"
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/statements_no_statements_found"
+            android:text="@string/statements_error_occurred"
             android:layout_marginBottom="@dimen/margin_normal"/>
 
         <Button
-            android:id="@+id/button_retry"
             style="@style/Widget.BankApp.Button"
+            android:id="@+id/button_retry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/statements_refresh"
+            android:text="@string/statements_retry"
             android:onClick="@{() -> viewModel.retry()}"/>
 
     </LinearLayout>

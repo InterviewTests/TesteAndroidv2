@@ -28,84 +28,47 @@ class StatementsViewModel @Inject constructor(
     private val _userAccount: MutableLiveData<UserAccountPresentation> = MutableLiveData()
     val userAccount: LiveData<UserAccountPresentation> = _userAccount
 
+    private val _userId: MutableLiveData<Int> = MutableLiveData()
+    val userId: LiveData<Int> = _userId
+
     private val _statements: MutableLiveData<Response<StatementsPresentation>> = MutableLiveData()
-    val statements: LiveData<Response<StatementsPresentation>> = _userAccount.switchMap {
-        LiveDataReactiveStreams.fromPublisher(fetchStatements2())
+    val statements: LiveData<Response<StatementsPresentation>> = _userId.switchMap {
+        LiveDataReactiveStreams.fromPublisher(fetchStatements())
     }
 
     private val _mutableProgressbar = MutableLiveData<Int>()
     val mutableProgressbar: LiveData<Int> = _mutableProgressbar
 
-    private fun fetchStatements2(): Flowable<Response<StatementsPresentation>>{
+    private fun fetchStatements(): Flowable<Response<StatementsPresentation>>{
 
-        val flowableResponse: Flowable<Response<StatementsPresentation>> = Flowable.just(null)
-        val flowableList = useCase.getStatements(userAccount.value?.userId?: UNKNOWN_USER_ID)
-
-        val disposable = flowableList
+        val flowableRequest = useCase.getStatements(checkNotNull(userAccount.value?.userId))
+            .flatMap { Flowable.just(mapper.toResponse(mapper.mapFrom(it))) }
             .subscribeOn(schedulers.io())
-            .doOnSubscribe { onFetchStarted() }
             .observeOn(schedulers.ui())
-            .subscribe(
-                { response ->
-                    flowableResponse.apply {
-                        Flowable.just(Response(status = Status.SUCCESSFUL, data = response))
-                    }
-                    onFetchFinished()
-                },
-                { error ->
-                    flowableList.apply {
-                        Flowable.just(Response(status = Status.ERROR, data = null, error = Error(error.message)))
-                    }
-                    onFetchFinished()
-                })
+
+        val disposable = flowableRequest
+            .doOnSubscribe{ onFetchStarted() }
+            .doFinally{ onFetchFinished() }
+            .onErrorReturnItem(Response(status = Status.ERROR, error = Error("Error while fetching statements")))
+            .subscribe()
 
         add(disposable)
-        return flowableResponse
-    }
 
-    private fun fetchStatements(): LiveData<Response<StatementsPresentation>>{
-        val listFlowable = useCase.getStatements(userAccount.value?.userId?: UNKNOWN_USER_ID)
-            .flatMap {it -> mapper.flowable(it) }
-            .flatMap {
-                if(it.error == null){
-                    Flowable.just(
-                        Response(
-                            status = Status.SUCCESSFUL,
-                            data = it
-                        )
-                    )
-                } else {
-                    Flowable.just(
-                        Response(
-                            status = Status.ERROR,
-                            error = it.error
-                        )
-                    )
-                }
-            } .subscribeOn(schedulers.io())
-            .doOnSubscribe { onFetchStarted() }
-            .doOnNext { onFetchFinished() }
-            .doOnError { onFetchFinished() }
-            .observeOn(schedulers.ui())
-
-      //  val disposable = listFlowable
-
-//            .subscribe()
-
-       // add(disposable)
-        return LiveDataReactiveStreams.fromPublisher(listFlowable)
+        return flowableRequest
     }
 
     fun setUserAccount(userAccount: UserAccountPresentation?){
         val update = userAccount
-        if (_userAccount.value == update) {
+        if (_userAccount.value == update || update == null) {
             return
         }
+        _userId.value = update.userId
         _userAccount.value = update
     }
 
     fun retry(){
-        _statements.value = fetchStatements().value
+        val userId = userId.value
+        _userId.value = userId
     }
 
     fun logout(){
@@ -114,16 +77,12 @@ class StatementsViewModel @Inject constructor(
 
     private fun onFetchStarted(){
         if(BuildConfig.DEBUG) EspressoIdlingResource.increment()
-        _mutableProgressbar.postValue(View.VISIBLE)
+        _mutableProgressbar.value = View.VISIBLE
     }
 
     private fun onFetchFinished(){
         if(BuildConfig.DEBUG) EspressoIdlingResource.decrement()
-        _mutableProgressbar.postValue(View.GONE)
-    }
-
-    companion object {
-        const val UNKNOWN_USER_ID = -1
+        _mutableProgressbar.value = View.GONE
     }
 
 }

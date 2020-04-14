@@ -1,14 +1,13 @@
 package pt.felipegouveia.bankapp.util.security
 
 import android.util.Base64
-import pt.felipegouveia.testing.OpenForTesting
 import java.security.Key
 import javax.crypto.Cipher
 
 /**
  * This class wraps [Cipher] class apis with some additional possibilities.
  */
-class CipherWrapper(private val transformation: String) {
+class CipherWrapper(transformation: String) {
 
     private val cipher: Cipher = Cipher.getInstance(transformation)
 

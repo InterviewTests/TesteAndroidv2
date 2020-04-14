@@ -4,6 +4,8 @@ import pt.felipegouveia.bankapp.domain.common.Mapper
 import pt.felipegouveia.bankapp.domain.model.statements.Statement
 import pt.felipegouveia.bankapp.domain.model.statements.Statements
 import pt.felipegouveia.bankapp.presentation.entity.Error
+import pt.felipegouveia.bankapp.presentation.entity.Response
+import pt.felipegouveia.bankapp.presentation.entity.Status
 import pt.felipegouveia.bankapp.presentation.statements.entity.StatementPresentation
 import pt.felipegouveia.bankapp.presentation.statements.entity.StatementsPresentation
 
@@ -34,5 +36,11 @@ class StatementsPresentationMapper : Mapper<Statements, StatementsPresentation>(
                 domain.error?.message,
                 domain.error?.stringId
             )
+        )
+
+    fun toResponse(presentation: StatementsPresentation): Response<StatementsPresentation> =
+        Response(
+            status = Status.SUCCESSFUL,
+            data = presentation
         )
 }

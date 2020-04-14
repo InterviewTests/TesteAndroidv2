@@ -12,7 +12,9 @@
         tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_statementsFragment"
-            app:destination="@id/statementsFragment" />
+            app:destination="@id/statementsFragment"
+            app:popUpTo="@id/statementsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment

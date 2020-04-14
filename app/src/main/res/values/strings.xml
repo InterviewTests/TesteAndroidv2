@@ -14,4 +14,6 @@
     <string name="statements_error_occurred">Um erro ocorreu ao buscar suas transações</string>
     <string name="statements_account_descriptor_account">Conta</string>
     <string name="statements_account_descriptor_balance">Saldo</string>
+    <string name="statements_recents">Recentes</string>
+    <string name="statements_error_no_network">Você não está conectado à Internet</string>
 </resources>

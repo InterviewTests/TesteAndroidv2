@@ -1,16 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="pt.felipegouveia.bankapp.util.extension.ExtensionFunctionsKt" />
+
         <variable
             name="statement"
             type="pt.felipegouveia.bankapp.presentation.statements.entity.StatementPresentation" />
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="@dimen/margin_micro"
+        android:layout_marginBottom="@dimen/margin_micro"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/statement_card_height">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginStart="@dimen/margin_normal">
+
+            <TextView
+                android:id="@+id/statement_title"
+                style="@style/TextAppearance.BankApp.StatementTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@{statement.title}"
+                tools:text="Pagamento"/>
+
+            <TextView
+                android:id="@+id/statement_date"
+                style="@style/TextAppearance.BankApp.StatementDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:paddingTop="@dimen/spacing_micro"
+                android:text="@{statement.date.toLocaleString()}"
+                tools:text="12/12/2018"/>
+
+            <TextView
+                android:id="@+id/statement_desc"
+                style="@style/TextAppearance.BankApp.StatementDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/statement_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                android:layout_marginTop="@dimen/statement_desc_margin_top"
+                android:text="@{statement.desc}"
+                tools:text="Conta de luz" />
+
+            <TextView
+                android:id="@+id/statement_value"
+                style="@style/TextAppearance.BankApp.StatementValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/statement_value_margin_top"
+                app:layout_constraintTop_toBottomOf="@+id/statement_date"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                android:textColor="@{statement.value &lt; 0 ? @color/statement_value_removed : @color/statement_value_added}"
+                android:text="@{ExtensionFunctionsKt.toReal(statement.value)}"
+                tools:text="R$1.000,00" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </layout>

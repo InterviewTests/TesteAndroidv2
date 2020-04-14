@@ -43,9 +43,7 @@ class StatementsAdapter: RecyclerView.Adapter<StatementsAdapter.StatementsViewHo
 
     class StatementsViewHolder(private val binding: StatementItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(statement: StatementPresentation?) {
-            binding.apply {
-                this.statement = statement
-            }
+            binding.statement = statement
         }
     }
 }

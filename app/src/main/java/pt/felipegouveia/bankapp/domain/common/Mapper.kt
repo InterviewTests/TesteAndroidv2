@@ -1,6 +1,5 @@
 package pt.felipegouveia.bankapp.domain.common
 
-import androidx.lifecycle.LiveDataReactiveStreams
 import io.reactivex.Flowable
 import io.reactivex.Single
 

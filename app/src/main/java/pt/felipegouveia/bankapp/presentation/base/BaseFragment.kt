@@ -19,8 +19,5 @@ open class BaseFragment: DaggerFragment() {
         connectionLiveData.observe(viewLifecycleOwner, Observer {
             networkAvailable = it
         })
-
     }
-
-
 }
