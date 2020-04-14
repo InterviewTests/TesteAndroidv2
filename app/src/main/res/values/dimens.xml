@@ -32,6 +32,8 @@
     <dimen name="statement_date_font_size">12sp</dimen>
     <dimen name="statements_recents_font_size">17sp</dimen>
     <dimen name="login_btn_login_text_size">16sp</dimen>
+    <dimen name="login_edt_hint_text_size">15sp</dimen>
+    <dimen name="login_last_user_text_size">15sp</dimen>
 
     <!-- Heights and Widths -->
     <dimen name="login_img_bank_height">70dp</dimen>
@@ -41,7 +43,7 @@
     <dimen name="statement_card_height">80dp</dimen>
 
     <!-- Margins -->
-    <dimen name="login_img_bank_margin_top">56dp</dimen>
+    <dimen name="login_img_bank_margin_top">38.5dp</dimen>
     <dimen name="login_edt_user_margin_top">56dp</dimen>
     <dimen name="login_btn_login_margin_start">87dp</dimen>
     <dimen name="login_btn_login_margin_bottom">33dp</dimen>

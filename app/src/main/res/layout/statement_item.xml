@@ -25,7 +25,8 @@
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginBottom="@dimen/margin_small"
             android:layout_marginEnd="@dimen/margin_normal"
-            android:layout_marginStart="@dimen/margin_normal">
+            android:layout_marginStart="@dimen/margin_normal"
+            android:focusable="true">
 
             <TextView
                 android:id="@+id/statement_title"
@@ -71,7 +72,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="1.0"
-                android:textColor="@{statement.value &lt; 0 ? @color/statement_value_removed : @color/statement_value_added}"
+                android:textColor="@{statement.value &lt; 0 ? @color/statementValueRemoved : @color/statementValueAdded}"
                 android:text="@{ExtensionFunctionsKt.toReal(statement.value)}"
                 tools:text="R$1.000,00" />
         </androidx.constraintlayout.widget.ConstraintLayout>

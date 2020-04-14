@@ -36,7 +36,7 @@ class StatementsViewModel @Inject constructor(
         LiveDataReactiveStreams.fromPublisher(fetchStatements())
     }
 
-    private val _mutableProgressbar = MutableLiveData<Int>()
+    private val _mutableProgressbar = MutableLiveData<Int>().apply { View.GONE }
     val mutableProgressbar: LiveData<Int> = _mutableProgressbar
 
     private fun fetchStatements(): Flowable<Response<StatementsPresentation>>{
@@ -45,11 +45,11 @@ class StatementsViewModel @Inject constructor(
             .flatMap { Flowable.just(mapper.toResponse(mapper.mapFrom(it))) }
             .subscribeOn(schedulers.io())
             .observeOn(schedulers.ui())
+            .onErrorReturnItem(Response(status = Status.ERROR, error = Error("Error while fetching statements")))
 
         val disposable = flowableRequest
             .doOnSubscribe{ onFetchStarted() }
             .doFinally{ onFetchFinished() }
-            .onErrorReturnItem(Response(status = Status.ERROR, error = Error("Error while fetching statements")))
             .subscribe()
 
         add(disposable)
@@ -69,10 +69,6 @@ class StatementsViewModel @Inject constructor(
     fun retry(){
         val userId = userId.value
         _userId.value = userId
-    }
-
-    fun logout(){
-        fetchStatements()
     }
 
     private fun onFetchStarted(){

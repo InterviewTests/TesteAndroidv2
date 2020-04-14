@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -62,6 +63,7 @@ class StatementsFragment: BaseFragment() {
         viewModel.statements.observe(viewLifecycleOwner, Observer {
             when (it?.status) {
                 Status.ERROR -> {
+                    binding.statementsRecyclerStatements.visibility = View.GONE
                     binding.noResultsLayout.root.visibility = View.GONE
                     binding.errorOccurredLayout.root.visibility = View.VISIBLE
                     binding.statementsSwipeRefresh.isRefreshing = false
@@ -71,9 +73,11 @@ class StatementsFragment: BaseFragment() {
                     binding.errorOccurredLayout.root.visibility = View.GONE
                     it.data?.let { response ->
                         if (response.statementList?.isNotEmpty() == true) {
+                            binding.statementsRecyclerStatements.visibility = View.VISIBLE
                             binding.noResultsLayout.root.visibility = View.GONE
                             statementsAdapter.update(response.statementList)
                         } else {
+                            binding.statementsRecyclerStatements.visibility = View.GONE
                             binding.noResultsLayout.root.visibility = View.VISIBLE
                         }
                     }
@@ -85,9 +89,14 @@ class StatementsFragment: BaseFragment() {
             if(networkAvailable){
                 viewModel.retry()
             } else {
-                Snackbar.make(binding.root, R.string.login_error_unknown, Snackbar.LENGTH_LONG).show()
+                Snackbar.make(binding.root, R.string.statements_error_no_network, Snackbar.LENGTH_LONG).show()
                 binding.statementsSwipeRefresh.isRefreshing = false
             }
+        }
+
+        binding.statementsAccount.statementsImgLogout.setOnClickListener{
+            val action = StatementsFragmentDirections.actionStatementsFragmentToLoginFragment()
+            findNavController().navigate(action)
         }
 
     }

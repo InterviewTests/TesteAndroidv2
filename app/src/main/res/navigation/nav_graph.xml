@@ -13,8 +13,7 @@
         <action
             android:id="@+id/action_loginFragment_to_statementsFragment"
             app:destination="@id/statementsFragment"
-            app:popUpTo="@id/statementsFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@id/nav_graph" />
     </fragment>
 
     <fragment
@@ -26,6 +25,11 @@
             app:argType="pt.felipegouveia.bankapp.presentation.login.entity.UserAccountPresentation"
             app:nullable="true"
             android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_statementsFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

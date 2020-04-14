@@ -48,7 +48,7 @@ class LoginFragment: BaseFragment(), View.OnClickListener {
         viewModel.setLoginBody(LoginBody())
         if(savedInstanceState != null){
             login_edt_user.setText(savedInstanceState.get(SAVED_INSTANCE_STATE_USER).toString())
-            login_edt_user.setText(savedInstanceState.get(SAVED_INSTANCE_STATE_PASSWORD).toString())
+            login_edt_password.setText(savedInstanceState.get(SAVED_INSTANCE_STATE_PASSWORD).toString())
         }
         login_btn_login.setOnClickListener(this)
         setupUiObservers()
@@ -76,7 +76,6 @@ class LoginFragment: BaseFragment(), View.OnClickListener {
                     }
                     Status.SUCCESSFUL -> {
                         it.data?.let { response ->
-                            val userId = response.userAccount?.userId ?: BAD_USER_ID
                             if(response.userAccount?.userId == BAD_USER_ID){
                                 requireActivity().toast(R.string.login_error_unknown)
                             } else {

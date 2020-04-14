@@ -16,7 +16,8 @@
         android:paddingStart="@dimen/statements_account_margin_start"
         android:paddingTop="@dimen/statements_account_margin_top"
         android:paddingEnd="@dimen/statements_account_margin_end"
-        android:paddingBottom="@dimen/statements_account_margin_bottom">
+        android:paddingBottom="@dimen/statements_account_margin_bottom"
+        android:focusable="true">
 
         <TextView
             android:id="@+id/statements_txt_name"
@@ -31,7 +32,6 @@
 
         <ImageView
             android:id="@+id/statements_img_logout"
-            android:onClick="@{() -> viewModel.logout()}"
             android:layout_width="@dimen/statements_img_logout_width"
             android:layout_height="@dimen/statements_img_logout_height"
             android:clickable="true"
@@ -39,7 +39,8 @@
             android:src="@drawable/bank_statements_logout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/statements_txt_name"
-            app:layout_constraintTop_toTopOf="@id/statements_txt_name" />
+            app:layout_constraintTop_toTopOf="@id/statements_txt_name"
+            android:contentDescription="@string/login_password_hint"/>
 
         <TextView
             android:id="@+id/statements_txt_descriptor_account"

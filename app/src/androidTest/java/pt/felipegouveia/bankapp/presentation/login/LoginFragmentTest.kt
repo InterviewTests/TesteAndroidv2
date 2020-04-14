@@ -19,9 +19,11 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.*
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 import pt.felipegouveia.bankapp.R
+import pt.felipegouveia.bankapp.presentation.login.entity.UserAccountPresentation
 import pt.felipegouveia.bankapp.util.EspressoIdlingResource
 import pt.felipegouveia.bankapp.util.ToastMatcher
 import pt.felipegouveia.bankapp.util.ViewModelUtil
@@ -122,7 +124,7 @@ class LoginFragmentTest {
         closeSoftKeyboard()
         onView(withId(R.id.login_btn_login)).perform(click())
         verify(navController).navigate(
-            LoginFragmentDirections.actionLoginFragmentToStatementsFragment(1)
+            LoginFragmentDirections.actionLoginFragmentToStatementsFragment(UserAccountPresentation(1))
         )
     }
 
@@ -136,7 +138,7 @@ class LoginFragmentTest {
         closeSoftKeyboard()
         onView(withId(R.id.login_btn_login)).perform(click())
         verify(navController).navigate(
-            LoginFragmentDirections.actionLoginFragmentToStatementsFragment(1)
+            LoginFragmentDirections.actionLoginFragmentToStatementsFragment(UserAccountPresentation(1))
         )
     }
 

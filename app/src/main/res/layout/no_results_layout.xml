@@ -27,10 +27,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="36dp"
             android:fitsSystemWindows="true"
-            android:importantForAccessibility="no"
+            android:importantForAccessibility="yes"
             app:lottie_rawRes="@raw/empty_list"
             app:lottie_autoPlay="true"
-            app:lottie_loop="true"/>
+            app:lottie_loop="true"
+            android:contentDescription="@string/statements_anim_no_results_description"/>
 
         <!--Displays a generic error message-->
         <TextView
@@ -47,7 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/statements_refresh"
-            android:onClick="@{() -> viewModel.retry()}"/>
+            android:onClick="@{() -> viewModel.retry()}"
+            android:contentDescription="@string/login_password_hint"/>
 
     </LinearLayout>
 

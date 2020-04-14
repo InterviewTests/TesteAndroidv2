@@ -32,8 +32,8 @@ task clean(type: Delete) {
 }
 
 ext {
-    navigation_version = '2.2.0'
-    material_design_version = '1.2.0-alpha04'
+    navigation_version = '2.2.1'
+    material_design_version = '1.1.0'
     recycler_view_version = '1.1.0'
     dagger_version = '2.26'
     retrofit_version = '2.7.1'
@@ -51,4 +51,5 @@ ext {
     mockwebserver_version = "4.0.0"
     test_ext_junit = '1.1.0'
     fragment_version = '1.2.4'
+    espresso_version = '3.2.0'
 }

@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -61,7 +61,6 @@
         <item name="android:fontFamily">@font/helvetica_neue</item>
     </style>
 
-
     <!--  Login  -->
     <style name="TextAppearance.BankApp.Button" parent="@style/TextAppearance.AppCompat.Body1">
         <item name="android:textSize">@dimen/login_btn_login_text_size</item>
@@ -69,8 +68,29 @@
         <item name="android:lineSpacingExtra">@dimen/login_btn_line_spacing</item>
     </style>
 
+    <style name="TextAppearance.BankApp.LoginLastUser" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/statementDescTextColor</item>
+        <item name="android:textSize">@dimen/login_last_user_text_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+    </style>
+
+    <style name="Widget.BankApp.TextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_margin">@dimen/margin_small</item>
+    </style>
+
+    <style name="Widget.BankApp.PasswordInputLayout" parent="Widget.BankApp.TextInputLayout">
+        <item name="passwordToggleEnabled">true</item>
+        <item name="android:inputType">textPassword</item>
+    </style>
+
+    <style name="TextAppearance.BankApp.LoginHint" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">@dimen/login_edt_hint_text_size</item>
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+        <item name="android:textColor">@color/light_grey</item>
+    </style>
+
     <style name="Widget.BankApp.Button" parent="Widget.MaterialComponents.Button">
-        <item name="android:color">@color/bankButtonColor</item>
+        <item name="android:color">@color/light_grey</item>
         <item name="android:textAppearance">@style/TextAppearance.BankApp.Button</item>
         <item name="android:textColor">@color/bankButtonTextColor</item>
         <item name="android:clickable">true</item>
