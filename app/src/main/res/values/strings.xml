@@ -1,3 +1,7 @@
 <resources>
 	<string name="app_name">BankApp</string>
+	<string name="bank">Bank</string>
+	<string name="login">Login</string>
+	<string name="password">Senha</string>
+	<string name="username">Usuário</string>
 </resources>
