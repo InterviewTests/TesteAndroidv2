@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/LoginFragment"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.br.bankapp.ui.login.LoginFragment"
+        tools:layout="@layout/login_fragment"
+        android:label="Login Fragment">
+
+        <action
+            android:id="@+id/action_Login_to_Statements"
+            app:destination="@id/StatementsFragment" />
+        <argument
+            android:name="user"
+            app:argType="com.br.bankapp.model.UserAccount" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/StatementsFragment"
+        android:name="com.br.bankapp.ui.statements.StatementsFragment"
+        tools:layout="@layout/statements_fragment"
+        android:label="">
+
+        <action
+            android:id="@+id/action_Statements_to_Login"
+            app:destination="@id/LoginFragment" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BankApp</string>
+    <string name="statement_empty">Não há itens</string>
+</resources>
