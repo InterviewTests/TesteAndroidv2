@@ -1,4 +1,4 @@
-package br.com.rcp.bank.ui.fragments.viewmodels
+package br.com.rcp.bank.ui.fragments.viewmodels.base
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData

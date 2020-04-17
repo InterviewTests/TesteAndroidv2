@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import br.com.rcp.bank.R
 import br.com.rcp.bank.repositories.base.Repository
-import br.com.rcp.bank.ui.fragments.viewmodels.AbstractVM
+import br.com.rcp.bank.ui.fragments.viewmodels.base.AbstractVM
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
