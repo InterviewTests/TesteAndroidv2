@@ -12,6 +12,11 @@
 		<item name="android:layout_marginBottom">@dimen/login_top_bottom_margin</item>
 	</style>
 
+	<style name="ProgressDialog" parent="Theme.MaterialComponents.Dialog.Alert">
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowBackground">@android:color/transparent</item>
+	</style>
+
 	<style name="Button">
 		<item name="android:textAllCaps">false</item>
 		<item name="android:textSize">16sp</item>
