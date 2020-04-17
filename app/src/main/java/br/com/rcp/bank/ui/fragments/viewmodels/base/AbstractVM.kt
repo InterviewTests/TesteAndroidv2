@@ -22,12 +22,10 @@ abstract class AbstractVM<R: Repository>: ViewModel() {
 	val     toast		: MutableLiveData<String>   = MutableLiveData("")
 	val     progress    : MutableLiveData<Boolean> = MutableLiveData(false)
 
-	protected	val	component					= Application.component.getServiceComponent()
-	protected	fun setLoading()				= CoroutineScope(Dispatchers.Main).launch { progress.value	= true }
-	protected	fun setNotLoading()				= CoroutineScope(Dispatchers.Main).launch { progress.value	= false }
-	protected	fun setToast(message: String)	= CoroutineScope(Dispatchers.Main).launch { toast.value		= message }
-	protected	fun callLoginScreen()			= CoroutineScope(Dispatchers.Main).launch { login.value		= true }
-	protected	fun	callMainScreen()			= CoroutineScope(Dispatchers.Main).launch { main.value		= true }
-
-
+	protected	val	component							= Application.component.getServiceComponent()
+	protected	fun setLoading()						= CoroutineScope(Dispatchers.Main).launch { progress.value	= true }
+	protected	fun setNotLoading()						= CoroutineScope(Dispatchers.Main).launch { progress.value	= false }
+	protected	fun setToast(message: String)			= CoroutineScope(Dispatchers.Main).launch { toast.value		= message }
+	protected	fun callLoginScreen()					= CoroutineScope(Dispatchers.Main).launch { login.value		= true }
+	protected	fun	callMainScreen()					= CoroutineScope(Dispatchers.Main).launch { main.value		= true }
 }

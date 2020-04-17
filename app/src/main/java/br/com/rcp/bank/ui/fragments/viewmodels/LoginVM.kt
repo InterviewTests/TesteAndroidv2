@@ -4,22 +4,26 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import br.com.rcp.bank.R
+import br.com.rcp.bank.database.models.Account
 import br.com.rcp.bank.database.models.Login
 import br.com.rcp.bank.dto.LoginResponseDTO
+import br.com.rcp.bank.dto.UserAccountDTO
 import br.com.rcp.bank.repositories.LoginRepository
 import br.com.rcp.bank.repositories.base.Repository
+import br.com.rcp.bank.ui.fragments.viewmodels.base.AbstractVM
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class LoginVM : AbstractVM<LoginRepository>() {
-	private				val	usernameObserver	= Observer<String> { onUsernameChanged(it) }
-	private				val	passwordObserver	= Observer<String> { onPasswordChanged(it) }
+	private	val	usernameObserver	= Observer<String> { onUsernameChanged(it) }
+	private	val	passwordObserver	= Observer<String> { onPasswordChanged(it) }
 
 	val	username		= MutableLiveData("")
 	val	password		= MutableLiveData("")
 	val	buttonEnabled	= ObservableBoolean(false)
+	val	successful		= MutableLiveData<Account>(null)
 
 	init {
 		component.inject(this)
@@ -38,7 +42,7 @@ class LoginVM : AbstractVM<LoginRepository>() {
 		CoroutineScope(Dispatchers.IO).launch {
 			when (val result = repository.login(username.value!!, password.value!!)) {
 				is Repository.Result.Success 	-> onLoginSuccess(result.data)
-				is Repository.Result.Failure 	-> result.error.printStackTrace()
+				is Repository.Result.Failure 	-> handleLoginError(result.error)
 			}
 		}
 	}
@@ -74,7 +78,7 @@ class LoginVM : AbstractVM<LoginRepository>() {
 				}
 
 				if (account?.userID != null) {
-					setLastLoggedUser()
+					setLastLoggedUser(details.account)
 				}
 			} else {
 				setToast(context.getString(R.string.connection_error_generic_message))
@@ -82,10 +86,10 @@ class LoginVM : AbstractVM<LoginRepository>() {
 		}
 	}
 
-	private fun setLastLoggedUser() {
+	private fun setLastLoggedUser(account: UserAccountDTO) {
 		CoroutineScope(Dispatchers.IO).launch {
 			when (repository.persist(Login(user = username.value!!))) {
-				is Repository.Result.Success	-> setToast("Call main screen!!!")
+				is Repository.Result.Success	-> setSuccessful(account)
 				is Repository.Result.Failure	-> setToast("Erro ao efetuar login")
 			}
 		}
@@ -98,5 +102,17 @@ class LoginVM : AbstractVM<LoginRepository>() {
 				username.value = login.user
 			}
 		}
+	}
+
+	private fun setSuccessful(account: UserAccountDTO) {
+		CoroutineScope(Dispatchers.Main).launch {
+			successful.value = account.getAccountEntity()
+		}
+	}
+
+	private fun handleLoginError(error: Throwable) {
+		setNotLoading()
+		setToast(context.getString(R.string.connection_error_generic_message))
+		error.printStackTrace()
 	}
 }

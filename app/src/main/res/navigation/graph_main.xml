@@ -10,6 +10,21 @@
         android:id="@+id/login"
         android:name="br.com.rcp.bank.ui.fragments.LoginFragment"
         tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/toDetailsFragment"
+            app:destination="@id/details"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/login"
+            app:popUpToInclusive="false" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/details"
+        android:name="br.com.rcp.bank.ui.fragments.DetailsFragment"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="details"
+            app:argType="br.com.rcp.bank.database.models.Account"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>

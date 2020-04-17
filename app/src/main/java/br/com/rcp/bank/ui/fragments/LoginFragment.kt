@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import br.com.rcp.bank.R
 import br.com.rcp.bank.databinding.FragmentLoginBinding
 import br.com.rcp.bank.repositories.LoginRepository
@@ -22,9 +24,16 @@ class LoginFragment: AbstractFragment<FragmentLoginBinding, LoginVM, LoginReposi
         return binder.root
     }
 
-    private fun setBackPressedCallback() {
-        requireActivity().onBackPressedDispatcher.addCallback {
-            requireActivity().finish()
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setObservers()
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun setObservers() {
+        service.successful.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                findNavController().navigate(R.id.toDetailsFragment, bundleOf("details" to it))
+            }
+        })
     }
 }
