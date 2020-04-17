@@ -21,6 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.*
+import kotlin.math.absoluteValue
 
 class DetailsFragment : AbstractFragment<FragmentDetailsBinding, DetailsVM, AccountRepository>() {
 	private	lateinit	var account	: Account
@@ -58,7 +59,7 @@ class DetailsFragment : AbstractFragment<FragmentDetailsBinding, DetailsVM, Acco
 
 @BindingAdapter("currency")
 fun TextView.setPrice(price: Double?) {
-	text = price?.toBRLCurrency() ?: 0.0.toBRLCurrency()
+	text = price?.absoluteValue?.toBRLCurrency() ?: 0.0.toBRLCurrency()
 }
 
 private fun Double.toBRLCurrency() : String {
