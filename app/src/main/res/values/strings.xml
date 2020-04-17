@@ -1,5 +1,7 @@
 <resources>
+    <string name="account">Conta</string>
     <string name="app_name">BankApp</string>
+    <string name="balance">Saldo</string>
     <string name="bank">Bank</string>
     <string name="connection_error_generic_message">Houve um problema desconhecido. Por favor tente novamente.</string>
     <string name="connection_error_tcp_message">Houve um problema de conexão. Por favor verifique se você está conectado a uma rede com internet e tente novamente.</string>
@@ -9,7 +11,4 @@
     <string name="password">Senha</string>
     <string name="understood">Entendi</string>
     <string name="username">Usuário</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -3,4 +3,10 @@
 	<color name="colorPrimary">#3B48EE</color>
 	<color name="colorPrimaryDark">#3700B3</color>
 	<color name="colorAccent">#3B48EE</color>
+	
+	<color name="list_item_title">#A8B4C4</color>
+	<color name="list_item_date">#A8B4C4</color>
+
+	<color name="list_item_description">#485465</color>
+	<color name="list_item_value">#485465</color>
 </resources>

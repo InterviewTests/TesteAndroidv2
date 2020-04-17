@@ -23,4 +23,24 @@
 		<item name="android:textColor">@android:color/white</item>
 		<item name="android:background">@drawable/button_standard</item>
 	</style>
+
+	<style name="ItemTitle">
+		<item name="android:textColor">@color/list_item_title</item>
+		<item name="android:textSize">16sp</item>
+	</style>
+
+	<style name="ItemDate">
+		<item name="android:textColor">@color/list_item_date</item>
+		<item name="android:textSize">12sp</item>
+	</style>
+
+	<style name="ItemDecription">
+		<item name="android:textColor">@color/list_item_description</item>
+		<item name="android:textSize">16sp</item>
+	</style>
+
+	<style name="ItemValue">
+		<item name="android:textColor">@color/list_item_value</item>
+		<item name="android:textSize">20sp</item>
+	</style>
 </resources>

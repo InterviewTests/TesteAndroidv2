@@ -7,16 +7,16 @@ import com.google.gson.annotations.SerializedName
 data class UserAccountDTO(
 	@Expose @SerializedName("userId")		var		userID	: Long?		= null,
 	@Expose @SerializedName("name")			var		name	: String?	= null,
-	@Expose	@SerializedName("bankAccount")	var		account	: String?	= null,
-	@Expose	@SerializedName("agency")		var		agency	: String?	= null,
+	@Expose	@SerializedName("bankAccount")	var		account	: String?	= null,		// agency
+	@Expose	@SerializedName("agency")		var		agency	: String?	= null,		// account
 	@Expose	@SerializedName("balance")		var		balance	: Double?	= null
 ) {
 	fun getAccountEntity(): Account {
 		return Account(
 			external	= userID!!,
 			name 		= name!!,
-			account 	= account!!,
-			agency 		= agency!!,
+			account 	= StringBuilder(agency!!).insert(2, ".").insert(agency!!.length, "-").toString(),
+			agency 		= account!!,
 			balance 	= balance!!
 		)
 	}
