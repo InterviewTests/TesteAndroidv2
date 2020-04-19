@@ -4,6 +4,8 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import br.com.rcp.bank.R
+import br.com.rcp.bank.Utils.Companion.validateLogin
+import br.com.rcp.bank.Utils.Companion.validatePassword
 import br.com.rcp.bank.database.models.Account
 import br.com.rcp.bank.database.models.Login
 import br.com.rcp.bank.dto.LoginResponseDTO
@@ -15,7 +17,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import java.util.regex.Pattern
 
 class LoginVM : AbstractVM<LoginRepository>() {
 	private	val	usernameObserver	= Observer<String> { onUsernameChanged(it) }
@@ -59,11 +60,11 @@ class LoginVM : AbstractVM<LoginRepository>() {
 	}
 
 	private fun onUsernameChanged(username: String) {
-		buttonEnabled.set(username.isNotEmpty() && validatePassword(password.value ?: ""))
+		buttonEnabled.set(validateLogin(username) && validatePassword(password.value ?: ""))
 	}
 
 	private fun onPasswordChanged(password: String) {
-		buttonEnabled.set(username.value?.isNotEmpty() ?: false && validatePassword(password))
+		buttonEnabled.set(validateLogin(username.value ?: "") && validatePassword(password))
 	}
 
 	private fun onLoginSuccess(response: Response<LoginResponseDTO>) {
@@ -115,11 +116,5 @@ class LoginVM : AbstractVM<LoginRepository>() {
 		setNotLoading()
 		setToast(context.getString(R.string.connection_error_generic_message))
 		error.printStackTrace()
-	}
-
-	private fun validatePassword(password: String): Boolean {
-		val	pattern	= Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$")
-		val	matcher	= pattern.matcher(password)
-		return matcher.matches()
 	}
 }
