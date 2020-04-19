@@ -22,6 +22,12 @@
         android:id="@+id/details"
         android:name="br.com.rcp.bank.ui.fragments.DetailsFragment"
         tools:layout="@layout/fragment_details">
+        <action
+            android:id="@+id/toLoginFragment"
+            app:destination="@id/login"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/login"
+            app:popUpToInclusive="false" />
         <argument
             android:name="details"
             app:argType="br.com.rcp.bank.database.models.Account"

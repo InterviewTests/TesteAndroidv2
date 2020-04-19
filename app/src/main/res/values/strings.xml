@@ -8,6 +8,7 @@
     <string name="connection_error_title">Erro de Conexão</string>
     <string name="connection_error_unknown_host_message">Não foi possível conectar-se ao serviço. Por favor verifique se você está conectado a uma rede com internet e tente novamente.</string>
     <string name="login">Login</string>
+    <string name="logout">Sair</string>
     <string name="password">Senha</string>
     <string name="understood">Entendi</string>
     <string name="username">Usuário</string>

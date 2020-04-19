@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import br.com.rcp.bank.R
 import br.com.rcp.bank.database.models.Account
 import br.com.rcp.bank.databinding.FragmentDetailsBinding
@@ -35,6 +36,7 @@ class DetailsFragment : AbstractFragment<FragmentDetailsBinding, DetailsVM, Acco
 		binder.model          		= account
 		binder.lifecycleOwner   	= viewLifecycleOwner
 		binder.collection.adapter	= adapter
+		setHasOptionsMenu(true)
 		return binder.root
 	}
 
@@ -42,6 +44,11 @@ class DetailsFragment : AbstractFragment<FragmentDetailsBinding, DetailsVM, Acco
 		CoroutineScope(Dispatchers.IO).launch { service.getStatements(account.identifier) }
 		setObservers()
 		setToolbarTitle()
+		toolbar.inflateMenu(R.menu.main_menu)
+		toolbar.setOnMenuItemClickListener {
+			findNavController().navigate(R.id.toLoginFragment)
+			true
+		}
 		super.onViewCreated(view, savedInstanceState)
 	}
 
