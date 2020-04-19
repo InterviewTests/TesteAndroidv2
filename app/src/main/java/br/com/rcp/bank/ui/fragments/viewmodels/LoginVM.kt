@@ -15,6 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import java.util.regex.Pattern
 
 class LoginVM : AbstractVM<LoginRepository>() {
 	private	val	usernameObserver	= Observer<String> { onUsernameChanged(it) }
@@ -58,11 +59,11 @@ class LoginVM : AbstractVM<LoginRepository>() {
 	}
 
 	private fun onUsernameChanged(username: String) {
-		buttonEnabled.set(username.isNotEmpty() && password.value?.isNotEmpty() ?: false)
+		buttonEnabled.set(username.isNotEmpty() && validatePassword(password.value ?: ""))
 	}
 
 	private fun onPasswordChanged(password: String) {
-		buttonEnabled.set(username.value?.isNotEmpty() ?: false && password.isNotEmpty())
+		buttonEnabled.set(username.value?.isNotEmpty() ?: false && validatePassword(password))
 	}
 
 	private fun onLoginSuccess(response: Response<LoginResponseDTO>) {
@@ -114,5 +115,11 @@ class LoginVM : AbstractVM<LoginRepository>() {
 		setNotLoading()
 		setToast(context.getString(R.string.connection_error_generic_message))
 		error.printStackTrace()
+	}
+
+	private fun validatePassword(password: String): Boolean {
+		val	pattern	= Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{4,}$")
+		val	matcher	= pattern.matcher(password)
+		return matcher.matches()
 	}
 }
