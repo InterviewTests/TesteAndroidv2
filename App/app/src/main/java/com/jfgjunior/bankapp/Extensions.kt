@@ -19,6 +19,13 @@ fun View.shouldBeVisible(value: Boolean) {
 }
 // endregion
 
+// region TextView
+fun TextView.setValueAsCurrency(value: Float) {
+    text = NumberFormat.getCurrencyInstance(Locale.getDefault())
+        .format(value)
+}
+// endregion
+
 // region Fragment
 fun Fragment.hideKeyboard() {
     view?.let {
@@ -29,6 +36,7 @@ fun Fragment.hideKeyboard() {
 }
 // endregion
 
+// region TextInputLayout
 fun TextInputLayout.showError(stringId: Int) {
     error = resources.getString(stringId)
     isErrorEnabled = true
@@ -38,3 +46,4 @@ fun TextInputLayout.hideError() {
     error = null
     isErrorEnabled = false
 }
+// endregion

@@ -14,9 +14,11 @@ import io.mockk.every
 import io.mockk.mockk
 import io.reactivex.Single
 import junit.framework.Assert.assertEquals
+import org.junit.After
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.core.context.stopKoin
 import org.robolectric.annotation.Config
 
 @Config(sdk = [Build.VERSION_CODES.O_MR1])
@@ -28,6 +30,11 @@ class LoginVewModelTest {
 
     @get:Rule
     val rxSchedulerRule = RxSchedulerRule()
+
+    @After
+    fun after() {
+        stopKoin()
+    }
 
     @Test
     fun `verify if valid user is delivered to the view`() {

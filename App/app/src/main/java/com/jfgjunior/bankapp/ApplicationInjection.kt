@@ -1,9 +1,11 @@
 package com.jfgjunior.bankapp
 
 import android.content.Context.MODE_PRIVATE
-import com.jfgjunior.bankapp.data.external.CredentialsManager
+import com.jfgjunior.bankapp.account.AccountViewModel
 import com.jfgjunior.bankapp.data.external.BankRepository
+import com.jfgjunior.bankapp.data.external.CredentialsManager
 import com.jfgjunior.bankapp.data.external.Repository
+import com.jfgjunior.bankapp.data.models.User
 import com.jfgjunior.bankapp.login.LoginViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -18,4 +20,6 @@ val applicationModule = module {
     factory { CredentialsManager(androidContext().getSharedPreferences(NAME, MODE_PRIVATE)) }
 
     viewModel { LoginViewModel(get()) }
+
+    viewModel { (user: User) -> AccountViewModel(user, get()) }
 }

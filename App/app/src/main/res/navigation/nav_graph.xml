@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/accountFragment"
-        android:name="com.jfgjunior.bankapp.AccountFragment"
+        android:name="com.jfgjunior.bankapp.account.AccountFragment"
         android:label="AccountFragment">
 
         <action
