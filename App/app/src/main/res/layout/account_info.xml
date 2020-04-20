@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="20dp"
+    android:paddingBottom="16dp"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@id/logoutImage"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Jose da Silva Test" />
+
+    <ImageView
+        android:id="@+id/logoutImage"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logout"
+        android:contentDescription="@string/logout"
+        app:layout_constraintBottom_toBottomOf="@id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintTop_toTopOf="@id/name" />
+
+    <TextView
+        android:id="@+id/accountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/account"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/name"
+        app:layout_constraintTop_toBottomOf="@id/name" />
+
+    <TextView
+        android:id="@+id/accountNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/accountLabel"
+        app:layout_constraintTop_toBottomOf="@id/accountLabel"
+        tools:text="2050 / 01.111222-4" />
+
+    <TextView
+        android:id="@+id/balanceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/balance"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/accountLabel"
+        app:layout_constraintTop_toBottomOf="@id/accountNumber" />
+
+    <TextView
+        android:id="@+id/balanceValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        app:autoSizeMaxTextSize="25sp"
+        app:autoSizeMinTextSize="12sp"
+        app:autoSizeStepGranularity="2sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/accountLabel"
+        app:layout_constraintTop_toBottomOf="@id/balanceLabel"
+        tools:text="R$1.000,00" />
+</androidx.constraintlayout.widget.ConstraintLayout>

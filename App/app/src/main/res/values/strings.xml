@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">BankApp</string>
+    <string name="app_name">AppBank</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="new_transactions">Recentes</string>
+    <string name="invalid_user">Usuário digitado é invalido</string>
+    <string name="invalid_password">Senha digitada é invalida</string>
+    <string name="invalid_login">Usuário ou senha invalidos</string>
+    <string name="unknown_error">Um erro desconhecido ocorreu. Tente novamente mais tarde</string>
+    <string name="logout">Deslogar</string>
 </resources>
