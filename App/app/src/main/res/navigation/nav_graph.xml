@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.jfgjunior.bankapp.LoginFragment"
+        android:name="com.jfgjunior.bankapp.login.LoginFragment"
         android:label="LoginFragment">
 
         <action
@@ -28,5 +28,9 @@
             app:launchSingleTop="true"
             app:popUpTo="@+id/nav_graph"
             app:popUpToInclusive="true" />
+
+        <argument
+            android:name="user"
+            app:argType="com.jfgjunior.bankapp.data.models.User" />
     </fragment>
 </navigation>

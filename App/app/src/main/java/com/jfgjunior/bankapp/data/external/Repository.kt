@@ -11,4 +11,10 @@ interface Repository {
     fun loginUser(userCredentials: UserCredentials): Single<ResponseWrapper<User>>
 
     fun getTransactions(userId: Int): Single<ResponseWrapper<List<Statement>>>
+
+    fun saveUser(userCredentials: UserCredentials)
+
+    fun getUser(): UserCredentials?
+
+    fun clearUser()
 }
