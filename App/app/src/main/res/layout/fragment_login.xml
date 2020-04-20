@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <com.jfgjunior.bankapp.customview.EditTextLayout
         android:id="@+id/userLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -38,9 +38,9 @@
             android:background="@drawable/background_text_field"
             android:padding="16dp"
             android:hint="@string/user" />
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.jfgjunior.bankapp.customview.EditTextLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
+    <com.jfgjunior.bankapp.customview.EditTextLayout
         android:id="@+id/passwordLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:background="@drawable/background_text_field"
             android:padding="16dp"
             android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.jfgjunior.bankapp.customview.EditTextLayout>
 
     <TextView
         android:id="@+id/errorMessage"
