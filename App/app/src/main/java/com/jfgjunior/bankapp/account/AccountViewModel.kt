@@ -13,6 +13,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import org.koin.core.KoinComponent
+import java.util.concurrent.TimeUnit
 
 private const val TAG = "AccountViewModel"
 
@@ -34,6 +35,7 @@ class AccountViewModel(private val user: User, private val repository: Repositor
     init {
         disposable?.dispose()
         disposable = repository.getTransactions(user.id)
+            .retryWhen { it.take(RETRIES).delay(RETRY_DELAY, TimeUnit.SECONDS) }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -63,5 +65,10 @@ class AccountViewModel(private val user: User, private val repository: Repositor
 
     private fun handleGenericError() {
         _statementListFail.value = ResponseError.genericError
+    }
+
+    companion object {
+        private const val RETRIES = 5L
+        private const val RETRY_DELAY = 2L
     }
 }
