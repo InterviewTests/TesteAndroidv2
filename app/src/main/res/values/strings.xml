@@ -3,12 +3,18 @@
 
     <string name="main_activity_edit_text_hint_primary">@string/util_name</string>
     <string name="main_activity_edit_text_hint_secondary">@string/util_password</string>
-    <string name="main_activity_edit_text_description_primary">@string/util_logo</string>
-    <string name="main_activity_edit_text_button_primary">@string/util_login</string>
+    <string name="main_activity_image_description_primary">@string/util_logo</string>
+    <string name="main_activity_text_button_primary">@string/util_login</string>
+
+    <string name="main_currency_description_primary">@string/util_logout</string>
+    <string name="main_currency_text_primary">Recentes</string>
 
     <string name="util_name">User</string>
     <string name="util_password">Password</string>
     <string name="util_logo">Logo</string>
     <string name="util_login">Login</string>
+    <string name="util_some_text">Mussum Ipsum, cacilds</string>
+    <string name="util_logout">Sair</string>
+    <string name="util_value_fake_primary">R$:1000,00</string>
 
 </resources>

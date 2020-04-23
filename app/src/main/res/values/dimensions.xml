@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_text_primary">15dp</dimen>
+    <dimen name="default_text_secondary">25dp</dimen>
+    <dimen name="default_text_third">19dp</dimen>
+    <dimen name="default_text_fourth">14dp</dimen>
+</resources>

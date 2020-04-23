@@ -14,10 +14,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline"
-        android:contentDescription="@string/main_activity_edit_text_description_primary"
+        android:contentDescription="@string/main_activity_image_description_primary"
         app:srcCompat="@mipmap/first_logo" />
 
     <EditText
@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="@string/main_activity_edit_text_button_primary"
+        android:text="@string/main_activity_text_button_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editText3"
         app:layout_constraintStart_toStartOf="@+id/editText3" />
