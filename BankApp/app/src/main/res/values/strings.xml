@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">BankApp</string>
+    <string name="bank_logo_desc">Bank logo</string>
+    <string name="user_label">User</string>
+    <string name="password_label">Password</string>
+    <string name="login_label">Login</string>
+    <string name="title_activity_statements">StatementsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
