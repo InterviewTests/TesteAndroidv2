@@ -1,6 +1,5 @@
 package com.tata.bank.login
 
-import android.content.Intent
 import java.lang.ref.WeakReference
 
 interface LoginRouterInput {

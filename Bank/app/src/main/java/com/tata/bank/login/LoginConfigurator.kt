@@ -6,7 +6,6 @@ enum class LoginConfigurator {
     INSTANCE;
 
     fun configure(activity: LoginActivity) {
-
         val router = LoginRouter()
         router.activity = WeakReference(activity)
 
@@ -16,12 +15,7 @@ enum class LoginConfigurator {
         val interactor = LoginInteractor()
         interactor.output = presenter
 
-        if (activity.output == null){
-            activity.output = interactor;
-        }
-
-        if (activity.router == null){
-            activity.router = router;
-        }
+        activity.output = interactor
+        activity.router = router
     }
 }
