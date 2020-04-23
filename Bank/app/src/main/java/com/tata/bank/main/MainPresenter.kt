@@ -1,13 +1,12 @@
 package com.tata.bank.main
 
-import com.tata.bank.login.LoginResponse
 import com.tata.bank.login.UserAccount
 import java.lang.ref.WeakReference
 
 interface MainPresenterInput {
     fun handleAccountDetails(userAccount: UserAccount)
 
-    fun presentSuccess(loginResponse: StatementResponse?)
+    fun presentSuccess(statementResponse: StatementResponse?)
     fun presentStatusError(code: Int)
     fun presentError(error: Throwable)
 }
@@ -20,7 +19,16 @@ class MainPresenter: MainPresenterInput {
         output.get()?.displayAccountDetails(userAccount)
     }
 
-    override fun presentSuccess(loginResponse: StatementResponse?) {
+    override fun presentSuccess(statementResponse: StatementResponse?) {
+        statementResponse?.let {
+            it.error.message?.let { message ->
+//                output.get()?.displayError(message)
+            }
+
+            it.statementList.let { statementList ->
+                output.get()?.updateStatements(statementList)
+            }
+        }
 
     }
 

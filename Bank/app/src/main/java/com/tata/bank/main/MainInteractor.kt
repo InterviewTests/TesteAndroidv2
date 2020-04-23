@@ -1,7 +1,6 @@
 package com.tata.bank.main
 
 import android.os.Bundle
-import com.tata.bank.login.LoginResponse
 import com.tata.bank.login.UserAccount
 import com.tata.bank.network.ApiFactory
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -24,7 +23,7 @@ class MainInteractor: MainInteractorInput {
     }
 
     private fun fetchStatements(userId: Int) {
-        ApiFactory.api
+        val disposable = ApiFactory.api
             .fetchStatements(userId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
