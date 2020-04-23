@@ -10,6 +10,7 @@ interface LoginPresenterInput {
 
 class LoginPresenter: LoginPresenterInput {
     lateinit var output: WeakReference<LoginActivityInput>
+    lateinit var router: LoginRouter
 
     override fun presentSuccess(loginResponse: LoginResponse?) {
 
@@ -18,8 +19,8 @@ class LoginPresenter: LoginPresenterInput {
                 output.get()?.displayError(message)
             }
 
-            it.userAccount.let {
-                // TODO perform login
+            it.userAccount.let { userAccount ->
+                router.goToMain(userAccount)
             }
         }
     }

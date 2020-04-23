@@ -11,11 +11,11 @@ enum class LoginConfigurator {
 
         val presenter = LoginPresenter()
         presenter.output = WeakReference(activity)
+        presenter.router = router
 
         val interactor = LoginInteractor()
         interactor.output = presenter
 
         activity.output = interactor
-        activity.router = router
     }
 }

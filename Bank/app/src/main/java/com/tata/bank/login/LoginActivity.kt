@@ -12,7 +12,6 @@ interface LoginActivityInput {
 
 class LoginActivity : AppCompatActivity(), LoginActivityInput {
     lateinit var output: LoginInteractorInput
-    lateinit var router: LoginRouter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
