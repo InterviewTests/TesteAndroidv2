@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Fake Bank</string>
+
+    <string name="main_activity_edit_text_hint_primary">@string/util_name</string>
+    <string name="main_activity_edit_text_hint_secondary">@string/util_password</string>
+    <string name="main_activity_edit_text_description_primary">@string/util_logo</string>
+    <string name="main_activity_edit_text_button_primary">@string/util_login</string>
+
+    <string name="util_name">User</string>
+    <string name="util_password">Password</string>
+    <string name="util_logo">Logo</string>
+    <string name="util_login">Login</string>
+
 </resources>
