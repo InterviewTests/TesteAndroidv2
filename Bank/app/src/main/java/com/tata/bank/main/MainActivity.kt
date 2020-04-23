@@ -1,9 +1,15 @@
-package com.tata.bank
+package com.tata.bank.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.tata.bank.R
 
-class MainActivity : AppCompatActivity() {
+interface MainActivityInput {
+
+}
+
+class MainActivity : AppCompatActivity(), MainActivityInput {
+    lateinit var output: MainInteractorInput
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,7 +1,7 @@
 package com.tata.bank.login
 
 import android.content.Intent
-import com.tata.bank.MainActivity
+import com.tata.bank.main.MainActivity
 import java.lang.ref.WeakReference
 
 

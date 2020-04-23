@@ -10,7 +10,7 @@ interface LoginPresenterInput {
 
 class LoginPresenter: LoginPresenterInput {
     lateinit var output: WeakReference<LoginActivityInput>
-    lateinit var router: LoginRouter
+    lateinit var router: LoginRouterInput
 
     override fun presentSuccess(loginResponse: LoginResponse?) {
 
