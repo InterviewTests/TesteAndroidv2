@@ -2,13 +2,12 @@ package com.tata.bank.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import com.tata.bank.R
+import com.tata.bank.login.UserAccount
 import kotlinx.android.synthetic.main.activity_main.*
 
 interface MainActivityInput {
-
+    fun displayAccountDetails(userAccount: UserAccount)
 }
 
 class MainActivity : AppCompatActivity(), MainActivityInput {
@@ -25,20 +24,9 @@ class MainActivity : AppCompatActivity(), MainActivityInput {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-//        inflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_logout -> {
-//                text_view.text = "Cut"
-                return true
-            }
-        }
-
-        return super.onOptionsItemSelected(item)
+    override fun displayAccountDetails(userAccount: UserAccount) {
+        tv_account.text = userAccount.bankAccount
+        tv_balance.text = userAccount.balance.toString()
+        tv_user.text = userAccount.name
     }
 }

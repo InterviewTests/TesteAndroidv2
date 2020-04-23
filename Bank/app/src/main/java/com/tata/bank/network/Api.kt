@@ -2,7 +2,7 @@ package com.tata.bank.network
 
 import com.tata.bank.login.LoginCredentials
 import com.tata.bank.login.LoginResponse
-import com.tata.bank.login.StatementResponse
+import com.tata.bank.main.StatementResponse
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.Body
@@ -17,6 +17,6 @@ interface Api {
 
     @GET("statements/{idUser}")
     fun fetchStatements(
-        @Path("idUser") idUser: Long
+        @Path("idUser") idUser: Int
     ): Single<Response<StatementResponse>>
 }

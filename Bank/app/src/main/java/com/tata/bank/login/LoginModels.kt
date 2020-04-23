@@ -26,15 +26,3 @@ data class UserAccount(
     val name: String,
     val userId: Int
 ) : Parcelable
-
-data class Statement(
-    val date: String,
-    val desc: String,
-    val title: String,
-    val value: Int
-)
-
-data class StatementResponse(
-    val error: Error,
-    val statementList: List<Statement>
-)
