@@ -14,5 +14,11 @@ class MainActivity : AppCompatActivity(), MainActivityInput {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        MainConfigurator.INSTANCE.configure(this)
+
+        intent.extras?.let {
+            output.handleUserData(it)
+        }
     }
 }
