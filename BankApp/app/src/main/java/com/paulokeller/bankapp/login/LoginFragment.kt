@@ -10,6 +10,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.paulokeller.bankapp.R
+import com.paulokeller.bankapp.models.Account
+import com.paulokeller.bankapp.models.AppState
+import com.paulokeller.bankapp.models.UserAccount
+import com.paulokeller.bankapp.repositories.Repository
+import com.paulokeller.bankapp.statements.StatementsActivity
+import com.paulokeller.bankapp.utils.Utils
 import kotlinx.android.synthetic.main.login_fragment.*
 
 
@@ -20,6 +26,7 @@ class LoginFragment : Fragment() {
     }
 
     private lateinit var viewModel: LoginViewModel
+    private lateinit var repository: Repository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,21 +38,43 @@ class LoginFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
+        repository = Repository(activity?.baseContext)
+
+        userTextField.setText(repository.getUser())
+
+        setupObserver()
 
         loginButton.setOnClickListener {
             val password = passwordTextField.text.toString()
-            val user = passwordTextField.text.toString()
-
-            val state = viewModel.login(user, password)
-
-            if (state.errorMessage != null) {
-                Toast.makeText(activity, state.errorMessage, Toast.LENGTH_LONG).show()
-            } else {
-                //TODO: implement navigation
-            }
-
-
+            val user = userTextField.text.toString()
+            repository.saveUser(user)
+            viewModel.login(user, password)
         }
+    }
+
+    private fun setupObserver() {
+        val resultObserver = Observer<AppState<Account>> { result ->
+            if (result.errorMessage != null) {
+                Toast.makeText(activity, result.errorMessage, Toast.LENGTH_LONG).show()
+            } else {
+                val state = result.data as Account
+                navigateToStatementsActivity(state.userAccount)
+            }
+        }
+
+        viewModel.loginState.observe(viewLifecycleOwner, resultObserver)
+    }
+
+    private fun navigateToStatementsActivity(userAccount: UserAccount) {
+        val account = userAccount.bankAccount + " / " + userAccount.agency
+        val formattedBalance = Utils.formatCurrency(userAccount.balance.toFloat())
+        val intent = Intent(activity, StatementsActivity::class.java)
+        intent.putExtra("name", userAccount.name)
+        intent.putExtra("account", account)
+        intent.putExtra("balance", formattedBalance)
+
+        startActivity(intent)
+        activity?.finish()
     }
 
 }
