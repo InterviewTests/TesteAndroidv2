@@ -6,5 +6,6 @@
 
     <color name="hintText">#A8B4C4</color>
     <color name="border">#DCE2EE</color>
+    <color name="text">#485465</color>
 
 </resources>
