@@ -36,7 +36,15 @@ class LoginActivity : AppCompatActivity() {
             val pass = inputPass.text.toString()
 
             if (user.isNotEmpty() && pass.isNotEmpty()) {
-                signIn(user, pass)
+                val regex = Regex(
+                    "^(?=.*?\\p{Lu})(?=.*?[\\p{L}&&[^\\p{Lu}]])(?=.*?\\d)" +
+                            "(?=.*?[`~!@#$%^&*()\\-_=+\\\\\\|\\[{\\]};:'\",<.>/?]).*$"
+                )
+                if (regex.matches(pass)) {
+                    signIn(user, pass)
+                } else {
+                    SnackbarHelper.message(loginConstraint, "Senha inválida")
+                }
             } else {
                 SnackbarHelper.message(loginConstraint, "Campos obrigatórios vazios")
             }
