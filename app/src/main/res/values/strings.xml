@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">TesteAndroidv2</string>
+    <string name="user">Usuário</string>
+    <string name="password">Senha</string>
+    <string name="login">Login</string>
+    <string name="pagamento">Pagamento</string>
+    <string name="_12_12_2018">12/12/2018</string>
+    <string name="_1000_00">R$ 1.000,00</string>
+    <string name="conta_de_luz">Conta de luz</string>
+    <string name="client_name">Jose da Silva Teste</string>
+    <string name="account">Conta</string>
+    <string name="account_number">2050 / 01.111222–4</string>
+    <string name="account_money_title">Saldo</string>
+    <string name="money_account_value">R$ 1.000,00</string>
+    <string name="logout_button">Logout Button</string>
+    <string name="recent_operations">Recentes</string>
+</resources>
