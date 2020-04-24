@@ -26,12 +26,11 @@ class LoginPresenter: LoginPresenterInput {
     }
 
     override fun presentStatusError(code: Int) {
-        // TODO improve to filter message by code
-        output.get()?.displayError("Http error: $code")
+        output.get()?.displayError("An error has occurred($code)")
     }
 
     override fun presentError(error: Throwable) {
-        // TODO improve error treatment
-        output.get()?.displayError("An exception occurred")
+        val message = error.message?: run { "An exception occurred" }
+        output.get()?.displayError(message)
     }
 }
