@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tata.bank.R
+import com.tata.bank.utils.toReais
 import kotlinx.android.synthetic.main.item_statement.view.*
 
 class MainAdapter(private var statements: List<Statement>): RecyclerView.Adapter<MainAdapter.ViewHolder>() {
@@ -19,7 +20,7 @@ class MainAdapter(private var statements: List<Statement>): RecyclerView.Adapter
         fun bind(statement: Statement) {
             title.text = statement.title
             description.text = statement.desc
-            value.text = statement.value.toString()
+            value.text = statement.value.toReais()
             date.text = statement.date
         }
     }

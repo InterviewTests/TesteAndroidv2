@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.tata.bank.R
 import com.tata.bank.login.UserAccount
+import com.tata.bank.utils.toAgencyFormat
+import com.tata.bank.utils.toReais
 import kotlinx.android.synthetic.main.activity_main.*
 
 interface MainActivityInput {
@@ -33,8 +35,8 @@ class MainActivity : AppCompatActivity(), MainActivityInput {
     }
 
     override fun displayAccountDetails(userAccount: UserAccount) {
-        tv_account.text = userAccount.bankAccount
-        tv_balance.text = userAccount.balance.toString()
+        tv_account.text = "${userAccount.bankAccount} / ${userAccount.agency.toAgencyFormat()}"
+        tv_balance.text = userAccount.balance.toReais()
         tv_user.text = userAccount.name
     }
 
