@@ -1,24 +1,23 @@
-package com.tata.bank.repository
+package com.tata.bank.security
 
 import android.os.Build
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import androidx.annotation.RequiresApi
+import com.tata.bank.utils.toHex
 import java.security.KeyStore
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
 
-object Security {
+object SecurityWorker {
 
     private const val ALIAS = "com.tata.security"
     private const val KEYSTORE_PROVIDER = "AndroidKeyStore"
     private const val CIPHER_TRANSFORMATION = "AES/GCM/NoPadding"
-    private const val CIPHER_IV = "iv"
-    private const val CIPHER_ENCRYPTED = "encrypted"
 
-    fun encrypt(decryptedBytes: ByteArray): HashMap<String, ByteArray>? {
+    fun encrypt(decryptedBytes: ByteArray): CipherData? {
 
         //Get the key
         generateKey()
@@ -27,22 +26,20 @@ object Security {
         //Encrypt data
         val cipher = Cipher.getInstance(CIPHER_TRANSFORMATION)
         cipher.init(Cipher.ENCRYPT_MODE, secretKey)
-        val map = HashMap<String, ByteArray>()
-        map[CIPHER_IV] = cipher.iv
-        map[CIPHER_ENCRYPTED] = cipher.doFinal(decryptedBytes)
 
-        return map
+        val encrypted = cipher.doFinal(decryptedBytes)
+        return CipherData(encrypted, cipher.iv)
     }
 
-    fun decrypt(map: HashMap<String, ByteArray>): ByteArray? {
+    fun decrypt(cipherData: CipherData): ByteArray? {
         //Get the key
         val secretKey = getKey()
 
         //Decrypt data
         val cipher = Cipher.getInstance(CIPHER_TRANSFORMATION)
-        val spec = GCMParameterSpec(128, map[CIPHER_IV])
+        val spec = GCMParameterSpec(128, cipherData.iv)
         cipher.init(Cipher.DECRYPT_MODE, secretKey, spec)
-        return cipher.doFinal(map[CIPHER_ENCRYPTED])
+        return cipher.doFinal(cipherData.encrypted)
     }
 
     private fun getKey(): SecretKey {
@@ -55,12 +52,12 @@ object Security {
 
     private fun generateKey() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            generateKeyM()
+            generateKeyAboveM()
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    private fun generateKeyM() {
+    private fun generateKeyAboveM() {
         val keyGenerator = KeyGenerator.getInstance(
             KeyProperties.KEY_ALGORITHM_AES,
             KEYSTORE_PROVIDER
