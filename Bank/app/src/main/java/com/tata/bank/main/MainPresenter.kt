@@ -9,6 +9,7 @@ interface MainPresenterInput {
     fun presentSuccess(statementResponse: StatementResponse?)
     fun presentStatusError(code: Int)
     fun presentError(error: Throwable)
+    fun presentLogoutDone()
 }
 
 class MainPresenter: MainPresenterInput {
@@ -29,7 +30,6 @@ class MainPresenter: MainPresenterInput {
                 output.get()?.updateStatements(statementList)
             }
         }
-
     }
 
     override fun presentStatusError(code: Int) {
@@ -38,5 +38,9 @@ class MainPresenter: MainPresenterInput {
 
     override fun presentError(error: Throwable) {
 
+    }
+
+    override fun presentLogoutDone() {
+        router.goToLogin()
     }
 }

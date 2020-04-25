@@ -16,6 +16,7 @@ enum class MainConfigurator {
 
         val interactor = MainInteractor()
         interactor.output = presenter
+        interactor.context = activity.applicationContext
 
         activity.output = interactor
     }

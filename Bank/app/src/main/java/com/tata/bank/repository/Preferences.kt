@@ -5,7 +5,7 @@ import androidx.annotation.NonNull
 import com.google.gson.Gson
 import com.tata.bank.security.CipherData
 
-// TODO This mustn't be used to store the data
+// TODO This mustn't be used to store the data in prod
 class Preferences(@NonNull private val context: Context) {
 
     private val gson = Gson()
@@ -23,10 +23,21 @@ class Preferences(@NonNull private val context: Context) {
         editor.apply()
     }
 
-    fun getEncryptedCredentials(): CipherData {
+    fun getEncryptedCredentials(): CipherData? {
         val sharedPref = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE)
         val authStr = sharedPref.getString(C_DATA, "")
 
-        return gson.fromJson(authStr, CipherData::class.java)
+        authStr?.let {
+            if (it.isNotEmpty()) {
+                return gson.fromJson(authStr, CipherData::class.java)
+            }
+        }
+
+        return null
+    }
+
+    fun clean() {
+        val sharedPref = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE)
+        sharedPref.edit().clear().apply()
     }
 }

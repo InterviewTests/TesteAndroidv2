@@ -18,6 +18,5 @@ enum class LoginConfigurator {
         interactor.context = activity.applicationContext
 
         activity.output = interactor
-
     }
 }

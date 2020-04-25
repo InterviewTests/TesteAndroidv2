@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity(), MainActivityInput {
         adapter = MainAdapter(listOf())
         rv_statements.adapter = adapter
 
+        btn_logout.setOnClickListener { output.logout() }
+
         intent.extras?.let {
             output.handleUserData(it)
         }

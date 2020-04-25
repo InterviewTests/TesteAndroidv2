@@ -18,18 +18,22 @@ class Repository(private val context: Context) {
     }
 
     fun getCredentials(): LoginCredentials? {
-        val encryptedCredentials = preferences.getEncryptedCredentials()
+        preferences.getEncryptedCredentials()?.let {
+            val decryptedBytes = SecurityWorker.decrypt(it)
+            val decryptedData = decryptedBytes?.toString(Charsets.UTF_8)
+            val loginDataList = decryptedData?.split("&")
 
-        val decryptedBytes = SecurityWorker.decrypt(encryptedCredentials)
-        val decryptedData = decryptedBytes?.toString(Charsets.UTF_8)
-        val loginDataList = decryptedData?.split("&")
-
-        loginDataList?.let { credentialsList ->
-            if (credentialsList.size == 2) {
-                return LoginCredentials(loginDataList[0], loginDataList[1])
+            loginDataList?.let { credentialsList ->
+                if (credentialsList.size == 2) {
+                    return LoginCredentials(loginDataList[0], loginDataList[1])
+                }
             }
         }
 
         return null
+    }
+
+    fun cleanStoredCredentials() {
+        preferences.clean()
     }
 }
