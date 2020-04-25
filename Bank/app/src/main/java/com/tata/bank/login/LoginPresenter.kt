@@ -6,6 +6,7 @@ interface LoginPresenterInput {
     fun presentSuccess(loginResponse: LoginResponse?)
     fun presentStatusError(code: Int)
     fun presentError(error: Throwable)
+    fun fillLoginFields(user: String, password: String)
 }
 
 class LoginPresenter: LoginPresenterInput {
@@ -32,5 +33,9 @@ class LoginPresenter: LoginPresenterInput {
     override fun presentError(error: Throwable) {
         val message = error.message?: run { "An exception occurred" }
         output.get()?.displayError(message)
+    }
+
+    override fun fillLoginFields(user: String, password: String) {
+        output.get()?.fillLoginFields(user, password)
     }
 }

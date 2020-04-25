@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 interface LoginActivityInput {
     fun displayError(message: String)
+    fun fillLoginFields(user: String, password: String)
 }
 
 class LoginActivity : AppCompatActivity(), LoginActivityInput {
@@ -19,6 +20,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
 
         LoginConfigurator.INSTANCE.configure(this)
 
+        output.verifyLogin()
         btn_login.setOnClickListener { performLogin() }
     }
 
@@ -27,11 +29,16 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
 
         val user = et_name.text.toString()
         val password = et_password.text.toString()
-        output.fetchLogin(user, password)
+        output.doLogin(user, password)
     }
 
     override fun displayError(message: String) {
         tv_error.visibility = View.VISIBLE
         tv_error.text = message
+    }
+
+    override fun fillLoginFields(user: String, password: String) {
+        et_name.setText(user)
+        et_password.setText(password)
     }
 }
