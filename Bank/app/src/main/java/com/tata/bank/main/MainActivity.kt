@@ -9,7 +9,7 @@ import com.tata.bank.utils.toReais
 import kotlinx.android.synthetic.main.activity_main.*
 
 interface MainActivityInput {
-    fun displayAccountDetails(userAccount: UserAccount)
+    fun displayAccountDetails(accountData: AccountData)
     fun updateStatements(statements: List<Statement>)
     fun displayError(message: String)
 }
@@ -35,10 +35,10 @@ class MainActivity : AppCompatActivity(), MainActivityInput {
         }
     }
 
-    override fun displayAccountDetails(userAccount: UserAccount) {
-        tv_account.text = "${userAccount.bankAccount} / ${userAccount.agency.toAgencyFormat()}"
-        tv_balance.text = userAccount.balance.toReais()
-        tv_user.text = userAccount.name
+    override fun displayAccountDetails(accountData: AccountData) {
+        tv_account.text = accountData.account
+        tv_balance.text = accountData.balance
+        tv_user.text = accountData.name
     }
 
     override fun updateStatements(statements: List<Statement>) {

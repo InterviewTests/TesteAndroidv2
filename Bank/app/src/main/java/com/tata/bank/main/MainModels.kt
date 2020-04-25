@@ -13,3 +13,9 @@ data class StatementResponse(
     val error: Error, // TODO replace the error model
     val statementList: List<Statement>
 )
+
+data class AccountData(
+    val name: String,
+    val account: String,
+    val balance:String
+)
