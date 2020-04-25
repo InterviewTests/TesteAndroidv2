@@ -1,19 +1,30 @@
 package com.tata.bank.repository
 
+import android.content.Context
 import com.tata.bank.login.LoginCredentials
+import com.tata.bank.security.CipherData
+import com.tata.bank.security.SecurityWorker
 
-class Repository {
+class Repository(private val context: Context) {
 
-    private var encryptedCredentials: HashMap<String, ByteArray>? = null
+//    private var encryptedCredentials: CipherData? = null
+    private val preferences by lazy { Preferences(context) }
 
     fun saveCredentials(loginCredentials: LoginCredentials) {
         val login = "${loginCredentials.user}&${loginCredentials.password}"
-        encryptedCredentials = Security.encrypt(login.toByteArray(Charsets.UTF_8))
+        val encryptedCredentials = SecurityWorker.encrypt(login.toByteArray(Charsets.UTF_8))
+
+        encryptedCredentials?.let {
+            preferences.saveEncryptedCredentials(it)
+        }
     }
 
     fun getCredentials(): LoginCredentials? {
-        encryptedCredentials?.let {
-            val decryptedBytes = Security.decrypt(it)
+
+        val encryptedCredentials = preferences.getEncryptedCredentials()
+
+//        encryptedCredentials?.let {
+            val decryptedBytes = SecurityWorker.decrypt(encryptedCredentials)
             val decryptedData = decryptedBytes?.toString(Charsets.UTF_8)
             val loginDataList = decryptedData?.split("&")
 
@@ -22,7 +33,7 @@ class Repository {
                     return LoginCredentials(loginDataList[0], loginDataList[1])
                 }
             }
-        }
+//        }
 
         return null
     }

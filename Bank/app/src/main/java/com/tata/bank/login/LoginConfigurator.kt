@@ -15,7 +15,9 @@ enum class LoginConfigurator {
 
         val interactor = LoginInteractor()
         interactor.output = presenter
+        interactor.context = activity.applicationContext
 
         activity.output = interactor
+
     }
 }

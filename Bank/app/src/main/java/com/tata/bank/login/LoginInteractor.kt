@@ -1,29 +1,32 @@
 package com.tata.bank.login
 
+import android.content.Context
 import com.tata.bank.exceptions.InvalidCredentialsException
 import com.tata.bank.network.ApiFactory
 import com.tata.bank.repository.Repository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
+import java.lang.ref.WeakReference
 
 interface LoginInteractorInput {
     fun fetchLogin(user: String, password: String)
 }
 
-class LoginInteractor: LoginInteractorInput {
+class LoginInteractor : LoginInteractorInput {
 
     lateinit var output: LoginPresenterInput
-    private val repository = Repository()
+    lateinit var context: Context
+    private val repository by lazy { Repository(context) }
 
     override fun fetchLogin(user: String, password: String) {
 
-        repository.saveCredentials(LoginCredentials(user, password))
-        val credentials2 = repository.getCredentials()
-
         if (isLoginCredentialsValid(user, password)) {
-        val credentials = LoginCredentials(user, password)
+            val credentials = LoginCredentials(user, password)
 //            val credentials = LoginCredentials("test_user", "Test@1")
+
+//            repository.saveCredentials(LoginCredentials(user, password))
+//            val credentials2 = repository.getCredentials()
 
 
             val response = ApiFactory.api
