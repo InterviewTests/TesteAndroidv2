@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 interface MainActivityInput {
     fun displayAccountDetails(userAccount: UserAccount)
     fun updateStatements(statements: List<Statement>)
+    fun displayError(message: String)
 }
 
 class MainActivity : AppCompatActivity(), MainActivityInput {
@@ -42,5 +43,9 @@ class MainActivity : AppCompatActivity(), MainActivityInput {
 
     override fun updateStatements(statements: List<Statement>) {
         adapter.updateItems(statements)
+    }
+
+    override fun displayError(message: String) {
+        // TODO check how to display error on this view
     }
 }

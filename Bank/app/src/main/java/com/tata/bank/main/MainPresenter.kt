@@ -23,7 +23,7 @@ class MainPresenter: MainPresenterInput {
     override fun presentSuccess(statementResponse: StatementResponse?) {
         statementResponse?.let {
             it.error.message?.let { message ->
-//                output.get()?.displayError(message)
+                output.get()?.displayError(message)
             }
 
             it.statementList.let { statementList ->
@@ -33,11 +33,12 @@ class MainPresenter: MainPresenterInput {
     }
 
     override fun presentStatusError(code: Int) {
-
+        output.get()?.displayError("An error has occurred($code)")
     }
 
     override fun presentError(error: Throwable) {
-
+        val message = error.message?: run { "An exception occurred" }
+        output.get()?.displayError(message)
     }
 
     override fun presentLogoutDone() {
