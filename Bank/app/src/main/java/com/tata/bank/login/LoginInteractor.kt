@@ -2,6 +2,8 @@ package com.tata.bank.login
 
 import com.tata.bank.exceptions.InvalidCredentialsException
 import com.tata.bank.network.ApiFactory
+import com.tata.bank.repository.Repository
+import com.tata.bank.repository.Security
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
@@ -14,11 +16,17 @@ class LoginInteractor: LoginInteractorInput {
 
     lateinit var output: LoginPresenterInput
 
+    val repository = Repository()
+
     override fun fetchLogin(user: String, password: String) {
+
+        repository.saveCredentials(LoginCredentials(user, password))
+        val credentials2 = repository.getCredentials()
 
         if (isLoginCredentialsValid(user, password)) {
         val credentials = LoginCredentials(user, password)
 //            val credentials = LoginCredentials("test_user", "Test@1")
+
 
             val response = ApiFactory.api
                 .login(credentials)
