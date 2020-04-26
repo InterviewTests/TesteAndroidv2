@@ -11,8 +11,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navController = findNavController(R.id.navHost)
-        setupActionBarWithNavController(navController)
+        findNavController(R.id.navHost)
+            .setGraph(R.navigation.nav_graph)
 
     }
 }

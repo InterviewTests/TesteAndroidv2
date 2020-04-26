@@ -17,7 +17,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_statements, container, false)
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
