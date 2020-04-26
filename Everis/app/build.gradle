@@ -43,4 +43,21 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
 
+    // Dagger
+    implementation "com.google.dagger:dagger:2.25.2"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.6.4"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.4"
+
+    // Gson
+    implementation "com.google.code.gson:gson:2.8.6"
+
+    // OKHTTP3
+    implementation "com.squareup.okhttp3:logging-interceptor:3.12.6"
+
+    // Anko Commons
+    implementation "org.jetbrains.anko:anko-commons:0.10.1"
+
+
 }
