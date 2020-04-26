@@ -20,6 +20,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'BASE_URL', BaseUrl
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            buildConfigField 'String', 'BASE_URL', BaseUrl
         }
     }
 
