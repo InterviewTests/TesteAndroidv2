@@ -18,5 +18,9 @@
         android:id="@+id/statementsFragment"
         android:name="br.com.raphael.everis.ui.StatementsFragment"
         android:label="fragment_statements"
-        tools:layout="@layout/fragment_statements" />
+        tools:layout="@layout/fragment_statements" >
+        <argument
+            android:name="userAccount"
+            app:argType="br.com.raphael.everis.model.UserAccount" />
+    </fragment>
 </navigation>

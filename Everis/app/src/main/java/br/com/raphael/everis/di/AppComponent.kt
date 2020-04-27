@@ -4,6 +4,7 @@ import br.com.raphael.everis.MainActivity
 import br.com.raphael.everis.di.module.AppModule
 import br.com.raphael.everis.di.module.BackendModule
 import br.com.raphael.everis.di.module.RemoteModule
+import br.com.raphael.everis.viewmodel.LoginViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -18,5 +19,7 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun inject(activity: MainActivity)
+
+    fun inject(viewModel: LoginViewModel)
 
 }

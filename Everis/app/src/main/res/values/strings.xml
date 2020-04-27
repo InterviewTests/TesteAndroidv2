@@ -6,4 +6,8 @@
     <string name="conta">Conta</string>
     <string name="saldo">Saldo</string>
     <string name="recentes">Recentes</string>
+    <string name="atencao">atenção</string>
+    <string name="ok">Ok</string>
+    <string name="msg_user_obrigatorio">O preenchimento do User é obrigatório</string>
+    <string name="msg_password_obrigatorio">O preenchimento do Password é obrigatório</string>
 </resources>
