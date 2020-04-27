@@ -1,17 +1,20 @@
 package br.com.raphael.everis.remote
 
-import br.com.raphael.everis.model.Statement
-import br.com.raphael.everis.model.UserAccount
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import br.com.raphael.everis.model.Response
+import br.com.raphael.everis.model.StatementList
+import retrofit2.http.*
 
 interface BackendService {
+
+    @FormUrlEncoded
     @POST("login")
-    suspend fun postLogin(): UserAccount
+    suspend fun postLogin(
+        @Field("user") user: String,
+        @Field("password") password: String
+    ): Response
 
     @GET("statements/{userId}")
     suspend fun getStatement(
         @Path("userId") userId: Int
-    ): Statement
+    ): StatementList
 }

@@ -10,4 +10,5 @@
     <string name="ok">Ok</string>
     <string name="msg_user_obrigatorio">O preenchimento do User é obrigatório</string>
     <string name="msg_password_obrigatorio">O preenchimento do Password é obrigatório</string>
+    <string name="agencia_conta">%s / %s</string>
 </resources>
