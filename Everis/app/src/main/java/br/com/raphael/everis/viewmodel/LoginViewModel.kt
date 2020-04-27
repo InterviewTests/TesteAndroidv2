@@ -1,6 +1,7 @@
 package br.com.raphael.everis.viewmodel
 
 import android.app.Application
+import android.content.SharedPreferences
 import androidx.lifecycle.*
 import br.com.raphael.everis.di.DaggerAppComponent
 import br.com.raphael.everis.di.module.AppModule
@@ -44,6 +45,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     @Inject
     lateinit var backendRepository: BackendRepository
+    @Inject
+    lateinit var preferences: SharedPreferences
 
     init {
         DaggerAppComponent.builder()
@@ -58,8 +61,20 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             viewModelScope.launch {
                 try {
                     _loading.postValue(true)
-                    val response = backendRepository.postLoginAsync()
-                    _success.postValue(response)
+                    val response = backendRepository.postLoginAsync(_user.value!!, _password.value!!)
+                    if(response.error.message.isNotEmpty()) {
+                        _error.postValue(response.error.message)
+                    } else {
+                        _success.postValue(response.userAccount)
+
+                        preferences.edit()
+                            .putInt("userId", response.userAccount.userId)
+                            .putString("name", response.userAccount.name)
+                            .putString("agency", response.userAccount.agency)
+                            .putString("bankAccount", response.userAccount.bankAccount)
+                            .putFloat("balance", response.userAccount.balance.toFloat())
+                            .apply()
+                    }
                     _loading.postValue(false)
                 } catch (e: Exception) {
                     _error.postValue(e.toString())
