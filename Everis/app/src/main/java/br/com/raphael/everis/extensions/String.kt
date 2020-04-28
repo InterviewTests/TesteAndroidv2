@@ -33,7 +33,6 @@ fun String?.isNumeric(): Boolean {
 
     return try {
         val value = this.replace(".", "").replace("-","")
-        println("------ " + value)
         value.toDouble()
         true
     } catch (e: Exception) {
@@ -48,8 +47,8 @@ fun String?.isValidPassword(): Boolean {
     var valid = true
 
     // A senha deve conter pelo menos um número ou letra minúscula
-    var exp = ".*[0-9a-z].*"
-    var pattern = Pattern.compile(exp, Pattern.CASE_INSENSITIVE)
+    var exp = ".*[a-z0-9].*"
+    var pattern = Pattern.compile(exp)
     var matcher = pattern.matcher(str)
     if (!matcher.matches()) {
         valid = false
