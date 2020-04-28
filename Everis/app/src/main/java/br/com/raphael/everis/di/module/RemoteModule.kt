@@ -13,7 +13,7 @@ open class RemoteModule {
 
     @Provides
     @Singleton
-    fun providesOkHttpClientBuilder(): OkHttpClient.Builder =
+    open fun providesOkHttpClientBuilder(): OkHttpClient.Builder =
         OkHttpClient.Builder()
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(3, TimeUnit.MINUTES)
@@ -28,7 +28,7 @@ open class RemoteModule {
 
     @Provides
     @Singleton
-    fun provideOkHttp(
+    open fun provideOkHttp(
         builder: OkHttpClient.Builder, logging: HttpLoggingInterceptor
     ): OkHttpClient {
 
