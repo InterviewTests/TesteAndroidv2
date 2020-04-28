@@ -1,16 +1,13 @@
 package br.com.raphael.everis.viewmodel
 
 import br.com.raphael.everis.BaseTest
-import br.com.raphael.everis.extensions.format
 import br.com.raphael.everis.extensions.formatServer
 import com.nhaarman.mockitokotlin2.any
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.util.*
 
 class StatementsViewModelTest : BaseTest() {
 

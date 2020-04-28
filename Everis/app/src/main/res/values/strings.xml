@@ -13,5 +13,5 @@
     <string name="msg_user_email_invalido">O e-mail informado não é válido</string>
     <string name="msg_password_obrigatorio">O preenchimento do Password é obrigatório</string>
     <string name="msg_password_invalido">A sua senha deve conter pelo menos: uma letra maiuscula, um caracter especial e uma letra minúscula ou um número.</string>
-    <string name="agencia_conta">%s / %s-%s-%s</string>
+    <string name="agencia_conta">%s / %s.%s-%s</string>
 </resources>

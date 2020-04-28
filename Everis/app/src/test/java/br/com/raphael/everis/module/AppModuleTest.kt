@@ -2,7 +2,6 @@ package br.com.raphael.everis.module
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.content.res.Resources
 import br.com.raphael.everis.App
 import br.com.raphael.everis.di.module.AppModule
 import com.nhaarman.mockitokotlin2.any
@@ -16,10 +15,5 @@ class AppModuleTest(app: App) : AppModule(app) {
         on { getSharedPreferences(any(), any()) } doReturn mock {  }
     }
 
-    override fun provideResources() = mock<Resources> {
-        on { getString(any()) } doReturn ""
-    }
-
     override fun provideSharedPreferences(): SharedPreferences = Mockito.mock(SharedPreferences::class.java)
-
 }

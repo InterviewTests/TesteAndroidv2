@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import br.com.raphael.everis.R
+import br.com.raphael.everis.helpers.FormatarAgency
 import br.com.raphael.everis.viewmodel.LoginViewModel
 import cn.pedant.SweetAlert.SweetAlertDialog
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -34,6 +35,8 @@ class LoginFragment : Fragment() {
         observerError()
         observerSuccess()
         observerLoading()
+
+        observerData()
 
         btn_login.setOnClickListener {
             login()
@@ -102,6 +105,16 @@ class LoginFragment : Fragment() {
 
             }
         }
+    }
+
+    private fun observerData(){
+        viewModel.data.observe(viewLifecycleOwner, Observer {
+            it.let {
+                cl_data.isVisible = true
+                tv_name.text = it.name
+                tv_agency.text = it.desc
+            }
+        })
     }
 
 }

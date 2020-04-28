@@ -19,10 +19,6 @@ open class AppModule (private val app: App) {
 
     @Provides
     @Singleton
-    open fun provideResources() = app.resources!!
-
-    @Provides
-    @Singleton
     open fun provideSharedPreferences() = app.defaultSharedPreferences
 
 }

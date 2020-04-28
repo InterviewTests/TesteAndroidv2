@@ -1,6 +1,7 @@
 package br.com.raphael.everis.viewmodel
 
 import android.app.Application
+import android.content.SharedPreferences
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -24,8 +25,14 @@ class StatementsViewModel(application: Application) : AndroidViewModel(applicati
     val loading: LiveData<Boolean>
         get() = _loading
 
+    private val _back = MutableLiveData<Boolean>()
+    val back: LiveData<Boolean>
+        get() = _back
+
     @Inject
     lateinit var backendRepository: BackendRepository
+    @Inject
+    lateinit var preferences: SharedPreferences
 
     init {
         getApplication<App>().component.inject(this)

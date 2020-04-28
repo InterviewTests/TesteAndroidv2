@@ -108,4 +108,6 @@ class LoginViewModelTest : BaseTest() {
 
         assertTrue(result.contains(FieldError(R.id.til_password, R.string.msg_password_invalido)))
     }
+
+
 }

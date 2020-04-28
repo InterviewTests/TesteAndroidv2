@@ -12,7 +12,9 @@ import br.com.raphael.everis.extensions.isNumeric
 import br.com.raphael.everis.extensions.isValidCPF
 import br.com.raphael.everis.extensions.isValidEmail
 import br.com.raphael.everis.extensions.isValidPassword
+import br.com.raphael.everis.helpers.FormatarAgency
 import br.com.raphael.everis.model.FieldError
+import br.com.raphael.everis.model.User
 import br.com.raphael.everis.model.UserAccount
 import br.com.raphael.everis.repository.BackendRepository
 import kotlinx.coroutines.launch
@@ -48,6 +50,10 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         _password.postValue(value)
     }
 
+    private val _data = MutableLiveData<User>()
+    val data: LiveData<User>
+        get() = _data
+
     @Inject
     lateinit var backendRepository: BackendRepository
 
@@ -56,6 +62,15 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         getApplication<App>().component.inject(this)
+
+        if (!preferences.getString("name", "").isNullOrEmpty()) {
+            _data.postValue(
+                User(
+                    name = preferences.getString("name", "") ?: "",
+                    desc = FormatarAgency.formatAgency(getApplication<App>().applicationContext,preferences.getString("agency", "") ?: "", preferences.getString("bankAccount", "") ?: "")
+                )
+            )
+        }
     }
 
     fun postLogin(): List<FieldError> {
@@ -72,11 +87,9 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                         _success.postValue(response.userAccount)
 
                         preferences.edit()
-                            .putInt("userId", response.userAccount.userId)
                             .putString("name", response.userAccount.name)
                             .putString("agency", response.userAccount.agency)
                             .putString("bankAccount", response.userAccount.bankAccount)
-                            .putFloat("balance", response.userAccount.balance.toFloat())
                             .apply()
                     }
                     _loading.postValue(false)
@@ -97,7 +110,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         if (_user.value.isNullOrBlank()) {
             fields.add(FieldError(R.id.til_user, R.string.msg_user_obrigatorio))
         } else
-            // Verificar se conteúdo do User é somente numérico
+        // Verificar se conteúdo do User é somente numérico
             if (_user.value.isNumeric()) {
                 // Válidar CPF
                 if (!_user.value.isValidCPF()) {
@@ -114,10 +127,10 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         if (_password.value.isNullOrBlank()) {
             fields.add(FieldError(R.id.til_password, R.string.msg_password_obrigatorio))
         } else
-            // Verificar se o password atende as validações
+        // Verificar se o password atende as validações
             if (!_password.value.isValidPassword()) {
-            fields.add(FieldError(R.id.til_password, R.string.msg_password_invalido))
-        }
+                fields.add(FieldError(R.id.til_password, R.string.msg_password_invalido))
+            }
 
         return fields
     }
