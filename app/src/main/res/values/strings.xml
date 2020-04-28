@@ -16,5 +16,10 @@
     <string name="util_some_text">Mussum Ipsum, cacilds</string>
     <string name="util_logout">Sair</string>
     <string name="util_value_fake_primary">R$:1000,00</string>
+    <string name="util_loading">Carregando..</string>
+
+    <string name="error_text_primary">Usuário inválido</string>
+    <string name="error_text_secondary">Senha inválida</string>
+    <string name="error_text_third">Erro ao acessar api</string>
 
 </resources>

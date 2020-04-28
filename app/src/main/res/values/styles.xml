@@ -50,4 +50,10 @@
         <item name="android:textColorHint">@color/light_gray</item>
     </style>
 
+    <style name="textLabelFifth">
+        <item name="android:textSize">@dimen/default_text_third</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
 </resources>
