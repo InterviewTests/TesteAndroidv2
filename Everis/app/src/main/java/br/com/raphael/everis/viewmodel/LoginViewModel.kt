@@ -12,6 +12,10 @@ import br.com.raphael.everis.repository.BackendRepository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import br.com.raphael.everis.R
+import br.com.raphael.everis.extensions.isNumeric
+import br.com.raphael.everis.extensions.isValidCPF
+import br.com.raphael.everis.extensions.isValidEmail
+import br.com.raphael.everis.extensions.isValidPassword
 
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
@@ -31,7 +35,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     val user: LiveData<String>
         get() = _user
 
-    fun setUser(value: String){
+    fun setUser(value: String) {
         _user.postValue(value)
     }
 
@@ -39,12 +43,13 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     val password: LiveData<String>
         get() = _password
 
-    fun setPassword(value: String){
+    fun setPassword(value: String) {
         _password.postValue(value)
     }
 
     @Inject
     lateinit var backendRepository: BackendRepository
+
     @Inject
     lateinit var preferences: SharedPreferences
 
@@ -61,8 +66,9 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             viewModelScope.launch {
                 try {
                     _loading.postValue(true)
-                    val response = backendRepository.postLoginAsync(_user.value!!, _password.value!!)
-                    if(response.error.message.isNotEmpty()) {
+                    val response =
+                        backendRepository.postLoginAsync(_user.value!!, _password.value!!)
+                    if (!response.error.message.isNullOrBlank()) {
                         _error.postValue(response.error.message)
                     } else {
                         _success.postValue(response.userAccount)
@@ -78,6 +84,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                     _loading.postValue(false)
                 } catch (e: Exception) {
                     _error.postValue(e.toString())
+                    _loading.postValue(false)
                 }
             }
         }
@@ -88,12 +95,28 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     private fun assertFields(): List<FieldError> {
         val fields = arrayListOf<FieldError>()
 
+        // Verificar se User esta vazio
         if (_user.value.isNullOrBlank()) {
             fields.add(FieldError(R.id.til_user, R.string.msg_user_obrigatorio))
-        }
+        } else
+            // Verificar se conteúdo do User é somente numérico
+            if (_user.value.isNumeric()) {
+                // Válidar CPF
+                if (!_user.value.isValidCPF()) {
+                    fields.add(FieldError(R.id.til_user, R.string.msg_user_cpf_invalido))
+                }
+            } else {
+                // Válidar E-mail
+                if (!_user.value.isValidEmail()) {
+                    fields.add(FieldError(R.id.til_user, R.string.msg_user_email_invalido))
+                }
+            }
 
+        // Verificar se Password esta vazio
         if (_password.value.isNullOrBlank()) {
             fields.add(FieldError(R.id.til_password, R.string.msg_password_obrigatorio))
+        } else if (!_password.value.isValidPassword()) {
+            fields.add(FieldError(R.id.til_password, R.string.msg_password_invalido))
         }
 
         return fields

@@ -88,7 +88,7 @@ class StatementsFragment : Fragment() {
 
     private fun popularData(){
         tv_nome.text = args.userAccount.name
-        tv_conta.text = getString(R.string.agencia_conta, args.userAccount.agency, args.userAccount.bankAccount)
+        tv_conta.text = getString(R.string.agencia_conta, args.userAccount.bankAccount, args.userAccount.agency.substring(0, 2), args.userAccount.agency.substring(2, 8), args.userAccount.agency.substring(8, 9))
         tv_saldo.text = args.userAccount.balance.toCurrency
 
         viewModel.getStatements(args.userAccount.userId)

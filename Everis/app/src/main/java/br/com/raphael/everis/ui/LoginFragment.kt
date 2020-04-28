@@ -60,6 +60,8 @@ class LoginFragment : Fragment() {
                 viewModel.setPassword(s.toString())
             }
         })
+
+
     }
 
     private fun observerError(){
