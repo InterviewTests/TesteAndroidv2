@@ -18,12 +18,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_user"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="105dp"
-        android:layout_marginEnd="16dp"
+        style="@style/Input01"
         android:hint="@string/user"
         app:layout_constraintBottom_toTopOf="@+id/til_password"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,18 +57,13 @@
 
     <Button
         android:id="@+id/btn_login"
-        android:layout_width="202dp"
-        android:layout_height="62dp"
-        android:layout_marginBottom="32dp"
-        android:background="@color/background01"
         android:text="@string/login"
-        android:textColor="@color/textColor01"
-        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_password"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        style="@style/Button01" />
 
     <ProgressBar
         android:id="@+id/pb_loading"

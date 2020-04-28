@@ -28,24 +28,13 @@
 
             <TextView
                 android:id="@+id/tv_tipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1"
-                android:textColor="@color/textColor03"
-                android:textSize="18sp"
-                tools:text="Pagamento" />
+                tools:text="Pagamento"
+                style="@style/TextoTipo5" />
 
             <TextView
                 android:id="@+id/tv_data"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:textColor="@color/textColor03"
-                android:textSize="14sp"
-                tools:text="12/12/2018" />
+                tools:text="12/12/2018"
+                style="@style/TextoTipo06" />
 
         </LinearLayout>
 
@@ -59,24 +48,13 @@
 
             <TextView
                 android:id="@+id/tv_descricao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_weight="1"
-                android:textColor="@color/textColor02"
-                android:textSize="18sp"
-                tools:text="Conta de Luz" />
+                tools:text="Conta de Luz"
+                style="@style/TextoTipo07" />
 
             <TextView
                 android:id="@+id/tv_valor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:textColor="@color/textColor02"
-                android:textSize="24sp"
-                tools:text="R$ 1.000,00" />
+                tools:text="R$ 1.000,00"
+                style="@style/TextoTipo08" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

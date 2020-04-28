@@ -115,7 +115,9 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         // Verificar se Password esta vazio
         if (_password.value.isNullOrBlank()) {
             fields.add(FieldError(R.id.til_password, R.string.msg_password_obrigatorio))
-        } else if (!_password.value.isValidPassword()) {
+        } else
+            // Verificar se o password atende as validações
+            if (!_password.value.isValidPassword()) {
             fields.add(FieldError(R.id.til_password, R.string.msg_password_invalido))
         }
 
