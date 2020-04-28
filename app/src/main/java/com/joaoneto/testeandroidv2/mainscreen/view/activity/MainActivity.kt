@@ -5,30 +5,37 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 import com.joaoneto.testeandroidv2.R
-import com.joaoneto.testeandroidv2.loginscreen.view.activity.LoginActivity
+import com.joaoneto.testeandroidv2.databinding.ActivityMainBinding
 import com.joaoneto.testeandroidv2.loginscreen.model.UserAccountModel
+import com.joaoneto.testeandroidv2.loginscreen.view.activity.LoginActivity
 import com.joaoneto.testeandroidv2.mainscreen.model.StatementModel
-import com.joaoneto.testeandroidv2.mainscreen.model.StatementsResponseModel
 import com.joaoneto.testeandroidv2.mainscreen.view.adapter.StatementsAdapter
-import com.joaoneto.testeandroidv2.util.retrofit.RetrofitInitializer
+import com.joaoneto.testeandroidv2.mainscreen.viewModel.MainViewModel
+import com.joaoneto.testeandroidv2.util.system.Formatter
 import com.joaoneto.testeandroidv2.util.system.SnackbarHelper
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.text.NumberFormat
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var viewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding = DataBindingUtil
+            .setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        val userAccount = intent.extras?.getSerializable("userAccountData") as UserAccountModel
+        binding.userAccount = userAccount
+        binding.formatter = Formatter()
+
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         setUpAppBar()
         setUpView()
-        getStatements()
     }
 
     override fun onBackPressed() {
@@ -39,19 +46,21 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun setUpView() {
-
-        val account = intent.extras?.getSerializable("userAccountData") as UserAccountModel
-        val number = "${account.bankAccount}/${account.agency?.substring(
-            0,
-            7
-        )}-${account.agency?.substring(8)}"
-        clientNameTextView.text = account.name
-        accountNumberTextView.text = number
-        accountMoneyValueTextView.text = NumberFormat.getCurrencyInstance().format(account.balance)
-
         logoutImageView.setOnClickListener {
             logout()
         }
+
+        viewModel.getStatements().observe(this, Observer {
+
+            if (it == null) {
+                SnackbarHelper.message(
+                    mainConstraint,
+                    "Não foi possivel buscar as transações, tente novamente mais tarde"
+                )
+            } else {
+                it.statementList?.let { statementList -> setUpRecyclerView(statementList) }
+            }
+        })
 
     }
 
@@ -87,37 +96,6 @@ class MainActivity : AppCompatActivity() {
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 
-    private fun getStatements() {
-        listOfRecentOperationTextView.visibility = View.GONE
-        RetrofitInitializer().statementsService().getStatements()
-            .enqueue(object : Callback<StatementsResponseModel> {
-                override fun onFailure(call: Call<StatementsResponseModel>, t: Throwable) {
-                    SnackbarHelper.message(
-                        mainConstraint,
-                        "Erro ao buscar as operações, tente novamente mais tarde."
-                    )
-                }
-
-                override fun onResponse(
-                    call: Call<StatementsResponseModel>,
-                    response: Response<StatementsResponseModel>
-                ) {
-                    if (response.code() == 200) {
-                        listOfRecentOperationTextView.visibility = View.VISIBLE
-
-                        response.body()?.statementList?.let { setUpRecyclerView(it) }
-
-                    } else {
-                        SnackbarHelper.message(
-                            mainConstraint,
-                            "Erro ao buscar as operações, tente novamente mais tarde."
-                        )
-                    }
-
-                }
-
-            })
-    }
 
     private fun logout() {
         val intent = Intent(this, LoginActivity::class.java)
