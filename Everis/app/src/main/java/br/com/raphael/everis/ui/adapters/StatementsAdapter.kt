@@ -24,7 +24,6 @@ class StatementsAdapter(
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val context = holder.itemView.context
         if (holder is StatementViewHolder) {
             val item = items[holder.adapterPosition]
 

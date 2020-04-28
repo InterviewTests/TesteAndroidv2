@@ -5,9 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import br.com.raphael.everis.di.DaggerAppComponent
-import br.com.raphael.everis.di.module.AppModule
-import br.com.raphael.everis.di.module.RemoteModule
+import br.com.raphael.everis.App
 import br.com.raphael.everis.model.Statement
 import br.com.raphael.everis.repository.BackendRepository
 import kotlinx.coroutines.launch
@@ -30,10 +28,7 @@ class StatementsViewModel(application: Application) : AndroidViewModel(applicati
     lateinit var backendRepository: BackendRepository
 
     init {
-        DaggerAppComponent.builder()
-            .appModule(AppModule(application))
-            .remoteModule(RemoteModule())
-            .build().inject(this)
+        getApplication<App>().component.inject(this)
     }
 
     fun getStatements(userId: Int) {

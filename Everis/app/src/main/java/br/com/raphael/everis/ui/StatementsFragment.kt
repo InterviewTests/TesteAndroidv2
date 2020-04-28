@@ -40,8 +40,6 @@ class StatementsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(StatementsViewModel::class.java)
 
-        println("-----------" + args.userAccount)
-
         observerError()
         observerSuccess()
         observerLoading()
