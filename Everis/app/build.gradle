@@ -18,6 +18,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -53,10 +54,12 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation "androidx.multidex:multidex:2.0.1"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     testImplementation "org.robolectric:robolectric:4.3.1"
+    testImplementation "androidx.test:core:1.2.0"
 
     // Material Designer
     implementation "com.google.android.material:material:1.1.0"
@@ -94,4 +97,14 @@ dependencies {
     // Mockito
     testImplementation "org.mockito:mockito-core:3.2.0"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+    androidTestImplementation "org.mockito:mockito-core:3.2.0"
+    androidTestImplementation "org.mockito:mockito-android:3.2.0"
+
+    //JUnitRunner and JUnitRules
+    androidTestImplementation "androidx.test:runner:1.2.0"
+    androidTestImplementation "androidx.test:rules:1.2.0"
+
+    // Multidex
+    implementation "com.android.support:multidex:1.0.3"
+
 }

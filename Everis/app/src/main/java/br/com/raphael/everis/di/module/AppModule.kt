@@ -1,13 +1,13 @@
 package br.com.raphael.everis.di.module
 
-import android.app.Application
+import br.com.raphael.everis.App
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 import org.jetbrains.anko.defaultSharedPreferences
 
 @Module
-open class AppModule (private val app: Application) {
+open class AppModule (private val app: App) {
 
     @Provides
     @Singleton

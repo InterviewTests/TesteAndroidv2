@@ -45,7 +45,7 @@ open class RemoteModule {
     }
 
     @Provides
-    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
+    open fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         return logging

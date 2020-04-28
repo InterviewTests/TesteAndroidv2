@@ -1,5 +1,6 @@
 package br.com.raphael.everis.di
 
+import br.com.raphael.everis.App
 import br.com.raphael.everis.MainActivity
 import br.com.raphael.everis.di.module.AppModule
 import br.com.raphael.everis.di.module.BackendModule
@@ -18,6 +19,8 @@ import javax.inject.Singleton
     ]
 )
 interface AppComponent {
+
+    fun inject(app: App)
 
     fun inject(activity: MainActivity)
 
