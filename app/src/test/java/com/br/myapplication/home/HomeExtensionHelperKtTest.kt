@@ -1,10 +1,13 @@
 package com.br.myapplication.home
 
+import com.br.myapplication.helper.formatAgency
+import com.br.myapplication.helper.formatDateString
+import com.br.myapplication.helper.formatToMonetary
 import org.junit.Test
 
 import org.junit.Assert.*
 
-class HomeExtensionKtTest {
+class HomeExtensionHelperKtTest {
 
     @Test
     fun formatAgency() {

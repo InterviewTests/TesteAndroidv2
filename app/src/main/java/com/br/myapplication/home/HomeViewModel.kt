@@ -4,32 +4,24 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.br.myapplication.helper.AppHelper
 import com.br.myapplication.helper.SharedPreferencesManager
-import com.br.myapplication.model.Statement
+import com.br.myapplication.model.ResponseStatement
 import com.br.myapplication.model.UserAccount
 import com.br.myapplication.service.ApiResult
-import com.br.myapplication.usercase.HomeUserCase
+import com.br.myapplication.usecase.HomeUseCase
+import com.br.myapplication.usecase.UserUseCase
 
-class HomeViewModel(private val homeUserCase: HomeUserCase,
-                    private val sharedPreferencesManager: SharedPreferencesManager) : ViewModel() {
+class HomeViewModel(private val homeUserCase: HomeUseCase,
+                    private val userUseCase: UserUseCase) : ViewModel() {
 
-    val liveDataResponse: MutableLiveData<ApiResult<List<Statement>>> = MutableLiveData()
+    val liveDataResponse: MutableLiveData<ApiResult<ResponseStatement>> = MutableLiveData()
 
     fun getStatements() {
         getUser()?.let { user ->
-            homeUserCase(HomeUserCase.Params(user.userId)) {
-                liveDataResponse.value = it
-            }
+            homeUserCase(HomeUseCase.Params(user.userId), liveDataResponse)
         }
     }
 
-    fun getUser() : UserAccount? {
-        val userString = sharedPreferencesManager.retrieveUser()
-        return userString?.let {
-            return AppHelper.convertStringToObj(it, UserAccount::class.java)
-        }
-    }
+    fun getUser() : UserAccount? = userUseCase.getUser()
 
-    fun logout() {
-        sharedPreferencesManager.clearPreferences()
-    }
+    fun logout() = userUseCase.deleteUser()
 }

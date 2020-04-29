@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.br.myapplication.R
+import com.br.myapplication.helper.formatDateString
+import com.br.myapplication.helper.formatToMonetary
 import com.br.myapplication.model.Statement
 
 class StatementsAdapter(

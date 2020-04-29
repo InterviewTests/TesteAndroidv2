@@ -1,45 +1,42 @@
 package com.br.myapplication.login
 
-import com.br.myapplication.helper.SharedPreferencesManager
-import com.br.myapplication.usercase.LoginUserCase
+import androidx.lifecycle.MutableLiveData
+import com.br.myapplication.model.ResponseLogin
+import com.br.myapplication.service.ApiResult
+import com.br.myapplication.usecase.LoginUseCase
+import com.br.myapplication.usecase.UserUseCase
+import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.doNothing
 import com.nhaarman.mockitokotlin2.mock
-import junit.framework.Assert.assertEquals
-import org.junit.Test
-
+import com.nhaarman.mockitokotlin2.times
+import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Before
+import org.junit.Test
+import org.mockito.ArgumentMatchers.anyString
 
 class LoginViewModelTest {
 
     lateinit var loginViewModel: LoginViewModel
 
+    lateinit var loginUseCaseMock: LoginUseCase
+    lateinit var userUseCase: UserUseCase
+
     @Before
     fun setup() {
-        val loginUsercaseMock = mock<LoginUserCase>()
-        val sharedPreferencesManager = mock<SharedPreferencesManager>()
-        loginViewModel = LoginViewModel(loginUsercaseMock, sharedPreferencesManager)
-    }
-    
-    @Test
-    fun isValidateUserField() {
-        val cpf = "270.018.580-30"
-        assertEquals(loginViewModel.isValidateUserField(cpf), true)
+        loginUseCaseMock = mock()
+        userUseCase = mock()
+        loginViewModel = LoginViewModel(loginUseCaseMock, userUseCase)
     }
 
-    @Test
-    fun isValidPasswordField() {
-        val password = "Dev@dev1602"
-        assertEquals(loginViewModel.isValidPasswordField(password), true)
-    }
 
     @Test
-    fun `checkValidEmail$app_debug`() {
-        val email = "dev@gmail.com"
-        assertEquals(loginViewModel.checkValidEmail(email), true)
-    }
-
-    @Test
-    fun `checkCpf$app_debug`() {
-        val cpf = "270.018.580-30"
-        assertEquals(loginViewModel.checkCpf(cpf), true)
+    fun testando() {
+        val params = LoginUseCase.Params("", "")
+        loginViewModel.doLogin("", "")
+        val liveData:  MutableLiveData<ApiResult<ResponseLogin>> = MutableLiveData()
+        whenever(loginViewModel.liveDataResponse).thenReturn(liveData)
+        doNothing().whenever(loginUseCaseMock).invoke(params, liveData)
+        verify(loginUseCaseMock, times(1)).invoke(params, liveData)
     }
 }

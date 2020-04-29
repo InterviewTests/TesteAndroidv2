@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.br.myapplication.R
+import com.br.myapplication.helper.formatAgency
+import com.br.myapplication.helper.formatToMonetary
 import com.br.myapplication.login.LoginActivity
 import com.br.myapplication.service.ApiResult
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -38,7 +40,7 @@ class HomeActivity : AppCompatActivity() {
         viewModel.liveDataResponse.observe(this, Observer {
             pbLoading.visibility = View.GONE
             if (it is ApiResult.Success) {
-                rvStatements.adapter = StatementsAdapter(this, it.response)
+                rvStatements.adapter = StatementsAdapter(this, it.response.statementList)
             }
         })
     }

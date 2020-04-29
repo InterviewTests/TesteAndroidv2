@@ -5,9 +5,11 @@ import com.br.myapplication.home.HomeViewModel
 import com.br.myapplication.login.LoginViewModel
 import com.br.myapplication.repository.HomeRepository
 import com.br.myapplication.repository.LoginRepository
+import com.br.myapplication.repository.UserRepository
 import com.br.myapplication.service.RetrofitConfiguration
-import com.br.myapplication.usercase.HomeUserCase
-import com.br.myapplication.usercase.LoginUserCase
+import com.br.myapplication.usecase.HomeUseCase
+import com.br.myapplication.usecase.LoginUseCase
+import com.br.myapplication.usecase.UserUseCase
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.viewmodel.ext.koin.viewModel
 
@@ -18,12 +20,15 @@ val listModules = listOf(
         single {RetrofitConfiguration().getAppRequest()}
         single { SharedPreferencesManager(androidApplication()) }
 
+        factory { UserRepository(get()) }
+        single { UserUseCase(get()) }
+
         factory { LoginRepository(get()) }
-        single { LoginUserCase(get()) }
+        single { LoginUseCase(get()) }
         viewModel { LoginViewModel(get(), get()) }
 
         factory { HomeRepository(get()) }
-        single { HomeUserCase(get()) }
+        single { HomeUseCase(get()) }
         viewModel { HomeViewModel(get(), get()) }
     }
 )

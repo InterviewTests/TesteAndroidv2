@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.Group
 import androidx.lifecycle.Observer
 import com.br.myapplication.R
+import com.br.myapplication.helper.LoginHelper
 import com.br.myapplication.home.HomeActivity
 import com.br.myapplication.service.ApiResult
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -41,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
         viewModel.liveDataResponse.observe(this, Observer {
             groupProgress.visibility = View.GONE
             if (it is ApiResult.Success) {
-                viewModel.saveUserPreferences(it.response.userAccount)
+                viewModel.saveUser(it.response.userAccount)
                 setupHomeActivity()
             } else if (it is ApiResult.Error){
                 Toast.makeText(this, it.throwable.message, Toast.LENGTH_LONG).show()
@@ -57,9 +58,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupViews() {
         loginButton.setOnClickListener {
-            if (!viewModel.isValidateUserField(editUserLogin.text.toString())) {
+            if (!LoginHelper.isValidateUserField(editUserLogin.text.toString())) {
                 editUserLogin.error = getString(R.string.txtInvalidUser)
-            } else if (!viewModel.isValidPasswordField(editPasswordLogin.text.toString())) {
+            } else if (!LoginHelper.isValidPasswordField(editPasswordLogin.text.toString())) {
                 editPasswordLogin.error = getString(R.string.txtInvalidPassword)
             } else {
                 groupProgress.visibility = View.VISIBLE
