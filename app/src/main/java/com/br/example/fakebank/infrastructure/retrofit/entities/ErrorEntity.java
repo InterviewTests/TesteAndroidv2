@@ -1,4 +1,4 @@
-package com.br.example.fakebank.infrastructure.retrofit.responses.entities;
+package com.br.example.fakebank.infrastructure.retrofit.entities;
 
 public class ErrorEntity {
     private String message;

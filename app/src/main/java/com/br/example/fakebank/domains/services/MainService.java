@@ -3,7 +3,7 @@ package com.br.example.fakebank.domains.services;
 import com.br.example.fakebank.domains.repositories.MainRepository;
 import com.br.example.fakebank.infrastructure.retrofit.RetrofitConfig;
 import com.br.example.fakebank.infrastructure.retrofit.responses.MainResponse;
-import com.br.example.fakebank.infrastructure.retrofit.responses.entities.ErrorEntity;
+import com.br.example.fakebank.infrastructure.retrofit.entities.ErrorEntity;
 
 import io.reactivex.Observable;
 import retrofit2.Call;

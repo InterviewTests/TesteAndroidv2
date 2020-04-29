@@ -1,7 +1,7 @@
 package com.br.example.fakebank.presentations.handles;
 
 import com.br.example.fakebank.presentations.utils.StatusPreferenceUtil;
-import com.br.example.fakebank.infrastructure.retrofit.responses.entities.UserAccountEntity;
+import com.br.example.fakebank.infrastructure.retrofit.entities.UserAccountEntity;
 import com.br.example.fakebank.presentations.Erros.ErrorUtils;
 
 public interface MainHandle {

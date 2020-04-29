@@ -5,16 +5,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.br.example.fakebank.BaseActivity;
 import com.br.example.fakebank.R;
 import com.br.example.fakebank.databinding.ActivityMainBinding;
 import com.br.example.fakebank.domains.services.MainService;
 import com.br.example.fakebank.presentations.utils.StatusPreferenceUtil;
 import com.br.example.fakebank.infrastructure.app.PreferenceFakeBank;
-import com.br.example.fakebank.infrastructure.retrofit.responses.entities.UserAccountEntity;
+import com.br.example.fakebank.infrastructure.retrofit.entities.UserAccountEntity;
 import com.br.example.fakebank.presentations.Erros.ErrorUtils;
 import com.br.example.fakebank.presentations.Erros.InvalidPasswordError;
 import com.br.example.fakebank.presentations.Erros.InvalidUserError;
@@ -22,7 +22,7 @@ import com.br.example.fakebank.presentations.handles.MainHandle;
 import com.br.example.fakebank.presentations.viewModels.MainViewModel;
 import com.br.example.fakebank.presentations.viewModels.viewModelFactories.MainViewModelFactory;
 
-public class MainActivity extends BaseActivity implements MainHandle {
+public class MainActivity extends AppCompatActivity implements MainHandle {
 
     private ActivityMainBinding activityMainBinding;
     private MainViewModel mainViewModel;
@@ -88,8 +88,7 @@ public class MainActivity extends BaseActivity implements MainHandle {
                 }
                 break;
             case WHITE:
-                preferenceFakeBank.setUserName(userName);
-                preferenceFakeBank.setUserPassword(userPassword);
+                preferenceFakeBank.setNewPreference(userName, userPassword);
                 break;
         }
     }

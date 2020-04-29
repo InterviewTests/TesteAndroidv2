@@ -8,6 +8,8 @@
 
     <string name="main_currency_description_primary">@string/util_logout</string>
     <string name="main_currency_text_primary">Recentes</string>
+    <string name="main_currency_text_secondary">Conta</string>
+    <string name="main_currency_text_third">Saldo</string>
 
     <string name="util_name">User</string>
     <string name="util_password">Password</string>

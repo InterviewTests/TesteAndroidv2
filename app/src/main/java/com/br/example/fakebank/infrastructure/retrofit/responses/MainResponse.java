@@ -1,7 +1,7 @@
 package com.br.example.fakebank.infrastructure.retrofit.responses;
 
-import com.br.example.fakebank.infrastructure.retrofit.responses.entities.ErrorEntity;
-import com.br.example.fakebank.infrastructure.retrofit.responses.entities.UserAccountEntity;
+import com.br.example.fakebank.infrastructure.retrofit.entities.ErrorEntity;
+import com.br.example.fakebank.infrastructure.retrofit.entities.UserAccountEntity;
 
 public class MainResponse {
     private UserAccountEntity userAccount;

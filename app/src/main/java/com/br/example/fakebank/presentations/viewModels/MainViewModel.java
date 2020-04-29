@@ -10,6 +10,7 @@ import com.br.example.fakebank.presentations.Erros.InvalidPasswordError;
 import com.br.example.fakebank.presentations.Erros.InvalidUserError;
 import com.br.example.fakebank.presentations.handles.MainHandle;
 import com.br.example.fakebank.presentations.utils.RegexValidateUtil;
+import com.br.example.fakebank.presentations.utils.StatusPreferenceUtil;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -66,6 +67,7 @@ public class MainViewModel extends ViewModel implements MainViewModelInterface{
                         greeting -> {
                             if (greeting.getUserAccount() != null){
                                 mainHandle.sendCurrencyActivity(greeting.getUserAccount());
+                                mainHandle.accessSharedPreference(StatusPreferenceUtil.WHITE,userName, userPassword);
                             }else{
                                 mainHandle.showError(new ErrorUtils(greeting.getErrorEntity().getMessage()));
                             }

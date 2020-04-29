@@ -13,20 +13,18 @@ public class PreferenceFakeBank {
         mSharedPreferences = context.getSharedPreferences("bank",Context.MODE_PRIVATE);
     }
 
-    public void setUserName(String user){
-        mSharedPreferences.edit().putString(KEY_USER_NAME, user).apply();
-    }
-
     public String getUserName(){
         return mSharedPreferences.getString(KEY_USER_NAME, "");
     }
-
-    public void setUserPassword(String userPassword){
-        mSharedPreferences.edit().putString(KEY_USER_PASSWORD, userPassword).apply();
-    }
-
     public String getUserPassword(){
         return mSharedPreferences.getString(KEY_USER_PASSWORD, "");
+    }
+
+    public void setNewPreference(String userName, String passName){
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString(KEY_USER_NAME, userName);
+        editor.putString(KEY_USER_PASSWORD, passName);
+        editor.apply();
     }
 
 }
