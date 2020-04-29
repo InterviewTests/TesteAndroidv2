@@ -11,7 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class StatementViewModel extends ViewModel implements StatementViewModelInterface {
+public class StatementViewModel extends ViewModel {
 
     private StatementService currencyService;
     private StatementHandle statementHandle;
@@ -23,7 +23,6 @@ public class StatementViewModel extends ViewModel implements StatementViewModelI
         this.statementHandle = statementHandle;
     }
 
-    @Override
     public void listStatements(Integer userId) {
         statementHandle.setLoading(true);
         disposable.add(currencyService.listStatements(userId)
@@ -46,7 +45,6 @@ public class StatementViewModel extends ViewModel implements StatementViewModelI
         );
     }
 
-    @Override
     public void didClickLogout(){
         statementHandle.actionLogout();
     }

@@ -16,7 +16,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class LoginViewModel extends ViewModel implements LoginViewModelInterface {
+public class LoginViewModel extends ViewModel {
 
     private LoginService mainService;
     private LoginHandle loginHandle;
@@ -45,21 +45,18 @@ public class LoginViewModel extends ViewModel implements LoginViewModelInterface
         }
     }
 
-    @Override
     public Boolean isUserValid(String userName)
     {
         RegexValidateUtil regexValidateUtil = new RegexValidateUtil();
         return regexValidateUtil.isValidField(RegexValidateUtil.EMAIL_PATTERN, userName) || regexValidateUtil.isValidField(RegexValidateUtil.CPF_PATTERN, userName);
     }
 
-    @Override
     public Boolean isPasswordValid(String userPassword)
     {
         return new RegexValidateUtil().isValidField(RegexValidateUtil.PASSWORD_PATTERN, userPassword);
     }
 
-    @Override
-    public void authLogin(String userName, String userPassword) {
+    private void authLogin(String userName, String userPassword) {
         disposable.add(mainService.authLogin(user.get(), password.get())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
