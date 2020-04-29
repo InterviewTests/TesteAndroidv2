@@ -4,7 +4,7 @@
     <data>
         <variable
             name="statement"
-            type="com.br.example.fakebank.infrastructure.retrofit.entities.CurrencyEntity" />
+            type="com.br.example.fakebank.infrastructure.retrofit.entities.StatementEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

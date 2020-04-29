@@ -1,7 +1,7 @@
 package com.br.example.fakebank.infrastructure.retrofit;
 
-import com.br.example.fakebank.infrastructure.retrofit.endPoints.CurrencyEndPoint;
-import com.br.example.fakebank.infrastructure.retrofit.endPoints.MainEndPoint;
+import com.br.example.fakebank.infrastructure.retrofit.endPoints.StatementEndPoint;
+import com.br.example.fakebank.infrastructure.retrofit.endPoints.LoginEndPoint;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -25,11 +25,11 @@ public class RetrofitConfig {
                 .build();
     }
 
-    public MainEndPoint getMainEndPoint(){
-        return getNewRetrofit().create(MainEndPoint.class);
+    public LoginEndPoint getMainEndPoint(){
+        return getNewRetrofit().create(LoginEndPoint.class);
     }
 
-    public CurrencyEndPoint getCurrencyEndPoint(){
-        return getNewRetrofit().create(CurrencyEndPoint.class);
+    public StatementEndPoint getCurrencyEndPoint(){
+        return getNewRetrofit().create(StatementEndPoint.class);
     }
 }

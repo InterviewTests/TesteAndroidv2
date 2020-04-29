@@ -3,8 +3,8 @@
 
     <data>
         <variable
-            name="mainViewModel"
-            type="com.br.example.fakebank.presentations.viewModels.MainViewModel"/>
+            name="loginViewModel"
+            type="com.br.example.fakebank.presentations.viewModels.LoginViewModel"/>
     </data>
     
     <LinearLayout
@@ -12,7 +12,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentations.views.MainActivity">
+        tools:context=".presentations.views.LoginActivity">
 
         <include layout="@layout/loading_include" android:id="@+id/includeLoading" android:visibility="gone"/>
 
@@ -42,7 +42,7 @@
                 android:layout_marginTop="96dp"
                 android:layout_marginEnd="16dp"
                 android:hint="@string/main_activity_edit_text_hint_primary"
-                android:text="@={ mainViewModel.user }"
+                android:text="@={ loginViewModel.user }"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -55,7 +55,7 @@
                 android:layout_width="0dp"
                 android:layout_marginTop="24dp"
                 android:hint="@string/main_activity_edit_text_hint_secondary"
-                android:text="@={ mainViewModel.password }"
+                android:text="@={ loginViewModel.password }"
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="@+id/editTextUser"
                 app:layout_constraintStart_toStartOf="@+id/editTextUser"
@@ -72,7 +72,7 @@
             <Button
                 android:id="@+id/button"
                 style="@style/buttonPrimary"
-                android:onClick="@{()-> mainViewModel.didClickAuthLogin()}"
+                android:onClick="@{()-> loginViewModel.didClickAuthLogin()}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"

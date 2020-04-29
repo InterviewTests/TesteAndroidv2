@@ -3,7 +3,7 @@ package com.br.example.fakebank.infrastructure.retrofit.responses;
 import com.br.example.fakebank.infrastructure.retrofit.entities.ErrorEntity;
 import com.br.example.fakebank.infrastructure.retrofit.entities.UserAccountEntity;
 
-public class MainResponse {
+public class LoginResponse {
     private UserAccountEntity userAccount;
     private ErrorEntity error;
 

@@ -3,8 +3,8 @@
 
     <data>
         <variable
-            name="currencyViewModel"
-            type="com.br.example.fakebank.presentations.viewModels.CurrencyViewModel" />
+            name="statementViewModel"
+            type="com.br.example.fakebank.presentations.viewModels.StatementViewModel" />
     </data>
 
     <LinearLayout
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".presentations.views.CurrencyActivity">
+        tools:context=".presentations.views.StatementActivity">
 
         <include layout="@layout/loading_include" android:id="@+id/includeLoading" android:visibility="gone"/>
 
@@ -36,7 +36,7 @@
 
             <ImageView
                 android:id="@+id/imageButton"
-                android:onClick="@{() -> currencyViewModel.didClickLogout() }"
+                android:onClick="@{() -> statementViewModel.didClickLogout() }"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"

@@ -7,16 +7,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.example.fakebank.databinding.RvItemStatementBinding;
-import com.br.example.fakebank.infrastructure.retrofit.entities.CurrencyEntity;
+import com.br.example.fakebank.infrastructure.retrofit.entities.StatementEntity;
 import com.br.example.fakebank.presentations.views.holders.StatementHolder;
 
 import java.util.List;
 
 public class StatementAdapter extends RecyclerView.Adapter<StatementHolder> {
-    private List<CurrencyEntity> currencyEntityList;
+    private List<StatementEntity> statementEntityList;
 
-    public StatementAdapter(List<CurrencyEntity> currencyEntityList) {
-        this.currencyEntityList = currencyEntityList;
+    public StatementAdapter(List<StatementEntity> statementEntityList) {
+        this.statementEntityList = statementEntityList;
     }
 
     @NonNull
@@ -29,12 +29,12 @@ public class StatementAdapter extends RecyclerView.Adapter<StatementHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull StatementHolder holder, int position) {
-        CurrencyEntity currencyEntity = currencyEntityList.get(position);
-        holder.bind(currencyEntity);
+        StatementEntity statementEntity = statementEntityList.get(position);
+        holder.bind(statementEntity);
     }
 
     @Override
     public int getItemCount() {
-        return currencyEntityList.size();
+        return statementEntityList.size();
     }
 }

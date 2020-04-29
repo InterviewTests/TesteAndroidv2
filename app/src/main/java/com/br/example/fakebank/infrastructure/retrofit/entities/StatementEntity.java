@@ -2,7 +2,7 @@ package com.br.example.fakebank.infrastructure.retrofit.entities;
 
 import java.text.DecimalFormat;
 
-public class CurrencyEntity {
+public class StatementEntity {
     private String title;
     private String desc;
     private String date;

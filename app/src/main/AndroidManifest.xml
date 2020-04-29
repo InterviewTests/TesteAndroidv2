@@ -12,8 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".presentations.views.CurrencyActivity"></activity>
-        <activity android:name=".presentations.views.MainActivity">
+        <activity android:name=".presentations.views.StatementActivity"></activity>
+        <activity android:name=".presentations.views.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

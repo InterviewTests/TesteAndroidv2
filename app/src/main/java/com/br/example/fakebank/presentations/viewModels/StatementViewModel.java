@@ -2,45 +2,45 @@ package com.br.example.fakebank.presentations.viewModels;
 
 import androidx.lifecycle.ViewModel;
 
-import com.br.example.fakebank.domains.services.CurrencyService;
+import com.br.example.fakebank.domains.services.StatementService;
 import com.br.example.fakebank.presentations.Erros.ErrorUtils;
 import com.br.example.fakebank.presentations.Erros.InvalidApiAccessError;
-import com.br.example.fakebank.presentations.handles.CurrencyHandle;
+import com.br.example.fakebank.presentations.handles.StatementHandle;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class CurrencyViewModel extends ViewModel implements CurrencyViewModelInterface{
+public class StatementViewModel extends ViewModel implements StatementViewModelInterface {
 
-    private CurrencyService currencyService;
-    private CurrencyHandle currencyHandle;
+    private StatementService currencyService;
+    private StatementHandle statementHandle;
 
     private CompositeDisposable disposable = new CompositeDisposable();
 
-    public CurrencyViewModel(CurrencyService currencyService, CurrencyHandle currencyHandle) {
+    public StatementViewModel(StatementService currencyService, StatementHandle statementHandle) {
         this.currencyService = currencyService;
-        this.currencyHandle = currencyHandle;
+        this.statementHandle = statementHandle;
     }
 
     @Override
     public void listStatements(Integer userId) {
-        currencyHandle.setLoading(true);
+        statementHandle.setLoading(true);
         disposable.add(currencyService.listStatements(userId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         greeting -> {
                             if (greeting.getStatementList() != null){
-                                currencyHandle.reloadListStatement(greeting.getStatementList());
+                                statementHandle.reloadListStatement(greeting.getStatementList());
                             }else{
-                                currencyHandle.showError(new ErrorUtils(greeting.getError().getMessage()));
+                                statementHandle.showError(new ErrorUtils(greeting.getError().getMessage()));
                             }
-                            currencyHandle.setLoading(false);
+                            statementHandle.setLoading(false);
                         },
                         throwable -> {
-                            currencyHandle.showError(new InvalidApiAccessError());
-                            currencyHandle.setLoading(false);
+                            statementHandle.showError(new InvalidApiAccessError());
+                            statementHandle.setLoading(false);
                         }
                 )
         );
@@ -48,6 +48,6 @@ public class CurrencyViewModel extends ViewModel implements CurrencyViewModelInt
 
     @Override
     public void didClickLogout(){
-        currencyHandle.actionLogout();
+        statementHandle.actionLogout();
     }
 }
