@@ -3,7 +3,11 @@
 ## Download
 [Releases](https://github.com/androidzeiro/TesteAndroidv2/releases)
 
-<img src="/previews/preview.gif" align="right" width="32%"/>
+## Clean Architecture
+[MVVM + Clean architecture](https://medium.com/@ajliberatore/implementing-clean-architecture-mvvm-22a8d71c6fb9)
+
+## Preview
+ - Na pasta preview contem um gif do funcionamento do app, como é mostrado os feedbacks de erro e como é mostrado os dados do último usuário logado.
 
 ## Especificações técnicas
 
@@ -22,12 +26,5 @@
 - [Sweet Alert Dialog](https://github.com/F0RIS/sweet-alert-dialog) - Dialogs.
 - [Mockito](https://github.com/mockito/mockito)
 
-## Dados do último usuário logado
-<img src="/previews/dados_login.png" align="left" width="70%"/>
-
-## Feedback de erro
-<img src="/previews/erro.png" align="left" width="32%"/>
-
-## Testes unitários
-<img src="/previews/testes.png" align="left" width="70%"/>
-
+## Obs
+Aceito feedback para crecimento pessoal/profissional.
