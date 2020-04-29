@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import br.com.raphael.everis.R
+import br.com.raphael.everis.extensions.hideKeyboard
 import br.com.raphael.everis.extensions.toCurrency
 import br.com.raphael.everis.helpers.FormatarAgency
 import br.com.raphael.everis.ui.adapters.StatementsAdapter
@@ -41,6 +42,8 @@ class StatementsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(StatementsViewModel::class.java)
 
+        view.hideKeyboard()
+
         observerError()
         observerSuccess()
         observerLoading()
@@ -48,10 +51,7 @@ class StatementsFragment : Fragment() {
         setupRecyclerView()
 
         popularData()
-
-        iv_logout.setOnClickListener {
-            viewModel.invalidate()
-        }
+        
     }
 
     private fun observerError(){

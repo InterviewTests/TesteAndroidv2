@@ -3,19 +3,21 @@ package br.com.raphael.everis.ui
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView.OnEditorActionListener
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import br.com.raphael.everis.R
-import br.com.raphael.everis.helpers.FormatarAgency
 import br.com.raphael.everis.viewmodel.LoginViewModel
 import cn.pedant.SweetAlert.SweetAlertDialog
 import kotlinx.android.synthetic.main.fragment_login.*
+
 
 class LoginFragment : Fragment() {
 
@@ -60,7 +62,12 @@ class LoginFragment : Fragment() {
             }
         })
 
-
+        tie_password.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                login()
+                true
+            } else false
+        }
     }
 
     private fun observerError(){
