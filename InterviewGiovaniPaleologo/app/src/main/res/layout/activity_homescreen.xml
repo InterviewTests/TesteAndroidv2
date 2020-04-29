@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/clAccountDetails">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clUserAccountDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:padding="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivHomeLogout"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/imageContent"
+            android:src="@mipmap/logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvHomeNomeTitular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/helveticaneuelight"
+            android:text="NOME DO CLIENTE  PARA TESTE DO APLICATIVO"
+            android:textColor="@color/colorDetails"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/ivHomeLogout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivHomeLogout" />
+
+        <TextView
+            android:id="@+id/tvHomeLblConta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/accountLblConta"
+            android:textColor="@color/colorLabels"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/tvHomeNomeTitular"
+            app:layout_constraintTop_toBottomOf="@+id/tvHomeNomeTitular" />
+
+        <TextView
+            android:id="@+id/tvHomeNumeroConta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="0283 / 01.019974-7"
+            android:textColor="@color/colorDetails"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/tvHomeLblConta"
+            app:layout_constraintTop_toBottomOf="@+id/tvHomeLblConta" />
+
+        <TextView
+            android:id="@+id/tvHomeLblSaldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/accountlblSaldo"
+            android:textColor="@color/colorLabels"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/tvHomeNumeroConta"
+            app:layout_constraintTop_toBottomOf="@+id/tvHomeNumeroConta" />
+
+        <TextView
+            android:id="@+id/tvHomeSaldoValor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="R$ 89.098,75"
+            android:textColor="@color/colorDetails"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/tvHomeLblSaldo"
+            app:layout_constraintTop_toBottomOf="@+id/tvHomeLblSaldo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clUserAccountDetails">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHomeStatementList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

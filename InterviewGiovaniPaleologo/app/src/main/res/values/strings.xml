@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">InterviewGiovaniPaleologo</string>
+    <string name="imageContent">Image</string>
+
+    <string name="prefKey">loginPrefKey</string>
+    <string name="prefKeyUser">userPrefKey</string>
+
+    <string name="loginUser">User</string>
+    <string name="loginPassword">Password</string>
+    <string name="login">Login</string>
+
+    <string name="emptyUserName">Informe o nome de usuário</string>
+    <string name="emptyPassword">Informe a sua senha</string>
+    <string name="invalidUserName">Nome de usuário inválido. Informe um Email ou CPF</string>
+    <string name="invalidPassword">Senha inválida. É obrigatório uma letra maiúscula, um caractere especial e um caractere alfanumérico</string>
+    <string name="invalidLogin">Nome de usuário ou senha incorretos</string>
+    <string name="connectionRefused">Sem conexão com a Internet</string>
+
+    <string name="accountLblConta">Conta</string>
+    <string name="accountlblSaldo">Saldo</string>
+
+
+    <string name="loadingTitle">Carregando</string>
+    <string name="loadingMessage">Por favor aguarde…</string>
+    <string name="warningTitle">Atenção</string>
+</resources>
