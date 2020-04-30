@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="statementViewModel"
+            type="com.br.example.fakebank.presentations.viewModels.StatementViewModel" />
+    </data>
+
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".presentations.views.StatementActivity">
+
+        <include layout="@layout/loading_include" android:id="@+id/includeLoading" android:visibility="gone"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:background="@drawable/section_primary">
+
+            <TextView
+                android:id="@+id/textViewNameUser"
+                style="@style/textLabelSecondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageButton" />
+
+            <ImageView
+                android:id="@+id/imageButton"
+                android:onClick="@{() -> statementViewModel.didClickLogout() }"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/main_currency_description_primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/svg_image_logout" />
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/textLabelPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toStartOf="@+id/textViewNameUser"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNameUser"
+                android:text="@string/main_currency_text_secondary"/>
+
+            <TextView
+                android:id="@+id/textViewCountNumber"
+                style="@style/textLabelSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/textLabelPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/main_currency_text_third"
+                app:layout_constraintStart_toStartOf="@+id/textViewCountNumber"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCountNumber" />
+
+            <TextView
+                android:id="@+id/textViewBalance"
+                style="@style/textLabelSecondary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView7"
+            style="@style/textLabelThird"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/main_currency_text_primary"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBankStatement"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            tools:listitem="@layout/rv_item_statement"/>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.br.example.fakebank.presentations.viewModels.LoginViewModel"/>
+    </data>
+    
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentations.views.LoginActivity">
+
+        <include layout="@layout/loading_include" android:id="@+id/includeLoading" android:visibility="gone"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline"
+                android:contentDescription="@string/main_activity_image_description_primary"
+                app:srcCompat="@mipmap/first_logo" />
+
+            <EditText
+                android:id="@+id/editTextUser"
+                style="@style/editTextPrimary"
+                android:layout_width="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="96dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/main_activity_edit_text_hint_primary"
+                android:text="@={ loginViewModel.user }"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                style="@style/editTextPrimary"
+                android:layout_width="0dp"
+                android:layout_marginTop="24dp"
+                android:hint="@string/main_activity_edit_text_hint_secondary"
+                android:text="@={ loginViewModel.password }"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="@+id/editTextUser"
+                app:layout_constraintStart_toStartOf="@+id/editTextUser"
+                app:layout_constraintTop_toBottomOf="@+id/editTextUser" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="20dp"
+                app:layout_constraintGuide_percent="0.10" />
+
+            <Button
+                android:id="@+id/button"
+                style="@style/buttonPrimary"
+                android:onClick="@{()-> loginViewModel.didClickAuthLogin()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:text="@string/main_activity_text_button_primary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+                app:layout_constraintStart_toStartOf="@+id/editTextPassword" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</layout>

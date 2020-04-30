@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- COLORS -->
+    <color name="dark_blue">#3B48EE</color>
+    <color name="dark_gray">#4E5A6A</color>
+    <color name="light_gray">#BAC3D0</color>
+    <color name="dirt_white">#E9E9E9</color>
+    <color name="white">#ffffffff</color>
+
+    <!-- COLOR PALETTE -->
+    <color name="button_primary">@color/dark_blue</color>
+    <color name="border_primary">#F0F3F6</color>
+</resources>
