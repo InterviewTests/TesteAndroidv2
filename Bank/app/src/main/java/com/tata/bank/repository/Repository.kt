@@ -7,10 +7,11 @@ import com.tata.bank.security.SecurityWorker
 class Repository(private val context: Context) {
 
     private val preferences by lazy { Preferences(context) }
+    private val security by lazy { SecurityWorker(context) }
 
     fun saveCredentials(loginCredentials: LoginCredentials) {
         val login = "${loginCredentials.user}&${loginCredentials.password}"
-        val encryptedCredentials = SecurityWorker.encrypt(login.toByteArray(Charsets.UTF_8))
+        val encryptedCredentials = security.encrypt(login.toByteArray(Charsets.UTF_8))
 
         encryptedCredentials?.let {
             preferences.saveEncryptedCredentials(it)
@@ -19,7 +20,7 @@ class Repository(private val context: Context) {
 
     fun getCredentials(): LoginCredentials? {
         preferences.getEncryptedCredentials()?.let {
-            val decryptedBytes = SecurityWorker.decrypt(it)
+            val decryptedBytes = security.decrypt(it)
             val decryptedData = decryptedBytes?.toString(Charsets.UTF_8)
             val loginDataList = decryptedData?.split("&")
 
