@@ -12,7 +12,7 @@ import javax.crypto.spec.GCMParameterSpec
 
 object SecurityWorker {
 
-    private const val ALIAS = "com.tata.security"
+    private const val ALIAS = "com.security"
     private const val KEYSTORE_PROVIDER = "AndroidKeyStore"
     private const val CIPHER_TRANSFORMATION = "AES/GCM/NoPadding"
 
@@ -72,5 +72,10 @@ object SecurityWorker {
 
         keyGenerator.init(keyGenParameterSpec)
         keyGenerator.generateKey()
+    }
+
+    private fun generateKeyBelowM() {
+
+
     }
 }
