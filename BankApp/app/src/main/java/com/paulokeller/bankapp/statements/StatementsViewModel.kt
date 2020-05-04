@@ -1,5 +1,6 @@
 package com.paulokeller.bankapp.statements
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.paulokeller.bankapp.models.AppState
@@ -8,14 +9,14 @@ import com.paulokeller.bankapp.services.Client
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class StatementsViewModel : ViewModel() {
-    private val client = Client
+class StatementsViewModel @Inject constructor(private val context: Context, private val client: Client) : ViewModel() {
     val statementsState: MutableLiveData<AppState<Statements>> = MutableLiveData()
 
     fun fetchStatements() {
         try {
-            client.instance?.fetchStatements(1)!!.enqueue(object : Callback<Statements?> {
+            client.fetchStatements(1)!!.enqueue(object : Callback<Statements?> {
                 override fun onFailure(call: Call<Statements?>, t: Throwable?) {
                     statementsState.value = AppState<Statements>(t?.message, null)
                 }

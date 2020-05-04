@@ -1,14 +1,14 @@
 package com.paulokeller.bankapp.login
 
 import android.content.Intent
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.paulokeller.bankapp.R
 import com.paulokeller.bankapp.models.Account
 import com.paulokeller.bankapp.models.AppState
@@ -17,7 +17,6 @@ import com.paulokeller.bankapp.repositories.Repository
 import com.paulokeller.bankapp.statements.StatementsActivity
 import com.paulokeller.bankapp.utils.Utils
 import kotlinx.android.synthetic.main.login_fragment.*
-
 
 class LoginFragment : Fragment() {
 
@@ -47,7 +46,6 @@ class LoginFragment : Fragment() {
         loginButton.setOnClickListener {
             val password = passwordTextField.text.toString()
             val user = userTextField.text.toString()
-            repository.saveUser(user)
             viewModel.login(user, password)
         }
     }

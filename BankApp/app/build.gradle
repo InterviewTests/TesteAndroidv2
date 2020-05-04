@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -38,6 +39,10 @@ android {
 
 }
 
+ext {
+    daggerVersion = '2.24'
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -52,6 +57,14 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
+
+    //Dagger
+    implementation 'com.google.dagger:dagger-android:2.20'
+    implementation 'com.google.dagger:dagger-android-support:2.20'
+    kapt 'com.google.dagger:dagger-android-processor:2.20'
+    kapt 'com.google.dagger:dagger-compiler:2.20'
+    implementation 'com.google.code.gson:gson:2.8.5'
+
     testImplementation 'junit:junit:4.13'
     testImplementation "org.mockito:mockito-core:3.3.0"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

@@ -1,10 +1,15 @@
 package com.paulokeller.bankapp.login
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.paulokeller.bankapp.R
+import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
-class LoginActivity : AppCompatActivity() {
+
+class LoginActivity : DaggerAppCompatActivity() {
+
+    @Inject
+    lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
