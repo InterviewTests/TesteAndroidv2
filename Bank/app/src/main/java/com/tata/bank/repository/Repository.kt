@@ -2,13 +2,20 @@ package com.tata.bank.repository
 
 import android.content.Context
 import android.os.Build
+import com.google.gson.GsonBuilder
+import com.tata.bank.database.AppDatabase
+import com.tata.bank.database.LoginCredentialEntity
 import com.tata.bank.login.LoginCredentials
+import com.tata.bank.security.CipherData
 import com.tata.bank.security.SecurityWorker
 import com.tata.bank.security.SecurityWorkerLegacy
+import io.reactivex.Maybe
 
 class Repository(context: Context) {
 
-    private val preferences by lazy { Preferences(context) }
+    private val database by lazy { AppDatabase.invoke(context) }
+    private val gson = GsonBuilder().create()
+
     private val security by lazy {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             SecurityWorker(context)
@@ -17,32 +24,34 @@ class Repository(context: Context) {
         }
     }
 
-    fun saveCredentials(loginCredentials: LoginCredentials) {
+    fun saveCredentials(loginCredentials: LoginCredentials): Maybe<Long> {
         val login = "${loginCredentials.user}&${loginCredentials.password}"
         val encryptedCredentials = security.encrypt(login.toByteArray(Charsets.UTF_8))
+        val credentialsStr = gson.toJson(encryptedCredentials)
 
-        encryptedCredentials?.let {
-            preferences.saveEncryptedCredentials(it)
-        }
+        val credentialsEntity = LoginCredentialEntity(credentials = credentialsStr)
+        return database.credentialsDao().insert(credentialsEntity)
     }
 
-    fun getCredentials(): LoginCredentials? {
-        preferences.getEncryptedCredentials()?.let {
-            val decryptedBytes = security.decrypt(it)
-            val decryptedData = decryptedBytes?.toString(Charsets.UTF_8)
-            val loginDataList = decryptedData?.split("&")
+    fun getCredentials(): Maybe<LoginCredentials> {
+        return database.credentialsDao().getCredentials()
+            .filter { it.isNotEmpty() }
+            .map {
+                val credentialsJson = it.first().credentials
 
-            loginDataList?.let { credentialsList ->
-                if (credentialsList.size == 2) {
-                    return LoginCredentials(loginDataList[0], loginDataList[1])
-                }
+                val credentials = gson.fromJson(credentialsJson, CipherData::class.java)
+
+                val decryptedBytes = security.decrypt(credentials)
+                val decryptedData = decryptedBytes?.toString(Charsets.UTF_8)
+                decryptedData?.split("&")
             }
-        }
-
-        return null
+            .filter { it.isNotEmpty() && it.size >= 2 }
+            .map {
+                LoginCredentials(it[0], it[1])
+            }
     }
 
     fun cleanStoredCredentials() {
-        preferences.clean()
+        database.clearAllTables()
     }
 }

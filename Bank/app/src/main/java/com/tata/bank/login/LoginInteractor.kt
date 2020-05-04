@@ -19,9 +19,14 @@ class LoginInteractor : LoginInteractorInput {
     private val repository by lazy { Repository(context) }
 
     override fun verifyLogin() {
-        repository.getCredentials()?.let {
-            output.fillLoginFields(it.user, it.password)
-        }
+        repository.getCredentials()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ credentials ->
+                output.fillLoginFields(credentials.user, credentials.password)
+            }, {
+                output.presentError(it)
+            })
     }
 
     override fun doLogin(user: String, password: String) {
@@ -55,7 +60,11 @@ class LoginInteractor : LoginInteractorInput {
     private fun onSuccess(response: Response<LoginResponse>, credentials: LoginCredentials) {
         if (response.isSuccessful) {
             repository.saveCredentials(credentials)
-            output.presentSuccess(response.body())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    output.presentSuccess(response.body())
+                }, this::onError)
         } else {
             output.presentStatusError(response.code())
         }
