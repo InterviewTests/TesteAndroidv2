@@ -9,7 +9,7 @@ interface LoginPresenterInput {
     fun fillLoginFields(user: String, password: String)
 }
 
-class LoginPresenter: LoginPresenterInput {
+class LoginPresenter : LoginPresenterInput {
     lateinit var output: WeakReference<LoginActivityInput>
     lateinit var router: LoginRouterInput
 
@@ -31,7 +31,7 @@ class LoginPresenter: LoginPresenterInput {
     }
 
     override fun presentError(error: Throwable) {
-        val message = error.message?: run { "An exception occurred" }
+        val message = error.message ?: "An exception has occurred"
         output.get()?.displayError(message)
     }
 

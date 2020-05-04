@@ -2,10 +2,8 @@ package com.tata.bank.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.android.material.snackbar.Snackbar
 import com.tata.bank.R
-import com.tata.bank.login.UserAccount
-import com.tata.bank.utils.toAgencyFormat
-import com.tata.bank.utils.toReais
 import kotlinx.android.synthetic.main.activity_main.*
 
 interface MainActivityInput {
@@ -25,6 +23,10 @@ class MainActivity : AppCompatActivity(), MainActivityInput {
 
         MainConfigurator.INSTANCE.configure(this)
 
+        setupUi()
+    }
+
+    private fun setupUi() {
         adapter = MainAdapter(listOf())
         rv_statements.adapter = adapter
 
@@ -46,6 +48,6 @@ class MainActivity : AppCompatActivity(), MainActivityInput {
     }
 
     override fun displayError(message: String) {
-        // TODO check how to display error on this view
+        Snackbar.make(window.decorView.rootView, message, Snackbar.LENGTH_LONG)
     }
 }

@@ -34,7 +34,6 @@ class LoginInteractor : LoginInteractorInput {
 
     private fun fetchLogin(user: String, password: String) {
         val credentials = LoginCredentials(user, password)
-//            val credentials = LoginCredentials("test_user", "Test@1")
 
         val response = ApiFactory.api
             .login(credentials)

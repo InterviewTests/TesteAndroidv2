@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.tata.bank.login.UserAccount
 import com.tata.bank.network.ApiFactory
 import com.tata.bank.repository.Repository
+import com.tata.bank.utils.Extra
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
@@ -14,17 +15,18 @@ interface MainInteractorInput {
     fun logout()
 }
 
-class MainInteractor: MainInteractorInput {
+class MainInteractor : MainInteractorInput {
 
     lateinit var output: MainPresenterInput
     lateinit var context: Context
-    private val repository by lazy { Repository(context) }
+    private val repository = Repository(context)
 
     override fun handleUserData(bundle: Bundle) {
-        val userAccount = bundle.getParcelable<UserAccount>("user_extra") as UserAccount
-        output.handleAccountDetails(userAccount)
-
-        fetchStatements(userAccount.userId)
+        val userAccount = bundle.getParcelable(Extra.USER.value) as? UserAccount
+        userAccount?.let {
+            output.handleAccountDetails(it)
+            fetchStatements(it.userId)
+        }
     }
 
     override fun logout() {
