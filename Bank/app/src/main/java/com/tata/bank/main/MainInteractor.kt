@@ -6,6 +6,7 @@ import com.tata.bank.login.UserAccount
 import com.tata.bank.network.ApiFactory
 import com.tata.bank.repository.Repository
 import com.tata.bank.utils.Extra
+import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
@@ -30,8 +31,17 @@ class MainInteractor : MainInteractorInput {
     }
 
     override fun logout() {
+        Completable.fromAction(this::cleanDatabase)
+            .subscribeOn(Schedulers.io())
+            .subscribe({
+                output.presentLogoutDone()
+            }, {
+                onError(it)
+            })
+    }
+
+    private fun cleanDatabase() {
         repository.cleanStoredCredentials()
-        output.presentLogoutDone()
     }
 
     private fun fetchStatements(userId: Int) {

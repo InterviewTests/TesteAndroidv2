@@ -38,7 +38,6 @@ class Repository(context: Context) {
             .filter { it.isNotEmpty() }
             .map {
                 val credentialsJson = it.first().credentials
-
                 val credentials = gson.fromJson(credentialsJson, CipherData::class.java)
 
                 val decryptedBytes = security.decrypt(credentials)
