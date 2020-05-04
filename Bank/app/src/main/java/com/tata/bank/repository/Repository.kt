@@ -1,13 +1,21 @@
 package com.tata.bank.repository
 
 import android.content.Context
+import android.os.Build
 import com.tata.bank.login.LoginCredentials
 import com.tata.bank.security.SecurityWorker
+import com.tata.bank.security.SecurityWorkerLegacy
 
 class Repository(private val context: Context) {
 
     private val preferences by lazy { Preferences(context) }
-    private val security by lazy { SecurityWorker(context) }
+    private val security by lazy {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            SecurityWorker(context)
+        } else {
+            SecurityWorkerLegacy(context)
+        }
+    }
 
     fun saveCredentials(loginCredentials: LoginCredentials) {
         val login = "${loginCredentials.user}&${loginCredentials.password}"
