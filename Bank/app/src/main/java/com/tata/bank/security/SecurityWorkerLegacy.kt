@@ -15,47 +15,18 @@ import javax.crypto.CipherInputStream
 import javax.crypto.CipherOutputStream
 import javax.security.auth.x500.X500Principal
 
-class SecurityWorkerLegacy(val context: Context) : SecurityWorkerContract {
+class SecurityWorkerLegacy(val context: Context) : ISecurityWorker {
 
     val ALIAS = "com.security"
     val KEYSTORE_PROVIDER = "AndroidKeyStore"
     val CIPHER_PROVIDER = "AndroidOpenSSL"
     val CIPHER_TRANSFORMATION = "RSA/ECB/PKCS1Padding"
-
-    private fun getKey(): KeyStore.PrivateKeyEntry? {
-        val keyStore: KeyStore = KeyStore.getInstance(KEYSTORE_PROVIDER)
-        keyStore.load(null)
-
-        return keyStore.getEntry(ALIAS, null) as? KeyStore.PrivateKeyEntry
-    }
-
-    private fun generateKey() {
-        val keyStore = KeyStore.getInstance(KEYSTORE_PROVIDER)
-        keyStore.load(null)
-
-        val start = Calendar.getInstance()
-        val end = Calendar.getInstance()
-
-        end.add(Calendar.YEAR, 10)
-
-        val spec = KeyPairGeneratorSpec.Builder(context)
-            .setAlias(ALIAS)
-            .setSubject(X500Principal("CN=$ALIAS, O=Android Authority"))
-            .setSerialNumber(BigInteger(1024, Random()))
-            .setStartDate(start.time)
-            .setEndDate(end.time)
-//            .setEncryptionRequired() // set this to require PIN on device
-            .build()
-        val generator =
-            KeyPairGenerator.getInstance("RSA", KEYSTORE_PROVIDER)
-        generator.initialize(spec)
-        generator.generateKeyPair()
-    }
+    val ALGORITHM = "RSA"
 
     override fun encrypt(decryptedBytes: ByteArray): CipherData {
         generateKey()
 
-        val publicKey = getKey()?.certificate?.publicKey as RSAPublicKey
+        val publicKey = getKey()?.certificate?.publicKey as? RSAPublicKey
         val cipher = Cipher.getInstance(CIPHER_TRANSFORMATION, CIPHER_PROVIDER)
         cipher.init(Cipher.ENCRYPT_MODE, publicKey)
         val outputStream = ByteArrayOutputStream()
@@ -73,8 +44,9 @@ class SecurityWorkerLegacy(val context: Context) : SecurityWorkerContract {
         val cipher = Cipher.getInstance(CIPHER_TRANSFORMATION, CIPHER_PROVIDER)
         cipher.init(Cipher.DECRYPT_MODE, privateKey)
 
-        val cipherInputStream =
-            CipherInputStream(ByteArrayInputStream(encryptedData.encrypted), cipher)
+        val cipherInputStream = CipherInputStream(
+            ByteArrayInputStream(encryptedData.encrypted),
+            cipher)
         val arrayList = ArrayList<Byte>()
         var nextByte: Int?
         while (cipherInputStream.read().also { nextByte = it } != -1) {
@@ -89,5 +61,34 @@ class SecurityWorkerLegacy(val context: Context) : SecurityWorkerContract {
         }
 
         return decryptedBytes
+    }
+
+    private fun getKey(): KeyStore.PrivateKeyEntry? {
+        val keyStore: KeyStore = KeyStore.getInstance(KEYSTORE_PROVIDER)
+        keyStore.load(null)
+
+        return keyStore.getEntry(ALIAS, null) as? KeyStore.PrivateKeyEntry
+    }
+
+    private fun generateKey() {
+        val keyStore = KeyStore.getInstance(KEYSTORE_PROVIDER)
+        keyStore.load(null)
+
+        val start = Calendar.getInstance()
+        val end = Calendar.getInstance()
+        end.add(Calendar.YEAR, 10)
+
+        val spec = KeyPairGeneratorSpec.Builder(context)
+            .setAlias(ALIAS)
+            .setSubject(X500Principal("CN=$ALIAS, O=Android Authority"))
+            .setSerialNumber(BigInteger(1024, Random()))
+            .setStartDate(start.time)
+            .setEndDate(end.time)
+//            .setEncryptionRequired() // set this to require PIN on device
+            .build()
+        val generator =
+            KeyPairGenerator.getInstance(ALGORITHM, KEYSTORE_PROVIDER)
+        generator.initialize(spec)
+        generator.generateKeyPair()
     }
 }

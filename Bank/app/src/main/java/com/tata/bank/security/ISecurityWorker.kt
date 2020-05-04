@@ -1,6 +1,6 @@
 package com.tata.bank.security
 
-interface SecurityWorkerContract {
+interface ISecurityWorker {
     fun encrypt(decryptedBytes: ByteArray): CipherData
     fun decrypt(encryptedData: CipherData): ByteArray?
 }

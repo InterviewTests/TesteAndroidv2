@@ -10,7 +10,7 @@ import javax.crypto.*
 import javax.crypto.spec.GCMParameterSpec
 
 @RequiresApi(Build.VERSION_CODES.M)
-class SecurityWorker(val context: Context) : SecurityWorkerContract {
+class SecurityWorker(val context: Context) : ISecurityWorker {
 
     private val ALIAS = "com.security"
     private val KEYSTORE_PROVIDER = "AndroidKeyStore"
