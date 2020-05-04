@@ -20,6 +20,10 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
 
         LoginConfigurator.INSTANCE.configure(this)
 
+        setupUi()
+    }
+
+    private fun setupUi() {
         output.verifyLogin()
         btn_login.setOnClickListener { performLogin() }
     }
@@ -27,6 +31,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
     private fun performLogin() {
         tv_error.visibility = View.GONE
         pb_loading.visibility = View.VISIBLE
+        btn_login.isEnabled = false
 
         val user = et_name.text.toString()
         val password = et_password.text.toString()
@@ -36,6 +41,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
     override fun displayError(message: String) {
         tv_error.visibility = View.VISIBLE
         pb_loading.visibility = View.GONE
+        btn_login.isEnabled = true
 
         tv_error.text = message
     }

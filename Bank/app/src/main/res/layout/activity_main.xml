@@ -77,7 +77,7 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="18dp"
         android:text="@string/recent"
-        android:textColor="@color/darkGrayText"
+        android:textColor="@color/darkGray"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

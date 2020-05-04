@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#3B48EE</color>
     <color name="colorAccent">#3B48EE</color>
 
-    <color name="border">#DCE2EE</color>
+    <color name="lightGray">#DCE2EE</color>
+    <color name="darkGray">#485465</color>
     <color name="lightGrayText">#A8B4C4</color>
-    <color name="darkGrayText">#485465</color>
 
 </resources>

@@ -7,7 +7,6 @@ import java.lang.ref.WeakReference
 
 interface MainPresenterInput {
     fun handleAccountDetails(userAccount: UserAccount)
-
     fun presentSuccess(statementResponse: StatementResponse?)
     fun presentStatusError(code: Int)
     fun presentError(error: Throwable)

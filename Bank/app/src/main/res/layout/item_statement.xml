@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="17dp"
                 android:layout_marginBottom="17dp"
-                android:textColor="@color/darkGrayText"
+                android:textColor="@color/darkGray"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="17dp"
                 android:layout_marginBottom="17dp"
-                android:textColor="@color/darkGrayText"
+                android:textColor="@color/darkGray"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />

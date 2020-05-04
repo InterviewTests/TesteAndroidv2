@@ -19,7 +19,7 @@ class MainInteractor : MainInteractorInput {
 
     lateinit var output: MainPresenterInput
     lateinit var context: Context
-    private val repository = Repository(context)
+    private val repository by lazy { Repository(context) }
 
     override fun handleUserData(bundle: Bundle) {
         val userAccount = bundle.getParcelable(Extra.USER.value) as? UserAccount
