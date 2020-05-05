@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 import com.joaoneto.testeandroidv2.R
+import com.joaoneto.testeandroidv2.ViewModelProviderFactory
 import com.joaoneto.testeandroidv2.databinding.ActivityMainBinding
 import com.joaoneto.testeandroidv2.loginscreen.model.UserAccountModel
 import com.joaoneto.testeandroidv2.loginscreen.view.activity.LoginActivity
@@ -19,11 +20,16 @@ import com.joaoneto.testeandroidv2.mainscreen.view.adapter.StatementsAdapter
 import com.joaoneto.testeandroidv2.mainscreen.viewModel.MainViewModel
 import com.joaoneto.testeandroidv2.util.system.Formatter
 import com.joaoneto.testeandroidv2.util.system.SnackbarHelper
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
+
+    @Inject
+    lateinit var providerFactory: ViewModelProviderFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         binding.userAccount = userAccount
         binding.formatter = Formatter()
 
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this, providerFactory).get(MainViewModel::class.java)
         setUpAppBar()
         setUpView()
     }

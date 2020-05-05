@@ -19,6 +19,10 @@ android {
     dataBinding {
         enabled = true
     }
+
+    kapt {
+        generateStubs = true
+    }
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
@@ -38,6 +42,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //noinspection GradleDependency
     implementation 'com.google.android.material:material:1.0.0'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
@@ -46,6 +51,7 @@ dependencies {
     // architecture
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    //noinspection LifecycleAnnotationProcessorWithJava8
     kapt "androidx.lifecycle:lifecycle-compiler:2.2.0"
 
     //retrofit
@@ -54,4 +60,22 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.13.1'
 
+    //dagger
+    def daggerVer = 2.24 
+
+    implementation "com.google.dagger:dagger:$daggerVer"
+    implementation "com.google.dagger:dagger-android-support:$daggerVer"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVer"
+    kapt "com.google.dagger:dagger-compiler:$daggerVer"
+
+
+    // RxJava
+    def rxJavaVer = '2.1.1'
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVer"
+
+    // Rx-Retrofit Call Adapter
+    def rxCallAdapterVer = '2.5.0'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxCallAdapterVer" // Retrofit call adapter
 }
+
+

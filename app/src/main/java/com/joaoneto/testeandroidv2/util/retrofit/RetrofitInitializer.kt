@@ -1,5 +1,3 @@
-package com.joaoneto.testeandroidv2.util.retrofit
-
 import com.joaoneto.testeandroidv2.loginscreen.service.LoginService
 import com.joaoneto.testeandroidv2.mainscreen.service.StatementsService
 import okhttp3.OkHttpClient
