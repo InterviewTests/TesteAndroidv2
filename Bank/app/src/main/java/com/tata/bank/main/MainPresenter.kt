@@ -1,9 +1,11 @@
 package com.tata.bank.main
 
 import com.tata.bank.login.UserAccount
+import com.tata.bank.utils.dateFormat
 import com.tata.bank.utils.toAgencyFormat
 import com.tata.bank.utils.toReais
 import java.lang.ref.WeakReference
+import java.text.SimpleDateFormat
 
 interface MainPresenterInput {
     fun handleAccountDetails(userAccount: UserAccount)
