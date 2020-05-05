@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Bank</string>
+
+    <string name="login">Login</string>
+    <string name="hint_user">User</string>
+    <string name="hint_password">Password</string>
+
+    <string name="logout">Logout</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="recent">Recentes</string>
+
+</resources>
