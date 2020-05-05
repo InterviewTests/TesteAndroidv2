@@ -1,4 +1,4 @@
-package com.paulokeller.bankapp.statements
+package com.paulokeller.bankapp.ui.statements
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.paulokeller.bankapp.R
-import com.paulokeller.bankapp.models.Statement
+import com.paulokeller.bankapp.data.models.Statement
 import com.paulokeller.bankapp.utils.Utils
 
 class StatementsListAdapter(private val statementItemLayout: Int) : RecyclerView.Adapter<StatementsListAdapter.ViewHolder>() {

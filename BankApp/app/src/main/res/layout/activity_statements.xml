@@ -4,4 +4,4 @@
     android:id="@+id/container_statements"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".statements.StatementsActivity"/>
+    tools:context=".ui.statements.StatementsActivity"/>

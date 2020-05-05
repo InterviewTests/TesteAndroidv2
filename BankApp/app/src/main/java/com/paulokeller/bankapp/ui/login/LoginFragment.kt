@@ -1,4 +1,4 @@
-package com.paulokeller.bankapp.login
+package com.paulokeller.bankapp.ui.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,22 +10,27 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.paulokeller.bankapp.R
-import com.paulokeller.bankapp.models.Account
-import com.paulokeller.bankapp.models.AppState
-import com.paulokeller.bankapp.models.UserAccount
-import com.paulokeller.bankapp.repositories.Repository
-import com.paulokeller.bankapp.statements.StatementsActivity
+import com.paulokeller.bankapp.data.models.Account
+import com.paulokeller.bankapp.data.models.AppState
+import com.paulokeller.bankapp.data.models.UserAccount
+import com.paulokeller.bankapp.ui.statements.StatementsActivity
 import com.paulokeller.bankapp.utils.Utils
 import kotlinx.android.synthetic.main.login_fragment.*
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.instance
+import org.kodein.di.generic.kcontext
 
-class LoginFragment : Fragment() {
+class LoginFragment : Fragment(), KodeinAware {
+    override val kodeinContext = kcontext<Fragment> (this)
+    override val kodein by closestKodein()
+
+    private val viewModelFactory: LoginViewModelFactory by instance()
 
     companion object {
         fun newInstance() = LoginFragment()
     }
-
     private lateinit var viewModel: LoginViewModel
-    private lateinit var repository: Repository
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,10 +41,8 @@ class LoginFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-        repository = Repository(activity?.baseContext)
-
-        userTextField.setText(repository.getUser())
+        kodeinTrigger?.trigger()
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
 
         setupObserver()
 

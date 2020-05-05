@@ -1,23 +1,20 @@
-package com.paulokeller.bankapp.login
+package com.paulokeller.bankapp.ui.login
 
-import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.paulokeller.bankapp.models.Account
-import com.paulokeller.bankapp.models.AppState
-import com.paulokeller.bankapp.repositories.Repository
-import com.paulokeller.bankapp.services.Client
-import com.paulokeller.bankapp.services.UserDTO
+import com.paulokeller.bankapp.data.models.Account
+import com.paulokeller.bankapp.data.models.AppState
+import com.paulokeller.bankapp.data.models.UserDTO
+import com.paulokeller.bankapp.data.repositories.Repository
+import com.paulokeller.bankapp.data.services.Client
 import com.paulokeller.bankapp.utils.Utils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import javax.inject.Inject
 
 
-class LoginViewModel @Inject constructor(private val context: Context, private val client: Client) : ViewModel() {
+class LoginViewModel constructor(private val repository: Repository, private val client: Client) : ViewModel() {
     val loginState: MutableLiveData<AppState<Account>> = MutableLiveData()
-    val repository = Repository(context)
 
     fun login(user: String, password: String) {
         if (!Utils.validatePassword(password) || user.trim().isEmpty()) {

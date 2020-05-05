@@ -1,17 +1,17 @@
-package com.paulokeller.bankapp.statements
+package com.paulokeller.bankapp.ui.statements
 
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.paulokeller.bankapp.models.AppState
-import com.paulokeller.bankapp.models.Statements
-import com.paulokeller.bankapp.services.Client
+import com.paulokeller.bankapp.data.models.AppState
+import com.paulokeller.bankapp.data.models.Statements
+import com.paulokeller.bankapp.data.services.Client
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class StatementsViewModel @Inject constructor(private val context: Context, private val client: Client) : ViewModel() {
+class StatementsViewModel constructor(private val client: Client) : ViewModel() {
     val statementsState: MutableLiveData<AppState<Statements>> = MutableLiveData()
 
     fun fetchStatements() {

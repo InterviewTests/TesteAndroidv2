@@ -1,4 +1,4 @@
-package com.paulokeller.bankapp.models
+package com.paulokeller.bankapp.data.models
 
 import com.google.gson.annotations.SerializedName
 

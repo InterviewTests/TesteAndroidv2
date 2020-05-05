@@ -1,9 +1,9 @@
 package com.paulokeller.bankapp
 
 import androidx.lifecycle.*
-import com.paulokeller.bankapp.login.LoginViewModel
-import com.paulokeller.bankapp.models.Account
-import com.paulokeller.bankapp.models.AppState
+import com.paulokeller.bankapp.ui.login.LoginViewModel
+import com.paulokeller.bankapp.data.models.Account
+import com.paulokeller.bankapp.data.models.AppState
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4

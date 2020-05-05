@@ -1,4 +1,4 @@
-package com.paulokeller.bankapp.statements
+package com.paulokeller.bankapp.ui.statements
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,13 +12,22 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.paulokeller.bankapp.R
-import com.paulokeller.bankapp.login.LoginActivity
-import com.paulokeller.bankapp.models.AppState
-import com.paulokeller.bankapp.models.Statements
+import com.paulokeller.bankapp.ui.login.LoginActivity
+import com.paulokeller.bankapp.data.models.AppState
+import com.paulokeller.bankapp.data.models.Statements
 import kotlinx.android.synthetic.main.statements_fragment.*
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.instance
+import org.kodein.di.generic.kcontext
 
 
-class StatementsFragment : Fragment() {
+class StatementsFragment : Fragment(), KodeinAware {
+    override val kodeinContext = kcontext<Fragment> (this)
+    override val kodein by closestKodein()
+
+    private val viewModelFactory: StatementsViewModelFactory by instance()
+
     private var adapter: StatementsListAdapter? = null
 
     companion object {
@@ -36,7 +45,8 @@ class StatementsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(StatementsViewModel::class.java)
+        kodeinTrigger?.trigger()
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(StatementsViewModel::class.java)
 
         setupRecycler()
         setupObserver()

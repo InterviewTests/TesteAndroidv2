@@ -1,4 +1,4 @@
-package com.paulokeller.bankapp.statements
+package com.paulokeller.bankapp.ui.statements
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

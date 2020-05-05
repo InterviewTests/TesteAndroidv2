@@ -1,16 +1,10 @@
-package com.paulokeller.bankapp.login
+package com.paulokeller.bankapp.ui.login
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.paulokeller.bankapp.R
-import dagger.android.support.DaggerAppCompatActivity
-import javax.inject.Inject
 
-
-class LoginActivity : DaggerAppCompatActivity() {
-
-    @Inject
-    lateinit var viewModel: LoginViewModel
-
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
