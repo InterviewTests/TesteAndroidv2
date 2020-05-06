@@ -6,11 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import br.com.raphael.everis.R
 import br.com.raphael.everis.extensions.hideKeyboard
 import br.com.raphael.everis.extensions.toCurrency
@@ -28,7 +27,7 @@ class StatementsFragment : Fragment() {
         )
     }
 
-    private lateinit var viewModel: StatementsViewModel
+    private val viewModel: StatementsViewModel by viewModels()
     private val args: StatementsFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -40,7 +39,6 @@ class StatementsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(StatementsViewModel::class.java)
 
         view.hideKeyboard()
 
