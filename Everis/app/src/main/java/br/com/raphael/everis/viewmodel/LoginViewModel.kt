@@ -8,14 +8,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import br.com.raphael.everis.App
 import br.com.raphael.everis.R
-import br.com.raphael.everis.extensions.isNumeric
-import br.com.raphael.everis.extensions.isValidCPF
-import br.com.raphael.everis.extensions.isValidEmail
-import br.com.raphael.everis.extensions.isValidPassword
-import br.com.raphael.everis.helpers.FormatarAgency
+import br.com.raphael.everis.extensions.*
 import br.com.raphael.everis.model.FieldError
 import br.com.raphael.everis.model.User
 import br.com.raphael.everis.model.UserAccount
+import br.com.raphael.everis.model.enums.Constants
 import br.com.raphael.everis.repository.BackendRepository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -63,11 +60,11 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     init {
         getApplication<App>().component.inject(this)
 
-        if (!preferences.getString("name", "").isNullOrEmpty()) {
+        if (!preferences.getString(Constants.NAME.value, "").isNullOrEmpty()) {
             _data.postValue(
                 User(
-                    name = preferences.getString("name", "") ?: "",
-                    desc = FormatarAgency.formatAgency(getApplication<App>().applicationContext,preferences.getString("agency", "") ?: "", preferences.getString("bankAccount", "") ?: "")
+                    name = (preferences.getString("name", "") ?: "").decrypt(),
+                    desc = getApplication<App>().applicationContext.formatAgency((preferences.getString(Constants.AGENCY.value, "") ?: "").decrypt(), (preferences.getString(Constants.BANK_ACCOUNT.value, "") ?: "").decrypt())
                 )
             )
         }
@@ -87,9 +84,9 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                         _success.postValue(response.userAccount)
 
                         preferences.edit()
-                            .putString("name", response.userAccount.name)
-                            .putString("agency", response.userAccount.agency)
-                            .putString("bankAccount", response.userAccount.bankAccount)
+                            .putString(Constants.NAME.value, response.userAccount.name.encrypt())
+                            .putString(Constants.AGENCY.value, response.userAccount.agency.encrypt())
+                            .putString(Constants.BANK_ACCOUNT.value, response.userAccount.bankAccount.encrypt())
                             .apply()
                     }
                     _loading.postValue(false)

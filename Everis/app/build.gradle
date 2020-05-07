@@ -6,18 +6,16 @@ apply {
     plugin "androidx.navigation.safeargs.kotlin"
 }
 
-sourceCompatibility = 1.8
-
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "br.com.raphael.everis"
-        minSdkVersion 19
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -110,4 +108,7 @@ dependencies {
 
     // Robolectric
     testImplementation "org.robolectric:robolectric:$rootProject.robolectric"
+
+    //cryptography
+    implementation "org.bouncycastle:bcprov-jdk15on:$rootProject.cryptography"
 }

@@ -11,7 +11,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import br.com.raphael.everis.R
 import br.com.raphael.everis.viewmodel.LoginViewModel
@@ -36,37 +35,10 @@ class LoginFragment : Fragment() {
         observerError()
         observerSuccess()
         observerLoading()
-
         observerData()
 
-        btn_login.setOnClickListener {
-            login()
-        }
-
-        til_user.editText?.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-                viewModel.setUser(s.toString())
-            }
-        })
-
-        til_password.editText?.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-                viewModel.setPassword(s.toString())
-            }
-        })
-
-        tie_password.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                login()
-                true
-            } else false
-        }
+        setupButton()
+        setupEditText()
     }
 
     private fun observerError(){
@@ -97,6 +69,49 @@ class LoginFragment : Fragment() {
         })
     }
 
+    private fun observerData(){
+        viewModel.data.observe(viewLifecycleOwner, Observer {
+            it.let {
+                cl_data.isVisible = true
+                tv_name.text = it.name
+                tv_agency.text = it.desc
+            }
+        })
+    }
+
+    private fun setupButton(){
+        btn_login.setOnClickListener {
+            login()
+        }
+    }
+
+    private fun setupEditText(){
+        til_user.editText?.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                viewModel.setUser(s.toString())
+            }
+        })
+
+        til_password.editText?.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                viewModel.setPassword(s.toString())
+            }
+        })
+
+        tie_password.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                login()
+                true
+            } else false
+        }
+    }
+
     private fun login(){
         btn_login.isEnabled = false
         viewModel.postLogin().forEach { fieldError ->
@@ -112,15 +127,4 @@ class LoginFragment : Fragment() {
             }
         }
     }
-
-    private fun observerData(){
-        viewModel.data.observe(viewLifecycleOwner, Observer {
-            it.let {
-                cl_data.isVisible = true
-                tv_name.text = it.name
-                tv_agency.text = it.desc
-            }
-        })
-    }
-
 }

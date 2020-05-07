@@ -11,9 +11,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.raphael.everis.R
+import br.com.raphael.everis.extensions.formatAgency
 import br.com.raphael.everis.extensions.hideKeyboard
 import br.com.raphael.everis.extensions.toCurrency
-import br.com.raphael.everis.helpers.FormatarAgency
 import br.com.raphael.everis.ui.adapters.StatementsAdapter
 import br.com.raphael.everis.viewmodel.StatementsViewModel
 import cn.pedant.SweetAlert.SweetAlertDialog
@@ -89,7 +89,7 @@ class StatementsFragment : Fragment() {
 
     private fun popularData(){
         tv_nome.text = args.userAccount.name
-        tv_conta.text = FormatarAgency.formatAgency(requireContext(), args.userAccount.agency, args.userAccount.bankAccount)
+        tv_conta.text = requireContext().formatAgency(args.userAccount.agency, args.userAccount.bankAccount)
         tv_saldo.text = args.userAccount.balance.toCurrency
         viewModel.getStatements(args.userAccount.userId)
     }

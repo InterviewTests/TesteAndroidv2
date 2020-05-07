@@ -39,3 +39,4 @@ open class App : MultiDexApplication(), Application.ActivityLifecycleCallbacks {
         component.inject(this)
     }
 }
+
