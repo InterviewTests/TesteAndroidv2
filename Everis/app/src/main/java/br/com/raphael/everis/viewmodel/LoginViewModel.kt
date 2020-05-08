@@ -14,6 +14,7 @@ import br.com.raphael.everis.model.User
 import br.com.raphael.everis.model.UserAccount
 import br.com.raphael.everis.model.enums.Constants
 import br.com.raphael.everis.repository.BackendRepository
+import br.com.raphael.everis.helpers.Cryptography
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -57,14 +58,17 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     @Inject
     lateinit var preferences: SharedPreferences
 
+    lateinit var crypto : Cryptography
+
     init {
         getApplication<App>().component.inject(this)
+        crypto = Cryptography(getApplication<App>().applicationContext)
 
         if (!preferences.getString(Constants.NAME.value, "").isNullOrEmpty()) {
             _data.postValue(
                 User(
-                    name = (preferences.getString("name", "") ?: "").decrypt(),
-                    desc = getApplication<App>().applicationContext.formatAgency((preferences.getString(Constants.AGENCY.value, "") ?: "").decrypt(), (preferences.getString(Constants.BANK_ACCOUNT.value, "") ?: "").decrypt())
+                    name = crypto.decryptData(preferences.getString("name", "") ?: ""),
+                    desc = getApplication<App>().applicationContext.formatAgency(crypto.decryptData(preferences.getString(Constants.AGENCY.value, "") ?: ""), crypto.decryptData(preferences.getString(Constants.BANK_ACCOUNT.value, "") ?: ""))
                 )
             )
         }
@@ -84,9 +88,9 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                         _success.postValue(response.userAccount)
 
                         preferences.edit()
-                            .putString(Constants.NAME.value, response.userAccount.name.encrypt())
-                            .putString(Constants.AGENCY.value, response.userAccount.agency.encrypt())
-                            .putString(Constants.BANK_ACCOUNT.value, response.userAccount.bankAccount.encrypt())
+                            .putString(Constants.NAME.value, crypto.encryptData(response.userAccount.name))
+                            .putString(Constants.AGENCY.value, crypto.encryptData(response.userAccount.agency))
+                            .putString(Constants.BANK_ACCOUNT.value, crypto.encryptData(response.userAccount.bankAccount))
                             .apply()
                     }
                     _loading.postValue(false)
