@@ -1,0 +1,114 @@
+apply {
+    plugin 'com.android.application'
+    plugin 'kotlin-android'
+    plugin 'kotlin-android-extensions'
+    plugin 'kotlin-kapt'
+    plugin "androidx.navigation.safeargs.kotlin"
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "br.com.raphael.everis"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'BASE_URL', BaseUrl
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            buildConfigField 'String', 'BASE_URL', BaseUrl
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+    kotlinOptions {
+        jvmTarget = 1.8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation "junit:junit:$rootProject.junit"
+
+    // Androidx
+    implementation "androidx.appcompat:appcompat:$rootProject.appcompat"
+    implementation "androidx.core:core-ktx:$rootProject.androidx_core"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.androidx_constraint"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.androidx_legacy"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.androidx_lifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.androidx_lifecycle"
+    implementation "androidx.multidex:multidex:$rootProject.androidx_multidex"
+    testImplementation "androidx.test:core:$rootProject.androidx_test"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.androidx_test_ext"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.androidx_test_espresso"
+
+    // Material Designer
+    implementation "com.google.android.material:material:$rootProject.material"
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.androidx_fragment"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.androidx_ui"
+
+    // Dagger
+    implementation "com.google.dagger:dagger:$rootProject.dagger"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofit"
+
+    // Gson
+    implementation "com.google.code.gson:gson:$rootProject.gson"
+
+    // OKHTTP3
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp"
+
+    // Anko Commons
+    implementation "org.jetbrains.anko:anko-commons:$rootProject.anko"
+
+    // Sweet Alert Dialog
+    implementation "com.github.f0ris.sweetalert:library:$rootProject.sweet_alert"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutines"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.coroutines"
+
+    //Core Library
+    androidTestImplementation "android.arch.core:core-testing:$rootProject.arch"
+    testImplementation "android.arch.core:core-testing:$rootProject.arch"
+
+    // Mockito
+    testImplementation "org.mockito:mockito-core:$rootProject.mockito"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$rootProject.mockito_kotlin"
+    androidTestImplementation "org.mockito:mockito-core:$rootProject.mockito"
+    androidTestImplementation "org.mockito:mockito-android:$rootProject.mockito"
+
+    //JUnitRunner and JUnitRules
+    androidTestImplementation "androidx.test:runner:$rootProject.runner"
+    androidTestImplementation "androidx.test:rules:$rootProject.runner"
+
+    // Multidex
+    implementation "com.android.support:multidex:$rootProject.multidex"
+
+    // Robolectric
+    testImplementation "org.robolectric:robolectric:$rootProject.robolectric"
+
+    //cryptography
+    implementation "org.bouncycastle:bcprov-jdk15on:$rootProject.cryptography"
+}

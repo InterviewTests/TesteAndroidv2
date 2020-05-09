@@ -1,0 +1,99 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Button01">
+        <item name="android:layout_width">202dp</item>
+        <item name="android:layout_height">62dp</item>
+        <item name="android:layout_marginBottom">32dp</item>
+        <item name="android:background">@color/background01</item>
+        <item name="android:textColor">@color/textColor01</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Input01" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+    </style>
+
+    <style name="TextoTipo01">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">18dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:layout_marginEnd">18dp</item>
+        <item name="android:textColor">@color/textColor01</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextoTipo02">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textColor01</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextoTipo03">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textColor01</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextoTipo04">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">18dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:textColor">@color/textColor02</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextoTipo5">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/textColor03</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextoTipo06">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">20dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">end</item>
+        <item name="android:textColor">@color/textColor03</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextoTipo07">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/textColor02</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextoTipo08">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">end</item>
+        <item name="android:textColor">@color/textColor02</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+
+</resources>
