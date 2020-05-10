@@ -1,11 +1,11 @@
-package com.lucianogiardino.bankapp.ui.login
+package com.lucianogiardino.bankapp.presentation.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.lucianogiardino.bankapp.R
-import com.lucianogiardino.bankapp.ui.statement.StatementActivity
+import com.lucianogiardino.bankapp.presentation.statement.StatementActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf

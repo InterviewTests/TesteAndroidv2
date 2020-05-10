@@ -1,4 +1,4 @@
-package com.lucianogiardino.bankapp.ui.statement
+package com.lucianogiardino.bankapp.presentation.statement
 
 import com.lucianogiardino.bankapp.domain.model.Statement
 
@@ -23,11 +23,19 @@ interface StatementContract {
 
     interface UseCase{
         interface FetchStatement{
-            fun execute(listener: StatementContract.Presenter.OnFetchStatementResponse)
+            fun execute(listener: Presenter.OnFetchStatementResponse)
+        }
+
+        interface OnFetchStatementResponse{
+            fun onFetchStatementResponseSuccess(statementList: ArrayList<Statement>)
+            fun onFetchStatementResponseFailed(error: String)
         }
         interface Logout{
             fun execute()
         }
+    }
 
+    interface Repository {
+        fun fetchStatement(useCase: UseCase.OnFetchStatementResponse)
     }
 }

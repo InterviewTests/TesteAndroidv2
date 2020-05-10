@@ -1,10 +1,8 @@
 package com.lucianogiardino.bankapp
 
 import com.lucianogiardino.bankapp.di.appModule
-import com.lucianogiardino.bankapp.domain.model.Statement
-import com.lucianogiardino.bankapp.ui.login.LoginContract
-import com.lucianogiardino.bankapp.ui.login.LoginPresenter
-import com.lucianogiardino.bankapp.ui.statement.StatementContract
+import com.lucianogiardino.bankapp.presentation.login.LoginContract
+import com.lucianogiardino.bankapp.presentation.login.LoginPresenter
 import com.nhaarman.mockitokotlin2.eq
 import org.junit.After
 import org.junit.Before

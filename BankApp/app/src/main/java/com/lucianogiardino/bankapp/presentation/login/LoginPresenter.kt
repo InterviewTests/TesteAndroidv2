@@ -1,10 +1,6 @@
-package com.lucianogiardino.bankapp.ui.login
+package com.lucianogiardino.bankapp.presentation.login
 
 import com.lucianogiardino.bankapp.domain.model.UserAccount
-import com.lucianogiardino.bankapp.domain.usecase.HasLoggedUserUseCase
-import com.lucianogiardino.bankapp.domain.usecase.LoginUseCase
-import com.lucianogiardino.bankapp.domain.usecase.SaveLoggedUserUseCase
-import com.lucianogiardino.bankapp.domain.usecase.ValidateUserUseCase
 
 class LoginPresenter(
     private var view: LoginContract.View,

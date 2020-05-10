@@ -2,10 +2,8 @@ package com.lucianogiardino.bankapp
 
 import com.lucianogiardino.bankapp.di.appModule
 import com.lucianogiardino.bankapp.domain.model.Statement
-import com.lucianogiardino.bankapp.domain.usecase.FetchStatementUseCase
-import com.lucianogiardino.bankapp.domain.usecase.LogoutUseCase
-import com.lucianogiardino.bankapp.ui.statement.StatementContract
-import com.lucianogiardino.bankapp.ui.statement.StatementPresenter
+import com.lucianogiardino.bankapp.presentation.statement.StatementContract
+import com.lucianogiardino.bankapp.presentation.statement.StatementPresenter
 import org.junit.After
 import org.junit.Before
 import org.junit.Test

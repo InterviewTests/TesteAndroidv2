@@ -1,4 +1,4 @@
-package com.lucianogiardino.bankapp.ui.login
+package com.lucianogiardino.bankapp.presentation.login
 
 import com.lucianogiardino.bankapp.domain.model.UserAccount
 
@@ -41,8 +41,17 @@ interface LoginContract {
             fun execute(listener: Presenter.OnLoginResponse, username: String, password: String)
         }
 
+        interface OnLoginUserResponse{
+            fun onLoginResponseSuccess(userAccount: UserAccount)
+            fun onLoginResponseFailed(msg: String)
+        }
+
         interface SaveLoggedUser{
             fun execute(userAccount: UserAccount)
         }
+    }
+
+    interface Repository{
+        fun login(listener: UseCase.OnLoginUserResponse, username: String, password: String)
     }
 }

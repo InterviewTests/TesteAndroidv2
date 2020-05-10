@@ -1,4 +1,4 @@
-package com.lucianogiardino.bankapp.ui.statement
+package com.lucianogiardino.bankapp.presentation.statement
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lucianogiardino.bankapp.R
 import com.lucianogiardino.bankapp.domain.model.Statement
 import com.lucianogiardino.bankapp.domain.model.User
-import com.lucianogiardino.bankapp.ui.login.LoginActivity
+import com.lucianogiardino.bankapp.presentation.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_statement.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf

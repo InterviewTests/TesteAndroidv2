@@ -2,7 +2,7 @@ package com.lucianogiardino.bankapp.domain.usecase
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.lucianogiardino.bankapp.ui.statement.StatementContract
+import com.lucianogiardino.bankapp.presentation.statement.StatementContract
 
 
 class LogoutUseCase(private val context: Context): StatementContract.UseCase.Logout {

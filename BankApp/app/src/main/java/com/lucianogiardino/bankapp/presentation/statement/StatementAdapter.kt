@@ -1,4 +1,4 @@
-package com.lucianogiardino.bankapp.ui.statement
+package com.lucianogiardino.bankapp.presentation.statement
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,8 +10,6 @@ import com.lucianogiardino.bankapp.domain.model.Statement
 import kotlinx.android.synthetic.main.statement_item.view.*
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 

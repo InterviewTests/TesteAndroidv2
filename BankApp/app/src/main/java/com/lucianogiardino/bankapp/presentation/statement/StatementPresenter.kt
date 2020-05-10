@@ -1,9 +1,6 @@
-package com.lucianogiardino.bankapp.ui.statement
+package com.lucianogiardino.bankapp.presentation.statement
 
-import android.util.Log
 import com.lucianogiardino.bankapp.domain.model.Statement
-import com.lucianogiardino.bankapp.domain.usecase.FetchStatementUseCase
-import com.lucianogiardino.bankapp.domain.usecase.LogoutUseCase
 
 class StatementPresenter(
     private var view: StatementContract.View,

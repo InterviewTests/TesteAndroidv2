@@ -1,35 +1,23 @@
 package com.lucianogiardino.bankapp.domain.usecase
 
-import com.lucianogiardino.bankapp.data.RetrofitClient
-import com.lucianogiardino.bankapp.ui.login.LoginContract
-import com.lucianogiardino.bankapp.domain.model.LoginResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.lucianogiardino.bankapp.domain.model.UserAccount
+import com.lucianogiardino.bankapp.presentation.login.LoginContract
 
-class LoginUseCase: LoginContract.UseCase.LoginUser {
+
+class LoginUseCase(private val loginRepository: LoginContract.Repository): LoginContract.UseCase.LoginUser, LoginContract.UseCase.OnLoginUserResponse {
+
+    private lateinit var listener: LoginContract.Presenter.OnLoginResponse
 
     override fun execute(listener: LoginContract.Presenter.OnLoginResponse, username: String, password: String){
+        this.listener = listener
+        loginRepository.login(this,username,password)
+    }
 
-        RetrofitClient.instance.login(username,password).enqueue(
-            object: Callback<LoginResponse>{
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    listener.onLoginResponseFailed("Falha ao tentar efetuar o login")
-                }
-                override fun onResponse(call: Call<LoginResponse>,
-                                        response: Response<LoginResponse>) {
+    override fun onLoginResponseSuccess(userAccount: UserAccount) {
+        listener.onLoginResponseSuccess(userAccount)
+    }
 
-                    var message: String? = response.body()?.error?.message
-                    var userAccount = response.body()!!.userAccount
-                    if(message != null){
-                        listener.onLoginResponseFailed(message)
-                    }else{
-                        listener.onLoginResponseSuccess(userAccount)
-                    }
-                }
-            }
-        )
-
-
+    override fun onLoginResponseFailed(msg: String) {
+        listener.onLoginResponseFailed(msg)
     }
 }

@@ -1,10 +1,12 @@
 package com.lucianogiardino.bankapp.di
 
+import com.lucianogiardino.bankapp.data.repository.LoginRepository
+import com.lucianogiardino.bankapp.data.repository.StatementRepository
 import com.lucianogiardino.bankapp.domain.usecase.*
-import com.lucianogiardino.bankapp.ui.login.LoginContract
-import com.lucianogiardino.bankapp.ui.login.LoginPresenter
-import com.lucianogiardino.bankapp.ui.statement.StatementContract
-import com.lucianogiardino.bankapp.ui.statement.StatementPresenter
+import com.lucianogiardino.bankapp.presentation.login.LoginContract
+import com.lucianogiardino.bankapp.presentation.login.LoginPresenter
+import com.lucianogiardino.bankapp.presentation.statement.StatementContract
+import com.lucianogiardino.bankapp.presentation.statement.StatementPresenter
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -29,10 +31,12 @@ val appModule = module{
     }
 
     single<LoginContract.UseCase.ValidateUser> { ValidateUserUseCase() }
-    single<LoginContract.UseCase.LoginUser> { LoginUseCase() }
+    single<LoginContract.UseCase.LoginUser> { LoginUseCase(get()) }
+    single<LoginContract.Repository> { LoginRepository()}
 
-    single<StatementContract.UseCase.FetchStatement> { FetchStatementUseCase() }
 
+    single<StatementContract.Repository> { StatementRepository()}
+    single<StatementContract.UseCase.FetchStatement> { FetchStatementUseCase(get()) }
     single<LoginContract.UseCase.HasLoggedUser> {
         HasLoggedUserUseCase(
             androidContext()

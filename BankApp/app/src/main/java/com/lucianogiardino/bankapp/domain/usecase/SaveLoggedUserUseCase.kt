@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.lucianogiardino.bankapp.domain.model.User
 import com.lucianogiardino.bankapp.domain.model.UserAccount
-import com.lucianogiardino.bankapp.ui.login.LoginContract
+import com.lucianogiardino.bankapp.presentation.login.LoginContract
 
 class SaveLoggedUserUseCase(private val context: Context): LoginContract.UseCase.SaveLoggedUser {
 
