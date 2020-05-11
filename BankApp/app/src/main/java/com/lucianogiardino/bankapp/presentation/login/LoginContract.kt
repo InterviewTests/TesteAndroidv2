@@ -6,15 +6,26 @@ interface LoginContract {
 
     interface View{
         fun showError(msg: String)
+        fun showUsernameError(hasError:Boolean, msg: String)
+        fun showPasswordError(hasError:Boolean, msg: String)
+        fun enableLogin()
         fun goToStatement()
     }
 
     interface Presenter{
 
-        fun validateUser(username: String, password: String)
-        interface OnValidateUserResponse{
-            fun onValidateUserResponseSuccess(username: String, password: String)
-            fun onValidateUserResponseFailed(msg: String)
+        fun validateUsername(username: String)
+
+        interface OnValidateUsernameResponse{
+            fun onValidateUsernameResponseSuccess(isValid: Boolean)
+            fun onValidateUsernameResponseFailed(msg: String)
+        }
+
+        fun validatePassword(password: String)
+
+        interface OnValidatePasswordResponse{
+            fun onValidatePasswordResponseSuccess(isValid: Boolean)
+            fun onValidatePasswordResponseFailed(msg: String)
         }
 
         fun login(username: String,password: String)
@@ -29,8 +40,12 @@ interface LoginContract {
 
     interface UseCase{
 
-        interface ValidateUser{
-            fun execute(listener: Presenter.OnValidateUserResponse, username:String, password: String)
+        interface ValidatePassword{
+            fun execute(listener: Presenter.OnValidatePasswordResponse, password: String)
+        }
+
+        interface ValidateUsername{
+            fun execute(listener: Presenter.OnValidateUsernameResponse, username: String)
         }
 
         interface HasLoggedUser{

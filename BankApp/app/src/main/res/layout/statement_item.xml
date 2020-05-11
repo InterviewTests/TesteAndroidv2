@@ -7,9 +7,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/card_border"
-    android:layout_marginTop="15dp"
     android:layout_marginStart="@dimen/content_padding"
     android:layout_marginEnd="@dimen/content_padding"
+    android:layout_marginBottom="16dp"
     app:cardCornerRadius="6dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">

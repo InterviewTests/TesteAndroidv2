@@ -18,6 +18,7 @@ val appModule = module{
             get(),
             get(),
             get(),
+            get(),
             get()
         )
      }
@@ -30,7 +31,9 @@ val appModule = module{
         )
     }
 
-    single<LoginContract.UseCase.ValidateUser> { ValidateUserUseCase() }
+    single<LoginContract.UseCase.ValidatePassword> { ValidatePasswordUseCase() }
+    single<LoginContract.UseCase.ValidateUsername> { ValidateUsernameUseCase() }
+
     single<LoginContract.UseCase.LoginUser> { LoginUseCase(get()) }
     single<LoginContract.Repository> { LoginRepository()}
 
