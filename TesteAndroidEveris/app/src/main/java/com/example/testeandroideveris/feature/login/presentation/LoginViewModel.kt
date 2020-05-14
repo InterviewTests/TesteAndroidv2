@@ -30,7 +30,7 @@ class LoginViewModel(private val useCase: LoginUseCase) : ViewModel() {
     }
 
     private fun validateValues(user: String, password: String) {
-        dataState.value = validate(LoginRequestData(user, password))
+        dataState.value = useCase.validate(LoginRequestData(user, password))
     }
 
     private fun doLogin(user: String, password: String) {
@@ -43,24 +43,8 @@ class LoginViewModel(private val useCase: LoginUseCase) : ViewModel() {
                         message = exception.message ?: "Error Occurred!"
                     )}
                     .collect { response -> login.value = Resource.success(data = response) }
-
             }
         }
-    }
-
-    private fun validate(loginRequest: LoginRequestData) = when {
-        loginRequest.user.isBlank() -> LoginDataState.INVALID_USER
-        !android.util.Patterns.EMAIL_ADDRESS.matcher(loginRequest.user).matches() -> LoginDataState.INVALID_USER
-        loginRequest.password.isBlank() -> LoginDataState.INVALID_PASSWORD
-        !isValidPassword(loginRequest.password) -> LoginDataState.INVALID_PASSWORD
-        else -> LoginDataState.VALID_SUCCESS
-    }
-
-    private fun isValidPassword(password: String): Boolean {
-        val PASSWORD_PATTERN: Pattern = Pattern.compile(
-            "[a-zA-Z0-9\\!\\@\\#\\$]{8,24}"
-        )
-        return PASSWORD_PATTERN.matcher(password).matches()
     }
 
 }

@@ -1,6 +1,6 @@
 package com.example.testeandroideveris.feature.login.data.datasource
 
-interface LocalDataSource {
+interface LoginLocalDataSource {
 
     fun saveUser(user: String)
     fun getUser(): String?

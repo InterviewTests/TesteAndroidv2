@@ -3,7 +3,7 @@ package com.example.testeandroideveris.feature.login.data.datasource
 import android.content.Context
 import android.content.SharedPreferences
 
-class LocalDataSourceImpl(context: Context) : LocalDataSource {
+class LoginLocalDataSourceImpl(context: Context) : LoginLocalDataSource {
 
     private val PREFS_NAME = "everisbank"
     private val USER_NAME = "USER_NAME"
