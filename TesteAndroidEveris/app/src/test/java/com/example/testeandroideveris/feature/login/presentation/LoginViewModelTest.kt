@@ -11,7 +11,9 @@ import com.example.testeandroideveris.feature.login.data.UserAccountData
 import com.example.testeandroideveris.feature.login.domain.usecases.LoginUseCase
 import com.example.testeandroideveris.utils.TestCoroutineRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
@@ -25,6 +27,7 @@ import org.mockito.Mockito
 import org.mockito.Mockito.doReturn
 import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnitRunner
+import java.lang.Exception
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
@@ -144,6 +147,25 @@ class LoginViewModelTest {
             verify(useCase).validate(LoginRequestData(user, password))
             verify(dataStateObserver).onChanged(LoginDataState.INVALID_PASSWORD)
             loginViewModel.dataState.removeObserver(dataStateObserver)
+        }
+    }
+
+    @Test
+    fun `should make login when all data is correct` () {
+        runBlocking {
+            val user = "user@user.com"
+            val password = "abc123E@1"
+            val response = UserAccount(1, "João Teste", "2010", "1234567", 3.0)
+            doReturn(LoginDataState.VALID_SUCCESS)
+                .`when`(useCase).validate(LoginRequestData(user, password))
+            doReturn(flowOf(response))
+                .`when`(useCase).login(LoginRequestData(user, password))
+
+            loginViewModel.login.observeForever(loginObserver)
+            loginViewModel.login(user, password)
+            verify(useCase).login(LoginRequestData(user, password))
+            verify(loginObserver).onChanged(Resource.success(response))
+            loginViewModel.login.removeObserver(loginObserver)
         }
     }
 }
