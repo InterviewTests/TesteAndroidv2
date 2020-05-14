@@ -43,6 +43,7 @@ dependencies {
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.6.2"
+    compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
 
     //Moshi Core Artifact and Codegen
     implementation "com.squareup.retrofit2:converter-moshi:2.5.0"

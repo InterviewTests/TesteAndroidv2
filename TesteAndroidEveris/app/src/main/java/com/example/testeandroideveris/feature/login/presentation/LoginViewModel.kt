@@ -8,6 +8,7 @@ import com.example.testeandroideveris.data.Resource
 import com.example.testeandroideveris.feature.login.data.LoginDataState
 import com.example.testeandroideveris.feature.login.data.LoginRequestData
 import com.example.testeandroideveris.feature.login.data.LoginResponseData
+import com.example.testeandroideveris.feature.login.data.UserAccount
 import com.example.testeandroideveris.feature.login.domain.usecases.LoginUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
@@ -19,7 +20,7 @@ import java.util.regex.Pattern
 class LoginViewModel(private val useCase: LoginUseCase) : ViewModel() {
 
     var dataState: MutableLiveData<LoginDataState> = MutableLiveData()
-    var login = MutableLiveData<Resource<LoginResponseData>>()
+    var login = MutableLiveData<Resource<UserAccount>>()
 
     fun login(user: String, password: String) {
         validateValues(user, password)

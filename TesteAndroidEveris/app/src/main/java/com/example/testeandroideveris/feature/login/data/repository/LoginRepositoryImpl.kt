@@ -10,9 +10,6 @@ import kotlinx.coroutines.flow.flowOn
 open class LoginRepositoryImpl(): LoginRepository {
 
     override suspend fun login(loginRequest: LoginRequestData) =  flow {
-            // exectute API call and map to UI object
-            val fooList = RetrofitBuilder.apiService.login(loginRequest)
-            // Emit the list to the stream
-            emit(fooList)
-        }.flowOn(Dispatchers.IO) // Use the IO thread for this Flow
+            emit( RetrofitBuilder.apiService.login(loginRequest))
+        }.flowOn(Dispatchers.IO)
 }

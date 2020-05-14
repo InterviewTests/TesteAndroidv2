@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".feature.statements.StatementsActivity">
+        <activity android:name=".feature.statements.presentation.StatementsActivity">
         </activity>
     </application>
 

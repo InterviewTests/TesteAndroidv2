@@ -4,6 +4,10 @@ import com.example.testeandroideveris.feature.login.data.repository.LoginReposit
 import com.example.testeandroideveris.feature.login.domain.repository.LoginRepository
 import com.example.testeandroideveris.feature.login.domain.usecases.LoginUseCase
 import com.example.testeandroideveris.feature.login.presentation.LoginViewModel
+import com.example.testeandroideveris.feature.statements.data.repository.StatementRepositoryImpl
+import com.example.testeandroideveris.feature.statements.domain.repository.StatementRepository
+import com.example.testeandroideveris.feature.statements.domain.usecases.StatementUseCase
+import com.example.testeandroideveris.feature.statements.presentation.StatementsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -15,7 +19,13 @@ val appModules = module {
         LoginRepositoryImpl()
     }
 
+    single<StatementRepository> {
+        StatementRepositoryImpl()
+    }
+
     factory { LoginUseCase(get()) }
+    factory { StatementUseCase(get()) }
     viewModel { LoginViewModel(get()) }
+    viewModel { StatementsViewModel(get()) }
     
 }

@@ -1,9 +1,42 @@
 package com.example.testeandroideveris.feature.statements.presentation
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.testeandroideveris.feature.login.domain.usecases.LoginUseCase
+import androidx.lifecycle.viewModelScope
+import com.example.testeandroideveris.data.Resource
+import com.example.testeandroideveris.feature.login.data.UserAccount
+import com.example.testeandroideveris.feature.statements.data.StatementData
+import com.example.testeandroideveris.feature.statements.domain.usecases.StatementUseCase
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.launch
 
-class StatementsViewModel(private val useCase: LoginUseCase) : ViewModel() {
+class StatementsViewModel(private val useCase: StatementUseCase) : ViewModel() {
 
+    var userData = MutableLiveData<UserAccount>()
+    var statements = MutableLiveData<Resource<List<StatementData>>>()
+
+    fun setUserData(user: UserAccount) {
+        userData.value = user
+    }
+
+    fun getStatements() {
+        userData.value?.let {
+            viewModelScope.launch {
+                useCase.getStatements(it.userId)
+                    .onStart { statements.value = Resource.loading(data = null) }
+                    .catch { exception ->
+                        statements.value = Resource.error(
+                            data = null,
+                            message = exception.message ?: "Error Occurred!"
+                        )
+                    }
+                    .collect { response ->
+                        statements.value = Resource.success(data = response.statementList)
+                    }
+            }
+        }
+    }
 
 }
