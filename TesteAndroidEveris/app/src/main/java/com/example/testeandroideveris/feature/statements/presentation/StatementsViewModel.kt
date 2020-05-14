@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.testeandroideveris.data.Resource
+import com.example.testeandroideveris.data.Status
 import com.example.testeandroideveris.feature.login.data.UserAccount
 import com.example.testeandroideveris.feature.statements.data.StatementData
 import com.example.testeandroideveris.feature.statements.domain.usecases.StatementUseCase
@@ -33,6 +34,11 @@ class StatementsViewModel(private val useCase: StatementUseCase) : ViewModel() {
                         )
                     }
                     .collect { response ->
+                        if (response.statementList.isEmpty()) {
+                            statements.value = Resource.success(status = Status.SUCCESS_EMPTY, data = response.statementList)
+                        } else {
+                            statements.value = Resource.success(data = response.statementList)
+                        }
                         statements.value = Resource.success(data = response.statementList)
                     }
             }

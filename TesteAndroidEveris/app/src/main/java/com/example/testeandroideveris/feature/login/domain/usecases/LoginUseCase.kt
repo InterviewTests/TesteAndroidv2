@@ -9,5 +9,8 @@ import kotlinx.coroutines.flow.map
 
 class LoginUseCase(private val repository: LoginRepository){
 
-    suspend fun login(request: LoginRequestData) = repository.login(request).map { value: LoginResponseData -> UserAccountMapper.mapFrom(value.userAccount) }
+    suspend fun login(request: LoginRequestData) = repository.login(request)
+        .map { value: LoginResponseData -> UserAccountMapper.mapFrom(value.userAccount) }
+
+    suspend fun getLastUser() = repository.getLastUser()
 }

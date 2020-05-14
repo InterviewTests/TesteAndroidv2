@@ -63,4 +63,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
+    <include
+        android:id="@+id/progress"
+        android:visibility="gone"
+        layout="@layout/progress_layout"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

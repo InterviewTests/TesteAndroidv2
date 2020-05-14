@@ -2,6 +2,7 @@ package com.example.testeandroideveris.feature.login.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -20,27 +21,44 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        actionBar?.hide()
 
         loginButton.setOnClickListener { viewModel.login(edtUser.text.toString(), edtPassword.text.toString()) }
 
+        lastUserObserve()
+        dataStateObserve()
+        loginObserve()
+    }
+
+    private fun lastUserObserve() {
+        viewModel.getLastUser().observe(this, Observer {
+            edtUser.setText(it ?: "")
+        })
+    }
+
+    private fun dataStateObserve() {
         viewModel.dataState.observe(this, Observer { state ->
             when(state) {
                 LoginDataState.INVALID_USER -> edtUser.error = "User invalido"
                 LoginDataState.INVALID_PASSWORD -> edtPassword.error = "Password invalido"
-                LoginDataState.VALID_SUCCESS -> {Toast.makeText(this, "Sucesso" , Toast.LENGTH_LONG).show()}
+                else -> {}
             }
         })
+    }
 
+    private fun loginObserve() {
         viewModel.login.observe(this, Observer { login ->
             when(login.status) {
                 Status.SUCCESS -> {
+                    progress.visibility = View.GONE
                     val intent = Intent(this, StatementsActivity::class.java)
                     intent.putExtra(USER_DATA, login.data)
                     startActivity(intent)
                 }
-                Status.ERROR -> Toast.makeText(this, "Erro ao realizar o login" , Toast.LENGTH_LONG).show()
-                Status.LOADING -> {}
+                Status.ERROR -> {
+                    progress.visibility = View.GONE
+                    Toast.makeText(this, "Erro ao realizar o login" , Toast.LENGTH_LONG).show()
+                }
+                Status.LOADING -> progress.visibility = View.VISIBLE
             }
         })
     }

@@ -22,6 +22,8 @@ class LoginViewModel(private val useCase: LoginUseCase) : ViewModel() {
     var dataState: MutableLiveData<LoginDataState> = MutableLiveData()
     var login = MutableLiveData<Resource<UserAccount>>()
 
+    fun getLastUser() = liveData{ emit(useCase.getLastUser()) }
+
     fun login(user: String, password: String) {
         validateValues(user, password)
         doLogin(user, password)
