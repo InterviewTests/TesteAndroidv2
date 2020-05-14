@@ -1,5 +1,7 @@
 package com.example.testeandroideveris.di
 
+import com.example.testeandroideveris.data.api.RetrofitBuilder
+import com.example.testeandroideveris.feature.login.data.api.LoginAPI
 import com.example.testeandroideveris.feature.login.data.datasource.LoginLocalDataSource
 import com.example.testeandroideveris.feature.login.data.datasource.LoginLocalDataSourceImpl
 import com.example.testeandroideveris.feature.login.data.datasource.LoginRemoteDataSource
@@ -8,6 +10,7 @@ import com.example.testeandroideveris.feature.login.data.repository.LoginReposit
 import com.example.testeandroideveris.feature.login.domain.repository.LoginRepository
 import com.example.testeandroideveris.feature.login.domain.usecases.LoginUseCase
 import com.example.testeandroideveris.feature.login.presentation.LoginViewModel
+import com.example.testeandroideveris.feature.statements.data.api.StatementAPI
 import com.example.testeandroideveris.feature.statements.data.datasource.StatementRemoteDataSource
 import com.example.testeandroideveris.feature.statements.data.datasource.StatementRemoteDataSourceImpl
 import com.example.testeandroideveris.feature.statements.data.repository.StatementRepositoryImpl
@@ -27,11 +30,11 @@ val appModules = module {
     }
 
     single<LoginRemoteDataSource> {
-        LoginRemoteDataSourceImpl()
+        LoginRemoteDataSourceImpl(RetrofitBuilder.getRetrofit<LoginAPI>())
     }
 
     single<StatementRemoteDataSource> {
-        StatementRemoteDataSourceImpl()
+        StatementRemoteDataSourceImpl(RetrofitBuilder.getRetrofit<StatementAPI>())
     }
 
     single<LoginRepository> {

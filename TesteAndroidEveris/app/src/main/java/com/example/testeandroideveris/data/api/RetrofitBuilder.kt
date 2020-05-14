@@ -10,23 +10,18 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitBuilder {
 
-    private const val BASE_URL = "https://bank-app-test.herokuapp.com/api/"
+    const val BASE_URL = "https://bank-app-test.herokuapp.com/api/"
 
-    private fun getRetrofit(): Retrofit {
+    inline fun <reified T> getRetrofit(): T {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
         val httpClient = OkHttpClient.Builder().addInterceptor(logging)
 
-        return Retrofit.Builder()
+        val builder =  Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .client(httpClient.build())
             .build()
+        return builder.create(T::class.java)
     }
-
-    val apiService: LoginAPI = getRetrofit()
-        .create(LoginAPI::class.java)
-
-    val apiStatement: StatementAPI = getRetrofit()
-        .create(StatementAPI::class.java)
 }
