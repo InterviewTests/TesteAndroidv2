@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">bankapplication</string>
+
+    <!--Login-->
+    <string name="login_layout_username_input_hint">User</string>
+    <string name="login_layout_password_input_hint">Password</string>
+    <string name="login_layout_button_enter">Login</string>
+
 </resources>
