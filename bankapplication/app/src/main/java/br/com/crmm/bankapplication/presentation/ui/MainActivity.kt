@@ -1,7 +1,8 @@
-package br.com.crmm.bankapplication
+package br.com.crmm.bankapplication.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.com.crmm.bankapplication.R
 
 class MainActivity : AppCompatActivity() {
 
