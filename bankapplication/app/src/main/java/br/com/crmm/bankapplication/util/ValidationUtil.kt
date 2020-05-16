@@ -1,6 +1,6 @@
 package br.com.crmm.bankapplication.util
 
-import android.util.Patterns
+import androidx.core.util.PatternsCompat
 
 class ValidationUtil(
     private val cpfUtil: CPFUtil
@@ -8,8 +8,8 @@ class ValidationUtil(
 
     fun isValidUsername(text: String) = isValidCpf(text) || isValidEmail(text)
 
-    private fun isValidCpf(text: String) = cpfUtil.isValid(text)
+    fun isValidCpf(text: String) = cpfUtil.isValid(text)
 
-    private fun isValidEmail(text: String) = Patterns.EMAIL_ADDRESS.matcher(text).matches()
+    fun isValidEmail(text: String) = PatternsCompat.EMAIL_ADDRESS.matcher(text).matches()
 
 }

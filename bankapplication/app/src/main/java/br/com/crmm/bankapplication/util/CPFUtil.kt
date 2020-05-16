@@ -1,34 +1,69 @@
 package br.com.crmm.bankapplication.util
 
-import android.text.TextUtils
-
 class CPFUtil {
 
     fun isValid(cpf: String): Boolean {
-        if (TextUtils.isEmpty(cpf)) return false
+        val cleanCpf = cpf.replace(".", "").replace("-", "")
 
-        val numbers = arrayListOf<Int>()
+        //## check if size is eleven
+        if (cleanCpf.length != 11)
+            return false
 
-        cpf.filter { it.isDigit() }.forEach {
-            numbers.add(it.toString().toInt())
+        //## check if is number
+        try {
+            cleanCpf.toLong()
+        }catch (e : Exception){
+            return false
         }
 
-        if (numbers.size != 11) return false
+        //continue
+        val dvCurrent10 = cleanCpf.substring(9,10).toInt()
+        val dvCurrent11 = cleanCpf.substring(10,11).toInt()
 
-        (0..9).forEach { n ->
-            val digits = arrayListOf<Int>()
-            (0..10).forEach { _ -> digits.add(n) }
-            if (numbers == digits) return false
+        //the sum of the nine first digits determines the tenth digit
+        val cpfNineFirst = IntArray(9)
+        var i = 9
+        while (i > 0 ) {
+            cpfNineFirst[i-1] = cleanCpf.substring(i-1, i).toInt()
+            i--
         }
-
-        val dv1 = ((0..8).sumBy { (it + 1) * numbers[it] }).rem(11).let {
-            if (it >= 10) 0 else it
+        //multiple the nine digits for your weights: 10,9..2
+        val sumProductNine = IntArray(9)
+        var weight = 10
+        var position = 0
+        while (weight >= 2){
+            sumProductNine[position] = weight * cpfNineFirst[position]
+            weight--
+            position++
         }
+        //Verify the nineth digit
+        var dvForTenthDigit = sumProductNine.sum() % 11
+        dvForTenthDigit = 11 - dvForTenthDigit //rule for tenth digit
+        if(dvForTenthDigit > 9)
+            dvForTenthDigit = 0
+        if (dvForTenthDigit != dvCurrent10)
+            return false
 
-        val dv2 = ((0..8).sumBy { it * numbers[it] }.let { (it + (dv1 * 9)).rem(11) }).let {
-            if (it >= 10) 0 else it
+        //### verify tenth digit
+        val cpfTenFirst = cpfNineFirst.copyOf(10)
+        cpfTenFirst[9] = dvCurrent10
+        //multiple the nine digits for your weights: 10,9..2
+        val sumProductTen = IntArray(10)
+        var w = 11
+        var p = 0
+        while (w >= 2){
+            sumProductTen[p] = w * cpfTenFirst[p]
+            w--
+            p++
         }
+        //Verify the nineth digit
+        var dvForeleventhDigit = sumProductTen.sum() % 11
+        dvForeleventhDigit = 11 - dvForeleventhDigit //rule for tenth digit
+        if(dvForeleventhDigit > 9)
+            dvForeleventhDigit = 0
+        if (dvForeleventhDigit != dvCurrent11)
+            return false
 
-        return numbers[9] == dv1 && numbers[10] == dv2
+        return true
     }
 }
