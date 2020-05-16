@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.statement.StatementActivity">
+
+    <View
+        android:id="@+id/vBackground"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        android:paddingBottom="@dimen/content_padding"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/vSpace"
+        android:padding="@dimen/content_padding"/>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        android:layout_marginStart="@dimen/content_padding"
+        android:layout_marginTop="@dimen/content_padding"
+        app:layout_constraintTop_toTopOf="@+id/vBackground"
+        app:layout_constraintStart_toStartOf="@+id/vBackground"
+        tools:text="teste" />
+    
+    <ImageView
+        android:id="@+id/ivLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_logout"
+        app:layout_constraintEnd_toEndOf="@id/vBackground"
+        app:layout_constraintBottom_toBottomOf="@id/tvName"
+        android:layout_marginEnd="@dimen/content_padding"
+        />
+
+    <TextView
+        android:id="@+id/tvLabelAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/account"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        android:layout_marginTop="@dimen/content_padding"/>
+
+    <TextView
+        android:id="@+id/tvAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelAccount"
+        app:layout_constraintStart_toStartOf="@+id/tvName"
+        tools:text="2050 / 01.111222-4" />
+
+
+    <TextView
+        android:id="@+id/tvLabelBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/balance"
+        android:textSize="12sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvAccount"
+        android:layout_marginTop="@dimen/content_padding"/>
+
+    <TextView
+        android:id="@+id/tvBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelBalance"
+        app:layout_constraintStart_toStartOf="@+id/tvName"
+        tools:text="R$ 1.000,00" />
+
+
+    <View
+        android:id="@+id/vSpace"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/content_padding"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@id/tvBalance"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="@dimen/content_padding"/>
+
+    <TextView
+        android:id="@+id/tvRecents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/greyDark"
+        android:layout_marginTop="@dimen/content_padding"
+        android:layout_marginStart="@dimen/content_padding"
+        android:layout_marginBottom="@dimen/content_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vSpace"
+        android:text="@string/recents" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvStatement"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/tvRecents"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="12dp"
+       />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
