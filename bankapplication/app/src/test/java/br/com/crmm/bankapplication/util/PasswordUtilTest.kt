@@ -1,11 +1,12 @@
 package br.com.crmm.bankapplication.util
 
+import br.com.crmm.bankapplication.AbstractUnitTest
 import br.com.crmm.bankapplication.mock.PasswordUtilTestMock
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class PasswordUtilTest {
+class PasswordUtilTest: AbstractUnitTest() {
 
     @Test
     fun checkPassword_IsCorrect() {

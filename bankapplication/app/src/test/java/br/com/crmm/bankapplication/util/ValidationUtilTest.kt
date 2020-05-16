@@ -1,10 +1,11 @@
 package br.com.crmm.bankapplication.util
 
+import br.com.crmm.bankapplication.AbstractUnitTest
 import br.com.crmm.bankapplication.mock.ValidationUtilTestMock
 import org.junit.Assert.*
 import org.junit.Test
 
-class ValidationUtilTest{
+class ValidationUtilTest: AbstractUnitTest(){
 
     @Test
     fun checkUsername_isCorrect() {
