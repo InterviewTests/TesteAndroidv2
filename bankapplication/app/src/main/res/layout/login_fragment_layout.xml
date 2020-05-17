@@ -26,7 +26,7 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/container"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_margin="@dimen/standard_margin"
@@ -75,6 +75,17 @@
             </com.google.android.material.textfield.TextInputLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <ProgressBar
+        android:id="@+id/login_progress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/login_enter_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container" />
+
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/login_enter_button"
             android:layout_width="250dp"
@@ -83,7 +94,7 @@
             android:padding="@dimen/standard_padding"
             android:layout_margin="@dimen/standard_margin"
             android:onClick="@{()-> viewModel.performLogin(username.getText().toString(), password.getText().toString())}"
-            app:layout_constraintTop_toBottomOf="@+id/container"
+            app:layout_constraintTop_toBottomOf="@+id/login_progress"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
