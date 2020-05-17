@@ -5,14 +5,19 @@ import br.com.crmm.bankapplication.util.PasswordUtil
 import br.com.crmm.bankapplication.util.ValidationUtil
 import org.koin.dsl.module
 
-val validationUtilModule = module {
-    single { ValidationUtil(get(), get()) }
+val utilModule = module {
+    single { provideValidationUtil(get(), get()) }
+    single { provideCpfUtil() }
+    single { providePasswordUtil() }
 }
 
-val cpfUtilModule = module {
-    single { CPFUtil() }
+fun provideValidationUtil(
+    cpfUtil: CPFUtil,
+    passwordUtil: PasswordUtil
+): ValidationUtil{
+    return ValidationUtil(cpfUtil, passwordUtil)
 }
 
-val passwordUtilModule = module {
-    single { PasswordUtil() }
-}
+fun provideCpfUtil() = CPFUtil()
+
+fun providePasswordUtil() = PasswordUtil()
