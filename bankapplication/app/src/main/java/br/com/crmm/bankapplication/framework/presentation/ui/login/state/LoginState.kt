@@ -1,4 +1,4 @@
-package br.com.crmm.bankapplication.presentation.ui.login.state
+package br.com.crmm.bankapplication.framework.presentation.ui.login.state
 
 sealed class LoginState {
     object InvalidInputUsernameState : LoginState()

@@ -1,4 +1,4 @@
-package br.com.crmm.bankapplication.presentation.ui
+package br.com.crmm.bankapplication.framework.presentation.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

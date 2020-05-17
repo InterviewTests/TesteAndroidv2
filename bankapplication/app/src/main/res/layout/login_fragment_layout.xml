@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="br.com.crmm.bankapplication.presentation.ui.login.LoginViewModel" />
+            type="br.com.crmm.bankapplication.framework.presentation.ui.login.LoginViewModel" />
 
     </data>
 

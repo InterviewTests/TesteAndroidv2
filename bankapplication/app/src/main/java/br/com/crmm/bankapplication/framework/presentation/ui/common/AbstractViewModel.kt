@@ -1,4 +1,4 @@
-package br.com.crmm.bankapplication.presentation.ui.common
+package br.com.crmm.bankapplication.framework.presentation.ui.common
 
 import androidx.lifecycle.ViewModel
 

@@ -1,4 +1,4 @@
-package br.com.crmm.bankapplication.presentation.ui.login
+package br.com.crmm.bankapplication.framework.presentation.ui.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,8 +6,9 @@ import br.com.crmm.bankapplication.framework.datasource.remote.dto.request.Login
 import br.com.crmm.bankapplication.domain.usecase.LoginUseCase
 import br.com.crmm.bankapplication.extension.isNotValidEmail
 import br.com.crmm.bankapplication.extension.isNotValidPassword
-import br.com.crmm.bankapplication.presentation.ui.common.AbstractViewModel
-import br.com.crmm.bankapplication.presentation.ui.login.state.LoginState
+import br.com.crmm.bankapplication.framework.presentation.ui.common.AbstractViewModel
+import br.com.crmm.bankapplication.framework.presentation.ui.login.state.LoginState
+
 
 class LoginViewModel(
     private val loginUseCase: LoginUseCase

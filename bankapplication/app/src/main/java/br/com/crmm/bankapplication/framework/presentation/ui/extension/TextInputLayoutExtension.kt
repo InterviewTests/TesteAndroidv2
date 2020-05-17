@@ -1,4 +1,4 @@
-package br.com.crmm.bankapplication.presentation.ui.extension
+package br.com.crmm.bankapplication.framework.presentation.ui.extension
 
 import com.google.android.material.textfield.TextInputLayout
 

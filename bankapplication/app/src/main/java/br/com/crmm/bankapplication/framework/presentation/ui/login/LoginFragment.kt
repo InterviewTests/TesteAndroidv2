@@ -1,4 +1,4 @@
-package br.com.crmm.bankapplication.presentation.ui.login
+package br.com.crmm.bankapplication.framework.presentation.ui.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import br.com.crmm.bankapplication.databinding.LoginFragmentLayoutBinding
-import br.com.crmm.bankapplication.presentation.ui.common.AbstractFragment
-import br.com.crmm.bankapplication.presentation.ui.extension.*
-import br.com.crmm.bankapplication.presentation.ui.login.state.LoginState
+import br.com.crmm.bankapplication.framework.presentation.ui.common.AbstractFragment
+import br.com.crmm.bankapplication.framework.presentation.ui.extension.*
+import br.com.crmm.bankapplication.framework.presentation.ui.login.state.LoginState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : AbstractFragment(){
