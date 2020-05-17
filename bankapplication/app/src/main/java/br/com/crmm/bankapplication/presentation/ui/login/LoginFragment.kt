@@ -29,6 +29,6 @@ class LoginFragment : AbstractFragment(){
         inflater, container, false
     ).apply {
         lifecycleOwner = this@LoginFragment.viewLifecycleOwner
+        viewModel = this@LoginFragment.viewModel
     }
-
 }
