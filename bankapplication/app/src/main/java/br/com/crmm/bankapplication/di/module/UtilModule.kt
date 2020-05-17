@@ -1,4 +1,4 @@
-package br.com.crmm.bankapplication.infrastructure.di.module
+package br.com.crmm.bankapplication.di.module
 
 import br.com.crmm.bankapplication.util.CPFUtil
 import br.com.crmm.bankapplication.util.PasswordUtil

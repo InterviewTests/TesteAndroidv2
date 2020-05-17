@@ -1,8 +1,8 @@
-package br.com.crmm.bankapplication.infrastructure.di.module
+package br.com.crmm.bankapplication.di.module
 
-import br.com.crmm.bankapplication.data.source.remote.abstraction.LoginService
-import br.com.crmm.bankapplication.data.source.remote.util.HttpClient
-import br.com.crmm.bankapplication.data.source.remote.util.NetworkServiceProvider
+import br.com.crmm.bankapplication.framework.datasource.remote.abstraction.LoginService
+import br.com.crmm.bankapplication.framework.datasource.remote.util.HttpClient
+import br.com.crmm.bankapplication.framework.datasource.remote.util.NetworkServiceProvider
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit

@@ -1,4 +1,4 @@
-package br.com.crmm.bankapplication.infrastructure.di.module
+package br.com.crmm.bankapplication.di.module
 
 import br.com.crmm.bankapplication.domain.usecase.LoginUseCase
 import br.com.crmm.bankapplication.presentation.ui.login.LoginViewModel

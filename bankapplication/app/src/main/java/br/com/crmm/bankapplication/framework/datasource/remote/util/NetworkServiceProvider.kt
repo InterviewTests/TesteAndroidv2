@@ -1,4 +1,4 @@
-package br.com.crmm.bankapplication.data.source.remote.util
+package br.com.crmm.bankapplication.framework.datasource.remote.util
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

@@ -2,7 +2,7 @@ package br.com.crmm.bankapplication.presentation.ui.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import br.com.crmm.bankapplication.data.source.remote.dto.request.LoginRequestDTO
+import br.com.crmm.bankapplication.framework.datasource.remote.dto.request.LoginRequestDTO
 import br.com.crmm.bankapplication.domain.usecase.LoginUseCase
 import br.com.crmm.bankapplication.extension.isNotValidEmail
 import br.com.crmm.bankapplication.extension.isNotValidPassword

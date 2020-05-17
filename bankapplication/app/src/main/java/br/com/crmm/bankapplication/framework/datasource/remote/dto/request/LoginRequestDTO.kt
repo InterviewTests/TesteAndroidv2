@@ -1,4 +1,4 @@
-package br.com.crmm.bankapplication.data.source.remote.dto.request
+package br.com.crmm.bankapplication.framework.datasource.remote.dto.request
 
 data class LoginRequestDTO(
     var user: String = "",
