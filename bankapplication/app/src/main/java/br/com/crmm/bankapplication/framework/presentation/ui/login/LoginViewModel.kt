@@ -2,7 +2,7 @@ package br.com.crmm.bankapplication.framework.presentation.ui.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import br.com.crmm.bankapplication.data.source.remote.state.LoginRemoteState
+import br.com.crmm.bankapplication.data.state.LoginDataState
 import br.com.crmm.bankapplication.domain.usecase.LoginUseCase
 import br.com.crmm.bankapplication.extension.isNotValidEmail
 import br.com.crmm.bankapplication.extension.isNotValidPassword
@@ -51,13 +51,13 @@ class LoginViewModel(
             .subscribe()
     }
 
-    private fun convertToViewStateFromRemoveState(loginRemoteState: LoginRemoteState): LoginViewState{
-        return when(loginRemoteState){
-            is LoginRemoteState.SuccessfullyResponseState -> LoginViewState.SuccessfullyLoginState
-            is LoginRemoteState.UnsuccessfullyResponseState -> {
+    private fun convertToViewStateFromRemoveState(loginDataState: LoginDataState): LoginViewState{
+        return when(loginDataState){
+            is LoginDataState.SuccessfullyResponseState -> LoginViewState.SuccessfullyLoginState
+            is LoginDataState.UnsuccessfullyResponseState -> {
                 LoginViewState.UnsuccessfullyLoginState(
-                    loginRemoteState.error.code.nonNullable(),
-                    loginRemoteState.error.message.nonNullable()
+                    loginDataState.errorResponseDTO.code.nonNullable(),
+                    loginDataState.errorResponseDTO.message.nonNullable()
                 )
             }
             else -> LoginViewState.UnmappedErrorState

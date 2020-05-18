@@ -1,6 +1,7 @@
 package br.com.crmm.bankapplication.di.module
 
 import br.com.crmm.bankapplication.framework.datasource.remote.abstraction.LoginService
+import br.com.crmm.bankapplication.framework.datasource.remote.abstraction.StatementService
 import br.com.crmm.bankapplication.framework.datasource.remote.util.HttpClient
 import br.com.crmm.bankapplication.framework.datasource.remote.util.NetworkServiceProvider
 import okhttp3.OkHttpClient
@@ -9,8 +10,9 @@ import retrofit2.Retrofit
 
 val networkModule = module {
     factory { provideOkHttpClient() }
-    factory { provideLoginService(get()) }
     single { provideRetrofit(get()) }
+    factory { provideLoginService(get()) }
+    factory { provideStatementService(get()) }
 }
 
 fun provideOkHttpClient(): OkHttpClient {
@@ -23,4 +25,8 @@ fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
 
 fun provideLoginService(retrofit: Retrofit): LoginService{
     return retrofit.create(LoginService::class.java)
+}
+
+fun provideStatementService(retrofit: Retrofit): StatementService{
+    return retrofit.create(StatementService::class.java)
 }

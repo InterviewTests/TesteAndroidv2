@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import br.com.crmm.bankapplication.databinding.LoginFragmentLayoutBinding
@@ -37,14 +36,9 @@ class LoginFragment : AbstractFragment(){
         viewModel = this@LoginFragment.viewModel
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        loginState()
-    }
-
-    private fun loginState(){
+    override fun onChangeState() {
         viewModel.loginViewState.observe(viewLifecycleOwner, Observer { state ->
-            runOnUiThread {
+            safeRunOnUiThread {
                 with(binding){
                     loginProgress.invisible()
                     when(state){
