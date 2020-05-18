@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import br.com.crmm.bankapplication.databinding.LoginFragmentLayoutBinding
 import br.com.crmm.bankapplication.framework.presentation.ui.common.AbstractFragment
 import br.com.crmm.bankapplication.framework.presentation.ui.extension.*
@@ -60,13 +61,14 @@ class LoginFragment : AbstractFragment(){
                             loginProgress.show()
                         }
                         is LoginViewState.SuccessfullyLoginState -> {
-                            Toast.makeText(requireContext(), "Logged!", Toast.LENGTH_LONG).show()
+                            toast("Logged!")
+                            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToStatementFragment())
                         }
                         is LoginViewState.UnsuccessfullyLoginState -> {
-                            Toast.makeText(requireContext(), "Failed!", Toast.LENGTH_LONG).show()
+                            toast("Login failed! - Code: ${state.code}")
                         }
                         is LoginViewState.UnmappedErrorState -> {
-                            Toast.makeText(requireContext(), "UnmappedErrorState!", Toast.LENGTH_LONG).show()
+                            toast("Unmapped error!")
                         }
                     }
                 }

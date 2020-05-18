@@ -10,5 +10,14 @@
         android:name="br.com.crmm.bankapplication.framework.presentation.ui.login.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/login_fragment_layout"
-        />
+        >
+        <action
+            android:id="@+id/action_loginFragment_to_statementFragment"
+            app:destination="@id/statementFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statementFragment"
+        android:name="br.com.crmm.bankapplication.framework.presentation.ui.statement.StatementFragment"
+        android:label="StatementFragment"
+        tools:layout="@layout/statement_fragment_layout"/>
 </navigation>
