@@ -14,9 +14,7 @@ class HttpClient {
         .addInterceptor {chain ->
             chain.proceed(
                 chain.request().newBuilder()
-                    .header("charset", "utf-8")
-                    .header("Content-Type", "application/json")
-                    .header("Accept", "application/json")
+                    .header("Content-Type", "application/x-www-form-urlencoded")
                     .build()
             )
         }

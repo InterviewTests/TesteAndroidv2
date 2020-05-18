@@ -11,3 +11,7 @@ private val validationUtil = object : KoinComponent{
 fun String.isNotValidEmail() = validationUtil.isValidEmail(this).not()
 
 fun String.isNotValidPassword() = validationUtil.isValidPassword(this).not()
+
+fun String?.nonNullable(): String{
+    return this?: ""
+}

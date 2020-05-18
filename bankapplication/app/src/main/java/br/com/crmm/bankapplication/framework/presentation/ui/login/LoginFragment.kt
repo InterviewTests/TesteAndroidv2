@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import br.com.crmm.bankapplication.databinding.LoginFragmentLayoutBinding
 import br.com.crmm.bankapplication.framework.presentation.ui.common.AbstractFragment
 import br.com.crmm.bankapplication.framework.presentation.ui.extension.*
-import br.com.crmm.bankapplication.framework.presentation.ui.login.state.LoginState
+import br.com.crmm.bankapplication.framework.presentation.ui.login.state.LoginViewState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : AbstractFragment(){
@@ -41,21 +42,32 @@ class LoginFragment : AbstractFragment(){
     }
 
     private fun loginState(){
-        viewModel.loginState.observe(viewLifecycleOwner, Observer {state ->
-            with(binding){
-                loginProgress.invisible()
-                when(state){
-                    LoginState.InvalidInputUsernameState -> {
-                        textInputLayoutUsername.invalidEmailOrCpf()
-                    }
-                    LoginState.InvalidInputPasswordState -> {
-                        textInputLayoutUsername.hideError()
-                        textInputLayoutPassword.invalidPassword()
-                    }
-                    LoginState.LoadingState -> {
-                        textInputLayoutUsername.hideError()
-                        textInputLayoutPassword.hideError()
-                        loginProgress.show()
+        viewModel.loginViewState.observe(viewLifecycleOwner, Observer { state ->
+            runOnUiThread {
+                with(binding){
+                    loginProgress.invisible()
+                    when(state){
+                        is LoginViewState.InvalidInputUsernameViewState -> {
+                            textInputLayoutUsername.invalidEmailOrCpf()
+                        }
+                        is LoginViewState.InvalidInputPasswordViewState -> {
+                            textInputLayoutUsername.hideError()
+                            textInputLayoutPassword.invalidPassword()
+                        }
+                        is LoginViewState.LoadingViewState -> {
+                            textInputLayoutUsername.hideError()
+                            textInputLayoutPassword.hideError()
+                            loginProgress.show()
+                        }
+                        is LoginViewState.SuccessfullyLoginState -> {
+                            Toast.makeText(requireContext(), "Logged!", Toast.LENGTH_LONG).show()
+                        }
+                        is LoginViewState.UnsuccessfullyLoginState -> {
+                            Toast.makeText(requireContext(), "Failed!", Toast.LENGTH_LONG).show()
+                        }
+                        is LoginViewState.UnmappedErrorState -> {
+                            Toast.makeText(requireContext(), "UnmappedErrorState!", Toast.LENGTH_LONG).show()
+                        }
                     }
                 }
             }
