@@ -15,8 +15,8 @@ class StatementViewModel(
     private val _statementDataState = MutableLiveData<StatementDataState>()
     val statementDataState: LiveData<StatementDataState> = _statementDataState
 
-    fun fetch(){
-        statementUseCase.execute("1")
+    fun fetch(userId: String){
+        statementUseCase.execute(userId)
             .subscribeOn(Schedulers.io())
             .map {
                 runOnUiThread {

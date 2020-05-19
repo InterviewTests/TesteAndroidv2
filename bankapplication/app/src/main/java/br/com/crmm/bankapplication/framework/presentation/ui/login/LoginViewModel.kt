@@ -53,7 +53,9 @@ class LoginViewModel(
 
     private fun convertToViewStateFromRemoveState(loginDataState: LoginDataState): LoginViewState{
         return when(loginDataState){
-            is LoginDataState.SuccessfullyResponseState -> LoginViewState.SuccessfullyLoginState
+            is LoginDataState.SuccessfullyResponseState -> LoginViewState.SuccessfullyLoginState(
+                loginDataState.userAccountResponseDTO
+            )
             is LoginDataState.UnsuccessfullyResponseState -> {
                 LoginViewState.UnsuccessfullyLoginState(
                     loginDataState.errorResponseDTO.code.nonNullable(),
@@ -62,5 +64,9 @@ class LoginViewModel(
             }
             else -> LoginViewState.UnmappedErrorState
         }
+    }
+
+    fun resetViewState(){
+        _loginState.value = LoginViewState.NoneState
     }
 }

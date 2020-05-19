@@ -19,5 +19,9 @@
         android:id="@+id/statementFragment"
         android:name="br.com.crmm.bankapplication.framework.presentation.ui.statement.StatementFragment"
         android:label="StatementFragment"
-        tools:layout="@layout/statement_fragment_layout"/>
+        tools:layout="@layout/statement_fragment_layout">
+        <argument
+            android:name="userAccount"
+            app:argType="br.com.crmm.bankapplication.framework.datasource.remote.dto.response.UserAccountResponseDTO" />
+    </fragment>
 </navigation>
