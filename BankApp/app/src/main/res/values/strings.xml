@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">BankApp</string>
+
+    <!-- Login Activity -->
+    <string name="text_bank">Bank</string>
+    <string name="text_button">Login</string>
+    <string name="user_hint">User</string>
+    <string name="password_hint">Password</string>
+    <string name="text_connection_unavailable">Connection unavailable</string>
+    <string name="text_generic_error">Could not login</string>
+    <string name="text_user_field_empty_error">User is required</string>
+    <string name="text_user_field_error">User must be a valid email or cpf</string>
+    <string name="text_password_empty_error">Password is required</string>
+    <string name="text_password_error">Password must have at least one capital letter,
+        a special character and an alphanumeric character</string>
+</resources>
