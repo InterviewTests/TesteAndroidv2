@@ -69,7 +69,6 @@ class StatementFragment : AbstractFragment() {
 
     private fun configureRecyclerView(){
         binding.statementRecyclerView.adapter = adapter
-        binding.statementRecyclerView
     }
 
 }
