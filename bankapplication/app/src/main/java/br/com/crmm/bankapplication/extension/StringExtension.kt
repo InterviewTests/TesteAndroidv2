@@ -15,3 +15,9 @@ fun String.isNotValidPassword() = validationUtil.isValidPassword(this).not()
 fun String?.nonNullable(): String{
     return this?: ""
 }
+
+fun String.applyBankAccountMask(): String {
+    return if(length == 9) {
+        "${substring(0, 2)}.${substring(2, 8)}-${substring(8, 9)}"
+    } else this
+}

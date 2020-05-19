@@ -37,8 +37,8 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/statement_account"
                 style="@style/statementAccount"
-                bind:agency="@{presentation.agency}"
-                bind:bankAccount="@{presentation.bankAccount}"
+                agency="@{presentation.agency}"
+                bankAccount="@{presentation.bankAccount}"
                 app:layout_constraintTop_toBottomOf="@+id/statement_account_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
