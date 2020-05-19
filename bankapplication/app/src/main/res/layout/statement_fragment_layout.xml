@@ -4,6 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="presentation"
+            type="br.com.crmm.bankapplication.framework.datasource.remote.dto.response.UserAccountResponseDTO" />
 
     </data>
 
@@ -13,19 +16,74 @@
         tools:context=".framework.presentation.ui.statement.StatementFragment"
         >
 
-        <TextView
-            android:id="@+id/text"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/statement_header"
+            style="@style/statementHeader"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/statement_type"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/statement_account_label"
+                style="@style/statementAccountLabel"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/statement_account"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/statement_account"
+                style="@style/statementAccount"
+                app:layout_constraintTop_toBottomOf="@+id/statement_account_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/statement_balance_label"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/statement_balance_label"
+                style="@style/statementValueLabel"
+                app:layout_constraintTop_toBottomOf="@+id/statement_account"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/statement_balance"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/statement_balance"
+                formattedValue="@{presentation.balance}"
+                style="@style/statementValue"
+                app:layout_constraintTop_toBottomOf="@+id/statement_balance_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/statement_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello"
-            tools:ignore="MissingConstraints" />
+            android:text="@string/statement_fragment_type"
+            android:layout_margin="@dimen/double_standard_margin"
+            android:textSize="@dimen/login_type_text_size"
+            android:textColor="@color/standardTextColor"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/statement_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/statement_recycler_view"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/statement_recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/text"
+            app:layout_constraintTop_toBottomOf="@id/statement_type"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

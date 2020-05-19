@@ -8,6 +8,48 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--Statement Fragment-->
+    <style name="statementHeader">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="statementLabel" parent="Widget.MaterialComponents.TextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/headerStatementTextColor</item>
+        <item name="android:layout_marginTop">@dimen/standard_margin</item>
+        <item name="android:layout_marginStart">@dimen/double_standard_margin</item>
+        <item name="android:layout_marginEnd">@dimen/double_standard_margin</item>
+    </style>
+
+    <style name="statementAccountLabel" parent="statementLabel">
+        <item name="android:text">@string/statement_account_label</item>
+    </style>
+
+    <style name="statementValueLabel" parent="statementLabel">
+        <item name="android:text">@string/statement_value_label</item>
+    </style>
+
+    <style name="statementH1" parent="Widget.MaterialComponents.TextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/h1</item>
+        <item name="android:textColor">@color/headerStatementTextColor</item>
+        <item name="android:layout_marginBottom">@dimen/standard_margin</item>
+        <item name="android:layout_marginStart">@dimen/double_standard_margin</item>
+        <item name="android:layout_marginEnd">@dimen/double_standard_margin</item>
+    </style>
+
+    <style name="statementAccount" parent="statementH1">
+        <item name="android:layout_marginBottom">@dimen/standard_margin</item>
+    </style>
+
+    <style name="statementValue" parent="statementH1">
+        <item name="android:layout_marginBottom">@dimen/double_standard_margin</item>
+    </style>
+
     <!--Statement ViewHolder-->
     <style name="statementViewHolderContainer" parent="Widget.MaterialComponents.CardView">
         <item name="android:layout_width">match_parent</item>

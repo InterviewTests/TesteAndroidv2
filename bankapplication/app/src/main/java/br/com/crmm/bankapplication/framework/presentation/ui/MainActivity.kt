@@ -6,6 +6,8 @@ import br.com.crmm.bankapplication.R
 
 class MainActivity : AppCompatActivity() {
 
+    override fun onBackPressed() {}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

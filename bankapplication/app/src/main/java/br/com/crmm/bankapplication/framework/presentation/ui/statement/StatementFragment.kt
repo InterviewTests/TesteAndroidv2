@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import br.com.crmm.bankapplication.data.state.StatementDataState
 import br.com.crmm.bankapplication.databinding.StatementFragmentLayoutBinding
+import br.com.crmm.bankapplication.framework.datasource.remote.dto.response.UserAccountResponseDTO
 import br.com.crmm.bankapplication.framework.presentation.ui.common.AbstractFragment
 import br.com.crmm.bankapplication.framework.presentation.ui.extension.safeRunOnUiThread
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -53,6 +54,7 @@ class StatementFragment : AbstractFragment() {
                 when(state){
                     is StatementDataState.SuccessfullyResponseState -> {
                         adapter.addAll(checkNotNull(state.statementDataResponseDTO))
+                        binding.presentation = UserAccountResponseDTO("11111", "Chris", "1234", "11148-0", 100000.0)
                     }
                     is StatementDataState.UnsuccessfullyResponseState -> {
                         toast("Load statements failed! - Code: ${state.errorResponseDTO.code}")
