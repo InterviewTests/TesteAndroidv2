@@ -1,20 +1,20 @@
 package br.com.crmm.bankapplication.framework.presentation.ui.statement
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import br.com.crmm.bankapplication.R
 import br.com.crmm.bankapplication.data.state.StatementDataState
 import br.com.crmm.bankapplication.databinding.StatementFragmentLayoutBinding
 import br.com.crmm.bankapplication.extension.nonNullable
-import br.com.crmm.bankapplication.framework.presentation.ui.common.AbstractFragment
+import br.com.crmm.bankapplication.framework.presentation.ui.common.AbstractFragmentDataBinding
 import br.com.crmm.bankapplication.framework.presentation.ui.extension.safeRunOnUiThread
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class StatementFragment : AbstractFragment() {
+class StatementFragment : AbstractFragmentDataBinding<StatementFragmentLayoutBinding>(
+    R.layout.statement_fragment_layout
+) {
 
-    private lateinit var binding: StatementFragmentLayoutBinding
     private val viewModel: StatementViewModel by viewModel()
     private val adapter: StatementAdapter by lazy {
         StatementAdapter()
@@ -23,29 +23,18 @@ class StatementFragment : AbstractFragment() {
         StatementFragmentArgs.fromBundle(requireArguments()).userAccount
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = initBinding(inflater, container)
-        return binding.root
-    }
-
-    private fun initBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?
-    ) = StatementFragmentLayoutBinding.inflate(
-        inflater, container, false
-    ).apply {
-        lifecycleOwner = this@StatementFragment.viewLifecycleOwner
-        presentation = userAccount
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configureRecyclerView()
         fetch()
+    }
+
+    override fun initBindingProperties() {
+        binding.presentation = userAccount
+    }
+
+    private fun configureRecyclerView(){
+        binding.statementRecyclerView.adapter = adapter
     }
 
     private fun fetch(){
@@ -69,9 +58,4 @@ class StatementFragment : AbstractFragment() {
             }
         })
     }
-
-    private fun configureRecyclerView(){
-        binding.statementRecyclerView.adapter = adapter
-    }
-
 }
