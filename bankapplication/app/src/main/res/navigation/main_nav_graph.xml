@@ -23,5 +23,8 @@
         <argument
             android:name="userAccount"
             app:argType="br.com.crmm.bankapplication.framework.datasource.remote.dto.response.UserAccountResponseDTO" />
+        <action
+            android:id="@+id/action_statementFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>
