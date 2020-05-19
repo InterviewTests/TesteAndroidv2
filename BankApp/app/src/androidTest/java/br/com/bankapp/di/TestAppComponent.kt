@@ -6,15 +6,14 @@ import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
-
 @Singleton
 @Component(
-        modules = [
-            AppModule::class,
-            SubComponentsModule::class
-        ]
+    modules = [
+        FakeAppModule::class,
+        SubComponentsModule::class
+    ]
 )
-interface AppComponent  {
+interface TestAppComponent : AppComponent {
 
     @Component.Builder
     interface Builder{
@@ -22,8 +21,6 @@ interface AppComponent  {
         @BindsInstance
         fun application(context: Context): Builder
 
-        fun build(): AppComponent
+        fun build(): TestAppComponent
     }
-
-    fun loginComponent(): LoginComponent.Factory
 }

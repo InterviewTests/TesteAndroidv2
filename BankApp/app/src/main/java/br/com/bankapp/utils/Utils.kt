@@ -15,7 +15,7 @@ fun isValidForLogin(context: Context, etUser: TextInputLayout, etPassword: TextI
 
     if (TextUtils.isEmpty(etUser.editText?.text.toString())) {
         etUser.error = context.getString(R.string.text_user_field_empty_error)
-    } else if (isCPFValid(etUser.editText!!.text.toString()) || isEmail(etUser.editText!!.text.toString())) {
+    } else if (isCPFValid(etUser.editText!!.text.toString()) || isEmailValid(etUser.editText!!.text.toString())) {
         etUser.error = null
         isUserValid = true
     } else {
@@ -104,7 +104,7 @@ fun isCPFValid(cpf: String): Boolean {
     return true
 }
 
-fun isEmail(email: String): Boolean {
+fun isEmailValid(email: String): Boolean {
     return Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }
 

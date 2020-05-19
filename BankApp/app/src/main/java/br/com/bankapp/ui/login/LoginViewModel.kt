@@ -1,6 +1,5 @@
 package br.com.bankapp.ui.login
 
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.viewModelScope
 import br.com.bankapp.commons.Loading
 import br.com.bankapp.commons.Success

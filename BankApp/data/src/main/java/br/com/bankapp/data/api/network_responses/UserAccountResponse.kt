@@ -1,22 +1,17 @@
 package br.com.bankapp.data.api.network_responses
 
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
-class UserAccountResponse : Serializable {
 
+data class UserAccountResponse(
     @SerializedName("userId")
-    var userId: Int? = null
-
+    var userId: Int?,
     @SerializedName("name")
-    var name: String? = null
-
+    var name: String?,
     @SerializedName("bankAccount")
-    var bankAccount: String? = null
-
+    var bankAccount: String?,
     @SerializedName("agency")
-    var agency: String? = null
-
+    var agency: String?,
     @SerializedName("balance")
-    var balance: Double? = null
-}
+    var balance: Double?
+)

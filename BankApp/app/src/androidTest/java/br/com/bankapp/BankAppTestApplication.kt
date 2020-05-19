@@ -1,19 +1,19 @@
 package br.com.bankapp
 
-import android.app.Application
 import br.com.bankapp.di.AppComponent
-import br.com.bankapp.di.DaggerAppComponent
+import br.com.bankapp.di.DaggerTestAppComponent
 
-open class BaseApplication : Application() {
 
-    open val appComponent: AppComponent by lazy {
+class BankAppTestApplication : BaseApplication() {
+
+    override val appComponent: AppComponent by lazy {
         initializeComponent()
     }
 
     private fun initializeComponent(): AppComponent {
         // Creates an instance of AppComponent using its Factory constructor
         // We pass the applicationContext that will be used as Context in the graph
-        return DaggerAppComponent.builder()
+        return DaggerTestAppComponent.builder()
             .application(this)
             .build()
     }

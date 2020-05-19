@@ -11,6 +11,5 @@
     <string name="text_user_field_empty_error">User is required</string>
     <string name="text_user_field_error">User must be a valid email or cpf</string>
     <string name="text_password_empty_error">Password is required</string>
-    <string name="text_password_error">Password must have at least one capital letter,
-        a special character and an alphanumeric character</string>
+    <string name="text_password_error">Password must have at least one capital letter, a special character and an alphanumeric character</string>
 </resources>
