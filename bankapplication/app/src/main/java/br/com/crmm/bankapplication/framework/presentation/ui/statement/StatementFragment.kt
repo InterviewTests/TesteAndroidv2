@@ -15,6 +15,9 @@ class StatementFragment : AbstractFragment() {
 
     private lateinit var binding: StatementFragmentLayoutBinding
     private val viewModel: StatementViewModel by viewModel()
+    private val adapter: StatementAdapter by lazy {
+        StatementAdapter()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +39,7 @@ class StatementFragment : AbstractFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        configureRecyclerView()
         fetch()
     }
 
@@ -48,7 +52,7 @@ class StatementFragment : AbstractFragment() {
             safeRunOnUiThread {
                 when(state){
                     is StatementDataState.SuccessfullyResponseState -> {
-                        toast("load statements!")
+                        adapter.addAll(checkNotNull(state.statementDataResponseDTO))
                     }
                     is StatementDataState.UnsuccessfullyResponseState -> {
                         toast("Load statements failed! - Code: ${state.errorResponseDTO.code}")
@@ -59,6 +63,11 @@ class StatementFragment : AbstractFragment() {
                 }
             }
         })
+    }
+
+    private fun configureRecyclerView(){
+        binding.statementRecyclerView.adapter = adapter
+        binding.statementRecyclerView
     }
 
 }

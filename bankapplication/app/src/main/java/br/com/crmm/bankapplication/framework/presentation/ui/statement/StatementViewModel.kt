@@ -21,7 +21,6 @@ class StatementViewModel(
             .map {
                 runOnUiThread {
                     _statementDataState.value = it
-                    println("TEST -LIST - $it")
                 }
             }
             .subscribe()

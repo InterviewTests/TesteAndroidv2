@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--Statement ViewHolder-->
+    <style name="statementViewHolderContainer" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/statement_view_holder_height</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="android:layout_marginTop">@dimen/standard_margin</item>
+        <item name="android:layout_marginBottom">@dimen/standard_margin</item>
+        <item name="android:layout_marginStart">@dimen/double_standard_margin</item>
+        <item name="android:layout_marginEnd">@dimen/double_standard_margin</item>
+    </style>
+
 </resources>

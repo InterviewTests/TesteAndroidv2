@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 data class StatementDataResponseDTO(
     @SerializedName("title")
-    private val title: String? = "",
+    val title: String? = "",
     @SerializedName("desc")
-    private val desc: String? = "",
+    val desc: String? = "",
     @SerializedName("date")
-    private val date: String? = "",
+    val date: String? = "",
     @SerializedName("value")
-    private val value: Double? = 0.0
+    val value: Double? = 0.0
 )
