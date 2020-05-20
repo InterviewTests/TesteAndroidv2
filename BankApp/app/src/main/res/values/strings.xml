@@ -7,9 +7,16 @@
     <string name="user_hint">User</string>
     <string name="password_hint">Password</string>
     <string name="text_connection_unavailable">Connection unavailable</string>
-    <string name="text_generic_error">Could not login</string>
+    <string name="text_login_generic_error">Could not login</string>
     <string name="text_user_field_empty_error">User is required</string>
     <string name="text_user_field_error">User must be a valid email or cpf</string>
     <string name="text_password_empty_error">Password is required</string>
     <string name="text_password_error">Password must have at least one capital letter, a special character and an alphanumeric character</string>
+
+    <!-- Main Activity -->
+    Couldn't get data
+    <string name="text_main_generic_error">Could not get data</string>
+    <string name="statements_title_text">Recentes</string>
+    <string name="account_title_text">Conta</string>
+    <string name="balance_title_text">Saldo</string>
 </resources>

@@ -1,4 +1,4 @@
-package br.com.bankapp.di.login.keys
+package br.com.bankapp.di.main.keys
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
@@ -12,4 +12,4 @@ import kotlin.reflect.KClass
 )
 @Retention(AnnotationRetention.RUNTIME)
 @MapKey
-annotation class LoginViewModelKey(val value: KClass<out ViewModel>)
+annotation class MainViewModelKey(val value: KClass<out ViewModel>)

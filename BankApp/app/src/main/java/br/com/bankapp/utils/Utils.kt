@@ -7,6 +7,9 @@ import android.text.TextWatcher
 import android.util.Patterns
 import br.com.bankapp.R
 import com.google.android.material.textfield.TextInputLayout
+import java.text.NumberFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 fun isValidForLogin(context: Context, etUser: TextInputLayout, etPassword: TextInputLayout): Boolean {
@@ -129,4 +132,21 @@ fun applyLayoutValidation(text: TextInputLayout): TextWatcher {
             text.isErrorEnabled = true
         }
     }
+}
+
+fun brazilianFormat(value: Double) : String {
+    return NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(value)
+}
+
+fun accountFormat(agency: String, bankAccount: String) : String {
+    val regex = """^(.{2})(.{6})(.{1})$""".toRegex()
+    println(regex.replace("011112224", "$1.$2-$3"))
+    return "$agency / ${regex.replace(bankAccount, "$1.$2-$3")}"
+}
+
+fun brazilianDateFormat(date: Date): String {
+    val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale("pt", "BR"))
+    simpleDateFormat.timeZone = TimeZone.getDefault()
+
+    return simpleDateFormat.format(date)
 }

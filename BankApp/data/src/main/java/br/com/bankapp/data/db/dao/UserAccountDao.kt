@@ -8,7 +8,7 @@ import br.com.bankapp.data.extensions.getDistinct
 @Dao
 abstract class UserAccountDao {
 
-    @Query("select * from user_account WHERE user_id = :userId")
+    @Query("SELECT * FROM user_account WHERE user_id = :userId")
     protected abstract fun getUserById(userId: Int): LiveData<UserAccountEntity>
 
     fun getUserByIdDistinct(userId: Int): LiveData<UserAccountEntity> = getUserById(userId).getDistinct()

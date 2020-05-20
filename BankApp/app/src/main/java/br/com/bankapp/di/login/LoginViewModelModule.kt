@@ -2,8 +2,8 @@ package br.com.bankapp.di.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import br.com.bankapp.di.login.keys.LoginViewModelKey
 import br.com.bankapp.ui.login.LoginViewModel
-import com.codingwithmitch.openapi.di.auth.keys.LoginViewModelKey
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

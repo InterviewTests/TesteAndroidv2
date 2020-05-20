@@ -1,14 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:context=".ui.main.MainActivity">
 
-    <TextView
-        android:id="@+id/welcome_text"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/user_account_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dimen_main_padding_bottom"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="test" />
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/name_text"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginStart="@dimen/dimen_main_default_margin_start"
+            android:layout_marginTop="@dimen/dimen_main_name_text_margin_top"
+            android:layout_marginEnd="@dimen/dimen_main_default_margin_end"
+            android:gravity="start|center_vertical"
+            android:textColor="@color/colorSecondary"
+            android:textSize="@dimen/dimen_main_name_text_font_size"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/exit_image"
+            tools:text="Jose da Silva Teste"/>
+
+        <ImageView
+            android:id="@+id/exit_image"
+            android:layout_width="@dimen/dimen_main_exit_image_size"
+            android:layout_height="@dimen/dimen_main_exit_image_size"
+            android:layout_marginTop="@dimen/dimen_main_exit_image_margin_top"
+            android:layout_marginEnd="@dimen/dimen_main_default_margin_end"
+            android:src="@drawable/exit_button_selector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/account_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_main_default_margin_start"
+            android:layout_marginTop="@dimen/dimen_main_default_margin_top"
+            android:layout_marginEnd="@dimen/dimen_main_default_margin_end"
+            android:gravity="center"
+            android:text="@string/account_title_text"
+            android:textColor="@color/colorSecondary"
+            android:textSize="@dimen/md_text_size_small"
+            app:layout_constraintTop_toBottomOf="@+id/name_text"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="conta"/>
+
+        <TextView
+            android:id="@+id/account_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_main_default_margin_start"
+            android:layout_marginTop="@dimen/dimen_main_account_text_margin_top"
+            android:layout_marginEnd="@dimen/dimen_main_default_margin_end"
+            android:gravity="start"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorSecondary"
+            android:textSize="@dimen/dimen_main_default_font_size"
+            app:layout_constraintTop_toBottomOf="@+id/account_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/exit_image"
+            tools:text="2050 / 01.111222-4"/>
+
+        <TextView
+            android:id="@+id/balance_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_main_default_margin_start"
+            android:layout_marginTop="@dimen/dimen_main_default_margin_top"
+            android:layout_marginEnd="@dimen/dimen_main_default_margin_end"
+            android:gravity="center"
+            android:text="@string/balance_title_text"
+            android:textColor="@color/colorSecondary"
+            android:textSize="@dimen/md_text_size_small"
+            app:layout_constraintTop_toBottomOf="@+id/account_text"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="saldo"/>
+
+        <TextView
+            android:id="@+id/balance_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_main_default_margin_start"
+            android:layout_marginTop="@dimen/dimen_main_balance_text_margin_top"
+            android:layout_marginEnd="@dimen/dimen_main_default_margin_end"
+            android:gravity="start"
+            android:textColor="@color/colorSecondary"
+            android:textSize="@dimen/dimen_main_default_font_size"
+            app:layout_constraintTop_toBottomOf="@+id/balance_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/exit_image"
+            tools:text="R$1.000,00"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/backgroundStatements"
+        app:layout_constraintTop_toBottomOf="@+id/user_account_layout"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ProgressBar
+            android:id="@+id/main_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/statements_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/statements_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_main_default_margin_start"
+                    android:layout_marginTop="@dimen/dimen_main_default_margin_top"
+                    android:layout_marginEnd="@dimen/dimen_main_default_margin_end"
+                    android:text="@string/statements_title_text"
+                    android:gravity="start"
+                    android:textSize="@dimen/md_text_size_large"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Recentes" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/statements_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/dimen_main_default_margin_top"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/statements_title"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/layout_statement_item" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

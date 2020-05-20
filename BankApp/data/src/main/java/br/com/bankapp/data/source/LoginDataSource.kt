@@ -3,7 +3,7 @@ package br.com.bankapp.data.source
 import br.com.bankapp.data.api.BankAppApiService
 import br.com.bankapp.data.db.dao.UserAccountDao
 import br.com.bankapp.data.utils.SharedPrefsHelper
-import com.mvvmclean.trendingrepos.data.mappers.toEntity
+import br.com.bankapp.data.mappers.toEntity
 import javax.inject.Inject
 
 class LoginDataSource @Inject constructor(
@@ -15,6 +15,7 @@ class LoginDataSource @Inject constructor(
     suspend fun attemptLogin(user: String, password: String) {
         val loginResponse = apiService.login("test_user", "Test@1")
         userAccountDao.clearAndInsert(loginResponse.userAccount!!.toEntity())
-        sharedPrefsHelper.put(SharedPrefsHelper.PREF_USER, "$user:$password")
+        sharedPrefsHelper.put(SharedPrefsHelper.PREF_USER, user)
+        sharedPrefsHelper.put(SharedPrefsHelper.PREF_USER_ID, loginResponse.userAccount?.userId!!)
     }
 }

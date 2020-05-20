@@ -1,12 +1,12 @@
-package br.com.bankapp.di.login
+package br.com.bankapp.di.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import javax.inject.Inject
 import javax.inject.Provider
 
-@LoginScope
-class LoginViewModelFactory
+@MainScope
+class MainViewModelFactory
 @Inject
 constructor(
     private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>

@@ -4,8 +4,14 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
 import br.com.bankapp.BuildConfig
+import br.com.bankapp.data.api.BankAppApiService
 import br.com.bankapp.data.db.BankDatabase
+import br.com.bankapp.data.db.dao.UserAccountDao
+import br.com.bankapp.data.repository.UserAccountRepositoryImpl
+import br.com.bankapp.data.source.LoginDataSource
+import br.com.bankapp.data.source.UserAccountDataSource
 import br.com.bankapp.data.utils.SharedPrefsHelper
+import br.com.bankapp.domain.repository.UserAccountRepository
 import br.com.bankapp.utils.Constants
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -69,5 +75,51 @@ object AppModule {
             SharedPrefsHelper.PREF_USER,
             Context.MODE_PRIVATE
         )
+    }
+
+    @JvmStatic
+    @Singleton
+    @Provides
+    fun provideBankApiService(retrofitBuilder: Retrofit.Builder): BankAppApiService {
+        return retrofitBuilder
+            .build()
+            .create(BankAppApiService::class.java)
+    }
+
+    @JvmStatic
+    @Singleton
+    @Provides
+    fun provideUserAccountDao(db: BankDatabase): UserAccountDao {
+        return db.userAccountDao()
+    }
+
+    @JvmStatic
+    @Singleton
+    @Provides
+    fun provideLoginDataSource(
+        bankAppApiService: BankAppApiService,
+        userAccountDao: UserAccountDao,
+        sharedPrefsHelper: SharedPrefsHelper
+    ): LoginDataSource {
+        return LoginDataSource(bankAppApiService, userAccountDao, sharedPrefsHelper)
+    }
+
+    @JvmStatic
+    @Singleton
+    @Provides
+    fun provideUserAccountDataSource(
+        userAccountDao: UserAccountDao
+    ): UserAccountDataSource {
+        return UserAccountDataSource(userAccountDao)
+    }
+
+    @JvmStatic
+    @Singleton
+    @Provides
+    fun provideUserAccountRepository(
+        loginDataSource: LoginDataSource,
+        userAccountDataSource: UserAccountDataSource
+    ): UserAccountRepository {
+        return UserAccountRepositoryImpl(loginDataSource, userAccountDataSource)
     }
 }

@@ -2,10 +2,7 @@ package br.com.bankapp.data.api
 
 import br.com.bankapp.data.api.network_responses.LoginResponse
 import br.com.bankapp.data.api.network_responses.StatementListResponse
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface BankAppApiService {
 
@@ -16,6 +13,6 @@ interface BankAppApiService {
         @Field("password") password: String
     ): LoginResponse
 
-    @GET("account/properties")
-    suspend fun getStatements(): StatementListResponse
+    @GET("statements/{userId}")
+    suspend fun loadStatements(@Path("userId") userId: Int): StatementListResponse
 }

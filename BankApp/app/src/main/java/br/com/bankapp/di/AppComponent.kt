@@ -2,6 +2,7 @@ package br.com.bankapp.di
 
 import android.content.Context
 import br.com.bankapp.di.login.LoginComponent
+import br.com.bankapp.di.main.MainComponent
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -26,4 +27,6 @@ interface AppComponent  {
     }
 
     fun loginComponent(): LoginComponent.Factory
+
+    fun mainComponent(): MainComponent.Factory
 }
