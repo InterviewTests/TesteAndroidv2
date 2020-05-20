@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="presentation"
+            type="br.com.crmm.bankapplication.framework.datasource.remote.dto.response.UserAccountResponseDTO" />
+        <variable
+            name="viewModel"
+            type="br.com.crmm.bankapplication.framework.presentation.ui.statement.StatementViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".framework.presentation.ui.statement.StatementFragment"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/statement_header"
+            style="@style/statementHeader"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/statement_type"
+            >
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/statement_user_name"
+                style="@style/statementUserName"
+                android:text="@{presentation.name}"
+                app:layout_constraintBottom_toTopOf="@id/statement_account_label"
+                app:layout_constraintEnd_toStartOf="@+id/statement_logout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/statement_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/standard_padding"
+                android:padding="@dimen/standard_padding"
+                app:srcCompat="@drawable/ic_logout"
+                android:onClick="@{()-> viewModel.logout()}"
+                app:layout_constraintBottom_toBottomOf="@+id/statement_user_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/statement_user_name"
+                app:layout_constraintTop_toTopOf="@+id/statement_user_name"
+                 />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/statement_account_label"
+                style="@style/statementAccountLabel"
+                app:layout_constraintTop_toBottomOf="@+id/statement_user_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/statement_account"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/statement_account"
+                style="@style/statementAccount"
+                agency="@{presentation.agency}"
+                bankAccount="@{presentation.bankAccount}"
+                app:layout_constraintTop_toBottomOf="@+id/statement_account_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/statement_balance_label"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/statement_balance_label"
+                style="@style/statementValueLabel"
+                app:layout_constraintTop_toBottomOf="@+id/statement_account"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/statement_balance"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/statement_balance"
+                formatValue="@{presentation.balance}"
+                style="@style/statementValue"
+                app:layout_constraintTop_toBottomOf="@+id/statement_balance_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/statement_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/statement_fragment_type"
+            android:layout_margin="@dimen/double_standard_margin"
+            android:textSize="@dimen/login_type_text_size"
+            android:textColor="@color/standardTextColor"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/statement_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/statement_recycler_view"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/statement_recycler_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/statement_type"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

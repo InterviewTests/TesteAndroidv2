@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">bankapplication</string>
+
+    <!--LoginFragment-->
+    <string name="login_layout_username_input_hint">User</string>
+    <string name="login_layout_password_input_hint">Password</string>
+    <string name="login_layout_button_enter">Login</string>
+
+    <!--StatementFragment-->
+    <string name="statement_fragment_type">Recentes</string>
+    <string name="statement_header_agency_and_account">%s / %s</string>
+
+    <!--Commons-->
+    <string name="formatted_value">R$ %.2f</string>
+    <string name="statement_account_label">Conta</string>
+    <string name="statement_value_label">Saldo</string>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="br.com.crmm.bankapplication.framework.presentation.ui.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/login_fragment_layout"
+        >
+        <action
+            android:id="@+id/action_loginFragment_to_statementFragment"
+            app:destination="@id/statementFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/statementFragment"
+        android:name="br.com.crmm.bankapplication.framework.presentation.ui.statement.StatementFragment"
+        android:label="StatementFragment"
+        tools:layout="@layout/statement_fragment_layout">
+        <argument
+            android:name="userAccount"
+            app:argType="br.com.crmm.bankapplication.framework.datasource.remote.dto.response.UserAccountResponseDTO" />
+        <action
+            android:id="@+id/action_statementFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+</navigation>
