@@ -2,17 +2,13 @@ package br.com.bankapp.data.api.network_responses
 
 import com.google.gson.annotations.SerializedName
 
-class StatementResponse {
-
+data class StatementResponse(
     @SerializedName("title")
-    var title: String? = null
-
+    var title: String?,
     @SerializedName("desc")
-    var description: String? = null
-
+    var description: String?,
     @SerializedName("date")
-    var date: String? = null
-
+    var date: String?,
     @SerializedName("value")
-    var value: Double? = null
-}
+    var value: Double?
+)

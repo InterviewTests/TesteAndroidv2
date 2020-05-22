@@ -140,8 +140,7 @@ fun brazilianFormat(value: Double) : String {
 
 fun accountFormat(agency: String, bankAccount: String) : String {
     val regex = """^(.{2})(.{6})(.{1})$""".toRegex()
-    println(regex.replace("011112224", "$1.$2-$3"))
-    return "$agency / ${regex.replace(bankAccount, "$1.$2-$3")}"
+    return "$bankAccount / ${regex.replace(agency, "$1.$2-$3")}"
 }
 
 fun brazilianDateFormat(date: Date): String {

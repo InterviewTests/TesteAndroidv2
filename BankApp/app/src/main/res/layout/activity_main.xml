@@ -28,11 +28,11 @@
             android:maxLines="1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/exit_image"
+            app:layout_constraintEnd_toStartOf="@+id/exit_button"
             tools:text="Jose da Silva Teste"/>
 
         <ImageView
-            android:id="@+id/exit_image"
+            android:id="@+id/exit_button"
             android:layout_width="@dimen/dimen_main_exit_image_size"
             android:layout_height="@dimen/dimen_main_exit_image_size"
             android:layout_marginTop="@dimen/dimen_main_exit_image_margin_top"
@@ -70,7 +70,7 @@
             android:textSize="@dimen/dimen_main_default_font_size"
             app:layout_constraintTop_toBottomOf="@+id/account_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/exit_image"
+            app:layout_constraintEnd_toStartOf="@+id/exit_button"
             tools:text="2050 / 01.111222-4"/>
 
         <TextView
@@ -100,7 +100,7 @@
             android:textSize="@dimen/dimen_main_default_font_size"
             app:layout_constraintTop_toBottomOf="@+id/balance_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/exit_image"
+            app:layout_constraintEnd_toStartOf="@+id/exit_button"
             tools:text="R$1.000,00"/>
 
 

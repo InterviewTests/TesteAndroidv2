@@ -1,6 +1,7 @@
 package br.com.bankapp.helpers
 
 import br.com.bankapp.sample.loginTestSuccess
+import br.com.bankapp.sample.statementsTestSuccess
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.RecordedRequest
@@ -17,6 +18,11 @@ internal class TestRequestDispatcher : Dispatcher() {
                 MockResponse()
                     .setResponseCode(HttpURLConnection.HTTP_OK)
                     .setBody(loginTestSuccess)
+            }
+            "/statements/1" -> {
+                MockResponse()
+                    .setResponseCode(HttpURLConnection.HTTP_OK)
+                    .setBody(statementsTestSuccess)
             }
             else -> {
                 MockResponse()

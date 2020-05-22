@@ -4,13 +4,13 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
         applicationId "br.com.bankapp"
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "br.com.bankapp.runner.MockTestRunner"
@@ -86,6 +86,7 @@ dependencies {
     // Test
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
+    testImplementation "org.robolectric:shadows-multidex:4.0.1"
     testImplementation "androidx.test:core:$androidxTestCoreVersion"
     testImplementation "androidx.test:runner:$androidxTestCoreVersion"
     testImplementation "androidx.test.ext:junit:$androidxJunitVersion"

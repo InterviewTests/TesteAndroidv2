@@ -13,8 +13,8 @@ import java.util.*
             parentColumns = ["user_id"],
             childColumns = ["user_id"])])
 data class StatementEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id : Long = 0,
+    @PrimaryKey
+    val id : Long,
     val title: String,
     val description: String,
     val date: Date,

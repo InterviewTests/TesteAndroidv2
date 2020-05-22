@@ -1,6 +1,5 @@
 package br.com.bankapp.activities
 
-import android.view.View
 import androidx.test.espresso.Espresso.*
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.*
@@ -16,13 +15,10 @@ import br.com.bankapp.R
 import br.com.bankapp.helpers.ErrorDispatcher
 import br.com.bankapp.helpers.RequestDispatcher
 import br.com.bankapp.helpers.ToastMatcher
+import br.com.bankapp.helpers.hasTextInputLayoutErrorText
 import br.com.bankapp.ui.login.LoginActivity
 import br.com.bankapp.ui.main.MainActivity
-import com.google.android.material.textfield.TextInputLayout
 import okhttp3.mockwebserver.MockWebServer
-import org.hamcrest.Description
-import org.hamcrest.Matcher
-import org.hamcrest.TypeSafeMatcher
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -75,8 +71,10 @@ class LoginActivity : BaseTest() {
             .perform(click())
 
         onView(withId(R.id.input_password_layout))
-            .check(matches(hasTextInputLayoutErrorText("Password must have at least " +
-                    "one capital letter, a special character and an alphanumeric character")))
+            .check(matches(
+                hasTextInputLayoutErrorText("Password must have at least " +
+                    "one capital letter, a special character and an alphanumeric character")
+            ))
     }
 
     @Test
@@ -111,7 +109,7 @@ class LoginActivity : BaseTest() {
         onView(withId(R.id.login_button))
             .perform(click())
 
-        sleep()
+        sleep(null)
 
         Intents.intended(IntentMatchers.hasComponent(MainActivity::class.java.name))
     }
@@ -135,19 +133,7 @@ class LoginActivity : BaseTest() {
             .perform(click())
 
         // Is toast displayed and is the message correct?
-        onView(withText(R.string.text_generic_error)).inRoot(ToastMatcher())
+        onView(withText(R.string.text_login_generic_error)).inRoot(ToastMatcher())
             .check(matches(isDisplayed()))
-    }
-
-    private fun hasTextInputLayoutErrorText(expectedErrorText: String): Matcher<View> = object : TypeSafeMatcher<View>() {
-
-        override fun describeTo(description: Description?) { }
-
-        override fun matchesSafely(item: View?): Boolean {
-            if (item !is TextInputLayout) return false
-            val errorCharSequence = item.error ?: return false
-            val error = errorCharSequence.toString()
-            return expectedErrorText == error
-        }
     }
 }

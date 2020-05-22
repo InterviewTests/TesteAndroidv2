@@ -8,7 +8,6 @@ import br.com.bankapp.data.api.BankAppApiService
 import br.com.bankapp.data.db.BankDatabase
 import br.com.bankapp.data.db.dao.UserAccountDao
 import br.com.bankapp.data.repository.UserAccountRepositoryImpl
-import br.com.bankapp.data.source.LoginDataSource
 import br.com.bankapp.data.source.UserAccountDataSource
 import br.com.bankapp.data.utils.SharedPrefsHelper
 import br.com.bankapp.domain.repository.UserAccountRepository
@@ -96,30 +95,20 @@ object AppModule {
     @JvmStatic
     @Singleton
     @Provides
-    fun provideLoginDataSource(
-        bankAppApiService: BankAppApiService,
-        userAccountDao: UserAccountDao,
-        sharedPrefsHelper: SharedPrefsHelper
-    ): LoginDataSource {
-        return LoginDataSource(bankAppApiService, userAccountDao, sharedPrefsHelper)
-    }
-
-    @JvmStatic
-    @Singleton
-    @Provides
     fun provideUserAccountDataSource(
-        userAccountDao: UserAccountDao
+        userAccountDao: UserAccountDao,
+        bankAppApiService: BankAppApiService,
+        sharedPrefsHelper: SharedPrefsHelper
     ): UserAccountDataSource {
-        return UserAccountDataSource(userAccountDao)
+        return UserAccountDataSource(userAccountDao, bankAppApiService, sharedPrefsHelper)
     }
 
     @JvmStatic
     @Singleton
     @Provides
     fun provideUserAccountRepository(
-        loginDataSource: LoginDataSource,
         userAccountDataSource: UserAccountDataSource
     ): UserAccountRepository {
-        return UserAccountRepositoryImpl(loginDataSource, userAccountDataSource)
+        return UserAccountRepositoryImpl(userAccountDataSource)
     }
 }

@@ -6,6 +6,7 @@ import br.com.bankapp.data.api.BankAppApiService
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.*
 import org.hamcrest.MatcherAssert.*
+import org.hamcrest.collection.IsCollectionWithSize
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -43,6 +44,19 @@ class BankApiServiceTest: BaseServiceTest() {
             assertThat(resultResponse.userAccount, not(nullValue()))
             assertThat(resultResponse.userAccount!!.userId, equalTo(1))
             assertThat(request.path, `is`("/login"))
+        }
+    }
+
+    @Test
+    fun requestStatements_confirmResponse() {
+        runBlocking {
+            val resultResponse = service.loadStatements(1)
+            val request = mockWebServer.takeRequest()
+
+            assertThat(resultResponse, not(nullValue()))
+            assertThat(resultResponse.statementList, not(nullValue()))
+            assertThat(resultResponse.statementList, IsCollectionWithSize.hasSize(9))
+            assertThat(request.path, `is`("/statements/1"))
         }
     }
 }

@@ -16,6 +16,7 @@ import br.com.bankapp.ui.login.LoginActivity
 import br.com.bankapp.utils.accountFormat
 import br.com.bankapp.utils.brazilianFormat
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.annotations.TestOnly
 import java.net.UnknownHostException
 import javax.inject.Inject
 
@@ -40,9 +41,13 @@ class MainActivity: BaseActivity() {
     override fun initComponents(savedInstanceState: Bundle?) {
         statusBarColor(this, R.color.colorPrimary)
         statements_recyclerview.adapter = statementsListAdapter
-        subscribeObservers()
         addListeners()
         getStatements(false)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        subscribeObservers()
     }
 
     override fun getLayoutId() = R.layout.activity_main
@@ -52,7 +57,7 @@ class MainActivity: BaseActivity() {
         swipe_refresh.setOnRefreshListener {
             getStatements(true)
         }
-        exit_image.setOnClickListener {
+        exit_button.setOnClickListener {
             logout()
         }
     }
@@ -114,4 +119,11 @@ class MainActivity: BaseActivity() {
         startActivity(intent)
         finish()
     }
+
+    @TestOnly
+    fun setTestViewModel(testViewModel: MainViewModel) {
+        viewModel = testViewModel
+        sharedPrefsHelper.put(SharedPrefsHelper.PREF_USER_ID, 1)
+    }
+
 }

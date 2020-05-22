@@ -1,9 +1,14 @@
 package br.com.bankapp.utils
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import org.hamcrest.CoreMatchers
+import org.hamcrest.MatcherAssert
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.time.LocalDate
+import java.time.ZoneId
+import java.util.*
 
 @RunWith(AndroidJUnit4::class)
 class UtilsTest {
@@ -46,5 +51,29 @@ class UtilsTest {
         Assert.assertFalse(isPasswordValid(invalidPassword2))
         Assert.assertTrue(isPasswordValid(validPassword1))
         Assert.assertTrue(isPasswordValid(validPassword2))
+    }
+
+    @Test
+    fun brazilianValueFormatTest() {
+        val value1 = 300.0
+        val value2 = -55.4
+        val value3 = 1000.55
+        MatcherAssert.assertThat(brazilianFormat(value1), CoreMatchers.equalTo("R$ 300,00"))
+        MatcherAssert.assertThat(brazilianFormat(value2), CoreMatchers.equalTo("-R$ 55,40"))
+        MatcherAssert.assertThat(brazilianFormat(value3), CoreMatchers.equalTo("R$ 1.000,55"))
+    }
+
+    @Test
+    fun accountFormatTest() {
+        val agency = "445890678"
+        val bankAccount = "2030"
+        MatcherAssert.assertThat(accountFormat(agency, bankAccount),
+            CoreMatchers.equalTo("2030 / 44.589067-8"))
+    }
+
+    @Test
+    fun brazilianDateFormatTest() {
+        val date = Date.from(LocalDate.parse("1914-06-02").atStartOfDay().atZone(ZoneId.systemDefault()).toInstant())
+        MatcherAssert.assertThat(brazilianDateFormat(date), CoreMatchers.equalTo("02/06/1914"))
     }
 }

@@ -8,7 +8,8 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import br.com.bankapp.data.api.BankAppApiService
 import br.com.bankapp.data.db.BankDatabase
 import br.com.bankapp.data.db.dao.UserAccountDao
-import br.com.bankapp.data.source.LoginDataSource
+import br.com.bankapp.data.db.entity.UserAccountEntity
+import br.com.bankapp.data.source.UserAccountDataSource
 import br.com.bankapp.data.utils.SharedPrefsHelper
 import br.com.bankapp.utils.CoroutineTestRule
 import br.com.bankapp.utils.SampleData
@@ -28,13 +29,14 @@ import java.util.concurrent.Executors
 
 
 @RunWith(AndroidJUnit4::class)
-class LoginDataSourceTest {
+class UserAccountDataSourceTest {
 
-    private lateinit var loginDataSource: LoginDataSource
+    private lateinit var userAccountDataSource: UserAccountDataSource
     private lateinit var userAccountDao: UserAccountDao
     private lateinit var bankDatabase: BankDatabase
     private lateinit var sharedPrefsHelper: SharedPrefsHelper
     private var mockkBankApiService = mockk<BankAppApiService>()
+    private lateinit var userAccountEntity: UserAccountEntity
 
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
@@ -56,9 +58,17 @@ class LoginDataSourceTest {
         val sharedPreferences = context.getSharedPreferences(
             SharedPrefsHelper.PREF_USER,
             Context.MODE_PRIVATE
-        );
+        )
         sharedPrefsHelper = SharedPrefsHelper(sharedPreferences)
-        loginDataSource = LoginDataSource(mockkBankApiService, userAccountDao, sharedPrefsHelper)
+        userAccountDataSource = UserAccountDataSource(userAccountDao, mockkBankApiService, sharedPrefsHelper)
+
+        userAccountEntity = UserAccountEntity(
+            userId = 1,
+            name = "User",
+            bankAccount = "2050",
+            agency = "012314564",
+            balance = 3.3445
+        )
     }
 
     @After
@@ -70,11 +80,23 @@ class LoginDataSourceTest {
     @Test
     fun executeAttemptLogin_verifyBdAndPreferences() = runBlocking {
         coEvery { mockkBankApiService.login(any(), any()) } returns SampleData.loginResponse
-        loginDataSource.attemptLogin("user", "password")
+        userAccountDataSource.attemptLogin("user", "password")
 
         val userAccount = userAccountDao.getUserByIdDistinct(1).getOrAwaitValue()
         assertThat(userAccount, notNullValue())
 
         assertThat(sharedPrefsHelper.hasKey(SharedPrefsHelper.PREF_USER), `is`(true))
+        assertThat(sharedPrefsHelper.hasKey(SharedPrefsHelper.PREF_USER_ID), `is`(true))
+    }
+
+    @ExperimentalCoroutinesApi
+    @Test
+    fun getUserAccount_confirmObtained() = runBlocking {
+        userAccountDao.clearAndInsert(userAccountEntity)
+
+        val userAccount = userAccountDataSource.getUserAccount(1).getOrAwaitValue()
+
+        assertThat(userAccount, notNullValue())
+        assertThat(userAccount.userId, equalTo(1))
     }
 }

@@ -20,7 +20,7 @@ open class BaseTest {
         }
     }
 
-    fun sleep() {
-        SystemClock.sleep(SYSTEM_ACTION_INTERVAL_TIME)
+    fun sleep(time: Long?) {
+        SystemClock.sleep(time ?: SYSTEM_ACTION_INTERVAL_TIME)
     }
 }

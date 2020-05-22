@@ -1,7 +1,6 @@
 package br.com.bankapp.data.source
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.map
 import androidx.paging.PagedList
 import androidx.paging.toLiveData
 import br.com.bankapp.data.api.BankAppApiService
@@ -19,8 +18,8 @@ class StatementDataSource @Inject constructor(
     suspend fun loadStatements(userId: Int) {
         val statementListResponse = apiService.loadStatements(userId)
         statementDao.clearAndInsert(
-            statementListResponse.statementList!!.map {
-                it.toEntity(userId)
+            statementListResponse.statementList!!.mapIndexed { index, statementResponse ->
+                statementResponse.toEntity(index.toLong(), userId)
             }
         )
     }

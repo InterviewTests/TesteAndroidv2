@@ -17,6 +17,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.concurrent.Executors
 
 @RunWith(AndroidJUnit4::class)
 class UserAccountDaoTest {
@@ -35,6 +36,7 @@ class UserAccountDaoTest {
         // process is killed.
         bankDatabase = Room.inMemoryDatabaseBuilder(context, BankDatabase::class.java)
             .allowMainThreadQueries() // Allowing main thread queries, just for testing.
+            .setTransactionExecutor(Executors.newSingleThreadExecutor())
             .build()
         userAccountDao = bankDatabase.userAccountDao()
 
@@ -55,7 +57,7 @@ class UserAccountDaoTest {
     @Test
     fun insertUserAccount_confirmInserted() = runBlocking{
         // Add a new user account
-        userAccountDao.insert(userAccountEntity)
+        userAccountDao.clearAndInsert(userAccountEntity)
 
         // Get inserted user account
         val userAccountFromDB = userAccountDao.getUserByIdDistinct(1).getOrAwaitValue()
@@ -67,7 +69,7 @@ class UserAccountDaoTest {
     @Test
     fun insertUserAccount_confirmDeleted() = runBlocking{
         // Add a new user account
-        userAccountDao.insert(userAccountEntity)
+        userAccountDao.clearAndInsert(userAccountEntity)
 
         // Delete the previously inserted user account
         userAccountDao.delete()
