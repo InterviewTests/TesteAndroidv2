@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_default">18dp</dimen>
+    <dimen name="padding_default">16dp</dimen>
+
+    <!-- Login -->
+    <dimen name="dimen_scroll_margin_bottom">14dp</dimen>
+    <dimen name="dimen_login_text_padding">8dp</dimen>
+    <dimen name="dimen_login_text_margin_top">70dp</dimen>
+    <dimen name="dimen_login_default_margin">18dp</dimen>
+    <dimen name="dimen_login_user_input_margin_top">100dp</dimen>
+    <dimen name="dimen_login_password_input_margin_top">10dp</dimen>
+    <dimen name="dimen_login_button_margin_bottom">40dp</dimen>
+    <dimen name="dimen_login_button_height">52dp</dimen>
+    <dimen name="dimen_login_button_width">196dp</dimen>
+
+    <!-- Main -->
+    <dimen name="dimen_main_padding_bottom">16dp</dimen>
+    <dimen name="dimen_main_default_margin_end">18dp</dimen>
+    <dimen name="dimen_main_default_margin_start">20dp</dimen>
+    <dimen name="dimen_main_default_margin_top">8dp</dimen>
+    <dimen name="dimen_main_name_text_margin_top">14dp</dimen>
+    <dimen name="dimen_main_exit_image_size">34dp</dimen>
+    <dimen name="dimen_main_exit_image_margin_top">26dp</dimen>
+    <dimen name="dimen_main_account_text_margin_top">5dp</dimen>
+    <dimen name="dimen_main_balance_text_margin_top">5dp</dimen>
+    <dimen name="dimen_main_name_text_font_size">26sp</dimen>
+    <dimen name="dimen_main_default_font_size">24sp</dimen>
+    <dimen name="dimen_statement_layout_padding_bottom">14dp</dimen>
+    <dimen name="dimen_main_payment_text_margin_top">10dp</dimen>
+    <dimen name="dimen_statement_layout_default_margin_top">20dp</dimen>
+    <dimen name="dimen_card_view_margin_start_end">12dp</dimen>
+    <dimen name="dimen_card_view_margin_top_bottom">8dp</dimen>
+
+    <!-- Font sizes, https://material.io/guidelines/style/typography.html#typography-typeface -->
+    <dimen name="md_text_size_micro">10sp</dimen>
+    <dimen name="md_text_size_small">14sp</dimen>
+    <dimen name="md_text_size_medium">16sp</dimen>
+    <dimen name="md_text_size_large">20sp</dimen>
+    <dimen name="md_text_size_xlarge">34sp</dimen>
+    <dimen name="md_text_size_xxlarge">45sp</dimen>
+    <dimen name="md_text_size_xxxlarge">56sp</dimen>
+    <dimen name="md_text_size_xxxxlarge">112sp</dimen>
+</resources>

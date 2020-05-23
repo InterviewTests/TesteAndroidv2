@@ -1,0 +1,4 @@
+rootProject.name='BankApp'
+include ':app'
+include ':data'
+include ':domain'
