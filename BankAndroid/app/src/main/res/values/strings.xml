@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BankAndroid</string>
+    <string name="login_button_label">Login</string>
+    <string name="password">Password</string>
+    <string name="username">User</string>
+    <string name="login_doing_login">Realizando Login!!!</string>
+    <string name="login_login_done">Login Realizado com sucesso!!!</string>
+    <string name="statement_last_updates">Recentes</string>
+</resources>
