@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.LoginTheme">
+        <item name="android:statusBarColor">@color/login_primary_dark</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="colorPrimaryDark">@color/login_primary_dark</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>
