@@ -1,7 +1,7 @@
 package com.br.myapplication.helper
 
 import androidx.core.util.PatternsCompat
-import com.br.myapplication.login.LoginViewModel
+import com.br.myapplication.presentation.login.LoginViewModel
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
