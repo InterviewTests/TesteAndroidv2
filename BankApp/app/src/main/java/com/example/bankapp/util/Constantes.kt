@@ -1,0 +1,11 @@
+package com.example.bankapp.util
+
+object Constantes {
+    object Parametros{
+        const val ID : String = "ID"
+        const val BANK_ACCOUNT : String = "BANK_ACCOUNT"
+        const val NAME : String = "NAME"
+        const val AGENCY : String = "AGENCY"
+        const val BALANCE : String = "BALANCE"
+    }
+}

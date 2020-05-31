@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Bank App</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">entrar</string>
+    <string name="erro">Erro!</string>
+    <string name="erro_nao_identificado">Não foi possível identificar o erro.</string>
+    <string name="erro_not_found">Não foi possível encontrar o conteúdo desejado.</string>
+    <string name="erro_timeout">A conexão excedeu o tempo limite.</string>
+    <string name="erro_realizar_login">As credenciais fornecidas aparentam estar incorretas. Tente novamente.</string>
+    <string name="erro_empresa_id">Ocorreu um erro ao buscar a empresa específica.</string>
+    <string name="erro_listar_empresas">Ocorreu um erro ao tentar listar as empresas.</string>
+    <string name="ok">Ok</string>
+    <string name="algo_de_errado">Algo de errado não está certo, meu amigo</string>
+    <string name="clique_na_busca_para_iniciar">Clique na busca para iniciar.</string>
+    <string name="procurar_empresas">Procurar por empresas...</string>
+    <string name="carregando">Carregando</string>
+    <string name="sem_resultados">Não foi possível encontrar resultados correspondentes a sua busca.</string>
+    <string name="erro_sem_credenciais">As credenciais de login estão desatualizadas. Efetue o login novamente.</string>
+    <string name="erro_nao_autorizado">You need to sign in or sign up before continuing.</string>
+</resources>
