@@ -43,6 +43,9 @@ dependencies {
     // lifecycle
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 
+    // material
+    implementation "com.google.android.material:material:$material_version"
+
     // dagger
     implementation "com.google.dagger:dagger:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
