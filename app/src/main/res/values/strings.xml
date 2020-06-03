@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Teste GFT</string>
+    <string name="hintUser">User</string>
+    <string name="hintPassword">Password</string>
+    <string name="logoDescription">Logo</string>
+    <string name="loginButton">Login</string>
 </resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="loginEditTextPadding">8dp</dimen>
+    <dimen name="logoMarginTop">32dp</dimen>
+
+    <dimen name="loginButtonMarginBottom">8dp</dimen>
+    <dimen name="loginButtonMarginStart">8dp</dimen>
+    <dimen name="loginButtonMarginEnd">8dp</dimen>
+    <dimen name="loginButtonPadding">16dp</dimen>
+    <dimen name="inputTextPasswordMarginTop">4dp</dimen>
+    <dimen name="inputTextUserMarginBottom">4dp</dimen>
+</resources>
