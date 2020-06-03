@@ -1,4 +1,4 @@
-package com.gft.testegft.dagger;
+package com.gft.testegft.base;
 
 import com.gft.testegft.MainActivity;
 

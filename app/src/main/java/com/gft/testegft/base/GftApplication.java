@@ -1,4 +1,4 @@
-package com.gft.testegft.dagger;
+package com.gft.testegft.base;
 
 import android.app.Application;
 
