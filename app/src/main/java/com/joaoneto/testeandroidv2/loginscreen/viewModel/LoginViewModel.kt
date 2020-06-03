@@ -1,6 +1,7 @@
 package com.joaoneto.testeandroidv2.loginscreen.viewModel
 
 
+import RetrofitInitializer
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +14,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 
-class LoginViewModel @Inject constructor(private var loginService: LoginService) :
+class LoginViewModel :
         ViewModel() {
 
 
@@ -21,7 +22,7 @@ class LoginViewModel @Inject constructor(private var loginService: LoginService)
 
         val loginResponse = MutableLiveData<LoginResponseModel>()
 
-        loginService.signIn(user, password).enqueue(object : Callback<LoginResponseModel> {
+        RetrofitInitializer().loginService().signIn(user, password).enqueue(object : Callback<LoginResponseModel> {
             override fun onFailure(call: Call<LoginResponseModel>, t: Throwable) {
 
                 Log.i("--->", t.message!!)

@@ -1,6 +1,7 @@
 package com.joaoneto.testeandroidv2.mainscreen.viewModel
 
 
+import RetrofitInitializer
 import com.joaoneto.testeandroidv2.mainscreen.service.StatementsService
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -12,13 +13,13 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor(private var statementsService: StatementsService) : ViewModel() {
+class MainViewModel : ViewModel() {
 
     fun getStatements(): LiveData<StatementsResponseModel> {
 
         val statementResponse = MutableLiveData<StatementsResponseModel>()
 
-        statementsService.getStatements()
+        RetrofitInitializer().statementsService().getStatements()
             .enqueue(object : Callback<StatementsResponseModel> {
                 override fun onFailure(call: Call<StatementsResponseModel>, t: Throwable) {
                     Log.e("--->", t.message!!)
