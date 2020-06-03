@@ -1,14 +1,36 @@
 package com.gft.testegft;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
-import android.os.Bundle;
+import com.gft.testegft.base.BaseActivity;
+import com.gft.testegft.base.BaseViewModel;
+import com.gft.testegft.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    private ActivityMainBinding binding;
+    private MainViewModel viewModel;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int layoutRes() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected BaseViewModel viewModel() {
+        if(viewModel == null)
+            viewModel = new MainViewModel();
+        return viewModel;
+    }
+
+    @Override
+    protected void attachViewModel() {
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setLifecycleOwner(this);
+        binding.setViewModel(viewModel);
+    }
+
+    @Override
+    protected void observe() {
     }
 }
