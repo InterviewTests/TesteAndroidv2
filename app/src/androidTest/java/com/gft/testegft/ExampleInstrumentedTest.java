@@ -1,4 +1,4 @@
-package com.gft.myapplication;
+package com.gft.testegft;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.gft.myapplication", appContext.getPackageName());
+        assertEquals("com.gft.testegft", appContext.getPackageName());
     }
 }

@@ -1,4 +1,4 @@
-package com.gft.myapplication;
+package com.gft.testegft;
 
 import androidx.appcompat.app.AppCompatActivity;
 
