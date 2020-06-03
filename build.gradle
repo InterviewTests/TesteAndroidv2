@@ -29,7 +29,8 @@ task clean(type: Delete) {
 }
 
 ext {
-    daggerVersion = '2.27'
-    retrofitVersion = '2.9.0'
-    autoValueVersion = '1.7.2'
+    lifecycle_version = "2.2.0"
+    dagger_version = '2.27'
+    retrofit_version = '2.9.0'
+    auto_value_version = '1.7.2'
 }
