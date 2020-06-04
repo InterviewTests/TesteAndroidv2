@@ -1,4 +1,4 @@
-package com.joaoricardi.bankapp.feature
+package com.joaoricardi.bankapp.feature.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

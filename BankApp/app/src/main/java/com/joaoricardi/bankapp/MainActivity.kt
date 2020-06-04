@@ -2,7 +2,7 @@ package com.joaoricardi.bankapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.joaoricardi.bankapp.feature.LoginFragment
+import com.joaoricardi.bankapp.feature.login.LoginFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
                 .replace(
                         R.id.container,
-                        LoginFragment()
+                    LoginFragment()
                 )
                 .addToBackStack(LoginFragment.TAG)
                 .commit()
