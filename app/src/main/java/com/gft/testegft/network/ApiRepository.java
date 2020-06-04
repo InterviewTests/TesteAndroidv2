@@ -1,5 +1,9 @@
 package com.gft.testegft.network;
 
+import android.util.Log;
+
+import com.gft.testegft.login.data.LoginResponse;
+
 import javax.inject.Inject;
 
 import io.reactivex.Single;
@@ -14,7 +18,7 @@ public class ApiRepository {
         this.repoService = repoService;
     }
 
-    public Single<Response> login(String userName, String password) {
+    public Single<LoginResponse> login(String userName, String password) {
         return repoService.login(userName, password);
     }
 
