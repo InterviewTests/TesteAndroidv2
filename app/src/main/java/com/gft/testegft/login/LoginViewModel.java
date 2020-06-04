@@ -8,6 +8,7 @@ import com.gft.testegft.login.enums.EnumPasswordErrors;
 import com.gft.testegft.login.enums.EnumUserErrors;
 import com.gft.testegft.login.utils.LoginValidation;
 import com.gft.testegft.network.ApiRepository;
+import com.gft.testegft.util.GsonManager;
 import com.gft.testegft.util.SharedPreferenceManager;
 
 import javax.inject.Inject;
@@ -17,7 +18,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.gft.testegft.util.Constants.USER_FLAG;
+import static com.gft.testegft.util.Constants.LOGIN_RESPONSE_FLAG;
 
 public class LoginViewModel extends BaseViewModel {
 
@@ -38,9 +39,7 @@ public class LoginViewModel extends BaseViewModel {
         this.apiRepository = apiRepository;
         disposable = new CompositeDisposable();
 
-        String lastLoggedUserName = SharedPreferenceManager.getName(USER_FLAG);
-        if (!lastLoggedUserName.equals(""))
-            user.setValue(lastLoggedUserName);
+        getLastLoggedUser();
     }
 
     public MutableLiveData<String> getUser() {
@@ -129,7 +128,7 @@ public class LoginViewModel extends BaseViewModel {
 
     private void onLoginSuccess(LoginResponse loginResponse) {
         if (loginResponse.getError() == null || loginResponse.getError().getCode() == 0) {
-            SharedPreferenceManager.setName(USER_FLAG, user.getValue());
+            SharedPreferenceManager.setName(LOGIN_RESPONSE_FLAG, GsonManager.toJson(loginResponse));
             this.loginResponse.setValue(loginResponse);
         } else {
             requestError.setValue(loginResponse.getError().getMessage());
@@ -137,7 +136,15 @@ public class LoginViewModel extends BaseViewModel {
     }
 
     private void onLoginError(Throwable e) {
-        requestError.setValue("Hpuve um erro em nossos servidores");
+        requestError.setValue("Houve um erro em nossos servidores");
+    }
+
+    private void getLastLoggedUser() {
+        String lastLogged = SharedPreferenceManager.getName(LOGIN_RESPONSE_FLAG);
+        if (!lastLogged.equals("")){
+            LoginResponse lastLoggedUserName = GsonManager.fromJson(lastLogged, LoginResponse.class);
+            user.setValue(lastLoggedUserName.getUserAccount().getName());
+        }
     }
 
     @Override

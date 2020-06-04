@@ -74,7 +74,6 @@ public class LoginActivity extends BaseActivity {
 
     private void onLoginSuccess(LoginResponse loginResponse) {
         Intent intent = new Intent(this, StatementsActivity.class);
-        intent.putExtra(LOGIN_RESPONSE_FLAG, new Gson().toJson(loginResponse));
         startActivity(intent);
     }
 
