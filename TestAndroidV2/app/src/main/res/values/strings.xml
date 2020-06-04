@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DavidMeloApp</string>
+    <string name="title_activity_account">AccountActivity</string>
+    <string name="saldo">Saldo</string>
+    <string name="conta">Conta</string>
+    <string name="saldo_indispon_vel">Saldo indisponível</string>
+    <string name="conta_indispon_vel">Conta indisponível</string>
+    <string name="nome_indisponivel">Nome indisponível</string>
+    <string name="recentes">Recentes</string>
+    <string name="conta_indisponivel">conta_Indisponivel</string>
+    <string name="david_da_silva">David da Silva</string>
+</resources>
