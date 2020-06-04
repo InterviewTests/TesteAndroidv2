@@ -1,7 +1,8 @@
 package com.joaoricardi.bankapp.service
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.joaoricardi.bankapp.service.api.LoginApi
+import com.joaoricardi.bankapp.service.api.home.HomeApi
+import com.joaoricardi.bankapp.service.api.login.LoginApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -23,6 +24,9 @@ class RetrofitService {
         val BASE_URL = "https://bank-app-test.herokuapp.com/api/"
     }
 
-    fun getLoginApi(): LoginApi = retrofit.create(LoginApi::class.java)
+    fun getLoginApi(): LoginApi = retrofit.create(
+        LoginApi::class.java)
+
+    fun getHomeApi(): HomeApi = retrofit.create(HomeApi::class.java)
 
 }

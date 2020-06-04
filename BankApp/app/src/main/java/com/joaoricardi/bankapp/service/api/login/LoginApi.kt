@@ -1,4 +1,4 @@
-package com.joaoricardi.bankapp.service.api
+package com.joaoricardi.bankapp.service.api.login
 
 import com.joaoricardi.bankapp.models.login.LoginResponse
 import kotlinx.coroutines.Deferred

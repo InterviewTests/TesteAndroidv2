@@ -2,7 +2,7 @@ package com.joaoricardi.bankapp.service.repositoy.login
 
 import com.joaoricardi.bankapp.models.login.LoginResponse
 import com.joaoricardi.bankapp.service.RetrofitService
-import com.joaoricardi.bankapp.service.api.LoginApi
+import com.joaoricardi.bankapp.service.api.login.LoginApi
 import kotlinx.coroutines.Deferred
 
 class LoginRepository : LoginRepositoryContract{
