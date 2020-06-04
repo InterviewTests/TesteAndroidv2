@@ -2,7 +2,7 @@ package com.gft.testegft.login.data;
 
 public class UserAccount {
 
-    private Long userID;
+    private int userId;
 
     private String name;
 
@@ -12,20 +12,20 @@ public class UserAccount {
 
     private Double balance;
 
-    public UserAccount(Long userID, String name, String bankAccount, String agency, Double balance) {
-        this.userID = userID;
+    public UserAccount(int userId, String name, String bankAccount, String agency, Double balance) {
+        this.userId = userId;
         this.name = name;
         this.bankAccount = bankAccount;
         this.agency = agency;
         this.balance = balance;
     }
 
-    public Long getUserID() {
-        return userID;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserID(Long userID) {
-        this.userID = userID;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getName() {

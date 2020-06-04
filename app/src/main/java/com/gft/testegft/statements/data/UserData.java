@@ -6,17 +6,20 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class UserData {
+    private int id;
     private String name;
     private String account;
     private String balance;
 
-    public UserData(String name, String account, String balance) {
+    public UserData(int id, String name, String account, String balance) {
+        this.id = id;
         this.name = name;
         this.account = account;
         this.balance = balance;
     }
 
     public UserData(LoginResponse loginResponse) {
+        this.id = loginResponse.getUserAccount().getUserId();
         this.name = loginResponse.getUserAccount().getName();
         this.account = accountFormat(loginResponse.getUserAccount().getAgency(), loginResponse.getUserAccount().getBankAccount());
         this.balance = balanceFormat(loginResponse.getUserAccount().getBalance());
@@ -44,6 +47,10 @@ public class UserData {
         NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
 
         return formatter.format(balance);
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
