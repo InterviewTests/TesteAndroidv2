@@ -58,6 +58,10 @@ class LoginViewModel : ViewModel(){
         return hasUppercase && matchesRegex && matchesNumber
     }
 
+    fun resetState(){
+        _state.postValue(ScreenState.Initial)
+    }
+
 
     sealed class ScreenState {
         object Loading: ScreenState()

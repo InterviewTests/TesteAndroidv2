@@ -1,6 +1,7 @@
 package com.joaoricardi.bankapp.feature.login
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -45,11 +46,17 @@ class LoginFragment : Fragment() {
                     loginButton.visibility = View.GONE
                     loadingProgressId.visibility  = View.GONE
                     errorFeedBackId.visibility = View.VISIBLE
-
+                    resetState()
                 }
             }
         }
 
+    }
+
+    private fun resetState(){
+        Handler().postDelayed({
+            viewModel.resetState()
+        },3000)
     }
 
     private fun setBtnClick(){
