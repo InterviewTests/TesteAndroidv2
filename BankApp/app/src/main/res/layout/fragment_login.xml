@@ -1,14 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.LoginFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:src="@drawable/logo"
+        android:id="@+id/logoImageViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="124dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:inputType="textEmailAddress"
+        android:autofillHints="@string/email"
+        android:hint="@string/email"
+        android:id="@+id/emailEditId"
+        style="@style/BankEditTextStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImageViewId" />
 
-</FrameLayout>
+    <EditText
+        android:inputType="textPassword"
+        android:autofillHints="@string/password"
+        android:hint="@string/password"
+        style="@style/BankEditTextStyle"
+        android:id="@+id/passwordEditId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailEditId" />
+
+    <FrameLayout
+        android:layout_marginBottom="33dp"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+        <Button
+            android:id="@+id/loginButton"
+            style="@style/BankButtonStyle"
+            android:layout_marginStart="87dp"
+            android:layout_marginEnd="87dp"
+            android:layout_marginBottom="45dp"
+            android:text="@string/login_button"
+            android:visibility="visible"
+            />
+
+        <ProgressBar
+            android:layout_marginBottom="33dp"
+            android:id="@+id/loadingProgressId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+
+        <ImageView
+            style="@style/ErroFeedBackStyle"
+            android:layout_marginBottom="33dp"
+            android:id="@+id/errorFeedBackId"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_error_feed_back"
+            />
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/editRadiusSize"> </corners>
+    <stroke
+        android:width="@dimen/editBorderSize"
+        android:color="@color/editTextBorder" />
+    <padding
+        android:bottom="16dp"
+        android:top="16dp"
+        android:right="10dp"
+        android:left="10dp"
+
+        ></padding>
+</shape>

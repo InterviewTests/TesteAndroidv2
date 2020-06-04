@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSize16sp">16dp</dimen>
+
+    <dimen name="raisedButtonSizeWidth">220dp</dimen>
+    <dimen name="raisedButtonSizeHeight">67dp</dimen>
+
+    <dimen name="erroFeedBackSize">50dp</dimen>
+
+    <dimen name="editRadiusSize">4dp</dimen>
+    <dimen name="editBorderSize">1dp</dimen>
+</resources>
