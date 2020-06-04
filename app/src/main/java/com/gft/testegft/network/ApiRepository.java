@@ -1,13 +1,11 @@
 package com.gft.testegft.network;
 
-import android.util.Log;
-
 import com.gft.testegft.login.data.LoginResponse;
+import com.gft.testegft.statements.data.StatementResponse;
 
 import javax.inject.Inject;
 
 import io.reactivex.Single;
-import retrofit2.Response;
 
 public class ApiRepository {
 
@@ -22,7 +20,7 @@ public class ApiRepository {
         return repoService.login(userName, password);
     }
 
-    public Single<Response> get(String id) {
+    public Single<StatementResponse> get(String id) {
         return repoService.getStatements(id);
     }
 }
