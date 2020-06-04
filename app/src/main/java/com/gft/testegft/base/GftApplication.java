@@ -4,16 +4,15 @@ import android.app.Application;
 
 public class GftApplication extends Application {
 
-    private static AppComponent appComponent;
-
-    public static AppComponent getAppComponent() {
-        return appComponent;
-    }
+    protected AppComponent appComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
+
         appComponent = initDagger();
+        appComponent.inject(this);
+
     }
 
     protected AppComponent initDagger() {
