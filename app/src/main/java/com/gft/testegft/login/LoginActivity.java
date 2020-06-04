@@ -37,6 +37,12 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void observe() {
+        viewModel.getPasswordError().observe(this, this::onPasswordError);
+    }
+
+    private void onPasswordError(String errorMessage) {
+        binding.textInputPassword.setError(errorMessage);
+        binding.textInputPassword.requestFocus();
     }
 
     @Override
