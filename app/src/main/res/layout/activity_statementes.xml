@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:orientation="vertical"
-        android:padding="32dp"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -31,7 +31,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Usuário"
+                android:text="José da Silve"
                 android:textColor="#fff"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -98,7 +98,7 @@
                 android:id="@+id/labelBalance2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Conta"
+                android:text="Saldo"
                 android:textColor="#fff"
                 android:textSize="12sp" />
 
@@ -106,7 +106,7 @@
                 android:id="@+id/balance2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2050 / 01.111222-4"
+                android:text="R$ 1000.00"
                 android:textColor="#fff"
                 android:textSize="20sp"
                 tools:layout_editor_absoluteX="110dp"
@@ -116,14 +116,28 @@
 
     </LinearLayout>
 
-
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        android:text="Recentes"
         app:layout_constraintEnd_toEndOf="parent"
-        android:scrollbars="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statementRecycleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
 
 
     </androidx.recyclerview.widget.RecyclerView>
