@@ -1,24 +1,20 @@
-package com.gft.testegft;
+package com.gft.testegft.login;
 
-import android.content.Context;
-import android.graphics.Rect;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
 import androidx.databinding.DataBindingUtil;
 
+import com.gft.testegft.R;
 import com.gft.testegft.base.BaseActivity;
 import com.gft.testegft.base.BaseViewModel;
 import com.gft.testegft.databinding.ActivityMainBinding;
 
-public class MainActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity {
 
     private ActivityMainBinding binding;
 
-    private MainViewModel viewModel;
+    private LoginViewModel viewModel;
 
     @Override
     protected int layoutRes() {
@@ -28,7 +24,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected BaseViewModel viewModel() {
         if(viewModel == null)
-            viewModel = new MainViewModel();
+            viewModel = new LoginViewModel();
         return viewModel;
     }
 

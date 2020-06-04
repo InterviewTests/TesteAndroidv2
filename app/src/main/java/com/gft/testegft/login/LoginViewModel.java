@@ -1,4 +1,4 @@
-package com.gft.testegft;
+package com.gft.testegft.login;
 
 import android.util.Log;
 
@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.gft.testegft.base.BaseViewModel;
 import com.gft.testegft.login.LoginValidation;
 
-public class MainViewModel extends BaseViewModel {
+public class LoginViewModel extends BaseViewModel {
 
     private MutableLiveData<String> user = new MutableLiveData<>();
     private MutableLiveData<String> password = new MutableLiveData<>();

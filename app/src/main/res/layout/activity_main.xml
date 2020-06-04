@@ -10,7 +10,7 @@
 
         <variable
             name="ViewModel"
-            type="com.gft.testegft.MainViewModel" />
+            type="com.gft.testegft.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
