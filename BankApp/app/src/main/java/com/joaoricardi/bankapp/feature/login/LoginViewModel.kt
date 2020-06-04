@@ -9,6 +9,8 @@ import com.joaoricardi.bankapp.service.repositoy.login.LoginRepositoryContract
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class LoginViewModel : ViewModel(){
     private val loginRepository: LoginRepositoryContract = LoginRepository()
@@ -23,6 +25,20 @@ class LoginViewModel : ViewModel(){
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
+
+    fun login(email: String, password: String){
+        _state.postValue(ScreenState.Loading)
+        coroutineScope.launch {
+            val defState = loginRepository.login(email,password)
+            try{
+                val responseDef = defState.await()
+                _userAccont.postValue(responseDef.userAccount)
+
+            }catch (e: Exception){
+                _state.postValue(ScreenState.Error)
+            }
+        }
+    }
 
 
     sealed class ScreenState {
