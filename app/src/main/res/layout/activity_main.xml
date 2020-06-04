@@ -84,6 +84,7 @@
             android:background="@color/loginButtonColor"
             android:padding="@dimen/loginButtonPadding"
             android:text="@string/loginButton"
+            android:onClick="login"
             android:textColor="@color/loginButtonTextColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

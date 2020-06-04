@@ -3,10 +3,25 @@ package com.gft.testegft.login;
 import androidx.lifecycle.MutableLiveData;
 
 import com.gft.testegft.base.BaseViewModel;
-import com.gft.testegft.login.enums.*;
+import com.gft.testegft.login.enums.EnumPasswordErrors;
+import com.gft.testegft.login.enums.EnumUserErrors;
 import com.gft.testegft.login.utils.LoginValidation;
+import com.gft.testegft.network.ApiRepository;
+
+import javax.inject.Inject;
+
+import io.reactivex.disposables.CompositeDisposable;
 
 public class LoginViewModel extends BaseViewModel {
+
+    private final ApiRepository repoRepository;
+    private CompositeDisposable disposable;
+
+    @Inject
+    public LoginViewModel(ApiRepository apiRepository) {
+        repoRepository = apiRepository;
+        disposable = new CompositeDisposable();
+    }
 
     private MutableLiveData<String> user = new MutableLiveData<>();
     private MutableLiveData<String> password = new MutableLiveData<>();
@@ -26,6 +41,10 @@ public class LoginViewModel extends BaseViewModel {
             passwordError.setValue(EnumPasswordErrors.NULL.desc);
         else if (!LoginValidation.passwordValidation(password.getValue()))
             passwordError.setValue(EnumPasswordErrors.INVALID.desc);
+    }
+
+    public void login() {
+        repoRepository.login(user.getValue(), password.getValue());
     }
 
     public MutableLiveData<String> getUser() {
