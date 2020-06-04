@@ -34,4 +34,5 @@ ext {
     dagger_version = '2.27'
     retrofit_version = '2.9.0'
     auto_value_version = '1.7.2'
+    butter_knife_version = '10.0.0'
 }
