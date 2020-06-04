@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,6 +50,13 @@ class HomeFragment : Fragment() {
         with(statementsListRecyclerId){
             layoutManager = LinearLayoutManager(this.context)
             adapter = statementAdapter
+        }
+
+        viewModel.state.observeForever {state  ->
+            when(state){
+                is HomeViewModel.ScreenState.Loaded ->  statementAdapter.stateMents = state.value
+                is HomeViewModel.ScreenState.Error -> Toast.makeText(context,resources.getString(R.string.homeToastError), Toast.LENGTH_LONG).show()
+            }
         }
     }
 
