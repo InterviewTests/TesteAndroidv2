@@ -129,7 +129,7 @@ public class LoginViewModel extends BaseViewModel {
 
     private void onLoginSuccess(LoginResponse loginResponse) {
         if (loginResponse.getError() == null || loginResponse.getError().getCode() == 0) {
-            SharedPreferenceManager.setName(USER_FLAG, loginResponse.getUserAccount().getName());
+            SharedPreferenceManager.setName(USER_FLAG, user.getValue());
             this.loginResponse.setValue(loginResponse);
         } else {
             requestError.setValue(loginResponse.getError().getMessage());
