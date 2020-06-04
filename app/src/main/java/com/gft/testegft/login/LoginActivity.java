@@ -1,8 +1,10 @@
 package com.gft.testegft.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -11,9 +13,14 @@ import androidx.lifecycle.ViewModelProviders;
 import com.gft.testegft.R;
 import com.gft.testegft.base.BaseActivity;
 import com.gft.testegft.databinding.ActivityMainBinding;
+import com.gft.testegft.login.data.LoginResponse;
+import com.gft.testegft.statements.StatementsActivity;
 import com.gft.testegft.util.ViewModelFactory;
+import com.google.gson.Gson;
 
 import javax.inject.Inject;
+
+import static com.gft.testegft.util.Constants.LOGIN_RESPONSE_FLAG;
 
 public class LoginActivity extends BaseActivity {
 
@@ -47,6 +54,8 @@ public class LoginActivity extends BaseActivity {
     protected void observe() {
         viewModel.getPasswordError().observe(this, this::onPasswordError);
         viewModel.getUserError().observe(this, this::onUserError);
+        viewModel.getRequestError().observe(this, this::showToast);
+        viewModel.getLoginResponse().observe(this, this::onLoginSuccess);
     }
 
     private void onUserError(String errorMessage) {
@@ -59,6 +68,16 @@ public class LoginActivity extends BaseActivity {
         binding.textInputPassword.requestFocus();
     }
 
+    private void showToast(String value) {
+        Toast.makeText(getApplicationContext(), value, Toast.LENGTH_LONG).show();
+    }
+
+    private void onLoginSuccess(LoginResponse loginResponse) {
+        Intent intent = new Intent(this, StatementsActivity.class);
+        intent.putExtra(LOGIN_RESPONSE_FLAG, new Gson().toJson(loginResponse));
+        startActivity(intent);
+    }
+
     public void login(View view) {
         viewModel.login();
     }
@@ -68,8 +87,11 @@ public class LoginActivity extends BaseActivity {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             View v = getCurrentFocus();
 
+            // valida a senha quando o campo perde o foco
             if (v == binding.textInputPassword)
                 viewModel.validatePassword();
+
+            // valida o user quando o campo perde o foco
             else if (v == binding.textInputUser)
                 viewModel.validateUser();
         }

@@ -1,7 +1,5 @@
 package com.gft.testegft.login;
 
-import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
 
 import com.gft.testegft.base.BaseViewModel;
@@ -10,10 +8,7 @@ import com.gft.testegft.login.enums.EnumPasswordErrors;
 import com.gft.testegft.login.enums.EnumUserErrors;
 import com.gft.testegft.login.utils.LoginValidation;
 import com.gft.testegft.network.ApiRepository;
-import com.google.gson.Gson;
-
-
-import java.util.Objects;
+import com.gft.testegft.util.SharedPreferenceManager;
 
 import javax.inject.Inject;
 
@@ -22,10 +17,11 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
+import static com.gft.testegft.util.Constants.USER_FLAG;
 
 public class LoginViewModel extends BaseViewModel {
 
-    private final ApiRepository repoRepository;
+    private final ApiRepository apiRepository;
     private CompositeDisposable disposable;
 
     private MutableLiveData<String> user = new MutableLiveData<>();
@@ -33,11 +29,42 @@ public class LoginViewModel extends BaseViewModel {
 
     private MutableLiveData<String> userError = new MutableLiveData<>();
     private MutableLiveData<String> passwordError = new MutableLiveData<>();
+    private MutableLiveData<String> requestError = new MutableLiveData<>();
+
+    private MutableLiveData<LoginResponse> loginResponse = new MutableLiveData<>();
 
     @Inject
-    public LoginViewModel(ApiRepository apiRepository) {
-        repoRepository = apiRepository;
+    LoginViewModel(ApiRepository apiRepository) {
+        this.apiRepository = apiRepository;
         disposable = new CompositeDisposable();
+
+        String lastLoggedUserName = SharedPreferenceManager.getName(USER_FLAG);
+        if (!lastLoggedUserName.equals(""))
+            user.setValue(lastLoggedUserName);
+    }
+
+    public MutableLiveData<String> getUser() {
+        return user;
+    }
+
+    public MutableLiveData<String> getPassword() {
+        return password;
+    }
+
+    MutableLiveData<String> getPasswordError() {
+        return passwordError;
+    }
+
+    MutableLiveData<String> getUserError() {
+        return userError;
+    }
+
+    MutableLiveData<String> getRequestError() {
+        return requestError;
+    }
+
+    MutableLiveData<LoginResponse> getLoginResponse() {
+        return loginResponse;
     }
 
     void validateUser() {
@@ -80,40 +107,46 @@ public class LoginViewModel extends BaseViewModel {
 
     public void login() {
         if (isUserValid(user.getValue()) && isPasswordValid(password.getValue())) {
-            disposable.add(repoRepository.login(user.getValue(), password.getValue()).subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread()).subscribeWith(new DisposableSingleObserver<LoginResponse>() {
+            disposable.add(apiRepository.login(user.getValue(), password.getValue())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(new DisposableSingleObserver<LoginResponse>() {
                         @Override
-                        public void onSuccess(LoginResponse value) {
-                            Log.i("login", new Gson().toJson(value));
+                        public void onSuccess(LoginResponse loginResponse) {
+                            onLoginSuccess(loginResponse);
                         }
 
                         @Override
                         public void onError(Throwable e) {
-                            Log.i("error", Objects.requireNonNull(e.getLocalizedMessage()));
+                            onLoginError(e);
                         }
                     }));
         } else {
-            Log.i("login", "login");
-
-
             validateUser();
             validatePassword();
         }
     }
 
-    public MutableLiveData<String> getUser() {
-        return user;
+    private void onLoginSuccess(LoginResponse loginResponse) {
+        if (loginResponse.getError() == null || loginResponse.getError().getCode() == 0) {
+            SharedPreferenceManager.setName(USER_FLAG, loginResponse.getUserAccount().getName());
+            this.loginResponse.setValue(loginResponse);
+        } else {
+            requestError.setValue(loginResponse.getError().getMessage());
+        }
     }
 
-    public MutableLiveData<String> getPassword() {
-        return password;
+    private void onLoginError(Throwable e) {
+        requestError.setValue("Hpuve um erro em nossos servidores");
     }
 
-    MutableLiveData<String> getPasswordError() {
-        return passwordError;
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        if (disposable != null) {
+            disposable.clear();
+            disposable = null;
+        }
     }
 
-    MutableLiveData<String> getUserError() {
-        return userError;
-    }
 }
