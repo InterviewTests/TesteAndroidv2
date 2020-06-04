@@ -1,5 +1,7 @@
 package com.gft.testegft.base;
 
+import android.content.SharedPreferences;
+
 import com.gft.testegft.di.component.AppComponent;
 import com.gft.testegft.di.component.DaggerAppComponent;
 
@@ -9,9 +11,12 @@ import dagger.android.DaggerApplication;
 
 public class GftApplication extends DaggerApplication {
 
+    public static SharedPreferences preferences;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        preferences = getSharedPreferences( getPackageName() + "_preferences", MODE_PRIVATE);
     }
 
     @Override
