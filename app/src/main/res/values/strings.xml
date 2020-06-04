@@ -4,4 +4,7 @@
     <string name="hintPassword">Password</string>
     <string name="logoDescription">Logo</string>
     <string name="loginButton">Login</string>
+    <string name="contaLabel">Conta</string>
+    <string name="saldoLabel">Saldo</string>
+    <string name="recentesLabel">Recentes</string>
 </resources>

@@ -43,7 +43,7 @@
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="José da Silve"
+                    android:text="@={ViewModel.userData.name}"
                     android:textColor="#fff"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -81,7 +81,7 @@
                     android:id="@+id/labelBalance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Conta"
+                    android:text="@string/contaLabel"
                     android:textColor="#fff"
                     android:textSize="12sp" />
 
@@ -89,7 +89,7 @@
                     android:id="@+id/balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2050 / 01.111222-4"
+                    android:text="@={ViewModel.userData.account}"
                     android:textColor="#fff"
                     android:textSize="20sp"
                     tools:layout_editor_absoluteX="110dp"
@@ -110,7 +110,7 @@
                     android:id="@+id/labelBalance2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Saldo"
+                    android:text="@string/saldoLabel"
                     android:textColor="#fff"
                     android:textSize="12sp" />
 
@@ -118,7 +118,7 @@
                     android:id="@+id/balance2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="R$ 1000.00"
+                    android:text="@={ViewModel.userData.balance}"
                     android:textColor="#fff"
                     android:textSize="20sp"
                     tools:layout_editor_absoluteX="110dp"
@@ -134,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Recentes"
+            android:text="@string/recentesLabel"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
