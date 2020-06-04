@@ -19,6 +19,7 @@ import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.gft.testegft.util.Constants.LOGIN_RESPONSE_FLAG;
+import static com.gft.testegft.util.Constants.USER_FLAG;
 
 public class LoginViewModel extends BaseViewModel {
 
@@ -127,6 +128,7 @@ public class LoginViewModel extends BaseViewModel {
     }
 
     private void onLoginSuccess(LoginResponse loginResponse) {
+        setLastLoggerUser(user.getValue());
         if (loginResponse.getError() == null || loginResponse.getError().getCode() == 0) {
             SharedPreferenceManager.setName(LOGIN_RESPONSE_FLAG, GsonManager.toJson(loginResponse));
             this.loginResponse.setValue(loginResponse);
@@ -140,11 +142,14 @@ public class LoginViewModel extends BaseViewModel {
     }
 
     private void getLastLoggedUser() {
-        String lastLogged = SharedPreferenceManager.getName(LOGIN_RESPONSE_FLAG);
+        String lastLogged = SharedPreferenceManager.getName(USER_FLAG);
         if (!lastLogged.equals("")){
-            LoginResponse lastLoggedUserName = GsonManager.fromJson(lastLogged, LoginResponse.class);
-            user.setValue(lastLoggedUserName.getUserAccount().getName());
+            user.setValue(lastLogged);
         }
+    }
+
+    private void setLastLoggerUser(String user) {
+       SharedPreferenceManager.setName(USER_FLAG, user);
     }
 
     @Override
