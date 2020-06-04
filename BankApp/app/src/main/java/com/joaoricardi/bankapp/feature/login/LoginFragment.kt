@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 
 import com.joaoricardi.bankapp.R
+import com.joaoricardi.bankapp.feature.home.HomeFragment
+import com.joaoricardi.bankapp.models.login.UserAccont
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment() {
@@ -51,6 +54,28 @@ class LoginFragment : Fragment() {
             }
         }
 
+    }
+
+    private fun navigateToHome(userAccont: UserAccont){
+        val manager = activity!!.supportFragmentManager
+        val homeFragment = HomeFragment.newInstance(userAccont)
+        manager.beginTransaction()
+            .replace(
+                R.id.container,
+                homeFragment
+            )
+            .addToBackStack(HomeFragment.TAG)
+            .commit()
+    }
+
+    private fun setUpObserver(){
+        viewModel.userAccont.observe(this, Observer {
+            if(it != null) {
+                navigateToHome(it)
+                viewModel.clearUserAccoount()
+
+            }
+        })
     }
 
     private fun resetState(){

@@ -62,6 +62,10 @@ class LoginViewModel : ViewModel(){
         _state.postValue(ScreenState.Initial)
     }
 
+    fun clearUserAccoount(){
+        _userAccont.value = null
+    }
+
 
     sealed class ScreenState {
         object Loading: ScreenState()
