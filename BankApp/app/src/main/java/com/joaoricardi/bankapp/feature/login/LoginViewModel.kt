@@ -28,16 +28,34 @@ class LoginViewModel : ViewModel(){
 
     fun login(email: String, password: String){
         _state.postValue(ScreenState.Loading)
-        coroutineScope.launch {
-            val defState = loginRepository.login(email,password)
-            try{
-                val responseDef = defState.await()
-                _userAccont.postValue(responseDef.userAccount)
 
-            }catch (e: Exception){
-                _state.postValue(ScreenState.Error)
+        if(isPasswordValid(password)){
+            coroutineScope.launch {
+                val defState = loginRepository.login(email,password)
+                try{
+                    val responseDef = defState.await()
+                    _userAccont.postValue(responseDef.userAccount)
+
+                }catch (e: Exception){
+                    _state.postValue(ScreenState.Error)
+                }
             }
         }
+        else{
+            _state.postValue(ScreenState.Error)
+        }
+    }
+
+    private fun isPasswordValid( password: String): Boolean{
+        val regexEspecial = Regex( "[A-Za-z0-9 ]*")
+        val matchesRegex = !password.matches(regexEspecial)
+
+        val matchesNumber = password.matches(Regex(".*\\d.*"))
+
+
+        val hasUppercase = password != password.toLowerCase()
+
+        return hasUppercase && matchesRegex && matchesNumber
     }
 
 
