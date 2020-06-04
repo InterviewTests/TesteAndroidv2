@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.joaoricardi.bankapp.R
+import com.joaoricardi.bankapp.extensions.asBRL
+import com.joaoricardi.bankapp.extensions.toBrDate
 import com.joaoricardi.bankapp.models.home.StateMent
 import kotlinx.android.synthetic.main.statement_list_item.view.*
 
@@ -37,8 +39,8 @@ class HomeRecyclerAdapter: RecyclerView.Adapter<HomeRecyclerAdapter.ViewHolder>(
         fun bind(stateMent: StateMent){
             itemView.titletextId.text = stateMent.title
             itemView.descTextId.text = stateMent.desc
-            itemView.dataTextId.text = stateMent.date
-            itemView.valorTextId.text = "R$ ${stateMent.value}"
+            itemView.dataTextId.text = stateMent.date.toBrDate()
+            itemView.valorTextId.text = stateMent.value.asBRL(true)
         }
     }
 

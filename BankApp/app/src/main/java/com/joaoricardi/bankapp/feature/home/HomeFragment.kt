@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.joaoricardi.bankapp.R
+import com.joaoricardi.bankapp.extensions.asBRL
 import com.joaoricardi.bankapp.models.login.UserAccont
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.home_card_info.*
@@ -24,11 +25,6 @@ class HomeFragment : Fragment() {
 
     private val statementAdapter = HomeRecyclerAdapter()
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -44,7 +40,7 @@ class HomeFragment : Fragment() {
         arguments?.getParcelable<UserAccont>(USER_ACCOUONT)?.let {
             userNameTextId.text = it.name
             userContaTextId.text = resources.getString(R.string.bankAccount, it.bankAccount, it.agency)
-            userSaldoTextId.text = resources.getString(R.string.moneyValue, it.balance)
+            userSaldoTextId.text = resources.getString(R.string.moneyValue, it.balance.asBRL(false))
         }
 
         with(statementsListRecyclerId){
