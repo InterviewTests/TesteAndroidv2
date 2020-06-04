@@ -1,11 +1,23 @@
 <resources>
     <string name="app_name">BankApp</string>
 
-
     <string name="login_button">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="homeUserName">Nome do usuario</string>
+    <string name="homeContaText">Conta</string>
+    <string name="homeContaValueText">2050/ 01111.222/4</string>
+    <string name="homeSaldo">Saldo</string>
+    <string name="homeSaldoPlaceHolder">R$ 100,00</string>
+    <string name="homeRecent">Recentes</string>
+    <string name="homeToastError">Erro ao pegar Statements</string>
+
+    <string name="stateItemTile">Pagamento</string>
+    <string name="stateItemDate">05/02/2020</string>
+    <string name="stateItemDesc">Conta de luz</string>
+    <string name="stateItemValue">R$ 132,00</string>
+
+    <string name="moneyValue">R$ %s</string>
+    <string name="bankAccount"> %s / %s</string>
 </resources>

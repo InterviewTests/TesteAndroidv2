@@ -24,10 +24,38 @@ class LoginFragment : Fragment() {
         ViewModelProviders.of(this).get(LoginViewModel::class.java)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setUpStates()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_login, container, false)
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setBtnClick()
+        setUpStates()
+        setUpObserver()
+    }
+
+    private fun navigateToHome(userAccont: UserAccont){
+        val manager = activity!!.supportFragmentManager
+        val homeFragment = HomeFragment.newInstance(userAccont)
+        manager.beginTransaction()
+            .replace(
+                R.id.container,
+                homeFragment
+            )
+            .addToBackStack(HomeFragment.TAG)
+            .commit()
+    }
+
+    private fun setUpObserver(){
+        viewModel.userAccont.observe(this, Observer {
+            if(it != null) {
+                navigateToHome(it)
+                viewModel.clearUserAccoount()
+
+            }
+        })
     }
 
     private fun setUpStates(){
@@ -56,33 +84,6 @@ class LoginFragment : Fragment() {
 
     }
 
-    private fun navigateToHome(userAccont: UserAccont){
-        val manager = activity!!.supportFragmentManager
-        val homeFragment = HomeFragment.newInstance(userAccont)
-        manager.beginTransaction()
-            .replace(
-                R.id.container,
-                homeFragment
-            )
-            .addToBackStack(HomeFragment.TAG)
-            .commit()
-    }
-
-    private fun setUpObserver(){
-        viewModel.userAccont.observe(this, Observer {
-            if(it != null) {
-                navigateToHome(it)
-                viewModel.clearUserAccoount()
-
-            }
-        })
-    }
-
-    private fun resetState(){
-        Handler().postDelayed({
-            viewModel.resetState()
-        },3000)
-    }
 
     private fun setBtnClick(){
         loginButton.setOnClickListener {
@@ -97,12 +98,15 @@ class LoginFragment : Fragment() {
     override fun onResume() {
         emailEditId.editableText.clear()
         passwordEditId.editableText.clear()
+        viewModel.resetState()
         super.onResume()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        return inflater.inflate(R.layout.fragment_login, container, false)
+    private fun resetState(){
+        Handler().postDelayed({
+            viewModel.resetState()
+        },3000)
     }
+
 
 }

@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="textSize20sp">20dp</dimen>
     <dimen name="textSize16sp">16dp</dimen>
+    <dimen name="textSize12sp">12dp</dimen>
+
+    <dimen name="editRadiusSize">4dp</dimen>
+    <dimen name="editBorderSize">1dp</dimen>
 
     <dimen name="raisedButtonSizeWidth">220dp</dimen>
     <dimen name="raisedButtonSizeHeight">67dp</dimen>
 
     <dimen name="erroFeedBackSize">50dp</dimen>
 
-    <dimen name="editRadiusSize">4dp</dimen>
-    <dimen name="editBorderSize">1dp</dimen>
+    <dimen name="homeTextBig">25dp</dimen>
+    <dimen name="homeTextSmall">12dp</dimen>
+    <dimen name="recyclerVieTitleSize">17dp</dimen>
+
+    <dimen name="statementCardSize">90dp</dimen>
+    <dimen name="marginBig">16dp</dimen>
+    <dimen name="marginSmall">8dp</dimen>
+
+    <dimen name="homeInfoCardSize">232dp</dimen>
 </resources>
