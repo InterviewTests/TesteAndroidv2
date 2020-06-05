@@ -27,8 +27,10 @@ public class StatementsActivity extends BaseActivity {
     private ActivityStatementesBinding binding;
 
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private StatementsRecyclerViewAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+
+    private List<Statement> statements = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class StatementsActivity extends BaseActivity {
 
         attachViewModel();
         setupRecycler();
+        observe();
     }
 
     void attachViewModel() {
@@ -50,8 +53,18 @@ public class StatementsActivity extends BaseActivity {
         return R.layout.activity_statementes;
     }
 
+    private void observe() {
+        viewModel.getStatements().observe(this, this::onGetStatements);
+    }
+
+    private void onGetStatements(List<Statement> statements) {
+        adapter.statements = statements;
+        adapter.notifyDataSetChanged();
+    }
+
+
     private void setupRecycler() {
-        recyclerView = (RecyclerView) findViewById(R.id.statementRecycleView);
+        recyclerView = findViewById(R.id.statementRecycleView);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -61,13 +74,7 @@ public class StatementsActivity extends BaseActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        // specify an adapter (see also next example)
-        List<Statement> list = new ArrayList<>();
-
-        list.add((new Statement("Title", "Desc", "Date", 123)));
-        list.add((new Statement("Pagamento", "Conta de Luz", "28/05/2020", 132.51)));
-
-        adapter = new StatementsRecyclerViewAdapter(list);
+        adapter = new StatementsRecyclerViewAdapter(statements);
         recyclerView.setAdapter(adapter);
     }
 }

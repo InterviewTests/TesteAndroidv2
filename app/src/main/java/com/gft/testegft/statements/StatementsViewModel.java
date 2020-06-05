@@ -14,7 +14,6 @@ import com.gft.testegft.util.GsonManager;
 import com.gft.testegft.util.SharedPreferenceManager;
 
 import java.util.List;
-import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -58,8 +57,8 @@ public class StatementsViewModel extends ViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<StatementResponse>() {
                     @Override
-                    public void onSuccess(StatementResponse statements) {
-                        Log.i("SUCESSO", GsonManager.toJson(statements));
+                    public void onSuccess(StatementResponse statementResponse) {
+                        statements.setValue(statementResponse.getStatementList());
                     }
 
                     @Override

@@ -13,7 +13,7 @@ import com.gft.testegft.statements.data.Statement;
 import java.util.List;
 
 class StatementsRecyclerViewAdapter extends RecyclerView.Adapter<StatementsRecyclerViewAdapter.StatementViewHolder> {
-    private List<Statement> statements;
+    public List<Statement> statements;
 
     static class StatementViewHolder extends RecyclerView.ViewHolder {
         TextView title;
