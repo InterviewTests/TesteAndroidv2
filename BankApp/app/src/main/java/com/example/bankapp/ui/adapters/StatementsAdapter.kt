@@ -20,7 +20,7 @@ class StatementsAdapter(private val statements: List<Statement>, private val con
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return statements.size
     }
 
     override fun onBindViewHolder(holder: StatementsAdapter.ViewHolder, position: Int) {
@@ -30,7 +30,7 @@ class StatementsAdapter(private val statements: List<Statement>, private val con
             holder.dataEmissaoTextView.text = statement.data
             holder.descricaoTextView.text = statement.descricao
             holder.tituloTextView.text = statement.titulo
-            holder.valorTextView.text = statement.valor.toString()
+            holder.valorTextView.text = "R$${statement.valor}"
         }
     }
 

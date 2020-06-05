@@ -18,4 +18,5 @@
     <string name="sem_resultados">Não foi possível encontrar resultados correspondentes a sua busca.</string>
     <string name="erro_sem_credenciais">As credenciais de login estão desatualizadas. Efetue o login novamente.</string>
     <string name="erro_nao_autorizado">You need to sign in or sign up before continuing.</string>
+    <string name="usuario">Usuário</string>
 </resources>

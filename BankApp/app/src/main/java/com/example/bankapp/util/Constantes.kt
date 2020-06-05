@@ -7,5 +7,6 @@ object Constantes {
         const val NAME : String = "NAME"
         const val AGENCY : String = "AGENCY"
         const val BALANCE : String = "BALANCE"
+        const val CODIGO_ID_VAZIO : Int = -1
     }
 }

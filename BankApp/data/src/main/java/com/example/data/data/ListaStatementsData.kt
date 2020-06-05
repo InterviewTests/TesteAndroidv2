@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName
 
 data class ListaStatementsData(
     @SerializedName("statementList")
-    val listaStatements: List<StatementData>,
+    val listaStatements: List<StatementData>?,
     @SerializedName("error")
-    val erro: ErroData
+    val erro: ErroData?
 )
 
 
 fun ListaStatementsData.converterParaListaStatements() =
     ListaStatements(
-        listaStatements = listaStatements.converterParaListaStatement(),
-        erro = erro.converterParaErro()
+        listaStatements = listaStatements?.converterParaListaStatement(),
+        erro = erro?.converterParaErro()
     )
