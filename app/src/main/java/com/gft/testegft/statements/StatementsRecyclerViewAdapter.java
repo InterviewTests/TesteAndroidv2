@@ -5,12 +5,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gft.testegft.R;
 import com.gft.testegft.statements.data.Statement;
 
 import java.util.List;
+
+import static com.gft.testegft.statements.utils.DateFormatter.formatDate;
 
 class StatementsRecyclerViewAdapter extends RecyclerView.Adapter<StatementsRecyclerViewAdapter.StatementViewHolder> {
     public List<Statement> statements;
@@ -30,23 +33,23 @@ class StatementsRecyclerViewAdapter extends RecyclerView.Adapter<StatementsRecyc
         }
     }
 
-    public StatementsRecyclerViewAdapter(List<Statement> statements) {
+    StatementsRecyclerViewAdapter(List<Statement> statements) {
         this.statements = statements;
     }
 
+    @NonNull
     @Override
     public StatementViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new StatementViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.statement_item, parent, false));
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(StatementViewHolder holder, int position) {
         String value = "R$" + String.valueOf(statements.get(position).getValue());
 
         holder.title.setText(statements.get(position).getTitle());
         holder.desc.setText(statements.get(position).getDesc());
-        holder.data.setText(statements.get(position).getDate());
+        holder.data.setText(formatDate(statements.get(position).getDate()));
         holder.value.setText(value);
     }
 
