@@ -1,3 +1,24 @@
+# PARA EXECUTAR O PROJETO:
+
+ O app foi implementado seguindo o TDD para arquitetura Clean Code (VIPER). Foi utilizado o robolectric por que ele faz o trabalho pesado de mock do ecossistema Android como contexto.
+ Foi utilizado em emulador com API 29 para simular o uso.
+ Os testes unitários seguem a linha da arquitetura:
+  - Activity tests,
+  - Interactor test;
+  - Presenter tests;
+  - Router tests;
+ Os testes são feitos para a tela de login e de statement.
+ 
+ Comportamento geral:
+  - Na tela de Login, ao clicar no botão verificará se os inputs estão de acordo com o formato desejado (CPF ou email) para user, assim como se os campos estão preenchidos (user e password).
+  - Caso haja alguma inconscistencia uma mensagem de erro é mostrada, caso contrário uma requisição POST é enviada para a api com essas informações.
+  - Após o POST, a api retorna informações do cabeçalho do extrato e chama a próxima tela.
+  - Ao abrir a tela de Extrato, as informações do cabeçalho são preenchidas e um requisição GET é enviada para buscar a lista de extratos recentes.
+  - Se houver algum erro ou se a lista estiver vazia uma mensagem é mostrada, senão a lista é preenchida com essas informações.
+  - Ao clicar no botão de Logout, volta para a tela do Login resetando as informações (user e passoword) que estavam guardadas nas preferencias.
+  
+################################################################################################
+################################################################################################
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
