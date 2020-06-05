@@ -1,6 +1,7 @@
 package com.gft.testegft.statements;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
@@ -61,6 +62,10 @@ public class StatementsActivity extends BaseActivity {
 
     private void showToast(String value) {
         Toast.makeText(getApplicationContext(), value, Toast.LENGTH_LONG).show();
+    }
+
+    public void logout(View v) {
+        finish();
     }
 
     private void setupRecycler() {
