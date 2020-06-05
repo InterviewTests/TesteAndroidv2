@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bankapp.R
+import com.example.bankapp.util.Conversores
 import com.example.domain.entidades.Statement
 import kotlinx.android.synthetic.main.statement_item.view.*
 
@@ -27,7 +28,7 @@ class StatementsAdapter(private val statements: List<Statement>, private val con
         val statement = statements[position]
 
         holder.let {
-            holder.dataEmissaoTextView.text = statement.data
+            holder.dataEmissaoTextView.text = Conversores().converterDataddMMyyyy(statement.data!!)
             holder.descricaoTextView.text = statement.descricao
             holder.tituloTextView.text = statement.titulo
             holder.valorTextView.text = "R$${statement.valor}"

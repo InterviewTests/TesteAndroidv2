@@ -60,9 +60,11 @@ class MainActivity : BaseActivity() {
     }
 
     fun configurarListeners() {
+        viewProgressBar = progressBar
         logout_button.setOnClickListener {
             realizarLogout()
         }
+
     }
 
     private fun configurarStatementsRecyclerView(listaStatements: List<Statement>?) {

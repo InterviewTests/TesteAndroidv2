@@ -60,8 +60,8 @@
             android:id="@+id/input_senha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:imeOptions="actionNext"
-            android:inputType="textVisiblePassword"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
             android:paddingTop="12dp"
             android:paddingBottom="12dp" />
 
