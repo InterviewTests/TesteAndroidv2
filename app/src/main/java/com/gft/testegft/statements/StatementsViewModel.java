@@ -23,6 +23,8 @@ import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 import static com.gft.testegft.util.Constants.LOGIN_RESPONSE_FLAG;
+import static com.gft.testegft.util.Constants.REQUEST_STATEMENTS_ERROR;
+import static com.gft.testegft.util.Constants.USER_ERROR;
 
 public class StatementsViewModel extends ViewModel {
 
@@ -69,11 +71,11 @@ public class StatementsViewModel extends ViewModel {
 
                         @Override
                         public void onError(Throwable e) {
-                            errorMessage.setValue("Erro ao buscar os gastos recentes.");
+                            errorMessage.setValue(REQUEST_STATEMENTS_ERROR);
                         }
                     }));
         else
-            errorMessage.setValue("Erro ao processar os dados do usuário.");
+            errorMessage.setValue(USER_ERROR);
     }
 
     private void getUser() {
