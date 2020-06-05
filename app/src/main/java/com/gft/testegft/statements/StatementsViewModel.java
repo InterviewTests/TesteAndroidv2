@@ -32,6 +32,7 @@ public class StatementsViewModel extends ViewModel {
     private MutableLiveData<UserData> userData = new MutableLiveData<>();
 
     private MutableLiveData<List<Statement>> statements = new MutableLiveData<>();
+    private MutableLiveData<String> errorMessage = new MutableLiveData<>();
 
     public MutableLiveData<UserData> getUserData() {
         return userData;
@@ -39,6 +40,10 @@ public class StatementsViewModel extends ViewModel {
 
     public MutableLiveData<List<Statement>> getStatements() {
         return statements;
+    }
+
+    MutableLiveData<String> getErrorMessage() {
+        return errorMessage;
     }
 
     @Inject
@@ -51,28 +56,29 @@ public class StatementsViewModel extends ViewModel {
     }
 
 
-    void fetchStatements() {
-        disposable.add(apiRepository.get(String.valueOf(userData.getValue().getId()))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<StatementResponse>() {
-                    @Override
-                    public void onSuccess(StatementResponse statementResponse) {
-                        statements.setValue(statementResponse.getStatementList());
-                    }
+    private void fetchStatements() {
+        if (userData.getValue() != null)
+            disposable.add(apiRepository.get(String.valueOf(userData.getValue().getId()))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(new DisposableSingleObserver<StatementResponse>() {
+                        @Override
+                        public void onSuccess(StatementResponse statementResponse) {
+                            statements.setValue(statementResponse.getStatementList());
+                        }
 
-                    @Override
-                    public void onError(Throwable e) {
-
-                        Log.i("LASCOU", GsonManager.toJson(e));
-                    }
-                }));
-
+                        @Override
+                        public void onError(Throwable e) {
+                            errorMessage.setValue("Erro ao buscar os gastos recentes.");
+                        }
+                    }));
+        else
+            errorMessage.setValue("Erro ao processar os dados do usuário.");
     }
 
     private void getUser() {
         String loginResponseString = SharedPreferenceManager.getName(LOGIN_RESPONSE_FLAG);
-        if (!loginResponseString.equals("")){
+        if (!loginResponseString.equals("")) {
             LoginResponse loginResponse = GsonManager.fromJson(loginResponseString, LoginResponse.class);
             UserData userData = new UserData(loginResponse);
 

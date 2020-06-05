@@ -1,6 +1,7 @@
 package com.gft.testegft.statements;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
@@ -9,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gft.testegft.R;
 import com.gft.testegft.base.BaseActivity;
-import com.gft.testegft.databinding.ActivityStatementesBinding;
 import com.gft.testegft.statements.data.Statement;
 import com.gft.testegft.util.ViewModelFactory;
 
@@ -24,11 +24,7 @@ public class StatementsActivity extends BaseActivity {
     ViewModelFactory viewModelFactory;
     private StatementsViewModel viewModel;
 
-    private ActivityStatementesBinding binding;
-
-    private RecyclerView recyclerView;
     private StatementsRecyclerViewAdapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     private List<Statement> statements = new ArrayList<>();
 
@@ -43,7 +39,7 @@ public class StatementsActivity extends BaseActivity {
 
     void attachViewModel() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(StatementsViewModel.class);
-        binding = DataBindingUtil.setContentView(this, layoutRes());
+        com.gft.testegft.databinding.ActivityStatementesBinding binding = DataBindingUtil.setContentView(this, layoutRes());
         binding.setLifecycleOwner(this);
         binding.setViewModel(viewModel);
     }
@@ -55,6 +51,7 @@ public class StatementsActivity extends BaseActivity {
 
     private void observe() {
         viewModel.getStatements().observe(this, this::onGetStatements);
+        viewModel.getErrorMessage().observe(this, this::showToast);
     }
 
     private void onGetStatements(List<Statement> statements) {
@@ -62,16 +59,16 @@ public class StatementsActivity extends BaseActivity {
         adapter.notifyDataSetChanged();
     }
 
+    private void showToast(String value) {
+        Toast.makeText(getApplicationContext(), value, Toast.LENGTH_LONG).show();
+    }
 
     private void setupRecycler() {
-        recyclerView = findViewById(R.id.statementRecycleView);
+        RecyclerView recyclerView = findViewById(R.id.statementRecycleView);
 
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
 
-        // use a linear layout manager
-        layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         adapter = new StatementsRecyclerViewAdapter(statements);
