@@ -41,8 +41,13 @@ public class StatementPresenter implements StatementPresenterInput {
                 svm.date = sm.getDate();
                 svm.desc = sm.getDesc();
                 svm.title = sm.getTitle();
-                svm.value = sm.getValue();
-
+                if (sm.getValue().contains("-")) {
+                    svm.value = "R$ "+sm.getValue().replace(("-"), "");
+                    svm.positive = false;
+                } else {
+                    svm.value = "R$ "+sm.getValue();
+                    svm.positive = true;
+                }
                 statementViewModel.list.add(svm);
             }
             output.get().displayStatementData(statementViewModel);

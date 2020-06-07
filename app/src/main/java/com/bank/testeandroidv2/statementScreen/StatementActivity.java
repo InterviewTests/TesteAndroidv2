@@ -19,6 +19,9 @@ import com.bank.testeandroidv2.BankSharedPreferences;
 
 import java.util.ArrayList;
 
+import static android.graphics.Color.GREEN;
+import static android.graphics.Color.RED;
+
 
 interface StatementActivityInput {
     void displayStatementDataHeader(StatementHeaderViewModel statementHeaderViewModel);
@@ -166,6 +169,10 @@ public class StatementActivity extends AppCompatActivity
             viewHolder.descricaoTextView.setText( listOfStatements.get(position).desc);
             viewHolder.dataTextView.setText( listOfStatements.get(position).date);
             viewHolder.valorTextView.setText( listOfStatements.get(position).value);
+            if(listOfStatements.get(position).positive)
+                viewHolder.valorTextView.setTextColor(GREEN);
+            else
+                viewHolder.valorTextView.setTextColor(RED);
             return convertView;
         }
     }

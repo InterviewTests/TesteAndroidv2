@@ -61,8 +61,9 @@ class StatementViewModel {
     String desc;
     String date;
     String value;
+    boolean positive;
     ArrayList<StatementViewModel> list;
-    StatementList statementList;
+//    StatementList statementList;
 }
 
 class StatementRequest {
@@ -71,13 +72,13 @@ class StatementRequest {
 }
 
 class StatementResponse {
-    String title;
-    String desc;
-    String date;
-    String value;
+//    String title;
+//    String desc;
+//    String date;
+//    String value;
     ArrayList<StatementModel> list;
 }
 
-class StatementList {
-    ArrayList<StatementModel> list;
-}
+//class StatementList {
+//    ArrayList<StatementModel> list;
+//}

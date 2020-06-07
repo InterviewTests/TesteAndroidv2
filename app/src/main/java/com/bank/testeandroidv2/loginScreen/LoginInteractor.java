@@ -52,10 +52,10 @@ public class LoginInteractor implements LoginInteractorInput {
         login.password = request.password;
         login.user = request.user;
         ApiEndPoints apiService = RetrofitService.getRetrofitInstance().create(ApiEndPoints.class);
-        Call<ApiLoginModel> call = apiService.postLogin(login);
-        call.enqueue(new Callback<ApiLoginModel>() {
+        Call<LoginModel> call = apiService.postLogin(login);
+        call.enqueue(new Callback<LoginModel>() {
             @Override
-            public void onResponse(Call<ApiLoginModel> call, Response<ApiLoginModel> response) {
+            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
                 Log.d(TAG,"onResponse");
                 Log.d(TAG,"call");
                 Log.d(TAG,call.toString());
@@ -68,7 +68,7 @@ public class LoginInteractor implements LoginInteractorInput {
             }
 
             @Override
-            public void onFailure(Call<ApiLoginModel> call, Throwable t) {
+            public void onFailure(Call<LoginModel> call, Throwable t) {
                 Log.d(TAG,"onFailure");
                 Log.d(TAG,"call");
                 Log.d(TAG,call.toString());

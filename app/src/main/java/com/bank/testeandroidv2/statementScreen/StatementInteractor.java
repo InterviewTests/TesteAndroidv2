@@ -48,9 +48,6 @@ public class StatementInteractor implements StatementInteractorInput {
         StatementHeaderResponse statementHeaderResponse = new StatementHeaderResponse();
         statementHeaderResponse.userId = request.userId;
         String userId = String.valueOf(statementHeaderResponse.userId);
-//        aStatementWorkerInput = getStatementWorkerInput();
-//        aStatementWorkerInput.setStatementeList(userId);
-//        ArrayList<StatementModel> list = aStatementWorkerInput.getStatementeList();
         ApiEndPoints apiService = RetrofitService.getRetrofitInstance().create(ApiEndPoints.class);
         Call<ApiStatementModel> call = apiService.getStatement(userId);
         call.enqueue(new Callback<ApiStatementModel>() {

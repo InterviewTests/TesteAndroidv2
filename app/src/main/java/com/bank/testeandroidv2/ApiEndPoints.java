@@ -1,6 +1,5 @@
 package com.bank.testeandroidv2;
 
-import com.bank.testeandroidv2.loginScreen.ApiLoginModel;
 import com.bank.testeandroidv2.loginScreen.LoginModel;
 import com.bank.testeandroidv2.statementScreen.ApiStatementModel;
 
@@ -13,7 +12,7 @@ import retrofit2.http.Path;
 public interface ApiEndPoints {
 
     @POST("login")
-    Call<ApiLoginModel> postLogin(@Body LoginModel login);
+    Call<LoginModel> postLogin(@Body LoginModel login);
 
     @GET("statements/{userId}")
     Call<ApiStatementModel> getStatement(@Path("userId") String userId);

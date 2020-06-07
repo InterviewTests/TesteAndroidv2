@@ -7,20 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApiStatementModel {
-    @SerializedName("list")
-    @Expose
-    private List<StatementViewModel> list;
+//    @SerializedName("list")
+//    @Expose
+//    private List<StatementViewModel> list;
     @SerializedName("statementList")
     @Expose
     private ArrayList<StatementModel> statementList;
 
-    public List<StatementViewModel> getList() {
-        return list;
-    }
-
-    public void setList(List<StatementViewModel> list) {
-        this.list = list;
-    }
+//    public List<StatementViewModel> getList() {
+//        return list;
+//    }
+//
+//    public void setList(List<StatementViewModel> list) {
+//        this.list = list;
+//    }
 
     public ArrayList<StatementModel> getStatementList() {
         return statementList;
