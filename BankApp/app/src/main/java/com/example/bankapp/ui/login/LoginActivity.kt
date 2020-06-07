@@ -38,18 +38,18 @@ class LoginActivity : BaseActivity() {
             it?.let { resposta ->
                 if (resposta.contaUsuario?.id != null) {
                     gerenciadorSessao.salvarInformacoesUsuario(
-                        id = resposta.contaUsuario.id,
-                        agencia = resposta.contaUsuario.agencia,
-                        conta = resposta.contaUsuario.conta,
-                        nome = resposta.contaUsuario.nome,
-                        saldo = resposta.contaUsuario.saldo
+                        id = resposta!!.contaUsuario!!.id,
+                        agencia = resposta!!.contaUsuario!!.agencia,
+                        conta = resposta!!.contaUsuario!!.conta,
+                        nome = resposta!!.contaUsuario!!.nome,
+                        saldo = resposta!!.contaUsuario!!.saldo
                     )
 
                     val statementIntent = Intent(this, MainActivity::class.java)
                     startActivity(statementIntent)
                     finish()
                 } else {
-                    exibirMensagemErroLogin(mensagem = resposta.error.mensagem!!)
+                    exibirMensagemErroLogin(mensagem = resposta.error?.mensagem!!)
                 }
             }
         })
@@ -57,13 +57,13 @@ class LoginActivity : BaseActivity() {
 
     private fun configurarObserverUsuario() {
         realizarLoginViewModel.usuario.observe(this, Observer {
-            realizarLoginViewModel.formularioValido()
+
         })
     }
 
     private fun configurarObserverSenha() {
         realizarLoginViewModel.senha.observe(this, Observer {
-            realizarLoginViewModel.formularioValido()
+
         })
     }
 
@@ -73,13 +73,20 @@ class LoginActivity : BaseActivity() {
         botao_efetuar_login.setOnClickListener {
             if (SystemClock.elapsedRealtime() - mUltimoClickBotaoLogin > 1000) {
                 mUltimoClickBotaoLogin = SystemClock.elapsedRealtime()
-                if (realizarLoginViewModel.formularioValido.value!!) {
+                if (realizarLoginViewModel.usuarioValido(realizarLoginViewModel.usuario?.value) && realizarLoginViewModel.senhaValida(
+                        realizarLoginViewModel.senha?.value
+                    )
+                ) {
+                    resetarErros()
                     efetuarLogin(
                         usuario = realizarLoginViewModel.usuario.value!!,
                         senha = realizarLoginViewModel.senha.value!!
                     )
-
+                } else{
+                    configurarErrosSenha(realizarLoginViewModel.senha.value)
+                    configurarErrosUsuario(realizarLoginViewModel.usuario.value)
                 }
+
 
             }
 
@@ -124,7 +131,7 @@ class LoginActivity : BaseActivity() {
         })
     }
 
-    private fun efetuarLogin(usuario: String, senha: String) {
+    fun efetuarLogin(usuario: String, senha: String) {
         doAsyncWork(work = {
             realizarLoginViewModel.realizarLogin(
                 usuario = usuario,
@@ -144,4 +151,31 @@ class LoginActivity : BaseActivity() {
             getString(R.string.ok)
         ) { }
     }
+
+    private fun configurarErrosUsuario(valor: String?) {
+        when (valor.isNullOrBlank()) {
+            true -> input_usuario.setError("Campo de usuário não pode estar em branco.")
+            false -> if (!realizarLoginViewModel.usuarioValido(valor)) input_usuario.setError("O usuário deve conter um email ou CPF válido.")
+        }
+    }
+
+    private fun configurarErrosSenha(valor: String?) {
+        when (valor.isNullOrBlank()) {
+            true -> {
+                input_senha.setError("Senha não pode estar em branco.")
+            }
+            false -> {
+                if (!realizarLoginViewModel.senhaValida(valor)) input_senha.setError("A senha deve conter pelo menos uma letra maiúscula.")
+            }
+        }
+
+
+    }
+
+    private fun resetarErros(){
+        input_usuario.error = null
+        input_senha.error = null
+    }
+
+
 }

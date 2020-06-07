@@ -24,7 +24,7 @@ class BankRepositorio(private val api: BankApi) : IBankRepositorio {
             try {
                 val resposta = GerenciadorRequisicao.obterResposta(
                     api.realizarLogin(
-                        LoginRequisicaoData(loginRequisicao.usuario, loginRequisicao.senha)
+                        LoginRequisicaoData(loginRequisicao.usuario, loginRequisicao.senha!!)
                     ).execute()
                 )
 

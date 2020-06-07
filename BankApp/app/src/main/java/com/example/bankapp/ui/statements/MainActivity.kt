@@ -11,7 +11,9 @@ import com.example.bankapp.ui.BaseActivity
 import com.example.bankapp.ui.adapters.StatementsAdapter
 import com.example.bankapp.ui.login.LoginActivity
 import com.example.bankapp.util.Constantes
+import com.example.bankapp.util.Conversores
 import com.example.bankapp.util.GerenciadorSessao
+import com.example.bankapp.util.Mask
 import com.example.domain.entidades.Statement
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -52,8 +54,9 @@ class MainActivity : BaseActivity() {
 
         mainViewModel.contaUsuario.observe(this, Observer { contaUsuario ->
             textview_nome.text = contaUsuario?.nome
-            textview_conta.text = "${contaUsuario?.conta} / ${contaUsuario?.agencia}"
-            textview_saldo.text = "R$${contaUsuario?.saldo}"
+            textview_conta.text =
+                "${contaUsuario?.conta} / ${Mask().addMask(contaUsuario?.agencia!!, "##.######-#")}"
+            textview_saldo.text = Conversores().converterValorParaMoeda(contaUsuario?.saldo!!)
 
             listarstatements(idUsuario = contaUsuario!!.id!!)
         })

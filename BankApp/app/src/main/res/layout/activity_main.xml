@@ -9,10 +9,10 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:paddingTop="12dp"
-        android:paddingBottom="17dp"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
+        android:paddingTop="12dp"
+        android:paddingBottom="17dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
@@ -32,18 +32,17 @@
 
             <ImageView
                 android:id="@+id/logout_button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:src="@mipmap/ic_logout_foreground"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/container_conta"
-                android:layout_marginTop="28dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@id/textview_nome">
 
@@ -51,8 +50,8 @@
                     android:id="@+id/textview_contaLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Conta"
                     android:layout_marginBottom="6dp"
+                    android:text="Conta"
                     android:textColor="#FFF"
                     android:textSize="12sp" />
 
@@ -70,8 +69,8 @@
             <LinearLayout
                 android:id="@+id/container_saldo"
                 android:layout_width="match_parent"
-                android:layout_marginTop="21dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@id/container_conta">
 
@@ -100,14 +99,25 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <TextView
+        android:id="@+id/textview_recentes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margem_horizontal"
+        android:layout_marginVertical="@dimen/margem_vertical"
+        android:paddingTop="6dp"
+        android:text="@string/recentes"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        android:textColor="@color/textColor"
+        android:textSize="22sp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_statements"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="24dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:paddingBottom="120dp"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
+        app:layout_constraintTop_toBottomOf="@id/textview_recentes" />
 
     <TextView
         android:id="@+id/textview_semResultados"

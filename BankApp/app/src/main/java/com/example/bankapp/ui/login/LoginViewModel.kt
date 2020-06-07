@@ -12,7 +12,6 @@ class LoginViewModel(private val loginExecutor: RealizarLoginExecutor, val app: 
     ViewModel() {
     val usuario = MutableLiveData<String?>()
     val senha = MutableLiveData<String?>()
-    val formularioValido = MutableLiveData<Boolean>().apply { value = false }
     val loginResposta: MutableLiveData<LoginResposta?> by lazy {
         MutableLiveData<LoginResposta?>()
     }
@@ -25,21 +24,26 @@ class LoginViewModel(private val loginExecutor: RealizarLoginExecutor, val app: 
         loginResposta.postValue(resposta)
     }
 
-    fun formularioValido() {
-        formularioValido.postValue(usuarioValido() && senhaValida())
-    }
 
-    fun usuarioValido(): Boolean {
-        return when (usuario.value.isNullOrBlank()) {
+    fun usuarioValido(valor : String?): Boolean {
+        return when(valor.isNullOrBlank()){
+            false -> {
+                when (valor.matches("-?\\d+(\\.\\d+)?".toRegex())) {
+                    true -> valor.length == 11
+                    false -> valor!!.contains("@") && valor.contains(".com")
+                }
+            }
+
             true -> false
-            false -> usuario.value!!.contains("@") && usuario.value!!.contains(".com")
         }
     }
 
-    fun senhaValida(): Boolean {
-        return when (senha.value.isNullOrBlank()) {
-            true -> false
-            false -> senha.value!!.isNotEmpty()
+     fun senhaValida(valor: String?): Boolean {
+         if(valor.isNullOrBlank()) return false
+
+        for (character in valor!!) {
+            if (character.isUpperCase()) return true
         }
+        return false
     }
 }

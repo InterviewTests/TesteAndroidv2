@@ -1,14 +1,18 @@
 package com.example.bankapp.ui.adapters
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bankapp.R
 import com.example.bankapp.util.Conversores
+import com.example.bankapp.util.MoneyTextWatcher
 import com.example.domain.entidades.Statement
 import kotlinx.android.synthetic.main.statement_item.view.*
+import java.util.*
+import kotlin.math.absoluteValue
 
 class StatementsAdapter(private val statements: List<Statement>, private val context: Context) :
     RecyclerView.Adapter<StatementsAdapter.ViewHolder>() {
@@ -29,9 +33,15 @@ class StatementsAdapter(private val statements: List<Statement>, private val con
 
         holder.let {
             holder.dataEmissaoTextView.text = Conversores().converterDataddMMyyyy(statement.data!!)
+            holder.tituloTextView.apply {
+                text = statement.titulo
+                if (statement.valor!! < 0) this.setTextColor(Color.parseColor("#ff4d4d")) else this.setTextColor(
+                    Color.parseColor("#32ff7e")
+                )
+            }
             holder.descricaoTextView.text = statement.descricao
-            holder.tituloTextView.text = statement.titulo
-            holder.valorTextView.text = "R$${statement.valor}"
+            holder.valorTextView.text =
+                Conversores().converterValorParaMoeda(statement.valor!!.absoluteValue)
         }
     }
 
