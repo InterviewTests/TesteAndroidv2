@@ -1,4 +1,4 @@
-package com.joaoneto.testeandroidv2.view.adapter
+package com.joaoneto.testeandroidv2.mainScreen.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.joaoneto.testeandroidv2.R
 import com.joaoneto.testeandroidv2.databinding.AdapterItemListBinding
-import com.joaoneto.testeandroidv2.model.StatementModel
+import com.joaoneto.testeandroidv2.mainScreen.model.StatementModel
 import com.joaoneto.testeandroidv2.util.system.Formatter
 
 class StatementsAdapter(private val statements: List<StatementModel>) :

@@ -1,4 +1,4 @@
-package com.joaoneto.testeandroidv2.viewModel
+package com.joaoneto.testeandroidv2.loginScreen.ui.viewModel
 
 
 import RetrofitInitializer
@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.joaoneto.testeandroidv2.model.LoginResponseModel
+import com.joaoneto.testeandroidv2.loginScreen.model.LoginResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,8 +27,8 @@ class LoginViewModel :
             }
 
             override fun onResponse(
-                    call: Call<LoginResponseModel>,
-                    response: Response<LoginResponseModel>
+                call: Call<LoginResponseModel>,
+                response: Response<LoginResponseModel>
             ) {
 
                 if (response.code() == 200) {

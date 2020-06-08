@@ -1,4 +1,4 @@
-package com.joaoneto.testeandroidv2.model
+package com.joaoneto.testeandroidv2.loginScreen.model
 
 import java.io.Serializable
 

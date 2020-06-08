@@ -1,4 +1,4 @@
-package com.joaoneto.testeandroidv2.viewModel
+package com.joaoneto.testeandroidv2.mainScreen.viewModel
 
 
 import RetrofitInitializer
@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.joaoneto.testeandroidv2.model.StatementsResponseModel
+import com.joaoneto.testeandroidv2.mainScreen.model.StatementsResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -1,5 +1,5 @@
-import com.joaoneto.testeandroidv2.api.LoginService
-import com.joaoneto.testeandroidv2.api.StatementsService
+import com.joaoneto.testeandroidv2.loginScreen.api.LoginService
+import com.joaoneto.testeandroidv2.mainScreen.api.StatementsService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

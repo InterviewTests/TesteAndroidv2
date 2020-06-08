@@ -1,4 +1,4 @@
-package com.joaoneto.testeandroidv2.view.activity
+package com.joaoneto.testeandroidv2.loginScreen.ui.view.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,9 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.joaoneto.testeandroidv2.R
-import com.joaoneto.testeandroidv2.viewModel.LoginViewModel
+import com.joaoneto.testeandroidv2.loginScreen.ui.viewModel.LoginViewModel
 import com.joaoneto.testeandroidv2.util.system.PreferencesHelper
 import com.joaoneto.testeandroidv2.util.system.SnackbarHelper
+import com.joaoneto.testeandroidv2.mainScreen.view.activity.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {

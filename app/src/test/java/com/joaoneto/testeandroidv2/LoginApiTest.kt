@@ -1,11 +1,9 @@
 package com.joaoneto.testeandroidv2
 
 import RetrofitInitializer
-import com.joaoneto.testeandroidv2.api.LoginService
-import com.joaoneto.testeandroidv2.model.LoginResponseModel
+import com.joaoneto.testeandroidv2.loginScreen.api.LoginService
 import junit.framework.Assert.assertTrue
 import org.junit.Test
-import retrofit2.Call
 import java.io.IOException
 
 class LoginApiTest {

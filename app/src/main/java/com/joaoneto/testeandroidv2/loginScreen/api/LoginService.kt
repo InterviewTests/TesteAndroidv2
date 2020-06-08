@@ -1,6 +1,6 @@
-package com.joaoneto.testeandroidv2.api
+package com.joaoneto.testeandroidv2.loginScreen.api
 
-import com.joaoneto.testeandroidv2.model.LoginResponseModel
+import com.joaoneto.testeandroidv2.loginScreen.model.LoginResponseModel
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded

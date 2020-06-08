@@ -1,4 +1,4 @@
-package com.joaoneto.testeandroidv2.view.activity
+package com.joaoneto.testeandroidv2.mainScreen.view.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,10 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 import com.joaoneto.testeandroidv2.R
 import com.joaoneto.testeandroidv2.databinding.ActivityMainBinding
-import com.joaoneto.testeandroidv2.model.UserAccountModel
-import com.joaoneto.testeandroidv2.model.StatementModel
-import com.joaoneto.testeandroidv2.view.adapter.StatementsAdapter
-import com.joaoneto.testeandroidv2.viewModel.MainViewModel
+import com.joaoneto.testeandroidv2.loginScreen.model.UserAccountModel
+import com.joaoneto.testeandroidv2.loginScreen.ui.view.activity.LoginActivity
+import com.joaoneto.testeandroidv2.mainScreen.model.StatementModel
+import com.joaoneto.testeandroidv2.mainScreen.view.adapter.StatementsAdapter
+import com.joaoneto.testeandroidv2.mainScreen.viewModel.MainViewModel
 import com.joaoneto.testeandroidv2.util.system.Formatter
 import com.joaoneto.testeandroidv2.util.system.SnackbarHelper
 import kotlinx.android.synthetic.main.activity_main.*

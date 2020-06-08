@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.activity.LoginActivity">
+            android:name=".loginScreen.ui.view.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW"/>
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.joaoneto.testeandroidv2.view.activity.MainActivity"/>
+            android:name="com.joaoneto.testeandroidv2.mainScreen.view.activity.MainActivity"/>
 
     </application>
 

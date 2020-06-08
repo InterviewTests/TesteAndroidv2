@@ -6,7 +6,7 @@
 
         <variable
             name="userAccount"
-            type="com.joaoneto.testeandroidv2.model.UserAccountModel" />
+            type="com.joaoneto.testeandroidv2.loginScreen.model.UserAccountModel" />
         <variable
             name="Formatter"
             type="com.joaoneto.testeandroidv2.util.system.Formatter"/>
@@ -16,7 +16,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".view.activity.MainActivity">
+    tools:context=".mainScreen.view.activity.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
