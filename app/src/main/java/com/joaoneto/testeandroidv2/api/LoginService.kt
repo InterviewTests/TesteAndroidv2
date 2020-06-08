@@ -1,7 +1,6 @@
-package com.joaoneto.testeandroidv2.loginscreen.service
+package com.joaoneto.testeandroidv2.api
 
-import com.joaoneto.testeandroidv2.loginscreen.model.LoginResponseModel
-import io.reactivex.Observable
+import com.joaoneto.testeandroidv2.model.LoginResponseModel
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded

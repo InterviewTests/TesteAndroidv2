@@ -1,4 +1,4 @@
-package com.joaoneto.testeandroidv2.mainscreen.model
+package com.joaoneto.testeandroidv2.model
 
 import java.io.Serializable
 

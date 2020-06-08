@@ -1,6 +1,6 @@
-package com.joaoneto.testeandroidv2.mainscreen.service
+package com.joaoneto.testeandroidv2.api
 
-import com.joaoneto.testeandroidv2.mainscreen.model.StatementsResponseModel
+import com.joaoneto.testeandroidv2.model.StatementsResponseModel
 import retrofit2.Call
 import retrofit2.http.GET
 

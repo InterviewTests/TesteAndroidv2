@@ -1,4 +1,4 @@
-package com.joaoneto.testeandroidv2.loginscreen.viewModel
+package com.joaoneto.testeandroidv2.viewModel
 
 
 import RetrofitInitializer
@@ -6,12 +6,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.joaoneto.testeandroidv2.loginscreen.model.LoginResponseModel
-import com.joaoneto.testeandroidv2.loginscreen.service.LoginService
+import com.joaoneto.testeandroidv2.model.LoginResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import javax.inject.Inject
 
 
 class LoginViewModel :

@@ -1,4 +1,4 @@
-package com.joaoneto.testeandroidv2.mainscreen.view.activity
+package com.joaoneto.testeandroidv2.view.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,16 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 import com.joaoneto.testeandroidv2.R
 import com.joaoneto.testeandroidv2.databinding.ActivityMainBinding
-import com.joaoneto.testeandroidv2.loginscreen.model.UserAccountModel
-import com.joaoneto.testeandroidv2.loginscreen.view.activity.LoginActivity
-import com.joaoneto.testeandroidv2.mainscreen.model.StatementModel
-import com.joaoneto.testeandroidv2.mainscreen.view.adapter.StatementsAdapter
-import com.joaoneto.testeandroidv2.mainscreen.viewModel.MainViewModel
+import com.joaoneto.testeandroidv2.model.UserAccountModel
+import com.joaoneto.testeandroidv2.model.StatementModel
+import com.joaoneto.testeandroidv2.view.adapter.StatementsAdapter
+import com.joaoneto.testeandroidv2.viewModel.MainViewModel
 import com.joaoneto.testeandroidv2.util.system.Formatter
 import com.joaoneto.testeandroidv2.util.system.SnackbarHelper
-import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,17 +1,15 @@
-package com.joaoneto.testeandroidv2.mainscreen.viewModel
+package com.joaoneto.testeandroidv2.viewModel
 
 
 import RetrofitInitializer
-import com.joaoneto.testeandroidv2.mainscreen.service.StatementsService
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.joaoneto.testeandroidv2.mainscreen.model.StatementsResponseModel
+import com.joaoneto.testeandroidv2.model.StatementsResponseModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import javax.inject.Inject
 
 class MainViewModel : ViewModel() {
 

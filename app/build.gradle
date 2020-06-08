@@ -46,6 +46,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    testImplementation 'org.mockito:mockito-core:2.28.2'
+    androidTestImplementation 'org.mockito:mockito-android:2.28.2'
+    testImplementation 'org.mockito:mockito-inline:2.28.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     // architecture
@@ -59,23 +62,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-jackson:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.13.1'
-
-    //dagger
-    def daggerVer = 2.24 
-
-    implementation "com.google.dagger:dagger:$daggerVer"
-    implementation "com.google.dagger:dagger-android-support:$daggerVer"
-    kapt "com.google.dagger:dagger-android-processor:$daggerVer"
-    kapt "com.google.dagger:dagger-compiler:$daggerVer"
-
-
-    // RxJava
-    def rxJavaVer = '2.1.1'
-    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVer"
-
-    // Rx-Retrofit Call Adapter
-    def rxCallAdapterVer = '2.5.0'
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$rxCallAdapterVer" // Retrofit call adapter
 }
 
 

@@ -1,5 +1,6 @@
-package com.joaoneto.testeandroidv2.mainscreen.model
+package com.joaoneto.testeandroidv2.model
 
+import com.joaoneto.testeandroidv2.model.StatementModel
 import java.io.Serializable
 
 class StatementsResponseModel : Serializable{

@@ -1,17 +1,13 @@
-package com.joaoneto.testeandroidv2.loginscreen.view.activity
+package com.joaoneto.testeandroidv2.view.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.textfield.TextInputEditText
 import com.joaoneto.testeandroidv2.R
-import com.joaoneto.testeandroidv2.loginscreen.viewModel.LoginViewModel
-import com.joaoneto.testeandroidv2.mainscreen.view.activity.MainActivity
+import com.joaoneto.testeandroidv2.viewModel.LoginViewModel
 import com.joaoneto.testeandroidv2.util.system.PreferencesHelper
 import com.joaoneto.testeandroidv2.util.system.SnackbarHelper
 import kotlinx.android.synthetic.main.activity_login.*

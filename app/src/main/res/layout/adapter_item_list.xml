@@ -6,7 +6,7 @@
 
         <variable
             name="statement"
-            type="com.joaoneto.testeandroidv2.mainscreen.model.StatementModel" />
+            type="com.joaoneto.testeandroidv2.model.StatementModel" />
         <variable
             name="Formatter"
             type="com.joaoneto.testeandroidv2.util.system.Formatter"/>
