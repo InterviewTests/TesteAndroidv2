@@ -37,9 +37,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="18dp"
         android:layout_alignParentBottom="true">
+
         <TextView
             android:id="@+id/tv_nome_conta"
-            android:layout_width="120dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="18dp"
@@ -50,15 +51,15 @@
 
         <TextView
             android:id="@+id/tv_valor"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="18dp"
             android:layout_marginEnd="23dp"
-            android:gravity="end"
+            android:layout_toStartOf="@id/tv_nome_conta"
+            android:gravity="start"
             android:text="@string/valor"
             android:textColor="@color/gray"
-            android:layout_alignParentEnd="true"
-            android:textSize="16sp"
-            android:layout_toEndOf="@+id/tv_nome_conta" />
+            android:textSize="16sp" />
     </RelativeLayout>
 </RelativeLayout>
