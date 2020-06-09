@@ -4,8 +4,8 @@ import java.lang.ref.WeakReference;
 
 interface LoginPresenterInput {
     void presentLoginDataValidationForm(LoginResponse response);
-    void processRequestLoginDataOnServer(UserAccount response);
-    void processErrorRequest(String error);
+    void processRequestLoginDataOnServer(LoginResponse response);
+    void processErrorRequest(LoginResponse response);
 }
 
 
@@ -28,18 +28,24 @@ public class LoginPresenter implements LoginPresenterInput {
     }
 
     @Override
-    public void processRequestLoginDataOnServer(UserAccount response) {
-        output.get().callNextScene(response);
+    public void processRequestLoginDataOnServer(LoginResponse response) {
+        LoginViewModel loginViewModel = new LoginViewModel();
+        loginViewModel.userAccount = response.userAccount;
+        output.get().callNextScene(loginViewModel);
     }
 
     @Override
-    public void processErrorRequest(String error) {
-        if(null == error) {
+    public void processErrorRequest(LoginResponse response) {
+        LoginViewModel loginViewModel = new LoginViewModel();
+        loginViewModel.userAccount = response.userAccount;
+        if(null == response) {
             String msg = "Null response from server";
-            output.get().callApiError(msg);
+            loginViewModel.error = msg;
+            output.get().callApiError(loginViewModel);
         }
         else {
-            output.get().callApiError(error);
+            loginViewModel.error = response.error;
+            output.get().callApiError(loginViewModel);
         }
     }
 

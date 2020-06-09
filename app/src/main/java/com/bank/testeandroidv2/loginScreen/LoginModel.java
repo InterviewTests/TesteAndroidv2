@@ -34,6 +34,8 @@ public class LoginModel {
 
 class LoginViewModel {
     int status;
+    UserAccount userAccount;
+    Object error;
 }
 
 class LoginRequest {
@@ -43,6 +45,8 @@ class LoginRequest {
 
 class LoginResponse {
     int status;
+    UserAccount userAccount;
+    Object error;
 }
 
 class UserAccount {

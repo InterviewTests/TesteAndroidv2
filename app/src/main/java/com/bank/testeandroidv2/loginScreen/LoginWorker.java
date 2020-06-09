@@ -1,11 +1,18 @@
 package com.bank.testeandroidv2.loginScreen;
 
+import com.bank.testeandroidv2.ApiEndPoints;
+import com.bank.testeandroidv2.RetrofitService;
 import com.bank.testeandroidv2.util.CPFUtil;
 import com.bank.testeandroidv2.util.EmailUtil;
 import com.bank.testeandroidv2.util.PasswordUtil;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 interface LoginWorkerInput {
     int verifyTextFieldsAreCorrect(LoginRequest request);
+    void postLogin(LoginRequest request, LoginCallback loginCallback);
 }
 
 public class LoginWorker implements LoginWorkerInput {
@@ -50,5 +57,32 @@ public class LoginWorker implements LoginWorkerInput {
 
         }
         return lm.status;
+    }
+
+    public void postLogin(LoginRequest request, LoginCallback loginCallback) {
+        LoginModel login = new LoginModel();
+        LoginResponse loginResponse = new LoginResponse();
+        login.password = request.password;
+        login.user = request.user;
+        ApiEndPoints apiService = RetrofitService.getRetrofitInstance().create(ApiEndPoints.class);
+        Call<LoginModel> call = apiService.postLogin(login);
+        call.enqueue(new Callback<LoginModel>(){
+            @Override
+            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
+                if (null != response.body()) {
+                    loginResponse.userAccount = response.body().getUserAccount();
+                    loginCallback.onResponse(loginResponse);
+                }else {
+                    loginResponse.error = null;
+                    loginCallback.onResponse(loginResponse);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginModel> call, Throwable t) {
+                loginResponse.error = t.getMessage();
+                loginCallback.onFailure(loginResponse);
+            }
+        });
     }
 }
