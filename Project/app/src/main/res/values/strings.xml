@@ -8,5 +8,4 @@
     <string name="already_logged_label">Entrar como:</string>
     <string name="login_screen_logout">Não sou</string>
     <string name="account_agency_separator">/</string>
-    <string name="money_type">R$</string>
 </resources>

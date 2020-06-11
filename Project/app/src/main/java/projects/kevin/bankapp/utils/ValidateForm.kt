@@ -1,9 +1,6 @@
 package projects.kevin.bankapp.utils
 
 import android.app.Activity
-import android.widget.Toast
-import java.math.BigDecimal
-import java.math.RoundingMode
 
 
 fun validatePassword(pass: String, act: Activity): Boolean {
@@ -21,8 +18,4 @@ fun validatePassword(pass: String, act: Activity): Boolean {
     return false
 }
 
-fun formatMoney(balance: BigDecimal): String {
-//        val numberFmt = NumberFormat.getCurrencyInstance()
-//        val numberFmt = java.text.DecimalFormat("#,###,##0,00")
-    return balance.setScale(2, RoundingMode.HALF_EVEN).toString()
-}
+

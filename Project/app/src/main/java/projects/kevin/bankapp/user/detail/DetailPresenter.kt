@@ -1,8 +1,7 @@
 package projects.kevin.bankapp.user.detail
 
-import com.tech.fit.diet_plan.activity.api.APIClient
+import projects.kevin.bankapp.user.service.APIClient
 import projects.kevin.bankapp.base.BasePresenter
-import projects.kevin.bankapp.user.login.LoginApiRequest
 import projects.kevin.bankapp.user.login.UserAccount
 import projects.kevin.bankapp.user.sharedPref.UserDataSharedPref
 import java.math.BigDecimal

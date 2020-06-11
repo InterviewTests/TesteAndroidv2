@@ -25,6 +25,16 @@
         <item name="android:textColor">@color/textColorSecondary</item>
     </style>
 
+    <style name="subtitlePrimary" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="TextCardDescription" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
     <style name="EditTextPrimary" parent="Widget.AppCompat.EditText">
         <item name="android:padding">16dp</item>
         <item name="android:layout_marginTop">16dp</item>

@@ -1,7 +1,7 @@
 package projects.kevin.bankapp.base
 
-import com.tech.fit.diet_plan.activity.qualifier.PostThreadExecutor
-import com.tech.fit.diet_plan.activity.qualifier.ThreadExecutor
+import projects.kevin.bankapp.user.service.qualifier.PostThreadExecutor
+import projects.kevin.bankapp.user.service.qualifier.ThreadExecutor
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

@@ -1,4 +1,4 @@
-package com.tech.fit.diet_plan.activity.qualifier
+package projects.kevin.bankapp.user.service.qualifier
 
 import io.reactivex.Scheduler
 

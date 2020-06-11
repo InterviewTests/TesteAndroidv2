@@ -1,8 +1,5 @@
-package com.tech.fit.diet_plan.activity.api
+package projects.kevin.bankapp.user.service
 
-import com.google.gson.GsonBuilder
-import okhttp3.OkHttpClient
-import projects.kevin.bankapp.user.service.ApiUserService
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory

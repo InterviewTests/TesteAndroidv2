@@ -14,6 +14,7 @@ import projects.kevin.bankapp.user.sharedPref.UserDataSharedPref
 import projects.kevin.bankapp.utils.formatMoney
 
 class DetailActivity : AppCompatActivity(), DetailView {
+
     override fun loadStatements(bankStatements: ArrayList<BankStatements>?) {
         initStatementRecycler(bankStatements!!)
     }
@@ -30,6 +31,8 @@ class DetailActivity : AppCompatActivity(), DetailView {
     private lateinit var userPreferences: UserDataSharedPref
 
     companion object {
+        const val MONEY_TYPE = "R$"
+
         fun startDetail(activity: Activity) {
             val start = Intent(activity, DetailActivity::class.java)
             activity.startActivity(start)
@@ -69,7 +72,7 @@ class DetailActivity : AppCompatActivity(), DetailView {
             presenter.fetchUserStatements(userId)
             nameDetailAccount.text = name
             agencyDetailAccount.text = "$bankAccount ${getString(R.string.account_agency_separator)} $agency"
-            balanceDetailAccount.text = "${getString(R.string.money_type)}${formatMoney(balance)}"
+            balanceDetailAccount.text = "$MONEY_TYPE${formatMoney(balance)}"
         }
     }
 }

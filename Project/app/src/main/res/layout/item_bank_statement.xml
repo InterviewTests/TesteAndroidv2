@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_height="80dp"
+    android:layout_height="wrap_content"
     android:gravity="center"
     android:layout_marginBottom="8dp"
     android:background="@color/white"
@@ -52,13 +52,15 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Conta de lux"/>
+            style="@style/subtitlePrimary"
+            tools:text="Conta de luz"/>
         <TextView
             android:id="@+id/statementValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="R$1.000,00"
+            style="@style/subtitlePrimary"
+            tools:text="R$1.000,00"
             android:textAlignment="textEnd"
             />
 
