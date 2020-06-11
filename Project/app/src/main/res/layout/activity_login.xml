@@ -55,6 +55,7 @@
             android:visibility="gone"
             android:id="@+id/singInLabel"
             android:layout_marginBottom="8dp"
+            style="@style/TextDescriptionPrimary"
             />
 
         <Button
@@ -78,7 +79,9 @@
             android:textAlignment="center"
             tools:text="Kevin Marcelo Belletarde"
             android:padding="8dp"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            style="@style/TextDescriptionPrimary"
+            />
 
     </LinearLayout>
 

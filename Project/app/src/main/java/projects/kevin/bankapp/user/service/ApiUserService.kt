@@ -47,5 +47,5 @@ interface ApiUserService {
     fun login(@Body configs: LoginApiRequest): Single<LoginApiResponse>
 
     @GET("statements/{userId}")
-    fun fetchUserDetail(@Query("userId") userId: Long): Single<DetailApiResponse>
+    fun fetchUserDetail(@Path("userId") userId: Long): Single<DetailApiResponse>
 }

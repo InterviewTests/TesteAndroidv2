@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,42 +7,54 @@
     android:layout_height="80dp"
     android:gravity="center"
     android:layout_marginBottom="8dp"
-    android:padding="16dp"
-    android:background="@drawable/bg_login_edit_text"
+    android:background="@color/white"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="16dp"
+    app:cardCornerRadius="8dp"
     tools:context=".user.detail.DetailActivity">
 
     <LinearLayout
+        android:layout_margin="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="8dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pagamento"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="12/12/2018"
-            android:textAlignment="textEnd"
-            />
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/statementName"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pagamento"/>
+            <TextView
+                android:id="@+id/statementDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="12/12/2018"
+                android:textAlignment="textEnd"
+                />
 
-    <LinearLayout
+        </LinearLayout>
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/statementDescription"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Conta de lux"/>
         <TextView
+            android:id="@+id/statementValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -51,4 +63,6 @@
             />
 
     </LinearLayout>
-</LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

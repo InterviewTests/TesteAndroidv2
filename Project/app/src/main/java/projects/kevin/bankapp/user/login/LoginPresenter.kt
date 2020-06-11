@@ -8,8 +8,8 @@ class LoginPresenter(private val view: LoginView): BasePresenter() {
 
     fun userLogin(credentials: LoginApiRequest) {
         view.showLoading()
-        APIClient.getReactiveService()?.let { service ->
-            execute(service.login(credentials)).subscribe( { loginResponse ->
+        APIClient.getReactiveService()?.let { apiUserService ->
+            execute(apiUserService.login(credentials)).subscribe( { loginResponse ->
                 if(loginResponse?.error?.code != null) {
                     view.onLoginFailed()
                 } else {

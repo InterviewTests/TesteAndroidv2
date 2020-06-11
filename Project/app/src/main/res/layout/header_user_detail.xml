@@ -15,6 +15,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/nameDetailAccount"
             android:layout_weight="3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,6 +24,7 @@
             />
 
         <ImageView
+            android:id="@+id/logoutBtnAccount"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/logout"
@@ -39,6 +41,7 @@
         />
 
     <TextView
+        android:id="@+id/agencyDetailAccount"
         android:layout_weight="3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,6 +58,7 @@
         />
 
     <TextView
+        android:id="@+id/balanceDetailAccount"
         android:layout_weight="3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

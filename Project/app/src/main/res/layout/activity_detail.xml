@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@color/screen_bg_default"
     tools:context=".user.detail.DetailActivity">
 
     <include layout="@layout/header_user_detail"/>
@@ -19,14 +20,14 @@
     />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_margin="16dp"
-        android:id="@+id/bankStatement"
+        android:id="@+id/bankStatementRecyclerView"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_bank_statement"
     />
+
 
 
 </LinearLayout>

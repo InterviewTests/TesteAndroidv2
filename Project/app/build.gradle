@@ -38,6 +38,9 @@ dependencies {
     api 'io.reactivex.rxjava2:rxandroid:2.1.1'
     api 'io.reactivex.rxjava2:rxkotlin:2.2.0'
 
+//    implementation 'com.android.support:recyclerview-v7:26.0.2'
+    implementation "androidx.cardview:cardview:1.0.0"
+
     implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 
