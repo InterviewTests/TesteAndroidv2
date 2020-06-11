@@ -6,12 +6,12 @@ import java.text.SimpleDateFormat
 
 fun formatMoney(balance: BigDecimal): String {
 
-    val numberFormat = java.text.DecimalFormat("#,#00.00#")
+    val numberFormat = java.text.DecimalFormat("#,#0.00#")
     return numberFormat.format(balance.setScale(2, RoundingMode.HALF_UP))
 }
 
 fun turnToPositiveValue(value: BigDecimal): BigDecimal {
-    var newValue = value
+    val newValue = value
     if(value < BigDecimal(0)) {
         return newValue.multiply(BigDecimal(-1))
     }
