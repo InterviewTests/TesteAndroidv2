@@ -11,7 +11,7 @@ import projects.kevin.bankapp.R
 import projects.kevin.bankapp.base.BaseActivity
 import projects.kevin.bankapp.user.detail.DetailActivity
 import projects.kevin.bankapp.user.sharedPref.UserDataSharedPref
-import projects.kevin.bankapp.utils.validatePassword
+import projects.kevin.bankapp.utils.validateLogin
 
 
 class LoginActivity : BaseActivity(), LoginView {
@@ -27,9 +27,13 @@ class LoginActivity : BaseActivity(), LoginView {
         userPreferences = UserDataSharedPref(this)
 
         buttonLogin.setOnClickListener {
-            if(validatePassword(passLoginText.text.toString(), this)) {
-               val credentials = LoginApiRequest(userLoginText.text.toString(), passLoginText.text.toString())
+            val password =  passLoginText.text.toString()
+            val login = userLoginText.text.toString()
+            if(validateLogin(password, login)) {
+               val credentials = LoginApiRequest(login, password)
                 presenter.userLogin(credentials)
+            } else {
+                Toast.makeText(this, "Login e/ou senhas estão incorretos", Toast.LENGTH_LONG).show()
             }
         }
     }

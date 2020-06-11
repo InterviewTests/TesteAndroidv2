@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat
 
 fun formatMoney(balance: BigDecimal): String {
 
-    val numberFormat = java.text.DecimalFormat("#,#0.00#")
+    val numberFormat = java.text.DecimalFormat(",#00.00#")
     return numberFormat.format(balance.setScale(2, RoundingMode.HALF_UP))
 }
 
