@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Bank</string>
+    <string name="hintUserName">User</string>
+    <string name="hintUserPassword">Password</string>
+    <string name="BtnUserLogin">Login</string>
+    <string name="detail_newly">Recentes</string>
+    <string name="logout_btn">logout button</string>
+    <string name="already_logged_label">Entrar como:</string>
+    <string name="login_screen_logout">Não sou</string>
+    <string name="account_agency_separator">/</string>
+
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="logout_dialog_title">Você quer sair</string>
+    <string name="logout_dialog_desc">Ao aceitar voce não estará mais logado</string>
+
+    <string name="incorrect_password">Erro senha incorreta!</string>
+    <string name="error_try_again">Login e/ou senhas estão incorretos</string>
+</resources>
