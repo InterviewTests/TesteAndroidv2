@@ -21,7 +21,7 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/loginFieldsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -31,6 +31,7 @@
         tools:layout_editor_absoluteX="0dp">
 
         <EditText
+            android:id="@+id/userLoginText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hintUserName"
@@ -45,6 +46,39 @@
             android:inputType="textPassword"
             style="@style/EditTextPrimary"
             />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/already_logged_label"
+            android:visibility="gone"
+            android:id="@+id/singInLabel"
+            android:layout_marginBottom="8dp"
+            />
+
+        <Button
+            android:layout_marginTop="8dp"
+            android:padding="8dp"
+            android:id="@+id/SingInButton"
+            android:layout_gravity="center"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="@string/BtnUserLogin"
+            android:background="@drawable/bg_btn_login"
+            android:layout_marginBottom="16dp"
+            style="@style/TextPrimaryButton"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/alreadyLoggedName"
+            android:textAlignment="center"
+            tools:text="Kevin Marcelo Belletarde"
+            android:padding="8dp"
+            android:visibility="gone"/>
 
     </LinearLayout>
 
