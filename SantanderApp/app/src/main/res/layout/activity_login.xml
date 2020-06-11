@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.LoginActivity">
-    <TextView
+    tools:context=".ui.view.loginScreen.LoginActivity">
+    <com.qintess.santanderapp.ui.components.UserField
+        android:id="@+id/usernameField"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Helloooooo" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content" />
+
+    <com.qintess.santanderapp.ui.components.PasswordField
+        android:id="@+id/passwordField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</FrameLayout>

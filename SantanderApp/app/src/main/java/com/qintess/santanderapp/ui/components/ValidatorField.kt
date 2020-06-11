@@ -1,9 +1,10 @@
 package com.qintess.santanderapp.ui.components
 
 import android.content.Context
+import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
 
-abstract class ValidatorEditText(ctx: Context): AppCompatEditText(ctx) {
+abstract class ValidatorEditText(ctx: Context, attrs: AttributeSet): AppCompatEditText(ctx, attrs) {
     // Propriedade que define a regra de validação, onde o parâmetro value é o texto atual do campo, e o retorno da lambda é um booleano que diz se o valor passado é válido
     protected open var rule: (value: String) -> Boolean = { true }
 
