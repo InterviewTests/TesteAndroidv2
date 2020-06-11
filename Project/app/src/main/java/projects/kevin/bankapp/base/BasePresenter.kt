@@ -1,5 +1,7 @@
 package projects.kevin.bankapp.base
 
+import androidx.appcompat.app.AppCompatActivity
+import com.afollestad.materialdialogs.MaterialDialog
 import projects.kevin.bankapp.user.service.qualifier.PostThreadExecutor
 import projects.kevin.bankapp.user.service.qualifier.ThreadExecutor
 import io.reactivex.Single
@@ -26,5 +28,7 @@ open class BasePresenter  constructor() {
             .subscribeOn(ThreadExecutor(Schedulers.io()).scheduler)
             .observeOn(PostThreadExecutor(AndroidSchedulers.mainThread()).scheduler)
     }
+
+
 }
 

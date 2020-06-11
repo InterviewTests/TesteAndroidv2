@@ -1,100 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="16dp"
     tools:context=".user.login.LoginActivity">
 
-    <ImageView
-        android:id="@+id/textView"
-        android:layout_width="93dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include
+        android:visibility="gone"
+        layout="@layout/full_screen_layout"
+        android:id="@+id/progressLayout"/>
 
-
-    <LinearLayout
-        android:id="@+id/loginFieldsLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.38"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_margin="16dp">
 
-        <EditText
-            android:id="@+id/userLoginText"
+        <ImageView
+            android:id="@+id/textView"
+            android:layout_width="93dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+            android:id="@+id/loginFieldsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hintUserName"
-            style="@style/EditTextPrimary"
-            />
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.38"
+            tools:layout_editor_absoluteX="0dp">
 
-        <EditText
-            android:id="@+id/passLoginText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hintUserPassword"
-            android:inputType="textPassword"
-            style="@style/EditTextPrimary"
-            />
+            <EditText
+                android:id="@+id/userLoginText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hintUserName"
+                style="@style/EditTextPrimary"
+                />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="@string/already_logged_label"
-            android:visibility="gone"
-            android:id="@+id/singInLabel"
-            android:layout_marginBottom="8dp"
-            style="@style/TextDescriptionPrimary"
-            />
+            <EditText
+                android:id="@+id/passLoginText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hintUserPassword"
+                android:inputType="textPassword"
+                style="@style/EditTextPrimary"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/already_logged_label"
+                android:visibility="gone"
+                android:id="@+id/singInLabel"
+                android:layout_marginBottom="8dp"
+                style="@style/TextDescriptionPrimary"
+                />
+
+            <Button
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:id="@+id/SingInButton"
+                android:layout_gravity="center"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:text="@string/BtnUserLogin"
+                android:background="@drawable/bg_btn_login"
+                android:layout_marginBottom="16dp"
+                style="@style/TextPrimaryButton"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/alreadyLoggedName"
+                android:textAlignment="center"
+                tools:text="Kevin Marcelo Belletarde"
+                android:padding="8dp"
+                android:visibility="gone"
+                style="@style/TextDescriptionPrimary"
+                />
+
+        </LinearLayout>
 
         <Button
-            android:layout_marginTop="8dp"
-            android:padding="8dp"
-            android:id="@+id/SingInButton"
-            android:layout_gravity="center"
+            android:id="@+id/buttonLogin"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:text="@string/BtnUserLogin"
             android:background="@drawable/bg_btn_login"
             android:layout_marginBottom="16dp"
             style="@style/TextPrimaryButton"
-            android:visibility="gone"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/alreadyLoggedName"
-            android:textAlignment="center"
-            tools:text="Kevin Marcelo Belletarde"
-            android:padding="8dp"
-            android:visibility="gone"
-            style="@style/TextDescriptionPrimary"
-            />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/buttonLogin"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:text="@string/BtnUserLogin"
-        android:background="@drawable/bg_btn_login"
-        android:layout_marginBottom="16dp"
-        style="@style/TextPrimaryButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

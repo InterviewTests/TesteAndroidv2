@@ -5,27 +5,19 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.header_user_detail.*
 import projects.kevin.bankapp.R
+import projects.kevin.bankapp.base.BaseActivity
 import projects.kevin.bankapp.user.login.UserAccount
 import projects.kevin.bankapp.user.sharedPref.UserDataSharedPref
 import projects.kevin.bankapp.utils.formatMoney
+import projects.kevin.bankapp.utils.validateMaterialDialog
 
-class DetailActivity : AppCompatActivity(), DetailView {
-
-    override fun loadStatements(bankStatements: ArrayList<BankStatements>?) {
-        initStatementRecycler(bankStatements!!)
-    }
-
-    override fun showLoading() {
-
-    }
-
-    override fun hideLoading() {
-
-    }
+class DetailActivity : BaseActivity(), DetailView {
 
     private lateinit var presenter: DetailPresenter
     private lateinit var userPreferences: UserDataSharedPref
@@ -47,9 +39,13 @@ class DetailActivity : AppCompatActivity(), DetailView {
         userPreferences = UserDataSharedPref(this)
 
         logoutBtnAccount.setOnClickListener {
-            userPreferences.clearPreferences()
-            this.finish()
+            onLogoutClick()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.destroy()
     }
 
     override fun onResume() {
@@ -57,13 +53,17 @@ class DetailActivity : AppCompatActivity(), DetailView {
         presenter.loadUserData(userPreferences)
     }
 
-    fun initStatementRecycler(bankStatements: ArrayList<BankStatements>) {
-        val fastingTipsAdapter = StatementsAdapter()
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        bankStatementRecyclerView.layoutManager = layoutManager
-        bankStatementRecyclerView.adapter = fastingTipsAdapter
-        bankStatementRecyclerView.setHasFixedSize(false)
-        fastingTipsAdapter.setListView(bankStatements)
+    override fun loadStatements(bankStatements: ArrayList<BankStatements>?) {
+        initStatementRecycler(bankStatements!!)
+        hideLoading()
+    }
+
+    override fun showLoading() {
+        loadingStatements.visibility = VISIBLE
+    }
+
+    override fun hideLoading() {
+        loadingStatements.visibility = GONE
     }
 
     @SuppressLint("SetTextI18n")
@@ -74,5 +74,32 @@ class DetailActivity : AppCompatActivity(), DetailView {
             agencyDetailAccount.text = "$bankAccount ${getString(R.string.account_agency_separator)} $agency"
             balanceDetailAccount.text = "$MONEY_TYPE${formatMoney(balance)}"
         }
+    }
+
+    private fun onLogoutClick() {
+        validateMaterialDialog(this)?.show {
+            title(text = "Você quer sair")
+            message(text = "Ao aceitar voce não estará mais logado")
+            cancelable(true)
+            cornerRadius(literalDp = 8f)
+            positiveButton(text = "Sim") { dialog ->
+                userPreferences.clearPreferences()
+                this@DetailActivity.finish()
+                dialog.dismiss()
+            }
+            negativeButton(text = "Não") { dialog ->
+                dialog.dismiss()
+            }
+        }
+
+    }
+
+    private fun initStatementRecycler(bankStatements: ArrayList<BankStatements>) {
+        val fastingTipsAdapter = StatementsAdapter()
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        bankStatementRecyclerView.layoutManager = layoutManager
+        bankStatementRecyclerView.adapter = fastingTipsAdapter
+        bankStatementRecyclerView.setHasFixedSize(false)
+        fastingTipsAdapter.setListView(bankStatements)
     }
 }

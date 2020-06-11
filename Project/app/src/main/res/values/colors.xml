@@ -12,5 +12,7 @@
     <color name="textColorSecondary">#ffffff</color>
     <color name="hintTextColor">#B4BECD</color>
 
+    <color name="black_semi_transparent">#b9000000</color>
+
     <color name="editTextCornerColors">#E9EDF4</color>
 </resources>

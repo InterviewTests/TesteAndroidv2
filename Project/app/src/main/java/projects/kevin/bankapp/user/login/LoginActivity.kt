@@ -43,6 +43,41 @@ class LoginActivity : BaseActivity(), LoginView {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.destroy()
+    }
+
+    override fun onLoginSuccess(userAccount: UserAccount) {
+        presenter.saveOnShared(userAccount, userPreferences)
+
+    }
+
+    override fun onLoginFailed() {
+        if(isActive()) {
+            Toast.makeText(this, "Erro senha incorreta!", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onSaveUserData() {
+       DetailActivity.startDetail(this)
+    }
+
+    override fun hideLoading() {
+        progressLayout.visibility = GONE
+    }
+
+    override fun showLoading() {
+        progressLayout.visibility = VISIBLE
+        progressLayout.bringToFront()
+    }
+
+    override fun onRequestFailed() {
+        if(isActive()) {
+            Toast.makeText(this, "Erro tente novamente mais tarde!", Toast.LENGTH_LONG).show()
+        }
+    }
+
     private fun loggedState(name: String) {
         buttonLogin.visibility = GONE
         userLoginText.visibility = GONE
@@ -80,40 +115,4 @@ class LoginActivity : BaseActivity(), LoginView {
         userLoginText.visibility = VISIBLE
         passLoginText.visibility = VISIBLE
     }
-
-    override fun onLoginSuccess(userAccount: UserAccount) {
-        if(isActive()) {
-            presenter.saveOnShared(userAccount, userPreferences)
-            Toast.makeText(this, userAccount.name, Toast.LENGTH_LONG).show()
-        }
-    }
-
-    override fun onLoginFailed() {
-        if(isActive()) {
-            Toast.makeText(this, "Erro senha incorreta!", Toast.LENGTH_LONG).show()
-        }
-    }
-
-    override fun onSaveUserData() {
-       DetailActivity.startDetail(this)
-    }
-
-    override fun hideLoading() {
-        if(isActive()) {
-            Toast.makeText(this, "Loading hide", Toast.LENGTH_LONG).show()
-        }
-    }
-
-    override fun showLoading() {
-        if(isActive()) {
-            Toast.makeText(this, "Loading show", Toast.LENGTH_LONG).show()
-        }
-    }
-
-    override fun onRequestFailed() {
-        if(isActive()) {
-            Toast.makeText(this, "Erro tente novamente mais tarde!", Toast.LENGTH_LONG).show()
-        }
-    }
-
 }

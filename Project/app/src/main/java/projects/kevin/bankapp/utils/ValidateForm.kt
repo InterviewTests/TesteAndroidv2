@@ -1,6 +1,8 @@
 package projects.kevin.bankapp.utils
 
 import android.app.Activity
+import androidx.appcompat.app.AppCompatActivity
+import com.afollestad.materialdialogs.MaterialDialog
 
 
 fun validatePassword(pass: String, act: Activity): Boolean {
@@ -16,6 +18,14 @@ fun validatePassword(pass: String, act: Activity): Boolean {
         }
 
     return false
+}
+
+fun validateMaterialDialog(activity: AppCompatActivity?): MaterialDialog? {
+    if (activity?.isFinishing == false) {
+        return MaterialDialog(activity)
+    }
+
+    return null
 }
 
 

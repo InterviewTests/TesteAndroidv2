@@ -19,6 +19,12 @@
         style="@style/subtitlePrimary"
     />
 
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/loadingStatements"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bankStatementRecyclerView"
         android:layout_marginTop="12dp"
