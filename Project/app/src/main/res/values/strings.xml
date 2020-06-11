@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">BankApp</string>
+    <string name="app_name">Bank</string>
+    <string name="hintUserName">User</string>
+    <string name="hintUserPassword">Password</string>
+    <string name="BtnUserLogin">Login</string>
+    <string name="detail_newly">Recentes</string>
+    <string name="logout_btn">logout button</string>
 </resources>

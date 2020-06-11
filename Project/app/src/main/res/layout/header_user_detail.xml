@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@color/colorPrimary"
+    tools:context=".user.detail.DetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_weight="3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Kevin Marcelo Belletarde"
+            style="@style/TextTitle"
+            />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/logout"
+            android:layout_gravity="center"
+            android:contentDescription="@string/logout_btn" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conta"
+        style="@style/TextDescription"
+        />
+
+    <TextView
+        android:layout_weight="3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="2050 / 01.111222-4"
+        style="@style/TextTitle"
+        android:layout_marginTop="8dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saldo"
+        style="@style/TextDescription"
+        />
+
+    <TextView
+        android:layout_weight="3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="R$2050,00"
+        style="@style/TextTitle"
+        android:layout_marginTop="8dp"
+        />
+
+
+</LinearLayout>
