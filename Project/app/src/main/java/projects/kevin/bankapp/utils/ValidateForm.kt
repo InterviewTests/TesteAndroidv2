@@ -15,5 +15,6 @@ fun validatePassword(pass: String, act: Activity): Boolean {
                 }
             }
         }
+
     return false
 }

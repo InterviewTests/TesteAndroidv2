@@ -5,4 +5,6 @@
     <string name="BtnUserLogin">Login</string>
     <string name="detail_newly">Recentes</string>
     <string name="logout_btn">logout button</string>
+    <string name="already_logged_label">Entrar como:</string>
+    <string name="login_screen_logout">Não sou</string>
 </resources>
