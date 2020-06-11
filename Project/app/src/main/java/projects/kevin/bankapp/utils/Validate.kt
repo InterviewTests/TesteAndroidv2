@@ -12,6 +12,7 @@ fun validateLogin(password: String, login: String): Boolean {
     if(login.isEmpty() || password.length < 2) {
         return false
     }
+
     if(regexAlpha.containsMatchIn(password)) {
         if(regexUpper.containsMatchIn(password)) {
             if(regexSpecial.containsMatchIn(password)) {

@@ -33,7 +33,7 @@ class LoginActivity : BaseActivity(), LoginView {
                val credentials = LoginApiRequest(login, password)
                 presenter.userLogin(credentials)
             } else {
-                Toast.makeText(this, "Login e/ou senhas estão incorretos", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.incorrect_password), Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -59,7 +59,7 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun onLoginFailed() {
         if(isActive()) {
-            Toast.makeText(this, "Erro senha incorreta!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.incorrect_password), Toast.LENGTH_LONG).show()
         }
     }
 
@@ -78,7 +78,7 @@ class LoginActivity : BaseActivity(), LoginView {
 
     override fun onRequestFailed() {
         if(isActive()) {
-            Toast.makeText(this, "Erro tente novamente mais tarde!", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.error_try_again), Toast.LENGTH_LONG).show()
         }
     }
 

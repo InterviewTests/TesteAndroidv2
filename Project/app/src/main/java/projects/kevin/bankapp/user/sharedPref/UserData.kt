@@ -3,13 +3,6 @@ package projects.kevin.bankapp.user.sharedPref
 import android.content.Context
 import android.content.SharedPreferences
 
-//val userId: Long? = 0,
-//val name: String? = "",
-//val bankAccount: String? = "",
-//val agency: String? = "",
-//val balance: BigDecimal? = BigDecimal.ZERO
-
-
 class UserDataSharedPref(private val context: Context) {
 
     companion object {
@@ -51,7 +44,7 @@ class UserDataSharedPref(private val context: Context) {
         getPreferencesEdit().putString(AGENCY, agency).commit()
     }
 
-    fun persistBalance(balance: String) {//BigDecimal bd = new BigDecimal("10.0001");
+    fun persistBalance(balance: String) {
         getPreferencesEdit().putString(BALANCE, balance).commit()
     }
 

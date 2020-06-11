@@ -78,16 +78,16 @@ class DetailActivity : BaseActivity(), DetailView {
 
     private fun onLogoutClick() {
         validateMaterialDialog(this)?.show {
-            title(text = "Você quer sair")
-            message(text = "Ao aceitar voce não estará mais logado")
+            title(res = R.string.logout_dialog_title)
+            message(res = R.string.logout_dialog_desc)
             cancelable(true)
             cornerRadius(literalDp = 8f)
-            positiveButton(text = "Sim") { dialog ->
+            positiveButton(res = R.string.yes) { dialog ->
                 userPreferences.clearPreferences()
                 this@DetailActivity.finish()
                 dialog.dismiss()
             }
-            negativeButton(text = "Não") { dialog ->
+            negativeButton(res = R.string.no) { dialog ->
                 dialog.dismiss()
             }
         }

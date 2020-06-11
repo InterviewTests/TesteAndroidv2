@@ -1,5 +1,6 @@
 package projects.kevin.bankapp.utils
 
+import android.annotation.SuppressLint
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.SimpleDateFormat
@@ -11,14 +12,14 @@ fun formatMoney(balance: BigDecimal): String {
 }
 
 fun turnToPositiveValue(value: BigDecimal): BigDecimal {
-    val newValue = value
     if(value < BigDecimal(0)) {
-        return newValue.multiply(BigDecimal(-1))
+        return value.multiply(BigDecimal(-1))
     }
 
-    return newValue
+    return value
 }
 
+@SuppressLint("SimpleDateFormat")
 fun parseDate(dateString: String): String {
     val initDate = SimpleDateFormat("yyyy-MM-dd").parse(dateString)
     val formatter = SimpleDateFormat("dd/MM/yyyy")
