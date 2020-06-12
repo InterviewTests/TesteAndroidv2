@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/Login"
+    android:id="@+id/nav_graph">
+
+    <fragment
+        android:id="@+id/Login"
+        android:name="com.appdesafioSantander.bank.ui.login.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/login">
+
+        <action
+            android:id="@+id/action_Login_to_Statements"
+            app:destination="@id/Statements" />
+        <argument
+            android:name="user"
+            app:argType="com.appdesafioSantander.bank.model.UserAccount" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/Statements"
+        android:name="com.appdesafioSantander.bank.ui.statements.StatementsFragment"
+        android:label="Statements"
+        tools:layout="@layout/statements_fragment">
+
+        <action
+            android:id="@+id/action_Statements_to_Login"
+            app:destination="@id/Login" />
+    </fragment>
+
+</navigation>

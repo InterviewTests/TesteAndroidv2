@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="item"
+            type="com.appdesafioSantander.bank.model.Statement" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_height="80dp"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="0dp"
+        android:layout_width="match_parent"
+        app:cardBackgroundColor="#ffffff"
+        app:cardCornerRadius="8dp">
+
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@{item.title}"
+                android:textColor="@color/colorSubtitle"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@{item.date}"
+                android:textColor="@color/colorSubtitle"
+                android:textSize="12dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/desc"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@{item.desc}"
+                android:textColor="@color/colorTitle"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/value"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@{item.valueFormatted}"
+                android:textColor="@color/colorTitle"
+                android:textSize="20dp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
+
+
