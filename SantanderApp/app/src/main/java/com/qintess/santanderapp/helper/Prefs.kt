@@ -1,24 +1,19 @@
 package com.qintess.santanderapp.helper
 
-import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.qintess.santanderapp.BuildConfig
 
-interface SharedPreferencesInterface {
-    fun getString(key: Prefs.Key): String?
-}
-
-object Prefs: Application(), SharedPreferencesInterface {
+class Prefs(ctx: Context) {
     enum class Key(val value: String?) {
         LAST_USER(null)
     }
 
-    private const val PREFS_FILE_NAME = BuildConfig.APPLICATION_ID
+    private val PREFS_FILE_NAME = BuildConfig.APPLICATION_ID
     private var sharedPreferences: SharedPreferences
 
     init {
-        sharedPreferences = applicationContext.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
+        sharedPreferences = ctx.getSharedPreferences(PREFS_FILE_NAME, Context.MODE_PRIVATE)
     }
 
     fun putString(key: Key, value: String) {
@@ -28,7 +23,7 @@ object Prefs: Application(), SharedPreferencesInterface {
         }
     }
 
-    override fun getString(key: Key): String? {
+    fun getString(key: Key): String? {
         return sharedPreferences.getString(key.value, null)
     }
 }

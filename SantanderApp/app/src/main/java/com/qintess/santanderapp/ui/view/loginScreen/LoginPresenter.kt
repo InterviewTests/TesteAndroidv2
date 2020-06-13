@@ -8,6 +8,6 @@ class LoginPresenter: LoginPresenterInput {
     var output: LoginActivityInput? = null
 
     override fun presentLastUser(username: String) {
-        TODO("Not yet implemented")
+        output?.displayLastUser(username)
     }
 }

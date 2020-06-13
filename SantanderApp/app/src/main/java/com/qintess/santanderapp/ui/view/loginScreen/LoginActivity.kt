@@ -24,7 +24,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
     }
 
     override fun displayLastUser(username: String) {
-        TODO("Not yet implemented")
+        usernameField.setText(username)
     }
 
     override fun login() {
