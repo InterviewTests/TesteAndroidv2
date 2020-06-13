@@ -2,6 +2,7 @@ package com.qintess.santanderapp.helper
 
 class Validator {
     companion object {
+        const val CREDENTIALS_TITLE_ERROR = "Credenciais inválidas"
         const val USER_ERROR = "Preencha um usuário válido. O usuário deve ser um CPF ou e-mail"
         const val PASS_ERROR = "Preencha uma senha válida. A senha deve conter uma letra maiúsula, um caractere especial e um número."
 

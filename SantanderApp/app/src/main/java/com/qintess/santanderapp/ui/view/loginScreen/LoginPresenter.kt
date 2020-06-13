@@ -4,7 +4,7 @@ import java.lang.ref.WeakReference
 
 interface LoginPresenterInput {
     fun presentLastUser(username: String)
-    fun presentLoginErrorMessage(msg: String)
+    fun presentErrorMessage(title: String, msg: String)
 }
 
 class LoginPresenter: LoginPresenterInput {
@@ -14,7 +14,7 @@ class LoginPresenter: LoginPresenterInput {
         output?.get()?.displayLastUser(username)
     }
 
-    override fun presentLoginErrorMessage(msg: String) {
-        output?.get()?.showAlert(msg)
+    override fun presentErrorMessage(title: String, msg: String) {
+        output?.get()?.showAlert(title, msg)
     }
 }

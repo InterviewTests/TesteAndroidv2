@@ -47,7 +47,7 @@ class LoginPresenterTest {
         val presenter = LoginPresenter()
         val loginPresenterOutputSpy = LoginPresenterOutputSpy()
         presenter.output = WeakReference(loginPresenterOutputSpy)
-        presenter.presentLoginErrorMessage(Validator.USER_ERROR)
+        presenter.presentErrorMessage(Validator.CREDENTIALS_TITLE_ERROR, Validator.USER_ERROR)
 
         Assert.assertTrue(loginPresenterOutputSpy.showAlertIsCalled)
     }
@@ -67,7 +67,7 @@ class LoginPresenterTest {
 
         override fun login() { return }
 
-        override fun showAlert(msg: String): Boolean {
+        override fun showAlert(title: String, msg: String): Boolean {
             showAlertIsCalled = true
             return false
         }

@@ -11,7 +11,7 @@ interface LoginActivityInput {
     fun checkLastUser()
     fun displayLastUser(username: String)
     fun login()
-    fun showAlert(msg: String): Boolean
+    fun showAlert(title: String, msg: String): Boolean
 }
 
 class LoginActivity : AppCompatActivity(), LoginActivityInput {
@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityInput {
         output?.login(loginRequest)
     }
 
-    override fun showAlert(msg: String): Boolean {
+    override fun showAlert(title: String, msg: String): Boolean {
         val alertDialog = AlertDialog.Builder(this).create()
         alertDialog.setTitle("Credenciais inválidas")
         alertDialog.setMessage(msg)

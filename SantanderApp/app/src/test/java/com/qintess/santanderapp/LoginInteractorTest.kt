@@ -56,7 +56,7 @@ class LoginInteractorTest {
             presentLastUserIsCalled = true
         }
 
-        override fun presentLoginErrorMessage(msg: String) {
+        override fun presentErrorMessage(title: String, msg: String) {
             presentLoginErrorMsg = true
         }
     }

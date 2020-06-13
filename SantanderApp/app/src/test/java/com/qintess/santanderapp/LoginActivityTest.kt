@@ -13,9 +13,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
+import org.robolectric.annotation.LooperMode
 
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [Build.VERSION_CODES.KITKAT])
+@LooperMode(LooperMode.Mode.PAUSED) // FIXME: Remover quando issue for resolvida (https://github.com/robolectric/robolectric/issues/5356)
 class LoginActivityTest {
     // LoginActivity não é null
     @Test
@@ -217,7 +219,7 @@ class LoginActivityTest {
     @Test
     fun onShowText_dialogIsShown() {
         launch(LoginActivity::class.java).onActivity { activity ->
-            Assert.assertTrue(activity.showAlert(Validator.USER_ERROR))
+            Assert.assertTrue(activity.showAlert(Validator.CREDENTIALS_TITLE_ERROR, Validator.USER_ERROR))
         }
     }
 
