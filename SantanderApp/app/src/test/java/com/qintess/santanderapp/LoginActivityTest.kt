@@ -16,6 +16,7 @@ import org.robolectric.annotation.Config
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [Build.VERSION_CODES.KITKAT])
 class LoginActivityTest {
+    // LoginActivity não é null
     @Test
     fun loginActivity_isNotNull() {
         launch(LoginActivity::class.java).onActivity { activity ->
@@ -23,6 +24,7 @@ class LoginActivityTest {
         }
     }
 
+    // usernameField não é null
     @Test
     fun user_field_isNotNull() {
         launch(LoginActivity::class.java).onActivity { activity ->
@@ -30,6 +32,7 @@ class LoginActivityTest {
         }
     }
 
+    // passwordField não é null
     @Test
     fun pass_field_isNotNul() {
         launch(LoginActivity::class.java).onActivity { activity ->
@@ -37,6 +40,7 @@ class LoginActivityTest {
         }
     }
 
+    // usernameField está validando e-mail
     @Test
     fun user_field_isValidatingEmail() {
         launch(LoginActivity::class.java).onActivity { activity ->
@@ -61,6 +65,7 @@ class LoginActivityTest {
         }
     }
 
+    // usernameField está validando CPF
     @Test
     fun user_field_isValidatingCPF() {
         launch(LoginActivity::class.java).onActivity { activity ->
@@ -85,6 +90,7 @@ class LoginActivityTest {
         }
     }
 
+    // passwordField está validando
     @Test
     fun pass_field_isValidating() {
         launch(LoginActivity::class.java).onActivity { activity ->
@@ -105,6 +111,7 @@ class LoginActivityTest {
         }
     }
 
+    // No onCreate da activiy deve-se chamar checkLastUser
     @Test
     fun onCreate_shouldCallCheckLastUser() {
         launch(LoginActivity::class.java).onActivity { activity ->
@@ -117,6 +124,7 @@ class LoginActivityTest {
         }
     }
 
+    // No login deve-se chamar validação
     @Test
     fun onLogin_shouldCallValidation() {
         launch(LoginActivity::class.java).onActivity { activity ->
@@ -129,6 +137,7 @@ class LoginActivityTest {
         }
     }
 
+    // Na chamada do login, os valores dos campos são passados corretamente
     @Test
     fun onCallLogin_fieldsValuesArePassedCorrectly() {
         launch(LoginActivity::class.java).onActivity { activity ->
@@ -155,6 +164,10 @@ class LoginActivityTest {
 
         override fun checkLastUser() {
             checkLastUserIsCalled = true
+        }
+
+        override fun getLastUser(): String? {
+            return null
         }
 
         override fun isCredentialsValid(credentials: LoginRequest): Boolean {

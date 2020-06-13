@@ -5,6 +5,7 @@ import org.junit.Assert
 import org.junit.Test
 
 class ValidatorTest {
+    // Validação de e-mail é válida
     @Test
     fun email_validation_isValid() {
         // E-mail válido
@@ -17,6 +18,7 @@ class ValidatorTest {
         Assert.assertFalse(Validator.isEmailValid(""))
     }
 
+    // Validação de CPF é válida
     @Test
     fun cpf_validation_isValid() {
         // CPF válido
@@ -29,6 +31,7 @@ class ValidatorTest {
         Assert.assertFalse(Validator.isCpfValid(""))
     }
 
+    // Validação de senha é válida
     @Test
     fun pass_validation_isValid() {
         // Senha válida
