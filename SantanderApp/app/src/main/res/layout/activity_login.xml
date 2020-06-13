@@ -1,16 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.loginScreen.LoginActivity">
-    <com.qintess.santanderapp.ui.components.UserField
-        android:id="@+id/usernameField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    tools:context=".ui.view.loginScreen.LoginActivity"
+    android:orientation="vertical"
+    style="@style/LoginActivity">
 
-    <com.qintess.santanderapp.ui.components.PasswordField
-        android:id="@+id/passwordField"
+    <ImageView
+        style="@style/Logo"
+        android:layout_gravity="center"
+        android:src="@drawable/logo"
+        android:contentDescription="@string/logo_do_bank" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</FrameLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="105dp">
+        <com.qintess.santanderapp.ui.components.UserField
+            android:id="@+id/usernameField"
+            style="@style/Component.Field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:hint="@string/user_hint"/>
+
+        <com.qintess.santanderapp.ui.components.PasswordField
+            android:id="@+id/passwordField"
+            style="@style/Component.Field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/password_hint"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom|center_horizontal">
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_login_text"
+        style="@style/Component.Button"
+        />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,11 +1,38 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="LoginActivity">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">56dp</item>
+        <item name="android:paddingBottom">36dp</item>
+    </style>
+
+    <style name="Logo">
+        <item name="android:layout_width">@dimen/logo_width</item>
+        <item name="android:layout_height">@dimen/logo_height</item>
+    </style>
+
+    <style name="Component">
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingLeft">@dimen/default_spacing</item>
+        <item name="android:paddingRight">@dimen/default_spacing</item>
+    </style>
+
+    <style name="Component.Field">
+        <item name="android:background">@drawable/shape_field</item>
+        <item name="android:layout_marginBottom">@dimen/default_spacing</item>
+    </style>
+
+    <style name="Component.Button">
+        <item name="android:background">@drawable/shape_button</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textAlignment">center</item>
+        <item name="textAllCaps">false</item>
+    </style>
 </resources>

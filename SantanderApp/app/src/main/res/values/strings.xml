@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SantanderApp</string>
+    <string name="logo_do_bank">Logo do Bank</string>
+    <string name="btn_login_text">Login</string>
+    <string name="user_hint">User</string>
+    <string name="password_hint">Password</string>
 </resources>
