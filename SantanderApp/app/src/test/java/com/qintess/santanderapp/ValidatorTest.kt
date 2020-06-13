@@ -23,8 +23,11 @@ class ValidatorTest {
     fun cpf_validation_isValid() {
         // CPF válido
         Assert.assertTrue(Validator.isCpfValid("373.213.858-50"))
+        Assert.assertTrue(Validator.isCpfValid("37321385850"))
 
         // CPFs inválidos
+        Assert.assertFalse(Validator.isCpfValid("373A21385850"))
+        Assert.assertFalse(Validator.isCpfValid("373.213.858-50SANTANDER"))
         Assert.assertFalse(Validator.isCpfValid("000.000.000-00"))
         Assert.assertFalse(Validator.isCpfValid("1234"))
         Assert.assertFalse(Validator.isCpfValid("ABC"))

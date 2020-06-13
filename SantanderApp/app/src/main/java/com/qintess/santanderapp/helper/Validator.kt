@@ -2,15 +2,25 @@ package com.qintess.santanderapp.helper
 
 class Validator {
     companion object {
+        const val USER_ERROR = "Preencha um usuário válido. O usuário deve ser um CPF ou e-mail"
+        const val PASS_ERROR = "Preencha uma senha válida. A senha deve conter uma letra maiúsula, um caractere especial e um número."
+
         fun isEmailValid(email: String): Boolean {
             val pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}".toRegex()
             return email.matches(pattern)
         }
 
         fun isCpfValid(cpf: String): Boolean {
+            val mask = Regex("[.-]")
+            val unmasked_cpf = mask.replace(cpf, "")
+
+            if (unmasked_cpf.length != 11) {
+                return false
+            }
+
             val numbers = arrayListOf<Int>()
 
-            cpf.filter { it.isDigit() }.forEach {
+            unmasked_cpf.filter { it.isDigit() }.forEach {
                 numbers.add(it.toString().toInt())
             }
 
