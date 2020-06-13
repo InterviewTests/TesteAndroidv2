@@ -1,8 +1,10 @@
 package com.qintess.santanderapp
 
 import android.os.Build
+import com.qintess.santanderapp.helper.Validator
 import com.qintess.santanderapp.ui.view.loginScreen.LoginInteractor
 import com.qintess.santanderapp.ui.view.loginScreen.LoginPresenterInput
+import com.qintess.santanderapp.ui.view.loginScreen.LoginRequest
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -33,10 +35,29 @@ class LoginInteractorTest {
         Assert.assertTrue(loginInteractorOutputSpy.presentLastUserIsCalled)
     }
 
+    @Test
+    fun onCredentialsError_shouldPresentLoginErrorMessage() {
+        val credentials = LoginRequest()
+        `when`(interactor.getCredentialsError(credentials))
+            .thenReturn(Validator.USER_ERROR)
+        `when`(interactor.login(credentials))
+            .thenCallRealMethod()
+        val loginInteractorOutputSpy = LoginInteractorOutputSpy()
+        interactor.output = loginInteractorOutputSpy
+        interactor.login(credentials)
+
+        Assert.assertTrue(loginInteractorOutputSpy.presentLoginErrorMsg)
+    }
+
     class LoginInteractorOutputSpy: LoginPresenterInput {
         var presentLastUserIsCalled = false
+        var presentLoginErrorMsg = false
         override fun presentLastUser(username: String) {
             presentLastUserIsCalled = true
+        }
+
+        override fun presentLoginErrorMessage(msg: String) {
+            presentLoginErrorMsg = true
         }
     }
 }

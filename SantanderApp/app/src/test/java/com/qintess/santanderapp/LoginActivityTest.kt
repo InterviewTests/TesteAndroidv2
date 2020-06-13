@@ -2,6 +2,7 @@ package com.qintess.santanderapp
 
 import android.os.Build
 import androidx.test.core.app.ActivityScenario.launch
+import com.qintess.santanderapp.helper.Validator
 import com.qintess.santanderapp.ui.view.loginScreen.LoginActivity
 import com.qintess.santanderapp.ui.view.loginScreen.LoginInteractor
 import com.qintess.santanderapp.ui.view.loginScreen.LoginInteractorInput
@@ -137,6 +138,52 @@ class LoginActivityTest {
         }
     }
 
+
+
+    @Test
+    fun getCredentialsErro_isValid() {
+        launch(LoginActivity::class.java).onActivity { activity ->
+            val interactor = LoginInteractor()
+            val request = LoginRequest()
+
+            // Credenciais válidas com e-mail
+            activity.usernameField.setText("raphael@email.com")
+            activity.passwordField.setText("SantanderApp@1")
+            request.username = activity.usernameField
+            request.password = activity.passwordField
+            Assert.assertNull(interactor.getCredentialsError(request))
+
+            //Credenciais válidas com CPF
+            activity.usernameField.setText("373.213.858-50")
+            request.username = activity.usernameField
+            Assert.assertNull(interactor.getCredentialsError(request))
+
+            //Credenciais inválidas com e-mail inválido
+            activity.usernameField.setText("raphael@email")
+            request.username = activity.usernameField
+            Assert.assertEquals(interactor.getCredentialsError(request), Validator.USER_ERROR)
+
+            //Credenciais inválidas com CPF inválido
+            activity.usernameField.setText("000.000.000-00")
+            request.username = activity.usernameField
+            Assert.assertEquals(interactor.getCredentialsError(request), Validator.USER_ERROR)
+
+            // Credenciais inválidas com e-mail válido e senha inválida
+            activity.usernameField.setText("raphael@email.com")
+            activity.passwordField.setText("1234")
+            request.username = activity.usernameField
+            request.password = activity.passwordField
+            Assert.assertEquals(interactor.getCredentialsError(request), Validator.PASS_ERROR)
+
+            // Credenciais inválidas com CPF válido e senha inválida
+            activity.usernameField.setText("373.213.858-50")
+            activity.passwordField.setText("1234")
+            request.username = activity.usernameField
+            request.password = activity.passwordField
+            Assert.assertEquals(interactor.getCredentialsError(request), Validator.PASS_ERROR)
+        }
+    }
+
     // Na chamada do login, os valores dos campos são passados corretamente
     @Test
     fun onCallLogin_fieldsValuesArePassedCorrectly() {
@@ -149,16 +196,38 @@ class LoginActivityTest {
 
             activity.login()
 
-            Assert.assertEquals(activity.usernameField.text.toString(), loginActivityOutputSpy.loginRequestCopy?.username)
-            Assert.assertEquals(activity.passwordField.text.toString(), loginActivityOutputSpy.loginRequestCopy?.password)
+            Assert.assertEquals(activity.usernameField.text.toString(), loginActivityOutputSpy.loginRequestCopy?.username?.text.toString())
+            Assert.assertEquals(activity.passwordField.text.toString(), loginActivityOutputSpy.loginRequestCopy?.password?.text.toString())
+        }
+    }
+
+    // Ao clicar no botão Login deve chamar método login()
+    @Test
+    fun onButtonClick_shouldCallLoginMethod() {
+        launch(LoginActivity::class.java).onActivity { activity ->
+            val loginActivityOutputSpy = LoginActivityOutputSpy()
+            activity.output = loginActivityOutputSpy
+            activity.createListeners()
+            activity.loginButton.performClick()
+            Assert.assertTrue(loginActivityOutputSpy.loginIsCalled)
+        }
+    }
+
+    // showText deve mostrar dialog
+    @Test
+    fun onShowText_dialogIsShown() {
+        launch(LoginActivity::class.java).onActivity { activity ->
+            Assert.assertTrue(activity.showAlert(Validator.USER_ERROR))
         }
     }
 
     class LoginActivityOutputSpy: LoginInteractorInput {
+        var loginIsCalled = false
         var loginRequestCopy: LoginRequest? = null
         var checkLastUserIsCalled = false
 
         override fun login(request: LoginRequest) {
+            loginIsCalled = true
             loginRequestCopy = request
         }
 
@@ -170,16 +239,16 @@ class LoginActivityTest {
             return null
         }
 
-        override fun isCredentialsValid(credentials: LoginRequest): Boolean {
-            return true
+        override fun getCredentialsError(credentials: LoginRequest): String? {
+            return null
         }
     }
 
     class LoginInteractorInputSpy: LoginInteractor() {
         var validationMethodIsCalled = false
-        override fun isCredentialsValid(credentials: LoginRequest): Boolean {
+        override fun getCredentialsError(credentials: LoginRequest): String? {
             validationMethodIsCalled = true
-            return super.isCredentialsValid(credentials)
+            return super.getCredentialsError(credentials)
         }
     }
 }

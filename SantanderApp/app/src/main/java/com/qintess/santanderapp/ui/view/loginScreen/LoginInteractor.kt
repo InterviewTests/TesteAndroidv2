@@ -1,18 +1,23 @@
 package com.qintess.santanderapp.ui.view.loginScreen
 
+import com.qintess.santanderapp.helper.Validator
+
 interface LoginInteractorInput {
     fun login(request: LoginRequest)
     fun checkLastUser()
     fun getLastUser(): String?
-    fun isCredentialsValid(credentials: LoginRequest): Boolean
+    fun getCredentialsError(credentials: LoginRequest): String?
 }
 
 open class LoginInteractor: LoginInteractorInput {
     var output: LoginPresenterInput? = null
 
     override fun login(request: LoginRequest) {
-        if (isCredentialsValid(request)) {
+        val errorMsg = getCredentialsError(request)
+        if (errorMsg == null) {
             // do login
+        } else {
+            output?.presentLoginErrorMessage(errorMsg)
         }
     }
 
@@ -27,8 +32,13 @@ open class LoginInteractor: LoginInteractorInput {
         return null
     }
 
-    override fun isCredentialsValid(credentials: LoginRequest): Boolean {
-        return false
+    override fun getCredentialsError(credentials: LoginRequest): String? {
+        if (!credentials.username?.valid!!) {
+            return Validator.USER_ERROR
+        } else if (!credentials.password?.valid!!) {
+            return Validator.PASS_ERROR
+        }
+        return null
     }
 
 }
