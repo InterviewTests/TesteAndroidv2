@@ -1,49 +1,50 @@
 package com.qintess.santanderapp.ui.view.loginScreen
 
+import android.util.Log
 import com.qintess.santanderapp.helper.Validator
 import com.qintess.santanderapp.model.CredentialsModel
 import com.qintess.santanderapp.service.UserService
 
 interface LoginInteractorInput {
     fun login(request: LoginRequest)
-    fun checkLastUser()
-    fun getLastUser(): String?
+    fun auth(credentials: CredentialsModel)
+    fun checkLastUser(username: String?)
     fun getCredentialsError(credentials: LoginRequest): String?
 }
 
 open class LoginInteractor: LoginInteractorInput {
     var output: LoginPresenterInput? = null
+    open var userService = UserService()
+    private val handler = android.os.Handler()
+
+    val TAG = this.javaClass.name
 
     override fun login(request: LoginRequest) {
         val errorMsg = getCredentialsError(request)
         if (errorMsg == null) {
-            val handler = android.os.Handler()
             val credentials = CredentialsModel(request.username?.text.toString(), request.password?.text.toString())
-            val userService = UserService()
-            userService.login(credentials,
-                onSuccess = {
-                    //Proxima tela
-                },
-                onFailure = {
-                    handler.post {
-                        output?.presentErrorMessage("", "")
-                    }
-                }
-            )
+            auth(credentials)
         } else {
             output?.presentErrorMessage(Validator.CREDENTIALS_TITLE_ERROR, errorMsg)
         }
     }
 
-    override fun checkLastUser() {
-        val lastUser = getLastUser()
-        if (lastUser != null) {
-            output?.presentLastUser(lastUser)
-        }
+    override fun auth(credentials: CredentialsModel) {
+        userService.login(credentials,
+            onSuccess = {
+                output?.presentStatementScreen(it)
+            },
+            onFailure = {
+                Log.e(TAG, it.message ?: "Erro ao realizar login")
+                output?.presentErrorMessage(Validator.LOGIN_TITLE_ERROR, "Tente novamente mais tarde")
+            }
+        )
     }
 
-    override fun getLastUser(): String? {
-        return null
+    override fun checkLastUser(username: String?) {
+        if (username != null) {
+            output?.presentLastUser(username)
+        }
     }
 
     override fun getCredentialsError(credentials: LoginRequest): String? {

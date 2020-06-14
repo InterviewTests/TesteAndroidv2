@@ -3,6 +3,7 @@ package com.qintess.santanderapp
 import android.os.Build
 import androidx.test.core.app.ActivityScenario.launch
 import com.qintess.santanderapp.helper.Validator
+import com.qintess.santanderapp.model.CredentialsModel
 import com.qintess.santanderapp.ui.view.loginScreen.LoginActivity
 import com.qintess.santanderapp.ui.view.loginScreen.LoginInteractor
 import com.qintess.santanderapp.ui.view.loginScreen.LoginInteractorInput
@@ -140,8 +141,6 @@ class LoginActivityTest {
         }
     }
 
-
-
     @Test
     fun getCredentialsErro_isValid() {
         launch(LoginActivity::class.java).onActivity { activity ->
@@ -203,6 +202,22 @@ class LoginActivityTest {
         }
     }
 
+    // Na chamada do login com credenciais válidas é chamado auth
+    @Test
+    fun onCallLogin_authIsCalled() {
+        launch(LoginActivity::class.java).onActivity { activity ->
+            val loginActivityOutputSpy = LoginActivityOutputAuthSpy()
+            activity.output = loginActivityOutputSpy
+
+            activity.usernameField.setText("raphael@email.com")
+            activity.passwordField.setText("SantanderApp@1")
+
+            activity.login()
+
+            Assert.assertTrue(loginActivityOutputSpy.authIsCalled)
+        }
+    }
+
     // Ao clicar no botão Login deve chamar método login()
     @Test
     fun onButtonClick_shouldCallLoginMethod() {
@@ -233,16 +248,24 @@ class LoginActivityTest {
             loginRequestCopy = request
         }
 
-        override fun checkLastUser() {
-            checkLastUserIsCalled = true
-        }
+        override fun auth(credentials: CredentialsModel) { return }
 
-        override fun getLastUser(): String? {
-            return null
+        override fun checkLastUser(username: String?) {
+            checkLastUserIsCalled = true
         }
 
         override fun getCredentialsError(credentials: LoginRequest): String? {
             return null
+        }
+    }
+
+    class LoginActivityOutputAuthSpy: LoginInteractor() {
+        var authIsCalled = false
+        var credentialsCopy: CredentialsModel? = null
+
+        override fun auth(credentials: CredentialsModel) {
+            credentialsCopy = credentials
+            authIsCalled = true
         }
     }
 

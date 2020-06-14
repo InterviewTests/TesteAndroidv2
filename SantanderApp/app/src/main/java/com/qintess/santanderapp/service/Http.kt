@@ -1,5 +1,6 @@
 package com.qintess.santanderapp.service
 
+import android.os.Handler
 import android.util.Log
 import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaType
@@ -28,24 +29,35 @@ class Http: HttpInterface {
     private val client = OkHttpClient()
 
     override fun post(url: String, bodyParameters: RequestParameters, onSuccess: SuccessCallback<JSONObject>, onFailure: FailureCallback) {
-        val stringifiedBody = JSONObject(bodyParameters).toString()
-        val body = stringifiedBody.toRequestBody(JSON)
-        val request = Request.Builder()
-            .url(API_URL + url)
-            .post(body)
-            .build()
+        try {
+            val stringifiedBody = JSONObject(bodyParameters).toString()
+            val body = stringifiedBody.toRequestBody(JSON)
+            val request = Request.Builder()
+                .url(API_URL + url)
+                .post(body)
+                .build()
 
-        Thread {
-            val response = client.newCall(request).execute()
+            val handler = Handler()
 
-            response.body?.let {
-                onSuccess(JSONObject(it.string()))
-            }
+            Thread {
+                val response = client.newCall(request).execute()
 
-            val errosMsg = "Resposta do servidor veio vazia"
-            Log.e(TAG, errosMsg)
-            onFailure(Exception(errosMsg))
-        }.start()
+                if (response.body != null) {
+                    handler.post {
+                        onSuccess(JSONObject(response.body!!.string()))
+                    }
+                } else {
+                    val errosMsg = "Resposta do servidor veio vazia"
+                    Log.e(TAG, errosMsg)
+                    handler.post {
+                        onFailure(Exception(errosMsg))
+                    }
+                }
+
+            }.start()
+        } catch (e: Exception) {
+            onFailure(e)
+        }
     }
 
     override fun get(

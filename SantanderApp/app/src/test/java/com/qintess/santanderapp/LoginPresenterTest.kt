@@ -3,6 +3,7 @@ package com.qintess.santanderapp
 import android.os.Build
 import androidx.test.core.app.ActivityScenario.launch
 import com.qintess.santanderapp.helper.Validator
+import com.qintess.santanderapp.model.UserModel
 import com.qintess.santanderapp.ui.view.loginScreen.LoginActivity
 import com.qintess.santanderapp.ui.view.loginScreen.LoginActivityInput
 import com.qintess.santanderapp.ui.view.loginScreen.LoginPresenter
@@ -52,10 +53,22 @@ class LoginPresenterTest {
         Assert.assertTrue(loginPresenterOutputSpy.showAlertIsCalled)
     }
 
+    // Ao chamar presentStatementScreen deve-se chamar goToStatements
+    @Test
+    fun onPresentStatementScreen_shouldCallGoToStatements() {
+        val presenter = LoginPresenter()
+        val loginPresenterOutputSpy = LoginPresenterOutputSpy()
+        presenter.output = WeakReference(loginPresenterOutputSpy)
+        presenter.presentStatementScreen(UserModel(1, "Raphael", "000", "000", 100.0))
+
+        Assert.assertTrue(loginPresenterOutputSpy.goToStatementsIsCalled)
+    }
+
 
     class LoginPresenterOutputSpy: LoginActivityInput {
         var displayLastUserIsCalled = false
         var showAlertIsCalled = false
+        var goToStatementsIsCalled = false
         override fun createListeners() { return }
 
         override fun checkLastUser() { return }
@@ -70,6 +83,10 @@ class LoginPresenterTest {
         override fun showAlert(title: String, msg: String): Boolean {
             showAlertIsCalled = true
             return false
+        }
+
+        override fun goToStatements(user: UserModel) {
+            goToStatementsIsCalled = true
         }
 
     }
