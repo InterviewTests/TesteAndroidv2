@@ -27,7 +27,7 @@ class PrefsTest {
         val prefs = Prefs(ctx)
         val last_username = "raphacmartin"
 
-        prefs.putString(Prefs.Key.LAST_USER, last_username)
-        Assert.assertEquals(prefs.getString(Prefs.Key.LAST_USER), last_username)
+        prefs.putString(Prefs.Key.LastUser, last_username)
+        Assert.assertEquals(prefs.getString(Prefs.Key.LastUser), last_username)
     }
 }

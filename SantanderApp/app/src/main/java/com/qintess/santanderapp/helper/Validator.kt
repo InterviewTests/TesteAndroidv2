@@ -8,6 +8,8 @@ class Validator {
         const val USER_ERROR = "Preencha um usuário válido. O usuário deve ser um CPF ou e-mail"
         const val PASS_ERROR = "Preencha uma senha válida. A senha deve conter uma letra maiúsula, um caractere especial e um número."
 
+        const val STATEMENTS_TITLE_ERROR = "Não foi possível buscar os lançamentos"
+
         fun isEmailValid(email: String): Boolean {
             val pattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}".toRegex()
             return email.matches(pattern)

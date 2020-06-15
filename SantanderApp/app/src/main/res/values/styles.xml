@@ -35,4 +35,40 @@
         <item name="android:textAlignment">center</item>
         <item name="textAllCaps">false</item>
     </style>
+
+    <style name="StatementsHeader">
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="StatementsUserName">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="StatementsLogout">
+        <item name="android:layout_width">28dp</item>
+        <item name="android:layout_height">28dp</item>
+    </style>
+
+    <style name="StatementsLabel">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:layout_marginTop">24dp</item>
+    </style>
+
+    <style name="StatementsValue">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="StatementsListContainer">
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingLeft">18dp</item>
+        <item name="android:paddingRight">18dp</item>
+    </style>
 </resources>

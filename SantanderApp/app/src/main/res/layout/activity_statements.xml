@@ -3,9 +3,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.statementsScreen.StatementsActivity">
-    <TextView
+    tools:context=".ui.view.statementsScreen.StatementsActivity"
+    android:orientation="vertical">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        style="@style/StatementsHeader">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+            <TextView
+                android:id="@+id/userNameField"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/StatementsUserName"
+                android:text="Nome do Usuário"
+                tools:ignore="HardcodedText" />
+            <ImageView
+                style="@style/StatementsLogout"
+                android:src="@drawable/logout_icon"
+                android:contentDescription="Logout"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/StatementsLabel"
+            android:text="@string/conta_label"/>
+        <TextView
+            android:id="@+id/agencyAndAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/StatementsValue"
+            android:text="@string/agencyAndAccount"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/StatementsLabel"
+            android:text="@string/saldo_label"/>
+        <TextView
+            android:id="@+id/balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/StatementsValue"
+            android:text="@string/balance"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:divider="@null"
+        android:background="@color/colorLight"
+        style="@style/StatementsListContainer">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/colorDark"
+            android:text="@string/list_title" />
+        <ListView
+            android:id="@+id/statements_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"/>
+    </LinearLayout>
 </LinearLayout>

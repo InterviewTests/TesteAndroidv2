@@ -4,6 +4,9 @@ import com.qintess.santanderapp.model.CredentialsModel
 import com.qintess.santanderapp.model.UserModel
 
 open class UserService: ServiceInterface {
+    override fun getHttpClient(): HttpInterface {
+        return Http()
+    }
 
     fun login(credentials: CredentialsModel, onSuccess: SuccessCallback<UserModel>, onFailure: FailureCallback) {
         val bodyParameters = RequestParameters()
@@ -25,9 +28,5 @@ open class UserService: ServiceInterface {
             },
             onFailure = onFailure
         )
-    }
-
-    override fun getHttpClient(): HttpInterface {
-        return Http()
     }
 }

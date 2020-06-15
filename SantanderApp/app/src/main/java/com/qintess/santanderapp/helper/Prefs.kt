@@ -6,7 +6,7 @@ import com.qintess.santanderapp.BuildConfig
 
 class Prefs(ctx: Context) {
     enum class Key(val value: String?) {
-        LAST_USER(null)
+        LastUser("LAST_USER")
     }
 
     private val PREFS_FILE_NAME = BuildConfig.APPLICATION_ID

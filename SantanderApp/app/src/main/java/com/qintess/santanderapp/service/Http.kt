@@ -20,6 +20,9 @@ interface ServiceInterface {
 interface HttpInterface {
     fun post(url: String, bodyParameters: RequestParameters, onSuccess: SuccessCallback<JSONObject>, onFailure: FailureCallback)
     fun get(url: String, urlParameters: RequestParameters, onSuccess: SuccessCallback<JSONObject>, onFailure: FailureCallback)
+    fun get(url: String, onSuccess: SuccessCallback<JSONObject>, onFailure: FailureCallback) {
+        get(url, RequestParameters(), onSuccess, onFailure)
+    }
 }
 
 class Http: HttpInterface {
@@ -60,12 +63,33 @@ class Http: HttpInterface {
         }
     }
 
-    override fun get(
-        url: String,
-        urlParameters: RequestParameters,
-        onSuccess: SuccessCallback<JSONObject>,
-        onFailure: FailureCallback
-    ) {
-        TODO("Not yet implemented")
+    override fun get(url: String, urlParameters: RequestParameters, onSuccess: SuccessCallback<JSONObject>, onFailure: FailureCallback) {
+        try {
+            val request = Request.Builder()
+                .url(API_URL + url)
+                .get()
+                .build()
+
+            val handler = Handler()
+
+            Thread {
+                val response = client.newCall(request).execute()
+
+                if (response.body != null) {
+                    handler.post {
+                        onSuccess(JSONObject(response.body!!.string()))
+                    }
+                } else {
+                    val errosMsg = "Resposta do servidor veio vazia"
+                    Log.e(TAG, errosMsg)
+                    handler.post {
+                        onFailure(Exception(errosMsg))
+                    }
+                }
+
+            }.start()
+        } catch (e: Exception) {
+            onFailure(e)
+        }
     }
 }
