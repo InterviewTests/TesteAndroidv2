@@ -55,6 +55,12 @@ class StatementsActivityTest {
         }
     }
 
+    // Clique botão logout deve chamar logout
+    @Test
+    fun onLogoutClick_shouldCouldLogout() {
+
+    }
+
     class StatementsActivityOutputSpy: StatementsInteractorInput {
         var loadUserIsCalled = false
         var userCopy: UserModel? = null

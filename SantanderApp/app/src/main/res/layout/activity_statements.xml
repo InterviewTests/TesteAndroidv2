@@ -24,6 +24,7 @@
                 android:text="Nome do Usuário"
                 tools:ignore="HardcodedText" />
             <ImageView
+                android:id="@+id/logoutButton"
                 style="@style/StatementsLogout"
                 android:src="@drawable/logout_icon"
                 android:contentDescription="Logout"
