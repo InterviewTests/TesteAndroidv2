@@ -44,6 +44,7 @@ class StatementsPresenterTest {
         var updateListIsCalled = false
         var showAlertIsCalled = false
 
+
         override fun displayStatements(userId: Int) { return }
 
         override fun updateList(statements: ArrayList<StatementModel>) {
@@ -54,5 +55,9 @@ class StatementsPresenterTest {
             showAlertIsCalled = true
             return true
         }
+
+        override fun createListeners() { return }
+
+        override fun logout() { return }
     }
 }

@@ -29,9 +29,11 @@ class StatementsActivity : AppActivity(), StatementsActivityInput {
         StatementsConfigurator.INSTANCE.configure(this)
 
         createListeners()
-        val user = intent.getParcelableExtra<UserModel>("user")!!
-        displayUser(user)
-        displayStatements(user.userId)
+        val user = intent.getParcelableExtra<UserModel>("user")
+        user?.let {
+            displayUser(user)
+            displayStatements(user.userId)
+        }
     }
 
     override fun createListeners() {
