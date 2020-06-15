@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- General -->
+    <color name="loginScreenBg">#FFFFFF</color>
+    <color name="customEditTextBgColor">#FFFFFF</color>
+    <color name="customEditTextInsideBorderColor">#DCE2EE</color>
+    <color name="customEditTextTextHintColor">#DCE2EE</color>
+
+    <!-- LoginScreen -->
+    <color name="login_button_bg_color">#3B48EE</color>
+    <color name="login_button_text_color">#FFFFFF</color>
+
+</resources>

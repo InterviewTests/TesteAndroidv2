@@ -22,9 +22,7 @@ public class LoginActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //do the setup
         setContentView(R.layout.login_screen);
-        getSupportActionBar().hide();
 
         LoginConfigurator.INSTANCE.configure(this);
         LoginRequest aLoginRequest = new LoginRequest();

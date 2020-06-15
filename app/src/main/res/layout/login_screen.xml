@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/loginScreenBg">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/edtUserLoginScreen"
+        style="@style/CustomEditText"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="105dp"
+        android:fontFamily="@font/helveticaneue"
+        android:hint="@string/userDefaultHint"
+        android:inputType="textPersonName"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/edtPasswordLoginScreen"
+        style="@style/CustomEditText"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="21dp"
+        android:fontFamily="@font/helveticaneue"
+        android:hint="@string/passwordDefaultHint"
+        android:inputType="textPersonName|textPassword"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtUserLoginScreen" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="202dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="33dp"
+        android:background="@drawable/login_button_bg"
+        android:fontFamily="@font/helveticaneue"
+        android:text="@string/loginScreenBtn"
+        android:textAllCaps="false"
+        android:textColor="@color/login_button_text_color"
+        android:textSize="16sp"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>

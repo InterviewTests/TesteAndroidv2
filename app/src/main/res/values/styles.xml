@@ -1,0 +1,9 @@
+<resources>
+    <style name="CustomEditText" parent="@android:style/Widget.EditText">
+        <item name="android:background">@drawable/custom_edit_text_bg</item>
+        <item name="android:textColorHint">@color/customEditTextTextHintColor</item>
+        <item name="android:paddingStart">13dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">15dp</item>
+    </style>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Trips</string>
+    <string name="userDefaultHint">User</string>
+    <string name="passwordDefaultHint">Password</string>
+    <string name="loginScreenBtn">Login</string>
+
+</resources>
