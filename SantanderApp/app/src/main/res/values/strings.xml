@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SantanderApp</string>
+    <string name="logo_do_bank">Logo do Bank</string>
+    <string name="btn_login_text">Login</string>
+    <string name="user_hint">User</string>
+    <string name="password_hint">Password</string>
+    <string name="conta_label">Conta</string>
+    <string name="saldo_label">Saldo</string>
+    <string name="list_title">Recentes</string>
+    <string name="agencyAndAccount">%s / %s</string>
+    <string name="balance">R$ %s</string>
+</resources>
