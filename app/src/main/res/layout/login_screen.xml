@@ -29,6 +29,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
+    <TextView
+        android:id="@+id/loginMessageErro"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/message_erro_bg"
+        android:fontFamily="@font/helveticaneue"
+        android:gravity="center"
+        android:text="@string/messageErroDefault"
+        android:textAlignment="center"
+        android:textColor="@color/messageErroTextColor"
+        android:textSize="14sp"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="@+id/edtPasswordLoginScreen"
+        app:layout_constraintStart_toStartOf="@+id/edtPasswordLoginScreen"
+        app:layout_constraintTop_toBottomOf="@+id/edtPasswordLoginScreen" />
+
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/edtPasswordLoginScreen"
         style="@style/CustomEditText"

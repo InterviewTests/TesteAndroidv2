@@ -5,6 +5,9 @@
     <color name="customEditTextBgColor">#FFFFFF</color>
     <color name="customEditTextInsideBorderColor">#DCE2EE</color>
     <color name="customEditTextTextHintColor">#DCE2EE</color>
+    <color name="messageErroBgColor">#ADF17575</color>
+    <color name="messageErroInsideBorderColor">#BD3030</color>
+    <color name="messageErroTextColor">#4A4A4A</color>
 
     <!-- LoginScreen -->
     <color name="login_button_bg_color">#3B48EE</color>
