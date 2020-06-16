@@ -5,20 +5,20 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.testeandroidv2.statementScreen.StatementActivity;
+
 import java.lang.ref.WeakReference;
 
 
 interface LoginRouterInput {
-    public Intent navigateToSomeWhere(int position);
-
-    public void passDataToNextScene(int position, Intent intent);
+    Intent navigateToSomeWhere(int position);
+    void passDataToNextScene(int position, Intent intent);
 }
 
 public class LoginRouter implements LoginRouterInput, AdapterView.OnItemClickListener {
 
     public static String TAG = LoginRouter.class.getSimpleName();
-    public WeakReference<LoginActivity> activity;
-
+    WeakReference<LoginActivity> activity;
 
     @NonNull
     @Override
@@ -26,7 +26,7 @@ public class LoginRouter implements LoginRouterInput, AdapterView.OnItemClickLis
         //Based on the position or someother data decide what is the next scene
         //Intent intent = new Intent(activity.get(),NextActivity.class);
         //return intent;
-        return null;
+        return new Intent(activity.get(), StatementActivity.class);
     }
 
     @Override

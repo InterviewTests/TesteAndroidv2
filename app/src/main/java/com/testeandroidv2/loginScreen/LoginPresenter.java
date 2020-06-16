@@ -1,31 +1,36 @@
 package com.testeandroidv2.loginScreen;
 
-import android.support.annotation.NonNull;
-import android.util.Log;
-
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
 
 interface LoginPresenterInput {
-    public void presentLoginData(LoginResponse response);
+    void presentLoginData(LoginResponse response);
 }
 
 
 public class LoginPresenter implements LoginPresenterInput {
 
-    public static String TAG = LoginPresenter.class.getSimpleName();
-
-    //weak var output: HomePresenterOutput!
     public WeakReference<LoginActivityInput> output;
-
 
     @Override
     public void presentLoginData(LoginResponse response) {
-        // Log.e(TAG, "presentLoginData() called with: response = [" + response + "]");
-        //Do your decoration or filtering here
+        if(response.userAccount != null) {
+            LoginViewModel loginViewModel = getLoginViewModel(response.userAccount);
+            output.get().displayLoginData(loginViewModel);
+        }else{
+            output.get().displayLoginErro(response.error);
+        }
+    }
 
+    private LoginViewModel getLoginViewModel(LoginModel loginModel){
+        LoginViewModel loginViewModel;
+
+        loginViewModel = new LoginViewModel();
+        loginViewModel.name = loginModel.name;
+        loginViewModel.agency = loginModel.agency;
+        loginViewModel.bankAccount = loginModel.bankAccount;
+        loginViewModel.balance = loginModel.balance;
+
+        return loginViewModel;
     }
 
 
