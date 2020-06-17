@@ -1,0 +1,4 @@
+#Tue Jun 16 22:24:09 GFT 2020
+base.0=C\:\\Users\\danie\\Documents\\AndroidStudioProjects\\TesteAndroidv2\\AppBank\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeDexDebugAndroidTest\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
