@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="activity"
+            type="com.example.testeandroidv2.statementScreen.StatementActivity" />
+        <variable
+            name="loadingIsVisible"
+            type="Boolean" />
+        <variable
+            name="client"
+            type="com.example.testeandroidv2.statementScreen.ClientModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contentClientInfo"
+            android:layout_width="0dp"
+            android:layout_height="232dp"
+            android:background="@color/statementScreenClientInfoBoardBgColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/clientName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/helveticaneue"
+                android:text="@{ (client.name.equalsIgnoreCase(``)) ? @string/clienteNameDefault : client.name}"
+                android:textColor="@color/statementScreenClientInfoBoardTextColor"
+                android:textSize="25sp"
+                android:typeface="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/lbAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/helveticaneue"
+                android:text="@string/lbAccount"
+                android:textColor="@color/statementScreenClientInfoBoardTextColor"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/clientName"
+                app:layout_constraintTop_toBottomOf="@+id/clientName" />
+
+            <TextView
+                android:id="@+id/acountInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/helveticaneue"
+                android:text="@{(client.account.equalsIgnoreCase(``)) ? @string/accountDefault : client.account}"
+                android:textColor="@color/statementScreenClientInfoBoardTextColor"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="@+id/lbAccount"
+                app:layout_constraintTop_toBottomOf="@+id/lbAccount" />
+
+            <TextView
+                android:id="@+id/lbBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:fontFamily="@font/helveticaneue"
+                android:text="@string/lbBalance"
+                android:textColor="@color/statementScreenClientInfoBoardTextColor"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/acountInfo"
+                app:layout_constraintTop_toBottomOf="@+id/acountInfo" />
+
+            <TextView
+                android:id="@+id/balanceInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/helveticaneue"
+                android:text="@{(client.balance.equalsIgnoreCase(``)) ? @string/balanceDafault : client.balance}"
+                android:textColor="@color/statementScreenClientInfoBoardTextColor"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="@+id/lbBalance"
+                app:layout_constraintTop_toBottomOf="@+id/lbBalance" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="13dp"
+                android:layout_marginTop="20dp"
+                android:onClick="@{() -> activity.logout()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/lbRecent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/helveticaneue"
+            android:text="@string/lbRecent"
+            android:textColor="@color/statementScreenLbRecentTextColor"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contentClientInfo" />
+
+        <ProgressBar
+            android:id="@+id/statementScreenLoading"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:visibility="@{loadingIsVisible ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lbRecent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/transactionHistory"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lbRecent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
