@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="erroMessage"
+            type="String" />
+        <variable
+            name="activity"
+            type="com.example.testeandroidv2.loginScreen.LoginActivity" />
+        <variable
+            name="login"
+            type="com.example.testeandroidv2.loginScreen.LoginModel" />
+        <variable
+            name="isErroVisible"
+            type="Boolean" />
+        <variable
+            name="btnText"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/loginScreenBg">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtUserLoginScreen"
+            style="@style/CustomEditText"
+            android:layout_width="342dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="105dp"
+            android:fontFamily="@font/helveticaneue"
+            android:hint="@string/userDefaultHint"
+            android:inputType="textPersonName"
+            android:textSize="15sp"
+            android:text="@={login.login}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+        <TextView
+            android:id="@+id/loginMessageErro"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/message_erro_bg"
+            android:fontFamily="@font/helveticaneue"
+            android:gravity="center"
+            android:text="@{ (erroMessage == null) ? @string/messageErroDefault : erroMessage}"
+            android:textAlignment="center"
+            android:textColor="@color/messageErroTextColor"
+            android:textSize="14sp"
+            android:typeface="normal"
+            android:visibility="@{isErroVisible ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="@+id/edtPasswordLoginScreen"
+            app:layout_constraintStart_toStartOf="@+id/edtPasswordLoginScreen"
+            app:layout_constraintTop_toBottomOf="@+id/edtPasswordLoginScreen" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtPasswordLoginScreen"
+            style="@style/CustomEditText"
+            android:layout_width="342dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="21dp"
+            android:fontFamily="@font/helveticaneue"
+            android:hint="@string/passwordDefaultHint"
+            android:inputType="textPersonName|textPassword"
+            android:textSize="15sp"
+            android:text="@={login.password}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtUserLoginScreen" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="202dp"
+            android:layout_height="62dp"
+            android:layout_marginBottom="33dp"
+            android:background="@drawable/login_button_bg"
+            android:fontFamily="@font/helveticaneue"
+            android:text="@{btnText == null ? @string/loginScreenBtn: btnText}"
+            android:textAllCaps="false"
+            android:textColor="@color/login_button_text_color"
+            android:textSize="16sp"
+            android:typeface="normal"
+            android:onClick="@{() -> activity.login()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

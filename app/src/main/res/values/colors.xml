@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- General -->
+    <color name="customEditTextBgColor">#FFFFFF</color>
+    <color name="customEditTextInsideBorderColor">#DCE2EE</color>
+    <color name="customEditTextTextHintColor">#DCE2EE</color>
+    <color name="messageErroBgColor">#ADF17575</color>
+    <color name="messageErroInsideBorderColor">#BD3030</color>
+    <color name="messageErroTextColor">#4A4A4A</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- LoginScreen -->
+    <color name="loginScreenBg">#FFFFFF</color>
+    <color name="login_button_bg_color">#3B48EE</color>
+    <color name="login_button_text_color">#FFFFFF</color>
+
+    <!-- StatementScreen -->
+    <color name="statementScreenBg">#FFFFFF</color>
+    <color name="statementScreenClientInfoBoardBgColor">#3B49EE</color>
+    <color name="statementScreenStatusBarColor">#3B49EE</color>
+    <color name="statementScreenClientInfoBoardTextColor">#FFFFFF</color>
+    <color name="statementScreenLbRecentTextColor">#485465</color>
+    <color name="transactionHistoryItemTextColor1">#A8B4C4</color>
+    <color name="transactionHistoryItemTextColor2">#485465</color>
+    <color name="transactionHistoryItembgColor">#FFFFFF</color>
+    <color name="transactionHistoryItemInsideBorderColor">#DBDFE3</color>
+
+</resources>

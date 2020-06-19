@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Bank</string>
+
+    <!-- Login Screen -->
+    <string name="userDefaultHint">User</string>
+    <string name="passwordDefaultHint">Password</string>
+    <string name="loginScreenBtn">Login</string>
+    <string name="loginScreenBtnWaitMessage">Aguarde…</string>
+    <string name="messageErroDefault">Erro</string>
+
+    <!-- Statement Screen -->
+    <string name="clienteNameDefault">Jose da Silva Teste</string>
+    <string name="lbAccount">Conta</string>
+    <string name="accountDefault">2050 / 01.111222–4</string>
+    <string name="lbBalance">Saldo</string>
+    <string name="balanceDafault">R$1.000,00</string>
+    <string name="lbRecent">Recentes</string>
+    <string name="lbPaymentDefault">Pagamento</string>
+    <string name="lbDescriptionDefault">Descrição</string>
+    <string name="lbDateDefault">12/12/2018</string>
+    <string name="lbTransactionValueDefault">R$1.000,00</string>
+</resources>

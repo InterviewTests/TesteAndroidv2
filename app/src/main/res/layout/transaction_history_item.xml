@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="statement"
+            type="com.example.testeandroidv2.statementScreen.StatementModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:background="@drawable/transaction_history_item_bg">
+
+        <TextView
+            android:id="@+id/lbPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/helveticaneue"
+            android:text="@{(statement.title == null) ? @string/lbPaymentDefault : statement.title}"
+            android:textColor="@color/transactionHistoryItemTextColor1"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lbDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="19dp"
+            android:fontFamily="@font/helveticaneue"
+            android:text="@{(statement.desc == null) ? @string/lbDescriptionDefault : statement.desc}"
+            android:textColor="@color/transactionHistoryItemTextColor2"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/lbPayment"
+            app:layout_constraintTop_toBottomOf="@+id/lbPayment" />
+
+        <TextView
+            android:id="@+id/lbDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/helveticaneue"
+            android:text="@{(statement.date == null) ? @string/lbDateDefault : statement.date}"
+            android:textColor="@color/transactionHistoryItemTextColor1"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/lbPayment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/transactionValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="19dp"
+            android:fontFamily="@font/helveticaneue"
+            android:text="@{(statement.value == null) ? @string/lbTransactionValueDefault : statement.value}"
+            android:textColor="@color/transactionHistoryItemTextColor2"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/lbDate"
+            app:layout_constraintTop_toBottomOf="@+id/lbDate" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
