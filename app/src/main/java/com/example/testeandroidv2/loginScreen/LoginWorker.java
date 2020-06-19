@@ -1,9 +1,9 @@
-package com.testeandroidv2.loginScreen;
+package com.example.testeandroidv2.loginScreen;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.testeandroidv2.Service.Api;
-import com.testeandroidv2.Service.LoginService;
+import com.example.testeandroidv2.Service.Api;
+import com.example.testeandroidv2.Service.LoginService;
 
 import java.io.IOException;
 
@@ -22,8 +22,6 @@ public class LoginWorker implements LoginWorkerInput {
 
     @Override
     public void buildRequest(LoginRequest request) {
-        request.user = "test_user";
-        request.password = "Test@1";
         Retrofit api = Api.getRetrofitInstance("https://bank-app-test.herokuapp.com/api/");
         LoginService loginService = api.create(LoginService.class);
         call = loginService.authentication(request.user, request.password);

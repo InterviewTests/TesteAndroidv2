@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.testeandroidv2">
+    package="com.example.testeandroidv2">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -9,9 +9,9 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:supportsRtl="true">
         <activity android:name=".loginScreen.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".statementScreen.StatementActivity"/>
+        <activity android:name=".statementScreen.StatementActivity"
+                  android:theme="@style/StatementTheme"/>
     </application>
 
 </manifest>
