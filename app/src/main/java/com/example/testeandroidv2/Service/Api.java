@@ -1,4 +1,7 @@
-package com.testeandroidv2.Service;
+package com.example.testeandroidv2.Service;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;

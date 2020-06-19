@@ -1,4 +1,4 @@
-package com.testeandroidv2.Service;
+package com.example.testeandroidv2.Service;
 
 import com.google.gson.JsonObject;
 
