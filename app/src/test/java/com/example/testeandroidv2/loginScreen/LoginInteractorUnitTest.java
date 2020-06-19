@@ -1,10 +1,10 @@
-package com.testeandroidv2.loginScreen;
+package com.example.testeandroidv2.loginScreen;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.example.testeandroidv2.Service.Api;
+import com.example.testeandroidv2.Service.LoginService;
 import com.google.gson.internal.LinkedTreeMap;
-import com.testeandroidv2.Service.Api;
-import com.testeandroidv2.Service.LoginService;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,7 +18,7 @@ import retrofit.Retrofit;
 public class LoginInteractorUnitTest {
 
     @Test
-    public void fetchLoginData_with_vaildInput_Login_shouldCall_Worker_buildRequest(){
+    public void fetchLoginData_with_validInput_Login_shouldCall_Worker_buildRequest(){
         // Given
         LoginInteractor loginInteractor = new LoginInteractor();
         LoginRequest loginRequest = new LoginRequest();
@@ -38,7 +38,7 @@ public class LoginInteractorUnitTest {
     }
 
     @Test
-    public void fetchLoginData_with_vaildInput_Login_shouldCall_Worker_getLoginResponse(){
+    public void fetchLoginData_with_validInput_Login_shouldCall_Worker_getLoginResponse(){
         // Given
         LoginInteractor loginInteractor = new LoginInteractor();
         LoginRequest loginRequest = new LoginRequest();
@@ -58,7 +58,7 @@ public class LoginInteractorUnitTest {
     }
 
     @Test
-    public void fetchLoginData_with_vaildInput_Login_shouldReturn_NOT_be_Null(){
+    public void fetchLoginData_with_validInput_Login_shouldReturn_NOT_be_Null(){
         // Given
         LoginInteractor loginInteractor = new LoginInteractor();
         LoginRequest loginRequest = new LoginRequest();
@@ -78,12 +78,12 @@ public class LoginInteractorUnitTest {
     }
 
     @Test
-    public void fetchLoginData_with_invaildInput_Login_shouldNOT_Call_Worker_buildRequest(){
+    public void fetchLoginData_with_invalidInputUser_Login_shouldNOT_Call_Worker_buildRequest(){
         // Given
         LoginInteractor loginInteractor = new LoginInteractor();
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.user = "111.111.111-1";
-        loginRequest.password = "12345";
+        loginRequest.password = "A@s";
 
         // Setup Test Double
         loginInteractor.output = new LoginPresenterInputSpy();
@@ -98,12 +98,32 @@ public class LoginInteractorUnitTest {
     }
 
     @Test
-    public void fetchLoginData_with_invaildInput_Login_shouldNOT_Call_Worker_getLoginResponse(){
+    public void fetchLoginData_with_invalidInputPassword_Login_shouldNOT_Call_Worker_buildRequest(){
+        // Given
+        LoginInteractor loginInteractor = new LoginInteractor();
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.user = "111.111.111-11";
+        loginRequest.password = "1111";
+
+        // Setup Test Double
+        loginInteractor.output = new LoginPresenterInputSpy();
+        LoginWorkerInputSpy loginWorkerInputSpy = new LoginWorkerInputSpy();
+        loginInteractor.setLoginWorkerInput(loginWorkerInputSpy);
+
+        // When
+        loginInteractor.fetchLoginData(loginRequest);
+
+        // Then
+        Assert.assertFalse(loginWorkerInputSpy.isBuildRequestIsCalled);
+    }
+
+    @Test
+    public void fetchLoginData_with_invalidInputUser_Login_shouldNOT_Call_Worker_getLoginResponse(){
         // Given
         LoginInteractor loginInteractor = new LoginInteractor();
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.user = "111.111.111-1";
-        loginRequest.password = "12345";
+        loginRequest.password = "A@s";
 
         // Setup Test Double
         loginInteractor.output = new LoginPresenterInputSpy();
@@ -118,27 +138,27 @@ public class LoginInteractorUnitTest {
     }
 
     @Test
-    public void fetchLoginData_with_vaildInput_shouldCall_presentLoginData(){
-        // When
+    public void fetchLoginData_with_invalidInputPassword_Login_shouldNOT_Call_Worker_getLoginResponse(){
+        // Given
         LoginInteractor loginInteractor = new LoginInteractor();
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.user = "111.111.111-11";
-        loginRequest.password = "A12-345B";
+        loginRequest.password = "1111";
 
         // Setup Test Double
-        LoginPresenterInputSpy loginPresenterInputSpy = new LoginPresenterInputSpy();
-        loginInteractor.callback = null;
-        loginInteractor.output = loginPresenterInputSpy;
+        loginInteractor.output = new LoginPresenterInputSpy();
+        LoginWorkerInputSpy loginWorkerInputSpy = new LoginWorkerInputSpy();
+        loginInteractor.setLoginWorkerInput(loginWorkerInputSpy);
 
         // When
         loginInteractor.fetchLoginData(loginRequest);
 
         // Then
-        Assert.assertTrue("When the valid input is passed to LoginInteractor Then presentLoginData shorld be called with erro null", loginPresenterInputSpy.presenteLoginDataIsCalled);
+        Assert.assertFalse(loginWorkerInputSpy.isGetLoginResponseIsCalled);
     }
 
     @Test
-    public void fetchLoginData_with_vaildInput_shouldCall_presentLoginData_without_erro(){
+    public void fetchLoginData_with_validInput_shouldCall_presentLoginData(){
         // When
         LoginInteractor loginInteractor = new LoginInteractor();
         LoginRequest loginRequest = new LoginRequest();
@@ -154,15 +174,76 @@ public class LoginInteractorUnitTest {
         loginInteractor.fetchLoginData(loginRequest);
 
         // Then
-        Object erro = loginPresenterInputSpy.loginResponse.error;
-        if(erro instanceof LinkedTreeMap)
-            Assert.assertEquals(0, ((LinkedTreeMap) erro).size());
+        Assert.assertTrue("When the valid input is passed to LoginInteractor Then presentLoginData should be called with erro null", loginPresenterInputSpy.presenterLoginDataIsCalled);
+    }
+
+    @Test
+    public void fetchLoginData_with_validInput_shouldCall_presentLoginData_without_error(){
+        // When
+        LoginInteractor loginInteractor = new LoginInteractor();
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.user = "111.111.111-11";
+        loginRequest.password = "A12-345B";
+
+        // Setup Test Double
+        LoginPresenterInputSpy loginPresenterInputSpy = new LoginPresenterInputSpy();
+        loginInteractor.callback = null;
+        loginInteractor.output = loginPresenterInputSpy;
+
+        // When
+        loginInteractor.fetchLoginData(loginRequest);
+
+        // Then
+        Object error = loginPresenterInputSpy.loginResponse.error;
+        if(error instanceof LinkedTreeMap)
+            //noinspection rawtypes
+            Assert.assertEquals(0, ((LinkedTreeMap) loginPresenterInputSpy.loginResponse.error).size());
         else
-            Assert.assertNull(erro);
+            Assert.assertNull(loginPresenterInputSpy.loginResponse.error);
+    }
+
+    @Test
+    public void fetchLoginData_with_invalidInputUser_shouldCall_presentLoginData_with_error(){
+        // When
+        LoginInteractor loginInteractor = new LoginInteractor();
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.user = "111.111.111-1";
+        loginRequest.password = "A12-345B";
+
+        // Setup Test Double
+        LoginPresenterInputSpy loginPresenterInputSpy = new LoginPresenterInputSpy();
+        loginInteractor.callback = null;
+        loginInteractor.output = loginPresenterInputSpy;
+
+        // When
+        loginInteractor.fetchLoginData(loginRequest);
+
+        // Then
+        Assert.assertNotNull(loginPresenterInputSpy.loginResponse.error);
+    }
+
+    @Test
+    public void fetchLoginData_with_invalidInputPassword_shouldCall_presentLoginData_with_error(){
+        // When
+        LoginInteractor loginInteractor = new LoginInteractor();
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.user = "111.111.111-11";
+        loginRequest.password = "1111";
+
+        // Setup Test Double
+        LoginPresenterInputSpy loginPresenterInputSpy = new LoginPresenterInputSpy();
+        loginInteractor.callback = null;
+        loginInteractor.output = loginPresenterInputSpy;
+
+        // When
+        loginInteractor.fetchLoginData(loginRequest);
+
+        // Then
+        Assert.assertNotNull(loginPresenterInputSpy.loginResponse.error);
     }
 }
 
-class LoginWorkerInputSpy implements LoginWorkerInput{
+class LoginWorkerInputSpy implements LoginWorkerInput {
 
     boolean isBuildRequestIsCalled = false;
     boolean isGetLoginResponseIsCalled = false;
@@ -172,8 +253,6 @@ class LoginWorkerInputSpy implements LoginWorkerInput{
     @Override
     public void buildRequest(LoginRequest request) {
         isBuildRequestIsCalled = true;
-        request.user = "test_user";
-        request.password = "Test@1";
         Retrofit api = Api.getRetrofitInstance("https://bank-app-test.herokuapp.com/api/");
         LoginService loginService = api.create(LoginService.class);
         call = loginService.authentication(request.user, request.password);
@@ -192,14 +271,14 @@ class LoginWorkerInputSpy implements LoginWorkerInput{
     }
 }
 
-class LoginPresenterInputSpy implements LoginPresenterInput{
+class LoginPresenterInputSpy implements LoginPresenterInput {
 
-    boolean presenteLoginDataIsCalled = false;
+    boolean presenterLoginDataIsCalled = false;
     LoginResponse loginResponse;
 
     @Override
     public void presentLoginData(LoginResponse response) {
-        presenteLoginDataIsCalled = true;
+        presenterLoginDataIsCalled = true;
         loginResponse = response;
     }
 }

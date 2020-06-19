@@ -1,9 +1,8 @@
-package com.testeandroidv2.loginScreen;
+package com.example.testeandroidv2.loginScreen;
 
 import android.content.Intent;
-import android.os.Build;
 
-import com.testeandroidv2.statementScreen.StatementActivity;
+import com.example.testeandroidv2.statementScreen.StatementActivity;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,17 +15,17 @@ import java.lang.ref.WeakReference;
 import java.util.Objects;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk = 19)
+@Config(sdk=19)
 public class LoginRouterUnitTest {
 
     @Test
-    public void loginRouter_determineNextScreen_when_Authetication_is_valid(){
+    public void loginRouter_determineNextScreen_when_Authentication_valid(){
         // Given
         LoginRouter loginRouter = new LoginRouter();
-        LoginModel loginModel = new LoginModel(1, "Teste", 1234, "56789", 3.3332);
+        LoginModel loginModel = new LoginModel("111.111.111-11", "A@s");
 
         // Setup Double Test
-        LoginActivity activity = Robolectric.buildActivity(LoginActivity.class).create().get();
+        LoginActivity activity = Robolectric.buildActivity(LoginActivity.class).create().resume().get();
         activity.login = loginModel;
         activity.router = loginRouter;
         loginRouter.activity = new WeakReference<>(activity);
@@ -36,6 +35,6 @@ public class LoginRouterUnitTest {
 
         // Then
         String targetActivityName = Objects.requireNonNull(intent.getComponent()).getClassName();
-        Assert.assertEquals("When the login authetication is valided then next Intent should be statementActivity", targetActivityName, StatementActivity.class.getName());
+        Assert.assertEquals("When the login authentication is valided then next Intent should be statementActivity", targetActivityName, StatementActivity.class.getName());
     }
 }
