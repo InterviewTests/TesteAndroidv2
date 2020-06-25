@@ -13,8 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foregroundTint="@color/colorLoginField"
-        app:errorEnabled="true"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:helperText="* Informe o Login - Obrigatório"
+        app:helperTextTextColor="@color/colorLoginField"
+        app:errorEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/userLogin"
             android:layout_width="match_parent"
@@ -31,9 +32,12 @@
         android:id="@+id/passLoginInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:foregroundTint="@color/colorLoginField"
+        app:helperText="* Informe a Senha - Obrigatório"
+        app:helperTextTextColor="@color/colorLoginField"
         app:errorEnabled="true"
-        app:passwordToggleEnabled="true"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:passwordToggleEnabled="true">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passLogin"
             android:layout_width="match_parent"

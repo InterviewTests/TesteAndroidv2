@@ -2,9 +2,14 @@ package br.com.testeandroidv2.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
+
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+
 import br.com.testeandroidv2.R
 import br.com.testeandroidv2.model.bean.LoginBean
 import br.com.testeandroidv2.presenter.login.MVP
@@ -12,8 +17,6 @@ import br.com.testeandroidv2.presenter.login.Presenter
 import br.com.testeandroidv2.utils.Utils
 import br.com.testeandroidv2.view.components.Progress
 import br.com.testeandroidv2.view.listener.OnCallback
-import com.google.android.material.textfield.TextInputEditText
-
 
 class LoginActivity : DefaultActivity(), MVP.View {
     private lateinit var progress: Progress
@@ -21,6 +24,10 @@ class LoginActivity : DefaultActivity(), MVP.View {
     private lateinit var userLogin: TextInputEditText
     private lateinit var passLogin: TextInputEditText
     private lateinit var presenter: MVP.Presenter
+    private lateinit var passLoginInput: TextInputLayout
+    private lateinit var userLoginInput: TextInputLayout
+
+    private var enableText: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +37,10 @@ class LoginActivity : DefaultActivity(), MVP.View {
         progress = findViewById(R.id.progressLogin)
         progress.hide()
 
-        userLogin = findViewById(R.id.userLogin)
-        passLogin = findViewById(R.id.passLogin)
+        userLoginInput = findViewById(R.id.userLoginInput)
+        passLoginInput = findViewById(R.id.passLoginInput)
+        userLogin      = findViewById(R.id.userLogin)
+        passLogin      = findViewById(R.id.passLogin)
         passLogin.setOnEditorActionListener{ textView, actionId, keyEvent ->
             when(actionId) {
                 EditorInfo.IME_ACTION_DONE -> {
@@ -49,20 +58,24 @@ class LoginActivity : DefaultActivity(), MVP.View {
         presenter.setView(this)
     }
 
+    private fun setupPasswordToggleView(field: TextInputEditText, enable: Boolean) {
+        passLogin.transformationMethod = when(enable) {
+            true  -> null
+            false -> PasswordTransformationMethod()
+            else  -> PasswordTransformationMethod()
+        }
+    }
+
     private fun enter() {
-        var user: String = userLogin.editableText.toString()
-        var password: String = passLogin.editableText.toString()
+        val user: String = userLogin.editableText.toString()
+        val password: String = passLogin.editableText.toString()
 
         if (user.isEmpty()) {
-            msgBox(getString(R.string.login_error1), object : OnCallback {
-                override fun onSuccess() {}
-            })
+            userLoginInput.error = getString(R.string.login_error1)
             return
         }
         else if (user.isEmpty()) {
-            msgBox(getString(R.string.login_error2), object : OnCallback {
-                override fun onSuccess() {}
-            })
+            passLoginInput.error = getString(R.string.login_error2)
             return
         }
         else if (!Utils.isValidPassword(password)) {
