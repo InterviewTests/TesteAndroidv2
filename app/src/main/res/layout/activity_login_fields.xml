@@ -12,18 +12,16 @@
         android:id="@+id/userLoginInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:foregroundTint="@color/colorLoginField"
+        android:hint="@string/login_hint1"
+        android:focusableInTouchMode="true"
         app:helperText="* Informe o Login - Obrigatório"
-        app:helperTextTextColor="@color/colorLoginField"
-        app:errorEnabled="true">
+        app:errorEnabled="true"
+        android:theme="@style/AppTheme.TextInutLayout">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/userLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@color/colorLoginField"
             android:inputType="textEmailAddress"
-            android:hint="@string/login_hint1"
             android:imeOptions="actionNext" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -32,20 +30,18 @@
         android:id="@+id/passLoginInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:foregroundTint="@color/colorLoginField"
+        android:layout_marginTop="10dp"
+        android:hint="@string/login_hint2"
+        android:focusableInTouchMode="true"
         app:helperText="* Informe a Senha - Obrigatório"
-        app:helperTextTextColor="@color/colorLoginField"
         app:errorEnabled="true"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        android:theme="@style/AppTheme.TextInutLayout">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@color/colorLoginField"
             android:inputType="textPassword"
-            android:hint="@string/login_hint2"
             android:imeOptions="actionDone" />
     </com.google.android.material.textfield.TextInputLayout>
 

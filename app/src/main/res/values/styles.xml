@@ -1,5 +1,5 @@
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -8,13 +8,13 @@
         <item name="actionModeStyle">@style/Widget.App.ActionMode</item>
     </style>
 
-    <style name="Widget.MyApp.ActionBar" parent="Widget.AppCompat.ActionBar">
+    <style name="Widget.MyApp.ActionBar" parent="Widget.MaterialComponents.ActionBar.Primary">
         <item name="android:background">@color/colorPrimary</item>
         <item name="theme">@style/ThemeOverlay.MyApp.ActionBar</item>
         <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
     </style>
 
-    <style name="ThemeOverlay.MyApp.ActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
+    <style name="ThemeOverlay.MyApp.ActionBar" parent="ThemeOverlay.MaterialComponents.ActionBar">
         <item name="android:textColorPrimary">@color/colorNormal</item>
     </style>
 
@@ -25,7 +25,7 @@
     </style>
 
     <!-- Style for Dialog Box -->
-    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="AlertDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorPrimaryDark</item>
@@ -37,6 +37,23 @@
     </style>
     <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
         <item name="android:textColor">@android:color/holo_green_dark</item>
+    </style>
+
+    <style name="AppTheme.TextInutLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textSize">18sp</item>
+        <item name="boxStrokeColor">@drawable/text_input_box_stroke</item>
+        <item name="colorControlNormal">@color/colorLoginField</item>
+        <item name="colorControlActivated">@color/colorLoginField</item>
+        <item name="hintTextColor">@color/colorLoginField</item>
+        <item name="helperTextTextColor">@color/colorLoginField</item>
+        <item name="passwordToggleTint">@color/colorLoginField</item>
+        <item name="android:foregroundTint">@color/colorLoginField</item>
+        <item name="android:textColorHint">@color/colorLoginField</item>
+    </style>
+
+    <style name="AppTheme.HintTextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorLoginField</item>
     </style>
 
     <style name="statement_title">
