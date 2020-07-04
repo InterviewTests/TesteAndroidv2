@@ -15,4 +15,8 @@
         <item name="android:tint">@color/colorAccent</item>
         <item name="cornerRadius">@dimen/margin4</item>
     </style>
+
+    <style name="AppTheme.WhiteAccent">
+        <item name="colorAccent">@android:color/white</item>
+    </style>
 </resources>
