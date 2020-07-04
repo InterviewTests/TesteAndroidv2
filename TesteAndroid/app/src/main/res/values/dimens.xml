@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Margins -->
+    <dimen name="margin4">4dp</dimen>
+    <dimen name="margin8">8dp</dimen>
+    <dimen name="margin16">16dp</dimen>
+    <dimen name="margin21">21dp</dimen>
+    <dimen name="margin32">32dp</dimen>
+
+    <!-- Button -->
+    <dimen name="button_text_16">16sp</dimen>
+</resources>

@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Teste Android</string>
+    <string name="image_description">Imagem</string>
+
+    <!-- Buttons -->
+    <string name="sign_in">Login</string>
+
+    <!-- Hints -->
+    <string name="hint_user">User</string>
+    <string name="hint_password">Password</string>
+    
+    <!-- Label texts -->
+    <string name="sign_in_title">Bank</string>
+
 </resources>

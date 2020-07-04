@@ -6,21 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import br.com.mdr.testeandroid.R
+import br.com.mdr.testeandroid.databinding.SignInFragmentBinding
 
 class SignInFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = SignInFragment()
-    }
-
+    private lateinit var binding: SignInFragmentBinding
     private lateinit var viewModel: SignInViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.sign_in_fragment, container, false)
+        binding = SignInFragmentBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
