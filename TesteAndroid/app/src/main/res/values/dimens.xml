@@ -9,4 +9,7 @@
 
     <!-- Button -->
     <dimen name="button_text_16">16sp</dimen>
+
+    <!-- General -->
+    <dimen name="snack_border_radius">8dp</dimen>
 </resources>

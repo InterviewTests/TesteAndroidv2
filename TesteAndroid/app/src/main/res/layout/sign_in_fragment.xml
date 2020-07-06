@@ -4,6 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".flow.signin.SignInFragment">
 
+    <data>
+        <variable
+            name="handler"
+            type="br.com.mdr.testeandroid.flow.signin.ISignInHandler" />
+
+        <import type="android.view.View"/>
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -17,7 +25,7 @@
             android:padding="@dimen/margin8"
             android:text="@string/sign_in_title"
             android:textSize="44sp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +34,7 @@
 
         <!-- Email -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputUser"
+            android:id="@+id/inputUserName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin16"
@@ -40,11 +48,13 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtUser"
+                android:id="@+id/edtUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionNext"
-                android:inputType="textEmailAddress"/>
+                android:inputType="text"
+                android:text="@={handler.signInPresenter.userName}"
+                android:afterTextChanged="@{(editable)->handler.onUserNameChanged(editable)}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Password -->
@@ -54,9 +64,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin21"
             android:hint="@string/hint_password"
-            app:layout_constraintEnd_toEndOf="@id/inputUser"
-            app:layout_constraintStart_toStartOf="@id/inputUser"
-            app:layout_constraintTop_toBottomOf="@id/inputUser"
+            app:layout_constraintEnd_toEndOf="@id/inputUserName"
+            app:layout_constraintStart_toStartOf="@id/inputUserName"
+            app:layout_constraintTop_toBottomOf="@id/inputUserName"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -64,7 +74,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:text="@={handler.signInPresenter.password}"
+                android:afterTextChanged="@{(editable)->handler.onPasswordChanged(editable)}"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Sign In -->

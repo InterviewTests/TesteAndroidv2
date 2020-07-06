@@ -15,8 +15,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".flow.main.MainActivity">
+        android:layout_height="match_parent">
 
         <fragment
             android:id="@+id/fragmentNavHost"

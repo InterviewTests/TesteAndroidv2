@@ -1,6 +1,6 @@
 package br.com.mdr.testeandroid.di
 
-import com.santander.uma.flow.main.LoadingPresenter
+import br.com.mdr.testeandroid.flow.main.LoadingPresenter
 import org.koin.dsl.module
 
 val activityModule = module {
