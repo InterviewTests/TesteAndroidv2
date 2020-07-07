@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import br.com.mdr.testeandroid.R
 import br.com.mdr.testeandroid.databinding.SignInFragmentBinding
 import br.com.mdr.testeandroid.extensions.changeBackgroundColor
@@ -18,14 +19,14 @@ import br.com.mdr.testeandroid.flow.error.ParamError
 import br.com.mdr.testeandroid.util.Constants.Companion.LOG_TAG
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.sign_in_fragment.*
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 class SignInFragment : Fragment(), IErrorManager {
     private var btnLogin: MaterialButton? = null
     private var binding: SignInFragmentBinding? = null
     //Caso a viewmodel venha a ser utilizada por mais de um Fragment, pode ser utilizado o escopo sharedViewModel()
-    private val viewModel: SignInViewModel by sharedViewModel()
+    private val viewModel: SignInViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -101,8 +102,9 @@ class SignInFragment : Fragment(), IErrorManager {
 
         viewModel.signInHandler.signInPresenter.userLive.observe(viewLifecycleOwner, Observer { user ->
             if (user?.userId != null) {
-                //TODO: Chamar fragment de dashboard
                 Log.i(LOG_TAG, "USUÁRIO: ${user.name}")
+                val direction = SignInFragmentDirections.actionSignInFragmentToDashboardFragment()
+                findNavController().navigate(direction)
             }
         })
     }

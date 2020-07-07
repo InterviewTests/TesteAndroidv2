@@ -2,6 +2,8 @@ package br.com.mdr.testeandroid.extensions
 
 import android.text.TextUtils
 import br.com.mdr.testeandroid.util.Constants.Companion.REGEX_SPECIAL_CHARS
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun String.hasDigit(): Boolean {
     var hasDigit = false
@@ -58,4 +60,12 @@ fun String.isCPF(): Boolean {
     }
 
     return numbers[9] == dv1 && numbers[10] == dv2
+}
+
+fun String.formatDateBr(): String {
+    val deFaultformatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    val convertedDate = deFaultformatter.parse(this)
+
+    val brFormatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    return brFormatter.format(convertedDate)
 }

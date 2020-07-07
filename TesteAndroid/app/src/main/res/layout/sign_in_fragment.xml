@@ -16,17 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txtSignIn"
+        <ImageView
+            android:id="@+id/imgSignIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="38dp"
-            android:background="@drawable/rounded_blue_background"
-            android:padding="@dimen/margin8"
-            android:text="@string/sign_in_title"
-            android:textSize="44sp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            android:contentDescription="@string/image_description"
+            android:src="@drawable/img_logo"
             app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +40,7 @@
             android:nextFocusDown="@id/inputPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtSignIn"
+            app:layout_constraintTop_toBottomOf="@id/imgSignIn"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText

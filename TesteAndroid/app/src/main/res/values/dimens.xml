@@ -5,11 +5,16 @@
     <dimen name="margin8">8dp</dimen>
     <dimen name="margin16">16dp</dimen>
     <dimen name="margin21">21dp</dimen>
+    <dimen name="margin28">28dp</dimen>
     <dimen name="margin32">32dp</dimen>
 
-    <!-- Button -->
-    <dimen name="button_text_16">16sp</dimen>
+    <!-- Text Sizes -->
+    <dimen name="text16">16sp</dimen>
+    <dimen name="text12">12sp</dimen>
+    <dimen name="text20">20sp</dimen>
+    <dimen name="text25">25sp</dimen>
 
     <!-- General -->
     <dimen name="snack_border_radius">8dp</dimen>
+    <dimen name="card_statement_height">80dp</dimen>
 </resources>

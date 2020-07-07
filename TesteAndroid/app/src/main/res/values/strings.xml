@@ -11,12 +11,17 @@
     
     <!-- Label texts -->
     <string name="sign_in_title">Bank</string>
+    <string name="dashboard_recents">Recents</string>
+    <string name="dashboard_balance">Saldo</string>
+    <string name="dashboard_account">Conta</string>
+    <string name="payment_description">Pagamento</string>
 
     <string name="message_resource_not_found">Se produjo un error al enviar su información de registro.</string>
     <string name="message_resource_required_field">All fields are required.</string>
     <string name="message_resource_internal_error">There was an unexpected error. Please contact technical support.</string>
 
-    <!-- -->
+    <!-- Messages -->
     <string name="invalid_user">Invalid user.</string>
     <string name="invalid_password">Invalid password.</string>
+
 </resources>
