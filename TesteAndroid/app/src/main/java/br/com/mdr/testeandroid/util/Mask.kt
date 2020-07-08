@@ -21,7 +21,6 @@ class MaskUtil{
 
         fun getCpfMask(_cpf: String): String {
             val mask = maskCPF
-            val old = _cpf
             var mascara = ""
 
             var i = 0

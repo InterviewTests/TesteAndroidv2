@@ -93,7 +93,7 @@ class SignInHandler(
             withContext(Dispatchers.Main) {
                 val presenter = ErrorListViewPresenter().withErrorList(umaThrowable.errors)
                 signInPresenter.errorLive.value = presenter
-                signInPresenter.loginEnableChanged(true)
+                //signInPresenter.loginEnableChanged(true)
             }
         }
     }

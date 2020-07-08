@@ -2,12 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".flow.DashboardFragment">
+    tools:context=".flow.dashboard.DashboardFragment">
 
     <data>
         <variable
             name="user"
             type="br.com.mdr.testeandroid.model.business.User" />
+
+        <import type="android.view.View"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

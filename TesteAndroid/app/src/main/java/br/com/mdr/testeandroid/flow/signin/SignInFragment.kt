@@ -103,7 +103,7 @@ class SignInFragment : Fragment(), IErrorManager {
         viewModel.signInHandler.signInPresenter.userLive.observe(viewLifecycleOwner, Observer { user ->
             if (user?.userId != null) {
                 Log.i(LOG_TAG, "USUÁRIO: ${user.name}")
-                val direction = SignInFragmentDirections.actionSignInFragmentToDashboardFragment()
+                val direction = SignInFragmentDirections.actionSignInFragmentToDashboardFragment(usuario = user)
                 findNavController().navigate(direction)
             }
         })
