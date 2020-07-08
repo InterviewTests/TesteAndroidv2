@@ -6,6 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="materialButtonStyle">@style/AppTheme.MaterialButton</item>
+        <item name="materialCardViewStyle">@style/AppTheme.CardView</item>
     </style>
 
     <style name="AppTheme.MaterialButton" parent="Widget.MaterialComponents.Button">
@@ -18,5 +19,10 @@
 
     <style name="AppTheme.WhiteAccent">
         <item name="colorAccent">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/margin8</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
     </style>
 </resources>

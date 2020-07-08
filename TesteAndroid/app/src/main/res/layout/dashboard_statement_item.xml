@@ -11,25 +11,26 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/margin8"
-        android:paddingEnd="@dimen/margin16"
-        android:paddingStart="@dimen/margin16"
-        android:paddingTop="@dimen/margin8">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardStatement"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="80dp"
+            android:layout_marginBottom="@dimen/margin8"
+            android:layout_marginEnd="@dimen/margin16"
+            android:layout_marginStart="@dimen/margin16"
+            android:layout_marginTop="@dimen/margin8"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/card_statement_height"
-                android:paddingBottom="@dimen/margin8"
-                android:paddingEnd="@dimen/margin16"
-                android:paddingStart="@dimen/margin16"
-                android:paddingTop="@dimen/margin8">
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin8"
+                android:layout_marginEnd="@dimen/margin16"
+                android:layout_marginStart="@dimen/margin16"
+                android:layout_marginTop="@dimen/margin8">
 
                 <TextView
                     android:id="@+id/txtPaymentTitle"

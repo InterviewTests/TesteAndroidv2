@@ -6,6 +6,7 @@
 
     <!-- General -->
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="color_error_message">#E43342</color>
     <color name="color_success_message">#5CB150</color>
     <color name="disabled_background">#C5CCD4</color>

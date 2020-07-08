@@ -29,7 +29,8 @@ class App: Application() {
                     repositoryModule,
                     serviceModule,
                     viewModelModule,
-                    preferencesModule
+                    preferencesModule,
+                    adapterModule
                 )
             )
         }

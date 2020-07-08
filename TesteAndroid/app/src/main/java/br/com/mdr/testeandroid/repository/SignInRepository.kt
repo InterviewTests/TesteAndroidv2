@@ -5,6 +5,7 @@ import br.com.mdr.testeandroid.api.SignInApi
 import br.com.mdr.testeandroid.model.api.SignInApiModel
 import br.com.mdr.testeandroid.model.api.UserApiModel
 import br.com.mdr.testeandroid.model.business.User
+import br.com.mdr.testeandroid.util.Constants.Companion.USER_KEY
 import com.google.gson.Gson
 
 /**
@@ -17,10 +18,6 @@ class SignInRepository(
     private val preferencesEditor: SharedPreferences.Editor,
     private val gson: Gson
 ) : BaseRepository(gson), ISignInRepository {
-
-    companion object {
-        private const val USER_KEY = "logged_user"
-    }
 
     override suspend fun signInUser(user: SignInApiModel): UserApiModel? {
         return handleResponse(signInApi.signInUser(user))

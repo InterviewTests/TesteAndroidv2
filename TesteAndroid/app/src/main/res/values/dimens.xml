@@ -17,4 +17,5 @@
     <!-- General -->
     <dimen name="snack_border_radius">8dp</dimen>
     <dimen name="card_statement_height">80dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
 </resources>

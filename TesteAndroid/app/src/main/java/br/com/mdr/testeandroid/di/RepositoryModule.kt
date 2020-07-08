@@ -13,5 +13,5 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
     single { SignInRepository(get(), get(), get(), get()) as ISignInRepository }
-    single { DashboardRepository(get(), get()) as IDashboardRepository }
+    single { DashboardRepository(get(), get(), get()) as IDashboardRepository }
 }

@@ -10,9 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import br.com.mdr.testeandroid.R
 import br.com.mdr.testeandroid.databinding.SignInFragmentBinding
-import br.com.mdr.testeandroid.extensions.changeBackgroundColor
-import br.com.mdr.testeandroid.extensions.showErrorSnack
-import br.com.mdr.testeandroid.extensions.stringResourceByName
+import br.com.mdr.testeandroid.extensions.*
 import br.com.mdr.testeandroid.flow.error.IErrorListViewPresenter
 import br.com.mdr.testeandroid.flow.error.IErrorManager
 import br.com.mdr.testeandroid.flow.error.ParamError
@@ -44,6 +42,8 @@ class SignInFragment : Fragment(), IErrorManager {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservables()
+        activity?.setStatusBarColor(R.color.white)
+        activity?.setLightStatusBar(true)
     }
 
     override fun onDestroyView() {
@@ -102,7 +102,6 @@ class SignInFragment : Fragment(), IErrorManager {
 
         viewModel.signInHandler.signInPresenter.userLive.observe(viewLifecycleOwner, Observer { user ->
             if (user?.userId != null) {
-                Log.i(LOG_TAG, "USUÁRIO: ${user.name}")
                 val direction = SignInFragmentDirections.actionSignInFragmentToDashboardFragment(usuario = user)
                 findNavController().navigate(direction)
             }
