@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_login_padding_vertical_container">33dp</dimen>
+    <dimen name="app_login_padding_horizontal_container">17dp</dimen>
+
+    <dimen name="app_margin_vertical_form_container">42dp</dimen>
+    <dimen name="app_margin_top_edit_text">21dp</dimen>
+    <dimen name="app_text_size_edit_text">15sp</dimen>
+    <dimen name="app_shape_corners_radius_edit_text">4dp</dimen>
+    <dimen name="app_shape_stroke_width_edit_text">1dp</dimen>
+    <dimen name="app_shape_padding_horizontal_edit_text">13dp</dimen>
+    <dimen name="app_shape_padding_vertical_edit_text">12dp</dimen>
+
+    <dimen name="app_text_size_button">16sp</dimen>
+    <dimen name="app_shape_corners_radius_button">4dp</dimen>
+    <dimen name="app_shape_padding_horizontal_button">80dp</dimen>
+    <dimen name="app_shape_padding_vertical_button">17dp</dimen>
+</resources>

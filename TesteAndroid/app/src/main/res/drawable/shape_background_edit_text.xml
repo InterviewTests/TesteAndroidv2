@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <item android:state_focused="true">
+        <shape>
+            <corners android:radius="@dimen/app_shape_corners_radius_edit_text" />
+            <solid android:color="@color/transparent" />
+            <stroke android:width="@dimen/app_shape_stroke_width_edit_text" android:color="@color/blue_light_hard" />
+            <padding android:bottom="@dimen/app_shape_padding_vertical_edit_text" android:left="@dimen/app_shape_padding_horizontal_edit_text" android:right="@dimen/app_shape_padding_horizontal_edit_text" android:top="@dimen/app_shape_padding_vertical_edit_text" />
+        </shape>
+    </item>
+
+    <item android:state_pressed="true">
+        <shape>
+            <corners android:radius="@dimen/app_shape_corners_radius_edit_text" />
+            <solid android:color="@color/transparent" />
+            <stroke android:width="@dimen/app_shape_stroke_width_edit_text" android:color="@color/blue" />
+            <padding android:bottom="@dimen/app_shape_padding_vertical_edit_text" android:left="@dimen/app_shape_padding_horizontal_edit_text" android:right="@dimen/app_shape_padding_horizontal_edit_text" android:top="@dimen/app_shape_padding_vertical_edit_text" />
+        </shape>
+    </item>
+
+    <item>
+        <shape>
+            <corners android:radius="@dimen/app_shape_corners_radius_edit_text" />
+            <solid android:color="@color/transparent" />
+            <stroke android:width="@dimen/app_shape_stroke_width_edit_text" android:color="@color/gray_light" />
+            <padding android:bottom="@dimen/app_shape_padding_vertical_edit_text" android:left="@dimen/app_shape_padding_horizontal_edit_text" android:right="@dimen/app_shape_padding_horizontal_edit_text" android:top="@dimen/app_shape_padding_vertical_edit_text" />
+        </shape>
+    </item>
+</selector>

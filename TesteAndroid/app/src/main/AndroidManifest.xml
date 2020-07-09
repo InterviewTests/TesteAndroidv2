@@ -11,13 +11,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".presentation.main.MainActivity"
-            android:label="@string/app_home_label_text_titulo">
+            android:name=".presentation.login.LoginActivity"
+            android:label="@string/app_login_label_text_titulo"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".presentation.main.MainActivity"
+            android:label="@string/app_home_label_text_titulo" />
     </application>
 </manifest>

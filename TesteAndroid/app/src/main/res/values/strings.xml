@@ -3,4 +3,11 @@
 
     <!-- Home -->
     <string name="app_home_label_text_titulo">Home</string>
+
+    <!-- Login -->
+    <string name="app_login_label_text_titulo">Login</string>
+    <string name="app_login_img_content_description_logo">Logo</string>
+    <string name="app_login_edt_hint_user">User</string>
+    <string name="app_login_edt_hint_password">Password</string>
+    <string name="app_login_btn_text_logar">Login</string>
 </resources>
