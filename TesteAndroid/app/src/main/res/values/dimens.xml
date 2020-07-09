@@ -4,6 +4,8 @@
     <dimen name="app_login_padding_horizontal_container">17dp</dimen>
     <dimen name="app_main_padding_vertical_container">14dp</dimen>
     <dimen name="app_main_padding_horizontal_container">18dp</dimen>
+    <dimen name="app_main_padding_vertical_app_bar">17dp</dimen>
+    <dimen name="app_main_padding_horizontal_app_bar">18dp</dimen>
 
     <dimen name="app_margin_vertical_form_container">42dp</dimen>
     <dimen name="app_margin_top_edit_text">21dp</dimen>
@@ -25,5 +27,11 @@
     <dimen name="app_text_size_huge">20sp</dimen>
     <dimen name="app_margin_top_recycler_view">8dp</dimen>
 
+    <dimen name="app_text_size_app_bar_primary">25sp</dimen>
+    <dimen name="app_text_size_app_bar_secondary">12sp</dimen>
+
     <dimen name="app_shape_size_height_divider">15dp</dimen>
+
+    <dimen name="app_margin_top_titles_app_bar">21dp</dimen>
+    <dimen name="app_margin_top_contents_app_bar">6dp</dimen>
 </resources>
