@@ -2,6 +2,8 @@
 <resources>
     <dimen name="app_login_padding_vertical_container">33dp</dimen>
     <dimen name="app_login_padding_horizontal_container">17dp</dimen>
+    <dimen name="app_main_padding_vertical_container">14dp</dimen>
+    <dimen name="app_main_padding_horizontal_container">18dp</dimen>
 
     <dimen name="app_margin_vertical_form_container">42dp</dimen>
     <dimen name="app_margin_top_edit_text">21dp</dimen>
@@ -15,4 +17,13 @@
     <dimen name="app_shape_corners_radius_button">4dp</dimen>
     <dimen name="app_shape_padding_horizontal_button">80dp</dimen>
     <dimen name="app_shape_padding_vertical_button">17dp</dimen>
+
+    <dimen name="app_text_size_txt">17sp</dimen>
+    <dimen name="app_text_size_primary">16sp</dimen>
+    <dimen name="app_text_size_secondary">16sp</dimen>
+    <dimen name="app_text_size_tiny">12sp</dimen>
+    <dimen name="app_text_size_huge">20sp</dimen>
+    <dimen name="app_margin_top_recycler_view">8dp</dimen>
+
+    <dimen name="app_shape_size_height_divider">15dp</dimen>
 </resources>

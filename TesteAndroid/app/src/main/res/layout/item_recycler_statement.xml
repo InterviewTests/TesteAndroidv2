@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="7dp">
+
+            <TextView
+                android:id="@+id/txtTitulo"
+                style="@style/AppTheme.Component.Text.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Pagamento"
+                app:layout_constraintBottom_toTopOf="@id/txtDescricao"
+                app:layout_constraintEnd_toStartOf="@id/txtData"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtData"
+                style="@style/AppTheme.Component.Text.Tiny"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="12/12/2018"
+                android:textAlignment="textEnd"
+                app:layout_constraintBottom_toBottomOf="@id/txtTitulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txtTitulo"
+                app:layout_constraintTop_toTopOf="@id/txtTitulo" />
+
+            <TextView
+                android:id="@+id/txtDescricao"
+                style="@style/AppTheme.Component.Text.Primary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Conta de luz"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/txtValor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtData" />
+
+            <TextView
+                android:id="@+id/txtValor"
+                style="@style/AppTheme.Component.Text.Huge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="R$1.000,00"
+                android:textAlignment="textEnd"
+                app:layout_constraintBottom_toBottomOf="@id/txtDescricao"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/txtDescricao"
+                app:layout_constraintTop_toTopOf="@id/txtDescricao" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -22,7 +22,7 @@
         <shape>
             <corners android:radius="@dimen/app_shape_corners_radius_edit_text" />
             <solid android:color="@color/transparent" />
-            <stroke android:width="@dimen/app_shape_stroke_width_edit_text" android:color="@color/gray_light" />
+            <stroke android:width="@dimen/app_shape_stroke_width_edit_text" android:color="@color/gray_light_hard" />
             <padding android:bottom="@dimen/app_shape_padding_vertical_edit_text" android:left="@dimen/app_shape_padding_horizontal_edit_text" android:right="@dimen/app_shape_padding_horizontal_edit_text" android:top="@dimen/app_shape_padding_vertical_edit_text" />
         </shape>
     </item>
