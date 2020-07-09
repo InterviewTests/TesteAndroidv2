@@ -9,7 +9,7 @@ import androidx.lifecycle.Lifecycle;
  * denis_magno16@hotmail.com
  */
 class LoginPresenter implements LoginContract.Presenter {
-    private final static String TAG = "CustomApp - " + LoginPresenter.class.getSimpleName();
+    private final static String TAG = "CustomLog - " + LoginPresenter.class.getSimpleName();
 
     private LoginContract.View view;
     private Context context;

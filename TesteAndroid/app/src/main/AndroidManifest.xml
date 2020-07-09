@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.accenture.android.app.testeandroid">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -10,19 +12,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--        <activity-->
+        <!--            android:name=".presentation.login.LoginActivity"-->
+        <!--            android:label="@string/app_login_label_text_titulo"-->
+        <!--            android:theme="@style/AppTheme.NoActionBar">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.MAIN" />-->
+
+        <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
+
         <activity
-            android:name=".presentation.login.LoginActivity"
-            android:label="@string/app_login_label_text_titulo"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".presentation.main.MainActivity"
+            android:label="@string/app_main_label_text_titulo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".presentation.main.MainActivity"
-            android:label="@string/app_home_label_text_titulo" />
     </application>
 </manifest>

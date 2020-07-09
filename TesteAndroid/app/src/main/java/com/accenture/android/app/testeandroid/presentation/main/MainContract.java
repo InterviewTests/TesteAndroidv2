@@ -1,7 +1,10 @@
 package com.accenture.android.app.testeandroid.presentation.main;
 
+import com.accenture.android.app.testeandroid.domain.Statement;
 import com.accenture.android.app.testeandroid.presentation.BasePresenter;
 import com.accenture.android.app.testeandroid.presentation.BaseView;
+
+import java.util.ArrayList;
 
 /**
  * Created by Denis Magno on 09/07/2020.
@@ -9,8 +12,10 @@ import com.accenture.android.app.testeandroid.presentation.BaseView;
  */
 interface MainContract {
     interface Presenter extends BasePresenter {
+        void buscarStatements(Long userId);
     }
 
     interface View extends BaseView<Presenter> {
+        void setStatements(ArrayList<Statement> statements);
     }
 }
