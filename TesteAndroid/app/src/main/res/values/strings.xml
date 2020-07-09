@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">TesteAndroid</string>
+
+    <!-- Home -->
+    <string name="app_home_label_text_titulo">Home</string>
 </resources>
