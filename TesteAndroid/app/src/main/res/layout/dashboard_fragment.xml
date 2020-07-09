@@ -24,12 +24,16 @@
             android:padding="@dimen/margin16"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageButton
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btnSignOut"
-                android:contentDescription="@string/image_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="center"
                 android:background="@android:color/transparent"
+                android:clickable="true"
+                android:contentDescription="@string/image_description"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:src="@drawable/ic_logout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>

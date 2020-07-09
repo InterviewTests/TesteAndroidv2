@@ -4,10 +4,6 @@ import br.com.mdr.testeandroid.flow.dashboard.DashboardHandler
 import br.com.mdr.testeandroid.flow.dashboard.DashboardViewPresenter
 import br.com.mdr.testeandroid.flow.dashboard.IDashboardHandler
 import br.com.mdr.testeandroid.flow.dashboard.IDashboardViewPresenter
-import br.com.mdr.testeandroid.flow.error.ErrorListViewPresenter
-import br.com.mdr.testeandroid.flow.error.ErrorViewPresenter
-import br.com.mdr.testeandroid.flow.error.IErrorListViewPresenter
-import br.com.mdr.testeandroid.flow.error.IErrorViewPresenter
 import br.com.mdr.testeandroid.flow.signin.ISignInHandler
 import br.com.mdr.testeandroid.flow.signin.ISignInViewPresenter
 import br.com.mdr.testeandroid.flow.signin.SignInHandler
@@ -23,9 +19,5 @@ val presenterModule = module {
     //Dashboard
     single { DashboardHandler(get(), get(), get()) as IDashboardHandler}
     single { DashboardViewPresenter() as IDashboardViewPresenter}
-
-    // Error
-    single { ErrorViewPresenter() as IErrorViewPresenter }
-    single { ErrorListViewPresenter() as IErrorListViewPresenter }
 
 }

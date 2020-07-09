@@ -1,7 +1,7 @@
 package br.com.mdr.testeandroid.model.business
 
 enum class ErrorType {
-    REQUIRED_FIELD,
+    REQUIRED_FIELD(),
     NOT_FOUND,
     INTERNAL_ERROR,
     UNKNOWN;

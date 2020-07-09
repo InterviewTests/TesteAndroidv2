@@ -10,5 +10,6 @@ import br.com.mdr.testeandroid.model.business.User
  */
 
 data class DashboardApiModel(
-    var statementList: MutableList<Statement>? = null
+    var statementList: MutableList<Statement>? = null,
+    var error: Error? = null
 )

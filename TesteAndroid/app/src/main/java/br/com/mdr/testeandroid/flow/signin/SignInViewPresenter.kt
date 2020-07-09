@@ -1,44 +1,28 @@
 package br.com.mdr.testeandroid.flow.signin
 
-import androidx.annotation.ColorRes
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import br.com.mdr.testeandroid.R
-import br.com.mdr.testeandroid.flow.error.IErrorListViewPresenter
+import br.com.mdr.testeandroid.extensions.*
+import br.com.mdr.testeandroid.model.business.Error
 import br.com.mdr.testeandroid.model.business.User
+import br.com.mdr.testeandroid.util.Constants
 
 class SignInViewPresenter(
-    override var isLoginButtonEnabled: Boolean = false,
-    override var loginEnableChanged: ButtonEnableChangedListener = {},
-    override val errorLive: MutableLiveData<IErrorListViewPresenter?> = MutableLiveData(),
+    override var buttonEnabledLive: MutableLiveData<Boolean> = MutableLiveData(),
+    override val errorLive: MutableLiveData<Error?> = MutableLiveData(),
     override val userLive: MutableLiveData<User?> = MutableLiveData(),
-    @ColorRes
-    override var loginButtonBackground: Int = R.color.disabled_background,
     override var userName: String = "",
     override var password: String = "",
-    override var canShowUserNameError: Boolean = false,
-    override var userNameWasFocused: Boolean = false,
-    override var hasError: MutableLiveData<Boolean> = MutableLiveData(false),
     override var maskedUserName: MutableLiveData<String> = MutableLiveData("")
 ) : ISignInViewPresenter {
+    override fun handleButtonState() {
+        Log.i(Constants.LOG_TAG, "IS CPF: ${userName.isCPF()}")
+        Log.i(Constants.LOG_TAG, "IS EMAIL: ${userName.isEmail()}")
+        Log.i(Constants.LOG_TAG, "HAS UPPERCASE: ${password.hasUppercasedLetter()}")
+        Log.i(Constants.LOG_TAG, "HAS DIGIT: ${password.hasDigit()}")
+        Log.i(Constants.LOG_TAG, "HAS SPECIAL CHARS: ${password.hasSpecialCharacters()}")
 
-    override fun withEnabled(isEnabled: Boolean): ISignInViewPresenter = apply {
-        isLoginButtonEnabled = isEnabled
-        loginButtonBackground = if (isEnabled)
-            R.color.colorAccent
-        else
-            R.color.disabled_background
-        loginEnableChanged(isEnabled)
-    }
-
-    override fun getErrorType(hasError: Boolean): SignInErrorType {
-        var errorType = SignInErrorType.NULL
-        if (hasError) {
-            errorType =
-                if (canShowUserNameError)
-                    SignInErrorType.USER
-                else
-                    SignInErrorType.PASSWORD
-        }
-        return errorType
+        buttonEnabledLive.value = (userName.isCPF() || userName.isEmail()) &&
+                (password.hasUppercasedLetter() && password.hasDigit() && password.hasSpecialCharacters())
     }
 }

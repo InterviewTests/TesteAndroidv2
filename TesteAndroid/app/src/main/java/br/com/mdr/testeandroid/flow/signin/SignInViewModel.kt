@@ -2,21 +2,19 @@ package br.com.mdr.testeandroid.flow.signin
 
 import android.view.View
 import androidx.lifecycle.*
+import androidx.navigation.findNavController
 import br.com.mdr.testeandroid.R
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class SignInViewModel(
-    val signInHandler: ISignInHandler,
-    val signInPresenterLive: MutableLiveData<ISignInViewPresenter> = MutableLiveData(),
-    private val signInViewPresenter: ISignInViewPresenter) : ViewModel() {
+    val signInHandler: ISignInHandler) : ViewModel() {
+    var showUserInfo: MutableLiveData<Boolean> = MutableLiveData(false)
+    var isUserLogged: Boolean = false
 
     init {
-        setupButtonEnabledListenerForHandler()
-        //onButtonEnabledChanged(false)
-        signInHandler.signInPresenter.userLive.value = signInHandler.service.getLoggedUser()
+        signInHandler.signInPresenter.userLive.value = signInHandler.getLocalUser()
+        isUserLogged = signInHandler.signInPresenter.userLive.value != null
+        signInHandler.signInPresenter.buttonEnabledLive.value = false
     }
 
     fun manageOnClick() = View.OnClickListener {
@@ -24,18 +22,16 @@ class SignInViewModel(
             R.id.btnSignIn -> {
                 viewModelScope.launch { signInHandler.onSignInClicked() }
             }
-        }
-    }
+            R.id.btnSignInAnother -> {
+                showUserInfo.value = false
+            }
 
-    private fun setupButtonEnabledListenerForHandler() {
-        signInHandler.signInPresenter.loginEnableChanged = this::onButtonEnabledChanged
-    }
-
-    private fun onButtonEnabledChanged(isEnabled: Boolean) {
-        signInViewPresenter.withEnabled(isEnabled)
-        GlobalScope.launch {
-            withContext(Dispatchers.Main) {
-                signInPresenterLive.value = signInViewPresenter
+            R.id.btnSignInUser -> {
+                val userSaved = signInHandler.signInPresenter.userLive.value
+                userSaved?.let { user ->
+                    val direction = SignInFragmentDirections.actionSignInFragmentToDashboardFragment(usuario = user)
+                    it.findNavController().navigate(direction)
+                }
             }
         }
     }

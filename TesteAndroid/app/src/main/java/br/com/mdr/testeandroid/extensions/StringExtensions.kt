@@ -4,6 +4,8 @@ import android.text.TextUtils
 import br.com.mdr.testeandroid.util.Constants.Companion.REGEX_SPECIAL_CHARS
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 fun String.hasDigit(): Boolean {
     var hasDigit = false
@@ -23,13 +25,24 @@ fun String.hasLetter(): Boolean {
     return hasLetter
 }
 
+fun String.hasUppercasedLetter(): Boolean {
+
+    for (letter in this) {
+        if (letter.isUpperCase())
+            return true
+    }
+    return false
+}
+
 fun String.isEmail(): Boolean {
     return !TextUtils.isEmpty(this) && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
 }
 
 fun String.hasSpecialCharacters(): Boolean {
-    val regex = REGEX_SPECIAL_CHARS.toRegex()
-    return regex.containsMatchIn(this)
+    val pattern: Pattern = Pattern.compile(REGEX_SPECIAL_CHARS)
+    val matcher: Matcher = pattern.matcher(this)
+
+    return !matcher.matches()
 }
 
 fun String.isCPF(): Boolean {

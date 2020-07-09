@@ -17,7 +17,7 @@ class SignInRepository(
     private val preferences: SharedPreferences,
     private val preferencesEditor: SharedPreferences.Editor,
     private val gson: Gson
-) : BaseRepository(gson), ISignInRepository {
+) : BaseRepository(), ISignInRepository {
 
     override suspend fun signInUser(user: SignInApiModel): UserApiModel? {
         return handleResponse(signInApi.signInUser(user))

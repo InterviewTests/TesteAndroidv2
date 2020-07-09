@@ -13,9 +13,8 @@ import com.google.gson.Gson
  */
 class DashboardRepository(
     private val dashboardApi: DashboardApi,
-    private val preferencesEditor: SharedPreferences.Editor,
-    gson: Gson
-) : BaseRepository(gson), IDashboardRepository {
+    private val preferencesEditor: SharedPreferences.Editor
+) : BaseRepository(), IDashboardRepository {
 
     override suspend fun getStatements(userId: Int): DashboardApiModel? {
         return handleResponse(dashboardApi.getStatements(userId.toString()))

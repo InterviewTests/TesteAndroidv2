@@ -13,7 +13,7 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">@dimen/text16</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:tint">@color/colorAccent</item>
+        <item name="backgroundTint">@color/colorAccent</item>
         <item name="cornerRadius">@dimen/margin4</item>
     </style>
 

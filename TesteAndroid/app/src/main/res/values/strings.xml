@@ -4,6 +4,8 @@
 
     <!-- Buttons -->
     <string name="sign_in">Login</string>
+    <string name="sign_in_another">Entrar com outra conta</string>
+    <string name="access_account">Acessar conta</string>
 
     <!-- Hints -->
     <string name="hint_user">User</string>
@@ -15,10 +17,9 @@
     <string name="dashboard_balance">Saldo</string>
     <string name="dashboard_account">Conta</string>
     <string name="payment_description">Pagamento</string>
-
-    <string name="message_resource_not_found">Se produjo un error al enviar su información de registro.</string>
-    <string name="message_resource_required_field">All fields are required.</string>
-    <string name="message_resource_internal_error">There was an unexpected error. Please contact technical support.</string>
+    <string name="sign_in_agency_label">Agência: </string>
+    <string name="hello_user">Olá,</string>
+    <string name="sign_in_account_label">Conta corrente:</string>
 
     <!-- Messages -->
     <string name="invalid_user">Invalid user.</string>

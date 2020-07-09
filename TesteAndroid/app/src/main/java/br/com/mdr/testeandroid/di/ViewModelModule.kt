@@ -11,6 +11,6 @@ import org.koin.dsl.module
  */
 
 val viewModelModule = module {
-    viewModel { SignInViewModel(signInHandler = get(), signInViewPresenter = get()) }
+    viewModel { SignInViewModel(signInHandler = get()) }
     viewModel { DashboardViewModel(get()) }
 }

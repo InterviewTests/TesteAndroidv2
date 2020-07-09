@@ -11,6 +11,7 @@ import br.com.mdr.testeandroid.adapter.StatementAdapter
 import br.com.mdr.testeandroid.databinding.DashboardFragmentBinding
 import br.com.mdr.testeandroid.extensions.setLightStatusBar
 import br.com.mdr.testeandroid.extensions.setStatusBarColor
+import br.com.mdr.testeandroid.extensions.showErrorSnack
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -51,6 +52,11 @@ class DashboardFragment : Fragment() {
             statements?.let {
                 adapter.replaceItens(it)
             }
+        })
+
+        viewModel.dashboardHandler.dashboardPresenter.errorLive.observe( viewLifecycleOwner, Observer { error ->
+            if (error?.code != 0)
+                error?.message?.let { showErrorSnack(it) }
         })
     }
 

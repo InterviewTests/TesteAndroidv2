@@ -1,15 +1,9 @@
 package br.com.mdr.testeandroid.flow.dashboard
 
-import br.com.mdr.testeandroid.extensions.scopeWithErrorHandling
-import br.com.mdr.testeandroid.flow.error.ErrorListViewPresenter
 import br.com.mdr.testeandroid.flow.main.LoadingPresenter
 import br.com.mdr.testeandroid.model.business.User
 import br.com.mdr.testeandroid.service.IDashboardService
-import br.com.mdr.testeandroid.throwable.AppThrowable
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 class DashboardHandler(
     override val loadingPresenter: LoadingPresenter,
@@ -19,13 +13,18 @@ class DashboardHandler(
 
     override fun fetchStatements(userId: Int) {
         loadingPresenter.showLoading()
-        val scope = scopeWithErrorHandling(this::showError)
+        val scope = CoroutineScope(Dispatchers.Main)
         scope.launch {
 
-            service.getStatements(userId)?.let {response ->
+            service.getStatements(userId)?.let { response ->
                 GlobalScope.launch {
                     withContext(Dispatchers.Main) {
-                        dashboardPresenter.statementsLive.value = response.statementList
+                        response.statementList?.let {
+                            dashboardPresenter.statementsLive.value = it
+                        }
+                        response.error.let {
+                            dashboardPresenter.errorLive.value = it
+                        }
                     }
                 }
             }
@@ -35,15 +34,5 @@ class DashboardHandler(
 
     override fun clearUserData(user: User) {
         service.signOutUser(user)
-    }
-
-    private fun showError(umaThrowable: AppThrowable) {
-        loadingPresenter.hideLoading()
-        GlobalScope.launch {
-            withContext(Dispatchers.Main) {
-                val presenter = ErrorListViewPresenter().withErrorList(umaThrowable.errors)
-                dashboardPresenter.errorLive.value = presenter
-            }
-        }
     }
 }
