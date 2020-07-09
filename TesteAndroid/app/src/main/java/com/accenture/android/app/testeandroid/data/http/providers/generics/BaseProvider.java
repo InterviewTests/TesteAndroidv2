@@ -7,7 +7,7 @@ import com.accenture.android.app.testeandroid.data.http.RetrofitConfig;
  * denis_magno16@hotmail.com
  */
 public abstract class BaseProvider {
-    protected final String TAG = "CustomApp - " + this.getClass().getSimpleName();
+    protected final String TAG = "CustomLog - " + this.getClass().getSimpleName();
 
     protected final RetrofitConfig retrofit;
 

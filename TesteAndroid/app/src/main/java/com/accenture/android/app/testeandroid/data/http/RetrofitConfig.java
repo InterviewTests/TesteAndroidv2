@@ -1,5 +1,7 @@
 package com.accenture.android.app.testeandroid.data.http;
 
+import com.accenture.android.app.testeandroid.data.http.resources.StatementResource;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -25,5 +27,9 @@ public class RetrofitConfig {
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+    }
+
+    public StatementResource getStatementResource() throws NullPointerException {
+        return this.retrofit.create(StatementResource.class);
     }
 }
