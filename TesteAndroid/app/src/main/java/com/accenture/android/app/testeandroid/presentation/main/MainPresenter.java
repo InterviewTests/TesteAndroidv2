@@ -11,6 +11,7 @@ import com.accenture.android.app.testeandroid.domain.Statement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Denis Magno on 09/07/2020.
@@ -47,11 +48,18 @@ class MainPresenter implements MainContract.Presenter {
         this.statementsCallback = new StatementProvider.ExpectedResponseStatements() {
             @Override
             public void onSuccess(String message, List<Statement> statements) {
+                view.unsetLoading();
+                view.setContent();
+
                 view.setStatements(new ArrayList<>(statements));
             }
 
             @Override
             public void onFailure(ErrorResponse error) {
+                view.unsetLoading();
+                view.setContent();
+
+                view.setFeedback(String.format(Locale.getDefault(), "%d: %s", error.getStatusCode(), error.getMessage()));
             }
         };
     }
@@ -64,6 +72,9 @@ class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void buscarStatements(Long userId) {
+        this.view.setLoading();
+        this.view.unsetContent();
+
         this.statementProvider.buscarStatements(this.statementsCallback, userId);
     }
 }

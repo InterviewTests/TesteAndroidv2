@@ -16,6 +16,16 @@ interface MainContract {
     }
 
     interface View extends BaseView<Presenter> {
+        void setLoading();
+
+        void unsetLoading();
+
+        void setContent();
+
+        void unsetContent();
+
+        void setFeedback(String message);
+
         void setStatements(ArrayList<Statement> statements);
     }
 }

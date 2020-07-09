@@ -5,11 +5,13 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.accenture.android.app.testeandroid.R;
 import com.accenture.android.app.testeandroid.databinding.ActivityMainBinding;
 import com.accenture.android.app.testeandroid.domain.Statement;
 import com.accenture.android.app.testeandroid.presentation.main.adapters.StatementsRecyclerAdapter;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -61,6 +63,34 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         this.statementsRecyclerAdapter = new StatementsRecyclerAdapter(this, this.statements);
         this.binding.rcvStatements.setAdapter(this.statementsRecyclerAdapter);
+    }
+
+    @Override
+    public void setLoading() {
+        this.binding.pgbLoading.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void unsetLoading() {
+        this.binding.pgbLoading.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void setContent() {
+        this.binding.txtTitulo.setVisibility(View.VISIBLE);
+        this.binding.rcvStatements.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void unsetContent() {
+        this.binding.txtTitulo.setVisibility(View.INVISIBLE);
+        this.binding.rcvStatements.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void setFeedback(String message) {
+        Snackbar.make(this.binding.getRoot(), message, Snackbar.LENGTH_LONG)
+                .show();
     }
 
     @Override
