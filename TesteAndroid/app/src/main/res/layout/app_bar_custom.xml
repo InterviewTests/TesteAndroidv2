@@ -15,17 +15,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Jose da Silva Teste"
-            app:layout_constraintEnd_toStartOf="@id/imgLogout"
+            app:layout_constraintEnd_toStartOf="@id/btnLogout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/imgLogout"
+            android:id="@+id/btnLogout"
             style="@style/AppTheme.Component.AppBar.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/app_main_btn_content_description_logout"
-            android:src="@drawable/ic_logout"
+            android:src="@drawable/ic_exit"
             app:layout_constraintBottom_toBottomOf="@id/txtUserName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/txtUserName"

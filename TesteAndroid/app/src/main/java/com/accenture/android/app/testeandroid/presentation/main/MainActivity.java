@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,6 +13,7 @@ import com.accenture.android.app.testeandroid.databinding.ActivityMainBinding;
 import com.accenture.android.app.testeandroid.domain.Statement;
 import com.accenture.android.app.testeandroid.domain.UserAccount;
 import com.accenture.android.app.testeandroid.helpers.FormatHelper;
+import com.accenture.android.app.testeandroid.presentation.login.LoginActivity;
 import com.accenture.android.app.testeandroid.presentation.main.adapters.StatementsRecyclerAdapter;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     protected void onStart() {
         super.onStart();
 
+        this.initEvents();
         this.configRecyclerView();
     }
 
@@ -53,6 +56,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         super.onResume();
 
         this.presenter.buscarStatements(1L);
+    }
+
+    private void initEvents() {
+        this.binding.iclAppBar.btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.efetuarLogout();
+            }
+        });
     }
 
     private void configRecyclerView() {
@@ -110,6 +122,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         this.statementsRecyclerAdapter.notifyDataSetChanged();
 
         this.binding.iclAppBar.txtSaldo.setText(FormatHelper.formatarReal(this.contarSaldo(statements)));
+    }
+
+    @Override
+    public void navigateToLoginActivity() {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+
+        startActivity(intent);
+
+        this.finish();
     }
 
     private Double contarSaldo(ArrayList<Statement> statements) {

@@ -14,6 +14,8 @@ import java.util.ArrayList;
 interface MainContract {
     interface Presenter extends BasePresenter {
         void buscarStatements(Long userId);
+
+        void efetuarLogout();
     }
 
     interface View extends BaseView<Presenter> {
@@ -30,5 +32,7 @@ interface MainContract {
         void setUserAccount(UserAccount userAccount);
 
         void setStatements(ArrayList<Statement> statements);
+
+        void navigateToLoginActivity();
     }
 }

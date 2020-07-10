@@ -90,4 +90,11 @@ class MainPresenter implements MainContract.Presenter {
 
         this.statementProvider.buscarStatements(this.statementsCallback, userId);
     }
+
+    @Override
+    public void efetuarLogout() {
+        this.authManager.clearUserAccount();
+
+        this.view.navigateToLoginActivity();
+    }
 }
