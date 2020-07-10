@@ -16,6 +16,7 @@
     <dimen name="app_shape_padding_vertical_edit_text">12dp</dimen>
 
     <dimen name="app_text_size_button">16sp</dimen>
+    <dimen name="app_height_text_input_layout">60dp</dimen>
     <dimen name="app_shape_corners_radius_button">4dp</dimen>
     <dimen name="app_shape_padding_horizontal_button">80dp</dimen>
     <dimen name="app_shape_padding_vertical_button">17dp</dimen>

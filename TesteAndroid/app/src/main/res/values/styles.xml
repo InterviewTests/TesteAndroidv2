@@ -29,6 +29,11 @@
         <item name="android:background">@drawable/shape_button_transparent</item>
     </style>
 
+    <style name="AppTheme.Component.Layout" parent="AppTheme">
+        <item name="colorControlActivated">@color/blue_light_hard</item>
+        <item name="android:gravity">bottom</item>
+    </style>
+
     <style name="AppTheme.Component.EditText" parent="AppTheme">
         <item name="android:background">@drawable/shape_edit_text_gray_outline</item>
         <item name="android:textSize">@dimen/app_text_size_edit_text</item>

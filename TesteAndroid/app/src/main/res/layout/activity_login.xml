@@ -37,22 +37,38 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imgLogo">
 
-                <EditText
-                    android:id="@+id/edtUser"
-                    style="@style/AppTheme.Component.EditText"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilUser"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/app_login_edt_hint_user"
-                    android:inputType="text" />
+                    android:layout_height="@dimen/app_height_text_input_layout"
+                    android:theme="@style/AppTheme.Component.Layout">
 
-                <EditText
-                    android:id="@+id/edtPassword"
-                    style="@style/AppTheme.Component.EditText"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtUser"
+                        style="@style/AppTheme.Component.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/app_login_edt_hint_user"
+                        android:inputType="text"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/app_height_text_input_layout"
                     android:layout_marginTop="@dimen/app_margin_top_edit_text"
-                    android:hint="@string/app_login_edt_hint_password"
-                    android:inputType="textPassword" />
+                    android:theme="@style/AppTheme.Component.Layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPassword"
+                        style="@style/AppTheme.Component.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/app_login_edt_hint_password"
+                        android:inputType="text"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
             <ProgressBar
