@@ -1,10 +1,8 @@
 package br.com.mdr.testeandroid.flow.signin
 
-import android.content.Context
 import br.com.mdr.testeandroid.extensions.isCPF
 import br.com.mdr.testeandroid.model.api.SignInApiModel
 import br.com.mdr.testeandroid.model.api.UserApiModel
-import br.com.mdr.testeandroid.model.business.User
 import br.com.mdr.testeandroid.service.SignInService
 import br.com.mdr.testeandroid.util.MaskUtil
 
@@ -35,10 +33,6 @@ class SignInHandler(
     override fun onPasswordChanged(password: CharSequence) {
         signInPresenter.password = password.toString()
         handleButtonState()
-    }
-
-    override fun getLocalUser(context: Context): User? {
-        return service.getLoggedUser(context)
     }
 
     private fun handleButtonState() {
