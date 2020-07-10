@@ -94,6 +94,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
+    public void setLoginRecente(String name) {
+        this.binding.lltRecentLoginContainer.setVisibility(View.VISIBLE);
+        this.binding.txtLoginRecente.setText(name);
+    }
+
+    @Override
     public void navigateToMainActivity() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 

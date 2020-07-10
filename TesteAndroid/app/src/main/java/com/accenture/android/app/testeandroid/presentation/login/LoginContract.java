@@ -27,6 +27,8 @@ interface LoginContract {
 
         void unsetError();
 
+        void setLoginRecente(String name);
+
         void navigateToMainActivity();
     }
 }

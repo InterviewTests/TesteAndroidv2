@@ -1,6 +1,7 @@
 package com.accenture.android.app.testeandroid.presentation.login;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.OnLifecycleEvent;
@@ -39,6 +40,11 @@ class LoginPresenter implements LoginContract.Presenter {
 
         this.initAuthManager();
         this.initProviders();
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    private void onResume() {
+        this.buscarUsuarioLogadoRecentemente();
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
@@ -86,5 +92,13 @@ class LoginPresenter implements LoginContract.Presenter {
         this.view.setLoading();
 
         this.userAccountProvider.efetuarLogin(this.userAccountCallback, user, password);
+    }
+
+    private void buscarUsuarioLogadoRecentemente() {
+        UserAccount userAccount = this.authManager.getUserAccount();
+
+        if (userAccount.getUserId() != null) {
+            this.view.setLoginRecente(userAccount.getName());
+        }
     }
 }

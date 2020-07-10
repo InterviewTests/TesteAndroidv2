@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/app_margin_vertical_form_container"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@id/btnLogar"
+                app:layout_constraintBottom_toTopOf="@id/lltRecentLoginContainer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imgLogo">
@@ -89,6 +89,34 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/lltRecentLoginContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/app_margin_bottom_recent_login"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/btnLogar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lltFormContainer">
+
+                <TextView
+                    android:id="@+id/txtTituloLoginRecente"
+                    style="@style/AppTheme.Component.Text.Primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/app_margin_end_recent_login"
+                    android:text="@string/app_login_txt_text_titulo_login_recente" />
+
+                <TextView
+                    android:id="@+id/txtLoginRecente"
+                    style="@style/AppTheme.Component.Text.Primary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btnLogar"

@@ -35,4 +35,7 @@
 
     <dimen name="app_margin_top_titles_app_bar">21dp</dimen>
     <dimen name="app_margin_top_contents_app_bar">6dp</dimen>
+
+    <dimen name="app_margin_bottom_recent_login">15dp</dimen>
+    <dimen name="app_margin_end_recent_login">5dp</dimen>
 </resources>
