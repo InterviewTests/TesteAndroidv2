@@ -47,7 +47,7 @@ public class StatementProvider extends BaseProvider {
                 if (response.code() == StatusCode.StatusCodeEnum.OK.value) {
                     ErrorResponse error = response.body().getError();
 
-                    if (error == null) {
+                    if (error.getStatusCode() == null) {
                         ArrayList<Statement> statements = StatementConverter.toDomain(new ArrayList<>(response.body().getData()));
 
                         callback.onSuccess("Busca efetuada com sucesso.", statements);

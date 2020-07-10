@@ -10,6 +10,9 @@
 
     <!-- Main -->
     <string name="app_main_label_text_titulo">Home</string>
+    <string name="app_main_txt_text_titulo_conta">Conta</string>
+    <string name="app_main_txt_text_conta">%s / %s</string>
+    <string name="app_main_txt_text_titulo_saldo">Saldo</string>
     <string name="app_main_txt_text_titulo">Recentes</string>
     <string name="app_main_btn_content_description_logout">Logout</string>
 </resources>

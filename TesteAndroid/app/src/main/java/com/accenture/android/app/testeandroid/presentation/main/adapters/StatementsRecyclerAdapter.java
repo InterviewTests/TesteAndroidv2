@@ -9,13 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.accenture.android.app.testeandroid.databinding.ItemRecyclerStatementBinding;
 import com.accenture.android.app.testeandroid.domain.Statement;
+import com.accenture.android.app.testeandroid.helpers.FormatHelper;
 
-import java.text.NumberFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * Created by Denis Magno on 09/07/2020.
@@ -75,35 +72,12 @@ public class StatementsRecyclerAdapter extends RecyclerView.Adapter<StatementsRe
             this.binding.txtDescricao.setText(statement.getDesc());
 
             try {
-                this.binding.txtData.setText(this.formatarData(statement.getDateCalendar()));
+                this.binding.txtData.setText(FormatHelper.formatarData(statement.getDateCalendar()));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
 
-            this.binding.txtValor.setText(formatarReal(statement.getValue()));
-        }
-
-        private String formatarReal(Double valor) {
-            String formated = NumberFormat.getCurrencyInstance(Locale.getDefault()).format(valor);
-
-            // Verifica se número formatado está entre parenteses
-            // Se sim, número é negativo, então formata o número para retirar os parenteses e
-            // colocar o '-' na frente.
-            if (formated.contains("(")) {
-                formated = formated.replaceAll("[()]", "");
-
-                formated = "- " + formated;
-            }
-
-            return formated;
-        }
-
-        private String formatarData(Calendar data) {
-            Integer dia = data.get(Calendar.DAY_OF_MONTH);
-            String mes = new SimpleDateFormat("MM", Locale.getDefault()).format(data.getTime());
-            Integer ano = data.get(Calendar.YEAR);
-
-            return String.format(Locale.getDefault(), "%d/%s/%d", dia, mes, ano);
+            this.binding.txtValor.setText(FormatHelper.formatarReal(statement.getValue()));
         }
     }
 }
