@@ -26,6 +26,15 @@ public class FormatHelper {
     }
 
     public static String formatarAgenciaBanco(String agencia) {
+        if (agencia.length() < 9) {
+            int numerosFaltantes = 9 - agencia.length();
+
+            StringBuilder agenciaBuilder = new StringBuilder(agencia);
+            for (int i = 0; i < numerosFaltantes; i++) {
+                agenciaBuilder.insert(0, "0");
+            }
+            agencia = agenciaBuilder.toString();
+        }
         return agencia.substring(0, 2) + "." + agencia.substring(2, agencia.length() - 1) + "-" + agencia.substring(agencia.length() - 1);
     }
 
