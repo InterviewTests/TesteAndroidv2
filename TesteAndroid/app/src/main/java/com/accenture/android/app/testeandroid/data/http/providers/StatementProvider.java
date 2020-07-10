@@ -8,7 +8,6 @@ import com.accenture.android.app.testeandroid.data.http.providers.generics.BaseP
 import com.accenture.android.app.testeandroid.data.http.resources.StatementResource;
 import com.accenture.android.app.testeandroid.data.http.responses.StatementResponse;
 import com.accenture.android.app.testeandroid.data.http.responses.generics.ErrorResponse;
-import com.accenture.android.app.testeandroid.data.http.responses.generics.ResponseBase;
 import com.accenture.android.app.testeandroid.domain.Statement;
 
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ import retrofit2.Response;
 public class StatementProvider extends BaseProvider {
     private StatementResource resource;
 
-    private Call<ResponseBase<List<StatementResponse>>> callBuscarStatements;
+    private Call<StatementResponse> callBuscarStatements;
 
     public StatementProvider(String baseUrl) {
         super(baseUrl);
@@ -42,11 +41,11 @@ public class StatementProvider extends BaseProvider {
 
     public void buscarStatements(final ExpectedResponseStatements callback, Long userId) {
         this.callBuscarStatements = this.resource.getStatements(userId);
-        this.callBuscarStatements.enqueue(new Callback<ResponseBase<List<StatementResponse>>>() {
+        this.callBuscarStatements.enqueue(new Callback<StatementResponse>() {
             @Override
-            public void onResponse(Call<ResponseBase<List<StatementResponse>>> call, Response<ResponseBase<List<StatementResponse>>> response) {
+            public void onResponse(Call<StatementResponse> call, Response<StatementResponse> response) {
                 if (response.code() == StatusCode.StatusCodeEnum.OK.value) {
-                    ArrayList<Statement> statements = StatementConverter.toDomain(response.body().getData());
+                    ArrayList<Statement> statements = StatementConverter.toDomain(new ArrayList<>(response.body().getData()));
 
                     callback.onSuccess("Busca efetuada com sucesso.", statements);
                 } else {
@@ -55,7 +54,7 @@ public class StatementProvider extends BaseProvider {
             }
 
             @Override
-            public void onFailure(Call<ResponseBase<List<StatementResponse>>> call, Throwable t) {
+            public void onFailure(Call<StatementResponse> call, Throwable t) {
                 if (call.isCanceled()) {
                     Log.e(TAG, "buscarStatements: Requisição cancelada.");
                 } else {

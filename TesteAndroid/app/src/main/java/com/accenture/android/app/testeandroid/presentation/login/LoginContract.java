@@ -9,8 +9,20 @@ import com.accenture.android.app.testeandroid.presentation.BaseView;
  */
 interface LoginContract {
     interface Presenter extends BasePresenter {
+        void efetuarLogin(String user, String password);
     }
 
     interface View extends BaseView<Presenter> {
+        void setLoading();
+
+        void unsetLoading();
+
+        void setContent();
+
+        void unsetContent();
+
+        void setFeedback(String message);
+
+        void navigateToMainActivity();
     }
 }

@@ -1,5 +1,6 @@
 package com.accenture.android.app.testeandroid.data.http;
 
+import com.accenture.android.app.testeandroid.data.http.resources.AuthResource;
 import com.accenture.android.app.testeandroid.data.http.resources.StatementResource;
 
 import java.util.concurrent.TimeUnit;
@@ -27,6 +28,10 @@ public class RetrofitConfig {
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+    }
+
+    public AuthResource getAuthResource() throws NullPointerException {
+        return this.retrofit.create(AuthResource.class);
     }
 
     public StatementResource getStatementResource() throws NullPointerException {

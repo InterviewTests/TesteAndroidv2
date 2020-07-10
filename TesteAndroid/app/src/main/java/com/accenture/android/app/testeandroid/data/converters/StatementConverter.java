@@ -11,22 +11,22 @@ import java.util.List;
  * denis_magno16@hotmail.com
  */
 public class StatementConverter {
-    public static Statement toDomain(StatementResponse statementResponse) {
+    public static Statement toDomain(StatementResponse.StatementData statementDataResponse) {
         Statement statement = new Statement();
 
-        statement.setTitle(statementResponse.getTitle() == null ? "" : statementResponse.getTitle());
-        statement.setDesc(statementResponse.getDesc() == null ? "" : statementResponse.getDesc());
-        statement.setDate(statementResponse.getDate() == null ? "" : statementResponse.getDate());
-        statement.setValue(statementResponse.getValue() == null ? 0 : statementResponse.getValue());
+        statement.setTitle(statementDataResponse.getTitle() == null ? "" : statementDataResponse.getTitle());
+        statement.setDesc(statementDataResponse.getDesc() == null ? "" : statementDataResponse.getDesc());
+        statement.setDate(statementDataResponse.getDate() == null ? "" : statementDataResponse.getDate());
+        statement.setValue(statementDataResponse.getValue() == null ? 0 : statementDataResponse.getValue());
 
         return statement;
     }
 
-    public static ArrayList<Statement> toDomain(List<StatementResponse> statementResponses) {
+    public static ArrayList<Statement> toDomain(List<StatementResponse.StatementData> statementDataResponses) {
         ArrayList<Statement> statements = new ArrayList<>();
 
-        for (StatementResponse statementResponse : statementResponses) {
-            Statement statement = StatementConverter.toDomain(statementResponse);
+        for (StatementResponse.StatementData statementDataResponse : statementDataResponses) {
+            Statement statement = StatementConverter.toDomain(statementDataResponse);
 
             statements.add(statement);
         }

@@ -1,6 +1,7 @@
 package com.accenture.android.app.testeandroid.presentation.main;
 
 import com.accenture.android.app.testeandroid.domain.Statement;
+import com.accenture.android.app.testeandroid.domain.UserAccount;
 import com.accenture.android.app.testeandroid.presentation.BasePresenter;
 import com.accenture.android.app.testeandroid.presentation.BaseView;
 
@@ -25,6 +26,8 @@ interface MainContract {
         void unsetContent();
 
         void setFeedback(String message);
+
+        void setUserAccount(UserAccount userAccount);
 
         void setStatements(ArrayList<Statement> statements);
     }
