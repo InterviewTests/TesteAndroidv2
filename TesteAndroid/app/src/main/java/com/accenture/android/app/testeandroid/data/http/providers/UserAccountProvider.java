@@ -37,7 +37,7 @@ public class UserAccountProvider extends BaseProvider {
                 if (response.code() == StatusCode.StatusCodeEnum.OK.value) {
                     ErrorResponse error = response.body().getError();
 
-                    if (error == null) {
+                    if (error.getStatusCode() == null) {
                         UserAccount statements = UserAccountConverter.toDomain(response.body().getData());
 
                         callback.onSuccess("Busca efetuada com sucesso.", statements);

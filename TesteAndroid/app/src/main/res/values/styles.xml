@@ -31,7 +31,7 @@
 
     <style name="AppTheme.Component.Layout" parent="AppTheme">
         <item name="colorControlActivated">@color/blue_light_hard</item>
-        <item name="android:gravity">bottom</item>
+        <item name="android:gravity">center_vertical</item>
     </style>
 
     <style name="AppTheme.Component.EditText" parent="AppTheme">
@@ -64,6 +64,11 @@
     <style name="AppTheme.Component.Text.Tiny" parent="AppTheme">
         <item name="android:textSize">@dimen/app_text_size_tiny</item>
         <item name="android:textColor">@color/gray_light</item>
+    </style>
+
+    <style name="AppTheme.Component.Text.Error" parent="AppTheme">
+        <item name="android:textSize">@dimen/app_text_size_tiny</item>
+        <item name="android:textColor">@color/red</item>
     </style>
 
     <style name="AppTheme.Component.Text.Huge" parent="AppTheme">

@@ -23,6 +23,10 @@ interface LoginContract {
 
         void setFeedback(String message);
 
+        void setError(String message);
+
+        void unsetError();
+
         void navigateToMainActivity();
     }
 }
