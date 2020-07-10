@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/app_main_btn_content_description_logout"
-            android:src="@drawable/ic_exit"
+            android:src="@drawable/ic_logout"
             app:layout_constraintBottom_toBottomOf="@id/txtUserName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/txtUserName"

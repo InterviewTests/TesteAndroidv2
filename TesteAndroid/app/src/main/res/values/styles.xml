@@ -16,11 +16,13 @@
     </style>
 
     <style name="AppTheme.Component.AppBar.Text.Primary" parent="AppTheme">
+        <item name="android:fontFamily">@font/helvetica_neue_light</item>
         <item name="android:textSize">@dimen/app_text_size_app_bar_primary</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="AppTheme.Component.AppBar.Text.Secondary" parent="AppTheme">
+        <item name="android:fontFamily">@font/helvetica_neue</item>
         <item name="android:textSize">@dimen/app_text_size_app_bar_secondary</item>
         <item name="android:textColor">@color/white</item>
     </style>
@@ -35,33 +37,39 @@
     </style>
 
     <style name="AppTheme.Component.EditText" parent="AppTheme">
+        <item name="android:fontFamily">@font/helvetica_neue</item>
         <item name="android:background">@drawable/shape_edit_text_gray_outline</item>
         <item name="android:textSize">@dimen/app_text_size_edit_text</item>
         <item name="android:textColorHint">@color/gray_light</item>
     </style>
 
     <style name="AppTheme.Component.Button" parent="AppTheme">
+        <item name="android:fontFamily">@font/helvetica_neue</item>
         <item name="android:background">@drawable/shape_button_blue</item>
         <item name="android:textSize">@dimen/app_text_size_button</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="AppTheme.Component.Text" parent="AppTheme">
+        <item name="android:fontFamily">@font/helvetica_neue</item>
         <item name="android:textSize">@dimen/app_text_size_txt</item>
         <item name="android:textColor">@color/gray</item>
     </style>
 
     <style name="AppTheme.Component.Text.Primary" parent="AppTheme">
+        <item name="android:fontFamily">@font/helvetica_neue</item>
         <item name="android:textSize">@dimen/app_text_size_primary</item>
         <item name="android:textColor">@color/gray</item>
     </style>
 
     <style name="AppTheme.Component.Text.Secondary" parent="AppTheme">
+        <item name="android:fontFamily">@font/helvetica_neue</item>
         <item name="android:textSize">@dimen/app_text_size_secondary</item>
         <item name="android:textColor">@color/gray_light</item>
     </style>
 
     <style name="AppTheme.Component.Text.Tiny" parent="AppTheme">
+        <item name="android:fontFamily">@font/helvetica_neue</item>
         <item name="android:textSize">@dimen/app_text_size_tiny</item>
         <item name="android:textColor">@color/gray_light</item>
     </style>
@@ -72,6 +80,7 @@
     </style>
 
     <style name="AppTheme.Component.Text.Huge" parent="AppTheme">
+        <item name="android:fontFamily">@font/helvetica_neue_light</item>
         <item name="android:textSize">@dimen/app_text_size_huge</item>
         <item name="android:textColor">@color/gray</item>
     </style>
