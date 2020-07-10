@@ -1,11 +1,11 @@
 # Teste - Accenture
 Projeto de teste para seleção da empresa Accenture para o cargo de Desenvolvedor Mobile Android
 
-# Procedimentos para executação do projeto
+# Procedimentos para execução do projeto
 O projeto android encontra-se na pasta "TesteAndroid".
 Para execução do projeto é necessário abrí-lo na IDE Android Studio.
 
-# Procedimentos para executação dos testes unitários
+# Procedimentos para execução dos testes unitários
 Foi implementada uma classe para realização de todos os testes unitários do sistema
 em 'com.accenture.android.app.testeandroid.TestSuite'.
 
