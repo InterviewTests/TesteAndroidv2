@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">TesteAndroid</string>
+
+    <!-- Login -->
+    <string name="app_login_label_text_titulo">Login</string>
+    <string name="app_login_img_content_description_logo">Logo</string>
+    <string name="app_login_edt_hint_user">User</string>
+    <string name="app_login_edt_hint_password">Password</string>
+    <string name="app_login_txt_text_titulo_login_recente">Último login:</string>
+    <string name="app_login_btn_text_logar">Login</string>
+
+    <!-- Main -->
+    <string name="app_main_label_text_titulo">Home</string>
+    <string name="app_main_txt_text_titulo_conta">Conta</string>
+    <string name="app_main_txt_text_conta">%s / %s</string>
+    <string name="app_main_txt_text_titulo_saldo">Saldo</string>
+    <string name="app_main_txt_text_titulo">Recentes</string>
+    <string name="app_main_btn_content_description_logout">Logout</string>
+</resources>
