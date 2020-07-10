@@ -1,0 +1,28 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="materialButtonStyle">@style/AppTheme.MaterialButton</item>
+        <item name="materialCardViewStyle">@style/AppTheme.CardView</item>
+    </style>
+
+    <style name="AppTheme.MaterialButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/text16</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="cornerRadius">@dimen/margin4</item>
+    </style>
+
+    <style name="AppTheme.WhiteAccent">
+        <item name="colorAccent">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/margin8</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+    </style>
+</resources>

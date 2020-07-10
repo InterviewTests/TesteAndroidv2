@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Margins -->
+    <dimen name="margin4">4dp</dimen>
+    <dimen name="margin8">8dp</dimen>
+    <dimen name="margin16">16dp</dimen>
+    <dimen name="margin21">21dp</dimen>
+    <dimen name="margin28">28dp</dimen>
+    <dimen name="margin32">32dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text16">16sp</dimen>
+    <dimen name="text12">12sp</dimen>
+    <dimen name="text20">20sp</dimen>
+    <dimen name="text25">25sp</dimen>
+
+    <!-- General -->
+    <dimen name="snack_border_radius">8dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+</resources>

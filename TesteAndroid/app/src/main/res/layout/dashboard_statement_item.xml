@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="statement"
+            type="br.com.mdr.testeandroid.model.business.Statement" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardStatement"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="@dimen/margin8"
+            android:layout_marginEnd="@dimen/margin16"
+            android:layout_marginStart="@dimen/margin16"
+            android:layout_marginTop="@dimen/margin8"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin8"
+                android:layout_marginEnd="@dimen/margin16"
+                android:layout_marginStart="@dimen/margin16"
+                android:layout_marginTop="@dimen/margin8">
+
+                <TextView
+                    android:id="@+id/txtPaymentTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{statement.title}"
+                    android:textColor="@color/grayA8B4C4"
+                    android:textSize="@dimen/text16"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Pagamento"/>
+
+                <TextView
+                    android:id="@+id/txtPaymentDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{statement.desc}"
+                    android:textColor="@color/gray485465"
+                    android:textSize="@dimen/text16"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="Conta de Luz"/>
+
+                <TextView
+                    android:id="@+id/txtPaymentDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{statement.formatedDate}"
+                    android:textColor="@color/grayA8B4C4"
+                    android:textSize="@dimen/text12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="06/07/2020"/>
+
+                <TextView
+                    android:id="@+id/txtPaymentValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{statement.formatedValue}"
+                    android:textColor="@color/gray485465"
+                    android:textSize="@dimen/text20"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:text="R$ 250,00"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

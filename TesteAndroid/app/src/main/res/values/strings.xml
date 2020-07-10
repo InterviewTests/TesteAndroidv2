@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Teste Android</string>
+    <string name="image_description">Imagem</string>
+
+    <!-- Buttons -->
+    <string name="sign_in">Login</string>
+    <string name="sign_in_another">Entrar com outra conta</string>
+    <string name="access_account">Acessar conta</string>
+
+    <!-- Hints -->
+    <string name="hint_user">User</string>
+    <string name="hint_password">Password</string>
+    
+    <!-- Label texts -->
+    <string name="dashboard_recents">Recents</string>
+    <string name="dashboard_balance">Saldo</string>
+    <string name="dashboard_account">Conta</string>
+    <string name="sign_in_agency_label">Agência: </string>
+    <string name="hello_user">Olá,</string>
+    <string name="sign_in_account_label">Conta corrente:</string>
+    <string name="bank">Bank</string>
+    <!-- Messages -->
+
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/color_error_message"/>
+
+    <corners android:bottomRightRadius="@dimen/snack_border_radius"
+        android:bottomLeftRadius="@dimen/snack_border_radius"
+        android:topLeftRadius="@dimen/snack_border_radius"
+        android:topRightRadius="@dimen/snack_border_radius" />
+</shape>
