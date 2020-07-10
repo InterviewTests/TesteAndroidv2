@@ -35,9 +35,15 @@ public class UserAccountProvider extends BaseProvider {
             @Override
             public void onResponse(Call<UserAccountResponse> call, Response<UserAccountResponse> response) {
                 if (response.code() == StatusCode.StatusCodeEnum.OK.value) {
-                    UserAccount statements = UserAccountConverter.toDomain(response.body().getData());
+                    ErrorResponse error = response.body().getError();
 
-                    callback.onSuccess("Busca efetuada com sucesso.", statements);
+                    if (error == null) {
+                        UserAccount statements = UserAccountConverter.toDomain(response.body().getData());
+
+                        callback.onSuccess("Busca efetuada com sucesso.", statements);
+                    } else {
+                        callback.onFailure(error);
+                    }
                 } else {
                     callback.onFailure(new ErrorResponse(response.code(), response.message()));
                 }

@@ -45,9 +45,15 @@ public class StatementProvider extends BaseProvider {
             @Override
             public void onResponse(Call<StatementResponse> call, Response<StatementResponse> response) {
                 if (response.code() == StatusCode.StatusCodeEnum.OK.value) {
-                    ArrayList<Statement> statements = StatementConverter.toDomain(new ArrayList<>(response.body().getData()));
+                    ErrorResponse error = response.body().getError();
 
-                    callback.onSuccess("Busca efetuada com sucesso.", statements);
+                    if (error == null) {
+                        ArrayList<Statement> statements = StatementConverter.toDomain(new ArrayList<>(response.body().getData()));
+
+                        callback.onSuccess("Busca efetuada com sucesso.", statements);
+                    } else {
+                        callback.onFailure(error);
+                    }
                 } else {
                     callback.onFailure(new ErrorResponse(response.code(), response.message()));
                 }

@@ -8,23 +8,23 @@ import org.json.JSONObject;
  * denis_magno16@hotmail.com
  */
 public class ErrorResponse {
-    private Integer statusCode;
+    private Integer code;
     private String message;
 
     public ErrorResponse() {
     }
 
-    public ErrorResponse(Integer statusCode, String message) {
-        this.statusCode = statusCode;
+    public ErrorResponse(Integer code, String message) {
+        this.code = code;
         this.message = message;
     }
 
     public Integer getStatusCode() {
-        return statusCode;
+        return code;
     }
 
-    public void setStatusCode(Integer statusCode) {
-        this.statusCode = statusCode;
+    public void setStatusCode(Integer code) {
+        this.code = code;
     }
 
     public String getMessage() {

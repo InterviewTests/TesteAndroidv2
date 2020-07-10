@@ -1,5 +1,6 @@
 package com.accenture.android.app.testeandroid.data.http.responses;
 
+import com.accenture.android.app.testeandroid.data.http.responses.generics.ErrorResponse;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -9,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
 public class UserAccountResponse {
     @SerializedName("userAccount")
     private UserAccountResponse.UserAccountData data;
-    private Object error;
+    private ErrorResponse error;
 
     public class UserAccountData {
         private Long userId;
@@ -43,7 +44,7 @@ public class UserAccountResponse {
         return data;
     }
 
-    public Object getError() {
+    public ErrorResponse getError() {
         return error;
     }
 }

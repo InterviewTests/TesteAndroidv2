@@ -1,5 +1,6 @@
 package com.accenture.android.app.testeandroid.data.http.responses;
 
+import com.accenture.android.app.testeandroid.data.http.responses.generics.ErrorResponse;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 public class StatementResponse {
     @SerializedName("statementList")
     private List<StatementData> data;
-    private Object error;
+    private ErrorResponse error;
 
     public class StatementData {
         private String title;
@@ -40,7 +41,7 @@ public class StatementResponse {
         return data;
     }
 
-    public Object getError() {
+    public ErrorResponse getError() {
         return error;
     }
 }
