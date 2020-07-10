@@ -11,6 +11,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         FieldHelperUnitTest.class,
         FormatHelperUnitTest.class,
+        StatementConverterUnitTest.class,
+        UserAccountConverterUnitTest.class
 })
 public class TestSuite {
 }

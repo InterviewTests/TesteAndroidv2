@@ -12,12 +12,23 @@ public class UserAccountResponse {
     private UserAccountResponse.UserAccountData data;
     private ErrorResponse error;
 
-    public class UserAccountData {
+    public static class UserAccountData {
         private Long userId;
         private String name;
         private String bankAccount;
         private String agency;
         private Double balance;
+
+        public UserAccountData() {
+        }
+
+        public UserAccountData(Long userId, String name, String bankAccount, String agency, Double balance) {
+            this.userId = userId;
+            this.name = name;
+            this.bankAccount = bankAccount;
+            this.agency = agency;
+            this.balance = balance;
+        }
 
         public Long getUserId() {
             return userId;

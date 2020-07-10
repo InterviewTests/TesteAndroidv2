@@ -11,7 +11,7 @@ import java.util.Locale;
  */
 public class FormatHelper {
     public static String formatarReal(Double valor) {
-        String formated = NumberFormat.getCurrencyInstance(Locale.getDefault()).format(valor);
+        String formated = NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(valor);
 
         // Verifica se número formatado está entre parenteses
         // Se sim, número é negativo, então formata o número para retirar os parenteses e

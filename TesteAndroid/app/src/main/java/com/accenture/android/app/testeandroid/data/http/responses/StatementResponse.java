@@ -14,11 +14,21 @@ public class StatementResponse {
     private List<StatementData> data;
     private ErrorResponse error;
 
-    public class StatementData {
+    public static class StatementData {
         private String title;
         private String desc;
         private String date;
         private Double value;
+
+        public StatementData() {
+        }
+
+        public StatementData(String title, String desc, String date, Double value) {
+            this.title = title;
+            this.desc = desc;
+            this.date = date;
+            this.value = value;
+        }
 
         public String getTitle() {
             return title;
