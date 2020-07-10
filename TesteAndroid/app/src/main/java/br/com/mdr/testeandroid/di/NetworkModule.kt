@@ -1,8 +1,6 @@
 package br.com.mdr.testeandroid.di
 
-import android.util.Log
 import br.com.mdr.testeandroid.util.Constants.Companion.BASE_URL
-import br.com.mdr.testeandroid.util.Constants.Companion.LOG_TAG
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -40,10 +38,7 @@ val networkModule = module {
     // Http Logging Interceptor
     single {
         HttpLoggingInterceptor(
-            HttpLoggingInterceptor.Logger
-            {
-                Log.d(LOG_TAG, it)
-            }
+            HttpLoggingInterceptor.Logger {}
         ).apply {
             level = HttpLoggingInterceptor.Level.BODY
         }

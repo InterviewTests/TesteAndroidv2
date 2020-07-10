@@ -4,35 +4,57 @@ import android.view.View
 import androidx.lifecycle.*
 import androidx.navigation.findNavController
 import br.com.mdr.testeandroid.R
+import br.com.mdr.testeandroid.flow.main.BaseViewModel
+import br.com.mdr.testeandroid.model.api.UserApiModel
+import br.com.mdr.testeandroid.model.business.Error
+import br.com.mdr.testeandroid.model.business.User
 import kotlinx.coroutines.launch
 
 class SignInViewModel(
-    val signInHandler: ISignInHandler) : ViewModel() {
+    val signInHandler: SignInHandler) : BaseViewModel() {
     var showUserInfo: MutableLiveData<Boolean> = MutableLiveData(false)
     var isUserLogged: Boolean = false
+    var userLive: MutableLiveData<User> = MutableLiveData()
+    var errorLive: MutableLiveData<Error> = MutableLiveData()
 
-    init {
-        signInHandler.signInPresenter.userLive.value = signInHandler.getLocalUser()
-        isUserLogged = signInHandler.signInPresenter.userLive.value != null
-        signInHandler.signInPresenter.buttonEnabledLive.value = false
-    }
 
     fun manageOnClick() = View.OnClickListener {
         when (it.id) {
             R.id.btnSignIn -> {
-                viewModelScope.launch { signInHandler.onSignInClicked() }
+                callSignIn()
             }
             R.id.btnSignInAnother -> {
                 showUserInfo.value = false
             }
 
             R.id.btnSignInUser -> {
-                val userSaved = signInHandler.signInPresenter.userLive.value
+                val userSaved = userLive.value
                 userSaved?.let { user ->
                     val direction = SignInFragmentDirections.actionSignInFragmentToDashboardFragment(usuario = user)
                     it.findNavController().navigate(direction)
                 }
             }
         }
+    }
+
+    fun setUser(user: User?) {
+        user?.let{
+            isUserLogged = true
+            userLive.value = it
+        }
+    }
+
+    fun callSignIn() {
+        isLoading.value = true
+        viewModelScope.launch {
+            val apiResult = signInHandler.callSignInUser()
+            fetchApiResult(apiResult)
+        }
+    }
+
+    private fun fetchApiResult(result: UserApiModel) {
+        result.userAccount?.let { userLive.value = it }
+        result.error?.let { errorLive.value = it }
+        isLoading.postValue(false)
     }
 }

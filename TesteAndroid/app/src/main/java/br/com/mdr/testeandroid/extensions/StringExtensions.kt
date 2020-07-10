@@ -16,15 +16,6 @@ fun String.hasDigit(): Boolean {
     return hasDigit
 }
 
-fun String.hasLetter(): Boolean {
-    var hasLetter = false
-    for (letter in this) {
-        if (!hasLetter)
-            hasLetter = !letter.isDigit()
-    }
-    return hasLetter
-}
-
 fun String.hasUppercasedLetter(): Boolean {
 
     for (letter in this) {

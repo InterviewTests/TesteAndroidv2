@@ -1,8 +1,6 @@
 package br.com.mdr.testeandroid.di
 
 import br.com.mdr.testeandroid.repository.DashboardRepository
-import br.com.mdr.testeandroid.repository.IDashboardRepository
-import br.com.mdr.testeandroid.repository.ISignInRepository
 import br.com.mdr.testeandroid.repository.SignInRepository
 import org.koin.dsl.module
 
@@ -12,6 +10,6 @@ import org.koin.dsl.module
  */
 
 val repositoryModule = module {
-    single { SignInRepository(get(), get(), get(), get()) as ISignInRepository }
-    single { DashboardRepository(get(), get()) as IDashboardRepository }
+    single { SignInRepository(get(), get()) }
+    single { DashboardRepository(get()) }
 }

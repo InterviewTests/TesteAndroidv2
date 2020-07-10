@@ -1,16 +1,12 @@
 package br.com.mdr.testeandroid.util
 
-import android.text.Editable
-import android.text.TextWatcher
-import com.google.android.material.textfield.TextInputEditText
+import android.util.Log
 
 
 class MaskUtil{
-    enum class MaskType(val maskType: String) {
-        CPF("CPF")
-    }
+
     companion object {
-        const val maskCPF = "###.###.###-##"
+        private const val maskCPF = "###.###.###-##"
 
         fun removeMask(cpfFull : String) : String{
             return cpfFull.replace(".", "").replace("-", "")
@@ -36,7 +32,7 @@ class MaskUtil{
                 }
                 i++
             }
-
+            Log.i("TesteAndroid", mascara)
             return mascara
         }
     }

@@ -2,7 +2,6 @@ package br.com.mdr.testeandroid.model.api
 
 import br.com.mdr.testeandroid.model.business.Error
 import br.com.mdr.testeandroid.model.business.Statement
-import br.com.mdr.testeandroid.model.business.User
 
 /**
  * @author Marlon D. Rocha

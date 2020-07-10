@@ -3,6 +3,7 @@ package br.com.mdr.testeandroid
 import android.app.Application
 import br.com.mdr.testeandroid.di.*
 import org.koin.android.ext.koin.androidContext
+
 import org.koin.core.context.startKoin
 
 /**
@@ -21,16 +22,15 @@ class App: Application() {
             androidContext(this@App)
             modules(
                 listOf(
-                    activityModule,
                     apiModule,
                     modelModule,
                     networkModule,
-                    presenterModule,
                     repositoryModule,
                     serviceModule,
                     viewModelModule,
                     preferencesModule,
-                    adapterModule
+                    adapterModule,
+                    presenterModule
                 )
             )
         }

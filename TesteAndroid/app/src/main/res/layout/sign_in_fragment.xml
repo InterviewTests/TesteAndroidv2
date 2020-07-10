@@ -6,6 +6,10 @@
 
     <data>
         <variable
+            name="showLoading"
+            type="Boolean" />
+
+        <variable
             name="handler"
             type="br.com.mdr.testeandroid.flow.signin.ISignInHandler" />
 
@@ -41,7 +45,6 @@
             android:layout_marginTop="38dp"
             android:contentDescription="@string/image_description"
             android:src="@drawable/img_logo"
-            app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -225,6 +228,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/layoutProgress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#88000000"
+            android:visibility="@{showLoading ? View.VISIBLE : View.GONE}"
+            tools:visibility="gone">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.WhiteAccent"/>
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

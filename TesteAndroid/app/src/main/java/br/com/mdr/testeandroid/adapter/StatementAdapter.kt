@@ -33,7 +33,7 @@ class StatementAdapter: RecyclerView.Adapter<StatementAdapter.StatementViewHolde
         notifyDataSetChanged()
     }
 
-    class StatementViewHolder(val binding: DashboardStatementItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class StatementViewHolder(private val binding: DashboardStatementItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(statement: Statement) {
             binding.statement = statement
         }

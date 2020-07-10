@@ -1,17 +1,16 @@
 package br.com.mdr.testeandroid.flow.signin
 
+import android.content.Context
 import br.com.mdr.testeandroid.extensions.isCPF
-import br.com.mdr.testeandroid.flow.main.LoadingPresenter
 import br.com.mdr.testeandroid.model.api.SignInApiModel
+import br.com.mdr.testeandroid.model.api.UserApiModel
 import br.com.mdr.testeandroid.model.business.User
-import br.com.mdr.testeandroid.service.ISignInService
+import br.com.mdr.testeandroid.service.SignInService
 import br.com.mdr.testeandroid.util.MaskUtil
-import kotlinx.coroutines.*
 
 class SignInHandler(
-    override val loadingPresenter: LoadingPresenter,
-    override val signInPresenter: ISignInViewPresenter,
-    override val service: ISignInService
+    override val signInPresenter: SignInViewPresenter,
+    override val service: SignInService
 ) : ISignInHandler {
     private var maskedCpf = false
 
@@ -23,8 +22,10 @@ class SignInHandler(
         }
 
         if (userNameString.isCPF() && !maskedCpf) {
-            signInPresenter.maskedUserName.value = MaskUtil.getCpfMask(userNameString)
             maskedCpf = true
+            signInPresenter.maskedUserName.value = MaskUtil.getCpfMask(userNameString)
+        } else {
+            maskedCpf = false
         }
 
         signInPresenter.userName = userNameString
@@ -36,41 +37,23 @@ class SignInHandler(
         handleButtonState()
     }
 
-    override fun onSignInClicked() {
-        callSignInUser()
-    }
-
-    override fun getLocalUser(): User? {
-        return service.getLoggedUser()
+    override fun getLocalUser(context: Context): User? {
+        return service.getLoggedUser(context)
     }
 
     private fun handleButtonState() {
         signInPresenter.handleButtonState()
     }
 
-    private fun callSignInUser() {
-        loadingPresenter.showLoading()
-        val scope = CoroutineScope(Dispatchers.Main)
+    suspend fun callSignInUser(): UserApiModel {
+        var apiResult = UserApiModel()
 
-        scope.launch {
-            val signInApiModel = SignInApiModel(signInPresenter.userName, signInPresenter.password)
-            service.loginUser(signInApiModel)?.let { response ->
-                GlobalScope.launch {
-                    withContext(Dispatchers.Main) {
-                        response.userAccount?.let { user ->
-                            service.saveLoggedUser(user)
-                            signInPresenter.userName = ""
-                            signInPresenter.password = ""
-                            signInPresenter.userLive.value = user
-                        }
-                        response.error?.let { responseError ->
-                            signInPresenter.errorLive.value = responseError
-                        }
-                    }
-                }
-
-            }
-            loadingPresenter.hideLoading()
+        val signInApiModel = SignInApiModel(signInPresenter.userName, signInPresenter.password)
+        service.loginUser(signInApiModel)?.let {
+            signInPresenter.userName = ""
+            signInPresenter.password = ""
+            apiResult = it
         }
+        return apiResult
     }
 }

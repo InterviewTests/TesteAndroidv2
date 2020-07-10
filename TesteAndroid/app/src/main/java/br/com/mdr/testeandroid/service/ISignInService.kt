@@ -1,5 +1,6 @@
 package br.com.mdr.testeandroid.service
 
+import android.content.Context
 import br.com.mdr.testeandroid.model.api.SignInApiModel
 import br.com.mdr.testeandroid.model.api.UserApiModel
 import br.com.mdr.testeandroid.model.business.User
@@ -18,10 +19,10 @@ interface ISignInService {
      * Verify if has user saved into SharedPreferences
      * @return user if yes, null otherwise
      */
-    fun getLoggedUser(): User?
+    fun getLoggedUser(context: Context): User?
 
     /**
      * Save user logged into SharedPreferences
      */
-    fun saveLoggedUser(user: User)
+    fun saveLoggedUser(user: User, context: Context)
 }

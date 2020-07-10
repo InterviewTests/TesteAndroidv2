@@ -1,8 +1,6 @@
 package br.com.mdr.testeandroid.di
 
 import br.com.mdr.testeandroid.service.DashboardService
-import br.com.mdr.testeandroid.service.IDashboardService
-import br.com.mdr.testeandroid.service.ISignInService
 import br.com.mdr.testeandroid.service.SignInService
 import org.koin.dsl.module
 
@@ -12,6 +10,6 @@ import org.koin.dsl.module
  */
 
 val serviceModule = module {
-    single { SignInService(get()) as ISignInService }
-    single { DashboardService(get()) as IDashboardService}
+    single { SignInService(get()) }
+    single { DashboardService(get()) }
 }

@@ -6,6 +6,9 @@
 
     <data>
         <variable
+            name="showLoading"
+            type="Boolean" />
+        <variable
             name="user"
             type="br.com.mdr.testeandroid.model.business.User" />
 
@@ -117,9 +120,19 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/margin8"
+            android:visibility="@{showLoading ? View.GONE : View.VISIBLE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/txtRecentsDescription"
             tools:listitem="@layout/dashboard_statement_item"/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{showLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
