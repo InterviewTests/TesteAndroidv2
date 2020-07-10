@@ -118,11 +118,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             filled = false;
         } else if (this.binding.edtUser.getText().toString().contains("@")) {
             if (!FieldHelper.isEmail(this.binding.edtUser.getText().toString())) {
-                this.binding.tilUser.setError("CPF ou e-mail inválido 1!");
+                this.binding.tilUser.setError("CPF ou e-mail inválido!");
                 filled = false;
             }
         } else if (!FieldHelper.isCPF(this.binding.edtUser.getText().toString())) {
-            this.binding.tilUser.setError("CPF ou e-mail inválido 2!");
+            this.binding.tilUser.setError("CPF ou e-mail inválido!");
             filled = false;
         }
 

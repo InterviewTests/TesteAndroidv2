@@ -6,7 +6,7 @@
     <string name="app_login_img_content_description_logo">Logo</string>
     <string name="app_login_edt_hint_user">User</string>
     <string name="app_login_edt_hint_password">Password</string>
-    <string name="app_login_txt_text_titulo_login_recente">Login recente:</string>
+    <string name="app_login_txt_text_titulo_login_recente">Último login:</string>
     <string name="app_login_btn_text_logar">Login</string>
 
     <!-- Main -->
