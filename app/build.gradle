@@ -25,6 +25,14 @@ android {
 }
 
 dependencies {
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'org.greenrobot:eventbus:3.2.0'
+    implementation("com.squareup.moshi:moshi-kotlin:1.9.3")
+    implementation("com.squareup.moshi:moshi:1.9.3")
+    implementation("com.squareup.moshi:moshi-adapters:1.9.3")
+    implementation 'com.squareup.retrofit2:converter-moshi:2.0.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-simplexml:2.1.0'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.1.0'

@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toTopOf="@id/layout_transactions_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
@@ -20,7 +21,12 @@
             android:id="@+id/label_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:layout_margin="16dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Nome do Cliente"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@id/label_accnt"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +36,9 @@
             android:id="@+id/label_accnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:text="@string/account"
+            android:textColor="#FFFFFF"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_user_name" />
@@ -39,7 +47,10 @@
             android:id="@+id/label_accnt_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:layout_marginStart="16dp"
+            android:text="CONTA DO CLIENTE"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@id/label_balance"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +60,10 @@
             android:id="@+id/label_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:text="@string/balance"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toTopOf="@id/label_balance_value"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,12 +73,28 @@
             android:id="@+id/label_balance_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="TextView"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="SALDO DO CLIENTE"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@id/label_balance"
             app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.33" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="192dp"
+            app:layout_constraintBottom_toBottomOf="@+id/label_user_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.763"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/label_user_name"
+            app:srcCompat="@drawable/logout2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -73,6 +103,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_transactions_user_data">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
