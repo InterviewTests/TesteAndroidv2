@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HenriqueThomaziTeste</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="logo">Bank</string>
+    <string name="login">Login</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+</resources>
