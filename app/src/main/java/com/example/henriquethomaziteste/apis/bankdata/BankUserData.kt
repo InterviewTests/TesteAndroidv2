@@ -5,6 +5,8 @@ class BankUserData(
     var name: String? = "",
     var bankAccount: String? = "",
     var agency: String? = "",
-    var balance: Double = 0.0
+    var balance: Double = 0.0,
+    var user: String? = "",
+    var pass: String? = ""
 ) {
 }
