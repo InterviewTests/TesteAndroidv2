@@ -1,0 +1,3 @@
+[submodule "BankAccenture"]
+	path = BankAccenture
+	url = https://github.com/gucaveira/BankAccenture.git
