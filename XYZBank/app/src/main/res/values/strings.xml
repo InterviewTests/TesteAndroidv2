@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">XYZ Bank</string>
+    <!-- Strings related to login -->
+    <string name="prompt_user">User</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Login</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters
+        \nAt last one capital letter
+        \nAt last one digit
+        \nAt last one symbol</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="user_welcome_msg">Welcome %s!\nGet read to your account</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="tv_useraccount_caption">Account</string>
+    <string name="tv_balance_caption">Balance</string>
+    <string name="tv_listtitle_caption">Recents</string>
+    <string name="last_successfully_login_msg">Your last successfully login: %s</string>
+    <string name="empty_user_msg">Type your name and pasword to login</string>
+    <string name="date_format_text">yyyy-MM-dd</string>
+</resources>
