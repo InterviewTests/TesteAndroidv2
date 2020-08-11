@@ -16,11 +16,11 @@ Empresa R. M. Sistemas Web e Mobiles
       mais facil de manejar diretamente os dados da GUI.    
 2.3 - Implementado o parser para receber os resultados da requisicao POST para a API.    
 2.4 - Modificado a tela do template para parecer o maximo possivel ao do design proposto no estudo de caso.    
-2.5 - Implementado o teste expresso para os diversos complentes clicaveis e editaveis da UI.    
+2.5 - Implementado o teste expresso para os diversos componentes clicaveis e editaveis da UI.    
 2.6 - Implementado o metodo para a receber os dados da requsicao GET para a API.    
 2.7 - Testado a requisicao remota.    
 2.8 - Criado o lyout para receber os dados enviados pela API devidamente tratados e formatados.    
-2.9 - Criado o adapter para exibir os referidos dados em uma lista conforme o design proposto no estudode caso.    
+2.9 - Criado o adapter para exibir os referidos dados em uma lista conforme o design proposto no estudo de caso.    
 2.10 - Testado o envio da requiscao e os controles da UI.    
 2.11 - Testes finalizados e todos funcionando a contento.   
     
@@ -38,8 +38,8 @@ Estao sendo enviados como pull request, a pasta "XYZBank" contendo:
    - arquivos de configuracao do Android Studio, um screencast video do programa em execucao;    
     
    - a pasta "app" contendo:    
-     os fontes "*.kt" do pacote '../src/main/java/com.xyzbank.xyzbankapp/* e os testes    
-     os arquivos de layout e resources de tela "*.xml", na pasta '../src/main/res/*';   
+     os fontes "*.kt" do pacote 'app./src/main/java/com.xyzbank.xyzbankapp/* e os testes    
+     os arquivos de layout e resources de tela "*.xml", na pasta 'app/src/main/res/*';   
      os fontes "*.kt" dos testes nas saus respectivas pastas    
     
    - a pasta gradle para referencia local.    
