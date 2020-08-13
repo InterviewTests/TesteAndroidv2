@@ -45,20 +45,20 @@ Estao sendo enviados como pull request, a pasta "XYZBank" contendo:
    - a pasta gradle para referencia local.    
     
    - a pasta 'outputs/apk/', com um pacote de bytecodes no formato "debug.apk"    
-    
-XYZBank/    
-app/*    
-gradle/*    
-outputs/apk/*    
-build.gradle    
-gradle.properties    
-gradlew    
-gradlew.bat    
-local.properties    
-README.md - this file    
-settings.gradle    
-XYZBank.webm    
-    
+...    
+XYZBank    
+... ./app/*    
+... /gradle/*    
+... /outputs/apk/*    
+... /build.gradle    
+... /gradle.properties    
+... /gradlew    
+... /gradlew.bat    
+... /local.properties    
+... /README.md - this file    
+... /settings.gradle    
+... /XYZBank.webm    
+...
     
 ##### Conforme proposto no estudo de caso, o app foi criado para Android a partir da versao 4.4 (19 - KitKat)    
 ##### Para compilar uma versao desse app:    
