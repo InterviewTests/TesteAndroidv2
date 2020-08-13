@@ -64,7 +64,7 @@ XYZBank
 ##### Para compilar uma versao desse app:    
    - atualize o Android Studio para a ultima versao.    
    - Atualize as entradas do Android SDK desde a versao 19 ate a "major" versao real: 30.    
-   - Atualize oplugin do Kotlin para a ultima versao.    
+   - Atualize o plugin do Kotlin para a ultima versao.    
    - Atualize o gradle no projeto para a ultima versao.    
 
    {"statementList":[{"title":"Pagamento","desc":"Conta de luz","date":"2018-08-15","value":-50, ...}],"error":{}} 
