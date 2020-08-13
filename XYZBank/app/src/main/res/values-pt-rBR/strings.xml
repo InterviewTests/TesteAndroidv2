@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Banco XYZ</string>
+
+    <string name="prompt_user">Usuário</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Logar</string>
+    <string name="welcome">"Bem-vindo !"</string>
+    <string name="action_sign_in_short">Assinar em</string>
+    <string name="invalid_username">Não é um nome de usuário válido</string>
+    <string name="invalid_password">A senha deve ser &gt; que 5 caracteres\nAo menos uma letra maiúscula\nPelo menos um dígito\nPelo menos um símbolo</string>
+    <string name="login_failed">"Falha na Autenticação"</string>
+    <string name="user_welcome_msg">Bem-vindo, %s!\nAcesse sua conta</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="tv_useraccount_caption">Conta</string>
+    <string name="tv_balance_caption">Saldo</string>
+    <string name="tv_listtitle_caption">Recentes</string>
+    <string name="last_successfully_login_msg">Seu último login com sucesso: %s</string>
+    <string name="empty_user_msg">Digite seu nome e senha para fazer o login</string>
+    <string name="date_format_text">dd/MM/yyyy</string>
+</resources>

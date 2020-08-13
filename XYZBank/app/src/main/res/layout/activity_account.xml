@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.account.AccountActivity">
+
+    <LinearLayout
+        android:id="@+id/header_information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#343BE0"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10sdp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_42sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_22ssp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/back_btn"
+                android:layout_width="@dimen/_44sdp"
+                android:layout_height="@dimen/_44sdp"
+                android:contentDescription="@string/tv_balance_caption"
+                android:rotation="360"
+                app:srcCompat="@drawable/ic_baseline_input_24" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_account_caption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:text="@string/tv_useraccount_caption"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"/>
+
+        <TextView
+            android:id="@+id/tv_bankaccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_22ssp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_5sdp" />
+
+        <TextView
+            android:id="@+id/tv_balance_caption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:text="@string/tv_balance_caption"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"/>
+
+        <TextView
+            android:id="@+id/tv_balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_22ssp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/sep1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_10sdp"
+        android:background="#343BE0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_information" />
+
+    <TextView
+        android:id="@+id/tv_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_listtitle_caption"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sep1"/>
+    <ListView
+        android:id="@+id/list_entries"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingTop="@dimen/_minus10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_list_title"
+        android:headerDividersEnabled="false"
+        android:footerDividersEnabled="false"
+        android:dividerHeight="@dimen/_minus40sdp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

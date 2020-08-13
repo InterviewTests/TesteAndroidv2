@@ -1,41 +1,68 @@
-# Show me the code
+### Estudo de Caso para uma tela de login de usuario e accesso a uma conta de um banco imaginario.    
+    
+#### Empresa R. M. Sistemas Web e Mobiles     
+###### A pedido de: TCS Mobile hiring    
+    
+#### 1. - Analize do problema.    
+1.1. - preparado a plataforma de trabalho para obter o acesso para a API.    
+1.1.1. - Instalacao e configuracao do Postman.    
+1.1.2. - Teste dos diversos snipets de requisicao para a API oferecidos pela Collection Mockada via Postmam.    
+1.1.3. - Escolhido o Framework OkHttp Client como snipet para as requisicoes junto a API remota.    
+    
+#### 2. - Criacao de um prototipo inicial.    
+2.1. - Escolhido o template "Login Activity" do Android Studio.    
+2.2. - Escolhido o teste Espresso Unit Test (JUnit) por ja ser embutido no template do Android Studio e por ser    
+      mais facil de manejar diretamente os dados da GUI.    
+2.3. - Implementado o parser para receber os resultados da requisicao POST para a API.    
+2.4. - Modificado a tela do template para parecer o maximo possivel ao do design proposto no estudo de caso.    
+2.5. - Implementado o teste expresso para os diversos complentes clicaveis e editaveis da UI.    
+2.6. - Implementado o metodo para a receber os dados da requsicao GET para a API.    
+2.7. - Testado a requisicao remota.    
+2.8. - Criado o lyout para receber os dados enviados pela API devidamente tratados e formatados.    
+2.9. - Criado o adapter para exibir os referidos dados em uma lista conforme o design proposto no estudode caso.    
+2.10. - Testado o envio da requiscao e os controles da UI.    
+2.11. - Testes finalizados e todos funcionando a contento.   
+    
+#### 3. - Implementado e Melhorado a GUI    
+3.1. - Melhorado a Vizualizacao dos dados na UI.    
+3.2. - Criado uma versao em portugues do Brasil para as mensagens de tela que por padrao foram configuradas em ingles.    
+3.3. - Criado uma simples tela de splash screen.    
+3.4. - projeto postado no github como um pull request numa branch de nome "XYZBankApp".    
+    
+O projeto XYZBank foi desenvolvido em Kotlin versao "1.3.72" com Android Studio "4.2 Canary 7" e com a mais    
+alta versao do gradle "build:gradle:4.2.0-alpha07".    
+    
+Estao sendo enviados como pull request, a pasta "XYZBank" contendo:     
+   - arquivos de configuracao do Android Studio, um screencast video do programa em execucao;    
+    
+   - a pasta "app" contendo:    
+     os fontes "*.kt" do pacote '../src/main/java/com.xyzbank.xyzbankapp/* e os testes    
+     os arquivos de layout e resources de tela "*.xml", na pasta '../src/main/res/*';   
+     os fontes "*.kt" dos testes nas saus respectivas pastas    
+    
+   - a pasta gradle para referencia local.    
+    
+   - a pasta 'outputs/apk/', com um pacote de bytecodes no formato "debug.apk"    
+...    
+XYZBank    
+../app/*    
+../gradle/*    
+../outputs/apk/*    
+../build.gradle    
+../gradle.properties    
+../gradlew    
+../gradlew.bat    
+../local.properties    
+../README.md - this file    
+../settings.gradle    
+../XYZBank.webm    
+...
+    
+##### Conforme proposto no estudo de caso, o app foi criado para Android a partir da versao 4.4 (19 - KitKat)    
+##### Para compilar uma versao desse app:    
+   - atualize o Android Studio para a ultima versao.    
+   - Atualize as entradas do Android SDK desde a versao 19 ate a "major" versao real: 30.    
+   - Atualize o plugin do Kotlin para a ultima versao.    
+   - Atualize o gradle no projeto para a ultima versao.    
 
-Esse repositório contem todo o material necessário para realizar o teste: 
-- A especificação do layout está na pasta 'bank_app_layout' abrindo o index.html, utilizar os Styles do Android
-
-- Os dados da Api estão mockados, os exemplos e a especificação dos serviços (login e statements) se encontram no arquivo BankApp.postman_collection.json ( é necessário instalar o postman e importar a colection https://www.getpostman.com/apps)
-
-![Image of Yaktocat](https://github.com/SantanderTecnologia/TesteiOS/blob/new_test/telas.png)
-
-### # DESAFIO:
-
-Na primeira tela teremos um formulario de login, o campo user deve aceitar email ou cpf,
-o campo password deve validar se a senha tem pelo menos uma letra maiuscula, um caracter especial e um caracter alfanumérico.
-Apos a validação, realizar o login no endpoint https://bank-app-test.herokuapp.com/api/login e exibir os dados de retorno na próxima tela.
-O ultimo usuário logado deve ser salvo de forma segura localmente, e exibido na tela de login se houver algum salvo. 
-
-Na segunda tela será exibido os dados formatados do retorno do login e será necessário fazer um segundo request para obter os lançamentos do usuário, no endpoint https://bank-app-test.herokuapp.com/api/statements/{idUser} que retornará uma lista de lançamentos
-
-### # Avaliação
-
-Você será avaliado pela usabilidade, por respeitar o design e pela arquitetura do app. É esperado que você consiga explicar as decisões que tomou durante o desenvolvimento através de commits.
-
-Obrigatórios:
-
-* Java ou Kotlin
-* Material Design
-* O app deve funcionar a partir do android 4.4
-* Testes unitários, pode usar a ferramenta que você tem mais experiência, só nos explique o que ele tem de bom.
-* Arquitetura a ser utilizada: Android Clean Code (https://github.com/kmmraj/android-clean-code && https://medium.com/@kmmraj/android-clean-code-part-1-c66da6551d1)
-* Uso do git.
-
-### # Observações gerais
-
-Adicione um arquivo [README.md](http://README.md) com os procedimentos para executar o projeto.
-Pedimos que trabalhe sozinho e não divulgue o resultado na internet.
-
-Faça um fork desse desse repositório em seu Github e ao finalizar nos envie um Pull Request com o resultado, por favor informe por qual empresa você esta se candidatando.
-
-# Importante: não há prazo de entrega, faça com qualidade!
-
-# BOA SORTE!
+   {"statementList":[{"title":"Pagamento","desc":"Conta de luz","date":"2018-08-15","value":-50, ...}],"error":{}} 
