@@ -1,17 +1,15 @@
 ### Estudo de Caso para uma tela de login de usuario e accesso a uma conta de um banco imaginario.    
     
 #### Empresa R. M. Sistemas Web e Mobiles     
-#### A pedido de: TCS Mobile hiring    
+###### A pedido de: TCS Mobile hiring    
     
 #### 1. - Analize do problema.    
-      
 1.1. - preparado a plataforma de trabalho para obter o acesso para a API.    
 1.1.1. - Instalacao e configuracao do Postman.    
 1.1.2. - Teste dos diversos snipets de requisicao para a API oferecidos pela Collection Mockada via Postmam.    
 1.1.3. - Escolhido o Framework OkHttp Client como snipet para as requisicoes junto a API remota.    
     
 #### 2. - Criacao de um prototipo inicial.    
-    
 2.1. - Escolhido o template "Login Activity" do Android Studio.    
 2.2. - Escolhido o teste Espresso Unit Test (JUnit) por ja ser embutido no template do Android Studio e por ser    
       mais facil de manejar diretamente os dados da GUI.    
@@ -26,7 +24,6 @@
 2.11. - Testes finalizados e todos funcionando a contento.   
     
 #### 3. - Implementado e Melhorado a GUI    
-    
 3.1. - Melhorado a Vizualizacao dos dados na UI.    
 3.2. - Criado uma versao em portugues do Brasil para as mensagens de tela que por padrao foram configuradas em ingles.    
 3.3. - Criado uma simples tela de splash screen.    
