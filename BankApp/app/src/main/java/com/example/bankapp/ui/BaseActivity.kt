@@ -1,7 +1,6 @@
 package com.example.bankapp.ui
 
 import android.content.res.Resources
-import android.security.keystore.UserNotAuthenticatedException
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity

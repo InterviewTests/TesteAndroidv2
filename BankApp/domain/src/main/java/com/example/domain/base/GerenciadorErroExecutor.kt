@@ -9,11 +9,10 @@ class GerenciadorErroExecutor {
         fun tratarExcecao(
             tag: TagExcecao = TagExcecao.NAO_IDENTIFICADO,
             excecao: Exception
-        ) = when {
-            excecao::class.java == TimeoutException::class.java ->
+        ) = when (excecao::class.java) {
+            TimeoutException::class.java ->
                 excecao
-            else ->
-                ExecutorException(tag, excecao.message)
+            else -> ExecutorException(tag, excecao.message)
         }
     }
 }

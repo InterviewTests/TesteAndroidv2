@@ -1,7 +1,7 @@
 package com.example.bankapp
 
 import android.app.Application
-import com.example.bankapp.di.ModulosApp
+import com.example.bankapp.di.AppModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -18,7 +18,7 @@ class BankApp : Application() {
         startKoin {
             androidContext(this@BankApp)
             modules(
-                ModulosApp.obterModulos()
+                AppModules.getModules()
             )
         }
     }

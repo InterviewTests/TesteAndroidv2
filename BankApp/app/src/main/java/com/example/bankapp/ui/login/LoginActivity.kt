@@ -1,7 +1,6 @@
 package com.example.bankapp.ui.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.SystemClock
 import android.text.Editable
@@ -18,35 +17,33 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : BaseActivity() {
     private var mUltimoClickBotaoLogin = 0L
-    private val realizarLoginViewModel: LoginViewModel by viewModel()
+    private val loginViewModel: LoginViewModel by viewModel()
     private val gerenciadorSessao: GerenciadorSessao = get()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        configurarObservers()
-        configurarListeners()
+        setupObservers()
+        setupListeners()
     }
 
-    private fun configurarObservers() {
+    private fun setupObservers() {
         configurarObserverLoginResposta()
-        configurarObserverSenha()
-        configurarObserverUsuario()
     }
 
     private fun configurarObserverLoginResposta() {
-        realizarLoginViewModel.loginResposta.observe(this, Observer {
+        loginViewModel.loginResposta.observe(this, Observer {
             it?.let { resposta ->
                 if (resposta.contaUsuario?.id != null) {
                     gerenciadorSessao.salvarInformacoesUsuario(
-                        id = resposta!!.contaUsuario!!.id,
-                        agencia = resposta!!.contaUsuario!!.agencia,
-                        conta = resposta!!.contaUsuario!!.conta,
-                        nome = resposta!!.contaUsuario!!.nome,
-                        saldo = resposta!!.contaUsuario!!.saldo
+                        id = resposta.contaUsuario!!.id,
+                        agencia = resposta.contaUsuario!!.agencia,
+                        conta = resposta.contaUsuario!!.conta,
+                        nome = resposta.contaUsuario!!.nome,
+                        saldo = resposta.contaUsuario!!.saldo
                     )
 
-                    val statementIntent = Intent(this, MainActivity::class.java)
-                    startActivity(statementIntent)
+                    val statementsIntent = Intent(this, MainActivity::class.java)
+                    startActivity(statementsIntent)
                     finish()
                 } else {
                     exibirMensagemErroLogin(mensagem = resposta.error?.mensagem!!)
@@ -55,39 +52,25 @@ class LoginActivity : BaseActivity() {
         })
     }
 
-    private fun configurarObserverUsuario() {
-        realizarLoginViewModel.usuario.observe(this, Observer {
-
-        })
-    }
-
-    private fun configurarObserverSenha() {
-        realizarLoginViewModel.senha.observe(this, Observer {
-
-        })
-    }
-
-    private fun configurarListeners() {
+    private fun setupListeners() {
         configurarEditTexts()
         configurarProgressBar()
         botao_efetuar_login.setOnClickListener {
             if (SystemClock.elapsedRealtime() - mUltimoClickBotaoLogin > 1000) {
                 mUltimoClickBotaoLogin = SystemClock.elapsedRealtime()
-                if (realizarLoginViewModel.usuarioValido(realizarLoginViewModel.usuario?.value) && realizarLoginViewModel.senhaValida(
-                        realizarLoginViewModel.senha?.value
+                if (loginViewModel.usuarioValido(loginViewModel.usuario.value) && loginViewModel.senhaValida(
+                        loginViewModel.senha.value
                     )
                 ) {
-                    resetarErros()
+                    resetErrors()
                     efetuarLogin(
-                        usuario = realizarLoginViewModel.usuario.value!!,
-                        senha = realizarLoginViewModel.senha.value!!
+                        usuario = loginViewModel.usuario.value!!,
+                        senha = loginViewModel.senha.value!!
                     )
-                } else{
-                    configurarErrosSenha(realizarLoginViewModel.senha.value)
-                    configurarErrosUsuario(realizarLoginViewModel.usuario.value)
+                } else {
+                    configurarErrosSenha(loginViewModel.senha.value)
+                    configurarErrosUsuario(loginViewModel.usuario.value)
                 }
-
-
             }
 
         }
@@ -104,25 +87,22 @@ class LoginActivity : BaseActivity() {
             override fun onTextChanged(valor: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 valor?.let {
                     when (valor.isBlank()) {
-                        false -> realizarLoginViewModel.usuario.postValue(valor.toString())
+                        false -> loginViewModel.usuario.postValue(valor.toString())
                         else -> {
                         }
                     }
-
                 }
             }
         })
         input_senha.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(editavel: Editable?) {
-            }
+            override fun afterTextChanged(editavel: Editable?) {}
 
-            override fun beforeTextChanged(valor: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
+            override fun beforeTextChanged(valor: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(valor: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 valor?.let {
                     when (valor.isBlank()) {
-                        false -> realizarLoginViewModel.senha.postValue(valor.toString())
+                        false -> loginViewModel.senha.postValue(valor.toString())
                         else -> {
                         }
                     }
@@ -133,7 +113,7 @@ class LoginActivity : BaseActivity() {
 
     fun efetuarLogin(usuario: String, senha: String) {
         doAsyncWork(work = {
-            realizarLoginViewModel.realizarLogin(
+            loginViewModel.realizarLogin(
                 usuario = usuario,
                 senha = senha
             )
@@ -153,29 +133,25 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun configurarErrosUsuario(valor: String?) {
-        when (valor.isNullOrBlank()) {
-            true -> input_usuario.setError("Campo de usuário não pode estar em branco.")
-            false -> if (!realizarLoginViewModel.usuarioValido(valor)) input_usuario.setError("O usuário deve conter um email ou CPF válido.")
+        input_usuario.error = when (valor.isNullOrBlank()) {
+            true -> "Campo de usuário não pode estar em branco."
+            false -> if (!loginViewModel.usuarioValido(valor)) "O usuário deve conter um email ou CPF válido."
+            else ""
         }
     }
 
     private fun configurarErrosSenha(valor: String?) {
-        when (valor.isNullOrBlank()) {
-            true -> {
-                input_senha.setError("Senha não pode estar em branco.")
-            }
-            false -> {
-                if (!realizarLoginViewModel.senhaValida(valor)) input_senha.setError("A senha deve conter pelo menos uma letra maiúscula.")
-            }
+        input_senha.error = when (valor.isNullOrBlank()) {
+            true -> "Senha não pode estar em branco."
+            false -> if (!loginViewModel.senhaValida(valor)) "A senha deve conter pelo menos uma letra maiúscula."
+            else ""
         }
 
 
     }
 
-    private fun resetarErros(){
+    private fun resetErrors() {
         input_usuario.error = null
         input_senha.error = null
     }
-
-
 }

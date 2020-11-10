@@ -171,7 +171,6 @@ class LoginTest {
         assertEquals(1, resposta?.contaUsuario?.id)
         assertEquals(true, resposta?.error == null)
 
-
     }
 
     @Test

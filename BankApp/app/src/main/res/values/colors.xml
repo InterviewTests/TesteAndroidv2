@@ -8,4 +8,6 @@
     <color name="transparent">#00000000</color>
     <color name="botaoDesabilitado">#FFC7F1E1</color>
     <color name="white">#FFFFFF</color>
+    <color name="negative_value">#ff4d4d</color>
+    <color name="positive_value">#32ff7e</color>
 </resources>

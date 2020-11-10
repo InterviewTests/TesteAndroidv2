@@ -1,8 +1,8 @@
 package com.example.data.api
 
-import com.example.data.data.ListaStatementsData
-import com.example.data.data.LoginRequisicaoData
-import com.example.data.data.LoginRespostaData
+import com.example.data.model.ListaStatementsData
+import com.example.data.model.LoginRequisicaoData
+import com.example.data.model.LoginRespostaData
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

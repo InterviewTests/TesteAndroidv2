@@ -4,7 +4,6 @@ import com.example.domain.base.GerenciadorErroExecutor
 import com.example.domain.base.IExecutor
 import com.example.domain.base.TagExcecao
 import com.example.domain.entidades.ListaStatements
-import com.example.domain.entidades.LoginRequisicao
 import com.example.domain.repositorios.IBankRepositorio
 import java.lang.Exception
 

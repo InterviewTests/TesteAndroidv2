@@ -1,7 +1,6 @@
 package com.example.bankapp.ui.statements
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
@@ -16,8 +15,8 @@ import com.example.bankapp.util.GerenciadorSessao
 import com.example.bankapp.util.Mask
 import com.example.domain.entidades.Statement
 import kotlinx.android.synthetic.main.activity_main.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.android.ext.android.get
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity() {
     val gerenciadorSessao: GerenciadorSessao = get()

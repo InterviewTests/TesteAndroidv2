@@ -10,7 +10,7 @@ class DialogBuilder(val context: Context) {
         mensagem: String,
         acaoBotaoOk: (() -> Unit)? = null
     ) {
-        DialogUmBotao(
+        OneButtonDialog(
             context,
             titulo,
             formatarMensagem(mensagem),
@@ -24,7 +24,7 @@ class DialogBuilder(val context: Context) {
         titleOkCall: String,
         okCall: () -> Unit
     ) {
-        DialogUmBotao(
+        OneButtonDialog(
             context,
             titulo,
             formatarMensagem(mensagem),

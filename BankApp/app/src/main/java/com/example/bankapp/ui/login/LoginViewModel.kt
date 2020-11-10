@@ -33,7 +33,6 @@ class LoginViewModel(private val loginExecutor: RealizarLoginExecutor, val app: 
                     false -> valor!!.contains("@") && valor.contains(".com")
                 }
             }
-
             true -> false
         }
     }
