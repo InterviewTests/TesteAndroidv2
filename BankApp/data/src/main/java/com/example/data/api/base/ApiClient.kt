@@ -1,6 +1,7 @@
 package com.example.data.api.base
 
-import com.example.data.util.Constants
+import com.example.data.util.Constants.ApiParameters.DEV_HOST
+import com.example.data.util.Constants.ApiParameters.TIMEOUT_SECONDS
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -10,7 +11,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ApiClient {
-    private val TIMEOUT_SECONDS: Long = 300
     private var retrofit: Retrofit? = null
 
     private val client: Retrofit
@@ -33,7 +33,7 @@ object ApiClient {
                 httpClient.addInterceptor(logging)
 
                 retrofit = Retrofit.Builder()
-                    .baseUrl(Constants.ParametrosApi.DEV_HOST)
+                    .baseUrl(DEV_HOST)
                     .addConverterFactory(GsonConverterFactory.create(GsonUtil.gsonDefault))
                     .client(httpClient.build())
                     .build()
