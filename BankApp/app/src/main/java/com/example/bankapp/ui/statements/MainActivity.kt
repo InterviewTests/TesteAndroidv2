@@ -11,25 +11,25 @@ import com.example.bankapp.ui.adapters.StatementsAdapter
 import com.example.bankapp.ui.login.LoginActivity
 import com.example.bankapp.util.Constants
 import com.example.bankapp.util.Converters
-import com.example.bankapp.util.SessionManager
 import com.example.bankapp.util.Mask
+import com.example.bankapp.util.SessionManager
 import com.example.domain.entities.Statement
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity() {
-    val sessionManager: SessionManager = get()
-    val mainViewModel: MainViewModel by viewModel()
+    private val sessionManager: SessionManager = get()
+    private val mainViewModel: MainViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         when (sessionManager.retornarUsuario()!!.id != Constants.Parametros.CODIGO_ID_VAZIO) {
             true -> {
                 setContentView(R.layout.activity_main)
-                configurarInformacoesUsuario()
-                configurarObservers()
-                configurarListeners()
+                setUserInformation()
+                setupObservers()
+                setupListeners()
             }
             else -> {
                 val loginIntent = Intent(this, LoginActivity::class.java)
@@ -37,17 +37,17 @@ class MainActivity : BaseActivity() {
                 finish()
             }
         }
-
     }
 
-    private fun configurarInformacoesUsuario() {
+    private fun setUserInformation() {
         mainViewModel.contaUsuario.value = sessionManager.retornarUsuario()
     }
 
-    fun configurarObservers() {
+    private fun setupObservers() {
         mainViewModel.listaStatements.observe(this, Observer {
             it?.let {
-                if (it.listaStatements!!.isNotEmpty()) configurarStatementsRecyclerView(it.listaStatements) else configurarListaStatementsVazia()
+                if (it.listaStatements!!.isNotEmpty()) configurarStatementsRecyclerView(it.listaStatements)
+                else setupEmptyList()
             }
         })
 
@@ -55,13 +55,13 @@ class MainActivity : BaseActivity() {
             textview_nome.text = contaUsuario?.nome
             textview_conta.text =
                 "${contaUsuario?.conta} / ${Mask().addMask(contaUsuario?.agencia!!, "##.######-#")}"
-            textview_saldo.text = Converters().converterValorParaMoeda(contaUsuario?.saldo!!)
+            textview_saldo.text = Converters().convertToCurrency(contaUsuario?.saldo!!)
 
-            listarstatements(idUsuario = contaUsuario!!.id!!)
+            listStatements(idUsuario = contaUsuario!!.id!!)
         })
     }
 
-    fun configurarListeners() {
+    fun setupListeners() {
         viewProgressBar = progressBar
         logout_button.setOnClickListener {
             realizarLogout()
@@ -77,13 +77,13 @@ class MainActivity : BaseActivity() {
         statementsRecyclerView.layoutManager = layoutManager
     }
 
-    private fun configurarListaStatementsVazia() {
+    private fun setupEmptyList() {
 
         recyclerview_statements.visibility = View.GONE
         textview_semResultados.visibility = View.VISIBLE
     }
 
-    private fun listarstatements(idUsuario: Int) {
+    private fun listStatements(idUsuario: Int) {
         doAsyncWork(work = { mainViewModel.listarStatements(idUsuario = idUsuario) })
     }
 

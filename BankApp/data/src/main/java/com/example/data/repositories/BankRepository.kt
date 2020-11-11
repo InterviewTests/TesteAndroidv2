@@ -1,9 +1,9 @@
 package com.example.data.repositories
 
-import com.example.data.api.BankApi
-import com.example.data.api.base.RequestManager
-import com.example.data.api.base.exceptions.ApiException
-import com.example.data.api.base.exceptions.RepositoryException
+import com.example.data.networking.BankApi
+import com.example.data.networking.base.RequestManager
+import com.example.data.networking.base.exceptions.ApiException
+import com.example.data.networking.base.exceptions.RepositoryException
 import com.example.data.model.LoginRequisicaoData
 import com.example.data.model.toModel
 import com.example.domain.entities.ListaStatements
@@ -34,7 +34,6 @@ class BankRepository(private val api: BankApi) : IBankRepository {
                 throw RepositoryException(TAG, mensagem, complemento, excecao)
             }
         }
-
     }
 
     override suspend fun listarSatements(id: Int?): ListaStatements {

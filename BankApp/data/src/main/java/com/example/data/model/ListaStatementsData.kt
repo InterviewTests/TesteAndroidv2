@@ -10,7 +10,6 @@ data class ListaStatementsData(
     val erro: ErroData?
 )
 
-
 fun ListaStatementsData.toModel() =
     ListaStatements(
         listaStatements = listaStatements?.map { it.toModel() },

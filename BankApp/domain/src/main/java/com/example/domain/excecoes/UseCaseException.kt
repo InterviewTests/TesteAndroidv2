@@ -6,5 +6,4 @@ open class UseCaseException(
     val exceptionTag: ExceptionTag = ExceptionTag.NAO_IDENTIFICADO,
     val mensagem: String? = null,
     causa: Throwable? = null
-) :
-    Exception(mensagem ?: causa?.message, causa)
+) : Exception(mensagem ?: causa?.message, causa)

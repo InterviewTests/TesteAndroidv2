@@ -1,7 +1,7 @@
 package com.example.bankapp.di.modules
 
-import com.example.data.api.BankApi
-import com.example.data.api.base.ApiClient
+import com.example.data.networking.BankApi
+import com.example.data.networking.base.ApiClient
 import com.example.data.repositories.BankRepository
 import com.example.domain.repositories.IBankRepository
 import org.koin.dsl.bind

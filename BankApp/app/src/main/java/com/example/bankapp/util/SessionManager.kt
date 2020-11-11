@@ -31,7 +31,6 @@ class SessionManager(val app: Application) {
         editor.putFloat(Constants.Parametros.BALANCE, saldo!!.toFloat())
         editor.putInt(Constants.Parametros.ID, id!!)
         editor.apply()
-
     }
 
     fun retornarUsuario(): ContaUsuario? {
@@ -50,6 +49,4 @@ class SessionManager(val app: Application) {
             saldo = saldo.toDouble()
         )
     }
-
-
 }

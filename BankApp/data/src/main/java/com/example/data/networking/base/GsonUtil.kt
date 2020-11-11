@@ -1,4 +1,4 @@
-package com.example.data.api.base
+package com.example.data.networking.base
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -7,7 +7,7 @@ import com.google.gson.reflect.TypeToken
 
 object GsonUtil {
     private const val apiDateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-    val gsonDefault : Gson = GsonBuilder()
+    val gsonDefault: Gson = GsonBuilder()
         .setDateFormat(apiDateFormat)
         .create()
 

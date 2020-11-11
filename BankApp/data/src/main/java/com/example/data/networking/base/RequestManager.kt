@@ -1,9 +1,9 @@
-package com.example.data.api.base
+package com.example.data.networking.base
 
 import android.content.res.Resources
-import com.example.data.api.base.exceptions.ApiException
-import com.example.data.api.base.exceptions.RepositoryException
-import com.example.data.api.base.exceptions.SuccessWithNullReturnException
+import com.example.data.networking.base.exceptions.ApiException
+import com.example.data.networking.base.exceptions.RepositoryException
+import com.example.data.networking.base.exceptions.SuccessWithNullReturnException
 import retrofit2.Response
 import java.util.concurrent.TimeoutException
 

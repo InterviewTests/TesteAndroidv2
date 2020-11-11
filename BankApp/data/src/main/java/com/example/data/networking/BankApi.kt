@@ -1,4 +1,4 @@
-package com.example.data.api
+package com.example.data.networking
 
 import com.example.data.model.ListaStatementsData
 import com.example.data.model.LoginRequisicaoData

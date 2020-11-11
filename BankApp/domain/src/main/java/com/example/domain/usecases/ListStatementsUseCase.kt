@@ -1,11 +1,10 @@
 package com.example.domain.usecases
 
-import com.example.domain.base.UseCaseErrorManager
 import com.example.domain.base.ExceptionTag
 import com.example.domain.base.IUseCase
+import com.example.domain.base.UseCaseErrorManager
 import com.example.domain.entities.ListaStatements
 import com.example.domain.repositories.IBankRepository
-import java.lang.Exception
 
 class ListStatementsUseCase(private val repository: IBankRepository) :
     IUseCase<ListaStatements, ListStatementsUseCase.Parametros> {

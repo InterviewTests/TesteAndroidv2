@@ -3,7 +3,6 @@ package com.example.data.model
 import com.example.domain.entities.Statement
 import com.google.gson.annotations.SerializedName
 
-
 data class StatementData(
     @SerializedName("title")
     val titulo: String?,

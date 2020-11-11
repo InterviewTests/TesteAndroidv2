@@ -1,4 +1,4 @@
-package com.example.data.api.base.exceptions
+package com.example.data.networking.base.exceptions
 
 import com.example.data.util.LogManager
 

@@ -1,4 +1,4 @@
-package com.example.data.api.base
+package com.example.data.networking.base
 
 import com.example.data.util.Constants.ApiParameters.DEV_HOST
 import com.example.data.util.Constants.ApiParameters.TIMEOUT_SECONDS

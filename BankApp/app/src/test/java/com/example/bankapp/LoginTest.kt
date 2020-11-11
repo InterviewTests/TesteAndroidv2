@@ -2,39 +2,33 @@ package com.example.bankapp
 
 import android.app.Application
 import com.example.bankapp.ui.login.LoginViewModel
+import com.example.data.networking.BankApi
+import com.example.data.repositories.BankRepository
 import com.example.domain.entities.ContaUsuario
 import com.example.domain.entities.Erro
 import com.example.domain.entities.LoginRequisicao
 import com.example.domain.entities.LoginResposta
-import com.example.domain.repositories.IBankRepository
 import com.example.domain.usecases.PerformLoginUseCase
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
-import org.junit.Before
 import org.junit.Test
 
 class LoginTest {
     private val loginRequisicaoMock = mockk<LoginRequisicao>()
     private val applicationMock = mockk<Application>()
+    private val bankApi = mockk<BankApi>()
 
-    @MockK
-    lateinit var IBankRepositoryMock: IBankRepository
-    lateinit var performLoginUseCaseMock: PerformLoginUseCase
+    private val IBankRepositoryMock by lazy {
+        BankRepository(bankApi)
+    }
+    private val performLoginUseCaseMock = mockk<PerformLoginUseCase>()
 
     private val viewModel by lazy {
         LoginViewModel(performLoginUseCaseMock, applicationMock)
-    }
-
-
-    @Before
-    fun setup() {
-        performLoginUseCaseMock = mockk()
-        IBankRepositoryMock = mockk()
     }
 
     @Test

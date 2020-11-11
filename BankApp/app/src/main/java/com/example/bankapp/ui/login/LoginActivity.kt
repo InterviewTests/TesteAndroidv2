@@ -103,8 +103,7 @@ class LoginActivity : BaseActivity() {
                 valor?.let {
                     when (valor.isBlank()) {
                         false -> loginViewModel.senha.postValue(valor.toString())
-                        else -> {
-                        }
+                        else -> Unit
                     }
                 }
             }
@@ -146,8 +145,6 @@ class LoginActivity : BaseActivity() {
             false -> if (!loginViewModel.senhaValida(valor)) "A senha deve conter pelo menos uma letra maiúscula."
             else ""
         }
-
-
     }
 
     private fun resetErrors() {

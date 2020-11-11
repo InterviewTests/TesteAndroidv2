@@ -13,9 +13,7 @@ import org.junit.Test
 
 class StatementsTest {
 
-
     private val listStatementsUseCaseMock: ListStatementsUseCase = mockk()
-    private val IBankRepositoryMock: IBankRepository = mockk()
 
     @Test
     fun listarStatementsSemErro() {
@@ -71,5 +69,4 @@ class StatementsTest {
         assertEquals(true, resposta.erro!!.codigo == 53)
         assertEquals(true, resposta.listaStatements == null)
     }
-
 }
