@@ -10,7 +10,7 @@ import com.example.bankapp.R
 import com.example.bankapp.ui.BaseActivity
 import com.example.bankapp.ui.dialogs.DialogBuilder
 import com.example.bankapp.ui.statements.MainActivity
-import com.example.bankapp.util.GerenciadorSessao
+import com.example.bankapp.util.SessionManager
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class LoginActivity : BaseActivity() {
     private var mUltimoClickBotaoLogin = 0L
     private val loginViewModel: LoginViewModel by viewModel()
-    private val gerenciadorSessao: GerenciadorSessao = get()
+    private val sessionManager: SessionManager = get()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -34,7 +34,7 @@ class LoginActivity : BaseActivity() {
         loginViewModel.loginResposta.observe(this, Observer {
             it?.let { resposta ->
                 if (resposta.contaUsuario?.id != null) {
-                    gerenciadorSessao.salvarInformacoesUsuario(
+                    sessionManager.salvarInformacoesUsuario(
                         id = resposta.contaUsuario!!.id,
                         agencia = resposta.contaUsuario!!.agencia,
                         conta = resposta.contaUsuario!!.conta,

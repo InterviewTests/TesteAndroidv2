@@ -4,7 +4,7 @@ import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
-class Conversores {
+class Converters {
     fun converterDataddMMyyyy(data: String): String {
 
         val parser = SimpleDateFormat("yyyy-MM-dd")
@@ -13,7 +13,7 @@ class Conversores {
         return formatter.format(parser.parse(data))
     }
 
-    fun converterValorParaMoeda(valor: Double): String {
+    fun convertToCurrency(valor: Double): String {
         val formatter = NumberFormat.getCurrencyInstance()
         formatter.maximumFractionDigits = 2
         formatter.currency = Currency.getInstance(Locale("pt", "BR"))

@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.SharedPreferences
 import com.example.domain.entities.ContaUsuario
 
-class GerenciadorSessao(val app: Application) {
+class SessionManager(val app: Application) {
     val sharedPreferences: String = "shared_preferences"
 
     fun limparDados() {
@@ -25,22 +25,22 @@ class GerenciadorSessao(val app: Application) {
     ) {
         val sharedPrefs: SharedPreferences = app.getSharedPreferences(sharedPreferences, 0)
         val editor = sharedPrefs.edit()
-        editor.putString(Constantes.Parametros.NAME, nome)
-        editor.putString(Constantes.Parametros.BANK_ACCOUNT, conta)
-        editor.putString(Constantes.Parametros.AGENCY, agencia)
-        editor.putFloat(Constantes.Parametros.BALANCE, saldo!!.toFloat())
-        editor.putInt(Constantes.Parametros.ID, id!!)
+        editor.putString(Constants.Parametros.NAME, nome)
+        editor.putString(Constants.Parametros.BANK_ACCOUNT, conta)
+        editor.putString(Constants.Parametros.AGENCY, agencia)
+        editor.putFloat(Constants.Parametros.BALANCE, saldo!!.toFloat())
+        editor.putInt(Constants.Parametros.ID, id!!)
         editor.apply()
 
     }
 
     fun retornarUsuario(): ContaUsuario? {
         val sharedPrefs: SharedPreferences = app.getSharedPreferences(sharedPreferences, 0)
-        val idUsuario = sharedPrefs.getInt(Constantes.Parametros.ID, -1)
-        val conta = sharedPrefs.getString(Constantes.Parametros.BANK_ACCOUNT, "")
-        val agencia = sharedPrefs.getString(Constantes.Parametros.AGENCY, "")
-        val nome = sharedPrefs.getString(Constantes.Parametros.NAME, "")
-        val saldo = sharedPrefs.getFloat(Constantes.Parametros.BALANCE, 0.0f)
+        val idUsuario = sharedPrefs.getInt(Constants.Parametros.ID, -1)
+        val conta = sharedPrefs.getString(Constants.Parametros.BANK_ACCOUNT, "")
+        val agencia = sharedPrefs.getString(Constants.Parametros.AGENCY, "")
+        val nome = sharedPrefs.getString(Constants.Parametros.NAME, "")
+        val saldo = sharedPrefs.getFloat(Constants.Parametros.BALANCE, 0.0f)
 
         return ContaUsuario(
             id = idUsuario,

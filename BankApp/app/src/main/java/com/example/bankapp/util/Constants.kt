@@ -1,6 +1,6 @@
 package com.example.bankapp.util
 
-object Constantes {
+object Constants {
     object Parametros{
         const val ID : String = "ID"
         const val BANK_ACCOUNT : String = "BANK_ACCOUNT"

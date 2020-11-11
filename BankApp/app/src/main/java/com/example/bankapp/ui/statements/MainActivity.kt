@@ -9,9 +9,9 @@ import com.example.bankapp.R
 import com.example.bankapp.ui.BaseActivity
 import com.example.bankapp.ui.adapters.StatementsAdapter
 import com.example.bankapp.ui.login.LoginActivity
-import com.example.bankapp.util.Constantes
-import com.example.bankapp.util.Conversores
-import com.example.bankapp.util.GerenciadorSessao
+import com.example.bankapp.util.Constants
+import com.example.bankapp.util.Converters
+import com.example.bankapp.util.SessionManager
 import com.example.bankapp.util.Mask
 import com.example.domain.entities.Statement
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,12 +19,12 @@ import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity() {
-    val gerenciadorSessao: GerenciadorSessao = get()
+    val sessionManager: SessionManager = get()
     val mainViewModel: MainViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        when (gerenciadorSessao.retornarUsuario()!!.id != Constantes.Parametros.CODIGO_ID_VAZIO) {
+        when (sessionManager.retornarUsuario()!!.id != Constants.Parametros.CODIGO_ID_VAZIO) {
             true -> {
                 setContentView(R.layout.activity_main)
                 configurarInformacoesUsuario()
@@ -41,7 +41,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun configurarInformacoesUsuario() {
-        mainViewModel.contaUsuario.value = gerenciadorSessao.retornarUsuario()
+        mainViewModel.contaUsuario.value = sessionManager.retornarUsuario()
     }
 
     fun configurarObservers() {
@@ -55,7 +55,7 @@ class MainActivity : BaseActivity() {
             textview_nome.text = contaUsuario?.nome
             textview_conta.text =
                 "${contaUsuario?.conta} / ${Mask().addMask(contaUsuario?.agencia!!, "##.######-#")}"
-            textview_saldo.text = Conversores().converterValorParaMoeda(contaUsuario?.saldo!!)
+            textview_saldo.text = Converters().converterValorParaMoeda(contaUsuario?.saldo!!)
 
             listarstatements(idUsuario = contaUsuario!!.id!!)
         })
@@ -88,7 +88,7 @@ class MainActivity : BaseActivity() {
     }
 
     fun realizarLogout() {
-        gerenciadorSessao.limparDados()
+        sessionManager.limparDados()
         val loginIntent = Intent(this, LoginActivity::class.java)
         startActivity(loginIntent)
         finish()
