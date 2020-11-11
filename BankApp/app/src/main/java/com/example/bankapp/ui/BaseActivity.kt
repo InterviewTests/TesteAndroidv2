@@ -6,8 +6,8 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bankapp.R
 import com.example.bankapp.ui.dialogs.DialogBuilder
-import com.example.domain.base.TagExcecao
-import com.example.domain.excecoes.ExecutorException
+import com.example.domain.base.ExceptionTag
+import com.example.domain.excecoes.UseCaseException
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeoutException
@@ -65,13 +65,13 @@ abstract class BaseActivity : AppCompatActivity() {
                 getString(R.string.erro_not_found)
             excecao::class.java == TimeoutException::class.java ->
                 getString(R.string.erro_timeout)
-            excecao::class.java == ExecutorException::class.java -> {
-                val executor = excecao as ExecutorException
+            excecao::class.java == UseCaseException::class.java -> {
+                val executor = excecao as UseCaseException
                 when {
 
-                    executor.tag == TagExcecao.REALIZAR_LOGIN ->
+                    executor.exceptionTag == ExceptionTag.REALIZAR_LOGIN ->
                         getString(R.string.erro_realizar_login)
-                    executor.tag == TagExcecao.LISTAR_STATEMENTS_POR_USUARIO ->
+                    executor.exceptionTag == ExceptionTag.LISTAR_STATEMENTS_POR_USUARIO ->
                         getString(R.string.erro_empresa_id)
                     else -> getString(R.string.erro_nao_identificado)
                 }

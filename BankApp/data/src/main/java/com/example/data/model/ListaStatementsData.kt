@@ -1,6 +1,6 @@
 package com.example.data.model
 
-import com.example.domain.entidades.ListaStatements
+import com.example.domain.entities.ListaStatements
 import com.google.gson.annotations.SerializedName
 
 data class ListaStatementsData(
@@ -11,8 +11,8 @@ data class ListaStatementsData(
 )
 
 
-fun ListaStatementsData.converterParaListaStatements() =
+fun ListaStatementsData.toModel() =
     ListaStatements(
-        listaStatements = listaStatements?.converterParaListaStatement(),
-        erro = erro?.converterParaErro()
+        listaStatements = listaStatements?.map { it.toModel() },
+        erro = erro?.toModel()
     )

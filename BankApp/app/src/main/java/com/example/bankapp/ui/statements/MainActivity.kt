@@ -13,7 +13,7 @@ import com.example.bankapp.util.Constantes
 import com.example.bankapp.util.Conversores
 import com.example.bankapp.util.GerenciadorSessao
 import com.example.bankapp.util.Mask
-import com.example.domain.entidades.Statement
+import com.example.domain.entities.Statement
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel

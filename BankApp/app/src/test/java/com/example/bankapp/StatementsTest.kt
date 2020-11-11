@@ -1,32 +1,25 @@
 package com.example.bankapp
 
-import com.example.domain.entidades.Erro
-import com.example.domain.entidades.ListaStatements
-import com.example.domain.entidades.Statement
-import com.example.domain.executores.ListarStatementsExecutor
-import com.example.domain.repositorios.IBankRepositorio
+import com.example.domain.entities.Erro
+import com.example.domain.entities.ListaStatements
+import com.example.domain.entities.Statement
+import com.example.domain.repositories.IBankRepository
+import com.example.domain.usecases.ListStatementsUseCase
 import io.mockk.coEvery
-import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
-import org.junit.Before
 import org.junit.Test
 
 class StatementsTest {
-    @MockK
-    lateinit var listarStatementsExecutorMock: ListarStatementsExecutor
-    lateinit var IBankRepositorioMock: IBankRepositorio
 
-    @Before
-    fun setup() {
-        listarStatementsExecutorMock = mockk()
-        IBankRepositorioMock = mockk()
-    }
+
+    private val listStatementsUseCaseMock: ListStatementsUseCase = mockk()
+    private val IBankRepositoryMock: IBankRepository = mockk()
 
     @Test
     fun listarStatementsSemErro() {
-        coEvery { listarStatementsExecutorMock.executar(ListarStatementsExecutor.Parametros(1)) } returns
+        coEvery { listStatementsUseCaseMock.execute(ListStatementsUseCase.Parametros(1)) } returns
                 ListaStatements(
                     erro = null,
                     listaStatements = listOf(
@@ -52,8 +45,8 @@ class StatementsTest {
                 )
 
         val resposta = runBlocking {
-            listarStatementsExecutorMock.executar(
-                ListarStatementsExecutor.Parametros(1)
+            listStatementsUseCaseMock.execute(
+                ListStatementsUseCase.Parametros(1)
             )
         }
 
@@ -63,15 +56,15 @@ class StatementsTest {
 
     @Test
     fun listarStatementsComErro() {
-        coEvery { listarStatementsExecutorMock.executar(ListarStatementsExecutor.Parametros(-1)) } returns
+        coEvery { listStatementsUseCaseMock.execute(ListStatementsUseCase.Parametros(-1)) } returns
                 ListaStatements(
                     erro = Erro(codigo = 53, mensagem = "Usuário não encontrado"),
                     listaStatements = null
                 )
 
         val resposta = runBlocking {
-            listarStatementsExecutorMock.executar(
-                ListarStatementsExecutor.Parametros(-1)
+            listStatementsUseCaseMock.execute(
+                ListStatementsUseCase.Parametros(-1)
             )
         }
 

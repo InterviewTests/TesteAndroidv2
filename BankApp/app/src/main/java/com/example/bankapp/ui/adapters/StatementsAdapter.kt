@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bankapp.R
 import com.example.bankapp.util.Conversores
-import com.example.domain.entidades.Statement
+import com.example.domain.entities.Statement
 import kotlinx.android.synthetic.main.statement_item.view.*
 import kotlin.math.absoluteValue
 

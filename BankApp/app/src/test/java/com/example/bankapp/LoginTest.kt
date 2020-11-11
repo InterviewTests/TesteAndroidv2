@@ -2,130 +2,116 @@ package com.example.bankapp
 
 import android.app.Application
 import com.example.bankapp.ui.login.LoginViewModel
-import com.example.domain.entidades.ContaUsuario
-import com.example.domain.entidades.Erro
-import com.example.domain.entidades.LoginRequisicao
-import com.example.domain.entidades.LoginResposta
-import com.example.domain.executores.RealizarLoginExecutor
-import com.example.domain.repositorios.IBankRepositorio
-import io.mockk.*
+import com.example.domain.entities.ContaUsuario
+import com.example.domain.entities.Erro
+import com.example.domain.entities.LoginRequisicao
+import com.example.domain.entities.LoginResposta
+import com.example.domain.repositories.IBankRepository
+import com.example.domain.usecases.PerformLoginUseCase
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.every
 import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
 import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
 class LoginTest {
-    val loginRequisicaoMock = mockk<LoginRequisicao>()
-    val applicationMock = mockk<Application>()
+    private val loginRequisicaoMock = mockk<LoginRequisicao>()
+    private val applicationMock = mockk<Application>()
 
     @MockK
-    lateinit var IBankRepositorioMock: IBankRepositorio
-    lateinit var realizarLoginExecutorMock: RealizarLoginExecutor
+    lateinit var IBankRepositoryMock: IBankRepository
+    lateinit var performLoginUseCaseMock: PerformLoginUseCase
+
+    private val viewModel by lazy {
+        LoginViewModel(performLoginUseCaseMock, applicationMock)
+    }
 
 
     @Before
     fun setup() {
-        realizarLoginExecutorMock = mockk()
-        IBankRepositorioMock = mockk()
+        performLoginUseCaseMock = mockk()
+        IBankRepositoryMock = mockk()
     }
 
     @Test
     fun verificarSenhaNula() {
-        val loginViewModel =
-            LoginViewModel(loginExecutor = realizarLoginExecutorMock, app = applicationMock)
 
         every { loginRequisicaoMock.senha } returns null
-        assertEquals(false, loginViewModel.senhaValida(loginRequisicaoMock.senha))
+        assertEquals(false, viewModel.senhaValida(loginRequisicaoMock.senha))
     }
 
     @Test
     fun verificarSenhaEmBranco() {
-        val loginViewModel =
-            LoginViewModel(loginExecutor = realizarLoginExecutorMock, app = applicationMock)
 
         every { loginRequisicaoMock.senha } returns ""
-        assertEquals(false, loginViewModel.senhaValida(loginRequisicaoMock.senha))
+        assertEquals(false, viewModel.senhaValida(loginRequisicaoMock.senha))
     }
 
     @Test
     fun verificarSenhaInvalida() {
-        val loginViewModel =
-            LoginViewModel(loginExecutor = realizarLoginExecutorMock, app = applicationMock)
 
         every { loginRequisicaoMock.senha } returns "teste"
-        assertEquals(false, loginViewModel.senhaValida(loginRequisicaoMock.senha))
+        assertEquals(false, viewModel.senhaValida(loginRequisicaoMock.senha))
     }
 
     @Test
     fun verificarSenhaValida() {
-        val loginViewModel =
-            LoginViewModel(loginExecutor = realizarLoginExecutorMock, app = applicationMock)
 
         every { loginRequisicaoMock.senha } returns "Teste@1"
-        assertEquals(true, loginViewModel.senhaValida(loginRequisicaoMock.senha))
+        assertEquals(true, viewModel.senhaValida(loginRequisicaoMock.senha))
     }
 
     @Test
     fun verificarUsuarioNulo() {
-        val loginViewModel =
-            LoginViewModel(loginExecutor = realizarLoginExecutorMock, app = applicationMock)
 
         every { loginRequisicaoMock.usuario } returns null
-        assertEquals(false, loginViewModel.usuarioValido(loginRequisicaoMock.usuario))
+        assertEquals(false, viewModel.usuarioValido(loginRequisicaoMock.usuario))
     }
 
     @Test
     fun verificarUsuarioEmBranco() {
-        val loginViewModel =
-            LoginViewModel(loginExecutor = realizarLoginExecutorMock, app = applicationMock)
 
         every { loginRequisicaoMock.usuario } returns ""
-        assertEquals(false, loginViewModel.usuarioValido(loginRequisicaoMock.usuario))
+        assertEquals(false, viewModel.usuarioValido(loginRequisicaoMock.usuario))
     }
 
     @Test
     fun verificarUsuarioEmailValido() {
-        val loginViewModel =
-            LoginViewModel(loginExecutor = realizarLoginExecutorMock, app = applicationMock)
 
         every { loginRequisicaoMock.usuario } returns "teste@bank.com"
-        assertEquals(true, loginViewModel.usuarioValido(loginRequisicaoMock.usuario))
+        assertEquals(true, viewModel.usuarioValido(loginRequisicaoMock.usuario))
     }
 
     @Test
     fun verificarUsuarioEmailInValido() {
-        val loginViewModel =
-            LoginViewModel(loginExecutor = realizarLoginExecutorMock, app = applicationMock)
-
         every { loginRequisicaoMock.usuario } returns "testebank.com"
-        assertEquals(false, loginViewModel.usuarioValido(loginRequisicaoMock.usuario))
+        assertEquals(false, viewModel.usuarioValido(loginRequisicaoMock.usuario))
     }
 
     @Test
     fun verificarUsuarioCPFValido() {
-        val loginViewModel =
-            LoginViewModel(loginExecutor = realizarLoginExecutorMock, app = applicationMock)
 
         every { loginRequisicaoMock.usuario } returns "02095039307"
-        assertEquals(true, loginViewModel.usuarioValido(loginRequisicaoMock.usuario))
+        assertEquals(true, viewModel.usuarioValido(loginRequisicaoMock.usuario))
     }
 
     @Test
     fun verificarUsuarioCPFInValido() {
-        val loginViewModel =
-            LoginViewModel(loginExecutor = realizarLoginExecutorMock, app = applicationMock)
 
         every { loginRequisicaoMock.usuario } returns "02095039307343434"
-        assertEquals(false, loginViewModel.usuarioValido(loginRequisicaoMock.usuario))
+        assertEquals(false, viewModel.usuarioValido(loginRequisicaoMock.usuario))
     }
 
     @Test
     fun verificarResultadoSemErroLogin() {
 
         coEvery {
-            realizarLoginExecutorMock.executar(
-                RealizarLoginExecutor.Parametros(
+            performLoginUseCaseMock.execute(
+                PerformLoginUseCase.Parametros(
                     LoginRequisicao(
                         usuario = "lorenzo_moreira@hotmail.com.br",
                         senha = "Teste@1"
@@ -144,8 +130,8 @@ class LoginTest {
         )
 
         val resposta = runBlocking {
-            realizarLoginExecutorMock.executar(
-                RealizarLoginExecutor.Parametros(
+            performLoginUseCaseMock.execute(
+                PerformLoginUseCase.Parametros(
                     LoginRequisicao(
                         usuario = "lorenzo_moreira@hotmail.com.br",
                         senha = "Teste@1"
@@ -157,8 +143,8 @@ class LoginTest {
 
 
         coVerify {
-            realizarLoginExecutorMock.executar(
-                RealizarLoginExecutor.Parametros(
+            performLoginUseCaseMock.execute(
+                PerformLoginUseCase.Parametros(
                     LoginRequisicao(
                         usuario = "lorenzo_moreira@hotmail.com.br",
                         senha = "Teste@1"
@@ -177,8 +163,8 @@ class LoginTest {
     fun verificarResultadoComErroLogin() {
 
         coEvery {
-            realizarLoginExecutorMock.executar(
-                RealizarLoginExecutor.Parametros(
+            performLoginUseCaseMock.execute(
+                PerformLoginUseCase.Parametros(
                     LoginRequisicao(
                         usuario = "lorenzo_moreira@hotmail.com.br",
                         senha = null
@@ -191,8 +177,8 @@ class LoginTest {
         )
 
         val resposta = runBlocking {
-            realizarLoginExecutorMock.executar(
-                RealizarLoginExecutor.Parametros(
+            performLoginUseCaseMock.execute(
+                PerformLoginUseCase.Parametros(
                     LoginRequisicao(
                         usuario = "lorenzo_moreira@hotmail.com.br",
                         senha = null
@@ -204,8 +190,8 @@ class LoginTest {
 
 
         coVerify {
-            realizarLoginExecutorMock.executar(
-                RealizarLoginExecutor.Parametros(
+            performLoginUseCaseMock.execute(
+                PerformLoginUseCase.Parametros(
                     LoginRequisicao(
                         usuario = "lorenzo_moreira@hotmail.com.br",
                         senha = null
@@ -217,7 +203,6 @@ class LoginTest {
 
         assertEquals(true, resposta?.contaUsuario == null)
         assertEquals(true, resposta?.error?.codigo == 53)
-
 
     }
 }

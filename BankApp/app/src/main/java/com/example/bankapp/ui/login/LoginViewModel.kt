@@ -3,12 +3,11 @@ package com.example.bankapp.ui.login
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.domain.entidades.ContaUsuario
-import com.example.domain.entidades.LoginRequisicao
-import com.example.domain.entidades.LoginResposta
-import com.example.domain.executores.RealizarLoginExecutor
+import com.example.domain.entities.LoginRequisicao
+import com.example.domain.entities.LoginResposta
+import com.example.domain.usecases.PerformLoginUseCase
 
-class LoginViewModel(private val loginExecutor: RealizarLoginExecutor, val app: Application) :
+class LoginViewModel(private val loginUseCase: PerformLoginUseCase, val app: Application) :
     ViewModel() {
     val usuario = MutableLiveData<String?>()
     val senha = MutableLiveData<String?>()
@@ -18,8 +17,8 @@ class LoginViewModel(private val loginExecutor: RealizarLoginExecutor, val app: 
 
     suspend fun realizarLogin(usuario: String, senha: String) {
         val params =
-            RealizarLoginExecutor.Parametros(LoginRequisicao(usuario = usuario, senha = senha))
-        val resposta = loginExecutor.executar(params)
+            PerformLoginUseCase.Parametros(LoginRequisicao(usuario = usuario, senha = senha))
+        val resposta = loginUseCase.execute(params)
 
         loginResposta.postValue(resposta)
     }

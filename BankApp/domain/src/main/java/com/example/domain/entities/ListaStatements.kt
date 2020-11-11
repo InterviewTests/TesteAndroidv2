@@ -1,4 +1,4 @@
-package com.example.domain.entidades
+package com.example.domain.entities
 
 data class ListaStatements(
     val listaStatements: List<Statement>?,

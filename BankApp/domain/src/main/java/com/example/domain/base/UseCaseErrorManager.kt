@@ -1,18 +1,18 @@
 package com.example.domain.base
 
-import com.example.domain.excecoes.ExecutorException
+import com.example.domain.excecoes.UseCaseException
 import java.util.concurrent.TimeoutException
 
-class GerenciadorErroExecutor {
+class UseCaseErrorManager {
     companion object {
         @Throws(Exception::class)
         fun tratarExcecao(
-            tag: TagExcecao = TagExcecao.NAO_IDENTIFICADO,
+            exceptionTag: ExceptionTag = ExceptionTag.NAO_IDENTIFICADO,
             excecao: Exception
         ) = when (excecao::class.java) {
             TimeoutException::class.java ->
                 excecao
-            else -> ExecutorException(tag, excecao.message)
+            else -> UseCaseException(exceptionTag, excecao.message)
         }
     }
 }

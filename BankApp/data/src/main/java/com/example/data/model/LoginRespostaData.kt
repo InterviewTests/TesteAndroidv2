@@ -1,6 +1,6 @@
 package com.example.data.model
 
-import com.example.domain.entidades.LoginResposta
+import com.example.domain.entities.LoginResposta
 import com.google.gson.annotations.SerializedName
 
 data class LoginRespostaData(
@@ -10,5 +10,5 @@ data class LoginRespostaData(
     val erro: ErroData
 )
 
-fun LoginRespostaData.converterParaLoginResposta() =
-    LoginResposta(contaUsuario.converterParaContaUsuario(), erro.converterParaErro())
+fun LoginRespostaData.toModel() =
+    LoginResposta(contaUsuario.toModel(), erro.toModel())

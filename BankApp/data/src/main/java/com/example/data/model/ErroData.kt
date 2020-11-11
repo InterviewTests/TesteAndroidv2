@@ -1,6 +1,6 @@
 package com.example.data.model
 
-import com.example.domain.entidades.Erro
+import com.example.domain.entities.Erro
 import com.google.gson.annotations.SerializedName
 
 data class ErroData(
@@ -10,5 +10,5 @@ data class ErroData(
     val mensagem: String?
 )
 
-fun ErroData.converterParaErro() =
+fun ErroData.toModel() =
     Erro(codigo = codigo, mensagem = mensagem)

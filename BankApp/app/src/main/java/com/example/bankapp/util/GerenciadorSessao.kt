@@ -2,7 +2,7 @@ package com.example.bankapp.util
 
 import android.app.Application
 import android.content.SharedPreferences
-import com.example.domain.entidades.ContaUsuario
+import com.example.domain.entities.ContaUsuario
 
 class GerenciadorSessao(val app: Application) {
     val sharedPreferences: String = "shared_preferences"

@@ -1,6 +1,6 @@
 package com.example.data.model
 
-import com.example.domain.entidades.ContaUsuario
+import com.example.domain.entities.ContaUsuario
 import com.google.gson.annotations.SerializedName
 
 data class ContaUsuarioData(
@@ -16,5 +16,5 @@ data class ContaUsuarioData(
     val saldo: Double?
 )
 
-fun ContaUsuarioData.converterParaContaUsuario() =
+fun ContaUsuarioData.toModel() =
     ContaUsuario(id = id, nome = nome, conta = conta, agencia = agencia, saldo = saldo)

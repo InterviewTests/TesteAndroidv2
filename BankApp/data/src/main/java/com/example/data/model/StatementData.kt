@@ -1,6 +1,6 @@
 package com.example.data.model
 
-import com.example.domain.entidades.Statement
+import com.example.domain.entities.Statement
 import com.google.gson.annotations.SerializedName
 
 
@@ -15,9 +15,6 @@ data class StatementData(
     val valor: Double?
 )
 
-fun List<StatementData>.converterParaListaStatement() =
-    this.map { statement -> statement.converterParaStatement() }.toList()
-
-fun StatementData.converterParaStatement() =
+fun StatementData.toModel() =
     Statement(titulo = titulo, descricao = descricao, data = data, valor = valor)
 

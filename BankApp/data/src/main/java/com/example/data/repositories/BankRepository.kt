@@ -5,16 +5,15 @@ import com.example.data.api.base.RequestManager
 import com.example.data.api.base.exceptions.ApiException
 import com.example.data.api.base.exceptions.RepositoryException
 import com.example.data.model.LoginRequisicaoData
-import com.example.data.model.converterParaListaStatements
-import com.example.data.model.converterParaLoginResposta
-import com.example.domain.entidades.ListaStatements
-import com.example.domain.entidades.LoginRequisicao
-import com.example.domain.entidades.LoginResposta
-import com.example.domain.repositorios.IBankRepositorio
+import com.example.data.model.toModel
+import com.example.domain.entities.ListaStatements
+import com.example.domain.entities.LoginRequisicao
+import com.example.domain.entities.LoginResposta
+import com.example.domain.repositories.IBankRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class BankRepository(private val api: BankApi) : IBankRepositorio {
+class BankRepository(private val api: BankApi) : IBankRepository {
 
     private val TAG: String = "FALHA_REPOSITORIO_EMPRESAS"
     override suspend fun realizarLogin(loginRequisicao: LoginRequisicao): LoginResposta? {
@@ -26,7 +25,7 @@ class BankRepository(private val api: BankApi) : IBankRepositorio {
                     ).execute()
                 )
 
-                resposta.converterParaLoginResposta()
+                resposta.toModel()
 
             } catch (excecao: ApiException) {
                 val mensagem = "Falha ao efetuar login com os seguintes parâmetros."
@@ -47,7 +46,7 @@ class BankRepository(private val api: BankApi) : IBankRepositorio {
                     ).execute()
                 )
 
-                resposta.converterParaListaStatements()
+                resposta.toModel()
 
             } catch (excecao: ApiException) {
                 val mensagem = "Falha ao resgatar statements."
