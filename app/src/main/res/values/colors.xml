@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3B49EE</color>
+    <color name="colorPrimaryDark">#3B49EE</color>
+    <color name="colorAccent">#A8B4C4</color>
+    <color name="colorBackground">#FEFEFE</color>
+    <color name="colorNormal">#FFFFFF</color>
+    <color name="colorProgress">#803B49EE</color>
+    <color name="colorOpacity">#95000000</color>
+    <color name="colorLoginField">#A8B4C4</color>
+    <color name="colorTitle">#485465</color>
+    <color name="colorItem">#A8B4C4</color>
+</resources>

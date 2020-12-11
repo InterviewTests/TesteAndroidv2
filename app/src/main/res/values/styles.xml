@@ -1,0 +1,94 @@
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="colorControlNormal">@color/colorNormal</item>
+        <item name="actionModeStyle">@style/Widget.App.ActionMode</item>
+    </style>
+
+    <style name="Widget.MyApp.ActionBar" parent="Widget.MaterialComponents.ActionBar.Primary">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="theme">@style/ThemeOverlay.MyApp.ActionBar</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+
+    <style name="ThemeOverlay.MyApp.ActionBar" parent="ThemeOverlay.MaterialComponents.ActionBar">
+        <item name="android:textColorPrimary">@color/colorNormal</item>
+    </style>
+
+    <style name="Widget.App.ActionMode" parent="Widget.AppCompat.ActionMode">
+        <item name="titleTextStyle">?attr/textAppearanceHeadline6</item>
+        <item name="subtitleTextStyle">?attr/textAppearanceSubtitle1</item>
+        <item name="background">@color/colorPrimary</item>
+    </style>
+
+    <!-- Style for Dialog Box -->
+    <style name="AlertDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+    <style name="NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+    </style>
+    <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@android:color/holo_green_dark</item>
+    </style>
+
+    <style name="AppTheme.TextInutLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textSize">18sp</item>
+        <item name="boxStrokeColor">@drawable/text_input_box_stroke</item>
+        <item name="colorControlNormal">@color/colorLoginField</item>
+        <item name="colorControlActivated">@color/colorLoginField</item>
+        <item name="hintTextColor">@color/colorLoginField</item>
+        <item name="helperTextTextColor">@color/colorLoginField</item>
+        <item name="passwordToggleTint">@color/colorLoginField</item>
+        <item name="android:foregroundTint">@color/colorLoginField</item>
+        <item name="android:textColorHint">@color/colorLoginField</item>
+    </style>
+
+    <style name="AppTheme.HintTextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorLoginField</item>
+    </style>
+
+    <style name="statement_title">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorNormal</item>
+        <item name="android:layout_marginLeft">16dp</item>
+    </style>
+    <style name="statement_title1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    <style name="statement_text">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorNormal</item>
+        <item name="android:layout_marginLeft">16dp</item>
+    </style>
+
+    <!-- Item -->
+    <style name="statement_item_column1">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorItem</item>
+    </style>
+    <style name="statement_item_column2">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/colorItem</item>
+    </style>
+    <style name="statement_item_column3">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+    <style name="statement_item_column4">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorTitle</item>
+    </style>
+
+</resources>

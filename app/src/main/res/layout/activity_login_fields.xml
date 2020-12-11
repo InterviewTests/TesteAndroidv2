@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:background="@android:color/transparent">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/userLoginInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/login_hint1"
+        android:focusableInTouchMode="true"
+        app:helperText="* Informe o Login - Obrigatório"
+        app:errorEnabled="true"
+        android:theme="@style/AppTheme.TextInutLayout">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/userLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- UsuarioResponse -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passLoginInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="@string/login_hint2"
+        android:focusableInTouchMode="true"
+        app:helperText="* Informe a Senha - Obrigatório"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true"
+        android:theme="@style/AppTheme.TextInutLayout">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:imeOptions="actionDone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>
