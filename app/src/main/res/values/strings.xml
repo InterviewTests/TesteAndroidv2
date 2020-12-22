@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Desafio Santander - Rafael Pimenta</string>
+    <string name="login">Login</string>
+    <string name="user">User</string>
+    <string name="passwd">Password</string>
+    <string name="lbl_input_user">Digite o usuário</string>
+    <string name="lbl_email_inval">E-mail ou CPF invalido</string>
+    <string name="lbl_input_senha">Preencha a senha</string>
+    <string name="lbl_maisc">A senha deve conter pelo menos uma letra maiúscula</string>
+    <string name="lbl_carac_esp">A senha deve conter pelo menos um caracter especial</string>
+    <string name="lbl_sem_conexao_internet">Sem conexão com a internet</string>
+    <string name="lbl_letras_number">A senha deve conter letras e numeros</string>
 </resources>

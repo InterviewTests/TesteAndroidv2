@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.solinftec.desafiosantander_rafaelpimenta.view.fragment.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" />
+    <fragment
+        android:id="@+id/statementsFragment"
+        android:name="com.solinftec.desafiosantander_rafaelpimenta.view.fragment.StatementsFragment"
+        android:label="statements_fragment"
+        tools:layout="@layout/statements_fragment" />
+</navigation>
