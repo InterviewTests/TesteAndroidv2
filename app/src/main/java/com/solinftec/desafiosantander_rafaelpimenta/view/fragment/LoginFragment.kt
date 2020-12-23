@@ -10,6 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.solinftec.desafiosantander_rafaelpimenta.R
 import com.solinftec.desafiosantander_rafaelpimenta.databinding.LoginFragmentBinding
+import com.solinftec.desafiosantander_rafaelpimenta.util.DialogKeys
+import com.solinftec.desafiosantander_rafaelpimenta.util.Helper
 import com.solinftec.desafiosantander_rafaelpimenta.viewmodel.LoginViewModel
 
 class LoginFragment : Fragment() {
@@ -35,9 +37,10 @@ class LoginFragment : Fragment() {
 
 
         lifecycle.addObserver(viewModel)
+        initRxObservables()
 
         binding.btnLogin.setOnClickListener {
-            viewModel.login()
+//            viewModel.login()
 
             it.findNavController().navigate(R.id.action_loginFragment_to_statementsFragment)
         }
@@ -45,6 +48,38 @@ class LoginFragment : Fragment() {
 
     }
 
+
+    private fun initRxObservables() {
+        viewModel.showDialog.observe(this.viewLifecycleOwner, {
+            if (it){
+                when(viewModel.msgType){
+
+                    DialogKeys.SALVO_COM_SUCESSO -> {
+                        activity?.applicationContext?.let { it1 ->
+                            Helper().toast(
+                                it1,
+                                "Com acesso")
+                        }
+                    }
+                    DialogKeys.ERRO_VALIDACAO -> {
+                        activity?.applicationContext?.let { it1 ->
+                            Helper().toast(
+                                it1,
+                                getString(viewModel.msg))
+                        }
+                    }
+                    DialogKeys.ERRO -> {
+                        activity?.applicationContext?.let { it1 ->
+                            Helper().toast(
+                                it1,
+                                viewModel.msgStr)
+                        }
+                    }
+
+                }
+            }
+        })
+    }
     override fun onDestroy() {
         super.onDestroy()
         viewModelStore.clear()

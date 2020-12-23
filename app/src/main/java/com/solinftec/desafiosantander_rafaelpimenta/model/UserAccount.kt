@@ -1,9 +1,11 @@
 package com.solinftec.desafiosantander_rafaelpimenta.model
 
+import  java.io.Serializable
+
 data class UserAccount(
-    val agency: String,
-    val balance: Double,
-    val bankAccount: String,
-    val name: String,
-    val userId: Int
-)
+    val userId : Int,
+    val name : String,
+    val bankAccount : String,
+    val agency : String,
+    val balance : Double
+) : Serializable

@@ -16,6 +16,6 @@ class ApiService {
         .create(ApiData::class.java)
 
     companion object {
-        private const val BASE_URL = "https://bank-app-test.herokuapp.com/api/"
+        const val BASE_URL = "https://bank-app-test.herokuapp.com/api/"
     }
 }
