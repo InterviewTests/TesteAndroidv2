@@ -13,10 +13,17 @@
         <action
             android:id="@+id/action_loginFragment_to_statementsFragment"
             app:destination="@id/statementsFragment" />
+        <argument
+            android:name="user"
+            app:argType="com.solinftec.desafiosantander_rafaelpimenta.model.UserAccount" />
     </fragment>
     <fragment
         android:id="@+id/statementsFragment"
         android:name="com.solinftec.desafiosantander_rafaelpimenta.view.fragment.StatementsFragment"
         android:label="statements_fragment"
-        tools:layout="@layout/statements_fragment" />
+        tools:layout="@layout/statements_fragment" >
+        <action
+            android:id="@+id/action_statementsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

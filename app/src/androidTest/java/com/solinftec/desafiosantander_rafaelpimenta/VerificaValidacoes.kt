@@ -1,17 +1,14 @@
 package com.solinftec.desafiosantander_rafaelpimenta
 
-import org.junit.Assert
-import org.junit.Test
-import java.io.IOException
-import java.net.HttpURLConnection
-import java.net.URL
-import com.solinftec.desafiosantander_rafaelpimenta.communication.ApiService.Companion
 import com.solinftec.desafiosantander_rafaelpimenta.util.LoginValidate
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import org.junit.Test
 
 class VerificaValidacoes {
 
     private val loginValidate = LoginValidate()
+
 
     @Test
     fun IsCPF() {

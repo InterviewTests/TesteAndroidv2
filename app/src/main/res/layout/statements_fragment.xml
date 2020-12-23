@@ -36,7 +36,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginTop="40dp"
                     android:layout_marginBottom="8dp"
-                    android:text="Jose da Silva Teste"
+                    android:text="@={viewModel.nameText}"
                     android:textColor="#ffffff"
                     android:textSize="25sp"
                     android:textStyle="normal"
@@ -82,7 +82,7 @@
                     android:layout_height="29dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="0000 / 00.000000-0"
+                    android:text="@={viewModel.accountText}"
                     android:textColor="#ffffff"
                     android:textSize="25sp"
                     android:textStyle="normal"
@@ -116,7 +116,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="17dp"
-                    android:text="R$1.0000,00"
+                    android:text="@={viewModel.balanceText}"
                     android:textColor="#ffffff"
                     android:textSize="25sp"
                     android:textStyle="normal"
@@ -140,6 +140,7 @@
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvStatements"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
