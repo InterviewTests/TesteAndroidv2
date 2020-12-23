@@ -47,7 +47,6 @@ class LoginFragment : Fragment(), LoginListener {
         binding.btnLogin.setOnClickListener {
             viewModel.login(it)
 
-//            it.findNavController().navigate(R.id.action_loginFragment_to_statementsFragment)
         }
 
     }

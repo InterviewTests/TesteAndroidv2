@@ -44,8 +44,9 @@ class LoginViewModel(application: Application) : AndroidViewModel(application),
 
         if (user.isNullOrBlank())
             msg = R.string.lbl_input_user
-//        else if (!loginValidade.validEmail(user.toString()) )
-//            msg = R.string.lbl_email_inval
+        else if (!loginValidade.validEmail(user.toString())
+            && !loginValidade.isCPF(user.toString()))
+        msg = R.string.lbl_email_inval
         else if (passwd.isNullOrBlank())
             msg = R.string.lbl_input_senha
         else if (!loginValidade.validUpperCase(passwd.toString()))
@@ -67,39 +68,6 @@ class LoginViewModel(application: Application) : AndroidViewModel(application),
         )
         loginListener?.onSuccess(view, loginResponse)
 
-//        var apiService = ApiService().api.login(
-//            mapOf("user" to user.toString(), "password" to passwd.toString())
-//        ).enqueue(object : Callback<LoginResponse>{
-//            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-//                if (response.isSuccessful) {
-//                    Log.d("TIMAO", "VALIDOU")
-//                    var userAccount = response.body()
-//                    Log.d("TIMAO", "RECEBEU: $userAccount")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-//                TODO("Not yet implemented")
-//            }
-//
-//        })
 
-
-//        var apiService = ApiService().api.getStatements(1 ).enqueue(object  : Callback<StatementResponse>{
-//            override fun onResponse(
-//                call: Call<StatementResponse>,
-//                response: Response<StatementResponse>
-//            ) {
-//                if (response.isSuccessful) {
-//                    Log.d("TIMAO", "VALIDOU")
-//                    var userAccount = response.body()
-//                    Log.d("TIMAO", "RECEBEU: $userAccount")
-//                }
-//            }
-//            override fun onFailure(call: Call<StatementResponse>, t: Throwable) {
-//                TODO("Not yet implemented")
-//            }
-//
-//        })
     }
 }
