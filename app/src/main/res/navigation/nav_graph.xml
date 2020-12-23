@@ -9,7 +9,11 @@
         android:id="@+id/loginFragment"
         android:name="com.solinftec.desafiosantander_rafaelpimenta.view.fragment.LoginFragment"
         android:label="login_fragment"
-        tools:layout="@layout/login_fragment" />
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_statementsFragment"
+            app:destination="@id/statementsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/statementsFragment"
         android:name="com.solinftec.desafiosantander_rafaelpimenta.view.fragment.StatementsFragment"
