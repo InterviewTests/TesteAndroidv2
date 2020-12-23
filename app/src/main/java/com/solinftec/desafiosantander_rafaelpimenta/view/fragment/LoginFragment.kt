@@ -75,14 +75,6 @@ class LoginFragment : Fragment(), LoginListener {
             if (it) {
                 when (viewModel.msgType) {
 
-                    DialogKeys.SALVO_COM_SUCESSO -> {
-                        activity?.applicationContext?.let { it1 ->
-                            Helper().toast(
-                                it1,
-                                "Com acesso"
-                            )
-                        }
-                    }
                     DialogKeys.ERRO_VALIDACAO -> {
                         activity?.applicationContext?.let { it1 ->
                             Helper().toast(
