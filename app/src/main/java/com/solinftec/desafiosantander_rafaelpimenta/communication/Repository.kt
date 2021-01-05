@@ -41,7 +41,7 @@ class Repository {
                             it["title"].toString(),
                             it["desc"].toString(),
                             date,
-                            "$valFormatted",
+                            valFormatted,
                             it["value"].toString().toDouble()
                         )
                     )
@@ -60,7 +60,7 @@ class Repository {
                 if (!response.isSuccessful) {
                     return
                 }
-                loginResponse.value = response.body()!!
+                loginResponse.value = response.body()
             }
         })
         return loginResponse

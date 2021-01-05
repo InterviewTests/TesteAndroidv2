@@ -16,7 +16,7 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="269dp"
+            android:layout_height="0dp"
             android:paddingHorizontal="16dp"
             android:paddingBottom="16dp"
             android:theme="@style/AppTheme.AppBarOverlay"
@@ -32,7 +32,7 @@
                 <TextView
                     android:id="@+id/tvNome"
                     android:layout_width="0dp"
-                    android:layout_height="29dp"
+                    android:layout_height="35dp"
                     android:layout_centerVertical="true"
                     android:layout_marginTop="40dp"
                     android:layout_marginBottom="8dp"
@@ -53,7 +53,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginTop="40dp"
-                    android:layout_marginBottom="7dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@color/colorPrimary"
                     android:src="@drawable/logout2"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -79,7 +79,7 @@
                 <TextView
                     android:id="@+id/accont_text"
                     android:layout_width="0dp"
-                    android:layout_height="29dp"
+                    android:layout_height="35dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="@={viewModel.accountText}"
@@ -112,10 +112,10 @@
                 <TextView
                     android:id="@+id/balance_text"
                     android:layout_width="0dp"
-                    android:layout_height="29dp"
+                    android:layout_height="35dp"
                     android:layout_centerVertical="true"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="17dp"
+                    android:layout_marginBottom="8dp"
                     android:text="@={viewModel.balanceText}"
                     android:textColor="#ffffff"
                     android:textSize="25sp"
