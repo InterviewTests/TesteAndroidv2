@@ -1,0 +1,3 @@
+[submodule "BankApp"]
+	path = BankApp
+	url = https://github.com/luizcarloscavalcanti/BankApp.git
