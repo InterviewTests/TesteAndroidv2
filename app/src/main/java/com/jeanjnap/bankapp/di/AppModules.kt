@@ -13,6 +13,6 @@ object AppModules {
     }
 
     val viewModelModules = module {
-        viewModel { LoginViewModel(get()) }
+        viewModel { LoginViewModel(get(), get()) }
     }
 }

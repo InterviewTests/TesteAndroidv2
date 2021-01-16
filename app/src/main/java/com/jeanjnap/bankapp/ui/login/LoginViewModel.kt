@@ -3,18 +3,24 @@ package com.jeanjnap.bankapp.ui.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.jeanjnap.bankapp.ui.base.BaseViewModel
+import com.jeanjnap.domain.entity.Response
+import com.jeanjnap.domain.entity.SuccessResponse
+import com.jeanjnap.domain.entity.UserAccount
+import com.jeanjnap.domain.usecase.BankUseCase
 import com.jeanjnap.infrastructure.network.Network
-import kotlinx.coroutines.delay
 
 class LoginViewModel(
-    network: Network
+    network: Network,
+    private val bankUseCase: BankUseCase
 ): BaseViewModel(network) {
 
     val passwordError: LiveData<Boolean> get() = _passwordError
     val usernameError: LiveData<Boolean> get() = _usernameError
+    val loginSuccess: LiveData<UserAccount> get() = _loginSuccess
 
     private val _passwordError = MutableLiveData<Boolean>()
     private val _usernameError = MutableLiveData<Boolean>()
+    private val _loginSuccess = MutableLiveData<UserAccount>()
 
     private val form = LoginForm()
 
@@ -33,8 +39,16 @@ class LoginViewModel(
         _passwordError.value = !form.isValidPassword()
         if (form.isFormValid()) {
             launchDataLoad {
-                delay(2000)
+                bankUseCase.login(form.user, form.pass).handleLoginResult()
             }
+        }
+    }
+
+    private fun Response<UserAccount>.handleLoginResult() {
+        if (this is SuccessResponse) {
+            _loginSuccess.value = body
+        } else {
+            displayError(resourcesString.genericError)
         }
     }
 }

@@ -18,6 +18,15 @@ buildscript {
         espresso_version = "3.3.0"
         koin_version = '2.0.1'
         coroutines_version = '1.4.1'
+        coroutines_test_version = "1.1.1"
+        retrofit_version = "2.5.0"
+        retrofit2_coroutines_adapter_version = "0.9.2"
+        retrofit_converter_moshi_version = "2.6.0"
+        moshi_version = '1.8.0'
+        moshi_codegen_version = "1.8.0"
+        kotlin_coroutines_adapter_version = "0.9.2"
+        kotlin_coroutines_android_version = "1.4.1"
+        logging_interceptor_version = "3.12.8"
     }
 
     repositories {
