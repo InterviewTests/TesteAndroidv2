@@ -1,5 +1,7 @@
 package com.jeanjnap.bankapp.ui.login
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import androidx.databinding.DataBindingUtil
@@ -60,5 +62,17 @@ class LoginActivity : BaseActivity() {
 
     private fun onPasswordError(isWrong: Boolean) {
         binding.tilPass.error = if (isWrong) getString(R.string.invalid_password) else null
+    }
+
+    companion object {
+        fun clearTopStart(context: Context) {
+            context.startActivity(
+                Intent(context, LoginActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+            )
+        }
     }
 }

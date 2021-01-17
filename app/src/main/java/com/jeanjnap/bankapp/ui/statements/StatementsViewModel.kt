@@ -15,14 +15,20 @@ class StatementsViewModel(
 ) : BaseViewModel(network) {
 
     val statements: LiveData<List<Statement>> get() = _statements
+    val onLogout: LiveData<Boolean> get() = _onLogout
 
     private val _statements = MutableLiveData<List<Statement>>()
+    private val _onLogout = MutableLiveData<Boolean>()
 
     var userId: Long? = null
         set(value) {
             field = value
             fetchStatements()
         }
+
+    fun onLogoutClick() {
+        _onLogout.value = true
+    }
 
     private fun fetchStatements() {
         launchDataLoad {

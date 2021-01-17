@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.jeanjnap.bankapp.R
 import com.jeanjnap.bankapp.databinding.ActivityStatementsBinding
 import com.jeanjnap.bankapp.ui.base.BaseActivity
+import com.jeanjnap.bankapp.ui.login.LoginActivity
 import com.jeanjnap.bankapp.util.extension.observe
 import com.jeanjnap.domain.entity.UserAccount
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -40,6 +41,7 @@ class StatementsActivity : BaseActivity() {
     private fun listenUi() {
         observe(viewModel.loading, ::onLoading)
         observe(viewModel.statements, statementsAdapter::submitList)
+        observe(viewModel.onLogout) { LoginActivity.clearTopStart(this) }
     }
 
     private fun onLoading(isLoading: Boolean) {
