@@ -5,4 +5,5 @@ import com.jeanjnap.domain.entity.UserAccount
 
 interface BankUseCase {
     suspend fun login(username: String, password: String): Response<UserAccount>
+    fun getUser(): String?
 }

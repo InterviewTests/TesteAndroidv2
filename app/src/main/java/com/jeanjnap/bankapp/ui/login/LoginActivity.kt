@@ -25,6 +25,7 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun listenUi() {
+        observe(viewModel.username, binding.tietUser::setText)
         observe(viewModel.loading, ::onLoading)
         observe(viewModel.usernameError, ::onUsernameError)
         observe(viewModel.passwordError, ::onPasswordError)

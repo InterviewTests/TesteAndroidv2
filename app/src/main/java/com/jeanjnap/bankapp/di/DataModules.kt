@@ -3,6 +3,8 @@ package com.jeanjnap.bankapp.di
 import com.jeanjnap.data.client.ApiClient.makeService
 import com.jeanjnap.data.mapper.UserDataResponseToUserAccountMapper
 import com.jeanjnap.data.repository.BankRepositoryImpl
+import com.jeanjnap.data.source.local.BankLocalDataSource
+import com.jeanjnap.data.source.local.BankLocalDataSourceImpl
 import com.jeanjnap.data.source.local.Cache
 import com.jeanjnap.data.source.local.CacheImpl
 import com.jeanjnap.data.source.remote.BankRemoteDataSource
@@ -31,8 +33,9 @@ object DataModules {
                 get(named(UserDataResponseToUserAccountMapper::javaClass.name))
             )
         }
+        single<BankLocalDataSource> { BankLocalDataSourceImpl(get()) }
 
         // REPOSITORIES
-        single<BankRepository> { BankRepositoryImpl(get()) }
+        single<BankRepository> { BankRepositoryImpl(get(), get(), get()) }
     }
 }

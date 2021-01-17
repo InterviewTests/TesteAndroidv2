@@ -9,11 +9,10 @@ class BankUseCaseImpl(
     private val bankRepository: BankRepository
 ): BankUseCase {
     override suspend fun login(username: String, password: String): Response<UserAccount> {
-        return bankRepository.login(username, password).also {
-            if (it is SuccessResponse) {
-                // TODO: Save username
-                username
-            }
-        }
+        return bankRepository.login(username, password)
+    }
+
+    override fun getUser(): String? {
+        return bankRepository.getUser()
     }
 }
