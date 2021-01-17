@@ -37,6 +37,12 @@ android {
     dataBinding {
         enabled true
     }
+    testOptions {
+        unitTests.includeAndroidResources = true
+        unitTests.all {
+            jvmArgs '-noverify'
+        }
+    }
 }
 
 dependencies {

@@ -9,5 +9,4 @@ class ResourcesStringImpl(
 ) : ResourcesString {
     override val genericError: String get() = context.getString(R.string.generic_error)
     override val noConnectionError: String get() = context.getString(R.string.no_connection_error)
-    override val loading: String get() = context.getString(R.string.loading)
 }
