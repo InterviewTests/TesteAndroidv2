@@ -8,6 +8,6 @@ object DomainModules {
 
     val domainModulesItems = module {
         //USECASES
-        single<BankUseCase> { BankUseCaseImpl(get()) }
+        single<BankUseCase> { BankUseCaseImpl(get(), get()) }
     }
 }

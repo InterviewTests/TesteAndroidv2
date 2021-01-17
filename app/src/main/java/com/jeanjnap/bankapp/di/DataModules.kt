@@ -38,6 +38,6 @@ object DataModules {
         single<BankLocalDataSource> { BankLocalDataSourceImpl(get()) }
 
         // REPOSITORIES
-        single<BankRepository> { BankRepositoryImpl(get(), get(), get()) }
+        single<BankRepository> { BankRepositoryImpl(get(), get()) }
     }
 }

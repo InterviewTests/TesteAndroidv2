@@ -2,10 +2,8 @@ package com.jeanjnap.data.repository
 
 import com.jeanjnap.data.source.local.BankLocalDataSource
 import com.jeanjnap.data.source.remote.BankRemoteDataSource
-import com.jeanjnap.domain.entity.ErrorResponse
 import com.jeanjnap.domain.entity.SuccessResponse
 import com.jeanjnap.domain.repository.BankRepository
-import com.jeanjnap.infrastructure.crypto.RSACrypto
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -14,6 +12,8 @@ import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 import io.mockk.verify
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
@@ -29,37 +29,19 @@ class BankRepositoryTest {
     @MockK
     private lateinit var bankLocalDataSource: BankLocalDataSource
 
-    @MockK
-    private lateinit var rsaCrypto: RSACrypto
-
     @Before
     fun setup() {
         MockKAnnotations.init(this)
-        repository = BankRepositoryImpl(bankRemoteDataSource, bankLocalDataSource, rsaCrypto)
+        repository = BankRepositoryImpl(bankRemoteDataSource, bankLocalDataSource)
     }
 
     @Test
-    fun login_withSuccessResponse_shouldCallsSaveEncryptedUser() {
+    fun login_shouldCallsBankRemoteDataSource() {
         coEvery { bankRemoteDataSource.login(any(), any()) } returns SuccessResponse(mockk())
-        every { rsaCrypto.encrypt(any()) } returns anyString()
-        every { bankLocalDataSource.saveEncryptedUser(any()) } returns Unit
 
         runBlocking { repository.login(anyString(), anyString()) }
 
         coVerify { bankRemoteDataSource.login(any(), any()) }
-        verify { rsaCrypto.encrypt(any()) }
-        verify { bankLocalDataSource.saveEncryptedUser(any()) }
-    }
-
-    @Test
-    fun login_withErrorResponse_shouldNotCallsSaveEncryptedUser() {
-        coEvery { bankRemoteDataSource.login(any(), any()) } returns ErrorResponse(mockk())
-
-        runBlocking { repository.login(anyString(), anyString()) }
-
-        coVerify { bankRemoteDataSource.login(any(), any()) }
-        verify(inverse = true) { rsaCrypto.encrypt(any()) }
-        verify(inverse = true) { bankLocalDataSource.saveEncryptedUser(any()) }
     }
 
     @Test
@@ -72,23 +54,29 @@ class BankRepositoryTest {
     }
 
     @Test
-    fun getUser_withSavedUser_shouldCallsGetEncryptedUserAndDecrypt() {
-        every { bankLocalDataSource.getEncryptedUser() } returns anyString()
-        every { rsaCrypto.decrypt(any()) } returns anyString()
+    fun saveEncryptedUser_shouldCallsLocalDataSource() {
+        every { bankLocalDataSource.saveEncryptedUser(any()) } returns Unit
 
-        repository.getUser()
+        repository.saveEncryptedUser(anyString())
+
+        verify { bankLocalDataSource.saveEncryptedUser(any()) }
+    }
+
+    @Test
+    fun getUser_withSavedUser_shouldCallsReturnsEncryptedUser() {
+        every { bankLocalDataSource.getEncryptedUser() } returns anyString()
+
+        assertEquals(anyString(), repository.getUser())
 
         verify { bankLocalDataSource.getEncryptedUser() }
-        verify { rsaCrypto.decrypt(any()) }
     }
 
     @Test
     fun getUser_withNonSavedUser_shouldNotCallsGetEncryptedUserAndDecrypt() {
         every { bankLocalDataSource.getEncryptedUser() } returns null
 
-        repository.getUser()
+        assertNull(repository.getUser())
 
         verify { bankLocalDataSource.getEncryptedUser() }
-        verify(inverse = true) { rsaCrypto.decrypt(any()) }
     }
 }
