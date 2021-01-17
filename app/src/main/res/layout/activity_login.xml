@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/thirty_six_value"
-            android:importantForAccessibility="no"
+            android:contentDescription="@string/accessibility_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -62,7 +62,7 @@
             android:layout_marginTop="@dimen/twenty_four_value"
             android:textColorHint="@color/cadet_blue"
             app:layout_constraintBottom_toTopOf="@+id/bt_login"
-            app:layout_constraintTop_toBottomOf="@+id/til_user" >
+            app:layout_constraintTop_toBottomOf="@+id/til_user">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tiet_pass"

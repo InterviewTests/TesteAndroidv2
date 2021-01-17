@@ -10,4 +10,5 @@
     <string name="invalid_username">Usuário inválido</string>
     <string name="account">Conta</string>
     <string name="balance">Saldo</string>
+    <string name="recent">Recentes</string>
 </resources>

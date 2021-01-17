@@ -55,7 +55,7 @@
                 android:layout_height="@dimen/zero_value"
                 android:layout_marginTop="@dimen/twenty_value"
                 android:layout_marginEnd="@dimen/twelve_value"
-                android:importantForAccessibility="no"
+                android:contentDescription="@string/accessibility_logout"
                 android:onClick="@{() -> viewModel.onLogoutClick()}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_name"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -123,6 +123,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_balance"
                 tools:text="@string/ex_balance" />
 
+            <TextView
+                android:id="@+id/tv_recent"
+                style="@style/StatementItemBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/twenty_value"
+                android:layout_marginTop="@dimen/twelve_value"
+                android:text="@string/recent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_background" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_statements"
                 android:layout_width="match_parent"
@@ -133,7 +144,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/v_background"
+                app:layout_constraintTop_toBottomOf="@+id/tv_recent"
                 app:layout_constraintVertical_bias="0.0"
                 tools:listitem="@layout/item_statement" />
 
@@ -141,6 +152,7 @@
                 android:id="@+id/sl_loading"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/zero_value"
+                android:layout_marginTop="@dimen/eight_value"
                 android:paddingStart="@dimen/sixteen_value"
                 android:paddingTop="@dimen/twelve_value"
                 android:paddingEnd="@dimen/sixteen_value"
@@ -148,10 +160,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/v_background"
+                app:layout_constraintTop_toBottomOf="@+id/tv_recent"
                 app:shimmer_base_color="@color/cadet_blue"
-                app:shimmer_highlight_color="@color/river_bed"
-                tools:visibility="gone">
+                app:shimmer_highlight_color="@color/river_bed">
 
                 <LinearLayout
                     android:layout_width="match_parent"
