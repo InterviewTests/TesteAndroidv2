@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="userAccount"
+            type="com.jeanjnap.domain.entity.UserAccount" />
+
+        <variable
+            name="viewModel"
+            type="com.jeanjnap.bankapp.ui.statements.StatementsViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fillViewport="true"
+        tools:context=".ui.statements.StatementsActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/v_background"
+                android:layout_width="@dimen/zero_value"
+                android:layout_height="@dimen/zero_value"
+                android:background="@color/royal_blue"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_balance_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/StatementValue"
+                android:layout_width="@dimen/zero_value"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sixteen_value"
+                android:layout_marginTop="@dimen/twenty_value"
+                app:layout_constraintEnd_toStartOf="@+id/iv_logout"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:nullableText="@{userAccount.name}"
+                tools:text="@string/ex_name" />
+
+            <ImageView
+                android:id="@+id/iv_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/zero_value"
+                android:layout_marginTop="@dimen/twenty_value"
+                android:layout_marginEnd="@dimen/twelve_value"
+                android:importantForAccessibility="no"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_name"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_logout" />
+
+            <TextView
+                android:id="@+id/tv_account"
+                style="@style/StatementLabel"
+                android:layout_width="@dimen/zero_value"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sixteen_value"
+                android:layout_marginTop="@dimen/twenty_eight_value"
+                android:layout_marginEnd="@dimen/sixteen_value"
+                android:text="@string/account"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+            <TextView
+                android:id="@+id/tv_account_number_value"
+                style="@style/StatementValue"
+                android:layout_width="@dimen/zero_value"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sixteen_value"
+                android:layout_marginTop="@dimen/four_value"
+                android:layout_marginEnd="@dimen/sixteen_value"
+                app:formatAccount="@{userAccount}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_account"
+                tools:text="@string/ex_account_number" />
+
+            <TextView
+                android:id="@+id/tv_balance"
+                style="@style/StatementLabel"
+                android:layout_width="@dimen/zero_value"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sixteen_value"
+                android:layout_marginTop="@dimen/twenty_value"
+                android:layout_marginEnd="@dimen/sixteen_value"
+                android:text="@string/balance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_account_number_value" />
+
+            <TextView
+                android:id="@+id/tv_balance_value"
+                style="@style/StatementValue"
+                android:layout_width="@dimen/zero_value"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/sixteen_value"
+                android:layout_marginTop="@dimen/four_value"
+                android:layout_marginEnd="@dimen/sixteen_value"
+                android:paddingTop="@dimen/zero_value"
+                android:paddingBottom="@dimen/sixteen_value"
+                app:formatCurrency="@{userAccount.balance}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_balance"
+                tools:text="@string/ex_balance" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_statements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/eight_value"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_background"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_statement" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/sl_loading"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero_value"
+                android:layout_marginTop="@dimen/twelve_value"
+                android:paddingStart="@dimen/sixteen_value"
+                android:paddingEnd="@dimen/sixteen_value"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_background"
+                app:shimmer_base_color="@color/cadet_blue"
+                app:shimmer_highlight_color="@color/river_bed">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include
+                        layout="@layout/item_shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/ninety_value"
+                        android:layout_marginTop="@dimen/zero_value"
+                        android:layout_marginBottom="@dimen/sixteen_value" />
+
+                    <include
+                        layout="@layout/item_shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/ninety_value"
+                        android:layout_marginTop="@dimen/zero_value"
+                        android:layout_marginBottom="@dimen/sixteen_value" />
+
+                    <include
+                        layout="@layout/item_shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/ninety_value"
+                        android:layout_marginTop="@dimen/zero_value"
+                        android:layout_marginBottom="@dimen/sixteen_value" />
+
+                    <include
+                        layout="@layout/item_shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/ninety_value"
+                        android:layout_marginTop="@dimen/zero_value"
+                        android:layout_marginBottom="@dimen/sixteen_value" />
+
+                    <include
+                        layout="@layout/item_shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/ninety_value"
+                        android:layout_marginTop="@dimen/zero_value"
+                        android:layout_marginBottom="@dimen/sixteen_value" />
+
+                    <include
+                        layout="@layout/item_shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/ninety_value"
+                        android:layout_marginTop="@dimen/zero_value"
+                        android:layout_marginBottom="@dimen/sixteen_value" />
+
+                    <include
+                        layout="@layout/item_shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/ninety_value"
+                        android:layout_marginTop="@dimen/zero_value"
+                        android:layout_marginBottom="@dimen/sixteen_value" />
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

@@ -1,6 +1,7 @@
 package com.jeanjnap.bankapp.di
 
 import com.jeanjnap.bankapp.ui.login.LoginViewModel
+import com.jeanjnap.bankapp.ui.statements.StatementsViewModel
 import com.jeanjnap.bankapp.util.ResourcesStringImpl
 import com.jeanjnap.domain.boundary.ResourcesString
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -14,5 +15,6 @@ object AppModules {
 
     val viewModelModules = module {
         viewModel { LoginViewModel(get(), get()) }
+        viewModel { StatementsViewModel(get(), get()) }
     }
 }

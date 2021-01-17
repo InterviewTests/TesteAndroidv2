@@ -44,10 +44,13 @@
                 android:id="@+id/tiet_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica_neue"
                 android:hint="@string/user"
                 android:imeOptions="actionNext"
                 android:onTextChanged="@{(text, start, before, count) -> viewModel.onUserNameChanged(text)}"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textColor="@color/cadet_blue"
+                android:textSize="@dimen/fifteen_size" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -64,11 +67,14 @@
                 android:id="@+id/tiet_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica_neue"
                 android:hint="@string/pass"
                 android:imeOptions="actionDone"
                 android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordChanged(text)}"
                 android:password="true"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textColor="@color/cadet_blue"
+                android:textSize="@dimen/fifteen_size" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

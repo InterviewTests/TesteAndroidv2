@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ex_name">Jose da Silva Teste</string>
+    <string name="ex_account_number">2050 / 01.111222–4</string>
+    <string name="ex_balance">R$1.000,00</string>
+    <string name="ex_title">Pagamento</string>
+    <string name="ex_date">12/12/2018</string>
+    <string name="ex_desc">Conta de Luz</string>
+</resources>

@@ -18,4 +18,34 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="LoginFields" parent="android:Widget.EditText">
+        <item name="android:fontFamily">@font/helvetica_neue_light</item>
+        <item name="android:textColor">@color/purple_200</item>
+        <item name="android:textSize">@dimen/twenty_five_size</item>
+    </style>
+
+    <style name="StatementValue" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/helvetica_neue_light</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/twenty_five_size</item>
+    </style>
+
+    <style name="StatementLabel" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/twelve_size</item>
+    </style>
+
+    <style name="StatementItemTop" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+        <item name="android:textColor">@color/cadet_blue</item>
+        <item name="android:textSize">@dimen/sixteen_size</item>
+    </style>
+
+    <style name="StatementItemBottom" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/helvetica_neue</item>
+        <item name="android:textColor">@color/river_bed</item>
+        <item name="android:textSize">@dimen/sixteen_size</item>
+    </style>
 </resources>
