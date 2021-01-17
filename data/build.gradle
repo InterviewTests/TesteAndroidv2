@@ -40,4 +40,5 @@ dependencies {
     testImplementation "android.arch.core:core-testing:$lifecycle_version"
     testImplementation "org.robolectric:robolectric:$robolectric_version"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+    testImplementation "org.koin:koin-test:$koin_version"
 }
