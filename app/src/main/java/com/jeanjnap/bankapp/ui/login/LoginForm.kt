@@ -12,6 +12,5 @@ class LoginForm {
     companion object {
         private const val EMPTY_TEXT = ""
         private val PASSWORD_REGEX = "^(?=.*[A-Z])(?=.*[!@#\$%&*])(?=.*[a-z0-9]).{3,}\$".toRegex()
-
     }
 }
