@@ -74,7 +74,7 @@ class LoginViewModelTest : ViewModelBaseTest() {
 
     @Test
     fun onLoginClick_withInvalidPassword_shouldSetPasswordError() {
-        viewModel.onUserNameChanged("user123")
+        viewModel.onUserNameChanged("user123@test.com")
         viewModel.onLoginClick()
 
         assertTrue(viewModel.passwordError.getOrAwaitValue())
@@ -84,7 +84,7 @@ class LoginViewModelTest : ViewModelBaseTest() {
     fun onLoginClick_withInvalidValuesAndSuccessResponse_shouldSetLoginSuccess() {
         coEvery { bankUseCase.login(any(), any()) } returns SuccessResponse(mockk())
 
-        viewModel.onUserNameChanged("user123")
+        viewModel.onUserNameChanged("user123@test.com")
         viewModel.onPasswordChanged("aA!")
         viewModel.onLoginClick()
 
@@ -96,7 +96,7 @@ class LoginViewModelTest : ViewModelBaseTest() {
         every { resourcesString.genericError } returns anyString()
         coEvery { bankUseCase.login(any(), any()) } returns ErrorResponse(mockk())
 
-        viewModel.onUserNameChanged("user123")
+        viewModel.onUserNameChanged("user123@test.com")
         viewModel.onPasswordChanged("aA!")
         viewModel.onLoginClick()
 

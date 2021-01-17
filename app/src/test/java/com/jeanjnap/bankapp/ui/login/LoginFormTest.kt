@@ -23,7 +23,7 @@ class LoginFormTest {
 
     @Test
     fun setUser_withValidValue_shouldReturnsValidValidation() {
-        form.user = "user123"
+        form.user = "user123@test.com"
         assertTrue(form.isValidUsername())
     }
 
@@ -41,7 +41,7 @@ class LoginFormTest {
 
     @Test
     fun isFormValid_withValidUserAndInvalidPassword_shouldReturnsFalse() {
-        form.user = "user123"
+        form.user = "user123@test.com"
         form.pass = anyString()
 
         assertFalse(form.isFormValid())
@@ -57,7 +57,7 @@ class LoginFormTest {
 
     @Test
     fun isFormValid_withValidUserAndValidPassword_shouldReturnsTrue() {
-        form.user = "user123"
+        form.user = "user123@test.com"
         form.pass = "aA!"
 
         assertTrue(form.isFormValid())
