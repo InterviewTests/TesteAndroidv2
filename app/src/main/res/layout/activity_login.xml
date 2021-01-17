@@ -33,6 +33,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColorHint="@color/cadet_blue"
             app:layout_constraintBottom_toTopOf="@+id/til_pass"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:textColorHint="@color/cadet_blue"
             app:layout_constraintBottom_toTopOf="@+id/bt_login"
             app:layout_constraintTop_toBottomOf="@+id/til_user"
             tools:layout_editor_absoluteX="187dp">

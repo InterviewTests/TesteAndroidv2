@@ -14,7 +14,7 @@
             type="com.jeanjnap.bankapp.ui.statements.StatementsViewModel" />
     </data>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
@@ -127,10 +127,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/eight_value"
+                android:layout_marginBottom="8dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/v_background"
+                app:layout_constraintVertical_bias="0.0"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_statement" />
 
@@ -138,9 +141,10 @@
                 android:id="@+id/sl_loading"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/zero_value"
-                android:layout_marginTop="@dimen/twelve_value"
                 android:paddingStart="@dimen/sixteen_value"
+                android:paddingTop="@dimen/twelve_value"
                 android:paddingEnd="@dimen/sixteen_value"
+                android:paddingBottom="@dimen/eight_value"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -205,5 +209,5 @@
             </com.facebook.shimmer.ShimmerFrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </layout>

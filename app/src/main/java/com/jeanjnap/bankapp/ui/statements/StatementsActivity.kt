@@ -26,12 +26,13 @@ class StatementsActivity : BaseActivity() {
 
         (intent.extras?.getSerializable(USER_ACCOUNT_EXTRA) as? UserAccount)?.let {
             binding.userAccount = it
+            viewModel.userId = it.userId
         }
-        setupAdapter()
+        setupElements()
         listenUi()
     }
 
-    private fun setupAdapter() {
+    private fun setupElements() {
         statementsAdapter = StatementsAdapter()
         binding.rvStatements.adapter = statementsAdapter
     }
