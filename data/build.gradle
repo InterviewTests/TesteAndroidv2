@@ -35,6 +35,9 @@ dependencies {
     implementation "org.koin:koin-core:$koin_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
 
-
     testImplementation "junit:junit:$junit_4_version"
+    testImplementation "io.mockk:mockk:$mockk_version"
+    testImplementation "android.arch.core:core-testing:$lifecycle_version"
+    testImplementation "org.robolectric:robolectric:$robolectric_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
 }
