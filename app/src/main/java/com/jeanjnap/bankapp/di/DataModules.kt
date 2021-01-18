@@ -1,0 +1,43 @@
+package com.jeanjnap.bankapp.di
+
+import com.jeanjnap.data.client.ApiClient.makeService
+import com.jeanjnap.data.mapper.StatementSummaryResponseToStatementListMapper
+import com.jeanjnap.data.mapper.UserDataResponseToUserAccountMapper
+import com.jeanjnap.data.repository.BankRepositoryImpl
+import com.jeanjnap.data.source.local.BankLocalDataSource
+import com.jeanjnap.data.source.local.BankLocalDataSourceImpl
+import com.jeanjnap.data.source.local.Cache
+import com.jeanjnap.data.source.local.CacheImpl
+import com.jeanjnap.data.source.remote.BankRemoteDataSource
+import com.jeanjnap.data.source.remote.BankRemoteDataSourceImpl
+import com.jeanjnap.data.source.remote.service.BankService
+import com.jeanjnap.data.util.moshi.InternalMoshi
+import com.jeanjnap.data.util.moshi.InternalMoshiImpl
+import com.jeanjnap.domain.repository.BankRepository
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
+
+object DataModules {
+
+    val serviceModulesItems = module {
+        single { makeService<BankService>(get()) }
+    }
+
+    val dataModulesItems = module {
+        single<InternalMoshi> { InternalMoshiImpl() }
+        single<Cache> { CacheImpl(get(), get()) }
+
+        // DATA SOURCES
+        single<BankRemoteDataSource> {
+            BankRemoteDataSourceImpl(
+                get(),
+                get(named(UserDataResponseToUserAccountMapper::class.java.name)),
+                get(named(StatementSummaryResponseToStatementListMapper::class.java.name))
+            )
+        }
+        single<BankLocalDataSource> { BankLocalDataSourceImpl(get()) }
+
+        // REPOSITORIES
+        single<BankRepository> { BankRepositoryImpl(get(), get()) }
+    }
+}

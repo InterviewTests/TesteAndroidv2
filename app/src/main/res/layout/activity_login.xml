@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?><!--suppress ALL -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.jeanjnap.bankapp.ui.login.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        android:padding="@dimen/sixteen_value"
+        tools:context=".ui.login.LoginActivity">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="@dimen/one_hundred_twenty_four_value"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/thirty_six_value"
+            android:contentDescription="@string/accessibility_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_user"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/cadet_blue"
+            app:layout_constraintBottom_toTopOf="@+id/til_pass"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_logo"
+            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica_neue"
+                android:hint="@string/user"
+                android:imeOptions="actionNext"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.onUserNameChanged(text)}"
+                android:singleLine="true"
+                android:textColor="@color/cadet_blue"
+                android:textSize="@dimen/fifteen_size" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_pass"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/twenty_four_value"
+            android:textColorHint="@color/cadet_blue"
+            app:layout_constraintBottom_toTopOf="@+id/bt_login"
+            app:layout_constraintTop_toBottomOf="@+id/til_user">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiet_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/helvetica_neue"
+                android:hint="@string/pass"
+                android:imeOptions="actionDone"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.onPasswordChanged(text)}"
+                android:password="true"
+                android:singleLine="true"
+                android:textColor="@color/cadet_blue"
+                android:textSize="@dimen/fifteen_size" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="@dimen/one_hundred_ninety_value"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/sixteen_value"
+            android:onClick="@{() -> viewModel.onLoginClick()}"
+            android:padding="@dimen/sixteen_value"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

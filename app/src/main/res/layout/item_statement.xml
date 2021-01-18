@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="statement"
+            type="com.jeanjnap.domain.entity.Statement" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_statement_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/twelve_value"
+            android:layout_marginEnd="@dimen/twelve_value"
+            app:cardCornerRadius="@dimen/six_value"
+            app:cardElevation="@dimen/four_value"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/StatementItemTop"
+                    android:layout_width="@dimen/zero_value"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/twelve_value"
+                    android:layout_marginTop="@dimen/twelve_value"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_date"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:nullableText="@{statement.title}"
+                    tools:text="@string/ex_title" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    style="@style/StatementItemTop"
+                    android:layout_width="@dimen/zero_value"
+                    android:layout_height="@dimen/zero_value"
+                    android:layout_marginTop="@dimen/twelve_value"
+                    android:layout_marginEnd="@dimen/sixteen_value"
+                    android:textAlignment="textEnd"
+                    android:textSize="@dimen/twelve_size"
+                    app:formatDate="@{statement.date}"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_title"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@string/ex_date" />
+
+                <TextView
+                    android:id="@+id/tv_desc"
+                    style="@style/StatementItemBottom"
+                    android:layout_width="@dimen/zero_value"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/twelve_value"
+                    android:layout_marginTop="@dimen/twenty_value"
+                    android:layout_marginBottom="@dimen/twelve_value"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_value"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                    app:nullableText="@{statement.desc}"
+                    tools:text="@string/ex_desc" />
+
+                <TextView
+                    android:id="@+id/tv_value"
+                    style="@style/StatementItemBottom"
+                    android:layout_width="@dimen/zero_value"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/twelve_value"
+                    android:fontFamily="@font/helvetica_neue_light"
+                    android:textAlignment="textEnd"
+                    android:textSize="@dimen/twenty_size"
+                    app:formatCurrency="@{statement.value}"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_desc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_desc"
+                    app:layout_constraintTop_toTopOf="@+id/tv_desc"
+                    tools:text="@string/ex_balance" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

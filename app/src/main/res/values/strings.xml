@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Bank App</string>
+    <string name="generic_error">Ops! Algo está errado. Tente mais tarde</string>
+    <string name="no_connection_error">Sem conexão à Internet</string>
+    <string name="login">Login</string>
+    <string name="user">User</string>
+    <string name="pass">Password</string>
+    <string name="loading">Loading…</string>
+    <string name="invalid_password">Senha inválida</string>
+    <string name="invalid_username">Usuário inválido</string>
+    <string name="account">Conta</string>
+    <string name="balance">Saldo</string>
+    <string name="recent">Recentes</string>
+</resources>
