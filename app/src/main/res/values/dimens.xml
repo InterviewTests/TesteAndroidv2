@@ -11,6 +11,7 @@
     <dimen name="twenty_eight_value">28dp</dimen>
     <dimen name="thirty_six_value">36dp</dimen>
     <dimen name="ninety_value">90dp</dimen>
+    <dimen name="one_hundred_twenty_four_value">124dp</dimen>
     <dimen name="one_hundred_ninety_value">190dp</dimen>
 
     <dimen name="twelve_size">12sp</dimen>

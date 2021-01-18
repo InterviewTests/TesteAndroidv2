@@ -51,8 +51,8 @@
 
             <ImageView
                 android:id="@+id/iv_logout"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/zero_value"
+                android:layout_width="@dimen/twenty_eight_value"
+                android:layout_height="@dimen/twenty_eight_value"
                 android:layout_marginTop="@dimen/twenty_value"
                 android:layout_marginEnd="@dimen/twelve_value"
                 android:contentDescription="@string/accessibility_logout"
