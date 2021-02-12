@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Bank</string>
+    <string name="login">Login</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="recentes">Recentes</string>
+    <string name="name">José da Silva Teste</string>
+    <string name="title_conta">Conta</string>
+    <string name="title_saldo">Saldo</string>
+    <string name="conta">2050 / 01.111222-4</string>
+    <string name="saldo">R$1.000,00</string>
+    <string name="pagamento">Pagamento</string>
+    <string name="data">12/12/2018</string>
+    <string name="nome_conta">Conta de luz</string>
+    <string name="valor">R$1.000,00</string>
+    <string name="logoimg">logoImg</string>
+    <string name="logoutimg">logoutImg</string>
+    <string name="login_loading_input_validation">Loading... Validating input data</string>
+    <string name="login_loading_submit">Loading... Submiting form</string>
+    <string name="validation_error_empty_fields">Error: Empty fields</string>
+    <string name="validation_error_user_field_empty">Error: User field cannot be empty</string>
+    <string name="validation_error_password_field_empty">Error: Password field cannot be empty</string>
+    <string name="validation_error_invalid_cpf">Error: Invalid CPF format</string>
+    <string name="validation_error_invalid_email">Error: Invalid e-mail format</string>
+    <string name="validation_error_invalid_password">Error: Password must contain at least one uppercase character, one special character and one alphanumeric character</string>
+    <string name="validation_fields_ok">Success: Fields OK</string>
+</resources>
