@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="232dp"
+        android:id="@+id/tela"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/recentes"
+        android:background="@color/colorButton"
+        android:paddingLeft="18dp"
+        android:paddingTop="20dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/nome_usuario"
+            tools:text="João"
+            android:textColorHint="@color/titulo"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/helvetica_light"/>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:textColorHint="@color/subTitulo"
+            android:textSize="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/nome_usuario"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/conta_title"
+            android:textColor="@color/white"
+            android:text="Conta"
+            android:fontFamily="@font/helvetica"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColorHint="@color/titulo"
+            android:id="@+id/ag_conta"
+            app:layout_constraintTop_toBottomOf="@+id/conta_title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            tools:text="Agência / Conta"
+            android:fontFamily="@font/helvetica_light"/>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/ag_conta"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="21dp"
+            android:textColorHint="@color/subTitulo"
+            android:textSize="12dp"
+            android:id="@+id/saldo_title"
+            android:textColor="@color/white"
+            android:text="Saldo"
+            android:fontFamily="@font/helvetica"/>
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/saldo"
+            android:textColorHint="@color/titulo"
+            android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@+id/saldo_title"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        tools:text="R$1000.00"
+            android:fontFamily="@font/helvetica_light"/>
+
+        <ImageView
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:id="@+id/img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="13dp"
+            android:src="@drawable/logout"/>
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+<!--    <Toolbar-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="232dp"-->
+<!--        android:id="@+id/toolbar"-->
+<!--        android:title="José da Silva Teste"-->
+<!--        android:titleTextColor="@color/white"-->
+<!--        android:background="@color/colorButton"-->
+<!--        android:titleMarginTop="30dp"-->
+<!--        android:subtitle="02.05.00001"-->
+<!--        android:subtitleTextColor="@color/white"-->
+<!--        tools:ignore="MissingConstraints"-->
+<!--        android:gravity="top"/>-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tela"
+        android:text="Recentes"
+        android:textSize="20sp"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="8dp"
+        android:id="@+id/recentes"/>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recentes" />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
