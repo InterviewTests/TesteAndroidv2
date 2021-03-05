@@ -1,6 +1,8 @@
-package br.com.silas.domain
+package br.com.silas.domain.interactor
 
+import br.com.silas.domain.Schedulers
 import br.com.silas.domain.mocks.UserMock
+import br.com.silas.domain.ErrorResponse
 import br.com.silas.domain.user.LoginInteractor
 import br.com.silas.domain.user.LoginRepository
 import br.com.silas.domain.util.TestScheduler
@@ -28,7 +30,10 @@ class LoginInteractorTest {
     @Test
     fun `When call to repository and fetch is successful should be return an user`() {
         val user = UserMock.getUserMock()
-        `when`(loginRepository.fetchUser(anyString(), anyString())).thenReturn(Single.just(user))
+        val loginError = mock(ErrorResponse::class.java)
+
+        val pairResult = Pair(user, loginError)
+        `when`(loginRepository.fetchUser(anyString(), anyString())).thenReturn(Single.just(pairResult))
         val result = loginInteractor
             .execute(loginInteractor.Request("Teste", "1234"))
             .test()
@@ -36,7 +41,7 @@ class LoginInteractorTest {
         result
             .assertComplete()
             .assertNoErrors()
-            .assertValue(user)
+            .assertValue(pairResult)
 
         verify(loginRepository).fetchUser("Teste", "1234")
     }

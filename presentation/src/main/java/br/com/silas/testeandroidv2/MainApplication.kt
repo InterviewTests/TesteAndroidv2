@@ -1,6 +1,8 @@
 package br.com.silas.testeandroidv2
 
 import android.app.Application
+import android.content.Context
+import androidx.multidex.MultiDex
 import br.com.silas.testeandroidv2.di.dataModule
 import br.com.silas.testeandroidv2.di.domainModule
 import br.com.silas.testeandroidv2.di.presentaionModule
@@ -18,5 +20,10 @@ class MainApplication : Application() {
                 dataModule
             )
         }
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 }

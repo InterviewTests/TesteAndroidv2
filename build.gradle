@@ -58,6 +58,10 @@ ext {
             rxjavaVersion:                 '3.0.0',
             rxKotlinVersion:               '3.0.0',
             rxAndroidVersion:              '3.0.0',
+            retrofit:                      '2.6.2',
+            gson:                          '2.6.2',
+            retrofitAdapter:               '2.9.0',
+            okHttpVersion:                 '3.11.0'
 
     ]
 

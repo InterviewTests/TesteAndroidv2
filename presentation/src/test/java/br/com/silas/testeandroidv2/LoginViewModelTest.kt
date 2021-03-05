@@ -1,6 +1,7 @@
 package br.com.silas.testeandroidv2
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import br.com.silas.domain.ErrorResponse
 import br.com.silas.domain.user.LoginInteractor
 import br.com.silas.domain.user.User
 import br.com.silas.testeandroidv2.br.com.silas.testeandroidv2.mocks.UserMock
@@ -14,6 +15,7 @@ import org.junit.Test
 import org.junit.rules.TestRule
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
+import org.mockito.Mockito.mock
 import org.mockito.MockitoAnnotations
 
 class LoginViewModelTest {
@@ -37,10 +39,14 @@ class LoginViewModelTest {
     @Test
     @Throws(Exception::class)
     fun `when fetch user is successful should be return an user`() {
-        `when`(loginInteractor.execute(any())).thenReturn(Single.just(userMock))
+        val loginError = mock(ErrorResponse::class.java)
+        val pairResult = Pair(userMock, loginError)
+
+        `when`(loginInteractor.execute(any())).thenReturn(Single.just(pairResult))
         userViewModel.fetUser("user", "123")
 
-        assertThat(userViewModel.result.value, `is`(userMock))
+        assertThat(userViewModel.result.value, `is`(pairResult.first))
+        assertThat(userViewModel.errorLogin.value, `is`(pairResult.second))
     }
 
     @Test

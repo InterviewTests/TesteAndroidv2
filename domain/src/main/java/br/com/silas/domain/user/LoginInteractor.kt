@@ -1,14 +1,15 @@
 package br.com.silas.domain.user
 
+import br.com.silas.domain.ErrorResponse
 import br.com.silas.domain.InteractorSingle
 import br.com.silas.domain.Schedulers
 import io.reactivex.rxjava3.core.Single
 
 class LoginInteractor(private val loginRepository: LoginRepository, schedulers: Schedulers) :
-    InteractorSingle<User, LoginInteractor.Request>(schedulers) {
+    InteractorSingle<Pair<User, ErrorResponse>, LoginInteractor.Request>(schedulers) {
 
 
-    override fun create(request: Request): Single<User> {
+    override fun create(request: Request): Single<Pair<User, ErrorResponse>> {
         return loginRepository.fetchUser(request.getLogin(), request.getPassword())
     }
 
