@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import br.com.silas.testeandroidv2.R
 import br.com.silas.testeandroidv2.databinding.ActivityLoginBinding
+import br.com.silas.testeandroidv2.ui.statements.StatementsActivity
 import org.koin.android.ext.android.inject
 
 class LoginActivity : AppCompatActivity() {
@@ -30,14 +31,15 @@ class LoginActivity : AppCompatActivity() {
         binding.buttonLogin.setOnClickListener {
             loginViewModel.fetUser(
                 binding.textInputLogin.text.toString(),
-                binding.textInputPassword.toString()
+                binding.textInputPassword.text.toString()
             )
         }
     }
 
     private fun observerUser() {
         loginViewModel.result.observe(this, Observer {
-            Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+            StatementsActivity.start(this, it)
+//            Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
         })
     }
 

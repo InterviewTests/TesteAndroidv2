@@ -21,8 +21,11 @@ package br.com.silas.testeandroidv2
  * Helper functions that are workarounds to kotlin Runtime Exceptions when using kotlin.
  */
 
+import org.mockito.AdditionalMatchers
 import org.mockito.ArgumentCaptor
+import org.mockito.ArgumentMatchers
 import org.mockito.Mockito
+import org.mockito.internal.util.Primitives
 
 /**
  * Returns Mockito.eq() as nullable type to avoid java.lang.IllegalStateException when
@@ -38,6 +41,21 @@ fun <T> eq(obj: T): T = Mockito.eq<T>(obj)
  * null is returned.
  */
 fun <T> any(): T = Mockito.any<T>()
+
+/**
+ * Argument that is either <code>null</code> or of the given type.
+ *
+ * <p>
+ * See examples in javadoc for {@link ArgumentMatchers} class
+ * </p>
+ *
+ * @param clazz Type to avoid casting
+ * @return <code>null</code>.
+ */
+fun <T> nullable(clazz: Class<T>?): T {
+    AdditionalMatchers.or(ArgumentMatchers.isNull(), ArgumentMatchers.isA(clazz))
+    return Primitives.defaultValue(clazz) as T
+}
 
 
 /**

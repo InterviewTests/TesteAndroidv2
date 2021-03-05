@@ -1,9 +1,10 @@
-package br.com.silas.testeandroidv2
+package br.com.silas.testeandroidv2.br.com.silas.testeandroidv2.viewModels
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import br.com.silas.domain.ErrorResponse
 import br.com.silas.domain.user.LoginInteractor
 import br.com.silas.domain.user.User
+import br.com.silas.testeandroidv2.any
 import br.com.silas.testeandroidv2.br.com.silas.testeandroidv2.mocks.UserMock
 import br.com.silas.testeandroidv2.ui.user.LoginViewModel
 import io.reactivex.rxjava3.core.Single
