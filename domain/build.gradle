@@ -3,11 +3,24 @@ plugins {
     id 'kotlin'
 }
 
+def libs = rootProject.ext.libraries
+def test = rootProject.ext.testingLibraries
+
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+// RxJava
+    implementation "io.reactivex.rxjava3:rxjava:$libs.rxjavaVersion"
+    implementation "io.reactivex.rxjava3:rxkotlin:$libs.rxKotlinVersion"
+    implementation "io.reactivex.rxjava3:rxandroid:$libs.rxAndroidVersion"
+
+    //Test
+    testImplementation "junit:junit:$test.junitVersion"
+    implementation "org.mockito:mockito-core:$test.mockitoVersion"
+
 }
