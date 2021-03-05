@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.user.LoginActivity">
+    
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_view_logo"
+        android:layout_width="125dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginStart="126dp"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_login"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="@string/hint_user"
+        android:layout_below="@+id/image_view_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="231dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
+        android:background="#FFFFFFFF"
+        
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        android:layout_below="@+id/text_input_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
+        android:background="#FFFFFFFF"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_login"
+        android:text="@string/btn_login"
+        android:layout_marginTop="572dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="202dp"
+        android:layout_height="62dp"
+        android:visibility="visible"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar_login"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="572dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
+    
+</RelativeLayout>
