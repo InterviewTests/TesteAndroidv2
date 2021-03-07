@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_view_logo"
+                android:layout_width="125dp"
+                android:layout_height="70dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="126dp"
+                android:layout_marginTop="56dp"
+                android:src="@drawable/logo" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_login"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_view_logo"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="105dp"
+                android:layout_marginEnd="17dp"
+                android:background="#FFFFFFFF"
+                android:hint="@string/hint_user"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_input_layout_login"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="17dp"
+                android:background="#FFFFFFFF"
+                android:hint="@string/hint_password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/text_view_user_logged"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_input_layout_password"
+                android:layout_marginTop="110dp"
+                android:textAlignment="center"
+                android:textSize="23sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_login"
+                android:layout_width="202dp"
+                android:layout_height="62dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="600dp"
+                android:layout_marginBottom="48dp"
+                android:text="@string/btn_login"
+                android:textAllCaps="false"
+                android:visibility="visible" />
+
+            <ProgressBar
+                android:id="@+id/progressBar_login"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="600dp"
+                android:layout_marginBottom="48dp"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+</layout>

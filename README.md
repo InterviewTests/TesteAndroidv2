@@ -1,3 +1,14 @@
+#Teste Accenture
+
+- Para a execução será necessário clonar o projeto e executar na IDE.
+
+* O projeto foi separado em módulos para um melhor reaproveitamento de códigos.
+* A arquitetura utilizada foi MVVM com Clean Architecture por facilitar a separação das camadas reduzindo o acoplamento e facilitando os testes.
+* Utilização do framework RxJava para facilitar o trabalho com fluxos de dados, utilização de threads secundarias e tratamento de erros.
+* Utilização da framework Koin por facilitar o trabalho com injeção de dependencia.
+* Utilização do Junit e Mockito por facilitar os mocks e asserções dos testes unitários.
+
+
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
