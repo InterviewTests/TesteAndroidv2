@@ -1,0 +1,83 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+def cfg = rootProject.ext.configuration
+def libs = rootProject.ext.libraries
+def test = rootProject.ext.testingLibraries
+
+android {
+    compileSdkVersion cfg.compileSdkVersion
+    buildToolsVersion cfg.buildToolsVersion
+
+    defaultConfig {
+        applicationId cfg.applicationId
+        minSdkVersion cfg.minSdkVersion
+        targetSdkVersion cfg.targetSdkVersion
+        versionCode cfg.versionCode
+        versionName cfg.versionName
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding {
+            enabled = true
+        }
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$libs.appcompat"
+    implementation "androidx.core:core-ktx:$libs.ktxVersion"
+    implementation "com.google.android.material:material:$libs.material"
+    implementation "androidx.constraintlayout:constraintlayout:$libs.constraintlayout"
+    implementation "com.android.support:multidex:$libs.multidex"
+
+// Koin
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    implementation "org.koin:koin-androidx-ext:$koin_version"
+
+// RxJava
+    implementation "io.reactivex.rxjava3:rxjava:$libs.rxjavaVersion"
+    implementation "io.reactivex.rxjava3:rxkotlin:$libs.rxKotlinVersion"
+    implementation "io.reactivex.rxjava3:rxandroid:$libs.rxAndroidVersion"
+
+// Tests
+    testImplementation "junit:junit:$test.junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$test.extJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$test.espressoVersion"
+    testImplementation "org.mockito:mockito-core:$test.mockitoVersion"
+    testImplementation "org.mockito:mockito-inline:$test.mockitoInline"
+    testImplementation "android.arch.core:core-testing:$test.versionTestArchCore"
+
+// Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$libs.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$libs.gson"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$libs.retrofitAdapter"
+
+    implementation project(':domain')
+    implementation project(':data')
+}
