@@ -70,6 +70,7 @@ ext {
             espressoVersion:        '3.3.0',
             extJunit:               '1.1.2',
             mockitoVersion:         '3.0.0',
+            mockitoInline:          '2.28.2',
             runnerVersion:          '1.1.0',
             versionTestArchCore:    '1.1.1'
     ]

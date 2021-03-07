@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 def cfg = rootProject.ext.configuration
@@ -69,6 +70,7 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$test.extJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$test.espressoVersion"
     testImplementation "org.mockito:mockito-core:$test.mockitoVersion"
+    testImplementation "org.mockito:mockito-inline:$test.mockitoInline"
     testImplementation "android.arch.core:core-testing:$test.versionTestArchCore"
 
 // Retrofit

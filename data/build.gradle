@@ -50,6 +50,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$test.espressoVersion"
     testImplementation "junit:junit:$test.junitVersion"
     implementation "org.mockito:mockito-core:$test.mockitoVersion"
+    testImplementation "org.mockito:mockito-inline:$test.mockitoInline"
 
 // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$libs.retrofit"

@@ -2,6 +2,8 @@ package br.com.silas.data.remote.api
 
 import br.com.silas.data.BuildConfig
 import br.com.silas.data.remote.login.LoginResponse
+import br.com.silas.data.remote.statements.StatementsResponse
+import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,12 +14,12 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class TesteAndroidv2ServiceImpl : TesteAndroidV2Service {
+class TesteAndroidv2ServiceImpl : ServiceTesteAndroidV2 {
     companion object {
         private const val BASE_URL = "https://bank-app-test.herokuapp.com/api/"
         private const val TIMEOUT = 10L
     }
-    private var testeAndroidV2Service: TesteAndroidV2Service
+    private var testeAndroidV2Service: ServiceTesteAndroidV2
 
     init {
 
@@ -47,11 +49,15 @@ class TesteAndroidv2ServiceImpl : TesteAndroidV2Service {
             .client(client)
             .build()
 
-        testeAndroidV2Service = retrofit.create(TesteAndroidV2Service::class.java)
+        testeAndroidV2Service = retrofit.create(ServiceTesteAndroidV2::class.java)
 
     }
 
     override fun fetchUser(login: String, password: String): Single<LoginResponse> {
         return testeAndroidV2Service.fetchUser(login, password)
+    }
+
+    override fun fetchStatements(userId: Int): Single<StatementsResponse> {
+        return testeAndroidV2Service.fetchStatements(userId)
     }
 }

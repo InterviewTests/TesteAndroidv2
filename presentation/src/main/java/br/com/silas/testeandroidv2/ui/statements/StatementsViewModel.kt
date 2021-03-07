@@ -7,6 +7,7 @@ import br.com.silas.domain.statements.StatementsInteractor
 import br.com.silas.testeandroidv2.BaseViewModel
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.observers.DisposableMaybeObserver
+import io.reactivex.rxjava3.observers.DisposableSingleObserver
 
 class StatementsViewModel(private val statementsInteractor: StatementsInteractor) :
     BaseViewModel() {
@@ -22,7 +23,7 @@ class StatementsViewModel(private val statementsInteractor: StatementsInteractor
 
         return statementsInteractor
             .execute(statementsInteractor.Request(userId)).subscribeWith(object :
-                DisposableMaybeObserver<Pair<ErrorResponse, List<Statements>>>() {
+                DisposableSingleObserver<Pair<ErrorResponse, List<Statements>>>() {
                 override fun onStart() {
                     loading.value = true
                 }
@@ -35,13 +36,15 @@ class StatementsViewModel(private val statementsInteractor: StatementsInteractor
                     if (statementsResponse.second.isNotEmpty()) {
                         result.value = statementsResponse.second
                     }
+
+                    loading.value = false
                 }
 
                 override fun onError(e: Throwable?) {
                     error.value = e
-                }
+                    loading.value = false
 
-                override fun onComplete() {}
+                }
 
             })
     }

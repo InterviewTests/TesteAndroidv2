@@ -7,6 +7,7 @@ import br.com.silas.domain.statements.StatementsInteractor
 import br.com.silas.domain.statements.StatementsRepository
 import br.com.silas.domain.util.TestScheduler
 import io.reactivex.rxjava3.core.Maybe
+import io.reactivex.rxjava3.core.Single
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -30,7 +31,7 @@ class StatementsInteractorTest {
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         scheduler = TestScheduler()
-        statementsInteractor = StatementsInteractor(scheduler, statementsRepository)
+        statementsInteractor = StatementsInteractor(statementsRepository, scheduler)
     }
 
     @Test
@@ -40,7 +41,7 @@ class StatementsInteractorTest {
         val errorResponse = mock(ErrorResponse::class.java)
         val pairResponse = Pair(errorResponse, statementsList)
 
-        `when`(statementsRepository.fetchStatements(anyInt())).thenReturn(Maybe.just(pairResponse))
+        `when`(statementsRepository.fetchStatements(anyInt())).thenReturn(Single.just(pairResponse))
         val result = statementsInteractor.execute(statementsInteractor.Request(152)).test()
 
         result
@@ -56,7 +57,7 @@ class StatementsInteractorTest {
 
         val exception = Exception()
 
-        `when`(statementsRepository.fetchStatements(anyInt())).thenReturn(Maybe.error(exception))
+        `when`(statementsRepository.fetchStatements(anyInt())).thenReturn(Single.error(exception))
         val result = statementsInteractor.execute(statementsInteractor.Request(152)).test()
 
         result

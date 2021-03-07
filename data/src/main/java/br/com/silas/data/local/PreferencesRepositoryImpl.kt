@@ -18,19 +18,28 @@ class PreferencesRepositoryImpl(private val sharedPreferences: SharedPreferences
     override fun save(user: User?): Completable {
 
         return Completable.create { emitter ->
-           if (user?.id != null) {
-               val preferencesEditor = sharedPreferences.edit()
-               preferencesEditor.putInt(USER_ID, user.id!!)
-               preferencesEditor.putString(USER_NAME, user.name)
-               preferencesEditor.putString(BANCK_ACCOUNT, user.bankAccount)
-               preferencesEditor.putString(AGENCY, user.agency)
-               preferencesEditor.putFloat(BALANCE, user.balance.toFloat())
+            if (user?.id != null) {
+                val preferencesEditor = sharedPreferences.edit()
+                preferencesEditor.putInt(USER_ID, user.id)
+                preferencesEditor.putString(USER_NAME, user.name)
+                preferencesEditor.putString(BANCK_ACCOUNT, user.bankAccount)
+                preferencesEditor.putString(AGENCY, user.agency)
+                preferencesEditor.putFloat(BALANCE, user.balance.toFloat())
 
-               preferencesEditor.apply()
-               emitter.onComplete()
-           }
+                preferencesEditor.apply()
+                emitter.onComplete()
+            }
 
             emitter.onComplete()
         }
     }
+
+    override fun getUser() =
+        User(
+            sharedPreferences.getInt(USER_ID, 0),
+            sharedPreferences.getString(USER_NAME, ""),
+            sharedPreferences.getString(BANCK_ACCOUNT, ""),
+            sharedPreferences.getString(AGENCY, ""),
+            sharedPreferences.getFloat(BALANCE, 2.2.toFloat()).toDouble()
+        )
 }

@@ -20,7 +20,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.statements.StatementsActivity"/>
+        <activity android:name=".ui.statements.StatementsActivity"
+            android:theme="@style/AppThemeCustom"
+            />
     </application>
 
 </manifest>

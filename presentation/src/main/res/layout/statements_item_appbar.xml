@@ -5,15 +5,14 @@
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
-        android:layout_height="232dp">
+        android:layout_height="wrap_content">
 
 
         <TextView
             android:id="@+id/textView_user_name"
-            android:layout_width="215dp"
-            android:layout_height="29dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
@@ -34,8 +33,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView_user_name"
             app:srcCompat="@drawable/logout"
-            android:background="@color/colorPrimary"
-            />
+            android:background="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/textView_label_account"
@@ -43,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Conta"
+            android:text="@string/title_account"
             android:textSize="12sp"
             android:textColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +72,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_account"
-            android:text="Saldo"
+            android:text="@string/title_balance"
             android:textSize="12sp"
             android:textColor="@android:color/white"
             />

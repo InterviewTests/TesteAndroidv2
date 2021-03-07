@@ -1,20 +1,21 @@
 package br.com.silas.domain.statements
 
 import br.com.silas.domain.ErrorResponse
-import br.com.silas.domain.InteractorMaybe
+import br.com.silas.domain.InteractorCompletable
+import br.com.silas.domain.InteractorSingle
 import br.com.silas.domain.Schedulers
-import io.reactivex.rxjava3.core.Maybe
+import io.reactivex.rxjava3.core.Single
 
 class StatementsInteractor
-    (schedulers: Schedulers, private val statementsRepository: StatementsRepository) :
-    InteractorMaybe<Pair<ErrorResponse, List<Statements>>, StatementsInteractor.Request>(schedulers) {
+    (private val statementsRepository: StatementsRepository, schedulers: Schedulers) :
+    InteractorSingle<Pair<ErrorResponse, List<Statements>>, StatementsInteractor.Request>(schedulers) {
 
 
-    override fun create(request: Request): Maybe<Pair<ErrorResponse, List<Statements>>> {
+    override fun create(request: Request): Single<Pair<ErrorResponse, List<Statements>>> {
         return statementsRepository.fetchStatements(request.getUserId())
     }
 
-    inner class Request(private val userId: Int) : InteractorMaybe.Request() {
+    inner class Request(private val userId: Int) : InteractorCompletable.Request() {
         fun getUserId() = userId
     }
 }

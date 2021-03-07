@@ -7,11 +7,11 @@ class UserMapper {
     fun mapperUserAccountResponseToUser(loginResponse: LoginResponse): Pair<User, ErrorResponse> {
 
         val user = User(
-            loginResponse.userAccountResponse.id,
-            loginResponse.userAccountResponse.name,
-            loginResponse.userAccountResponse.bankAccount,
-            loginResponse.userAccountResponse.agency,
-            loginResponse.userAccountResponse.balance
+            loginResponse.userEntity.id,
+            loginResponse.userEntity.name,
+            loginResponse.userEntity.bankAccount,
+            loginResponse.userEntity.agency,
+            loginResponse.userEntity.balance
         )
 
         val loginError =

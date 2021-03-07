@@ -7,6 +7,7 @@ import br.com.silas.testeandroidv2.br.com.silas.testeandroidv2.mocks.ErrorRespon
 import br.com.silas.testeandroidv2.br.com.silas.testeandroidv2.mocks.StatementsMock
 import br.com.silas.testeandroidv2.ui.statements.StatementsViewModel
 import io.reactivex.rxjava3.core.Maybe
+import io.reactivex.rxjava3.core.Single
 import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
@@ -42,7 +43,7 @@ class StatementsViewModelTest {
         val statementsError = ErrorResponseMock.getErrorResponseIsEmpty()
         val pairResponse = Pair(statementsError, statementsList)
 
-        `when`(statementsInteractor.execute(any())).thenReturn(Maybe.just(pairResponse))
+        `when`(statementsInteractor.execute(any())).thenReturn(Single.just(pairResponse))
         statementsViewModel.loadStatements(152)
 
         assertThat(statementsViewModel.result.value, `is`(pairResponse.second))
@@ -54,7 +55,7 @@ class StatementsViewModelTest {
         val statementsError = ErrorResponseMock.getErrorResponseIsNotEmpty()
         val pairResponse = Pair(statementsError, statementsList)
 
-        `when`(statementsInteractor.execute(any())).thenReturn(Maybe.just(pairResponse))
+        `when`(statementsInteractor.execute(any())).thenReturn(Single.just(pairResponse))
         statementsViewModel.loadStatements(152)
 
         assertThat(statementsViewModel.errorStatements.value, `is`(pairResponse.first))

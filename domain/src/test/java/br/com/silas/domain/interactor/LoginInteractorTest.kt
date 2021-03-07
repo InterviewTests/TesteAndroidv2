@@ -9,10 +9,13 @@ import br.com.silas.domain.util.TestScheduler
 import io.reactivex.rxjava3.core.Single
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
+import org.mockito.junit.MockitoJUnitRunner
 
+@RunWith(MockitoJUnitRunner::class)
 class LoginInteractorTest {
     @Mock
     lateinit var loginRepository: LoginRepository
