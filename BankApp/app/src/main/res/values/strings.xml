@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Bank App</string>
+    <string name="hint_user">User</string>
+    <string name="button_login">Login</string>
+    <string name="hint_password">Password</string>
+    <string name="text_account">Conta</string>
+    <string name="text_balance">Saldo</string>
+    <string name="text_recent">Recentes</string>
 </resources>
