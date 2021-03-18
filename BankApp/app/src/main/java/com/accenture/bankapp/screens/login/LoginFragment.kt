@@ -18,6 +18,7 @@ import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import br.com.colman.simplecpfvalidator.isCpf
 import com.accenture.bankapp.R
+import com.accenture.bankapp.screens.dashboard.DashboardFragment
 import com.google.android.material.textfield.TextInputLayout
 import timber.log.Timber
 import java.util.regex.Pattern
@@ -32,7 +33,7 @@ interface LoginFragmentInput {
 }
 
 interface LoginFragmentListener {
-//    fun startDashboardFragment(dashboardFragment: DashboardFragment)
+    fun startDashboardFragment(dashboardFragment: DashboardFragment)
 }
 
 class LoginFragment : Fragment(), LoginFragmentInput {

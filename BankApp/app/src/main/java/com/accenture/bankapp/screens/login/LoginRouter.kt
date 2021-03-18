@@ -1,12 +1,14 @@
 package com.accenture.bankapp.screens.login
 
 import android.content.Context
+import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
 import com.accenture.bankapp.network.api.RetrofitBuilder
+import com.accenture.bankapp.screens.dashboard.DashboardFragment
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -74,10 +76,16 @@ class LoginRouter : View.OnClickListener, TextView.OnEditorActionListener {
                         if (response.isSuccessful) {
                             if (response.body()?.error?.code ?: 0 == 0) {
                                 val userAccount = response.body()?.userAccount!!
+                                val dashboardFragment = DashboardFragment()
+                                val args = Bundle()
 
                                 Timber.i("${this.coroutineContext[CoroutineName]?.name}: Login successfully. User: $userAccount")
 
                                 saveSession(context!!, inputUserText, inputPasswordText)
+
+                                args.putSerializable("userAccount", userAccount)
+                                dashboardFragment.arguments = args
+                                loginFragment?.get()?.loginFragmentListener?.startDashboardFragment(dashboardFragment)
                             } else {
                                 val error = response.body()?.error!!
 
