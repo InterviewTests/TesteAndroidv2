@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="LoginTextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="boxCornerRadiusTopStart">4dp</item>
+        <item name="boxCornerRadiusTopEnd">4dp</item>
+        <item name="boxCornerRadiusBottomStart">4dp</item>
+        <item name="boxCornerRadiusBottomEnd">4dp</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeColor">@color/login_text_input_layout_box_stroke</item>
+        <item name="android:textColorHint">@color/text_color_02</item>
+    </style>
+
+    <style name="LoginButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">4dp</item>
+        <item name="backgroundTint">@color/primary_color</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+</resources>

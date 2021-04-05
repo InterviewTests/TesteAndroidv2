@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_color">#3B49EE</color>
+    <color name="box_stroke_color">#DCE2EE</color>
+    <color name="card_stroke_color">#4DDBDFE3</color>
+    <color name="text_color_01">#485465</color>
+    <color name="text_color_02">#A8B4C4</color>
+    <color name="text_error">#FF0000</color>
+</resources>
