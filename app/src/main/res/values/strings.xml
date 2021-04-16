@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">AppBank Santander - Accenture Talent Acquisition</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="description">Descrição</string>
+    <string name="title">Título</string>
+    <string name="date">dd/mm/aaaa</string>
+    <string name="money_BRL">R$ 0,00</string>
 </resources>
