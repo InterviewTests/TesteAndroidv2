@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.appbanksantander_accenturetalentacquisition.API.RequestApi
 import com.example.appbanksantander_accenturetalentacquisition.API.ServiceApi
-import com.example.appbanksantander_accenturetalentacquisition.Model.LoginResponse
 import com.example.appbanksantander_accenturetalentacquisition.Model.UserAccountModel
 
 class LoginPresenter(accountView: LoginContract.View?, private val context: Context?):

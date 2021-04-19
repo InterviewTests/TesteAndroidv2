@@ -1,7 +1,6 @@
 package com.example.appbanksantander_accenturetalentacquisition.API
 
 
-import com.example.appbanksantander_accenturetalentacquisition.Model.LoginResponse
 import com.example.appbanksantander_accenturetalentacquisition.Model.StatementResponse
 import com.example.appbanksantander_accenturetalentacquisition.Model.UserAccountModel
 import retrofit2.Call
