@@ -1,3 +1,11 @@
+# Instalação
+
+Passos para instalação do app:
+1 - Clonar do repositório https://github.com/hthenrique/TesteAndroidv2---Accenture-Talent-Acquisition através do git ou no próprio Android Studio.
+2 - Se não clonou o repositório pelo Android Studio, abrir o Android Studio e procurar pela pasta do projeto no diretório salvo e abrir o prjeto.
+3 - Após o projeto estar aberto no Android Studio executar o Aplicativo em um dispositivo fisíco ou emulador. Para isso vá da Aba "Run" e depois clicar na opção "Run 'App'"
+
+
 # Show me the code
 
 Esse repositório contem todo o material necessário para realizar o teste: 
