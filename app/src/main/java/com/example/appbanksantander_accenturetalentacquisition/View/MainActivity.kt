@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         statementList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         statementList.adapter = statementAdapter
 
-        statementListener.loadStatement(1)
+        statementListener.loadStatement(userId)
 
         logoutButton.setOnClickListener {
             val intent = Intent(this, LoginActiviy::class.java)
