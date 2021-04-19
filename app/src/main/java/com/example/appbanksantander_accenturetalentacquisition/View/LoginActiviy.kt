@@ -78,18 +78,13 @@ class LoginActiviy : AppCompatActivity(), LoginContract.View {
     }
 
     override fun UserDetails(userAccountModel: UserAccountModel) {
-        if (userAccountModel.userId != null){
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("userId", userAccountModel.userId)
-            intent.putExtra("name", userAccountModel.name)
-            intent.putExtra("bankAccount", userAccountModel.bankAccount)
-            intent.putExtra("agency", userAccountModel.agency)
-            intent.putExtra("balance", userAccountModel.balance)
-            startActivity(intent)
-            finish()
-        }else{
-            onStart()
-        }
-
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("userId", userAccountModel.userId)
+        intent.putExtra("name", userAccountModel.name)
+        intent.putExtra("bankAccount", userAccountModel.bankAccount)
+        intent.putExtra("agency", userAccountModel.agency)
+        intent.putExtra("balance", userAccountModel.balance)
+        startActivity(intent)
+        finish()
     }
 }
