@@ -38,17 +38,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Nome"
+                        android:text="Name"
                         android:textColor="@color/white"
                         android:textSize="30sp" />
 
-                    <ImageButton
+                    <Button
                         android:id="@+id/logoutButton"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/background_pattern"
-                        app:srcCompat="@drawable/ic_baseline_exit_to_app_24" />
+                        android:foreground="@drawable/ic_baseline_exit_to_app_24"
+                        app:backgroundTint="@color/primary" />
 
                 </LinearLayout>
 
@@ -63,7 +63,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Conta"
+                        android:text="Account"
                         android:textColor="@color/white" />
 
                     <TextView
@@ -71,7 +71,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Conta/Agência"
+                        android:text="Account/Agency"
                         android:textColor="@color/white"
                         android:textSize="30sp" />
                 </LinearLayout>
@@ -86,7 +86,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Saldo"
+                        android:text="Balance"
                         android:textColor="@color/white" />
 
                     <TextView

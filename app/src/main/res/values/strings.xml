@@ -3,8 +3,16 @@
     <string name="user">User</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="description">Descrição</string>
-    <string name="title">Título</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
     <string name="date">dd/mm/aaaa</string>
     <string name="money_BRL">R$ 0,00</string>
+    <string name="invalidUser">Invalid user or empty</string>
+    <string name="invalidPassword">Invalid password or empty, your password must be have:
+        1 Especial character,
+        1 Upper case character,
+        1 Lower case character,
+        1 number,
+        minimum 6 characters,
+        maximum 12 characters.</string>
 </resources>
