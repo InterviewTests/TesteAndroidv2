@@ -20,12 +20,11 @@ class StatementAdapter(var statement: List<StatementModel>, val context: Context
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val statements: StatementModel = statement.get(position)
-        val cents = ",00"
         val currency = "R$ "
         holder.operationTitleTxt.text = statements.title
         holder.operationDateTxt.text = statements.date
         holder.descriptionTxt.text = statements.description
-        holder.operationValueTxt.text = currency + statements.value.toString() + cents
+        holder.operationValueTxt.text = currency + statements.value.toString()
     }
 
     override fun getItemCount(): Int {
