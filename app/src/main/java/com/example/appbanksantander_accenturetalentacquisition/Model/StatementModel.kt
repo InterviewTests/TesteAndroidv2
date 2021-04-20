@@ -14,7 +14,7 @@ class StatementModel {
     var date: String = ""
 
     @SerializedName("value")
-    var value: Int = 0
+    var value: Float = 0.0F
 
 
 

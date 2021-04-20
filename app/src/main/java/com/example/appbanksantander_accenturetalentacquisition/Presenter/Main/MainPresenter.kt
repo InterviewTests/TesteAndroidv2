@@ -16,7 +16,7 @@ class MainPresenter(statementView: MainContract.View?, context: Context): MainCo
     }
 
     override fun loadStatement(userId: Int) {
-        serviceApi.getStatement(userId, object: ServiceApi.ServiceApiCallbackStatement<StatementResponse>{
+        serviceApi.getStatement(object: ServiceApi.ServiceApiCallbackStatement<StatementResponse>{
             override fun loaded(statement: List<StatementModel>) {
                 myStatementView?.showStatement(statement)
             }

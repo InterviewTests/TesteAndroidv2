@@ -27,7 +27,11 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        statementListener = MainPresenter(this, this)
+        val userId = intent!!.extras!!.getInt("userId")
+        val nameUser = intent!!.extras!!.getString("name")
+        val bankAccount = intent!!.extras!!.getString("bankAccount")
+        val agency = intent!!.extras!!.getString("agency")
+        val balance = intent!!.extras!!.getInt("balance")
 
         statementList = findViewById(R.id.statementList)
         nameUserTxt = findViewById(R.id.nameUserTxt)
@@ -35,11 +39,9 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         balanceTxt = findViewById(R.id.balanceTxt)
         logoutButton = findViewById(R.id.logoutButton)
 
-        val userId = intent!!.extras!!.getInt("userId")
-        val nameUser = intent!!.extras!!.getString("name")
-        val bankAccount = intent!!.extras!!.getString("bankAccount")
-        val agency = intent!!.extras!!.getString("agency")
-        val balance = intent!!.extras!!.getInt("balance")
+        statementListener = MainPresenter(this, this)
+
+        statementListener.loadStatement(userId)
 
         val account = bankAccount + "/" + agency
         val cents = ",00"
@@ -54,8 +56,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         statementList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         statementList.adapter = statementAdapter
-
-        statementListener.loadStatement(userId)
 
         logoutButton.setOnClickListener {
             val intent = Intent(this, LoginActiviy::class.java)

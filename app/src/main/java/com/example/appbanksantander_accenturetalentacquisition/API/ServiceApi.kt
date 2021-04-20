@@ -12,5 +12,5 @@ interface ServiceApi {
         fun loaded(statement: List<StatementModel>)
     }
     fun getAccountInfo(callback: ServiceApiCallbackUser<UserAccountModel>)
-    fun getStatement(idUser: Int?, callback: ServiceApiCallbackStatement<StatementResponse>)
+    fun getStatement(callback: ServiceApiCallbackStatement<StatementResponse>)
 }

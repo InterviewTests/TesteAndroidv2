@@ -13,6 +13,6 @@ interface RetrofitEndPoint {
     @POST ("api/login")
     fun loginUser(): Call<UserAccountModel>
 
-    @GET("api/statements/")
-    fun getStatements(@Query("idUser") idUser: Int?): Call<StatementResponse>
+    @GET("api/statements/1")
+    fun getStatements(): Call<StatementResponse>
 }

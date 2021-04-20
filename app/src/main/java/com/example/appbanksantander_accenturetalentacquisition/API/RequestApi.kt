@@ -22,28 +22,28 @@ class RequestApi(private val context: Context?): ServiceApi {
                     val userAccountModel: UserAccountModel = response.body()!!
                     callback.loaded(userAccountModel)
                 }else{
-                    Toast.makeText(context, "Error: " + response.code().toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Error Account: " + response.code().toString(), Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<UserAccountModel>, t: Throwable) {
-                Toast.makeText(context, "Error: " + t.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Error Account: " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
     }
 
-    override fun getStatement(idUser: Int?, callback: ServiceApi.ServiceApiCallbackStatement<StatementResponse>) {
-        val callStatement = retrofitEndPoint.getStatements(idUser)
+    override fun getStatement(callback: ServiceApi.ServiceApiCallbackStatement<StatementResponse>) {
+        val callStatement = retrofitEndPoint.getStatements()
         callStatement.enqueue(object: Callback<StatementResponse>{
             override fun onResponse(call: Call<StatementResponse>, response: Response<StatementResponse>) {
                 if (response.code() == responseOK){
                     val statementModel: List<StatementModel> = response.body()!!.statementListResult
                     callback.loaded(statementModel)
                 }else{
-                    Toast.makeText(context, "Error: " + response.code().toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Error Statement: " + response.code().toString(), Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<StatementResponse>, t: Throwable) {
-                Toast.makeText(context, "Error: " + t.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Error Statement: " + t.toString(), Toast.LENGTH_LONG).show()
             }
         })
     }
