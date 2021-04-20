@@ -22,11 +22,11 @@ class RequestApi(private val context: Context?): ServiceApi {
                     val userAccountModel: UserAccountModel = response.body()!!
                     callback.loaded(userAccountModel)
                 }else{
-                    Toast.makeText(context, "Error: " + response.code().toString(), Toast.LENGTH_SHORT)
+                    Toast.makeText(context, "Error: " + response.code().toString(), Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<UserAccountModel>, t: Throwable) {
-                Toast.makeText(context, "Error: " + t.toString(), Toast.LENGTH_SHORT)
+                Toast.makeText(context, "Error: " + t.toString(), Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -39,11 +39,11 @@ class RequestApi(private val context: Context?): ServiceApi {
                     val statementModel: List<StatementModel> = response.body()!!.statementListResult
                     callback.loaded(statementModel)
                 }else{
-                    Toast.makeText(context, "Error: " + response.code().toString(), Toast.LENGTH_SHORT)
+                    Toast.makeText(context, "Error: " + response.code().toString(), Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<StatementResponse>, t: Throwable) {
-                Toast.makeText(context, "Error: " + t.toString(), Toast.LENGTH_LONG)
+                Toast.makeText(context, "Error: " + t.toString(), Toast.LENGTH_LONG).show()
             }
         })
     }
