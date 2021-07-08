@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.desafiosantander"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", '"https://bank-app-test.herokuapp.com/"'
+        }
+        debug {
+            buildConfigField "String", "BASE_URL", '" https://bank-app-test.herokuapp.com/"'
+            applicationIdSuffix ".debug"
+            testCoverageEnabled true
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    implementation "androidx.appcompat:appcompat:$appCompat"
+    implementation "androidx.constraintlayout:constraintlayout:$constraitLayout"
+    implementation "com.google.android.material:material:$material"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$retrofitLogging"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitAdapterRxJava"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp3"
+
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroid"
+    implementation "io.reactivex.rxjava2:rxjava:$rxJava"
+
+    implementation "org.koin:koin-androidx-scope:$koinVersion"
+    implementation "org.koin:koin-androidx-ext:$koinVersion"
+    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
+
+    implementation "com.orhanobut:hawk:$hawk"
+
+    implementation "br.com.concrete:canarinho:$canarinho"
+
+    testImplementation "junit:junit:$junit"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp3"
+    testImplementation "androidx.arch.core:core-testing:$core"
+    testImplementation "org.koin:koin-test:$koinVersion"
+    testImplementation "org.mockito:mockito-core:$mockito"
+
+    androidTestImplementation "androidx.test:runner:$testRunner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$okhttp3"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso"
+    androidTestImplementation "androidx.test:rules:$rules"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso"
+    androidTestImplementation ("org.koin:koin-test:$koinVersion") { exclude group: 'org.mockito' }
+    androidTestImplementation "org.mockito:mockito-android:$mockito"
+
+}
