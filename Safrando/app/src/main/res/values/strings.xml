@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Safrando</string>
+    <string name="accountLabel">conta</string>
+    <string name="balanceLabel">saldo</string>
 </resources>
