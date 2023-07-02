@@ -12,7 +12,6 @@ class CheckEmailUseCaseImplTest {
     @Before
     fun setup() {
         checkEmailUseCase = CheckEmailUseCaseImpl()
-
     }
 
     @After
@@ -21,9 +20,14 @@ class CheckEmailUseCaseImplTest {
     }
 
     @Test
-    fun checkEmail() {
+    fun `CHECK EMAIL - SUCCESS`() {
         val result = checkEmailUseCase.invoke("nandoligeiro@gmail.com")
         assert(result)
     }
 
+    @Test
+    fun `CHECK EMAIL - ERROR`() {
+        val result = checkEmailUseCase.invoke("nandoligeirogmail.com")
+        assert(!result)
+    }
 }

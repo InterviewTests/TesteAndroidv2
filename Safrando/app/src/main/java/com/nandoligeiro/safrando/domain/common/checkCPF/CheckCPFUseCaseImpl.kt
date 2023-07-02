@@ -68,5 +68,4 @@ class CheckCPFUseCaseImpl @Inject constructor() : CheckCPFUseCase {
 
         return true
     }
-
 }

@@ -1,4 +1,4 @@
-package com.nandoligeiro.safrando.domain.login.usecase
+package com.nandoligeiro.safrando.domain.login.usecase.postLogin
 
 import com.nandoligeiro.safrando.di.IoDispatcher
 import com.nandoligeiro.safrando.domain.common.currencyFormatter.CurrencyFormatterUseCase
@@ -24,7 +24,7 @@ class PostLoginUseCaseImpl @Inject constructor(
             try {
                 val result = loginRepository.postLogin(user, password)
                 LoginResult.Success(
-                    result.copy(balance = currencyFormatterUseCase.invoke(result.balance))
+                    result.copy(balance = currencyFormatterUseCase(result.balance))
                 )
             } catch (e: Exception) {
                 LoginResult.Error(e)

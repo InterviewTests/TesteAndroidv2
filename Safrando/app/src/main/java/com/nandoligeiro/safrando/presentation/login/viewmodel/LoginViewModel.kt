@@ -3,7 +3,7 @@ package com.nandoligeiro.safrando.presentation.login.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nandoligeiro.safrando.domain.login.result.LoginResult
-import com.nandoligeiro.safrando.domain.login.usecase.PostLoginUseCase
+import com.nandoligeiro.safrando.domain.login.usecase.postLogin.PostLoginUseCase
 import com.nandoligeiro.safrando.presentation.login.mapper.LoginDomainToUiMapper
 import com.nandoligeiro.safrando.presentation.login.model.UiLoginModel
 import com.nandoligeiro.safrando.presentation.login.state.LoginState
@@ -42,6 +42,5 @@ class LoginViewModel @Inject constructor(
 
             }
         }
-
     }
 }
