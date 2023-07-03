@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nandoligeiro.safrando.domain.result.DomainResult
 import com.nandoligeiro.safrando.domain.statements.usecase.GetBankStatementUseCase
-import com.nandoligeiro.safrando.presentation.statements.state.UiBankStatementState
 import com.nandoligeiro.safrando.presentation.statements.mapper.BankStatementDomainToUiMapper
 import com.nandoligeiro.safrando.presentation.statements.model.UiStatementModel
+import com.nandoligeiro.safrando.presentation.statements.state.UiBankStatementState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

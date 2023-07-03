@@ -1,9 +1,11 @@
 package com.nandoligeiro.safrando.di
 
 
-import com.nandoligeiro.safrando.domain.login.repository.LoginMockRepository
+import com.nandoligeiro.safrando.data.bankstatement.repository.BankStatementRepositoryImpl
+import com.nandoligeiro.safrando.data.login.repository.LocalLoginRepositoryImpl
+import com.nandoligeiro.safrando.data.login.repository.LoginRepositoryImpl
+import com.nandoligeiro.safrando.domain.login.repository.LocalLoginRepository
 import com.nandoligeiro.safrando.domain.login.repository.LoginRepository
-import com.nandoligeiro.safrando.domain.statements.repository.BankStatementMockRepository
 import com.nandoligeiro.safrando.domain.statements.repository.BankStatementRepository
 import dagger.Binds
 import dagger.Module
@@ -16,11 +18,17 @@ interface RepositoryModule {
 
     @Binds
     fun bindBankStatementRepository(
-        repository: BankStatementMockRepository //BankStatementRepositoryImpl
+        repository: BankStatementRepositoryImpl
     ): BankStatementRepository
 
     @Binds
     fun bindLoginRepository(
-        repository: LoginMockRepository //LoginRepositoryImpl
+        repository: LoginRepositoryImpl
     ): LoginRepository
+
+    @Binds
+    fun bindLocalLoginRepository(
+        repository: LocalLoginRepositoryImpl
+    ): LocalLoginRepository
+
 }

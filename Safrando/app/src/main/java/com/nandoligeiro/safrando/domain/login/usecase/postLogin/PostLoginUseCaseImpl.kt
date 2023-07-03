@@ -6,6 +6,7 @@ import com.nandoligeiro.safrando.domain.login.model.LoginDomain
 import com.nandoligeiro.safrando.domain.login.repository.LoginRepository
 import com.nandoligeiro.safrando.domain.login.result.LoginResult
 import com.nandoligeiro.safrando.domain.login.usecase.checkLogin.CheckLoginUseCase
+import com.nandoligeiro.safrando.domain.localUser.usecase.saveLocalUser.SaveUserUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -14,6 +15,7 @@ class PostLoginUseCaseImpl @Inject constructor(
     private val loginRepository: LoginRepository,
     private val checkLoginUseCase: CheckLoginUseCase,
     private val currencyFormatterUseCase: CurrencyFormatterUseCase,
+    private val saveDataStoreUseCase: SaveUserUseCase,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : PostLoginUseCase {
 
@@ -23,9 +25,9 @@ class PostLoginUseCaseImpl @Inject constructor(
         if (checkLoginUseCase(user, password)) {
             try {
                 val result = loginRepository.postLogin(user, password)
-                LoginResult.Success(
-                    result.copy(balance = currencyFormatterUseCase(result.balance))
-                )
+                val changedResult = result.copy(balance = currencyFormatterUseCase(result.balance))
+                saveDataStoreUseCase(user)
+                LoginResult.Success(changedResult)
             } catch (e: Exception) {
                 LoginResult.Error(e)
             }

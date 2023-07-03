@@ -6,8 +6,12 @@ import com.nandoligeiro.safrando.domain.common.checkEmail.CheckEmailUseCase
 import com.nandoligeiro.safrando.domain.common.checkEmail.CheckEmailUseCaseImpl
 import com.nandoligeiro.safrando.domain.common.currencyFormatter.CurrencyFormatterBrUseCaseImpl
 import com.nandoligeiro.safrando.domain.common.currencyFormatter.CurrencyFormatterUseCase
+import com.nandoligeiro.safrando.domain.localUser.usecase.saveLocalUser.SaveUserUseCase
+import com.nandoligeiro.safrando.domain.localUser.usecase.saveLocalUser.SaveUserUseCaseImpl
 import com.nandoligeiro.safrando.domain.common.dateFormatter.DateFormatterUseCase
 import com.nandoligeiro.safrando.domain.common.dateFormatter.DateFormatterUseCaseImpl
+import com.nandoligeiro.safrando.domain.localUser.usecase.getLocalUser.GetLocalUserUseCase
+import com.nandoligeiro.safrando.domain.localUser.usecase.getLocalUser.GetLocalUserUseCaseImpl
 import com.nandoligeiro.safrando.domain.login.usecase.checkLogin.CheckLoginUseCase
 import com.nandoligeiro.safrando.domain.login.usecase.checkLogin.CheckLoginUseCaseImpl
 import com.nandoligeiro.safrando.domain.login.usecase.checkPassword.CheckPasswordUseCase
@@ -65,4 +69,15 @@ interface UseCaseModule {
     fun bindPostLoginUseCase(
         useCase: PostLoginUseCaseImpl
     ): PostLoginUseCase
+
+    @Binds
+    fun bindSaveDataStoreUseCase(
+        useCase: SaveUserUseCaseImpl
+    ): SaveUserUseCase
+
+    @Binds
+    fun bindGetLocalUserUseCase(
+        useCase: GetLocalUserUseCaseImpl
+    ): GetLocalUserUseCase
+
 }

@@ -1,66 +1,75 @@
-package com.nandoligeiro.safrando.domain.statements.repository
+package com.nandoligeiro.safrando.datasource.bankstatement.remote
 
-import com.nandoligeiro.safrando.domain.statements.model.BankStatementDomain
+import com.nandoligeiro.safrando.data.api.SafrandoService
+import com.nandoligeiro.safrando.data.bankstatement.datasource.BankStatementDataSource
+import com.nandoligeiro.safrando.datasource.bankstatement.entity.BankStatementEntity
+import com.nandoligeiro.safrando.datasource.bankstatement.mapper.BankStatementEntityToDataMapper
 import javax.inject.Inject
 
-class BankStatementMockRepository @Inject constructor() : BankStatementRepository {
-    override suspend fun getBankStatement(userId: Int) = listOf(
-        BankStatementDomain(
+class BankStatementDataSourceImpl @Inject constructor(
+    private val api: SafrandoService,
+    private val toDataMapper: BankStatementEntityToDataMapper
+) : BankStatementDataSource {
+    override suspend fun getBankStatement(
+        userId: Int
+    ) = toDataMapper.toData(mockBankStatement()) //(api.getBankStatements(userId))
+    private fun mockBankStatement() = listOf(
+        BankStatementEntity(
             nameStatement = "Pagamento",
             description = "Conta de Luz",
             amount = "1000",
             statementDate = "12/12/2023"
         ),
-        BankStatementDomain(
+        BankStatementEntity(
             nameStatement = "Pagamento",
             description = "Conta de Luz",
             amount = "1000",
             statementDate = "12/12/2023"
         ),
-        BankStatementDomain(
+        BankStatementEntity(
             nameStatement = "Pagamento",
             description = "Conta de Luz",
             amount = "1000",
             statementDate = "12/12/2023"
         ),
-        BankStatementDomain(
+        BankStatementEntity(
             nameStatement = "Pagamento",
             description = "Conta de Luz",
             amount = "1000",
             statementDate = "12/12/2023"
         ),
-        BankStatementDomain(
+        BankStatementEntity(
             nameStatement = "Pagamento",
             description = "Conta de Luz",
             amount = "1000",
             statementDate = "12/12/2023"
-        ),BankStatementDomain(
+        ), BankStatementEntity(
             nameStatement = "Pagamento",
             description = "Conta de Luz",
             amount = "1000",
             statementDate = "12/12/2023"
-        ),BankStatementDomain(
+        ), BankStatementEntity(
             nameStatement = "Pagamento",
             description = "Conta de Luz",
             amount = "1000",
             statementDate = "12/12/2023"
-        ),BankStatementDomain(
+        ), BankStatementEntity(
             nameStatement = "Pagamento",
             description = "Conta de Luz",
             amount = "1000",
             statementDate = "12/12/2023"
-        ),BankStatementDomain(
+        ), BankStatementEntity(
             nameStatement = "Pagamento",
             description = "Conta de Luz",
             amount = "1000",
             statementDate = "12/12/2023"
-        ),BankStatementDomain(
+        ), BankStatementEntity(
             nameStatement = "Pagamento",
             description = "Conta de Luz",
             amount = "1000",
             statementDate = "12/12/2023"
         ),
-        BankStatementDomain(
+        BankStatementEntity(
             nameStatement = "Pagamento",
             description = "Conta de Luz",
             amount = "1000",

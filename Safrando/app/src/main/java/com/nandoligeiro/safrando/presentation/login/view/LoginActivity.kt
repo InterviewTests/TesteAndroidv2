@@ -30,7 +30,13 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         observeVMEvents()
+        observeUser()
         actionSignIn()
+        actionGetLocalUser()
+    }
+
+    private fun actionGetLocalUser() {
+        viewModel.getLocalUserSaved()
     }
 
     private fun actionSignIn() {
@@ -49,6 +55,16 @@ class LoginActivity : AppCompatActivity() {
         intent.putExtra(Constants.KeyExtra.KEY_EXTRA_LOGIN, userData)
         startActivity(intent)
         finish()
+    }
+
+    private fun observeUser() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.localUser.collect {
+                    binding.editTextUser.setText(it)
+                }
+            }
+        }
     }
 
     private fun observeVMEvents() {
