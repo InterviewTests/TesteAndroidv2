@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
+        android:name=".BankAplication"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -13,11 +15,11 @@
         android:theme="@style/Theme.Bank"
         tools:targetApi="31">
         <activity
-            android:name=".StatementsActivity"
+            android:name=".ui.screens.StatementsActivity"
             android:exported="false"
             android:theme="@style/Base.Theme.Bank"/>
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.screens.LoginActivity"
             android:exported="true"
             android:theme="@style/Base.Theme.Bank">
             <intent-filter>

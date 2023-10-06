@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="end"
     android:background="@color/light"
-    tools:context=".StatementsActivity">
+    tools:context=".ui.screens.StatementsActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
