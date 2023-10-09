@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Bank</string>
     <string name="user">User</string>
+    <string name="emailCpf">Email ou CPF</string>
     <string name="pasword">Password</string>
     <string name="login">Login</string>
     <string name="conta">Conta</string>

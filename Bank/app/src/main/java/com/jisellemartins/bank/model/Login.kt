@@ -1,6 +1,9 @@
 package com.jisellemartins.bank.model
 
 class Login (
-    user:String,
-    password:String
+    var user:String = "",
+    var password:String = ""
 )
+
+
+
