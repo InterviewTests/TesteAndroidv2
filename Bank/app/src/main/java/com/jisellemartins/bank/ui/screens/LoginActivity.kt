@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.jisellemartins.bank.R
 import com.jisellemartins.bank.databinding.ActivityLoginBinding
 import com.jisellemartins.bank.model.Credencials
 import com.jisellemartins.bank.model.Login
@@ -16,6 +17,7 @@ class LoginActivity : AppCompatActivity() {
     val loginViewModel: LoginViewModel by viewModel()
     private lateinit var binding: ActivityLoginBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -23,12 +25,14 @@ class LoginActivity : AppCompatActivity() {
         binding.credencials = Credencials()
 
 
-        loginViewModel.liveData.observe(this) {
-        binding.isloading = false
+        loginViewModel.loginLiveData.observe(this) {
+            binding.isloading = false
             when (it) {
                 is Output.Success -> {
                     if (!it.data?.id.equals("0")) {
+                        createPersistence(it.data?.id.toString())
                         val intent = Intent(this, StatementsActivity::class.java)
+
                         startActivity(intent)
                     } else {
                         it.data?.message?.let { message -> showToast(message, this) }
@@ -55,6 +59,13 @@ class LoginActivity : AppCompatActivity() {
 
     fun showToast(message: String, context: Context) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    }
+
+    fun createPersistence(idUser:String){
+        val sharedPreference =  getSharedPreferences(getString(R.string.data_bank),Context.MODE_PRIVATE)
+        var editor = sharedPreference.edit()
+        editor.putString(getString(R.string.idUser),idUser)
+        editor.commit()
     }
 
 

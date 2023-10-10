@@ -1,10 +1,10 @@
 package com.jisellemartins.bank.model
 
 class DetailsUser(
-    id: String,
-    loginId: String,
-    account: String,
-    balance: Int,
-    user: User,
-    statements: List<Statements>
+    var id: String,
+    var loginId: String,
+    var account: String,
+    var balance: Int,
+    var user: User,
+    var statementsList: List<Statements>
 )

@@ -1,8 +1,8 @@
 package com.jisellemartins.bank.model
 
 class Statements (
-    type:String,
-    title:String,
-    value: Double,
-    date: String
+    var type:String,
+    var title:String,
+    var value: Double,
+    var date: String
 )

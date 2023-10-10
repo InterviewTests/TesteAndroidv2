@@ -1,6 +1,14 @@
 package com.jisellemartins.bank.utils
 
-import android.util.Patterns
+import androidx.core.util.PatternsCompat
 
-fun CharSequence?.isValidEmail() =
-    !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
+class EmailUtil {
+
+    companion object{
+        fun CharSequence?.isValidEmail() =
+            !isNullOrEmpty() && PatternsCompat.EMAIL_ADDRESS.matcher(this).matches()
+    }
+
+}
+
+

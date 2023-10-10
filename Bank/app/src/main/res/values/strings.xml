@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Bank</string>
+    <string name="data_bank">com.jisellemartins.bank.data_bank</string>
     <string name="user">User</string>
     <string name="emailCpf">Email ou CPF</string>
     <string name="pasword">Password</string>
@@ -12,4 +13,5 @@
     <string name="pagamento">Pagamento</string>
     <string name="data">12/12/2018</string>
     <string name="titulo">Conta de luz</string>
+    <string name="idUser">idUser</string>
 </resources>

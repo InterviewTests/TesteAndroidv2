@@ -14,15 +14,14 @@ class BankRepository constructor(
 ) {
 
 
+    /*    suspend fun postLogin(login: Login): Output<User?> {
+            val response = service.postLogin(login)
 
-/*    suspend fun postLogin(login: Login): Output<User?> {
-        val response = service.postLogin(login)
-
-        if (response.isSuccessful) {
-            return Output.Success(response.body())
-        }
-        return Output.NetworkError
-    }*/
+            if (response.isSuccessful) {
+                return Output.Success(response.body())
+            }
+            return Output.NetworkError
+        }*/
 
     suspend fun postLogin(login: Login) = flow {
         emit(Output.Loading())
@@ -30,20 +29,34 @@ class BankRepository constructor(
 
         if (response.isSuccessful) {
             emit(Output.Success(response.body()))
-        }else{
+        } else {
             emit(Output.NetworkError)
         }
 
     }
 
-    suspend fun getDetailsUser(idUser:String): DetailsUser? {
+    suspend fun getDetailsUser(idUser: String) = flow {
+        emit(Output.Loading())
+        // utilizando o idUser mockado pq o dados sao fakes
+        val response = service.getDetailsUser("2")
+
+        if (response.isSuccessful) {
+            emit(Output.Success(response.body()?.get(0)))
+
+        } else {
+            emit(Output.NetworkError)
+        }
+
+    }
+
+    /*suspend fun getDetailsUser(idUser:String): DetailsUser? {
         val response = service.getDetailsUser(idUser)
 
         if (response.isSuccessful) {
             return response.body()?.get(0)
         }
         return null
-    }
+    }*/
 
 
 }

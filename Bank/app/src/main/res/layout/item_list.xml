@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="104dp">
 
@@ -26,7 +29,7 @@
             android:paddingLeft="15dp">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.8"
@@ -35,7 +38,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/textDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
@@ -55,7 +58,7 @@
             tools:layout_editor_absoluteY="1dp">
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/textTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.6"
@@ -64,10 +67,10 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/textView10"
+                android:id="@+id/textValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.35"
+                android:layout_weight="0.25"
                 android:gravity="center"
                 android:text="@string/valorFict"
                 android:textColor="@color/cinza_dark"
@@ -78,3 +81,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
