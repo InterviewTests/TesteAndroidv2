@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Bank</string>
+    <string name="data_bank">com.jisellemartins.bank.data_bank</string>
+    <string name="user">User</string>
+    <string name="emailCpf">Email ou CPF</string>
+    <string name="pasword">Password</string>
+    <string name="login">Login</string>
+    <string name="conta">Conta</string>
+    <string name="saldo">Saldo</string>
+    <string name="recentes">Recentes</string>
+    <string name="numeroFict">2050 / 01.111222-4</string>
+    <string name="valorFict">R$1.000,00</string>
+    <string name="pagamento">Pagamento</string>
+    <string name="data">12/12/2018</string>
+    <string name="titulo">Conta de luz</string>
+    <string name="idUser">idUser</string>
+</resources>
