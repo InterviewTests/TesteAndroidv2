@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ExtractBank</string>
+    <string name="email_cpf">Email ou Cpf</string>
+    <string name="password">Senha</string>
+    <string name="login">Login</string>
+
+    <string name="error_invalid_email_or_cpf">Email ou CPF não está em um formato válido</string>
+    <string name="error_password_length">A senha deve ter no mínimo 6 caracteres</string>
+    <string name="error_password_uppercase">A senha deve conter pelo menos uma letra maiúscula</string>
+    <string name="error_password_number">A senha deve conter pelo menos um número</string>
+    <string name="error_password_special_char">A senha deve conter pelo menos um caractere especial</string>
+    <string name="error_password_requirements">A senha não atende aos requisitos</string>
+    <string name="error_statement_load">Ocorreu um erro ao obter os extratos.</string>
+</resources>

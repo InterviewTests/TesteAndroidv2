@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_horizontal">13dp</dimen>
+    <dimen name="margin_vertical">13dp</dimen>
+    <dimen name="margin_top">10dp</dimen>
+    <dimen name="margin_bottom">10dp</dimen>
+    <dimen name="min_height">48dp</dimen>
+    <dimen name="padding_start">13dp</dimen>
+    <dimen name="padding_end">13dp</dimen>
+    <dimen name="margin_small_top">30dp</dimen>
+    <dimen name="margin_medium_top">60dp</dimen>
+    <dimen name="margin_medium_large">90dp</dimen>
+</resources>
