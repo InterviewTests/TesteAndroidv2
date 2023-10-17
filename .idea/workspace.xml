@@ -4,50 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00565eb5-ddf8-4cea-b798-2d68a9f4157f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/androidTest/java/fingerfire/com/extractbank/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/java/fingerfire/com/extractbank/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/app/src/test/java/fingerfire/com/extractbank/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ExtractBank/settings.gradle.kts" afterDir="false" />
+    <list default="true" id="00565eb5-ddf8-4cea-b798-2d68a9f4157f" name="Changes" comment="first commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
