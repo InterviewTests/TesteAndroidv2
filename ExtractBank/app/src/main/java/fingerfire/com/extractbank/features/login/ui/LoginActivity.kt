@@ -52,22 +52,14 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun isEmailOrCpfValid(emailOrCpf: String): Boolean {
-        return viewModel.isValidEmailOrCPF(emailOrCpf)
-    }
-
-    private fun isPasswordValid(password: String): ValidationResult {
-        return viewModel.isPasswordValid(password)
-    }
-
     private fun setupLoginButton() {
         binding.btnLogin.setOnClickListener {
             binding.progressBar.visibility = View.VISIBLE
             val emailOrCpf = binding.etEmailCpf.text.toString()
             val password = binding.etPassword.text.toString()
 
-            val isEmailOrCpfValid = isEmailOrCpfValid(emailOrCpf)
-            val (isPasswordValid, passwordErrorMessage) = isPasswordValid(password)
+            val isEmailOrCpfValid = viewModel.isValidEmailOrCPF(emailOrCpf)
+            val (isPasswordValid, passwordErrorMessage) = viewModel.isPasswordValid(password)
 
             if (isEmailOrCpfValid && isPasswordValid) {
                 val loginData = Login(emailOrCpf, password)

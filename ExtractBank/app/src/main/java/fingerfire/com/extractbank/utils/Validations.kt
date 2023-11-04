@@ -2,6 +2,13 @@ package fingerfire.com.extractbank.utils
 
 object Validations {
 
+    private const val UPPERCASE = "A senha precisa ter ao menos uma letra maiúscula"
+    private const val NUMBER = "A senha precisa ter ao menos um número"
+    private const val SPECIAL_CHAR = "A senha precisa ter ao menos um caractere especial"
+    private const val PASSWORD_ERROR_REQUEST = "A senha precisa ter ao menos um caractere especial"
+    private const val MINIMUM_PASSWORD_LENGTH = "A senha deve ter no mínimo 6 caracteres"
+    private const val MINIMUM_PASSWORD = 6
+
     fun isValidCPF(cpf: String): Boolean {
         if (cpf.length != 11) {
             return false
@@ -43,8 +50,6 @@ object Validations {
         return matches(emailPattern.toRegex())
     }
 
-    data class ValidationResult(val isValid: Boolean, val errorMessage: String? = "")
-
     fun isPasswordValid(password: String): ValidationResult {
         if (password.length < MINIMUM_PASSWORD) {
             return ValidationResult(false, MINIMUM_PASSWORD_LENGTH)
@@ -55,8 +60,8 @@ object Validations {
         val hasSpecialChar =
             "[!\"#$%&'()*+,-./:;\\\\<=>?@\\[\\]^_`{|}~]".toRegex().containsMatchIn(password)
 
-        if (hasUppercase && hasNumber && hasSpecialChar) {
-            return ValidationResult(true, null)
+        return if (hasUppercase && hasNumber && hasSpecialChar) {
+            ValidationResult(true, null)
         } else {
             val errorMessage = when {
                 !hasUppercase -> UPPERCASE
@@ -64,15 +69,10 @@ object Validations {
                 !hasSpecialChar -> SPECIAL_CHAR
                 else -> PASSWORD_ERROR_REQUEST
             }
-            return ValidationResult(false, errorMessage)
+            ValidationResult(false, errorMessage)
         }
     }
 
-    private const val UPPERCASE = "A senha precisa ter ao menos uma letra maiúscula"
-    private const val NUMBER = "A senha precisa ter ao menos um número"
-    private const val SPECIAL_CHAR = "A senha precisa ter ao menos um caractere especial"
-    private const val PASSWORD_ERROR_REQUEST = "A senha precisa ter ao menos um caractere especial"
-    private const val MINIMUM_PASSWORD_LENGTH = "A senha deve ter no mínimo 6 caracteres"
-    private const val MINIMUM_PASSWORD = 6
+    data class ValidationResult(val isValid: Boolean, val errorMessage: String? = "")
 
-}
+    }
